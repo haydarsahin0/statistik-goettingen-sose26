@@ -1,0 +1,14 @@
+{
+  "name": "lernplan-sds1-build",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Baut die Tages-PDFs des Lernplans aus den HTML-Quellen in ../src.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "katex": "^0.16.11",
+    "playwright-core": "^1.63.0"
+  }
+}
