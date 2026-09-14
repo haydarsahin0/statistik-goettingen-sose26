@@ -27,8 +27,8 @@
 
   <div class="cover-meta">
     <span class="chip chip-lav"><span class="ic">◷</span> ca. 3 Stunden</span>
-    <span class="chip chip-mint"><span class="ic">▤</span> 8 Schritte</span>
-    <span class="chip chip-rose"><span class="ic">✎</span> 10 Aufgaben · 20 Punkte</span>
+    <span class="chip chip-mint"><span class="ic">▤</span> 9 Schritte</span>
+    <span class="chip chip-rose"><span class="ic">✎</span> 11 Aufgaben · 24 Punkte</span>
     <span class="chip chip-sky"><span class="ic">▶</span> R-Ecke</span>
   </div>
 
@@ -41,6 +41,7 @@
       <li>Du berechnest die <b>Dichte</b> eines Histogramm-Rechtecks.</li>
       <li>Du liest aus einer <b>Fläche</b> im Histogramm einen <b>Anteil</b> ab.</li>
       <li>Du benennst die <b>Form</b> einer Verteilung: unimodal, bimodal, schief.</li>
+      <li>Du zeichnest die <b>empirische Verteilungsfunktion</b> als Treppenfunktion.</li>
       <li>Du erzeugst in <b>R</b> Häufigkeitstabellen und Histogramme.</li>
     </ul>
   </div>
@@ -154,12 +155,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>0</td><td class="num">5</td><td class="num">5 / 20</td><td class="num">0,25</td></tr>
-        <tr><td>1</td><td class="num">8</td><td class="num">8 / 20</td><td class="num">0,40</td></tr>
-        <tr><td>2</td><td class="num">4</td><td class="num">4 / 20</td><td class="num">0,20</td></tr>
-        <tr><td>3</td><td class="num">2</td><td class="num">2 / 20</td><td class="num">0,10</td></tr>
-        <tr><td>4</td><td class="num">1</td><td class="num">1 / 20</td><td class="num">0,05</td></tr>
-        <tr><td><b>Summe</b></td><td class="num"><b>20 = n</b></td><td class="num">—</td><td class="num"><b>1,00</b></td></tr>
+        <tr><td>0</td><td class="num">5</td><td class="num">5 / 20</td><td class="num">0.25</td></tr>
+        <tr><td>1</td><td class="num">8</td><td class="num">8 / 20</td><td class="num">0.40</td></tr>
+        <tr><td>2</td><td class="num">4</td><td class="num">4 / 20</td><td class="num">0.20</td></tr>
+        <tr><td>3</td><td class="num">2</td><td class="num">2 / 20</td><td class="num">0.10</td></tr>
+        <tr><td>4</td><td class="num">1</td><td class="num">1 / 20</td><td class="num">0.05</td></tr>
+        <tr><td><b>Summe</b></td><td class="num"><b>20 = n</b></td><td class="num">—</td><td class="num"><b>1.00</b></td></tr>
       </tbody>
     </table>
     <p style="margin-top:8px">
@@ -249,11 +250,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>\([0, 5]\)</td>  <td class="num">5</td>  <td class="num">4</td> <td class="num">0,20</td></tr>
-        <tr><td>\((5, 10]\)</td> <td class="num">5</td>  <td class="num">8</td> <td class="num">0,40</td></tr>
-        <tr><td>\((10, 20]\)</td><td class="num">10</td> <td class="num">6</td> <td class="num">0,30</td></tr>
-        <tr><td>\((20, 40]\)</td><td class="num">20</td> <td class="num">2</td> <td class="num">0,10</td></tr>
-        <tr><td><b>Summe</b></td><td class="num">—</td><td class="num"><b>20</b></td><td class="num"><b>1,00</b></td></tr>
+        <tr><td>\([0, 5]\)</td>  <td class="num">5</td>  <td class="num">4</td> <td class="num">0.20</td></tr>
+        <tr><td>\((5, 10]\)</td> <td class="num">5</td>  <td class="num">8</td> <td class="num">0.40</td></tr>
+        <tr><td>\((10, 20]\)</td><td class="num">10</td> <td class="num">6</td> <td class="num">0.30</td></tr>
+        <tr><td>\((20, 40]\)</td><td class="num">20</td> <td class="num">2</td> <td class="num">0.10</td></tr>
+        <tr><td><b>Summe</b></td><td class="num">—</td><td class="num"><b>20</b></td><td class="num"><b>1.00</b></td></tr>
       </tbody>
     </table>
     <p style="margin-top:8px">
@@ -358,10 +359,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>\([0, 5]\)</td>  <td class="num">5</td>  <td class="num">0,20</td><td class="num">0,20 / 5</td> <td class="num"><b>0,040</b></td></tr>
-        <tr><td>\((5, 10]\)</td> <td class="num">5</td>  <td class="num">0,40</td><td class="num">0,40 / 5</td> <td class="num"><b>0,080</b></td></tr>
-        <tr><td>\((10, 20]\)</td><td class="num">10</td> <td class="num">0,30</td><td class="num">0,30 / 10</td><td class="num"><b>0,030</b></td></tr>
-        <tr><td>\((20, 40]\)</td><td class="num">20</td> <td class="num">0,10</td><td class="num">0,10 / 20</td><td class="num"><b>0,005</b></td></tr>
+        <tr><td>\([0, 5]\)</td>  <td class="num">5</td>  <td class="num">0.20</td><td class="num">0.20 / 5</td> <td class="num"><b>0.040</b></td></tr>
+        <tr><td>\((5, 10]\)</td> <td class="num">5</td>  <td class="num">0.40</td><td class="num">0.40 / 5</td> <td class="num"><b>0.080</b></td></tr>
+        <tr><td>\((10, 20]\)</td><td class="num">10</td> <td class="num">0.30</td><td class="num">0.30 / 10</td><td class="num"><b>0.030</b></td></tr>
+        <tr><td>\((20, 40]\)</td><td class="num">20</td> <td class="num">0.10</td><td class="num">0.10 / 20</td><td class="num"><b>0.005</b></td></tr>
       </tbody>
     </table>
   </div>
@@ -515,9 +516,9 @@
       Wir addieren die beiden ersten Flächen:
     </p>
     <ol class="calc-steps">
-      <li>Klasse \([0,5]\): Fläche = Breite · Höhe = \(5 \cdot 0{,}040 = 0{,}20\)</li>
-      <li>Klasse \((5,10]\): Fläche = \(5 \cdot 0{,}080 = 0{,}40\)</li>
-      <li>Zusammen: \(0{,}20 + 0{,}40 = 0{,}60\)</li>
+      <li>Klasse \([0,\ 5]\): Fläche = Breite · Höhe = \(5 \cdot 0.040 = 0.20\)</li>
+      <li>Klasse \((5,\ 10]\): Fläche = \(5 \cdot 0.080 = 0.40\)</li>
+      <li>Zusammen: \(0.20 + 0.40 = 0.60\)</li>
     </ol>
     <p>
       <b>Antwort:</b> 60 % der Studierenden lernen höchstens 10 Stunden pro Woche.
@@ -702,10 +703,193 @@
   </div>
 </div>
 
-<!-- ---------- SCHRITT 8: R ---------- -->
+<!-- ---------- SCHRITT 8: EMPIRISCHE VERTEILUNGSFUNKTION ---------- -->
 <div class="step">
   <div class="step-head">
     <div class="step-num">8</div>
+    <div class="step-title">Die empirische Verteilungsfunktion
+      <small>Dieselben Häufigkeiten — von unten aufaddiert</small></div>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Klausur-Hinweis</div>
+    <p>
+      Diesen Schritt musst du besonders ernst nehmen. In der Probeklausur gab es
+      <b>6 Punkte</b> allein dafür, diese Funktion von Hand zu <b>zeichnen</b>.
+      Lesen reicht hier nicht — nimm Papier und zeichne mit.
+    </p>
+  </div>
+
+  <p>
+    Bis jetzt hast du gefragt: „Wie viele liegen <i>bei</i> diesem Wert?“
+    Jetzt fragst du: „Wie viele liegen <b>bei oder unter</b> diesem Wert?“
+    Du addierst die relativen Häufigkeiten also von links nach rechts auf.
+  </p>
+
+  <div class="box box-def">
+    <div class="box-label">● Definition</div>
+    <p>
+      Die <b>empirische Verteilungsfunktion</b> \(F(x)\) gibt den Anteil der
+      Beobachtungen an, die kleiner oder gleich \(x\) sind:
+    </p>
+    \[ F(x) = \frac{\text{Anzahl der } x_i \le x}{n} = \sum_{j:\, a_j \le x} f_j \]
+    <p>
+      Man nennt sie auch <b>kumulierte relative Häufigkeit</b>.
+      „Kumuliert“ heißt einfach „aufsummiert“.
+    </p>
+  </div>
+
+  <div class="box box-merke">
+    <div class="box-label">◆ Vier Eigenschaften, die immer gelten</div>
+    <ol class="clean">
+      <li>\(F\) ist eine <b>Treppenfunktion</b> — sie steigt nicht schräg, sondern springt.</li>
+      <li>Sie springt genau bei jeder Ausprägung \(a_j\), und zwar um \(f_j\) nach oben.</li>
+      <li>Sie startet links bei <b>0</b> und endet rechts bei <b>1</b>. Sie fällt nie.</li>
+      <li>An der Sprungstelle gilt der <b>obere</b> Wert (der Punkt \(a_j\) gehört dazu).</li>
+    </ol>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · echte Klausuraufgabe</div>
+    <p>
+      Getrunkene Biermenge \(X\) in Litern bei \(n = 10\) Gästen:
+    </p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+      8.5 · 8.5 · 4.0 · 4.0 · 12.0 · 12.0 · 8.5 · 15.7 · 4.0 · 8.5
+    </p>
+    <p><b>Schritt 1 — sortieren und zählen:</b></p>
+    <table class="in-box">
+      <thead>
+        <tr><th>\(a_j\)</th><th class="num">\(h_j\)</th><th class="num">\(f_j\)</th><th class="num">\(F(a_j)\) · aufaddiert</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>4.0</td>  <td class="num">3</td><td class="num">0.3</td><td class="num">0.3</td></tr>
+        <tr><td>8.5</td>  <td class="num">4</td><td class="num">0.4</td><td class="num">0.3 + 0.4 = <b>0.7</b></td></tr>
+        <tr><td>12.0</td> <td class="num">2</td><td class="num">0.2</td><td class="num">0.7 + 0.2 = <b>0.9</b></td></tr>
+        <tr><td>15.7</td> <td class="num">1</td><td class="num">0.1</td><td class="num">0.9 + 0.1 = <b>1.0</b></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:8px">
+      <b>Kontrolle:</b> Die letzte Zahl muss <b>1</b> sein. Wenn nicht, hast du dich verzählt.
+    </p>
+  </div>
+
+  <p><b>Schritt 2 — als Formel aufschreiben.</b> So wird es in der Klausur erwartet:</p>
+
+  \[ F(x) = \begin{cases}
+      0   & x < 4 \\
+      0.3 & 4 \le x < 8.5 \\
+      0.7 & 8.5 \le x < 12 \\
+      0.9 & 12 \le x < 15.7 \\
+      1   & x \ge 15.7
+    \end{cases} \]
+
+  <p><b>Schritt 3 — zeichnen.</b> So sieht die Treppe aus:</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 420 215" role="img" aria-label="Empirische Verteilungsfunktion als Treppenfunktion">
+      <!-- Gitterlinien -->
+      <g stroke="#EAE4F2" stroke-width="1">
+        <line x1="45" y1="30"  x2="405" y2="30"/>
+        <line x1="45" y1="45"  x2="405" y2="45"/>
+        <line x1="45" y1="75"  x2="405" y2="75"/>
+        <line x1="45" y1="135" x2="405" y2="135"/>
+      </g>
+      <!-- y-Achse -->
+      <line x1="45" y1="25" x2="45" y2="180" stroke="#6A6380" stroke-width="1.4"/>
+      <g font-family="Inter, sans-serif" font-size="9" fill="#9A93AC" text-anchor="end">
+        <text x="40" y="183">0</text>
+        <text x="40" y="138">0.3</text>
+        <text x="40" y="78">0.7</text>
+        <text x="40" y="48">0.9</text>
+        <text x="40" y="33">1</text>
+      </g>
+      <!-- waagerechte Stufen -->
+      <g stroke="#7C63CE" stroke-width="2.4" fill="none" stroke-linecap="round">
+        <line x1="45"  y1="180" x2="124" y2="180"/>
+        <line x1="124" y1="135" x2="213" y2="135"/>
+        <line x1="213" y1="75"  x2="282" y2="75"/>
+        <line x1="282" y1="45"  x2="355" y2="45"/>
+        <line x1="355" y1="30"  x2="405" y2="30"/>
+      </g>
+      <!-- Sprünge gestrichelt -->
+      <g stroke="#DBCFFB" stroke-width="1.6" stroke-dasharray="3 3">
+        <line x1="124" y1="180" x2="124" y2="135"/>
+        <line x1="213" y1="135" x2="213" y2="75"/>
+        <line x1="282" y1="75"  x2="282" y2="45"/>
+        <line x1="355" y1="45"  x2="355" y2="30"/>
+      </g>
+      <!-- offene Kreise: Wert gehört NICHT dazu -->
+      <g fill="#FFFDFB" stroke="#7C63CE" stroke-width="1.8">
+        <circle cx="124" cy="180" r="3.4"/>
+        <circle cx="213" cy="135" r="3.4"/>
+        <circle cx="282" cy="75"  r="3.4"/>
+        <circle cx="355" cy="45"  r="3.4"/>
+      </g>
+      <!-- volle Punkte: Wert gehört DAZU -->
+      <g fill="#7C63CE">
+        <circle cx="124" cy="135" r="3.6"/>
+        <circle cx="213" cy="75"  r="3.6"/>
+        <circle cx="282" cy="45"  r="3.6"/>
+        <circle cx="355" cy="30"  r="3.6"/>
+      </g>
+      <!-- x-Achse -->
+      <line x1="45" y1="180" x2="405" y2="180" stroke="#6A6380" stroke-width="1.4"/>
+      <g font-family="Inter, sans-serif" font-size="9" fill="#6A6380" text-anchor="middle">
+        <text x="124" y="194">4.0</text>
+        <text x="213" y="194">8.5</text>
+        <text x="282" y="194">12.0</text>
+        <text x="355" y="194">15.7</text>
+      </g>
+      <text x="225" y="209" font-family="Inter, sans-serif" font-size="9" fill="#9A93AC" text-anchor="middle">Biermenge in Litern</text>
+      <text x="52" y="22" font-family="Inter, sans-serif" font-size="9" fill="#9A93AC">F(x)</text>
+    </svg>
+    <p class="fig-cap">
+      <b>Voller Punkt</b> = dieser Wert gehört zur Stufe. <b>Offener Kreis</b> = er gehört
+      nicht mehr dazu. Genau diese zwei Symbole bringen in der Klausur die Punkte —
+      wer sie weglässt, verliert sie.
+    </p>
+  </div>
+
+  <div class="box box-merke">
+    <div class="box-label">◆ Rezept für die Klausur · vier Handgriffe</div>
+    <ol class="calc-steps">
+      <li>Werte <b>sortieren</b> und \(h_j\) zählen.</li>
+      <li>\(f_j = h_j / n\) ausrechnen und von oben nach unten <b>aufaddieren</b>.</li>
+      <li>Achsen zeichnen: y geht immer von <b>0 bis 1</b>, x deckt alle Werte ab.</li>
+      <li>Stufen waagerecht ziehen, an jeder Ausprägung springen —
+        <b>voller Punkt oben, offener Kreis unten</b>.</li>
+    </ol>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Wie man F(x) abliest</div>
+    <p>
+      <b>Frage:</b> Welcher Anteil der Gäste trank höchstens 10 Liter?<br>
+      <b>Antwort:</b> \(F(10) = 0.7\), also 70 %. Man geht bei 10 nach oben
+      und liest die Stufe ab, auf der man landet.
+    </p>
+    <p>
+      <b>Frage:</b> Welcher Anteil trank <i>mehr</i> als 12 Liter?<br>
+      <b>Antwort:</b> \(1 - F(12) = 1 - 0.9 = 0.1\), also 10 %.
+    </p>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Die zwei häufigsten Fehler</div>
+    <ul class="clean">
+      <li><b>Punkte verbinden statt Stufen zeichnen.</b> \(F\) ist eine Treppe,
+        keine schräge Linie. Zwischen zwei Ausprägungen passiert nichts.</li>
+      <li><b>Bei der Sprungstelle die falsche Stufe nehmen.</b>
+        \(F(8.5) = 0.7\), nicht 0.3 — der Wert 8.5 zählt mit, weil „\(\le\)“ gilt.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 9: R ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">9</div>
     <div class="step-title">Die R-Ecke
       <small>Zählen und zeichnen lassen</small></div>
   </div>
@@ -816,10 +1000,29 @@ geschwister &lt;- <span class="fn">c</span>(<span class="nu">1</span>,<span clas
         ylab = <span class="st">"absolute Häufigkeit"</span>)</pre>
   </div>
 
+  <h4>Die empirische Verteilungsfunktion in R</h4>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · ecdf()</div>
+<pre>bier &lt;- <span class="fn">c</span>(<span class="nu">8.5</span>, <span class="nu">8.5</span>, <span class="nu">4.0</span>, <span class="nu">4.0</span>, <span class="nu">12.0</span>, <span class="nu">12.0</span>, <span class="nu">8.5</span>, <span class="nu">15.7</span>, <span class="nu">4.0</span>, <span class="nu">8.5</span>)
+
+F &lt;- <span class="fn">ecdf</span>(bier)     <span class="cm"># erzeugt die Funktion F(x)</span>
+
+<span class="fn">F</span>(<span class="nu">10</span>)               <span class="cm"># Anteil der Werte kleiner/gleich 10</span>
+<span class="out">#&gt; [1] 0.7</span>
+
+<span class="fn">plot</span>(F,
+     main = <span class="st">"Empirische Verteilungsfunktion"</span>,
+     xlab = <span class="st">"Biermenge in Litern"</span>,
+     ylab = <span class="st">"F(x)"</span>)</pre>
+  </div>
+
   <div class="box box-bsp">
     <div class="box-label">✓ Mach das jetzt selbst</div>
     <ol class="clean">
       <li>Tippe den Code ab und lasse ihn laufen.</li>
+      <li>Vergleiche den Plot von <code class="inline">ecdf()</code> mit deiner
+        eigenen Zeichnung aus Schritt 8. Stimmen die Stufenhöhen?</li>
       <li>Vergleiche <code class="inline">h$density</code> mit deiner eigenen Rechnung.</li>
       <li>Ändere <code class="inline">breaks</code> auf <code class="inline">c(0, 20, 40, 100)</code>
         und schau, wie sich das Bild verändert — und wie es <i>nicht</i> kippt,
@@ -846,6 +1049,9 @@ geschwister &lt;- <span class="fn">c</span>(<span class="nu">1</span>,<span clas
     <li><b>Dichte</b> — die Höhe im Histogramm: \(f_j / b_j\)</li>
     <li><b>unimodal</b> — ein Gipfel &nbsp;·&nbsp; <b>bimodal</b> — zwei Gipfel</li>
     <li><b>rechtsschief (linkssteil)</b> — langer Ausläufer nach rechts</li>
+    <li><b>kumuliert</b> — aufsummiert, von links nach rechts addiert</li>
+    <li><b>empirische Verteilungsfunktion \(F(x)\)</b> — Anteil der Werte, die \(\le x\) sind</li>
+    <li><b>Treppenfunktion</b> — eine Funktion, die springt statt schräg zu steigen</li>
     <li><b>linksschief (rechtssteil)</b> — langer Ausläufer nach links</li>
   </ul>
 </div>
@@ -901,13 +1107,20 @@ geschwister &lt;- <span class="fn">c</span>(<span class="nu">1</span>,<span clas
       unimodal / bimodal · rechtsschief = Schwanz rechts · linksschief = Schwanz links
     </div>
     <div class="cheat-item wide">
+      <b>Empirische Verteilungsfunktion</b>
+      \(F(x) = \dfrac{\text{Anzahl der } x_i \le x}{n}\) — Treppe von 0 bis 1,
+      Sprunghöhe \(= f_j\), voller Punkt oben, offener Kreis unten.
+      Mehr als \(x\): \(1 - F(x)\).
+    </div>
+    <div class="cheat-item wide">
       <b>R</b>
       <code class="inline">cut()</code> Klassen ·
       <code class="inline">table()</code> zählen ·
       <code class="inline">table()/sum(table())</code> relativ ·
       <code class="inline">hist()</code> Histogramm ·
       <code class="inline">h$density</code> Dichten ·
-      <code class="inline">barplot()</code> Säulen
+      <code class="inline">barplot()</code> Säulen ·
+      <code class="inline">ecdf()</code> Verteilungsfunktion
     </div>
   </div>
 </div>
@@ -919,9 +1132,14 @@ geschwister &lt;- <span class="fn">c</span>(<span class="nu">1</span>,<span clas
 <div class="quiz-intro">
   <h2>Teste dich selbst</h2>
   <p>
-    10 Aufgaben · 20 Punkte · Taschenrechner erlaubt · ca. 45 Minuten.
+    11 Aufgaben · 24 Punkte · Taschenrechner erlaubt · ca. 50 Minuten.
     Schreibe alles auf ein Blatt und schau <b>nicht</b> in die Lösungen,
     bevor du fertig bist.
+  </p>
+  <p style="margin-top:9px">
+    <b>Übe ab heute die Klausurregeln mit:</b> Dezimal<b>punkt</b> statt Komma
+    (also 0.075, nicht 0,075) · Zwischenergebnisse auf <b>vier</b> Nachkommastellen ·
+    Endergebnisse auf <b>drei</b> · kein Bleistift.
   </p>
 </div>
 
@@ -1050,13 +1268,13 @@ geschwister &lt;- <span class="fn">c</span>(<span class="nu">1</span>,<span clas
 <!-- A9 -->
 <div class="q">
   <div class="q-head"><span class="q-num">A 9</span>
-    <span class="q-text">Ein Histogramm hat eine Klasse der Breite 4 mit der Dichte 0,05.
+    <span class="q-text">Ein Histogramm hat eine Klasse der Breite 4 mit der Dichte 0.05.
       Welchen Anteil der Daten enthält diese Klasse? <span class="pts">(1 Punkt)</span></span></div>
   <ul class="opts">
-    <li data-k="A">0,05 &nbsp;(5 %)</li>
-    <li data-k="B">0,20 &nbsp;(20 %)</li>
-    <li data-k="C">4,00</li>
-    <li data-k="D">0,0125 &nbsp;(1,25 %)</li>
+    <li data-k="A">0.05 &nbsp;(5 %)</li>
+    <li data-k="B">0.20 &nbsp;(20 %)</li>
+    <li data-k="C">4.00</li>
+    <li data-k="D">0.0125 &nbsp;(1.25 %)</li>
   </ul>
 </div>
 
@@ -1073,6 +1291,22 @@ table(k)</pre>
     (b) Der Datensatz enthält den Wert 22. Angenommen, er wäre stattdessen
     genau <b>20</b> — in welche Klasse fiele er dann, und warum?</p>
   <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+
+<!-- A11 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 11</span>
+    <span class="q-text">In einem Café wurde bei \(n = 8\) Gästen die Anzahl bestellter Tassen
+      Kaffee erfasst. <span class="pts">(4 Punkte)</span></span></div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+    2 · 1 · 3 · 2 · 1 · 2 · 4 · 1
+  </p>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Stellen Sie die empirische Verteilungsfunktion \(F(x)\) abschnittsweise auf. (2P)<br>
+    (b) Zeichnen Sie \(F(x)\). Achten Sie auf die korrekte Kennzeichnung der Sprungstellen. (1P)<br>
+    (c) Bestimmen Sie den Anteil der Gäste, die <i>mehr</i> als 2 Tassen bestellt haben. (1P)</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
 </div>
 
 <!-- ==================== TEIL 3: LÖSUNGEN ==================== -->
@@ -1095,17 +1329,17 @@ table(k)</pre>
       <tr><th>\(a_j\)</th><th class="num">\(h_j\)</th><th class="num">\(f_j = h_j / 25\)</th></tr>
     </thead>
     <tbody>
-      <tr><td>1</td><td class="num">4</td><td class="num">0,16</td></tr>
-      <tr><td>2</td><td class="num">9</td><td class="num">0,36</td></tr>
-      <tr><td>3</td><td class="num">8</td><td class="num">0,32</td></tr>
-      <tr><td>4</td><td class="num">3</td><td class="num">0,12</td></tr>
-      <tr><td>5</td><td class="num">1</td><td class="num">0,04</td></tr>
-      <tr><td><b>Summe</b></td><td class="num"><b>25</b></td><td class="num"><b>1,00</b></td></tr>
+      <tr><td>1</td><td class="num">4</td><td class="num">0.16</td></tr>
+      <tr><td>2</td><td class="num">9</td><td class="num">0.36</td></tr>
+      <tr><td>3</td><td class="num">8</td><td class="num">0.32</td></tr>
+      <tr><td>4</td><td class="num">3</td><td class="num">0.12</td></tr>
+      <tr><td>5</td><td class="num">1</td><td class="num">0.04</td></tr>
+      <tr><td><b>Summe</b></td><td class="num"><b>25</b></td><td class="num"><b>1.00</b></td></tr>
     </tbody>
   </table>
   <p style="margin-top:8px">
     <b>Kontrollen:</b> <span class="key">\(\sum h_j = 4+9+8+3+1 = 25 = n\)</span> ✓ und
-    <span class="key">\(\sum f_j = 1{,}00\)</span> ✓
+    <span class="key">\(\sum f_j = 1.00\)</span> ✓
   </p>
   <p>
     Hinweis: Hier ist \(J = 5\) (fünf verschiedene Noten) und \(n = 25\)
@@ -1131,18 +1365,18 @@ table(k)</pre>
       <tr><th>Klasse</th><th class="num">\(b_j\)</th><th class="num">\(h_j\)</th><th class="num">\(f_j\)</th><th class="num">Dichte</th></tr>
     </thead>
     <tbody>
-      <tr><td>\([0,40]\)</td>  <td class="num">40</td><td class="num">60</td><td class="num">0,30</td><td class="num"><b>0,0075</b></td></tr>
-      <tr><td>\((40,60]\)</td> <td class="num">20</td><td class="num">80</td><td class="num">0,40</td><td class="num"><b>0,0200</b></td></tr>
-      <tr><td>\((60,120]\)</td><td class="num">60</td><td class="num">60</td><td class="num">0,30</td><td class="num"><b>0,0050</b></td></tr>
+      <tr><td>\([0,\ 40]\)</td>  <td class="num">40</td><td class="num">60</td><td class="num">0.30</td><td class="num"><b>0.0075</b></td></tr>
+      <tr><td>\((40,\ 60]\)</td> <td class="num">20</td><td class="num">80</td><td class="num">0.40</td><td class="num"><b>0.0200</b></td></tr>
+      <tr><td>\((60,\ 120]\)</td><td class="num">60</td><td class="num">60</td><td class="num">0.30</td><td class="num"><b>0.0050</b></td></tr>
     </tbody>
   </table>
   <p style="margin-top:8px">
-    Rechenweg der letzten Spalte: \(0{,}30/40 = 0{,}0075\) ·
-    \(0{,}40/20 = 0{,}0200\) · \(0{,}30/60 = 0{,}0050\).
+    Rechenweg der letzten Spalte: \(0.30/40 = 0.0075\) ·
+    \(0.40/20 = 0.0200\) · \(0.30/60 = 0.0050\).
   </p>
   <p>
-    <b>Probe:</b> Fläche = \(40\cdot0{,}0075 + 20\cdot0{,}02 + 60\cdot0{,}005
-    = 0{,}30 + 0{,}40 + 0{,}30 = \) <span class="key">1</span> ✓
+    <b>Probe:</b> Fläche = \(40\cdot0.0075 + 20\cdot0.02 + 60\cdot0.005
+    = 0.30 + 0.40 + 0.30 = \) <span class="key">1</span> ✓
   </p>
 </div>
 
@@ -1168,12 +1402,12 @@ table(k)</pre>
   <span class="sol-num">A 5 · 2 Punkte</span>
   <p>
     <b>(a)</b> Höchstens 60 qm heißt: Klasse 1 plus Klasse 2, also
-    \(0{,}30 + 0{,}40 = \) <span class="key">0,70, also 70 %</span>.
+    \(0.30 + 0.40 = \) <span class="key">0.70, also 70 %</span>.
   </p>
   <p>
-    <b>(b)</b> Am dichtesten ist die Klasse <span class="key">\((40,60]\)</span> mit
-    der Dichte 0,0200. Sie ist mit 20 qm die <i>schmalste</i> Klasse, enthält aber
-    die <i>meisten</i> Wohnungen (80). Die Klasse \((60,120]\) ist zwar dreimal so
+    <b>(b)</b> Am dichtesten ist die Klasse <span class="key">\((40,\ 60]\)</span> mit
+    der Dichte 0.0200. Sie ist mit 20 qm die <i>schmalste</i> Klasse, enthält aber
+    die <i>meisten</i> Wohnungen (80). Die Klasse \((60,\ 120]\) ist zwar dreimal so
     breit, verteilt ihre 60 Wohnungen aber über einen viel größeren Bereich —
     deshalb ist sie flach. <b>Breite Klassen sind im Histogramm nicht „groß“, sondern flach.</b>
   </p>
@@ -1224,7 +1458,7 @@ table(k)</pre>
   <span class="sol-num">A 9 · 1 Punkt</span>
   <p>Richtig ist <span class="key">B</span>.</p>
   <p>
-    Fläche \(=\) Breite \(\cdot\) Höhe \(= 4 \cdot 0{,}05 = 0{,}20\).
+    Fläche \(=\) Breite \(\cdot\) Höhe \(= 4 \cdot 0.05 = 0.20\).
     Die Klasse enthält also 20 % der Daten. Antwort A verwechselt Dichte mit Anteil —
     das ist der häufigste Fehler bei dieser Aufgabenart.
   </p>
@@ -1255,6 +1489,41 @@ table(k)</pre>
   </p>
 </div>
 
+
+<div class="sol">
+  <span class="sol-num">A 11 · 4 Punkte</span>
+  <p><b>(a)</b> Sortieren und aufaddieren, \(n = 8\):</p>
+  <table style="margin-top:6px">
+    <thead><tr><th>\(a_j\)</th><th class="num">\(h_j\)</th><th class="num">\(f_j\)</th><th class="num">\(F(a_j)\)</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="num">3</td><td class="num">0.375</td><td class="num">0.375</td></tr>
+      <tr><td>2</td><td class="num">3</td><td class="num">0.375</td><td class="num">0.750</td></tr>
+      <tr><td>3</td><td class="num">1</td><td class="num">0.125</td><td class="num">0.875</td></tr>
+      <tr><td>4</td><td class="num">1</td><td class="num">0.125</td><td class="num">1.000</td></tr>
+    </tbody>
+  </table>
+  \[ F(x) = \begin{cases}
+      0     & x < 1 \\
+      0.375 & 1 \le x < 2 \\
+      0.750 & 2 \le x < 3 \\
+      0.875 & 3 \le x < 4 \\
+      1     & x \ge 4
+    \end{cases} \]
+  <p>
+    <b>(b)</b> Treppenfunktion mit Sprüngen bei 1, 2, 3 und 4. Sprunghöhen der Reihe nach
+    0.375, 0.375, 0.125, 0.125. An jeder Sprungstelle <span class="key">voller Punkt oben,
+    offener Kreis unten</span>. Die y-Achse läuft von 0 bis 1.
+  </p>
+  <p>
+    <b>(c)</b> Mehr als 2 Tassen heißt \(1 - F(2)\):
+    \(1 - 0.750 = \) <span class="key">0.250</span>, also 25 %.
+  </p>
+  <p>
+    Häufiger Fehler: \(1 - F(3)\) rechnen. Gefragt ist „mehr als 2“, also alles
+    <i>oberhalb</i> der Stufe bei 2 — und die Stufe bei 2 schließt die Zwei mit ein.
+  </p>
+</div>
+
 <div class="score">
   <h3>Deine Auswertung</h3>
   <table>
@@ -1262,10 +1531,10 @@ table(k)</pre>
       <tr><th style="width:110px">Punkte</th><th>Was das bedeutet</th></tr>
     </thead>
     <tbody>
-      <tr><td><b>17 – 20</b></td><td>Sehr gut. Du hast das Histogramm verstanden — der schwerste Teil von V02 ist geschafft.</td></tr>
-      <tr><td><b>12 – 16</b></td><td>Gut. Rechne A 3 und A 5 noch einmal komplett durch, dann weiter zu Tag 3.</td></tr>
-      <tr><td><b>8 – 11</b></td><td>Wiederhole heute Abend Schritt 4 und 5 (Dichte und Fläche). Das ist die Grundlage für Tag 10.</td></tr>
-      <tr><td><b>0 – 7</b></td><td>Arbeite Schritt 1 bis 5 morgen früh noch einmal durch (45 Minuten) und mache den Test erneut. Dann Tag 3.</td></tr>
+      <tr><td><b>20 – 24</b></td><td>Sehr gut. Du hast Histogramm und Verteilungsfunktion sitzen — der schwerste Teil von V02 ist geschafft.</td></tr>
+      <tr><td><b>15 – 19</b></td><td>Gut. Rechne A 3, A 5 und A 11 noch einmal komplett durch, dann weiter zu Tag 3.</td></tr>
+      <tr><td><b>10 – 14</b></td><td>Wiederhole heute Abend Schritt 4, 5 und 8 (Dichte, Fläche, Treppenfunktion). Das ist die Grundlage für Tag 10.</td></tr>
+      <tr><td><b>0 – 9</b></td><td>Arbeite Schritt 1 bis 5 und Schritt 8 morgen früh noch einmal durch (45 Minuten) und mache den Test erneut. Dann Tag 3.</td></tr>
     </tbody>
   </table>
 </div>
