@@ -16,6 +16,11 @@ Alles, was du zum Lernen brauchst, liegt in **`pdf/`**:
 | `Tag_01_Daten_und_Merkmalstypen.pdf` | Grundbegriffe, diskret/stetig, Skalenniveaus, Stichproben, R-Grundlagen |
 | `Tag_02_Haeufigkeiten_und_Histogramm.pdf` | Absolute/relative Häufigkeiten, Klassen, Säulendiagramm vs. Histogramm, Dichte, empirische Verteilungsfunktion |
 
+**Sprache:** Der Statistikteil ist durchgehend auf Deutsch (einfache Sätze,
+Klausurvokabular). Der R-Teil hat zusätzlich türkische Erklärkästen, weil dort
+nicht die Statistik, sondern die Syntax die Hürde ist. Beides ist optisch klar
+getrennt.
+
 Der Plan ist nach der **Punkteverteilung der Probeklausur** gebaut, nicht nach der
 Reihenfolge der Folien. Die Klausur besteht aus Teil A (75 Punkte, 100 Minuten,
 handschriftlich) und Teil B (45 Punkte, 60 Minuten, R in ILIAS).
@@ -24,7 +29,9 @@ Jedes Tages-PDF hat denselben Aufbau:
 
 1. **Titelseite** mit Lernzielen und Zeitbedarf
 2. **Teil 1 · Lernen** — nummerierte Schritte mit Definitionen, Beispielen und Warnungen
-3. **R-Ecke** — der passende R-Code zum Thema
+3. **R-Ecke** — der passende R-Code zum Thema, jeder Block mit einer
+   türkischen Lesehilfe (`TR`-Kasten): jede Funktion und jedes Argument
+   Zeile für Zeile erklärt
 4. **Wortschatz** und **Spickzettel** — die Zusammenfassung zum Abschreiben
 5. **Teil 2 · Test** — Aufgaben im Klausurformat, mit Dezimalpunkt und den Rundungsregeln der Klausur
 6. **Teil 3 · Lösungen** — ausführlich gerechnet, mit Selbstauswertung

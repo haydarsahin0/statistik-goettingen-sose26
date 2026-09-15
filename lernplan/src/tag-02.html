@@ -29,7 +29,7 @@
     <span class="chip chip-lav"><span class="ic">◷</span> ca. 3 Stunden</span>
     <span class="chip chip-mint"><span class="ic">▤</span> 9 Schritte</span>
     <span class="chip chip-rose"><span class="ic">✎</span> 11 Aufgaben · 24 Punkte</span>
-    <span class="chip chip-sky"><span class="ic">▶</span> R-Ecke</span>
+    <span class="chip chip-sky"><span class="ic">▶</span> R-Ecke · TR açıklamalı</span>
   </div>
 
   <div class="goals">
@@ -473,6 +473,20 @@
     </p>
   </div>
 
+  <div class="tr">
+    <span class="tr-badge">TR · Karar kuralı</span>
+    <p>Bir grafik görevi geldiğinde sırayla şu üç soruyu sor:</p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>1. soru</code><span>Merkmal <b>diskret</b> mi <b>stetig</b> mi?<br>diskret → Säulendiagramm &nbsp;·&nbsp; stetig → <b>Histogramm</b></span></div>
+      <div class="tr-row"><code>2. soru</code><span>Sınıflar <b>eşit genişlikte</b> mi?<br>Eşit değilse <b>mutlaka</b> yoğunluk hesapla, yoksa grafik yalan söyler.</span></div>
+      <div class="tr-row"><code>3. soru</code><span>Yükseklik nedir? → <b>her zaman</b> \(f_j / b_j\), yani göreli sıklık bölü sınıf genişliği.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Tek cümlelik özet:</b> Säulendiagramm'da <b>yüksekliğe</b> bakarsın,
+      Histogramm'da <b>alana</b>. Alan = oran.
+    </div>
+  </div>
+
   <div class="box box-achtung">
     <div class="box-label">▲ Kleine Warnung für die Klausur</div>
     <p>
@@ -680,6 +694,22 @@
     </p>
   </div>
 
+  <div class="tr">
+    <span class="tr-badge">TR · Çarpıklık hatırlatıcısı</span>
+    <p>
+      Almanca isimler kafa karıştırıcı çünkü <b>iki farklı şeye</b> göre isim veriliyor:
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>schief</code><span><b>Kuyruk</b> nereye uzanıyor? → <i>rechtsschief</i> = kuyruk sağda</span></div>
+      <div class="tr-row"><code>steil</code><span><b>Dik duvar</b> nerede? → <i>linkssteil</i> = dik taraf solda</span></div>
+    </div>
+    <div class="tr-rule">
+      Aynı şeklin iki adı var: <b>rechtsschief = linkssteil</b> (tepe solda, kuyruk sağda)
+      ve <b>linksschief = rechtssteil</b> (tepe sağda, kuyruk solda).
+      Sınavda hangisini yazarsan yaz, ikisi de doğru — ama <b>karıştırma</b>.
+    </div>
+  </div>
+
   <div class="box box-bsp">
     <div class="box-label">✓ Beispiel aus dem echten Leben</div>
     <p>
@@ -875,6 +905,20 @@
     </p>
   </div>
 
+  <div class="tr">
+    <span class="tr-badge">TR · F(x) okuma kuralı</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>en fazla a</code><span>„höchstens a" → doğrudan <b>\(F(a)\)</b></span></div>
+      <div class="tr-row"><code>a'dan fazla</code><span>„mehr als a" → <b>\(1 - F(a)\)</b></span></div>
+      <div class="tr-row"><code>a ile b arası</code><span>„zwischen a und b" → <b>\(F(b) - F(a)\)</b></span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Sıçrama noktasında hangi basamak?</b> Her zaman <b>üstteki</b>.
+      Çünkü tanımda „\(\le\)" var — yani o değerin kendisi de sayılıyor.
+      Bu yüzden grafikte <b>dolu nokta üstte</b>, boş daire altta.
+    </div>
+  </div>
+
   <div class="box box-achtung">
     <div class="box-label">▲ Die zwei häufigsten Fehler</div>
     <ul class="clean">
@@ -894,6 +938,23 @@
       <small>Zählen und zeichnen lassen</small></div>
   </div>
 
+  <div class="tr">
+    <span class="tr-badge">TR · Bu bölümü nasıl okuyacaksın</span>
+    <p>
+      Bu bölümdeki her R kutusunun altında <b>Türkçe bir açıklama kutusu</b> var.
+      Önce R kodunu oku, sonra Türkçe kutuya bak, sonra kodu <b>kendin yaz</b>.
+      Kopyalama — tuşlara basarak öğreniyorsun.
+    </p>
+    <p>
+      Bilmen gereken üç işaret:
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>&lt;-</code><span>"ata" demek. Sağdakini soldaki isme kaydeder. <code>x &lt;- 5</code> → x artık 5.</span></div>
+      <div class="tr-row"><code>#</code><span>Yorum satırı. R bu satırı çalıştırmaz, sadece senin için not.</span></div>
+      <div class="tr-row"><code>#&gt;</code><span>Bu benim eklediğim işaret: <b>R'ın ekrana bastığı cevap</b>. Sen bunu yazmıyorsun.</span></div>
+    </div>
+  </div>
+
   <p>Wir benutzen einen kleinen Datensatz: Zimmergrößen in Quadratmetern.</p>
 
   <div class="rbox">
@@ -903,6 +964,16 @@
 
 <span class="fn">length</span>(x)          <span class="cm"># Stichprobenumfang n</span>
 <span class="out">#&gt; [1] 24</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Satır satır</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>c(...)</code><span><b>c</b>ombine = "birleştir". Parantez içindeki sayıları tek bir <b>vektöre</b> (sıralı liste) dönüştürür.</span></div>
+      <div class="tr-row"><code>x &lt;- c(22, 12, ...)</code><span>Bu 24 sayıyı <code>x</code> adıyla kaydet. Artık <code>x</code> yazdığında hepsi gelir.</span></div>
+      <div class="tr-row"><code>length(x)</code><span>"kaç tane var?" → 24. Bu bizim <b>n</b>'imiz, yani Stichprobenumfang.</span></div>
+      <div class="tr-row"><code>[1]</code><span>R'ın çıktısında satırın <i>kaçıncı elemandan</i> başladığını gösterir. Cevabın parçası değil, sadece numaralandırma.</span></div>
+    </div>
   </div>
 
   <h4>Klassen bilden mit <code class="inline">cut()</code></h4>
@@ -922,6 +993,28 @@ k3 &lt;- <span class="fn">cut</span>(x, breaks = <span class="fn">c</span>(<span
 k3
 <span class="out">#&gt; [1] groß  mittel klein  mittel groß  ...</span>
 <span class="out">#&gt; Levels: klein mittel groß</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · cut() ne yapar</span>
+    <p>
+      <code>cut()</code> = <b>"kes"</b>. Elindeki sayıları <b>sınıflara böler</b>.
+      Schritt 2'deki Klassenbildung'un R'daki karşılığı budur.
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>x</code><span>Kesilecek sayılar (ilk argüman, hep en başta).</span></div>
+      <div class="tr-row"><code>breaks = c(0,10,20,100)</code><span><b>Sınıf sınırları.</b> Bu 4 sayı → 3 sınıf üretir: 0–10, 10–20, 20–100.</span></div>
+      <div class="tr-row"><code>right = TRUE</code><span><b>Varsayılan.</b> Sağ sınır dahil, sol sınır hariç: <code>(10, 20]</code>. Yani 20 bu sınıfa girer, 10 girmez.</span></div>
+      <div class="tr-row"><code>right = FALSE</code><span>Tersi: <code>[10, 20)</code>. 10 girer, 20 girmez.</span></div>
+      <div class="tr-row"><code>include.lowest = TRUE</code><span>En alttaki sınırı (burada 0) dahil et. <b>Yazmazsan</b> tam 0 olan değer <code>NA</code> olur, yani kaybolur.</span></div>
+      <div class="tr-row"><code>labels = c("klein",...)</code><span>Sınıflara kendi isimlerini ver. Yazmazsan R <code>(0,10]</code> gibi isimler kullanır.</span></div>
+      <div class="tr-row"><code>Levels:</code><span>Çıktının altındaki bu satır, olabilecek <b>tüm sınıfları</b> listeler.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Dikkat:</b> <code>cut()</code> sana sayı değil, <b>factor</b> (kategori) döndürür.
+      Yani stetig bir Merkmal'i kategorize etmiş oldun. Bundan sonra o sütunla
+      hesap yapamazsın, sadece sayabilirsin.
+    </div>
   </div>
 
   <div class="box box-bsp">
@@ -952,6 +1045,24 @@ k3
 <span class="out">#&gt; [1] 1</span></pre>
   </div>
 
+  <div class="tr">
+    <span class="tr-badge">TR · table() ne yapar</span>
+    <p>
+      <code>table()</code> = <b>"say"</b>. Her kategorinin kaç kez geçtiğini sayar.
+      Bu doğrudan Schritt 1'deki <b>\(h_j\)</b> demektir.
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>table(k3)</code><span>Mutlak sıklık \(h_j\): klein 1 kez, mittel 15 kez, groß 8 kez. Toplam 24 = n.</span></div>
+      <div class="tr-row"><code>sum(...)</code><span>"topla". <code>sum(table(k3))</code> → 1 + 15 + 8 = 24, yani <b>n</b>.</span></div>
+      <div class="tr-row"><code>table(k3) / sum(table(k3))</code><span>Göreli sıklık \(f_j = h_j / n\). Her sayıyı 24'e böler.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Neden bölme işareti tek satırda çalışıyor?</b> R'da bir <i>vektörü</i> bir sayıya
+      bölersen, <b>her elemanı</b> ayrı ayrı böler. Döngü yazmana gerek yok.
+      Buna <i>vektörleştirme</i> denir ve R'ın en kullanışlı özelliğidir.
+    </div>
+  </div>
+
   <h4>Das Histogramm zeichnen</h4>
 
   <div class="rbox">
@@ -969,6 +1080,30 @@ h$density      <span class="cm"># die DICHTEN, also f_j / b_j</span>
 h$breaks       <span class="cm"># die Klassengrenzen</span></pre>
   </div>
 
+  <div class="tr">
+    <span class="tr-badge">TR · hist() ne yapar</span>
+    <p>
+      <code>hist()</code> hem <b>çizer</b> hem de <b>hesaplar</b>. Çizimi ekrana basar,
+      hesap sonuçlarını da <code>h</code> adlı nesnenin içine koyar.
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>breaks =</code><span>Sınıf sınırları — <code>cut()</code>'taki ile aynı mantık.</span></div>
+      <div class="tr-row"><code>right = FALSE</code><span>Sol sınır dahil, sağ hariç: <code>[0, 10)</code>.</span></div>
+      <div class="tr-row"><code>main =</code><span>Grafiğin <b>başlığı</b> (üstte yazan).</span></div>
+      <div class="tr-row"><code>xlab =</code><span><b>x ekseni</b> etiketi (yatay eksen).</span></div>
+      <div class="tr-row"><code>ylab =</code><span><b>y ekseni</b> etiketi (dikey eksen).</span></div>
+      <div class="tr-row"><code>h &lt;- hist(...)</code><span>Sonuçları <code>h</code>'ye kaydet. Kaydetmezsen sadece resim görürsün, sayılara ulaşamazsın.</span></div>
+      <div class="tr-row"><code>h$counts</code><span>Sınıf başına <b>mutlak sıklık</b> \(h_j\). <code>$</code> = "içindeki".</span></div>
+      <div class="tr-row"><code>h$density</code><span><b>Yoğunluk</b> \(f_j / b_j\) — bugünün asıl formülü. Kendi hesabınla karşılaştır.</span></div>
+      <div class="tr-row"><code>h$breaks</code><span>Kullanılan sınıf sınırları.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Sınav için:</b> B-Teil'de grafiğe <code>main</code>, <code>xlab</code>, <code>ylab</code>
+      yazmak <b>puan</b>. Soruda "başlıkta oturma numaran ve Matrikelnummer olsun" gibi
+      şartlar veriliyor — unutursan puan gider.
+    </div>
+  </div>
+
   <div class="box box-merke">
     <div class="box-label">◆ Der wichtigste R-Befehl von heute</div>
     <p>
@@ -982,6 +1117,22 @@ h$breaks       <span class="cm"># die Klassengrenzen</span></pre>
       zeichnet R standardmäßig die absoluten Häufigkeiten —
       mit <code class="inline">freq = FALSE</code> erzwingst du die Dichte.
     </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · freq tuzağı</span>
+    <p>
+      Bu, sınavda en kolay kaçırılan ayardır:
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>freq = TRUE</code><span><b>Varsayılan.</b> y ekseninde <b>mutlak sıklık</b> gösterir. Bu bir Säulendiagramm gibidir.</span></div>
+      <div class="tr-row"><code>freq = FALSE</code><span>y ekseninde <b>yoğunluk</b> gösterir. <b>Gerçek Histogramm budur</b> — alan = 1.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Kural:</b> Soruda "Dichte" kelimesi geçiyorsa <code>freq = FALSE</code> yaz.
+      Eşit olmayan <code>breaks</code> verdiysen R zaten yoğunluğa geçer, ama yine de
+      yazmak güvenlidir.
+    </div>
   </div>
 
   <div class="rbox">
@@ -998,6 +1149,21 @@ geschwister &lt;- <span class="fn">c</span>(<span class="nu">1</span>,<span clas
         main = <span class="st">"Anzahl Geschwister"</span>,
         xlab = <span class="st">"Geschwister"</span>,
         ylab = <span class="st">"absolute Häufigkeit"</span>)</pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · hist mi barplot mı</span>
+    <p>
+      İkisi farklı iştir. Karar kuralı tek soruya iner:
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>barplot()</code><span><b>Diskret</b> Merkmal için (kardeş sayısı, parti, renk). Önce <code>table()</code> ile sayarsın, sonra çizdirirsin.</span></div>
+      <div class="tr-row"><code>hist()</code><span><b>Stetig</b> Merkmal için (kira, boy, alan). Sayıları doğrudan verirsin, sınıflara R böler.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Fark:</b> <code>barplot()</code> sana <i>sayılmış</i> veri ister (yani <code>table()</code> çıktısı).
+      <code>hist()</code> ise <i>ham</i> sayıları ister. Karıştırırsan hata alırsın.
+    </div>
   </div>
 
   <h4>Die empirische Verteilungsfunktion in R</h4>
@@ -1017,6 +1183,24 @@ F &lt;- <span class="fn">ecdf</span>(bier)     <span class="cm"># erzeugt die Fu
      ylab = <span class="st">"F(x)"</span>)</pre>
   </div>
 
+  <div class="tr">
+    <span class="tr-badge">TR · ecdf() ne yapar</span>
+    <p>
+      <code>ecdf</code> = <b>e</b>mpirical <b>c</b>umulative <b>d</b>istribution <b>f</b>unction,
+      yani Schritt 8'deki empirische Verteilungsfunktion.
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>F &lt;- ecdf(bier)</code><span>Burada ilginç bir şey oluyor: <code>F</code> bir sayı değil, <b>bir fonksiyon</b>. R fonksiyonu da değişkende saklayabilir.</span></div>
+      <div class="tr-row"><code>F(10)</code><span>Fonksiyonu <b>çağırıyorsun</b>: "10'dan küçük veya eşit olanların oranı ne?" → 0.7, yani %70.</span></div>
+      <div class="tr-row"><code>plot(F, ...)</code><span>Merdiven grafiğini çizer — Schritt 8'de elle çizdiğin şeklin aynısı.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Kontrol et:</b> <code>F(10)</code> sana 0.7 verdi. Schritt 8'deki tablonda da
+      \(F(8.5) = 0.7\) yazıyordu. 10, 8.5 ile 12 arasında olduğu için aynı basamakta —
+      doğru.
+    </div>
+  </div>
+
   <div class="box box-bsp">
     <div class="box-label">✓ Mach das jetzt selbst</div>
     <ol class="clean">
@@ -1029,7 +1213,32 @@ F &lt;- <span class="fn">ecdf</span>(bier)     <span class="cm"># erzeugt die Fu
         weil die Fläche stimmt.</li>
     </ol>
   </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Bugünün tüm R komutları</span>
+    <p>Bu tabloyu Formelsammlung'unun R sayfasına geçir:</p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>c()</code><span>sayıları/metinleri bir vektörde birleştir</span></div>
+      <div class="tr-row"><code>length()</code><span>kaç eleman var → <b>n</b></span></div>
+      <div class="tr-row"><code>sum()</code><span>topla</span></div>
+      <div class="tr-row"><code>cut()</code><span>sayıları sınıflara böl → factor üretir</span></div>
+      <div class="tr-row"><code>table()</code><span>kategorileri say → \(h_j\)</span></div>
+      <div class="tr-row"><code>table()/sum(table())</code><span>göreli sıklık → \(f_j\)</span></div>
+      <div class="tr-row"><code>hist()</code><span>histogram çiz + hesapla (stetig)</span></div>
+      <div class="tr-row"><code>h$density</code><span>yoğunluk \(f_j/b_j\)</span></div>
+      <div class="tr-row"><code>h$counts</code><span>mutlak sıklık \(h_j\)</span></div>
+      <div class="tr-row"><code>barplot()</code><span>sütun grafiği (diskret)</span></div>
+      <div class="tr-row"><code>ecdf()</code><span>empirische Verteilungsfunktion</span></div>
+      <div class="tr-row"><code>plot()</code><span>genel çizim komutu</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Argüman hatırlatıcı:</b> <code>breaks</code> sınırlar · <code>right</code> hangi taraf kapalı ·
+      <code>include.lowest</code> en alt sınır dahil mi · <code>labels</code> sınıf isimleri ·
+      <code>freq</code> mutlak mı yoğunluk mu · <code>main</code>/<code>xlab</code>/<code>ylab</code> başlık ve eksenler
+    </div>
+  </div>
 </div>
+
 
 <!-- ---------- WORTSCHATZ ---------- -->
 

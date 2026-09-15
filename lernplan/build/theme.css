@@ -818,3 +818,78 @@ pre, code, kbd, samp, .rbox pre, code.inline {
   color: var(--lav-600);
 }
 .shape small { display: block; font-size: 0.72rem; color: var(--ink-faint); line-height: 1.4; }
+
+/* ============================================================
+   TÜRKISCHE LESEHILFE (nur für den R-Teil)
+   Deutsch bleibt die Hauptsprache; diese Kästen sind bewusst
+   anders gestaltet, damit nichts vermischt wirkt.
+   ============================================================ */
+
+.tr {
+  background: #FFFCF8;
+  border: 1.5px dashed var(--peach-200);
+  border-radius: var(--radius);
+  padding: 13px 17px 14px;
+  margin: -6px 0 18px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.tr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FFF;
+  background: linear-gradient(135deg, #F0A878, #D4753F);
+  border-radius: 999px;
+  padding: 3px 11px;
+  margin-bottom: 10px;
+}
+
+.tr p { font-size: 0.89rem; margin-bottom: 0.55em; }
+.tr > :last-child { margin-bottom: 0; }
+.tr b { color: var(--peach-600); font-weight: 650; }
+
+/* Zeile: Code links, türkische Erklärung rechts */
+.tr-rows { display: grid; gap: 5px; margin: 8px 0 4px; }
+
+.tr-row {
+  display: grid;
+  grid-template-columns: minmax(96px, 34%) 1fr;
+  gap: 4px 14px;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px dotted var(--peach-100);
+  font-size: 0.87rem;
+}
+.tr-row:last-child { border-bottom: none; }
+
+.tr-row code {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "clig" 0, "calt" 0;
+  font-size: 0.8rem;
+  color: var(--lav-600);
+  background: var(--lav-50);
+  border: 1px solid var(--lav-100);
+  border-radius: 6px;
+  padding: 1px 6px;
+  justify-self: start;
+  word-break: break-word;
+}
+
+/* türkische Merkregel */
+.tr-rule {
+  background: #FFF;
+  border: 1px solid var(--peach-100);
+  border-radius: 10px;
+  padding: 9px 13px;
+  margin-top: 10px;
+  font-size: 0.87rem;
+}
+.tr-rule b { color: var(--peach-600); }
