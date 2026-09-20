@@ -1,0 +1,1229 @@
+<!--meta {
+  "title": "Tag 3 — Lagemaße",
+  "footer": "Tag 3 · Lagemaße · Lernplan SDS I",
+  "out": "Tag_03_Lagemasse.pdf"
+} -->
+
+<!-- ==================== TITELSEITE ==================== -->
+<section class="cover">
+
+  <div class="cover-top">
+    <div class="brand">Statistik und Data Science I · Lernplan</div>
+    <div class="cover-date">Sonntag, 20.09.2026</div>
+  </div>
+
+  <div class="day-badge">
+    <span class="lbl">Tag</span>
+    <span class="num">03</span>
+  </div>
+
+  <h1>Lagemaße</h1>
+
+  <p class="cover-sub">
+    Gestern hast du die <i>ganze</i> Verteilung beschrieben — mit Tabelle, Histogramm
+    und Treppenfunktion. Heute drückst du sie auf <b>eine einzige Zahl</b> zusammen.
+    Das klingt nach weniger Arbeit, ist aber gefährlicher: Es gibt drei solche Zahlen,
+    und wer die falsche wählt, rechnet Unsinn.
+  </p>
+
+  <div class="cover-meta">
+    <span class="chip chip-lav"><span class="ic">◷</span> ca. 3 Stunden</span>
+    <span class="chip chip-mint"><span class="ic">▤</span> 10 Schritte</span>
+    <span class="chip chip-rose"><span class="ic">✎</span> 10 Aufgaben · 24 Punkte</span>
+    <span class="chip chip-sky"><span class="ic">▶</span> R-Ecke · TR açıklamalı</span>
+  </div>
+
+  <div class="goals">
+    <h3>Das kannst du heute Abend</h3>
+    <ul class="goal-list">
+      <li>Du berechnest <b>arithmetisches Mittel</b>, <b>Median</b> und <b>Modus</b>.</li>
+      <li>Du weißt, welches Lagemaß bei welchem <b>Skalenniveau</b> erlaubt ist.</li>
+      <li>Du erkennst, wann ein <b>Ausreißer</b> den Mittelwert unbrauchbar macht.</li>
+      <li>Du berechnest den Mittelwert für <b>klassierte Daten</b>.</li>
+      <li>Du berechnest den Mittelwert aus <b>Schichten</b>.</li>
+      <li>Du liest die <b>Schiefe</b> aus der Reihenfolge der drei Lagemaße ab.</li>
+      <li>Du weißt, was bei einer <b>Transformation</b> \(y = a + bx\) passiert.</li>
+    </ul>
+  </div>
+
+  <div class="cover-foot">
+    Grundlage: Vorlesung SDS1-V02 · R-Skript <code class="inline">02StatDS-HistogrammeMittelwertUndCo.R</code> ·
+    Testat 1, Aufgaben 3 – 5 · Probeklausur Teil A, Aufgaben 1 und 2
+  </div>
+
+</section>
+
+<!-- ==================== AUFWÄRMEN ==================== -->
+
+<div class="section-rule"><span>Aufwärmen · 5 Minuten</span></div>
+
+<div class="box box-wort">
+  <div class="box-label">■ Was du von gestern brauchst</div>
+  <ul class="clean">
+    <li>\(a_j\) sind die <b>Ausprägungen</b>, \(h_j\) die <b>absoluten</b>, \(f_j = h_j/n\) die <b>relativen Häufigkeiten</b>.</li>
+    <li>Kontrollen: \(\sum_j h_j = n\) und \(\sum_j f_j = 1\).</li>
+    <li>Bei stetigen Daten bildest du <b>Klassen</b> mit Grenzen \(c_j\) und Breiten \(b_j\).</li>
+    <li><b>Rechtsschief</b> = langer Ausläufer nach rechts. <b>Linksschief</b> = nach links.</li>
+  </ul>
+  <p style="margin-top:8px">
+    Von Tag 1 brauchst du die <b>Skalenniveaus</b>: nominal → ordinal → kardinal.
+    Heute entscheidet genau das, welches Lagemaß du benutzen darfst.
+  </p>
+</div>
+
+<!-- ==================== TEIL 1: LERNEN ==================== -->
+
+<div class="section-rule"><span>Teil 1 · Lernen</span></div>
+
+<!-- ---------- SCHRITT 1 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">1</div>
+    <div class="step-title">Was ist ein Lagemaß?
+      <small>Eine Zahl für die ganze Verteilung</small></div>
+  </div>
+
+  <p>
+    Ein <b>Lagemaß</b> beschreibt das <b>Zentrum</b> der Daten — die Stelle,
+    um die herum sich die Beobachtungen sammeln. Auf Deutsch sagt man auch
+    <i>zentrale Tendenz</i>.
+  </p>
+
+  <div class="box box-def">
+    <div class="box-label">● Die drei Lagemaße</div>
+    <table class="in-box">
+      <thead><tr><th style="width:130px">Name</th><th style="width:92px">Zeichen</th><th>Was es sagt</th></tr></thead>
+      <tbody>
+        <tr><td><b>Arithmetisches Mittel</b></td><td>\(\bar x\)</td><td>der Durchschnitt — alle Werte zusammen, geteilt durch \(n\)</td></tr>
+        <tr><td><b>Median</b></td><td>\(x_{med}\)</td><td>der Wert in der <i>Mitte</i>, wenn man sortiert</td></tr>
+        <tr><td><b>Modus</b></td><td>\(x_{mod}\)</td><td>der Wert, der am <i>häufigsten</i> vorkommt</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box box-merke">
+    <div class="box-label">◆ Warum drei?</div>
+    <p>
+      Weil sie unterschiedlich <b>reagieren</b>. Bei symmetrischen Daten sind sie
+      fast gleich. Bei schiefen Daten oder bei einem einzigen extremen Wert laufen
+      sie weit auseinander — und dann musst du wissen, welche Zahl du berichtest.
+      Genau das lernst du in Schritt 5.
+    </p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 2 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">2</div>
+    <div class="step-title">Das arithmetische Mittel
+      <small>Zwei Formeln für dieselbe Zahl</small></div>
+  </div>
+
+  <div class="box box-def">
+    <div class="box-label">● Definition</div>
+    <p>Aus den Rohdaten:</p>
+    \[ \bar x = \frac{1}{n}\sum_{i=1}^{n} x_i \]
+    <p>Aus einer Häufigkeitstabelle:</p>
+    \[ \bar x = \sum_{j=1}^{J} a_j \, f_j \]
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Die zweite Formel wird oft übersehen</div>
+    <p>
+      Wenn dir eine <b>Häufigkeitstabelle</b> gegeben ist (nicht die Rohdaten),
+      wäre es Zeitverschwendung, alle Werte einzeln aufzuschreiben. Multipliziere
+      jede Ausprägung mit ihrer relativen Häufigkeit und addiere.
+      Gleichwertig und oft bequemer:
+    </p>
+    \[ \bar x = \frac{1}{n}\sum_{j=1}^{J} a_j \, h_j \]
+    <p>
+      In der Klausur kommt genau diese Situation vor: Du bekommst eine Tabelle
+      mit \(a_j\) und \(h_j\) und sollst \(\bar x\) bestimmen.
+    </p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · aus Testat 1</div>
+    <p>
+      Merkmal \(X\) = Anzahl der Mensabesuche in der vergangenen Woche:
+    </p>
+    <table class="in-box">
+      <thead><tr><th>\(a_j\)</th><th class="num">1</th><th class="num">3</th><th class="num">4</th><th class="num">5</th><th class="num">10</th><th class="num">Summe</th></tr></thead>
+      <tbody>
+        <tr><td>\(h_j\)</td><td class="num">1</td><td class="num">2</td><td class="num">5</td><td class="num">3</td><td class="num">1</td><td class="num"><b>12</b></td></tr>
+      </tbody>
+    </table>
+    <ol class="calc-steps">
+      <li><b>Stichprobenumfang:</b> \(n = \sum h_j = 1+2+5+3+1 = 12\)</li>
+      <li><b>Zähler:</b> \(\sum a_j h_j = 1\cdot 1 + 3\cdot 2 + 4\cdot 5 + 5\cdot 3 + 10\cdot 1
+        = 1 + 6 + 20 + 15 + 10 = 52\)</li>
+      <li><b>Mittel:</b> \(\bar x = \dfrac{52}{12} = 4.3333\)</li>
+    </ol>
+    <p>
+      Auf drei Nachkommastellen gerundet: \(\bar x = \mathbf{4.333}\) Mensabesuche.
+    </p>
+  </div>
+
+  <div class="box box-merke">
+    <div class="box-label">◆ Die Eigenschaft, die du schon kennst</div>
+    \[ \sum_{i=1}^{n}(x_i - \bar x) = 0 \]
+    <p>
+      Die Abweichungen nach links und nach rechts heben sich <b>exakt</b> auf.
+      Das ist die Rechnung aus Tag 0, Schritt 2 — und es ist der Grund, warum man
+      beim Streuungsmaß morgen <b>quadrieren</b> muss: Ohne Quadrat käme immer null heraus.
+    </p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 3 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">3</div>
+    <div class="step-title">Der Median
+      <small>Der Wert in der Mitte</small></div>
+  </div>
+
+  <p>
+    Der Median teilt die sortierten Beobachtungen in zwei gleich große Hälften:
+    <b>mindestens 50 %</b> liegen links davon, <b>mindestens 50 %</b> rechts.
+  </p>
+
+  <div class="box box-def">
+    <div class="box-label">● Definition</div>
+    <p>
+      Mit den <b>geordneten</b> Beobachtungen \(x_{(1)} \le x_{(2)} \le \dots \le x_{(n)}\):
+    </p>
+    \[ x_{med} = \begin{cases}
+        x_{\left(\frac{n+1}{2}\right)} & n \text{ ungerade} \\[6pt]
+        \in \left[x_{\left(\frac n2\right)},\ x_{\left(\frac n2 + 1\right)}\right] & n \text{ gerade}
+      \end{cases} \]
+    <p>
+      Die Klammern \(x_{(i)}\) bedeuten: <b>der \(i\)-te Wert nach dem Sortieren</b> —
+      nicht die \(i\)-te Person!
+    </p>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Bei geradem \(n\) ist der Median nicht eindeutig</div>
+    <p>
+      Die Definition sagt „irgendein Wert in diesem Intervall". Um eine <b>eindeutige</b>
+      Zahl zu bekommen, nimmt man üblicherweise den <b>Mittelwert der beiden</b>:
+    </p>
+    \[ x_{med} = \frac{x_{\left(\frac n2\right)} + x_{\left(\frac n2 + 1\right)}}{2} \]
+    <p>
+      Wichtig: Das ist nur bei <b>kardinalen</b> Merkmalen erlaubt — bei ordinalen
+      darfst du nicht mitteln. Dort gibst du das Intervall an oder nennst eine der
+      beiden Ausprägungen.
+    </p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · dieselben Mensadaten</div>
+    <p>Sortiert (\(n = 12\), also <b>gerade</b>):</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+      1 · 3 · 3 · 4 · 4 · <b>4</b> · <b>4</b> · 4 · 5 · 5 · 5 · 10
+    </p>
+    <ol class="calc-steps">
+      <li>\(n/2 = 6\) und \(n/2 + 1 = 7\) — wir brauchen den 6. und den 7. Wert.</li>
+      <li>\(x_{(6)} = 4\) und \(x_{(7)} = 4\)</li>
+      <li>\(x_{med} = \dfrac{4+4}{2} = \mathbf{4}\)</li>
+    </ol>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Median bulma reçetesi</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>1. adım</code><span><b>Sırala.</b> Bu adımı atlarsan her şey yanlış olur. Sınavda verilen liste genelde sıralı değildir.</span></div>
+      <div class="tr-row"><code>2. adım</code><span><b>n tek mi çift mi?</b> Tek ise tam ortadaki değer: \((n+1)/2\)'inci.</span></div>
+      <div class="tr-row"><code>3. adım</code><span><b>n çift ise</b> ortadaki <b>iki</b> değeri al: \(n/2\) ve \(n/2+1\). Kardinal veride ortalamalarını al.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Sık yapılan hata:</b> \(n/2\) sonucunu "medyan" sanmak. \(n/2\) bir <b>sıra numarası</b>,
+      medyanın kendisi değil. \(n = 12\) için 6 bir konumdur, değer \(x_{(6)} = 4\)'tür.
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 4 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">4</div>
+    <div class="step-title">Der Modus
+      <small>Der häufigste Wert</small></div>
+  </div>
+
+  <div class="box box-def">
+    <div class="box-label">● Definition</div>
+    \[ x_{mod} = \text{die am häufigsten beobachtete Ausprägung} \]
+    <p>
+      Du liest ihn direkt aus der Häufigkeitstabelle ab: die Ausprägung mit dem
+      <b>größten \(h_j\)</b>.
+    </p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · dieselben Mensadaten</div>
+    <p>
+      Das größte \(h_j\) ist 5, und es gehört zur Ausprägung 4.
+      Also \(x_{mod} = \mathbf{4}\).
+    </p>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Zwei Besonderheiten</div>
+    <ul class="clean">
+      <li>Der Modus ist <b>nicht immer eindeutig</b>. Wenn zwei Ausprägungen gleich
+        häufig sind, gibt es zwei Modi — die Verteilung ist dann <b>bimodal</b>
+        (siehe Tag 2, Schritt 7).</li>
+      <li>Bei <b>stetigen</b> Merkmalen ist der Modus meist sinnlos, weil fast jeder
+        Wert nur einmal vorkommt. Dort benutzt man ihn höchstens für <i>klassierte</i>
+        Daten: die Klasse mit der größten Dichte.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 5 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">5</div>
+    <div class="step-title">Welches Lagemaß darf ich benutzen?
+      <small>Der wichtigste Schritt des Tages</small></div>
+  </div>
+
+  <p>
+    Hier treffen Tag 1 und Tag 3 aufeinander. Das <b>Skalenniveau</b> entscheidet,
+    welches Lagemaß überhaupt sinnvoll ist.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:140px">Lagemaß</th>
+        <th class="c" style="width:92px">nominal</th>
+        <th class="c" style="width:92px">ordinal</th>
+        <th class="c" style="width:92px">kardinal</th>
+        <th>Anmerkung</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Modus</b></td>
+        <td class="c tbl-ja">ja</td><td class="c tbl-ja">ja</td><td class="c tbl-ja">ja</td>
+        <td>auf <i>jedem</i> Niveau erlaubt</td>
+      </tr>
+      <tr>
+        <td><b>Median</b></td>
+        <td class="c tbl-nein">nein</td><td class="c tbl-ja">ja</td><td class="c tbl-ja">ja</td>
+        <td>braucht eine Reihenfolge</td>
+      </tr>
+      <tr>
+        <td><b>Arithm. Mittel</b></td>
+        <td class="c tbl-nein">nein</td><td class="c tbl-nein">nein</td><td class="c tbl-ja">ja</td>
+        <td>braucht sinnvolle Abstände</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box box-merke">
+    <div class="box-label">◆ Eine wichtige Ausnahme</div>
+    <p>
+      Bei <b>binären</b>, als <b>0/1 kodierten</b> Merkmalen ist das arithmetische
+      Mittel sinnvoll — obwohl das Merkmal nur zwei Kategorien hat. Denn dann gilt:
+    </p>
+    \[ \bar x = \text{Anteil der Einsen} \]
+    <p>
+      <b>Beispiel aus der Probeklausur:</b> 20 Vorhersagen, davon 9 richtig (= 1)
+      und 11 falsch (= 0). Dann ist \(\bar x = \frac{9}{20} = 0.45\), also
+      <b>45 % richtige Vorhersagen</b>. Das ist eine sinnvolle Aussage.
+    </p>
+  </div>
+
+  <h4>Die zweite Frage: Ausreißer</h4>
+
+  <p>
+    Selbst wenn das Skalenniveau alle drei erlaubt, ist der Mittelwert nicht
+    automatisch die beste Wahl. Er ist <b>nicht robust</b>: Ein einziger extremer
+    Wert zieht ihn weg.
+  </p>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · aus Testat 1</div>
+    <p>Monatseinkommen von \(n = 12\) Studierenden in Euro, sortiert:</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;text-align:center;margin:6px 0">
+      550 · 600 · 750 · 800 · <b>900</b> · <b>900</b> · 900 · 1000 · 1100 · 1400 · 1600 · <b>7500</b>
+    </p>
+    <ol class="calc-steps">
+      <li><b>Mittel:</b> Summe \(= 18\,000\), also \(\bar x = \dfrac{18\,000}{12} = 1500\)</li>
+      <li><b>Median:</b> \(n\) gerade, \(x_{(6)} = 900\) und \(x_{(7)} = 900\),
+        also \(x_{med} = 900\)</li>
+      <li><b>Modus:</b> 900 kommt dreimal vor, also \(x_{mod} = 900\)</li>
+    </ol>
+    <p>
+      <b>Der Mittelwert ist 1500 €, der Median 900 €.</b> Kein einziger der zwölf
+      Studierenden verdient 1500 €. Die Zahl entsteht allein durch den einen Wert
+      7500 — vermutlich jemand mit Nebenjob oder ein Tippfehler.
+    </p>
+    <p>
+      Hier ist der <b>Median</b> die ehrlichere Zahl. Deshalb berichten Statistikämter
+      beim Einkommen fast immer den Median.
+    </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Karar kuralı · hangi Lagemaß</span>
+    <p>Sınavda "hangi Lagemaß kullanılabilir?" sorusu gelirse iki soru sor:</p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>1. Skala?</code><span>nominal → sadece <b>Modus</b><br>ordinal → <b>Modus + Median</b><br>kardinal → <b>üçü de</b></span></div>
+      <div class="tr-row"><code>2. Ausreißer?</code><span>Aşırı uç bir değer var mı? Varsa <b>Median</b> daha dürüst. Mittelwert uç değerin peşinden sürüklenir.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>İki kelimeyi karıştırma:</b> <b>Modus</b> = en <i>sık</i> geçen değer ·
+      <b>Median</b> = <i>ortadaki</i> değer. Türkçede ikisi de "orta" gibi duruyor
+      ama tamamen farklı şeyler.
+    </div>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Was in der Klausur verlangt wird</div>
+    <p>
+      In der Probeklausur (Aufgabe 1) steht wörtlich: <i>„Falls Sie der Meinung sind,
+      dass ein Parameter nicht sinnvoll angegeben werden kann, begründen Sie kurz
+      in einem Satz."</i>
+    </p>
+    <p>
+      Das heißt: Du darfst „nicht sinnvoll" schreiben — aber <b>nur mit Begründung</b>.
+      Ein leeres Kästchen gibt null Punkte, „nicht sinnvoll, weil das Merkmal nur
+      ordinalskaliert ist" gibt die vollen Punkte.
+    </p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 6 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">6</div>
+    <div class="step-title">Mittelwert für klassierte Daten
+      <small>Direkt aus der Klausur: 4 Punkte</small></div>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Klausur-Hinweis</div>
+    <p>
+      In der Probeklausur, Aufgabe 2(c), steht genau diese Aufgabe — <b>4 Punkte</b>.
+      Sie ist leicht, wenn du das Rezept kennst, und unmöglich, wenn nicht.
+    </p>
+  </div>
+
+  <p>
+    Die Situation: Du hast <b>keine</b> Rohdaten mehr, sondern nur noch eine Tabelle
+    mit Klassen und Häufigkeiten. Die einzelnen Werte sind verloren. Was tust du?
+  </p>
+
+  <div class="box box-def">
+    <div class="box-label">● Die Idee und die Formel</div>
+    <p>
+      Du tust so, als läge jeder Wert einer Klasse genau in der <b>Klassenmitte</b>.
+      Die Klassenmitte \(m_j\) ist:
+    </p>
+    \[ m_j = \frac{c_{j-1} + c_j}{2} \qquad \text{(untere Grenze + obere Grenze, geteilt durch 2)} \]
+    <p>Dann rechnest du wie bei einer Häufigkeitstabelle, nur mit \(m_j\) statt \(a_j\):</p>
+    \[ \bar x_K = \frac{1}{n}\sum_{j=1}^{J} n(K_j) \cdot m_j = \sum_{j=1}^{J} m_j f_j \]
+    <p>
+      Dabei ist \(n(K_j)\) die Anzahl der Beobachtungen in Klasse \(K_j\).
+    </p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · die echte Klausuraufgabe</div>
+    <p>
+      Getrunkene Biermenge in Litern bei \(n = 10\) Gästen:
+    </p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+      8.5 · 8.5 · 4.0 · 4.0 · 12.0 · 12.0 · 8.5 · 15.7 · 4.0 · 8.5
+    </p>
+    <p>
+      Klassiert in \(K_1 = [0, 10)\) und \(K_2 = [10, 20]\).
+    </p>
+    <ol class="calc-steps">
+      <li><b>Zählen:</b> In \(K_1\) liegen 8.5, 8.5, 4.0, 4.0, 8.5, 4.0, 8.5 →
+        \(n(K_1) = 7\).<br>
+        In \(K_2\) liegen 12.0, 12.0, 15.7 → \(n(K_2) = 3\). Kontrolle: \(7 + 3 = 10\) ✓</li>
+      <li><b>Klassenmitten:</b> \(m_1 = \dfrac{0+10}{2} = 5\) und \(m_2 = \dfrac{10+20}{2} = 15\)</li>
+      <li><b>Einsetzen:</b>
+        \(\bar x_K = \dfrac{1}{10}\left(7 \cdot 5 + 3 \cdot 15\right)
+        = \dfrac{35 + 45}{10} = \dfrac{80}{10} = \mathbf{8}\)</li>
+    </ol>
+    <p>
+      <b>Der echte Mittelwert</b> aus den Rohdaten wäre \(\dfrac{85.7}{10} = 8.57\).
+      Die Klassierung kostet also Genauigkeit — das ist der Preis dafür, dass man
+      die Einzelwerte weggeworfen hat.
+    </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Klassierte Daten reçetesi</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>1. adım</code><span>Her sınıfta <b>kaç gözlem</b> var, say → \(n(K_j)\)</span></div>
+      <div class="tr-row"><code>2. adım</code><span>Her sınıfın <b>orta noktasını</b> bul → \(m_j = \dfrac{\text{alt} + \text{üst}}{2}\)</span></div>
+      <div class="tr-row"><code>3. adım</code><span>Çarp ve topla: \(\sum n(K_j) \cdot m_j\), sonra \(n\)'e böl</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Neden orta nokta?</b> Sınıftaki değerlerin nerede olduğunu artık bilmiyorsun.
+      En adil tahmin, hepsinin ortada olduğunu varsaymaktır. Bu yüzden sonuç
+      gerçek ortalamadan biraz sapar — bu <b>hata değil</b>, yöntemin doğası.
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 7 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">7</div>
+    <div class="step-title">Mittelwert bei Schichten
+      <small>Wenn die Daten schon in Gruppen vorliegen</small></div>
+  </div>
+
+  <p>
+    Manchmal bekommst du nicht die Rohdaten, sondern die <b>Mittelwerte einzelner
+    Gruppen</b> (Schichten) und deren Größen. Auch daraus lässt sich das Gesamtmittel
+    berechnen.
+  </p>
+
+  <div class="box box-def">
+    <div class="box-label">● Formel</div>
+    \[ \bar x = \frac{1}{n}\left(n_1 \bar x_1 + n_2 \bar x_2 + \dots + n_r \bar x_r\right)
+       = \frac{1}{n}\sum_{j=1}^{r} n_j \bar x_j \]
+    <p>
+      Das Gesamtmittel ist der <b>gewichtete Durchschnitt</b> der Gruppenmittel.
+      Gewichtet wird mit den <b>Gruppengrößen</b> \(n_j\).
+    </p>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Der häufigste Fehler überhaupt</div>
+    <p>
+      Man darf die Gruppenmittel <b>nicht einfach mitteln</b>, wenn die Gruppen
+      unterschiedlich groß sind.
+    </p>
+    <p>
+      <b>Beispiel:</b> Gruppe A hat 90 Personen mit \(\bar x_A = 10\),
+      Gruppe B hat 10 Personen mit \(\bar x_B = 20\).
+    </p>
+    <ul class="clean">
+      <li><b>Falsch:</b> \(\dfrac{10 + 20}{2} = 15\)</li>
+      <li><b>Richtig:</b> \(\dfrac{90 \cdot 10 + 10 \cdot 20}{100}
+        = \dfrac{900 + 200}{100} = \mathbf{11}\)</li>
+    </ul>
+    <p>
+      Die große Gruppe zieht das Ergebnis zu sich. 15 wäre nur richtig, wenn beide
+      Gruppen gleich groß wären.
+    </p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 8 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">8</div>
+    <div class="step-title">Lagemaße und die Form der Verteilung
+      <small>Die Reihenfolge verrät die Schiefe</small></div>
+  </div>
+
+  <p>
+    Gestern hast du die Schiefe aus dem <b>Bild</b> abgelesen. Heute liest du sie
+    aus <b>drei Zahlen</b> ab — ohne Bild.
+  </p>
+
+  <div class="box box-merke">
+    <div class="box-label">◆ Die drei Fälle</div>
+    <table class="in-box">
+      <thead><tr><th style="width:190px">Form</th><th>Reihenfolge</th></tr></thead>
+      <tbody>
+        <tr><td><b>symmetrisch, unimodal</b></td><td>\(\bar x \approx x_{med} \approx x_{mod}\)</td></tr>
+        <tr><td><b>rechtsschief</b> (linkssteil)</td><td>\(\bar x > x_{med} > x_{mod}\)</td></tr>
+        <tr><td><b>linksschief</b> (rechtssteil)</td><td>\(\bar x < x_{med} < x_{mod}\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="fig">
+    <svg viewBox="0 0 420 150" role="img" aria-label="Lage von Modus, Median und Mittelwert bei einer rechtsschiefen Verteilung">
+      <!-- Kurve: rechtsschief -->
+      <path d="M20,120 C40,120 52,26 80,26 C118,26 150,104 400,118 L400,120 Z"
+            fill="#EBE4FE" stroke="#7C63CE" stroke-width="2"/>
+      <line x1="20" y1="120" x2="400" y2="120" stroke="#6A6380" stroke-width="1.4"/>
+      <!-- Markierungen: Modus < Median < Mittel -->
+      <g stroke-width="1.8" stroke-dasharray="4 3">
+        <line x1="80"  y1="26" x2="80"  y2="120" stroke="#2F9B6E"/>
+        <line x1="104" y1="42" x2="104" y2="120" stroke="#D4753F"/>
+        <line x1="132" y1="64" x2="132" y2="120" stroke="#C8556F"/>
+      </g>
+      <g font-family="Inter, sans-serif" font-size="9.5" font-weight="600" text-anchor="middle">
+        <text x="72"  y="20" fill="#2F9B6E">Modus</text>
+        <text x="112" y="36" fill="#D4753F">Median</text>
+        <text x="158" y="58" fill="#C8556F">Mittelwert</text>
+      </g>
+      <text x="300" y="138" font-family="Inter, sans-serif" font-size="9" fill="#9A93AC" text-anchor="middle">langer Ausläufer nach rechts</text>
+    </svg>
+    <p class="fig-cap">
+      <b>Rechtsschiefe Verteilung.</b> Der Gipfel (Modus) liegt links. Der Mittelwert
+      wird vom langen Ausläufer nach rechts gezogen und ist deshalb am größten.
+      Der Median liegt dazwischen.
+    </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Sıralamayı ezberlemeden hatırlama</span>
+    <p>
+      Ezberleme — <b>mantığını kur.</b> Mittelwert uç değerlerden etkilenir, Modus hiç
+      etkilenmez. Uzun kuyruk hangi taraftaysa, Mittelwert o tarafa doğru kayar.
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>kuyruk sağda</code><span>rechtsschief → Mittelwert sağa kaçar → \(\bar x\) en büyük<br>\(\bar x > x_{med} > x_{mod}\)</span></div>
+      <div class="tr-row"><code>kuyruk solda</code><span>linksschief → Mittelwert sola kaçar → \(\bar x\) en küçük<br>\(\bar x < x_{med} < x_{mod}\)</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Kontrol örneği:</b> Testat 1'deki gelir verisinde \(\bar x = 1500\),
+      \(x_{med} = 900\), \(x_{mod} = 900\). Yani \(\bar x > x_{med} \ge x_{mod}\) →
+      <b>rechtsschief</b>. 7500'lük uç değer sağda, tam da beklediğimiz gibi.
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 9 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">9</div>
+    <div class="step-title">Verhalten bei Transformation
+      <small>Was passiert, wenn man alle Werte umrechnet?</small></div>
+  </div>
+
+  <p>
+    Manchmal rechnet man Daten um: Euro in Tausend Euro, Celsius in Fahrenheit,
+    oder man zieht von allen Werten dasselbe ab. Was wird dann aus dem Lagemaß?
+  </p>
+
+  <div class="box box-def">
+    <div class="box-label">● Lineare Transformation</div>
+    <p>Wenn \(y_i = a + b\,x_i\) für alle \(i\), dann gilt:</p>
+    \[ \bar y = a + b\,\bar x \]
+    <p>
+      Das arithmetische Mittel wird also <b>genauso mittransformiert</b> wie die
+      einzelnen Werte. Du musst nicht neu rechnen.
+    </p>
+  </div>
+
+  <div class="box box-def">
+    <div class="box-label">● Monotone Transformation</div>
+    <p>Wenn \(y_i = g(x_i)\) mit einer <b>monotonen</b> Funktion \(g\), dann gilt:</p>
+    \[ y_{med} = g(x_{med}) \]
+    <p>
+      „Monoton" heißt: \(g\) dreht die Reihenfolge nicht um (zum Beispiel
+      \(\log\), \(\sqrt{\ }\), oder \(a + bx\) mit \(b > 0\)).
+      Weil der Median nur von der <b>Reihenfolge</b> abhängt, bleibt er an derselben Stelle.
+    </p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · aus der Vorlesung</div>
+    <p>Original: \(\bar x = 0.096\), \(x_{med} = 0.042\). Transformation \(y = 5 + 2x\):</p>
+    <ol class="calc-steps">
+      <li>\(\bar y = 5 + 2 \cdot 0.096 = 5 + 0.192 = \mathbf{5.192}\)</li>
+      <li>\(y_{med} = 5 + 2 \cdot 0.042 = 5 + 0.084 = \mathbf{5.084}\)</li>
+    </ol>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Der Unterschied, der Punkte bringt</div>
+    <p>
+      Beim <b>Mittelwert</b> funktioniert die einfache Regel nur bei <b>linearen</b>
+      Transformationen. Bei \(y = \log(x)\) ist \(\bar y \ne \log(\bar x)\)!
+    </p>
+    <p>
+      Beim <b>Median</b> funktioniert es bei <i>jeder</i> monotonen Transformation —
+      also auch beim Logarithmus. Der Median ist in dieser Hinsicht der robustere
+      der beiden.
+    </p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 10: R ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">10</div>
+    <div class="step-title">Die R-Ecke
+      <small>Lagemaße berechnen lassen</small></div>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Mittelwert und fehlende Werte</div>
+<pre>x &lt;- <span class="fn">c</span>(<span class="nu">1400</span>, <span class="nu">750</span>, <span class="nu">900</span>, <span class="nu">1100</span>, <span class="nu">900</span>, <span class="nu">550</span>,
+       <span class="nu">800</span>, <span class="nu">1600</span>, <span class="nu">900</span>, <span class="nu">7500</span>, <span class="nu">1000</span>, <span class="nu">600</span>)
+
+<span class="fn">mean</span>(x)
+<span class="out">#&gt; [1] 1500</span>
+
+<span class="cm"># Was passiert bei einem fehlenden Wert?</span>
+x2 &lt;- <span class="fn">c</span>(x, <span class="nu">NA</span>)        <span class="cm"># NA = "not available"</span>
+<span class="fn">mean</span>(x2)
+<span class="out">#&gt; [1] NA</span>
+
+<span class="fn">mean</span>(x2, na.rm = <span class="nu">TRUE</span>)  <span class="cm"># na.rm = "NA remove"</span>
+<span class="out">#&gt; [1] 1500</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · NA ve na.rm</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>NA</code><span><b>Eksik değer.</b> "Bu hücrede veri yok" demek. Anket yapılmamış, ölçüm başarısız olmuş vs.</span></div>
+      <div class="tr-row"><code>mean(x2)</code><span><b>NA döner.</b> R bilerek böyle yapar: "İçinde bilinmeyen bir sayı var, ortalamayı sana söyleyemem."</span></div>
+      <div class="tr-row"><code>na.rm = TRUE</code><span>"NA'ları <b>çıkar</b>, kalanla hesapla." Bu argüman <code>mean</code>, <code>var</code>, <code>sd</code>, <code>median</code> — hepsinde var.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>B-Teil için:</b> Bir hesap beklenmedik şekilde <code>NA</code> döndürüyorsa,
+      ilk kontrol edeceğin şey veride <code>NA</code> olup olmadığıdır.
+      <code>sum(is.na(x))</code> kaç tane eksik değer olduğunu söyler.
+    </div>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Median und Modus</div>
+<pre><span class="fn">median</span>(x)
+<span class="out">#&gt; [1] 900</span>
+
+<span class="cm"># gleichwertig über die Quantilfunktion:</span>
+<span class="fn">quantile</span>(x, <span class="nu">0.5</span>)
+<span class="out">#&gt; 50%</span>
+<span class="out">#&gt; 900</span>
+
+<span class="cm"># Für den Modus gibt es in R keine fertige Funktion.</span>
+<span class="cm"># Man sucht den Eintrag mit der größten Häufigkeit:</span>
+<span class="fn">table</span>(x)
+<span class="out">#&gt; x</span>
+<span class="out">#&gt;  550  600  750  800  900 1000 1100 1400 1600 7500</span>
+<span class="out">#&gt;    1    1    1    1    3    1    1    1    1    1</span>
+
+<span class="fn">which</span>(<span class="fn">table</span>(x) == <span class="fn">max</span>(<span class="fn">table</span>(x)))
+<span class="out">#&gt; 900</span>
+<span class="out">#&gt;   5</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Modus komutu neden böyle</span>
+    <p>
+      R'da hazır bir <code>mode()</code> fonksiyonu <b>yoktur</b>
+      (<code>mode()</code> diye bir komut var ama o veri tipini söyler, Modus'u değil —
+      klasik bir tuzak). O yüzden elle kuruyoruz:
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>table(x)</code><span>Her değerin kaç kez geçtiğini sayar (Tag 2'den tanıdık).</span></div>
+      <div class="tr-row"><code>max(table(x))</code><span>Bu sayıların <b>en büyüğü</b> → burada 3.</span></div>
+      <div class="tr-row"><code>table(x) == max(...)</code><span>Her sayı için "en büyüğe eşit mi?" → TRUE/FALSE dizisi.</span></div>
+      <div class="tr-row"><code>which(...)</code><span>TRUE olanların <b>yerini</b> verir. Üstteki <code>900</code> aradığın Modus, alttaki <code>5</code> ise onun tablodaki kaçıncı sırada olduğu.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Çıktıyı okurken:</b> Üst satır <b>isim</b> (yani değerin kendisi = 900),
+      alt satır <b>konum</b> (5). Sınavda cevap <b>900</b>'dür, 5 değil.
+    </div>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Mittelwert pro Gruppe</div>
+<pre><span class="cm"># Beispiel: Mittelwert je Gruppe berechnen</span>
+gruppe &lt;- <span class="fn">factor</span>(<span class="fn">c</span>(<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"B"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>))
+wert   &lt;- <span class="fn">c</span>(<span class="nu">10</span>, <span class="nu">12</span>, <span class="nu">20</span>, <span class="nu">22</span>, <span class="nu">24</span>, <span class="nu">14</span>)
+
+<span class="fn">aggregate</span>(wert, by = <span class="fn">list</span>(gruppe), mean)
+<span class="out">#&gt;   Group.1  x</span>
+<span class="out">#&gt; 1       A 12</span>
+<span class="out">#&gt; 2       B 22</span>
+
+<span class="cm"># Rundung — in der Klausur auf drei Nachkommastellen</span>
+<span class="fn">round</span>(<span class="fn">mean</span>(x), <span class="nu">3</span>)
+<span class="out">#&gt; [1] 1500</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · aggregate ve round</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>aggregate(wert, by = list(gruppe), mean)</code><span>"<b>wert</b>'i, <b>gruppe</b>'ye göre ayır, her gruba <b>mean</b> uygula." Schritt 7'deki Schichten hesabının R hali.</span></div>
+      <div class="tr-row"><code>by = list(...)</code><span>Gruplama değişkeni <b>liste</b> içinde verilir — R'ın tuhaf ama zorunlu bir kuralı.</span></div>
+      <div class="tr-row"><code>round(x, 3)</code><span>3 ondalığa yuvarla. <b>Sınav kuralı bu</b> — son sonuçlar 3 basamak.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>B-Teil'de:</b> "Nutzen Sie zum Runden stets einen geeigneten R-Befehl" diye
+      yazıyor. Yani elle yuvarlamak değil, <code>round()</code> kullanmak isteniyor.
+    </div>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Mach das jetzt selbst</div>
+    <ol class="clean">
+      <li>Tippe den Einkommens-Vektor ab und lasse <code class="inline">mean()</code>
+        und <code class="inline">median()</code> laufen. Siehst du den Unterschied 1500 gegen 900?</li>
+      <li>Ersetze die 7500 durch 1200 und rechne erneut. Wie stark ändert sich der
+        <b>Mittelwert</b>, wie stark der <b>Median</b>?</li>
+      <li>Genau dieser Vergleich ist die Antwort auf jede Klausurfrage nach
+        „Welches Lagemaß ist robuster?"</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ---------- WORTSCHATZ ---------- -->
+
+<div class="box box-wort">
+  <div class="box-label">■ Wortschatz · leicht erklärt</div>
+  <ul class="wort-list">
+    <li><b>Lagemaß</b> — eine Zahl für das Zentrum der Daten</li>
+    <li><b>zentrale Tendenz</b> — dasselbe, nur feiner gesagt</li>
+    <li><b>arithmetisches Mittel \(\bar x\)</b> — der Durchschnitt</li>
+    <li><b>Median \(x_{med}\)</b> — der mittlere Wert nach dem Sortieren</li>
+    <li><b>Modus \(x_{mod}\)</b> — der häufigste Wert</li>
+    <li><b>geordnete Beobachtung \(x_{(i)}\)</b> — der \(i\)-te Wert <i>nach</i> dem Sortieren</li>
+    <li><b>robust</b> — reagiert wenig auf Ausreißer (der Median ist robust)</li>
+    <li><b>Ausreißer</b> — ein ungewöhnlich großer oder kleiner Wert</li>
+    <li><b>klassierte Daten</b> — Daten, von denen nur noch Klassen bekannt sind</li>
+    <li><b>Klassenmitte \(m_j\)</b> — die Mitte einer Klasse</li>
+    <li><b>Schicht</b> — eine vorher gebildete Teilgruppe</li>
+    <li><b>gewichteter Durchschnitt</b> — Mittelwert, bei dem größere Gruppen mehr zählen</li>
+    <li><b>lineare Transformation</b> — Umrechnung der Form \(y = a + bx\)</li>
+    <li><b>monoton</b> — die Funktion dreht die Reihenfolge nicht um</li>
+  </ul>
+</div>
+
+<!-- ---------- SPICKZETTEL ---------- -->
+
+<div class="cheat">
+  <h3>Spickzettel Tag 3</h3>
+  <div class="cheat-grid">
+    <div class="cheat-item">
+      <b>Arithmetisches Mittel</b>
+      \(\bar x = \dfrac 1n \sum_i x_i = \sum_j a_j f_j = \dfrac 1n \sum_j a_j h_j\)
+    </div>
+    <div class="cheat-item">
+      <b>Median · \(n\) ungerade</b>
+      \(x_{med} = x_{\left(\frac{n+1}{2}\right)}\)
+    </div>
+    <div class="cheat-item">
+      <b>Median · \(n\) gerade</b>
+      \(x_{med} = \dfrac{x_{(n/2)} + x_{(n/2+1)}}{2}\)
+    </div>
+    <div class="cheat-item">
+      <b>Modus</b>
+      die Ausprägung mit dem größten \(h_j\)
+    </div>
+    <div class="cheat-item wide">
+      <b>Wer darf was?</b>
+      nominal → nur Modus &nbsp;|&nbsp; ordinal → Modus, Median &nbsp;|&nbsp;
+      kardinal → alle drei. Ausnahme: 0/1-kodiert → \(\bar x\) = Anteil der Einsen.
+    </div>
+    <div class="cheat-item wide">
+      <b>Klassierte Daten</b>
+      \(m_j = \dfrac{c_{j-1}+c_j}{2}\) &nbsp;·&nbsp;
+      \(\bar x_K = \dfrac 1n \sum_j n(K_j)\, m_j\)
+    </div>
+    <div class="cheat-item wide">
+      <b>Schichten</b>
+      \(\bar x = \dfrac 1n \sum_j n_j \bar x_j\) — nie einfach die Gruppenmittel mitteln!
+    </div>
+    <div class="cheat-item">
+      <b>Rechtsschief</b>
+      \(\bar x > x_{med} > x_{mod}\)
+    </div>
+    <div class="cheat-item">
+      <b>Linksschief</b>
+      \(\bar x < x_{med} < x_{mod}\)
+    </div>
+    <div class="cheat-item">
+      <b>Transformation · Mittel</b>
+      \(y = a + bx \Rightarrow \bar y = a + b\bar x\) (nur linear!)
+    </div>
+    <div class="cheat-item">
+      <b>Transformation · Median</b>
+      \(y = g(x)\) monoton \(\Rightarrow y_{med} = g(x_{med})\)
+    </div>
+    <div class="cheat-item wide">
+      <b>Nützlich</b>
+      \(\sum_i (x_i - \bar x) = 0\) — deshalb wird morgen quadriert.
+    </div>
+    <div class="cheat-item wide">
+      <b>R</b>
+      <code class="inline">mean()</code> ·
+      <code class="inline">median()</code> ·
+      <code class="inline">quantile(x, 0.5)</code> ·
+      <code class="inline">table()</code> + <code class="inline">which(... == max(...))</code> für den Modus ·
+      <code class="inline">na.rm = TRUE</code> ·
+      <code class="inline">aggregate()</code> ·
+      <code class="inline">round(x, 3)</code>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TEIL 2: TEST ==================== -->
+
+<div class="page-break"></div>
+
+<div class="quiz-intro">
+  <h2>Teste dich selbst</h2>
+  <p>
+    10 Aufgaben · 24 Punkte · Taschenrechner erlaubt · ca. 50 Minuten.
+  </p>
+  <p style="margin-top:9px">
+    <b>Klausurregeln:</b> Dezimal<b>punkt</b> · Zwischenergebnisse auf <b>vier</b>,
+    Endergebnisse auf <b>drei</b> Nachkommastellen · Lösungsweg angeben, wo verlangt.
+  </p>
+  <p style="margin-top:9px;font-weight:600;color:var(--rose-600)">
+    Beantworte <u>jede</u> Teilaufgabe (a), (b), (c) — auch wenn du unsicher bist.
+    Ein leeres Kästchen gibt sicher null Punkte.
+  </p>
+</div>
+
+<!-- A1 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 1</span>
+    <span class="q-text">Gegeben ist die Häufigkeitstabelle für das Merkmal
+      \(X\) = Anzahl der Vorlesungen pro Woche. <span class="pts">(3 Punkte)</span></span></div>
+  <table style="margin-top:8px">
+    <thead><tr><th>\(a_j\)</th><th class="num">2</th><th class="num">4</th><th class="num">6</th><th class="num">8</th><th class="num">12</th></tr></thead>
+    <tbody><tr><td>\(h_j\)</td><td class="num">2</td><td class="num">6</td><td class="num">7</td><td class="num">4</td><td class="num">1</td></tr></tbody>
+  </table>
+  <p style="font-size:0.91rem;margin:8px 0 4px">
+    Bestimmen Sie (a) \(n\), (b) \(x_{mod}\), (c) \(x_{med}\), (d) \(\bar x\).</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A2 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 2</span>
+    <span class="q-text">Sieben Wohnungen kosten (in Euro Nettomiete):
+      <span class="pts">(3 Punkte)</span></span></div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+    480 · 520 · 610 · 550 · 490 · 2400 · 530
+  </p>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Berechnen Sie \(\bar x\) und \(x_{med}\).<br>
+    (b) Welches der beiden Maße beschreibt die typische Miete besser? Begründen Sie in einem Satz.<br>
+    (c) Welche Schiefe hat die Verteilung?</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A3 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 3</span>
+    <span class="q-text">Ein Merkmal ist <b>ordinalskaliert</b>. Welche Lagemaße dürfen Sie berechnen?
+      <span class="pts">(2 Punkte)</span></span></div>
+  <ul class="opts">
+    <li data-k="A">nur den Modus</li>
+    <li data-k="B">Modus und Median</li>
+    <li data-k="C">Median und arithmetisches Mittel</li>
+    <li data-k="D">alle drei</li>
+  </ul>
+  <p style="font-size:0.88rem;margin:6px 0 0;color:var(--ink-soft)">Begründen Sie Ihre Wahl in einem Satz.</p>
+</div>
+
+<!-- A4 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 4</span>
+    <span class="q-text">Die Lernzeit von \(n = 40\) Studierenden wurde klassiert erfasst.
+      <span class="pts">(4 Punkte)</span></span></div>
+  <table style="margin-top:8px">
+    <thead><tr><th>Klasse (Stunden)</th><th class="num">\([0, 4)\)</th><th class="num">\([4, 10)\)</th><th class="num">\([10, 20]\)</th></tr></thead>
+    <tbody><tr><td>\(n(K_j)\)</td><td class="num">12</td><td class="num">20</td><td class="num">8</td></tr></tbody>
+  </table>
+  <p style="font-size:0.91rem;margin:8px 0 4px">
+    (a) Bestimmen Sie die Klassenmitten \(m_j\).<br>
+    (b) Berechnen Sie den Mittelwert der klassierten Daten. Geben Sie den Lösungsweg an.<br>
+    (c) Warum weicht dieser Wert im Allgemeinen vom echten Mittelwert ab?</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A5 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 5</span>
+    <span class="q-text">Für einen Datensatz gilt \(\bar x = 32\), \(x_{med} = 40\), \(x_{mod} = 45\).
+      <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Welche Schiefe liegt vor? Nennen Sie beide gebräuchlichen Namen.<br>
+    (b) Auf welcher Seite liegt der lange Ausläufer?</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A6 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 6</span>
+    <span class="q-text">Ein Datensatz hat \(\bar x = 18\) und \(x_{med} = 15\).
+      Alle Werte werden mit \(y_i = 3 + 2x_i\) transformiert.
+      <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Berechnen Sie \(\bar y\) und \(y_{med}\).<br>
+    (b) Gilt \(\bar y = a + b\bar x\) auch für \(y_i = \log(x_i)\)? Begründen Sie kurz.</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A7 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 7</span>
+    <span class="q-text">Richtig oder falsch? <span class="pts">(2 Punkte)</span></span></div>
+  <ul class="opts">
+    <li data-k="a">Der Median ist robuster gegenüber Ausreißern als das arithmetische Mittel.</li>
+    <li data-k="b">Der Modus ist immer eindeutig bestimmt.</li>
+    <li data-k="c">Bei einem 0/1-kodierten Merkmal ist das arithmetische Mittel der Anteil der Einsen.</li>
+    <li data-k="d">Es gilt immer \(\sum_{i=1}^n (x_i - \bar x) = 0\).</li>
+  </ul>
+</div>
+
+<!-- A8 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 8</span>
+    <span class="q-text">Eine Universität hat zwei Fakultäten. In Fakultät A studieren 800 Personen
+      mit einem Durchschnittsalter von 23 Jahren, in Fakultät B studieren 200 Personen
+      mit einem Durchschnittsalter von 28 Jahren. <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Berechnen Sie das Durchschnittsalter aller Studierenden.<br>
+    (b) Warum ist \((23+28)/2 = 25.5\) falsch?</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A9 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 9</span>
+    <span class="q-text">Lesen Sie den R-Output. <span class="pts">(2 Punkte)</span></span></div>
+<pre style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;background:#FBF9FE;border:1px solid #EBE4FE;border-radius:10px;padding:11px 14px;white-space:pre-wrap;margin:8px 0">&gt; mean(alter)
+[1] NA
+
+&gt; mean(alter, na.rm = TRUE)
+[1] 24.6
+
+&gt; sum(is.na(alter))
+[1] 3</pre>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Warum gibt der erste Befehl <code class="inline">NA</code> zurück?<br>
+    (b) Wie viele Beobachtungen fehlen, und was bewirkt <code class="inline">na.rm = TRUE</code>?</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A10 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 10</span>
+    <span class="q-text">R-Aufgabe. <span class="pts">(2 Punkte)</span></span></div>
+<pre style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;background:#FBF9FE;border:1px solid #EBE4FE;border-radius:10px;padding:11px 14px;white-space:pre-wrap;margin:8px 0">x &lt;- c(3, 7, 3, 5, 3, 9, 7)
+
+table(x)
+which(table(x) == max(table(x)))</pre>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Welche Ausgabe erzeugt <code class="inline">table(x)</code>?<br>
+    (b) Welchen Wert liefert die letzte Zeile als Modus — und was bedeutet die
+    zweite Zahl in der Ausgabe?</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- ==================== TEIL 3: LÖSUNGEN ==================== -->
+
+<div class="page-break"></div>
+
+<div class="loesung-intro">
+  <h2>Lösungen</h2>
+  <p>
+    Vergleiche ehrlich. Jeden Fehler ins Fehlerheft:
+    <i>Was war die Frage? Warum war ich falsch?</i>
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 1 · 3 Punkte</span>
+  <p><b>(a)</b> \(n = 2+6+7+4+1 = \) <span class="key">20</span></p>
+  <p><b>(b)</b> Größtes \(h_j\) ist 7 bei der Ausprägung 6, also
+    \(x_{mod} = \) <span class="key">6</span></p>
+  <p><b>(c)</b> \(n = 20\) ist gerade, gesucht sind \(x_{(10)}\) und \(x_{(11)}\).
+    Kumuliert: bis Ausprägung 2 sind es 2 Werte, bis 4 sind es 8, bis 6 sind es 15.
+    Also liegen sowohl der 10. als auch der 11. Wert bei der Ausprägung 6:</p>
+  <p>\(x_{med} = \dfrac{6+6}{2} = \) <span class="key">6</span></p>
+  <p><b>(d)</b> \(\sum a_j h_j = 2\cdot2 + 4\cdot6 + 6\cdot7 + 8\cdot4 + 12\cdot1
+    = 4 + 24 + 42 + 32 + 12 = 114\)</p>
+  <p>\(\bar x = \dfrac{114}{20} = \) <span class="key">5.700</span></p>
+  <p>
+    Kontrolle: \(\bar x < x_{med}\) deutet auf eine leicht <b>linksschiefe</b>
+    Verteilung hin — passt, denn die kleinen Ausprägungen ziehen etwas nach unten.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 2 · 3 Punkte</span>
+  <p><b>(a)</b> Sortiert: 480, 490, 520, <span class="key">530</span>, 550, 610, 2400</p>
+  <p>Summe \(= 480+520+610+550+490+2400+530 = 5580\), also
+    \(\bar x = \dfrac{5580}{7} = 797.142857 \approx\) <span class="key">797.143</span></p>
+  <p>\(n = 7\) ist ungerade, \(\dfrac{n+1}{2} = 4\), also
+    \(x_{med} = x_{(4)} = \) <span class="key">530</span></p>
+  <p>
+    <b>(b)</b> Der <span class="key">Median</span> beschreibt die typische Miete besser.
+    Sechs der sieben Wohnungen liegen zwischen 480 und 610 € — der Mittelwert von
+    797 € entsteht allein durch den Ausreißer 2400 € und wird von keiner
+    einzigen Wohnung auch nur annähernd erreicht.
+  </p>
+  <p>
+    <b>(c)</b> Wegen \(\bar x > x_{med}\) ist die Verteilung
+    <span class="key">rechtsschief</span> (= linkssteil). Der lange Ausläufer zeigt
+    nach rechts, dorthin, wo die 2400 liegt.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 3 · 2 Punkte</span>
+  <p>Richtig ist <span class="key">B</span> — Modus und Median.</p>
+  <p>
+    <b>Begründung:</b> Ordinalskalierte Merkmale haben eine <b>Reihenfolge</b>,
+    also kann man sortieren und den mittleren Wert bestimmen — der Median ist erlaubt.
+    Häufigkeiten darf man auf jedem Niveau zählen, also auch den Modus.
+    Das arithmetische Mittel braucht dagegen <b>sinnvolle Abstände</b>, und die
+    gibt es bei ordinalen Daten nicht.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 4 · 4 Punkte</span>
+  <p><b>(a)</b> Klassenmitten:</p>
+  <p>
+    \(m_1 = \dfrac{0+4}{2} = \) <span class="key">2</span> &nbsp;·&nbsp;
+    \(m_2 = \dfrac{4+10}{2} = \) <span class="key">7</span> &nbsp;·&nbsp;
+    \(m_3 = \dfrac{10+20}{2} = \) <span class="key">15</span>
+  </p>
+  <p><b>(b)</b> Kontrolle zuerst: \(12 + 20 + 8 = 40 = n\) ✓</p>
+  \[ \bar x_K = \frac{1}{40}\left(12 \cdot 2 + 20 \cdot 7 + 8 \cdot 15\right)
+     = \frac{24 + 140 + 120}{40} = \frac{284}{40} = 7.1 \]
+  <p>Also \(\bar x_K = \) <span class="key">7.100</span> Stunden.</p>
+  <p>
+    <b>(c)</b> Weil die Einzelwerte nicht mehr bekannt sind. Man <b>unterstellt</b>,
+    dass alle Beobachtungen einer Klasse genau in der Klassenmitte liegen.
+    Tatsächlich sind sie aber innerhalb der Klasse verteilt — liegen sie
+    überwiegend am unteren Rand, überschätzt \(\bar x_K\) den echten Mittelwert,
+    und umgekehrt.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 5 · 2 Punkte</span>
+  <p>
+    <b>(a)</b> Es gilt \(\bar x < x_{med} < x_{mod}\) (32 &lt; 40 &lt; 45).
+    Das ist der Fall <span class="key">linksschief</span>, auch
+    <span class="key">rechtssteil</span> genannt.
+  </p>
+  <p>
+    <b>(b)</b> Der lange Ausläufer liegt <span class="key">links</span>.
+    Der Gipfel (Modus) sitzt rechts bei 45, und die kleinen Werte im linken
+    Ausläufer ziehen den Mittelwert nach unten auf 32.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 6 · 2 Punkte</span>
+  <p><b>(a)</b> Die Transformation ist linear mit \(a = 3\) und \(b = 2\):</p>
+  <p>
+    \(\bar y = 3 + 2 \cdot 18 = \) <span class="key">39</span> &nbsp;·&nbsp;
+    \(y_{med} = 3 + 2 \cdot 15 = \) <span class="key">33</span>
+  </p>
+  <p>
+    <b>(b)</b> <span class="key">Nein.</span> Die Regel \(\bar y = a + b\bar x\) gilt nur
+    für <b>lineare</b> Transformationen. Der Logarithmus ist nicht linear, deshalb ist
+    im Allgemeinen \(\overline{\log(x)} \ne \log(\bar x)\).
+  </p>
+  <p>
+    Für den <b>Median</b> wäre es dagegen richtig: \(\log\) ist monoton, also gilt
+    \(y_{med} = \log(x_{med})\).
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 7 · 2 Punkte</span>
+  <p><b>a) richtig.</b> Der Median hängt nur von der Position in der sortierten Reihe ab, nicht vom Betrag der Extremwerte.</p>
+  <p><b>b) falsch.</b> Sind zwei Ausprägungen gleich häufig, gibt es <span class="key">zwei Modi</span> — die Verteilung ist bimodal.</p>
+  <p><b>c) richtig.</b> Bei 0/1-Kodierung ist \(\sum x_i\) genau die Anzahl der Einsen, geteilt durch \(n\) ergibt das den Anteil.</p>
+  <p><b>d) richtig.</b> Das ist die Rechnung aus Tag 0: \(\sum x_i - n\bar x = n\bar x - n\bar x = 0\).</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 8 · 2 Punkte</span>
+  <p><b>(a)</b> Gewichteter Durchschnitt mit \(n = 800 + 200 = 1000\):</p>
+  \[ \bar x = \frac{800 \cdot 23 + 200 \cdot 28}{1000}
+     = \frac{18\,400 + 5\,600}{1000} = \frac{24\,000}{1000} = 24 \]
+  <p>Das Durchschnittsalter beträgt <span class="key">24.000</span> Jahre.</p>
+  <p>
+    <b>(b)</b> Weil die Fakultäten <b>unterschiedlich groß</b> sind. Der einfache
+    Durchschnitt 25.5 würde beide Gruppen gleich stark gewichten, obwohl Fakultät A
+    viermal so viele Studierende hat. Die große Gruppe muss entsprechend stärker
+    zählen — deshalb liegt das richtige Ergebnis (24) viel näher an 23 als an 28.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 9 · 2 Punkte</span>
+  <p>
+    <b>(a)</b> Weil der Vektor <code class="inline">alter</code> mindestens einen
+    <span class="key">fehlenden Wert (NA)</span> enthält. R rechnet dann bewusst nicht
+    weiter: Wenn ein Summand unbekannt ist, ist auch die Summe unbekannt — und damit
+    der Mittelwert.
+  </p>
+  <p>
+    <b>(b)</b> <code class="inline">sum(is.na(alter))</code> zeigt
+    <span class="key">3 fehlende Werte</span>.
+    <code class="inline">na.rm = TRUE</code> entfernt diese vor der Rechnung
+    („NA remove"), sodass der Mittelwert aus den übrigen Beobachtungen
+    gebildet wird: 24.6.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 10 · 2 Punkte</span>
+  <p><b>(a)</b></p>
+<pre style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;background:#FFF;border:1px solid #EAE4F2;border-radius:8px;padding:9px 12px;white-space:pre-wrap;margin:6px 0">x
+3 5 7 9
+3 1 2 1</pre>
+  <p>
+    Die 3 kommt dreimal vor, die 5 einmal, die 7 zweimal, die 9 einmal.
+    Kontrolle: \(3+1+2+1 = 7 = n\) ✓
+  </p>
+  <p>
+    <b>(b)</b> Das größte \(h_j\) ist 3, es gehört zur Ausprägung 3.
+    Also \(x_{mod} = \) <span class="key">3</span>.
+  </p>
+  <p>
+    Die Ausgabe sieht so aus:
+  </p>
+<pre style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;background:#FFF;border:1px solid #EAE4F2;border-radius:8px;padding:9px 12px;white-space:pre-wrap;margin:6px 0">3
+1</pre>
+  <p>
+    Die obere Zahl (<b>3</b>) ist der <span class="key">Name</span>, also die gesuchte
+    Merkmalsausprägung. Die untere Zahl (<b>1</b>) ist die <span class="key">Position
+    in der Tabelle</span> — die 3 steht an erster Stelle. Gefragt war der Modus,
+    also lautet die Antwort <b>3</b>, nicht 1.
+  </p>
+</div>
+
+<div class="score">
+  <h3>Deine Auswertung</h3>
+  <table>
+    <thead>
+      <tr><th style="width:110px">Punkte</th><th>Was das bedeutet</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>20 – 24</b></td><td>Sehr gut. Besonders A4 (klassierte Daten) ist bare Klausurpunkte — die sitzen.</td></tr>
+      <tr><td><b>15 – 19</b></td><td>Gut. Rechne A1 und A4 noch einmal komplett durch, dann weiter zu Tag 4.</td></tr>
+      <tr><td><b>10 – 14</b></td><td>Wiederhole heute Abend Schritt 5 (welches Maß wann) und Schritt 6 (klassierte Daten).</td></tr>
+      <tr><td><b>0 – 9</b></td><td>Arbeite Schritt 2 bis 6 morgen früh noch einmal durch (45 Minuten) und mache den Test erneut.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box box-merke" style="margin-top:18px">
+  <div class="box-label">◆ Morgen · Tag 4</div>
+  <p>
+    Heute hast du das <b>Zentrum</b> der Daten bestimmt. Morgen bestimmst du,
+    wie weit die Daten davon <b>wegstreuen</b>: Quantile, Varianz,
+    Standardabweichung, Interquartilsabstand und der Boxplot.
+  </p>
+  <p>
+    Zur Vorbereitung ein Satz von heute: \(\sum_i (x_i - \bar x) = 0\).
+    Weil diese Summe immer null ist, kann man sie nicht als Streuungsmaß benutzen —
+    morgen siehst du, wie man das Problem mit einem Quadrat löst.
+  </p>
+</div>
