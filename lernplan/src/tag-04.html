@@ -29,7 +29,7 @@
   <div class="cover-meta">
     <span class="chip chip-lav"><span class="ic">◷</span> ca. 3 Stunden</span>
     <span class="chip chip-mint"><span class="ic">▤</span> 10 Schritte</span>
-    <span class="chip chip-rose"><span class="ic">✎</span> 10 Aufgaben · 24 Punkte</span>
+    <span class="chip chip-rose"><span class="ic">✎</span> 14 Aufgaben · 34 Punkte</span>
     <span class="chip chip-sky"><span class="ic">▶</span> R-Ecke · TR açıklamalı</span>
   </div>
 
@@ -235,6 +235,47 @@
       \([19.5] = 19\), also \(19 + 1 = 20\).
     </p>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 2 · wenn \(n\alpha\) nie ganzzahlig ist</div>
+    <p>Neun Messwerte, bereits sortiert (\(n = 9\)):</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+      3 · 5 · <b>8</b> · 11 · <b>14</b> · 19 · <b>23</b> · 27 · 30
+    </p>
+    <table class="in-box">
+      <thead><tr><th>\(\alpha\)</th><th class="num">\(n\alpha\)</th><th>ganzzahlig?</th><th>Position</th><th class="num">Wert</th></tr></thead>
+      <tbody>
+        <tr><td>0.25</td><td class="num">2.25</td><td>nein</td><td>aufrunden auf 3</td><td class="num"><b>8</b></td></tr>
+        <tr><td>0.50</td><td class="num">4.5</td><td>nein</td><td>aufrunden auf 5</td><td class="num"><b>14</b></td></tr>
+        <tr><td>0.75</td><td class="num">6.75</td><td>nein</td><td>aufrunden auf 7</td><td class="num"><b>23</b></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:8px">
+      Hier ist <b>keiner</b> der drei Werte \(n\alpha\) ganzzahlig — es wird also
+      jedes Mal aufgerundet und <b>nie</b> gemittelt. Alle drei Quantile sind
+      tatsächlich beobachtete Werte.
+    </p>
+    <p>
+      \(\mathrm{IQR} = 23 - 8 = \mathbf{15}\)
+    </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · İki örneği yan yana koy</span>
+    <p>
+      Yukarıdaki iki örnek bilerek farklı seçildi — sınavda ikisi de çıkabilir:
+    </p>
+    <div class="tr-rows">
+      <div class="tr-row"><code>n = 26</code><span>\(n\alpha\) bazen tam sayı (13), bazen değil (6.5, 19.5) → <b>karışık</b></span></div>
+      <div class="tr-row"><code>n = 9</code><span>\(n\alpha\) hiçbir zaman tam sayı değil → <b>hep yukarı yuvarla</b></span></div>
+      <div class="tr-row"><code>n = 8</code><span>\(n\alpha\) her seferinde tam sayı (2, 4, 6) → <b>hep ortalama al</b></span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Bu yüzden ezber işe yaramaz.</b> Her seferinde \(n\alpha\)'yı hesapla ve
+      <b>bak</b>. Sadece bir tanesini ezberleyip hepsine uygularsan sistematik olarak
+      yanlış yaparsın — testteki A1 tam bunu ölçüyor.
+    </div>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 4 ---------- -->
@@ -277,6 +318,22 @@
       <li><b>Standardabweichung:</b> \(S = \sqrt{5.6} = \mathbf{2.366}\)</li>
     </ol>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 2 · symmetrische Daten</div>
+    <p>Gegeben \(x = 10,\ 12,\ 14,\ 16,\ 18\) mit \(n = 5\).</p>
+    <ol class="calc-steps">
+      <li><b>Mittelwert:</b> \(\bar x = \dfrac{70}{5} = 14\)</li>
+      <li><b>Abweichungen:</b> \(-4,\ -2,\ 0,\ 2,\ 4\) &nbsp; (Summe \(= 0\) ✓)</li>
+      <li><b>Quadrate:</b> \(16,\ 4,\ 0,\ 4,\ 16\) — Summe \(= 40\)</li>
+      <li><b>Varianz:</b> \(S^2 = \dfrac{40}{5} = 8\)</li>
+      <li><b>Standardabweichung:</b> \(S = \sqrt{8} = \mathbf{2.828}\)</li>
+    </ol>
+    <p>
+      Vergleiche mit Beispiel 1 (\(S = 2.366\)): Diese Daten streuen etwas stärker,
+      obwohl sie regelmäßiger aussehen. Das Auge täuscht — deshalb rechnet man.
+    </p>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 5 ---------- -->
@@ -356,6 +413,33 @@
       Probe: \(0.45 \cdot 0.55 = 0.2475\) ✓
     </p>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 4 · genau so kommt es in der Klausur</div>
+    <p>
+      Die Aufgabe gibt dir <b>nur zwei Summen</b> und den Stichprobenumfang —
+      die Einzelwerte siehst du nie:
+    </p>
+    <p style="text-align:center;margin:8px 0">
+      \(n = 20\), &nbsp; \(\displaystyle\sum_{i=1}^{20} x_i = 340\), &nbsp;
+      \(\displaystyle\sum_{i=1}^{20} x_i^2 = 6100\)
+    </p>
+    <ol class="calc-steps">
+      <li>\(\bar x = \dfrac{340}{20} = 17\)</li>
+      <li>\(\dfrac{1}{n}\sum x_i^2 = \dfrac{6100}{20} = 305\)</li>
+      <li>\(S^2 = 305 - 17^2 = 305 - 289 = \mathbf{16}\)</li>
+      <li>\(S = \sqrt{16} = \mathbf{4}\)</li>
+    </ol>
+    <p>
+      <b>Ohne</b> den Verschiebungssatz wäre diese Aufgabe nicht lösbar — du hast ja
+      gar keine Einzelwerte, um Abweichungen zu bilden. Genau dafür existiert er.
+    </p>
+    <p>
+      Die Probeklausur liefert solche Hinweise wörtlich, zum Beispiel:
+      <i>„Hinweis: \(\sum x_i = 85.7\); \(\sum x_i^2 = 871.49\)"</i> —
+      wenn du das siehst, weißt du sofort, welche Formel gemeint ist.
+    </p>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 6 ---------- -->
@@ -484,6 +568,36 @@
       von rund 142 Euro Breite.
     </p>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 2 · warum die Spannweite nichts taugt</div>
+    <p>
+      Die <b>Spannweite</b> ist \(x_{max} - x_{min}\) — das einfachste Streuungsmaß.
+      Zwei Datensätze mit je \(n = 5\):
+    </p>
+    <table class="in-box">
+      <thead><tr><th style="width:70px">Datensatz</th><th>Werte</th><th class="num">Spannweite</th><th class="num">IQR</th></tr></thead>
+      <tbody>
+        <tr><td><b>A</b></td><td>10 · 20 · 30 · 40 · 50</td><td class="num">40</td><td class="num"><b>20</b></td></tr>
+        <tr><td><b>B</b></td><td>10 · 29 · 30 · 31 · 50</td><td class="num">40</td><td class="num"><b>2</b></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:8px">
+      <b>Rechenweg für den IQR</b> (\(n = 5\), also \(n\alpha = 1.25\) bzw. \(3.75\),
+      beide nicht ganzzahlig → aufrunden auf 2 bzw. 4):
+    </p>
+    <ul class="clean" style="font-size:0.91rem">
+      <li>A: \(x_{0.25} = x_{(2)} = 20\), \(x_{0.75} = x_{(4)} = 40\) → \(\mathrm{IQR} = 20\)</li>
+      <li>B: \(x_{0.25} = x_{(2)} = 29\), \(x_{0.75} = x_{(4)} = 31\) → \(\mathrm{IQR} = 2\)</li>
+    </ul>
+    <p>
+      <b>Beide haben dieselbe Spannweite 40</b> — obwohl sich B fast vollständig
+      zwischen 29 und 31 zusammendrängt und nur zwei Randwerte ausreißen.
+      Die Spannweite schaut ausschließlich auf die beiden Extremwerte und ist
+      deshalb das <b>unrobusteste</b> Maß überhaupt. Der IQR zeigt den Unterschied
+      sofort.
+    </p>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 8 ---------- -->
@@ -670,6 +784,33 @@
       einen langen Whisker und einen Ausreißer → leicht <b>rechtsschief</b>.
     </p>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 2 · ein Boxplot ohne Ausreißer</div>
+    <p>Acht Messwerte, sortiert (\(n = 8\)):</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+      12 · 15 · 18 · 20 · 22 · 25 · 28 · 30
+    </p>
+    <ol class="calc-steps">
+      <li><b>Quartile:</b> \(n\alpha\) ist hier <b>immer</b> ganzzahlig (2, 4, 6),
+        also wird jedes Mal gemittelt:<br>
+        \(x_{0.25} = \frac{15+18}{2} = 16.5\) &nbsp;·&nbsp;
+        \(x_{med} = \frac{20+22}{2} = 21\) &nbsp;·&nbsp;
+        \(x_{0.75} = \frac{25+28}{2} = 26.5\)</li>
+      <li><b>IQR:</b> \(26.5 - 16.5 = 10\)</li>
+      <li><b>\(1.5 \cdot \mathrm{IQR}\):</b> \(15\)</li>
+      <li><b>Zaun unten:</b> \(16.5 - 15 = 1.5\) — das Minimum 12 liegt darüber ✓</li>
+      <li><b>Zaun oben:</b> \(26.5 + 15 = 41.5\) — das Maximum 30 liegt darunter ✓</li>
+      <li><b>Ergebnis:</b> <b>keine Ausreißer</b>. Die Whisker reichen deshalb bis
+        \(x_{min} = 12\) und \(x_{max} = 30\).</li>
+    </ol>
+    <p>
+      <b>Vergleich mit Beispiel 1:</b> Dort endete der Whisker bei 400.05 statt beim
+      Maximum, weil es einen Ausreißer gab. Hier fallen Whiskerende und Extremwert
+      zusammen. Beides ist richtig — es hängt allein davon ab, ob etwas außerhalb
+      der Zäune liegt.
+    </p>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 10: R ---------- -->
@@ -893,7 +1034,7 @@ b$out          <span class="cm"># die Ausreißer</span></pre>
 <div class="quiz-intro">
   <h2>Teste dich selbst</h2>
   <p>
-    10 Aufgaben · 24 Punkte · Taschenrechner erlaubt · ca. 50 Minuten.
+    14 Aufgaben · 34 Punkte · Taschenrechner erlaubt · ca. 70 Minuten.
   </p>
   <p style="margin-top:9px">
     <b>Klausurregeln:</b> Dezimal<b>punkt</b> · Zwischenergebnisse auf <b>vier</b>,
@@ -1038,6 +1179,66 @@ mean((x - mean(x))^2)</pre>
   <p style="font-size:0.91rem;margin-bottom:4px">
     (a) Welche Zahl gibt jede der beiden Zeilen aus?<br>
     (b) Warum sind die Ergebnisse verschieden? Mit welchem Faktor rechnet man um?</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+
+<!-- A11 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 11</span>
+    <span class="q-text">Sieben Werte, bereits sortiert (\(n = 7\)):
+      <span class="pts">(3 Punkte)</span></span></div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+    5 · 8 · 11 · 13 · 17 · 21 · 26
+  </p>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Bestimmen Sie \(x_{0.25}\), \(x_{0.5}\) und \(x_{0.75}\).
+    Geben Sie jeweils \(n\alpha\) an und ob gerundet oder gemittelt wurde.<br>
+    (b) Berechnen Sie den Interquartilsabstand.</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A12 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 12</span>
+    <span class="q-text">Zehn Bestellungen kosteten (in Euro, sortiert):
+      <span class="pts">(4 Punkte)</span></span></div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+    4 · 6 · 7 · 9 · 10 · 12 · 13 · 15 · 16 · 40
+  </p>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Bestimmen Sie \(x_{0.25}\), \(x_{med}\), \(x_{0.75}\) und den IQR.<br>
+    (b) Berechnen Sie beide Zäune und prüfen Sie auf Ausreißer.<br>
+    (c) Wo enden die beiden Whisker?<br>
+    (d) Skizzieren Sie den Boxplot.</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A13 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 13</span>
+    <span class="q-text">Für einen Datensatz mit \(n = 16\) ist
+      \(\sum x_i = 96\) und \(\sum x_i^2 = 640\).
+      <span class="pts">(3 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Berechnen Sie \(\bar x\) und \(S^2\) mit dem Verschiebungssatz.<br>
+    (b) Berechnen Sie \(S^2_*\).<br>
+    (c) Welchen Wert würde <code class="inline">var(x)</code> in R ausgeben?</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A14 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 14</span>
+    <span class="q-text">Zwei Datensätze mit je \(n = 5\):
+      <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+    A: 100 · 200 · 300 · 400 · 500 &nbsp;&nbsp;|&nbsp;&nbsp; B: 100 · 295 · 300 · 305 · 500
+  </p>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Berechnen Sie für beide die Spannweite und den IQR.<br>
+    (b) Welches der beiden Maße beschreibt den Unterschied zwischen A und B besser?
+    Begründen Sie in einem Satz.</p>
   <div class="lines"><div class="ln"></div><div class="ln"></div></div>
 </div>
 
@@ -1234,6 +1435,98 @@ mean((x - mean(x))^2)  #&gt; [1] 5.6</pre>
   </p>
 </div>
 
+
+<div class="sol">
+  <span class="sol-num">A 11 · 3 Punkte</span>
+  <p>Positionen: \(x_{(1)}=5\), \(x_{(2)}=8\), \(x_{(3)}=11\), \(x_{(4)}=13\),
+    \(x_{(5)}=17\), \(x_{(6)}=21\), \(x_{(7)}=26\). \(n = 7\).</p>
+  <p><b>(a)</b> Hier ist <span class="key">keines</span> der \(n\alpha\) ganzzahlig,
+    also wird immer <b>aufgerundet</b>:</p>
+  <table style="margin-top:6px">
+    <thead><tr><th>\(\alpha\)</th><th class="num">\(n\alpha\)</th><th>Position</th><th class="num">Quantil</th></tr></thead>
+    <tbody>
+      <tr><td>0.25</td><td class="num">1.75</td><td>aufrunden auf 2</td><td class="num"><b>8</b></td></tr>
+      <tr><td>0.50</td><td class="num">3.5</td><td>aufrunden auf 4</td><td class="num"><b>13</b></td></tr>
+      <tr><td>0.75</td><td class="num">5.25</td><td>aufrunden auf 6</td><td class="num"><b>21</b></td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:8px">
+    <b>(b)</b> \(\mathrm{IQR} = 21 - 8 = \) <span class="key">13</span>
+  </p>
+  <p>
+    Kontrolle: Der Median 13 ist auch \(x_{(4)}\), also der echte Mittelwert der
+    Positionen — bei ungeradem \(n\) passt das immer zusammen.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 12 · 4 Punkte</span>
+  <p><b>(a)</b> \(n = 10\):</p>
+  <ul class="clean" style="font-size:0.91rem">
+    <li>\(n\alpha = 10 \cdot 0.25 = 2.5\) → nicht ganzzahlig → aufrunden auf 3 →
+      \(x_{0.25} = x_{(3)} = \) <span class="key">7</span></li>
+    <li>\(n\alpha = 10 \cdot 0.5 = 5\) → <b>ganzzahlig</b> → mitteln →
+      \(x_{med} = \frac{x_{(5)} + x_{(6)}}{2} = \frac{10+12}{2} = \) <span class="key">11</span></li>
+    <li>\(n\alpha = 10 \cdot 0.75 = 7.5\) → nicht ganzzahlig → aufrunden auf 8 →
+      \(x_{0.75} = x_{(8)} = \) <span class="key">15</span></li>
+  </ul>
+  <p>\(\mathrm{IQR} = 15 - 7 = \) <span class="key">8</span></p>
+  <p><b>(b)</b> \(1.5 \cdot \mathrm{IQR} = 12\)</p>
+  <p>
+    Zaun unten: \(7 - 12 = -5\) → kein Wert liegt darunter (Minimum ist 4)<br>
+    Zaun oben: \(15 + 12 = 27\) → der Wert <span class="key">40 &gt; 27</span> ist
+    ein <b>Ausreißer</b>
+  </p>
+  <p>
+    <b>(c)</b> Whisker unten bis zum Minimum <span class="key">4</span>.
+    Whisker oben bis zum größten Nicht-Ausreißer, also bis <span class="key">16</span>
+    — <b>nicht</b> bis 40.
+  </p>
+  <p>
+    <b>(d)</b> Box von 7 bis 15, Medianlinie bei 11, Whisker von 4 bis 7 und von
+    15 bis 16, dazu ein einzelner Punkt bei 40.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 13 · 3 Punkte</span>
+  <p><b>(a)</b> \(\bar x = \dfrac{96}{16} = 6\)</p>
+  \[ S^2 = \frac{1}{n}\sum x_i^2 - \bar x^2 = \frac{640}{16} - 6^2 = 40 - 36 = 4 \]
+  <p>Also \(\bar x = \) <span class="key">6.000</span> und \(S^2 = \) <span class="key">4.000</span></p>
+  <p><b>(b)</b> Umrechnung mit \(n = 16\):</p>
+  \[ S^2_* = \frac{n}{n-1}\, S^2 = \frac{16}{15} \cdot 4 = 4.2667 \]
+  <p>Also \(S^2_* \approx\) <span class="key">4.267</span></p>
+  <p>
+    <b>(c)</b> R gibt mit <code class="inline">var(x)</code> immer die
+    <b>unverzerrte</b> Variante aus, also <span class="key">4.267</span> — nicht 4.
+  </p>
+  <p>
+    Probe: \(\sum(x_i - \bar x)^2 = n S^2 = 16 \cdot 4 = 64\) und
+    \((n-1) S^2_* = 15 \cdot 4.2667 = 64\) ✓
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 14 · 2 Punkte</span>
+  <p><b>(a)</b> Für beide ist \(n = 5\), also \(n\alpha = 1.25\) bzw. \(3.75\) —
+    beide nicht ganzzahlig, also aufrunden auf Position 2 bzw. 4.</p>
+  <table style="margin-top:6px">
+    <thead><tr><th>Datensatz</th><th class="num">Spannweite</th><th class="num">\(x_{0.25}\)</th><th class="num">\(x_{0.75}\)</th><th class="num">IQR</th></tr></thead>
+    <tbody>
+      <tr><td><b>A</b></td><td class="num">400</td><td class="num">200</td><td class="num">400</td><td class="num"><b>200</b></td></tr>
+      <tr><td><b>B</b></td><td class="num">400</td><td class="num">295</td><td class="num">305</td><td class="num"><b>10</b></td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:8px">
+    <b>(b)</b> Der <span class="key">IQR</span> beschreibt den Unterschied besser.
+    Beide Datensätze haben dieselbe Spannweite 400, weil Minimum und Maximum
+    identisch sind — aber in B drängen sich die mittleren drei Werte auf einem Band
+    von nur 10 Euro zusammen, während sie in A gleichmäßig verteilt sind.
+    Die Spannweite sieht <b>nur</b> die beiden Extremwerte und ist deshalb blind
+    für die eigentliche Struktur.
+  </p>
+</div>
+
 <div class="score">
   <h3>Deine Auswertung</h3>
   <table>
@@ -1241,10 +1534,10 @@ mean((x - mean(x))^2)  #&gt; [1] 5.6</pre>
       <tr><th style="width:110px">Punkte</th><th>Was das bedeutet</th></tr>
     </thead>
     <tbody>
-      <tr><td><b>20 – 24</b></td><td>Sehr gut. Damit ist die gesamte beschreibende Statistik für ein Merkmal abgedeckt — 35 % des A-Teils.</td></tr>
-      <tr><td><b>15 – 19</b></td><td>Gut. Rechne A1 und A3 noch einmal durch — Quantilregel und \(S^2\)/\(S^2_*\) sind die beiden Klausurfallen.</td></tr>
-      <tr><td><b>10 – 14</b></td><td>Wiederhole heute Abend Schritt 2 (Quantilregel) und Schritt 6 (\(S^2\) gegen \(S^2_*\)).</td></tr>
-      <tr><td><b>0 – 9</b></td><td>Arbeite Schritt 2 bis 7 morgen früh noch einmal durch (45 Minuten) und mache den Test erneut.</td></tr>
+      <tr><td><b>28 – 34</b></td><td>Sehr gut. Damit ist die gesamte beschreibende Statistik für ein Merkmal abgedeckt — 35 % des A-Teils.</td></tr>
+      <tr><td><b>21 – 27</b></td><td>Gut. Rechne A1, A11 und A13 noch einmal durch — Quantilregel und \(S^2\)/\(S^2_*\) sind die beiden Klausurfallen.</td></tr>
+      <tr><td><b>14 – 20</b></td><td>Wiederhole heute Abend Schritt 2 (Quantilregel) und Schritt 6 (\(S^2\) gegen \(S^2_*\)).</td></tr>
+      <tr><td><b>0 – 13</b></td><td>Arbeite Schritt 2 bis 7 morgen früh noch einmal durch (45 Minuten) und mache den Test erneut.</td></tr>
     </tbody>
   </table>
 </div>

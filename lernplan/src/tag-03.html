@@ -29,7 +29,7 @@
   <div class="cover-meta">
     <span class="chip chip-lav"><span class="ic">◷</span> ca. 3 Stunden</span>
     <span class="chip chip-mint"><span class="ic">▤</span> 10 Schritte</span>
-    <span class="chip chip-rose"><span class="ic">✎</span> 10 Aufgaben · 24 Punkte</span>
+    <span class="chip chip-rose"><span class="ic">✎</span> 14 Aufgaben · 34 Punkte</span>
     <span class="chip chip-sky"><span class="ic">▶</span> R-Ecke · TR açıklamalı</span>
   </div>
 
@@ -165,6 +165,23 @@
     </p>
   </div>
 
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 2 · aus Rohdaten</div>
+    <p>Wartezeiten in Minuten bei \(n = 7\) Kundinnen und Kunden:</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+      12 · 15 · 11 · 18 · 14 · 13 · 17
+    </p>
+    <ol class="calc-steps">
+      <li><b>Summe:</b> \(12+15+11+18+14+13+17 = 100\)</li>
+      <li><b>Mittel:</b> \(\bar x = \dfrac{100}{7} = 14.2857\)</li>
+      <li><b>Runden:</b> auf drei Nachkommastellen \(\bar x = \mathbf{14.286}\) Minuten</li>
+    </ol>
+    <p>
+      Bei Rohdaten musst du <b>nicht</b> sortieren — für den Mittelwert ist die
+      Reihenfolge egal. Für den Median gleich schon.
+    </p>
+  </div>
+
   <div class="box box-merke">
     <div class="box-label">◆ Die Eigenschaft, die du schon kennst</div>
     \[ \sum_{i=1}^{n}(x_i - \bar x) = 0 \]
@@ -231,6 +248,24 @@
     </ol>
   </div>
 
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 2 · ungerades \(n\)</div>
+    <p>Dieselben Wartezeiten wie in Schritt 2 — jetzt <b>sortiert</b> (\(n = 7\), also ungerade):</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+      11 · 12 · 13 · <b>14</b> · 15 · 17 · 18
+    </p>
+    <ol class="calc-steps">
+      <li>\(\dfrac{n+1}{2} = \dfrac{7+1}{2} = 4\) — wir brauchen den <b>4. Wert</b>.</li>
+      <li>\(x_{med} = x_{(4)} = \mathbf{14}\) Minuten</li>
+    </ol>
+    <p>
+      Bei ungeradem \(n\) gibt es <b>keine</b> Mittelung: Der Median ist ein
+      tatsächlich beobachteter Wert. Vergleiche: \(\bar x = 14.286\), aber
+      \(x_{med} = 14\) — hier liegen beide nah beieinander, die Verteilung ist
+      also ziemlich symmetrisch.
+    </p>
+  </div>
+
   <div class="tr">
     <span class="tr-badge">TR · Median bulma reçetesi</span>
     <div class="tr-rows">
@@ -281,6 +316,25 @@
         Daten: die Klasse mit der größten Dichte.</li>
     </ul>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 2 · wenn es zwei Modi gibt</div>
+    <p>Bewertung eines Films auf einer Skala von 1 bis 4, \(n = 20\):</p>
+    <table class="in-box">
+      <thead><tr><th>\(a_j\)</th><th class="num">1</th><th class="num">2</th><th class="num">3</th><th class="num">4</th></tr></thead>
+      <tbody><tr><td>\(h_j\)</td><td class="num">3</td><td class="num">7</td><td class="num">7</td><td class="num">3</td></tr></tbody>
+    </table>
+    <p style="margin-top:8px">
+      Das größte \(h_j\) ist 7 — und es kommt <b>zweimal</b> vor, bei den
+      Ausprägungen 2 und 3. Also gibt es <b>zwei Modi</b>:
+      \(x_{mod} \in \{2,\ 3\}\).
+    </p>
+    <p>
+      Die Verteilung ist damit <b>bimodal</b> (Tag 2, Schritt 7). Solche Daten
+      entstehen oft, wenn zwei verschiedene Gruppen vermischt sind — hier vielleicht
+      Fans und Kritiker des Films.
+    </p>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 5 ---------- -->
@@ -397,6 +451,43 @@
       ordinalskaliert ist" gibt die vollen Punkte.
     </p>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 2 · ein ordinales Merkmal</div>
+    <p>
+      Kundenzufriedenheit bei \(n = 50\) Befragten, fünf geordnete Kategorien:
+    </p>
+    <table class="in-box">
+      <thead>
+        <tr>
+          <th>Kategorie</th>
+          <th class="num">sehr<br>unzufrieden</th>
+          <th class="num">unzufrieden</th>
+          <th class="num">neutral</th>
+          <th class="num">zufrieden</th>
+          <th class="num">sehr<br>zufrieden</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>\(h_j\)</td><td class="num">2</td><td class="num">5</td><td class="num">8</td><td class="num">20</td><td class="num">15</td></tr>
+        <tr><td>kumuliert</td><td class="num">2</td><td class="num">7</td><td class="num">15</td><td class="num">35</td><td class="num">50</td></tr>
+      </tbody>
+    </table>
+    <ol class="calc-steps">
+      <li><b>Modus:</b> größtes \(h_j\) ist 20 → \(x_{mod} = \) „zufrieden"</li>
+      <li><b>Median:</b> \(n = 50\) gerade, gesucht sind \(x_{(25)}\) und \(x_{(26)}\).
+        Laut kumulierter Zeile belegen die Positionen 16 bis 35 die Kategorie
+        „zufrieden" — beide gesuchten Positionen liegen also dort.
+        \(x_{med} = \) „zufrieden"</li>
+      <li><b>Arithmetisches Mittel:</b> <b>nicht erlaubt</b>. Die Kategorien haben eine
+        Reihenfolge, aber keine messbaren Abstände.</li>
+    </ol>
+    <p>
+      <b>So schreibt man es in der Klausur:</b> „Das arithmetische Mittel kann nicht
+      sinnvoll angegeben werden, da das Merkmal nur ordinalskaliert ist."
+      Ein Satz — volle Punkte.
+    </p>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 6 ---------- -->
@@ -474,6 +565,33 @@
       gerçek ortalamadan biraz sapar — bu <b>hata değil</b>, yöntemin doğası.
     </div>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 2 · ungleich breite Klassen</div>
+    <p>Monatliche Ausgaben für Bücher (in Euro) bei \(n = 50\) Studierenden:</p>
+    <table class="in-box">
+      <thead>
+        <tr><th>Klasse</th><th class="num">\([0, 20)\)</th><th class="num">\([20, 50)\)</th><th class="num">\([50, 100]\)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>\(n(K_j)\)</td><td class="num">15</td><td class="num">25</td><td class="num">10</td></tr>
+        <tr><td>\(m_j\)</td><td class="num">10</td><td class="num">35</td><td class="num">75</td></tr>
+      </tbody>
+    </table>
+    <ol class="calc-steps">
+      <li><b>Kontrolle:</b> \(15 + 25 + 10 = 50 = n\) ✓</li>
+      <li><b>Klassenmitten:</b> \(\frac{0+20}{2} = 10\), \(\frac{20+50}{2} = 35\),
+        \(\frac{50+100}{2} = 75\)</li>
+      <li><b>Einsetzen:</b>
+        \(\bar x_K = \dfrac{15 \cdot 10 + 25 \cdot 35 + 10 \cdot 75}{50}
+        = \dfrac{150 + 875 + 750}{50} = \dfrac{1775}{50} = \mathbf{35.5}\) Euro</li>
+    </ol>
+    <p>
+      Beachte: Dass die Klassen <b>unterschiedlich breit</b> sind, ändert an der
+      Rechnung <b>nichts</b>. Anders als beim Histogramm (Tag 2) wird hier nicht
+      durch die Breite geteilt — die Breite geht nur über die Klassenmitte ein.
+    </p>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 7 ---------- -->
@@ -520,6 +638,35 @@
       Gruppen gleich groß wären.
     </p>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · drei Schichten</div>
+    <p>
+      Durchschnittliche Anzahl gelesener Bücher pro Monat, getrennt nach Fachbereich:
+    </p>
+    <table class="in-box">
+      <thead><tr><th>Schicht</th><th class="num">\(n_j\)</th><th class="num">\(\bar x_j\)</th><th class="num">\(n_j \bar x_j\)</th></tr></thead>
+      <tbody>
+        <tr><td>Wirtschaft</td><td class="num">120</td><td class="num">2.4</td><td class="num">288</td></tr>
+        <tr><td>Jura</td><td class="num">80</td><td class="num">3.1</td><td class="num">248</td></tr>
+        <tr><td>Informatik</td><td class="num">50</td><td class="num">1.8</td><td class="num">90</td></tr>
+        <tr><td><b>Summe</b></td><td class="num"><b>250</b></td><td class="num">—</td><td class="num"><b>626</b></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:8px">
+      \(\bar x = \dfrac{626}{250} = \mathbf{2.504}\) Bücher pro Monat.
+    </p>
+    <p>
+      <b>Vergleich:</b> Der ungewichtete Durchschnitt wäre
+      \(\frac{2.4 + 3.1 + 1.8}{3} = 2.433\) — also falsch. Die große
+      Wirtschaftsgruppe zieht das richtige Ergebnis zu ihrem Wert 2.4 hin.
+    </p>
+    <p>
+      <b>Tipp für die Klausur:</b> Lege dir immer eine <b>vierte Spalte</b>
+      \(n_j \bar x_j\) an. Dann musst du am Ende nur noch die Spaltensumme durch
+      \(n\) teilen — und der Lösungsweg ist automatisch nachvollziehbar.
+    </p>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 8 ---------- -->
@@ -589,6 +736,29 @@
       <b>rechtsschief</b>. 7500'lük uç değer sağda, tam da beklediğimiz gibi.
     </div>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Übung zum Mitdenken</div>
+    <p>Bestimme die Form. Decke die rechte Spalte zuerst ab.</p>
+    <table class="in-box">
+      <thead><tr><th>Gegeben</th><th style="width:210px">Form</th></tr></thead>
+      <tbody>
+        <tr><td>\(\bar x = 52,\ x_{med} = 50,\ x_{mod} = 47\)</td>
+            <td><b>rechtsschief</b> — \(\bar x\) ist am größten</td></tr>
+        <tr><td>\(\bar x = 8.1,\ x_{med} = 8.0,\ x_{mod} = 8.0\)</td>
+            <td><b>annähernd symmetrisch</b> — alle drei fast gleich</td></tr>
+        <tr><td>\(\bar x = 3.2,\ x_{med} = 4.0,\ x_{mod} = 4.5\)</td>
+            <td><b>linksschief</b> — \(\bar x\) ist am kleinsten</td></tr>
+        <tr><td>Einkommen aus Testat 1: \(1500,\ 900,\ 900\)</td>
+            <td><b>rechtsschief</b> — der Ausreißer 7500 liegt rechts</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:8px">
+      <b>Immer zuerst:</b> Wo steht \(\bar x\) im Vergleich zu den anderen beiden?
+      Ganz oben → rechtsschief. Ganz unten → linksschief. Mittendrin und nah dran
+      → symmetrisch.
+    </p>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 9 ---------- -->
@@ -646,6 +816,36 @@
       der beiden.
     </p>
   </div>
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel 2 · Währungsumrechnung</div>
+    <p>
+      Preise in Euro: \(\bar x = 45\) und \(x_{med} = 40\). Umrechnung in Dollar
+      zum Kurs 1.08, also \(y = 1.08\,x\) (hier ist \(a = 0\) und \(b = 1.08\)).
+    </p>
+    <ol class="calc-steps">
+      <li>\(\bar y = 1.08 \cdot 45 = \mathbf{48.6}\) Dollar</li>
+      <li>\(y_{med} = 1.08 \cdot 40 = \mathbf{43.2}\) Dollar</li>
+    </ol>
+    <p>
+      Weil \(b = 1.08 > 0\) ist, bleibt die Reihenfolge erhalten — die
+      Transformation ist monoton, und der Median darf einfach mittransformiert werden.
+    </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Transformasyon karar kuralı</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>\(y = a + bx\)</code><span><b>Doğrusal.</b> Hem \(\bar x\) hem \(x_{med}\) doğrudan dönüştürülür: \(a + b\cdot\)(eski değer).</span></div>
+      <div class="tr-row"><code>\(y = \log x,\ \sqrt{x}\)</code><span><b>Doğrusal değil ama monoton.</b> Sadece <b>Median</b> dönüştürülebilir. Mittelwert için veriyi baştan hesaplaman gerekir.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Neden Median her zaman çalışıyor?</b> Çünkü Median sadece <b>sıraya</b> bakar.
+      Monoton fonksiyon sırayı bozmaz, yani ortadaki değer dönüşümden sonra da
+      ortadaki değer olarak kalır. Mittelwert ise tüm değerlerin <b>büyüklüğünü</b>
+      kullanır, o yüzden sadece doğrusal dönüşümde tahmin edilebilir.
+    </div>
+  </div>
+
 </div>
 
 <!-- ---------- SCHRITT 10: R ---------- -->
@@ -867,7 +1067,7 @@ wert   &lt;- <span class="fn">c</span>(<span class="nu">10</span>, <span class="
 <div class="quiz-intro">
   <h2>Teste dich selbst</h2>
   <p>
-    10 Aufgaben · 24 Punkte · Taschenrechner erlaubt · ca. 50 Minuten.
+    14 Aufgaben · 34 Punkte · Taschenrechner erlaubt · ca. 70 Minuten.
   </p>
   <p style="margin-top:9px">
     <b>Klausurregeln:</b> Dezimal<b>punkt</b> · Zwischenergebnisse auf <b>vier</b>,
@@ -1015,6 +1215,67 @@ which(table(x) == max(table(x)))</pre>
     (a) Welche Ausgabe erzeugt <code class="inline">table(x)</code>?<br>
     (b) Welchen Wert liefert die letzte Zeile als Modus — und was bedeutet die
     zweite Zahl in der Ausgabe?</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+
+<!-- A11 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 11</span>
+    <span class="q-text">Sieben Pakete wiegen (in kg): <span class="pts">(3 Punkte)</span></span></div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:0.84rem;text-align:center;margin:6px 0">
+    23 · 19 · 31 · 25 · 19 · 28 · 22
+  </p>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Bestimmen Sie \(\bar x\), \(x_{med}\) und \(x_{mod}\).<br>
+    (b) Welche Schiefe liegt vor? Begründen Sie mit der Reihenfolge der drei Maße.</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A12 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 12</span>
+    <span class="q-text">In einer Umfrage wurde der höchste Schulabschluss erfasst:
+      Hauptschule (8), Realschule (14), Abitur (28).
+      <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:4px">
+    (a) Welches Skalenniveau liegt vor?<br>
+    (b) Welche Lagemaße dürfen Sie berechnen? Bestimmen Sie alle erlaubten.
+    Für die nicht erlaubten geben Sie eine kurze Begründung an.</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A13 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 13</span>
+    <span class="q-text">Eine Klausur wurde in drei Hörsälen geschrieben.
+      <span class="pts">(3 Punkte)</span></span></div>
+  <table style="margin-top:8px">
+    <thead><tr><th>Hörsaal</th><th class="num">A</th><th class="num">B</th><th class="num">C</th></tr></thead>
+    <tbody>
+      <tr><td>Anzahl \(n_j\)</td><td class="num">45</td><td class="num">30</td><td class="num">25</td></tr>
+      <tr><td>Durchschnittspunkte \(\bar x_j\)</td><td class="num">68</td><td class="num">74</td><td class="num">80</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.91rem;margin:8px 0 4px">
+    (a) Berechnen Sie die Durchschnittspunktzahl aller Teilnehmenden. Lösungsweg angeben.<br>
+    (b) Ein Kommilitone rechnet \((68+74+80)/3 = 74\). Warum ist das falsch?<br>
+    (c) Liegt Ihr Ergebnis näher an 68 oder an 80? Erklären Sie, warum das so sein muss.</p>
+  <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+
+<!-- A14 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 14</span>
+    <span class="q-text">Die Fahrzeit zur Uni wurde bei \(n = 25\) Studierenden
+      klassiert erfasst. <span class="pts">(2 Punkte)</span></span></div>
+  <table style="margin-top:8px">
+    <thead><tr><th>Klasse (Minuten)</th><th class="num">\([0, 10)\)</th><th class="num">\([10, 30)\)</th><th class="num">\([30, 60]\)</th></tr></thead>
+    <tbody><tr><td>\(n(K_j)\)</td><td class="num">8</td><td class="num">14</td><td class="num">3</td></tr></tbody>
+  </table>
+  <p style="font-size:0.91rem;margin:8px 0 4px">
+    Berechnen Sie den Mittelwert der klassierten Daten. Geben Sie die Klassenmitten
+    und den vollständigen Lösungsweg an.</p>
   <div class="lines"><div class="ln"></div><div class="ln"></div></div>
 </div>
 
@@ -1199,6 +1460,96 @@ which(table(x) == max(table(x)))</pre>
   </p>
 </div>
 
+
+<div class="sol">
+  <span class="sol-num">A 11 · 3 Punkte</span>
+  <p><b>(a)</b> Sortiert: 19, 19, 22, <span class="key">23</span>, 25, 28, 31</p>
+  <p>
+    <b>Mittel:</b> Summe \(= 23+19+31+25+19+28+22 = 167\), also
+    \(\bar x = \dfrac{167}{7} = 23.8571 \approx\) <span class="key">23.857</span> kg
+  </p>
+  <p>
+    <b>Median:</b> \(n = 7\) ist ungerade, \(\dfrac{n+1}{2} = 4\), also
+    \(x_{med} = x_{(4)} = \) <span class="key">23</span> kg
+  </p>
+  <p>
+    <b>Modus:</b> Nur die 19 kommt zweimal vor, alle anderen einmal, also
+    \(x_{mod} = \) <span class="key">19</span> kg
+  </p>
+  <p>
+    <b>(b)</b> Es gilt \(23.857 > 23 > 19\), also
+    \(\bar x > x_{med} > x_{mod}\) → die Verteilung ist
+    <span class="key">rechtsschief</span> (= linkssteil). Der lange Ausläufer
+    zeigt nach rechts, hin zum schwersten Paket mit 31 kg.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 12 · 2 Punkte</span>
+  <p>
+    <b>(a)</b> <span class="key">Ordinalskaliert.</span> Die Kategorien haben eine
+    klare Reihenfolge (Hauptschule &lt; Realschule &lt; Abitur), aber die Abstände
+    zwischen ihnen sind nicht messbar.
+  </p>
+  <p><b>(b)</b> Erlaubt sind <span class="key">Modus und Median</span>.</p>
+  <p>
+    <b>Modus:</b> größtes \(h_j\) ist 28 → \(x_{mod} = \) „Abitur"
+  </p>
+  <p>
+    <b>Median:</b> \(n = 8 + 14 + 28 = 50\), gerade, gesucht sind \(x_{(25)}\)
+    und \(x_{(26)}\). Kumuliert: 8 · 22 · 50. Die Positionen 23 bis 50 gehören zu
+    „Abitur", also \(x_{med} = \) „Abitur".
+  </p>
+  <p>
+    <b>Arithmetisches Mittel:</b> nicht erlaubt — das Merkmal ist nur
+    ordinalskaliert, es gibt keine sinnvollen Abstände zwischen den Abschlüssen.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 13 · 3 Punkte</span>
+  <p><b>(a)</b> Gewichteter Durchschnitt, \(n = 45 + 30 + 25 = 100\):</p>
+  <table style="margin-top:6px">
+    <thead><tr><th>Hörsaal</th><th class="num">\(n_j\)</th><th class="num">\(\bar x_j\)</th><th class="num">\(n_j\bar x_j\)</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td class="num">45</td><td class="num">68</td><td class="num">3060</td></tr>
+      <tr><td>B</td><td class="num">30</td><td class="num">74</td><td class="num">2220</td></tr>
+      <tr><td>C</td><td class="num">25</td><td class="num">80</td><td class="num">2000</td></tr>
+      <tr><td><b>Summe</b></td><td class="num"><b>100</b></td><td class="num">—</td><td class="num"><b>7280</b></td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:8px">\(\bar x = \dfrac{7280}{100} = \) <span class="key">72.800</span> Punkte</p>
+  <p>
+    <b>(b)</b> Weil die Hörsäle <b>unterschiedlich groß</b> sind. Der ungewichtete
+    Durchschnitt würde jeden Hörsaal gleich stark zählen, obwohl in A fast doppelt
+    so viele Personen sitzen wie in C.
+  </p>
+  <p>
+    <b>(c)</b> Näher an <span class="key">68</span>. Hörsaal A stellt mit 45 von 100
+    Personen die größte Gruppe und zieht das Gesamtmittel zu seinem Wert hin.
+    Deshalb liegt 72.8 unterhalb des ungewichteten Werts 74.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 14 · 2 Punkte</span>
+  <p><b>Klassenmitten:</b></p>
+  <p>
+    \(m_1 = \dfrac{0+10}{2} = \) <span class="key">5</span> &nbsp;·&nbsp;
+    \(m_2 = \dfrac{10+30}{2} = \) <span class="key">20</span> &nbsp;·&nbsp;
+    \(m_3 = \dfrac{30+60}{2} = \) <span class="key">45</span>
+  </p>
+  <p><b>Kontrolle:</b> \(8 + 14 + 3 = 25 = n\) ✓</p>
+  \[ \bar x_K = \frac{1}{25}\left(8 \cdot 5 + 14 \cdot 20 + 3 \cdot 45\right)
+     = \frac{40 + 280 + 135}{25} = \frac{455}{25} = 18.2 \]
+  <p>Also \(\bar x_K = \) <span class="key">18.200</span> Minuten.</p>
+  <p>
+    Beachte: Die Klassen sind unterschiedlich breit (10, 20 und 30 Minuten) —
+    das ändert an der Rechnung nichts. Anders als beim Histogramm wird hier
+    <b>nicht</b> durch die Breite geteilt.
+  </p>
+</div>
+
 <div class="score">
   <h3>Deine Auswertung</h3>
   <table>
@@ -1206,10 +1557,10 @@ which(table(x) == max(table(x)))</pre>
       <tr><th style="width:110px">Punkte</th><th>Was das bedeutet</th></tr>
     </thead>
     <tbody>
-      <tr><td><b>20 – 24</b></td><td>Sehr gut. Besonders A4 (klassierte Daten) ist bare Klausurpunkte — die sitzen.</td></tr>
-      <tr><td><b>15 – 19</b></td><td>Gut. Rechne A1 und A4 noch einmal komplett durch, dann weiter zu Tag 4.</td></tr>
-      <tr><td><b>10 – 14</b></td><td>Wiederhole heute Abend Schritt 5 (welches Maß wann) und Schritt 6 (klassierte Daten).</td></tr>
-      <tr><td><b>0 – 9</b></td><td>Arbeite Schritt 2 bis 6 morgen früh noch einmal durch (45 Minuten) und mache den Test erneut.</td></tr>
+      <tr><td><b>28 – 34</b></td><td>Sehr gut. Besonders A4 und A14 (klassierte Daten) sind bare Klausurpunkte — die sitzen.</td></tr>
+      <tr><td><b>21 – 27</b></td><td>Gut. Rechne A1, A4 und A13 noch einmal komplett durch, dann weiter zu Tag 4.</td></tr>
+      <tr><td><b>14 – 20</b></td><td>Wiederhole heute Abend Schritt 5 (welches Maß wann) und Schritt 6 (klassierte Daten).</td></tr>
+      <tr><td><b>0 – 13</b></td><td>Arbeite Schritt 2 bis 6 morgen früh noch einmal durch (45 Minuten) und mache den Test erneut.</td></tr>
     </tbody>
   </table>
 </div>
