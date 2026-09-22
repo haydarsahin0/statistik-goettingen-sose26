@@ -1,0 +1,690 @@
+<title>Statistik-Sprint SDS1</title>
+<meta name="description" content="Interaktiver 5-Tage-Lernplan für die Klausur Statistik und Data Science I (Göttingen, SoSe 2026)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F8F5; --grid:rgba(52,86,160,.075); --sheet:#FFFFFF;
+  --ink:#1A2130; --ink-2:#4B5568; --ink-3:#7A8496; --line:#D6DCE6; --line-2:#E8ECF2;
+  --pen:#1E3FA6; --pen-2:#2F55D4; --pen-soft:#E7ECFB; --on-pen:#FFFFFF;
+  --marker:#FFE45A; --marker-ink:#1A2130;
+  --tr:#236B62; --tr-soft:#E4F2EF;
+  --ok:#137446; --ok-soft:#E2F3E9; --bad:#B42318; --bad-soft:#FCEAE7; --warn:#9A5B00; --warn-soft:#FFF3DA;
+  --code-bg:#151A25; --code-ink:#E3E8F2; --code-dim:#8893A8; --code-kw:#9DB5FF; --code-str:#A8E0B5; --code-com:#8FA0B8;
+  --shadow:0 1px 0 rgba(26,33,48,.04),0 6px 18px -10px rgba(26,33,48,.25);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#10131A; --grid:rgba(140,170,235,.055); --sheet:#171B24;
+    --ink:#E7EAF0; --ink-2:#A9B2C2; --ink-3:#7D879A; --line:#2B3342; --line-2:#222938;
+    --pen:#8FA8FF; --pen-2:#AFC1FF; --pen-soft:#1D2542; --on-pen:#0E1220;
+    --marker:#E8CB3F; --marker-ink:#14171D;
+    --tr:#7FCCC0; --tr-soft:#132826;
+    --ok:#62D59E; --ok-soft:#12291E; --bad:#FF8C7C; --bad-soft:#2F1714; --warn:#F2B64C; --warn-soft:#2B2210;
+    --code-bg:#0A0D13; --code-ink:#E3E8F2; --code-dim:#7C879B;
+    --shadow:0 1px 0 rgba(0,0,0,.3),0 8px 22px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#10131A; --grid:rgba(140,170,235,.055); --sheet:#171B24;
+  --ink:#E7EAF0; --ink-2:#A9B2C2; --ink-3:#7D879A; --line:#2B3342; --line-2:#222938;
+  --pen:#8FA8FF; --pen-2:#AFC1FF; --pen-soft:#1D2542; --on-pen:#0E1220;
+  --marker:#E8CB3F; --marker-ink:#14171D;
+  --tr:#7FCCC0; --tr-soft:#132826;
+  --ok:#62D59E; --ok-soft:#12291E; --bad:#FF8C7C; --bad-soft:#2F1714; --warn:#F2B64C; --warn-soft:#2B2210;
+  --code-bg:#0A0D13; --code-ink:#E3E8F2; --code-dim:#7C879B;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 8px 22px -12px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background-color:var(--paper); color:var(--ink);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:20px 20px; background-attachment:fixed;
+  font:16px/1.62 var(--f-body); -webkit-font-smoothing:antialiased;
+}
+a{color:var(--pen)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2.5px solid var(--pen-2);outline-offset:2px;border-radius:3px}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+code,.mono{font-family:var(--f-mono);font-size:.9em}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- top bar ---------- */
+.top{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:30;
+  display:flex; align-items:center; gap:12px; padding:10px 16px;
+  background:color-mix(in srgb,var(--paper) 88%,transparent); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink);min-width:0}
+.brand b{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:-.01em;white-space:nowrap}
+.brand span{font-size:12px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.top .sp{flex:1}
+.tbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--sheet);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer;white-space:nowrap}
+.tbtn:hover{border-color:var(--pen)}
+.tbtn[aria-pressed="true"]{background:var(--tr-soft);border-color:var(--tr);color:var(--tr)}
+.menu-btn{display:none}
+@media (max-width:980px){ .menu-btn{display:inline-flex} .brand span{display:none} }
+@media (max-width:520px){ .tbtn .lbl{display:none} .brand b{font-size:17px} }
+
+/* ---------- shell ---------- */
+.shell{display:grid;grid-template-columns:292px minmax(0,1fr);min-height:calc(100% - 56px)}
+.rail{
+  position:sticky; top:calc(56px + env(safe-area-inset-top,0px)); align-self:start;
+  height:calc(100vh - 56px); overflow:auto; padding:18px 14px 40px 16px; border-right:1px solid var(--line);
+  background:color-mix(in srgb,var(--paper) 70%,var(--sheet));
+}
+.main{padding-inline:clamp(16px,4vw,48px);padding-block:28px 96px;min-width:0}
+.col{max-width:780px;margin-inline:auto}
+@media (max-width:980px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .rail{position:fixed;inset:0 auto 0 0;width:min(320px,88vw);height:100%;z-index:40;transform:translateX(-102%);transition:transform .22s ease;padding-top:calc(18px + env(safe-area-inset-top,0px));box-shadow:var(--shadow);background:var(--sheet)}
+  body.nav-open .rail{transform:none}
+  body.nav-open .scrim{display:block}
+}
+.scrim{display:none;position:fixed;inset:0;z-index:35;background:rgba(10,14,22,.4)}
+
+.rail h4{font-size:12px;font-family:var(--f-body);font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:18px 6px 6px}
+.rlink{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;border-radius:8px;padding:7px 8px;cursor:pointer;color:var(--ink-2);font-size:14.5px;line-height:1.3}
+.rlink:hover{background:var(--pen-soft);color:var(--ink)}
+.rlink.cur{background:var(--pen-soft);color:var(--pen);font-weight:600}
+.rday{display:flex;align-items:center;gap:10px;margin:16px 4px 4px;padding:0 4px}
+.rday .dn{font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1;color:var(--pen);width:28px}
+.rday .dt{font-weight:600;font-size:14px;line-height:1.25}
+.rday .dt small{display:block;font-weight:400;color:var(--ink-3);font-size:12px}
+.tick{flex:none;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:10px;color:transparent}
+.tick.done{background:var(--ok);border-color:var(--ok);color:var(--on-pen)}
+.rid{flex:none;font-family:var(--f-mono);font-size:12px;color:var(--ink-3);width:26px}
+
+/* ---------- home ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:end;margin-bottom:28px}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.hero h1{font-size:clamp(34px,6vw,56px);font-weight:800;letter-spacing:-.025em;margin:8px 0 12px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--marker) 58% 92%,transparent 92%);color:inherit;padding:0 .08em}
+.lead{font-size:18px;color:var(--ink-2);max-width:60ch}
+.count{border:1.5px solid var(--ink);background:var(--sheet);padding:16px 18px;box-shadow:4px 4px 0 var(--ink)}
+.count .big{font-family:var(--f-display);font-weight:800;font-size:64px;line-height:.95;letter-spacing:-.03em}
+.count .sm{color:var(--ink-2);font-size:14px}
+.count dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:12px 0 0;font-size:14px}
+.count dt{color:var(--ink-3)} .count dd{margin:0}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--pen);color:var(--on-pen);border:0;border-radius:10px;padding:12px 18px;font-weight:600;cursor:pointer;font-size:16px;text-decoration:none}
+.cta:hover{background:var(--pen-2)}
+.cta.ghost{background:transparent;color:var(--pen);border:1.5px solid var(--pen)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.parts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:26px 0}
+@media (max-width:620px){.parts{grid-template-columns:1fr}}
+.part{border:1px solid var(--line);background:var(--sheet);border-radius:12px;padding:16px}
+.part h3{font-size:20px;margin-bottom:4px}
+.part .meta{font-family:var(--f-mono);font-size:13px;color:var(--pen)}
+.part ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2);font-size:15px}
+.days{display:grid;gap:12px;margin-top:10px}
+.day{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:center;border:1px solid var(--line);background:var(--sheet);border-radius:12px;padding:14px 16px;cursor:pointer;text-align:left;width:100%}
+.day:hover{border-color:var(--pen)}
+.day .dn{font-family:var(--f-display);font-weight:800;font-size:44px;line-height:1;color:var(--pen);letter-spacing:-.03em}
+.day h3{font-size:19px}
+.day p{font-size:14px;color:var(--ink-2);margin-top:2px}
+.bar{height:6px;background:var(--line-2);border-radius:99px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--ok);border-radius:99px}
+.day .pc{font-family:var(--f-mono);font-size:13px;color:var(--ink-3);text-align:right}
+@media (max-width:520px){.day{grid-template-columns:44px minmax(0,1fr)}.day .dn{font-size:34px}.day .pc{display:none}}
+.sec-h{font-size:24px;margin:34px 0 10px}
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:720px){.how{grid-template-columns:1fr}}
+.how div{border-top:2px solid var(--ink);padding-top:10px}
+.how b{display:block;font-family:var(--f-display);font-size:17px;margin-bottom:2px}
+.how p{font-size:14.5px;color:var(--ink-2)}
+
+/* ---------- lesson ---------- */
+.lhead{margin-bottom:22px}
+.crumb{font-size:13px;color:var(--ink-3);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.crumb button{border:0;background:none;color:var(--pen);cursor:pointer;padding:0;font-size:13px}
+.lhead h1{font-size:clamp(28px,4.6vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 10px}
+.lid{font-family:var(--f-mono);font-weight:500;color:var(--pen);font-size:.55em;vertical-align:.35em;margin-right:.4em;letter-spacing:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:2px 9px;background:var(--sheet);color:var(--ink-2);white-space:nowrap}
+.rel{display:inline-flex;gap:3px;align-items:center;font-size:12.5px;color:var(--ink-2);margin-right:6px}
+.rel i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--pen);display:inline-block}
+.rel i.on{background:var(--pen)}
+.goal{margin-top:14px;border-left:3px solid var(--ink);padding:4px 0 4px 14px;color:var(--ink-2)}
+.blocks{display:grid;gap:26px}
+.blk h3{font-size:21px;margin-bottom:8px;letter-spacing:-.01em}
+.kind{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:600;color:var(--ink-3);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.kind::after{content:"";flex:1;height:1px;background:var(--line)}
+.prose{display:grid;gap:10px;max-width:68ch}
+.prose ul,.prose ol{margin:0;padding-left:22px;display:grid;gap:4px}
+.prose b,.prose strong{font-weight:600}
+.hl{background:linear-gradient(transparent 55%,var(--marker) 55% 92%,transparent 92%);color:inherit;padding:0 .06em}
+.tr{color:var(--tr);background:var(--tr-soft);border-radius:8px;padding:8px 12px;font-size:15px;line-height:1.55}
+.tr::before{content:"TR";font:600 11px/1 var(--f-mono);letter-spacing:.05em;border:1px solid currentColor;border-radius:4px;padding:2px 4px;margin-right:8px;vertical-align:1px}
+body.no-tr .tr{display:none}
+.tbl{overflow-x:auto;max-width:100%}
+table{border-collapse:collapse;font-size:14.5px;font-variant-numeric:tabular-nums}
+th,td{border:1px solid var(--line);padding:5px 10px;text-align:center}
+th{background:var(--line-2);font-weight:600}
+td.l,th.l{text-align:left}
+
+.terms{display:grid;grid-template-columns:minmax(0,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--sheet)}
+.term{display:grid;grid-template-columns:minmax(150px,.9fr) minmax(0,2fr);gap:4px 16px;padding:10px 14px;border-top:1px solid var(--line-2)}
+.term:first-child{border-top:0}
+.term dt{font-weight:600}
+.term dt small{display:block;font-weight:400;color:var(--tr);font-size:13px}
+body.no-tr .term dt small{display:none}
+.term dd{margin:0;color:var(--ink-2);font-size:15px}
+@media (max-width:560px){.term{grid-template-columns:1fr}}
+
+.fbox{border:1.5px solid var(--ink);background:var(--sheet);padding:14px 16px 12px;position:relative}
+.fbox .fh{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+.fbox .fh b{font-family:var(--f-display);font-size:17px}
+.fmath{overflow-x:auto;overflow-y:hidden;padding:4px 0}
+.fparts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;font-size:14.5px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);align-items:baseline}
+.fparts span:nth-child(odd){text-align:right;white-space:nowrap}
+.fparts span:nth-child(even){color:var(--ink-2)}
+.fnote{font-size:14px;color:var(--ink-2);margin-top:8px}
+.sheet-t{font-size:12.5px;border:1px dashed var(--pen);color:var(--pen);background:transparent;border-radius:6px;padding:3px 8px;cursor:pointer;white-space:nowrap}
+.sheet-t[aria-pressed="true"]{border-style:solid;background:var(--pen);color:var(--on-pen)}
+
+.rule{background:var(--marker);color:var(--marker-ink);padding:14px 16px;position:relative;transform:rotate(-.25deg);box-shadow:var(--shadow)}
+.rule .rk{font:600 11.5px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;opacity:.75}
+.rule p{font-size:17px;font-weight:500;line-height:1.5}
+.rule .tr{margin-top:8px;background:rgba(255,255,255,.55);color:#1d5a52}
+
+.ex{border:1px solid var(--line);background:var(--sheet);border-radius:12px;padding:16px}
+.ex .q{margin-bottom:10px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:st}
+.steps li{counter-increment:st;display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start}
+.steps li::before{content:counter(st);font:600 13px/26px var(--f-mono);width:26px;height:26px;border-radius:50%;background:var(--pen-soft);color:var(--pen);text-align:center}
+.steps li>div{min-width:0;overflow-x:auto}
+.ans{margin-top:10px;border:2px solid var(--pen);border-radius:4px;padding:8px 12px;color:var(--pen);font-weight:600;display:inline-block;max-width:100%;overflow-x:auto}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--pen);background:var(--sheet);color:var(--pen);border-radius:8px;padding:7px 13px;font-size:14.5px;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--pen-soft)}
+.btn.solid{background:var(--pen);color:var(--on-pen)}
+.btn.solid:hover{background:var(--pen-2)}
+.btn.quiet{border-color:var(--line);color:var(--ink-2);font-weight:500}
+.btn:disabled{opacity:.45;cursor:default}
+
+/* quiz = Lösungskästchen */
+.quiz{border:1.5px solid var(--ink);background:var(--sheet);padding:0}
+.quiz .qh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 14px;border-bottom:1.5px solid var(--ink);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--ink-2)}
+.quiz .qh .st{letter-spacing:0;text-transform:none;font-weight:600}
+.quiz .qb{padding:14px;display:grid;gap:12px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:9px 12px;cursor:pointer;width:100%;line-height:1.45}
+.opt:hover{border-color:var(--pen)}
+.opt .mk{flex:none;width:20px;height:20px;border:1.5px solid var(--ink-3);border-radius:50%;margin-top:1px;display:grid;place-items:center;font:600 12px/1 var(--f-mono)}
+.opt.multi .mk{border-radius:4px}
+.opt.sel{border-color:var(--pen);background:var(--pen-soft)}
+.opt.sel .mk{border-color:var(--pen);background:var(--pen);color:var(--on-pen)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.right .mk{border-color:var(--ok);background:var(--ok);color:var(--on-pen)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .mk{border-color:var(--bad);background:var(--bad);color:var(--on-pen)}
+.fields{display:grid;gap:8px}
+.field{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.field label{min-width:0;font-size:15px}
+.field input{width:9.5em;max-width:100%;font:500 17px var(--f-mono);color:var(--pen);border:0;border-bottom:2px solid var(--ink-3);background:transparent;padding:4px 2px}
+.field input:focus{outline:0;border-bottom-color:var(--pen)}
+.field input.okv{border-bottom-color:var(--ok);color:var(--ok)}
+.field input.badv{border-bottom-color:var(--bad);color:var(--bad)}
+.fb{border-radius:8px;padding:10px 12px;font-size:15px}
+.fb.ok{background:var(--ok-soft);color:var(--ok)}
+.fb.bad{background:var(--bad-soft);color:var(--bad)}
+.why{color:var(--ink);font-size:15px;border-top:1px dashed var(--line);padding-top:10px;display:grid;gap:8px}
+
+/* R */
+.rbox{background:var(--code-bg);color:var(--code-ink);border-radius:12px;overflow:hidden}
+.rbox .rh{display:flex;justify-content:space-between;gap:10px;padding:9px 14px;font:500 12.5px var(--f-mono);color:var(--code-dim);border-bottom:1px solid rgba(255,255,255,.08)}
+.rbox pre{margin:0;padding:12px 0;overflow-x:auto;font:14px/1.6 var(--f-mono)}
+.rbox .ln{display:block;padding:0 14px;white-space:pre}
+.rbox .ln b{display:inline-block;width:2.2em;color:var(--code-dim);font-weight:400;user-select:none}
+.rbox .ln.hit{background:rgba(143,168,255,.14)}
+.rbox .out{border-top:1px solid rgba(255,255,255,.08);padding:10px 14px;color:var(--code-str);font:13.5px/1.55 var(--f-mono);white-space:pre;overflow-x:auto}
+.rbox .out::before{content:"Ausgabe";display:block;color:var(--code-dim);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.c-com{color:var(--code-com);font-style:italic}.c-str{color:var(--code-str)}.c-kw{color:var(--code-kw)}
+.rnotes{display:grid;gap:6px;margin-top:10px}
+.rnote{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;font-size:15px;align-items:start}
+.rnote .z{font:600 12px/22px var(--f-mono);color:var(--pen);border:1px solid var(--pen);border-radius:5px;text-align:center;cursor:default}
+.rnote .tr{margin-top:4px;padding:6px 10px;font-size:14px}
+
+.trap{border:1.5px dashed var(--bad);border-radius:12px;padding:14px 16px;background:var(--bad-soft)}
+.trap .th{display:flex;gap:8px;align-items:center;font-family:var(--f-display);font-weight:700;color:var(--bad);margin-bottom:6px;font-size:17px}
+.trap .th i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--bad);color:var(--sheet);display:grid;place-items:center;font:700 14px/1 var(--f-mono)}
+.trap ul{margin:0;padding-left:20px;display:grid;gap:5px;color:var(--ink)}
+
+.exam{background:var(--sheet);border:1.5px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.exam .eh{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline;padding:10px 16px;border-bottom:1.5px solid var(--ink)}
+.exam .eh b{font-family:var(--f-display);font-size:18px}
+.exam .eh span{font:500 13px var(--f-mono);color:var(--ink-2)}
+.exam .eb{padding:14px 16px;display:grid;gap:14px}
+.epart{display:grid;gap:8px;border-top:1px solid var(--line-2);padding-top:12px}
+.epart .pq{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px}
+.epart .pp{font:500 13px var(--f-mono);color:var(--ink-3);white-space:nowrap}
+.sol{border-left:3px solid var(--pen);background:var(--pen-soft);padding:10px 14px;display:grid;gap:8px;overflow-x:auto}
+.sol .sl{font:600 11.5px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--pen)}
+.self{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:13.5px;color:var(--ink-2)}
+.self button{border:1px solid var(--line);background:var(--sheet);border-radius:6px;padding:3px 9px;cursor:pointer;font-size:13.5px}
+.self button[aria-pressed="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+.escore{font:600 14px var(--f-mono);color:var(--pen)}
+
+.fig{border:1px solid var(--line);background:var(--sheet);border-radius:12px;padding:10px 12px}
+.fig svg{display:block;width:100%;height:auto;max-width:100%}
+.fig .cap{font-size:13.5px;color:var(--ink-2);margin-top:4px}
+.ax{stroke:var(--ink-3);stroke-width:1}
+.gl{stroke:var(--line-2);stroke-width:1}
+.tl{fill:var(--ink-3);font:11px var(--f-mono)}
+.lbl2{fill:var(--ink-2);font:12px var(--f-body)}
+.widget{border:1px solid var(--line);background:var(--sheet);border-radius:12px;padding:14px 16px;display:grid;gap:10px}
+.widget .wh{font-family:var(--f-display);font-weight:700;font-size:17px}
+.widget input[type=range]{width:100%;accent-color:var(--pen)}
+.wout{font:500 14.5px var(--f-mono);color:var(--ink-2);display:flex;flex-wrap:wrap;gap:6px 18px}
+.wout b{color:var(--pen);font-weight:600}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:var(--sheet);padding:5px 10px;font-size:13.5px;cursor:pointer;border-left:1px solid var(--line)}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed="true"]{background:var(--pen);color:var(--on-pen)}
+
+.lfoot{margin-top:40px;padding-top:18px;border-top:1.5px solid var(--ink);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.done-note{color:var(--ok);font-weight:600}
+
+/* sheet & glossary */
+.a4{background:var(--sheet);border:1px solid var(--line);box-shadow:var(--shadow);padding:22px clamp(14px,3vw,28px);display:grid;gap:18px}
+.a4 h2{font-size:20px;border-bottom:1.5px solid var(--ink);padding-bottom:4px}
+.fsgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px}
+@media (max-width:760px){.fsgrid{grid-template-columns:1fr}}
+.fsi{border:1px solid var(--line-2);padding:8px 10px;border-radius:6px;min-width:0}
+.fsi b{font-size:13.5px;display:block;margin-bottom:2px}
+.fsi .fmath{font-size:.92em}
+.fsi.off{opacity:.38}
+.search{width:100%;font:16px var(--f-body);padding:10px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--sheet);color:var(--ink)}
+.search:focus{outline:0;border-color:var(--pen)}
+.gl-tbl td{text-align:left;vertical-align:top}
+.gl-tbl td:nth-child(2){color:var(--tr)}
+mjx-container{color:inherit}
+mjx-container[display="true"]{margin:.4em 0 !important}
+.muted{color:var(--ink-3)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<script>
+window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"},startup:{typeset:false},options:{enableMenu:false}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" onerror="var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js';document.head.appendChild(s)"></script>
+<script>window.LESSONS=[];window.L=function(o){LESSONS.push(o)};window.r=String.raw;</script>
+<script src="tag1.js"></script>
+<script src="tag2.js"></script>
+<script src="tag3.js"></script>
+<script src="tag4.js"></script>
+<script src="tag5.js"></script>
+<script src="glossar.js"></script>
+
+<header class="top">
+  <button class="tbtn menu-btn" id="menuBtn" aria-label="Lektionen anzeigen">☰</button>
+  <a class="brand" href="#home" id="brand"><b>Statistik-Sprint</b><span>SDS1 · Göttingen</span></a>
+  <div class="sp"></div>
+  <button class="tbtn" id="trBtn" aria-pressed="true" title="Türkische Hilfetexte ein/aus">TR <span class="lbl">Hilfe</span></button>
+  <button class="tbtn" id="sheetBtn"><span aria-hidden="true">▤</span> <span class="lbl">Formelblatt</span></button>
+  <button class="tbtn" id="glBtn"><span aria-hidden="true">Aa</span> <span class="lbl">Glossar</span></button>
+</header>
+<div class="scrim" id="scrim"></div>
+<div class="shell">
+  <nav class="rail" id="rail" aria-label="Lektionen"></nav>
+  <main class="main"><div class="col" id="view"></div></main>
+</div>
+
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s);
+const EXAM=new Date("2026-10-09T08:30:00+02:00");
+const DAYS=[
+  {n:1,t:"Daten beschreiben",s:"Merkmale, Häufigkeiten, Lage & Streuung, R-Basis",h:"≈ 6 h"},
+  {n:2,t:"Zusammenhänge & Wahrscheinlichkeit",s:"Kontingenztafel, Korrelation, Bayes",h:"≈ 6 h"},
+  {n:3,t:"Zufallsvariablen & Verteilungen",s:"E(X), Var(X), Binomial, Poisson, Normal",h:"≈ 6,5 h"},
+  {n:4,t:"Schätzen",s:"Maximum-Likelihood, Bias/MSE, KDE, Konfidenzintervalle",h:"≈ 7 h"},
+  {n:5,t:"Testen & Generalprobe",s:"Tests, p-Wert, χ²-Tests, Regression, Probeklausur",h:"≈ 7 h"}
+];
+/* ---------- storage ---------- */
+const KEY="sds1-sprint-v1";
+let S={done:{},q:{},tr:true,sheetOff:{},self:{}};
+try{const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+
+const byId={}; LESSONS.forEach(l=>byId[l.id]=l);
+const order=LESSONS.slice().sort((a,b)=>a.day-b.day||a.no-b.no);
+function lessonsOf(d){return order.filter(l=>l.day===d)}
+function nextUndone(){return order.find(l=>!S.done[l.id])||order[0]}
+
+/* ---------- typeset ---------- */
+function typeset(el){
+  if(window.MathJax&&MathJax.typesetPromise){
+    (MathJax.startup&&MathJax.startup.promise?MathJax.startup.promise:Promise.resolve())
+      .then(()=>MathJax.typesetPromise([el])).catch(()=>{});
+  }
+}
+/* ---------- helpers ---------- */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const tr=t=>t?`<p class="tr">${t}</p>`:"";
+const rel=n=>`<span class="rel" title="Klausurrelevanz">${[1,2,3].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</span>`;
+function prose(h){return `<div class="prose">${h||""}</div>`}
+
+function hlR(line){
+  let s=esc(line);
+  const ci=line.indexOf("#");
+  if(ci>=0){ // naive: comment if # not inside quotes
+    const before=line.slice(0,ci); const q=(before.match(/"/g)||[]).length;
+    if(q%2===0){ return hlR(before)+`<span class="c-com">${esc(line.slice(ci))}</span>`; }
+  }
+  s=s.replace(/(&quot;.*?&quot;)/g,'<span class="c-str">$1</span>');
+  s=s.replace(/\b(function|for|in|if|else|return|TRUE|FALSE|NULL|NA)\b/g,'<span class="c-kw">$1</span>');
+  return s;
+}
+
+/* ---------- figures ---------- */
+function niceTicks(a,b,n){const span=b-a;const step0=span/(n||5);const mag=Math.pow(10,Math.floor(Math.log10(step0)));const f=step0/mag;const step=(f<1.5?1:f<3?2:f<7?5:10)*mag;const out=[];for(let v=Math.ceil(a/step)*step;v<=b+1e-9;v+=step)out.push(+v.toFixed(10));return out}
+function phi(x){return Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)}
+function erf(x){const t=1/(1+.3275911*Math.abs(x));const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-.284496736)*t+.254829592)*t*Math.exp(-x*x);return x>=0?y:-y}
+function Phi(x){return .5*(1+erf(x/Math.SQRT2))}
+function lgamma(z){const g=7,c=[0.99999999999980993,676.5203681218851,-1259.1392167224028,771.32342877765313,-176.61502916214059,12.507343278686905,-0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];if(z<.5)return Math.log(Math.PI/Math.sin(Math.PI*z))-lgamma(1-z);z-=1;let x=c[0];for(let i=1;i<g+2;i++)x+=c[i]/(z+i);const t=z+g+.5;return .5*Math.log(2*Math.PI)+(z+.5)*Math.log(t)-t+Math.log(x)}
+const dens={
+  norm:(x,p)=>phi((x-(p.m||0))/(p.s||1))/(p.s||1),
+  t:(x,p)=>{const v=p.df;return Math.exp(lgamma((v+1)/2)-lgamma(v/2))/Math.sqrt(v*Math.PI)*Math.pow(1+x*x/v,-(v+1)/2)},
+  chisq:(x,p)=>{const k=p.df;if(x<=0)return 0;return Math.exp((k/2-1)*Math.log(x)-x/2-(k/2)*Math.log(2)-lgamma(k/2))},
+  exp:(x,p)=>x<0?0:p.rate*Math.exp(-p.rate*x)
+};
+function svgPlot(o){
+  const W=640,Hh=o.h||260,m={l:46,r:16,t:14,b:38};
+  const X=v=>m.l+(v-o.x[0])/(o.x[1]-o.x[0])*(W-m.l-m.r);
+  const Y=v=>Hh-m.b-(v-o.y[0])/(o.y[1]-o.y[0])*(Hh-m.t-m.b);
+  let g="";
+  const xt=o.xt||niceTicks(o.x[0],o.x[1],6), yt=o.yt||niceTicks(o.y[0],o.y[1],4);
+  yt.forEach(v=>{g+=`<line class="gl" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="tl" x="${m.l-6}" y="${Y(v)+4}" text-anchor="end">${o.yf?o.yf(v):v}</text>`});
+  xt.forEach(v=>{g+=`<text class="tl" x="${X(v)}" y="${Hh-m.b+16}" text-anchor="middle">${o.xf?o.xf(v):v}</text><line class="ax" x1="${X(v)}" x2="${X(v)}" y1="${Hh-m.b}" y2="${Hh-m.b+4}"/>`});
+  g+=`<line class="ax" x1="${m.l}" x2="${W-m.r}" y1="${Hh-m.b}" y2="${Hh-m.b}"/><line class="ax" x1="${m.l}" x2="${m.l}" y1="${m.t}" y2="${Hh-m.b}"/>`;
+  if(o.xl)g+=`<text class="lbl2" x="${(W+m.l)/2}" y="${Hh-4}" text-anchor="middle">${o.xl}</text>`;
+  if(o.yl)g+=`<text class="lbl2" x="12" y="${(Hh)/2}" text-anchor="middle" transform="rotate(-90 12 ${Hh/2})">${o.yl}</text>`;
+  g+=o.draw(X,Y,W,Hh,m);
+  return `<svg viewBox="0 0 ${W} ${Hh}" role="img" aria-label="${esc(o.aria||"Diagramm")}">${g}</svg>`;
+}
+function curvePath(f,a,b,X,Y,n){let d="";n=n||240;for(let i=0;i<=n;i++){const x=a+(b-a)*i/n;d+=(i?"L":"M")+X(x).toFixed(1)+","+Y(f(x)).toFixed(1)}return d}
+function areaPath(f,a,b,X,Y){let d=`M${X(a).toFixed(1)},${Y(0).toFixed(1)}`;const n=120;for(let i=0;i<=n;i++){const x=a+(b-a)*i/n;d+=`L${X(x).toFixed(1)},${Y(f(x)).toFixed(1)}`}return d+`L${X(b).toFixed(1)},${Y(0).toFixed(1)}Z`}
+function figDensity(b){
+  const f=x=>dens[b.dist](x,b.p||{});
+  return svgPlot({x:b.x,y:b.y,xt:b.xt,xl:b.xl||"x",yl:b.yl||"f(x)",aria:b.cap,draw:(X,Y)=>{
+    let s="";(b.shade||[]).forEach(r=>{s+=`<path d="${areaPath(f,r[0],r[1],X,Y)}" fill="${r[2]==="ok"?"var(--ok)":r[2]==="p"?"var(--marker)":"var(--pen)"}" fill-opacity="${r[2]==="p"?.85:.28}" stroke="none"/>`});
+    s+=`<path d="${curvePath(f,b.x[0],b.x[1],X,Y)}" fill="none" stroke="var(--ink)" stroke-width="2"/>`;
+    (b.marks||[]).forEach(mk=>{s+=`<line x1="${X(mk[0])}" x2="${X(mk[0])}" y1="${Y(0)}" y2="${Y(b.y[1]*.92)}" stroke="var(--bad)" stroke-width="1.6" stroke-dasharray="4 3"/><text class="lbl2" x="${X(mk[0])+4}" y="${Y(b.y[1]*.86)}" fill="var(--bad)">${mk[1]}</text>`});
+    (b.labels||[]).forEach(t=>{s+=`<text class="lbl2" x="${X(t[0])}" y="${Y(t[1])}" text-anchor="middle">${t[2]}</text>`});
+    return s;}});
+}
+function figHist(b){
+  return svgPlot({x:b.x,y:b.y,xt:b.xt,yt:b.yt,xl:b.xl,yl:b.yl||"Dichte",aria:b.cap,draw:(X,Y)=>{
+    let s="";b.bars.forEach(br=>{const [a,c,h,lab]=br;s+=`<rect x="${X(a)}" y="${Y(h)}" width="${X(c)-X(a)}" height="${Y(0)-Y(h)}" fill="var(--pen)" fill-opacity=".22" stroke="var(--pen)" stroke-width="1.5"/>`;if(lab)s+=`<text class="lbl2" x="${(X(a)+X(c))/2}" y="${Y(h)-6}" text-anchor="middle">${lab}</text>`});
+    (b.shade||[]).forEach(r=>{s+=`<rect x="${X(r[0])}" y="${Y(r[2])}" width="${X(r[1])-X(r[0])}" height="${Y(0)-Y(r[2])}" fill="var(--marker)" fill-opacity=".85"/>`});
+    return s;}});
+}
+function figEcdf(b){
+  return svgPlot({x:b.x,y:[0,1.05],yt:[0,.25,.5,.75,1],xt:b.xt,xl:b.xl,yl:b.yl||"F(x)",aria:b.cap,draw:(X,Y)=>{
+    let s="";const p=b.pts;let prev=0;
+    s+=`<line x1="${X(b.x[0])}" x2="${X(p[0][0])}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--pen)" stroke-width="2.2"/>`;
+    p.forEach((pt,i)=>{const nx=i<p.length-1?p[i+1][0]:b.x[1];
+      s+=`<line x1="${X(pt[0])}" x2="${X(nx)}" y1="${Y(pt[1])}" y2="${Y(pt[1])}" stroke="var(--pen)" stroke-width="2.2"/>`;
+      s+=`<circle cx="${X(pt[0])}" cy="${Y(prev)}" r="4" fill="var(--sheet)" stroke="var(--pen)" stroke-width="1.6"/>`;
+      s+=`<circle cx="${X(pt[0])}" cy="${Y(pt[1])}" r="4" fill="var(--pen)"/>`;
+      if(b.lab)s+=`<text class="tl" x="${X(pt[0])+6}" y="${Y(pt[1])-7}">${b.lab[i]}</text>`;
+      prev=pt[1];});
+    return s;}});
+}
+function figBox(b){
+  const f=b.five;return svgPlot({x:b.x,y:[0,1],yt:[],xt:b.xt,xl:b.xl,h:170,aria:b.cap,draw:(X,Y)=>{
+    const yc=Y(.5),hh=34;let s="";
+    s+=`<line x1="${X(f[0])}" x2="${X(f[1])}" y1="${yc}" y2="${yc}" stroke="var(--ink)" stroke-width="1.6"/><line x1="${X(f[3])}" x2="${X(f[4])}" y1="${yc}" y2="${yc}" stroke="var(--ink)" stroke-width="1.6"/>`;
+    s+=`<line x1="${X(f[0])}" x2="${X(f[0])}" y1="${yc-12}" y2="${yc+12}" stroke="var(--ink)" stroke-width="1.6"/><line x1="${X(f[4])}" x2="${X(f[4])}" y1="${yc-12}" y2="${yc+12}" stroke="var(--ink)" stroke-width="1.6"/>`;
+    s+=`<rect x="${X(f[1])}" y="${yc-hh}" width="${X(f[3])-X(f[1])}" height="${2*hh}" fill="var(--pen)" fill-opacity=".18" stroke="var(--pen)" stroke-width="1.8"/>`;
+    s+=`<line x1="${X(f[2])}" x2="${X(f[2])}" y1="${yc-hh}" y2="${yc+hh}" stroke="var(--pen)" stroke-width="3"/>`;
+    (b.out||[]).forEach(v=>{s+=`<circle cx="${X(v)}" cy="${yc}" r="4.5" fill="none" stroke="var(--bad)" stroke-width="1.6"/>`});
+    (b.ann||[]).forEach(a=>{s+=`<text class="tl" x="${X(a[0])}" y="${a[2]==="u"?yc-hh-8:yc+hh+16}" text-anchor="middle">${a[1]}</text>`});
+    return s;}});
+}
+function figScatter(b){
+  return svgPlot({x:b.x,y:b.y,xl:b.xl,yl:b.yl,aria:b.cap,draw:(X,Y)=>{
+    let s="";if(b.line){const [a0,a1]=b.line;s+=`<line x1="${X(b.x[0])}" x2="${X(b.x[1])}" y1="${Y(a0+a1*b.x[0])}" y2="${Y(a0+a1*b.x[1])}" stroke="var(--bad)" stroke-width="2"/>`}
+    if(b.means){s+=`<line x1="${X(b.means[0])}" x2="${X(b.means[0])}" y1="${Y(b.y[0])}" y2="${Y(b.y[1])}" stroke="var(--ink-3)" stroke-dasharray="4 4"/><line y1="${Y(b.means[1])}" y2="${Y(b.means[1])}" x1="${X(b.x[0])}" x2="${X(b.x[1])}" stroke="var(--ink-3)" stroke-dasharray="4 4"/>`}
+    b.pts.forEach(p=>{s+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="5" fill="var(--pen)" fill-opacity=".75"/>`});return s;}});
+}
+function figBars(b){ // discrete pmf
+  return svgPlot({x:b.x,y:b.y,xt:b.xt,xl:b.xl,yl:b.yl||"P(X=x)",aria:b.cap,draw:(X,Y)=>{
+    let s="";b.pts.forEach(p=>{const hi=(b.hi||[]).includes(p[0]);s+=`<line x1="${X(p[0])}" x2="${X(p[0])}" y1="${Y(0)}" y2="${Y(p[1])}" stroke="${hi?"var(--bad)":"var(--pen)"}" stroke-width="7"/>`});return s;}});
+}
+function renderFig(b){
+  const k={density:figDensity,hist:figHist,ecdf:figEcdf,box:figBox,scatter:figScatter,bars:figBars}[b.kind];
+  return `<figure class="fig" style="margin:0">${k?k(b):""}${b.cap?`<figcaption class="cap">${b.cap}</figcaption>`:""}</figure>`;
+}
+
+/* ---------- widgets ---------- */
+const WIDGETS={
+  lik:{html:()=>`<div class="widget"><div class="wh">Likelihood live: Münze, 6 × Wappen in 20 Würfen</div>
+    <label for="wlk">Wähle π (Wappen-Wahrscheinlichkeit): <b class="mono" id="wlkv">0.50</b></label>
+    <input type="range" id="wlk" min="0.02" max="0.98" step="0.01" value="0.5">
+    <div id="wlkfig"></div><div class="wout" id="wlkout"></div></div>`,
+    init:root=>{const inp=root.querySelector("#wlk");const draw=()=>{const p=+inp.value;const L=q=>Math.pow(q,6)*Math.pow(1-q,14);const mx=L(.3);
+      root.querySelector("#wlkv").textContent=p.toFixed(2);
+      root.querySelector("#wlkfig").innerHTML=svgPlot({x:[0,1],y:[0,mx*1.12],yt:[0,mx*.5,mx],yf:v=>(v*1e6).toFixed(1),xl:"π",yl:"L(π) · 10⁶",h:220,aria:"Likelihood-Kurve",draw:(X,Y)=>`<path d="${curvePath(L,0,1,X,Y)}" fill="none" stroke="var(--ink)" stroke-width="2"/><line x1="${X(.3)}" x2="${X(.3)}" y1="${Y(0)}" y2="${Y(mx)}" stroke="var(--ok)" stroke-dasharray="4 3"/><circle cx="${X(p)}" cy="${Y(L(p))}" r="7" fill="var(--pen)"/>`});
+      root.querySelector("#wlkout").innerHTML=`<span>L(π) = π⁶(1−π)¹⁴ = <b>${L(p).toExponential(3)}</b></span><span>log L(π) = <b>${(6*Math.log(p)+14*Math.log(1-p)).toFixed(3)}</b></span><span>${Math.abs(p-.3)<.005?"✓ Maximum: π̂ = 6/20 = 0.3":"Maximum liegt bei π = 0.30"}</span>`;};
+      inp.addEventListener("input",draw);draw();}},
+  ci:{html:()=>`<div class="widget"><div class="wh">Konfidenzintervall-Simulator</div>
+    <p class="muted" style="font-size:14px">Wahres μ = 50, σ = 10 bekannt. Jede Zeile ist eine neue Stichprobe und ihr KI  x̄ ± z·σ/√n. Rot = verfehlt μ.</p>
+    <div class="row"><span class="seg" id="wcin"><button aria-pressed="false" data-v="5">n = 5</button><button aria-pressed="true" data-v="25">n = 25</button><button aria-pressed="false" data-v="100">n = 100</button></span>
+    <span class="seg" id="wcia"><button aria-pressed="false" data-v="0.9">90 %</button><button aria-pressed="true" data-v="0.95">95 %</button><button aria-pressed="false" data-v="0.99">99 %</button></span>
+    <button class="btn" id="wcigo">50 neue Stichproben</button></div>
+    <div id="wcifig"></div><div class="wout" id="wciout"></div></div>`,
+    init:root=>{let n=25,lv=.95,tot=0,hit=0;const z={0.9:1.6449,0.95:1.96,0.99:2.5758};
+      const rn=()=>{let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)};
+      const run=()=>{const rows=[];for(let i=0;i<50;i++){let s=0;for(let j=0;j<n;j++)s+=50+10*rn();const xb=s/n,h=z[lv]*10/Math.sqrt(n);rows.push([xb-h,xb+h,xb])}
+        const miss=rows.filter(r=>r[0]>50||r[1]<50).length;tot+=50;hit+=50-miss;
+        root.querySelector("#wcifig").innerHTML=svgPlot({x:[30,70],y:[0,51],yt:[],xl:"μ-Achse",h:330,aria:"50 Konfidenzintervalle",draw:(X,Y)=>{let s=`<line x1="${X(50)}" x2="${X(50)}" y1="${Y(0)}" y2="${Y(51)}" stroke="var(--ink)" stroke-width="1.5"/>`;rows.forEach((r,i)=>{const bad=r[0]>50||r[1]<50;s+=`<line x1="${X(Math.max(30,r[0]))}" x2="${X(Math.min(70,r[1]))}" y1="${Y(i+.6)}" y2="${Y(i+.6)}" stroke="${bad?"var(--bad)":"var(--pen)"}" stroke-width="${bad?3:2}"/><circle cx="${X(r[2])}" cy="${Y(i+.6)}" r="2" fill="var(--ink)"/>`});return s;}});
+        root.querySelector("#wciout").innerHTML=`<span>diesmal verfehlt: <b>${miss} von 50</b></span><span>insgesamt überdeckt: <b>${(100*hit/tot).toFixed(1)} %</b> (Soll: ${Math.round(lv*100)} %)</span><span>Breite: <b>${(2*z[lv]*10/Math.sqrt(n)).toFixed(2)}</b></span>`;};
+      root.querySelectorAll("#wcin button").forEach(b=>b.onclick=()=>{n=+b.dataset.v;tot=hit=0;root.querySelectorAll("#wcin button").forEach(x=>x.setAttribute("aria-pressed",x===b));run()});
+      root.querySelectorAll("#wcia button").forEach(b=>b.onclick=()=>{lv=+b.dataset.v;tot=hit=0;root.querySelectorAll("#wcia button").forEach(x=>x.setAttribute("aria-pressed",x===b));run()});
+      root.querySelector("#wcigo").onclick=run;run();}},
+  test:{html:()=>`<div class="widget"><div class="wh">Ablehnbereich und p-Wert sehen (Gauß-Test, α = 0.05)</div>
+    <div class="row"><span class="seg" id="wtt"><button aria-pressed="false" data-v="l">H₁: μ &lt; μ₀</button><button aria-pressed="true" data-v="z">H₁: μ ≠ μ₀</button><button aria-pressed="false" data-v="r">H₁: μ &gt; μ₀</button></span></div>
+    <label for="wtz">beobachtete Prüfgröße z = <b class="mono" id="wtzv">1.80</b></label>
+    <input type="range" id="wtz" min="-3.5" max="3.5" step="0.01" value="1.8">
+    <div id="wtfig"></div><div class="wout" id="wtout"></div></div>`,
+    init:root=>{let side="z";const inp=root.querySelector("#wtz");const draw=()=>{const z=+inp.value;root.querySelector("#wtzv").textContent=z.toFixed(2);
+      let A=[],P=[],p,crit;
+      if(side==="z"){crit=1.96;A=[[-4,-crit],[crit,4]];p=2*(1-Phi(Math.abs(z)));P=[[-4,-Math.abs(z)],[Math.abs(z),4]]}
+      else if(side==="r"){crit=1.645;A=[[crit,4]];p=1-Phi(z);P=[[z,4]]}
+      else{crit=1.645;A=[[-4,-crit]];p=Phi(z);P=[[-4,z]]}
+      const inA=side==="z"?Math.abs(z)>=crit:side==="r"?z>=crit:z<=-crit;
+      root.querySelector("#wtfig").innerHTML=figDensity({dist:"norm",x:[-4,4],y:[0,.45],yl:"Dichte unter H₀",xl:"z",shade:[...P.map(r=>[r[0],r[1],"p"]),...A.map(r=>[r[0],r[1],"a"])],marks:[[z,"z_obs"]]});
+      root.querySelector("#wtout").innerHTML=`<span>Ablehnbereich: <b>${side==="z"?"|z| ≥ 1.96":side==="r"?"z ≥ 1.645":"z ≤ −1.645"}</b></span><span>p-Wert (gelb) = <b>${p.toFixed(4)}</b></span><span style="color:${inA?"var(--ok)":"var(--bad)"}"><b style="color:inherit">${inA?"H₀ verwerfen":"H₀ nicht verwerfen"}</b> (${p<=.05?"p ≤ α":"p > α"})</span>`;};
+      root.querySelectorAll("#wtt button").forEach(b=>b.onclick=()=>{side=b.dataset.v;root.querySelectorAll("#wtt button").forEach(x=>x.setAttribute("aria-pressed",x===b));draw()});
+      inp.addEventListener("input",draw);draw();}},
+  norm:{html:()=>`<div class="widget"><div class="wh">Φ(z) ablesen — Fläche links von z</div>
+    <label for="wnz">z = <b class="mono" id="wnzv">1.00</b></label><input type="range" id="wnz" min="-3" max="3" step="0.01" value="1">
+    <div id="wnfig"></div><div class="wout" id="wnout"></div></div>`,
+    init:root=>{const inp=root.querySelector("#wnz");const draw=()=>{const z=+inp.value;root.querySelector("#wnzv").textContent=z.toFixed(2);
+      root.querySelector("#wnfig").innerHTML=figDensity({dist:"norm",x:[-3.5,3.5],y:[0,.45],xl:"z",yl:"φ(z)",shade:[[-3.5,z,"a"]],marks:[[z,"z"]]});
+      root.querySelector("#wnout").innerHTML=`<span>Φ(${z.toFixed(2)}) = <b>${Phi(z).toFixed(4)}</b></span><span>1 − Φ(z) = <b>${(1-Phi(z)).toFixed(4)}</b></span><span>Symmetrie: Φ(−z) = 1 − Φ(z) = <b>${Phi(-z).toFixed(4)}</b></span>`;};
+      inp.addEventListener("input",draw);draw();}},
+  kde:{html:()=>`<div class="widget"><div class="wh">Kerndichteschätzer: Bandbreite b ausprobieren</div>
+    <p class="muted" style="font-size:14px">7 Beobachtungen: 1, 2, 2.5, 4, 6, 6.5, 7 · Gauß-Kern</p>
+    <label for="wkb">b = <b class="mono" id="wkbv">0.80</b></label><input type="range" id="wkb" min="0.15" max="3" step="0.05" value="0.8">
+    <div id="wkfig"></div><div class="wout" id="wkout"></div></div>`,
+    init:root=>{const xs=[1,2,2.5,4,6,6.5,7];const inp=root.querySelector("#wkb");const draw=()=>{const b=+inp.value;root.querySelector("#wkbv").textContent=b.toFixed(2);
+      const f=x=>xs.reduce((s,xi)=>s+phi((x-xi)/b),0)/(xs.length*b);
+      root.querySelector("#wkfig").innerHTML=svgPlot({x:[-2,10],y:[0,.45],xl:"x",yl:"f̂(x)",h:220,aria:"Kerndichteschätzer",draw:(X,Y)=>{let s="";xs.forEach(xi=>{s+=`<path d="${curvePath(x=>phi((x-xi)/b)/(xs.length*b),-2,10,X,Y,160)}" fill="none" stroke="var(--pen)" stroke-opacity=".35"/><line x1="${X(xi)}" x2="${X(xi)}" y1="${Y(0)}" y2="${Y(0)-10}" stroke="var(--bad)" stroke-width="2"/>`});s+=`<path d="${curvePath(f,-2,10,X,Y)}" fill="none" stroke="var(--ink)" stroke-width="2.4"/>`;return s;}});
+      root.querySelector("#wkout").innerHTML=`<span>${b<.45?"b klein → <b>zackig</b> (Schätzfehler groß)":b>1.8?"b groß → <b>zu glatt</b>, Struktur verschwindet (Approximationsfehler groß)":"b mittel → <b>ausgewogen</b>"}</span>`;};
+      inp.addEventListener("input",draw);draw();}}
+};
+
+/* ---------- block renderers ---------- */
+function renderBlock(b,L,i){
+  const key=L.id+":"+i;
+  switch(b.t){
+  case "idea": return `<section class="blk">${b.h?`<h3>${b.h}</h3>`:""}${prose(b.de)}${b.tr?`<div style="margin-top:10px">${tr(b.tr)}</div>`:""}</section>`;
+  case "terms": return `<section class="blk">${b.h?`<h3>${b.h}</h3>`:""}<dl class="terms">${b.items.map(it=>`<div class="term"><dt>${it[0]}${it[1]?`<small>${it[1]}</small>`:""}</dt><dd>${it[2]||""}</dd></div>`).join("")}</dl></section>`;
+  case "formula": {const on=!S.sheetOff[key];return `<section class="blk"><div class="fbox"><div class="fh"><b>${b.h||"Formel"}</b>${b.sheet!==false?`<button class="sheet-t" data-sheet="${key}" aria-pressed="${on}">${on?"✓ auf dem Formelblatt":"+ Formelblatt"}</button>`:""}</div><div class="fmath">\\[${b.tex}\\]</div>${b.parts?`<div class="fparts">${b.parts.map(p=>`<span>\\(${p[0]}\\)</span><span>${p[1]}</span>`).join("")}</div>`:""}${b.note?`<p class="fnote">${b.note}</p>`:""}${b.tr?`<div style="margin-top:8px">${tr(b.tr)}</div>`:""}</div></section>`;}
+  case "rule": return `<section class="blk"><div class="rule"><div class="rk">${b.k||"Merksatz"}</div><p>${b.de}</p>${tr(b.tr)}</div></section>`;
+  case "fig": return `<section class="blk">${b.h?`<h3>${b.h}</h3>`:""}${renderFig(b)}</section>`;
+  case "widget": return `<section class="blk" data-widget="${b.w}">${WIDGETS[b.w].html()}</section>`;
+  case "ex": return `<section class="blk"><div class="kind">Beispiel · Schritt für Schritt</div><div class="ex">${b.h?`<h3>${b.h}</h3>`:""}<div class="q prose">${b.q}</div>
+      <ol class="steps" data-steps="${key}">${b.steps.map((s,j)=>`<li ${j>0?"hidden":""}><div class="prose">${s}</div></li>`).join("")}</ol>
+      ${b.a?`<div class="ans" data-ans hidden>${b.a}</div>`:""}
+      <div class="row" style="margin-top:12px"><button class="btn solid" data-next>Nächster Schritt</button><button class="btn quiet" data-all>Alle zeigen</button></div>${b.tr?`<div style="margin-top:10px">${tr(b.tr)}</div>`:""}</div></section>`;
+  case "mc": {const multi=Array.isArray(b.k);return `<section class="blk"><div class="quiz" data-q="${key}" data-type="${multi?"multi":"mc"}"><div class="qh"><span>Lösungskästchen · ${multi?"Mehrfachauswahl":"eine Antwort"}</span><span class="st" data-st></span></div><div class="qb"><div class="prose">${b.q}</div>
+      <div class="opts">${b.o.map((o,j)=>`<button class="opt ${multi?"multi":""}" data-o="${j}"><span class="mk">${multi?"":String.fromCharCode(97+j)}</span><span>${o}</span></button>`).join("")}</div>
+      ${multi?`<div><button class="btn solid" data-check>Prüfen</button></div>`:""}<div data-fb></div></div></div></section>`;}
+  case "num": return `<section class="blk"><div class="quiz" data-q="${key}" data-type="num"><div class="qh"><span>Lösungskästchen · rechnen</span><span class="st" data-st></span></div><div class="qb"><div class="prose">${b.q}</div>
+      <div class="fields">${b.f.map((f,j)=>`<div class="field"><label for="in-${key.replace(/[^\w]/g,"_")}-${j}">${f.l}</label><input id="in-${key.replace(/[^\w]/g,"_")}-${j}" inputmode="decimal" autocomplete="off" data-f="${j}" placeholder="?">${f.u?`<span class="muted">${f.u}</span>`:""}</div>`).join("")}</div>
+      <div class="row"><button class="btn solid" data-check>Prüfen</button><button class="btn quiet" data-show>Lösung zeigen</button></div><div data-fb></div></div></div></section>`;
+  case "r": {const lines=b.code.replace(/^\n|\n$/g,"").split("\n");return `<section class="blk">${b.h?`<h3>${b.h}</h3>`:""}<div class="rbox"><div class="rh"><span>R</span><span>${b.file||""}</span></div><pre>${lines.map((ln,j)=>`<span class="ln" data-ln="${j+1}"><b>${j+1}</b>${hlR(ln)}</span>`).join("")}</pre>${b.out?`<div class="out">${esc(b.out.replace(/^\n|\n$/g,""))}</div>`:""}</div>
+      ${b.notes?`<div class="rnotes">${b.notes.map(n=>`<div class="rnote" data-hl="${n[0]}"><span class="z">Z. ${n[0]}</span><div>${n[1]}${n[2]?tr(n[2]):""}</div></div>`).join("")}</div>`:""}</section>`;}
+  case "trap": return `<section class="blk"><div class="trap"><div class="th"><i>!</i>${b.h||"Klausur-Fallen"}</div><ul>${b.items.map(x=>`<li>${x}</li>`).join("")}</ul>${b.tr?`<div style="margin-top:10px">${tr(b.tr)}</div>`:""}</div></section>`;
+  case "exam": {const tot=b.parts.reduce((s,p)=>s+(p.p||0),0);return `<section class="blk"><div class="kind">${b.kind||"Klausuraufgabe"}</div><div class="exam" data-exam="${key}"><div class="eh"><b>${b.h}</b><span>${b.src?b.src+" · ":""}${tot} Punkte</span></div><div class="eb"><div class="prose">${b.q||""}</div>
+      ${b.parts.map((p,j)=>{const sk=key+"#"+j;const sv=S.self[sk];return `<div class="epart"><div class="pq"><div class="prose">${p.q}</div><span class="pp">${p.p||0} P</span></div>
+        <div><button class="btn" data-sol="${j}">Musterlösung zeigen</button></div>
+        <div class="sol" data-soln="${j}" hidden><span class="sl">Musterlösung</span><div class="prose">${p.s}</div>
+        <div class="self" data-self="${sk}" data-p="${p.p||0}">Selbstkontrolle: <button data-v="1" aria-pressed="${sv===1}">voll</button><button data-v="0.5" aria-pressed="${sv===.5}">halb</button><button data-v="0" aria-pressed="${sv===0}">falsch</button></div></div></div>`}).join("")}
+      <div class="escore" data-escore></div></div></div></section>`;}
+  default: return "";
+  }
+}
+
+/* ---------- views ---------- */
+function railHTML(cur){
+  let h=`<button class="rlink ${cur==="home"?"cur":""}" data-go="home"><span class="rid">⌂</span>Übersicht & Plan</button>`;
+  DAYS.forEach(d=>{
+    h+=`<div class="rday"><span class="dn">${d.n}</span><span class="dt">Tag ${d.n}<small>${d.t}</small></span></div>`;
+    lessonsOf(d.n).forEach(l=>{h+=`<button class="rlink ${cur===l.id?"cur":""}" data-go="${l.id}"><span class="rid">${l.id}</span><span style="flex:1">${l.title}</span><span class="tick ${S.done[l.id]?"done":""}">✓</span></button>`});
+  });
+  h+=`<h4>Werkzeuge</h4><button class="rlink ${cur==="sheet"?"cur":""}" data-go="sheet"><span class="rid">▤</span>Formelblatt-Vorlage</button><button class="rlink ${cur==="glossar"?"cur":""}" data-go="glossar"><span class="rid">Aa</span>Glossar Deutsch–Türkisch</button>`;
+  return h;
+}
+function daysLeft(){const now=new Date();return Math.max(0,Math.ceil((EXAM-now)/864e5))}
+function homeHTML(){
+  const nx=nextUndone();const tot=order.length,dn=order.filter(l=>S.done[l.id]).length;
+  return `<div class="hero"><div><div class="eyebrow">Statistik und Data Science I · Zweittermin</div>
+    <h1>Fünf Tage. <em>Alles</em>, was in der Klausur dran ist.</h1>
+    <p class="lead">Jede Lektion: verstehen → Formel → Schritt-für-Schritt-Beispiel → selbst rechnen → R → Klausuraufgabe mit Musterlösung. Einfaches Deutsch, türkische Hilfe per Knopf.</p>
+    <div class="row" style="margin-top:18px"><button class="cta" data-go="${nx.id}">${dn?"Weiter":"Start"}: ${nx.id} ${nx.title} →</button></div></div>
+    <div class="count"><div class="big num">${daysLeft()}</div><div class="sm">Tage bis zur Klausur · Fr 09.10.2026</div>
+    <dl><dt>A-Teil</dt><dd>08:30–10:10 · Hörsaal</dd><dt>B-Teil</dt><dd>ab 12:00 · E-Prüfungsraum</dd><dt>Fortschritt</dt><dd class="num">${dn} / ${tot} Lektionen</dd></dl></div></div>
+  <div class="parts"><div class="part"><h3>A-Teil · auf Papier</h3><div class="meta">75 Punkte · 100 Minuten · ca. 8 Aufgaben</div><ul><li>Rechnen mit Taschenrechner (nicht programmierbar)</li><li>Zwischenergebnisse 4, Endergebnisse 3 Nachkommastellen</li><li>Kugelschreiber — kein Bleistift, nicht grün oder rot</li><li>1 handgeschriebenes A4-Blatt (beidseitig)</li></ul></div>
+    <div class="part"><h3>B-Teil · R in ILIAS</h3><div class="meta">45 Punkte · 60 Minuten · 1 große Aufgabe</div><ul><li>Datensatz einlesen, beschreiben, Grafik als PDF</li><li>Likelihood / Schätzen / Verteilungen mit R</li><li>Antwortsätze in vollen Sätzen, mit round(…, 3)</li><li>Eigenes A4-Formelblatt für R-Befehle</li></ul></div></div>
+  <h2 class="sec-h">Dein 5-Tage-Plan</h2>
+  <div class="days">${DAYS.map(d=>{const ls=lessonsOf(d.n);const c=ls.filter(l=>S.done[l.id]).length;return `<button class="day" data-go="${ls[0]?ls[0].id:"home"}"><span class="dn">${d.n}</span><span><h3>${d.t}</h3><p>${d.s} · ${ls.length} Lektionen · ${d.h}</p><span class="bar"><i style="width:${ls.length?100*c/ls.length:0}%"></i></span></span><span class="pc num">${c}/${ls.length}</span></button>`}).join("")}</div>
+  <h2 class="sec-h">So lernst du hier am schnellsten</h2>
+  <div class="how"><div><b>Erst selbst, dann lösen</b><p>Rechne jedes Lösungskästchen, bevor du „Lösung zeigen“ drückst. Fehler sind hier billig — in der Klausur nicht.</p></div>
+  <div><b>Formelblatt nebenbei</b><p>Jede Formel hat „+ Formelblatt“. Am Ende hast du eine fertige Vorlage für dein handgeschriebenes A4-Blatt.</p></div>
+  <div><b>Klausuraufgaben zählen</b><p>Bewerte dich nach der Musterlösung ehrlich (voll / halb / falsch). So siehst du, wo Punkte verloren gehen.</p></div></div>
+  <p class="tr" style="margin-top:22px">Her ders aynı sırayla ilerler: fikir → formül → adım adım örnek → kendin hesapla → R → sınav sorusu. Türkçe kutular sadece yardım içindir; sınav Almanca olduğu için terimleri Almanca öğren. Sağ üstteki „TR“ düğmesiyle kapatabilirsin.</p>`;
+}
+function lessonHTML(L){
+  const ls=order;const idx=ls.indexOf(L);const prev=ls[idx-1],next=ls[idx+1];
+  return `<div class="lhead"><div class="crumb"><button data-go="home">Übersicht</button><span>/</span><span>Tag ${L.day} · ${DAYS[L.day-1].t}</span></div>
+    <h1><span class="lid">${L.id}</span>${L.title}</h1>
+    <div class="chips">${rel(L.rel||2)}<span class="chip">≈ ${L.min} min</span>${(L.src||[]).map(s=>`<span class="chip">${s}</span>`).join("")}</div>
+    ${L.goal?`<p class="goal">${L.goal}</p>`:""}</div>
+    <div class="blocks">${L.blocks.map((b,i)=>renderBlock(b,L,i)).join("")}</div>
+    <div class="lfoot"><div>${prev?`<button class="btn quiet" data-go="${prev.id}">← ${prev.id} ${prev.title}</button>`:""}</div>
+    <div class="row">${S.done[L.id]?`<span class="done-note">✓ abgeschlossen</span>`:`<button class="btn" data-done="${L.id}">Lektion abschließen</button>`}${next?`<button class="cta" data-go="${next.id}" data-done-go="${L.id}">Weiter: ${next.id} →</button>`:`<button class="cta" data-go="home">Zur Übersicht</button>`}</div></div>`;
+}
+function sheetHTML(){
+  let h=`<div class="lhead"><div class="eyebrow">Werkzeug</div><h1>Formelblatt-Vorlage</h1><p class="goal">Alle Formeln, die du in den Lektionen markiert hast — geordnet nach Thema. Schreib sie von Hand auf dein A4-Blatt (beidseitig). Grau = abgewählt. Tippe auf einen Eintrag, um ihn an- oder abzuwählen.</p></div><div class="a4">`;
+  DAYS.forEach(d=>{const items=[];lessonsOf(d.n).forEach(L=>L.blocks.forEach((b,i)=>{if(b.t==="formula"&&b.sheet!==false)items.push({k:L.id+":"+i,b,L})}));
+    if(!items.length)return;h+=`<section><h2>Tag ${d.n} · ${d.t}</h2><div class="fsgrid" style="margin-top:10px">${items.map(it=>`<button class="fsi ${S.sheetOff[it.k]?"off":""}" data-fsi="${it.k}" style="text-align:left;background:none;cursor:pointer"><b>${it.L.id} · ${it.b.h||"Formel"}</b><div class="fmath">\\[${it.b.tex}\\]</div></button>`).join("")}</div></section>`});
+  return h+`</div><p class="tr" style="margin-top:16px">Bu liste, el yazısıyla hazırlayacağın A4 formül kâğıdı için bir taslaktır. Sınava çıktı değil, kendi el yazın gerekiyor.</p>`;
+}
+function glossarHTML(){
+  return `<div class="lhead"><div class="eyebrow">Werkzeug</div><h1>Glossar Deutsch–Türkisch</h1><p class="goal">Die Klausur ist auf Deutsch. Lerne die Fachwörter genau so, wie sie in den Aufgaben stehen.</p></div>
+  <label for="glq" class="muted" style="font-size:14px">Suchen</label><input class="search" id="glq" placeholder="z. B. Stichprobe, Erwartungswert, verwerfen …" autocomplete="off">
+  <div class="tbl" style="margin-top:14px"><table class="gl-tbl" style="width:100%"><thead><tr><th class="l">Deutsch</th><th class="l">Türkçe</th><th class="l">kurz erklärt</th></tr></thead><tbody id="glb">${(window.GLOSSAR||[]).map(g=>`<tr data-s="${esc((g[0]+" "+g[1]+" "+g[2]).toLowerCase())}"><td><b>${g[0]}</b></td><td>${g[1]}</td><td>${g[2]}</td></tr>`).join("")}</tbody></table></div>`;
+}
+
+/* ---------- router ---------- */
+let cur="home";
+function go(id,push){
+  cur=id;
+  const v=$("#view");
+  if(id==="home")v.innerHTML=homeHTML();
+  else if(id==="sheet")v.innerHTML=sheetHTML();
+  else if(id==="glossar")v.innerHTML=glossarHTML();
+  else if(byId[id])v.innerHTML=lessonHTML(byId[id]);
+  else{cur="home";v.innerHTML=homeHTML();}
+  $("#rail").innerHTML=railHTML(cur);
+  document.body.classList.remove("nav-open");
+  v.querySelectorAll("[data-widget]").forEach(w=>WIDGETS[w.dataset.widget].init(w));
+  v.querySelectorAll(".exam").forEach(updScore);
+  restoreQuizzes(v);
+  typeset(v);
+  if(push!==false){try{history.replaceState(null,"","#"+(cur==="home"?"home":"l"+cur.replace(/[^\w.]/g,"")))}catch(e){}}
+  window.scrollTo(0,0);
+  const r=$("#rail .cur");if(r&&r.scrollIntoView)try{r.scrollIntoView({block:"nearest"})}catch(e){}
+}
+function fromHash(){const h=(location.hash||"").slice(1);if(h==="sheet"||h==="glossar")return h;if(h[0]==="l"&&byId[h.slice(1)])return h.slice(1);return "home"}
+
+/* ---------- quiz logic ---------- */
+function parseNum(s){s=String(s).trim().replace(/\s/g,"").replace(",",".");if(/^[-+]?\d*\.?\d+(e[-+]?\d+)?$/i.test(s))return parseFloat(s);const m=s.match(/^([-+]?\d+)\/(\d+)$/);if(m)return +m[1]/+m[2];return NaN}
+function blockOf(key){const [id,i]=key.split(":");return byId[id].blocks[+i]}
+function setSt(q,ok){const st=q.querySelector("[data-st]");st.textContent=ok?"✓ richtig":"✗ noch nicht";st.style.color=ok?"var(--ok)":"var(--bad)"}
+function showWhy(q,b,ok,extra){const fb=q.querySelector("[data-fb]");fb.innerHTML=`<div class="fb ${ok?"ok":"bad"}">${ok?"Richtig!":"Nicht ganz."}${extra||""}</div>${b.why?`<div class="why">${b.why}</div>`:""}`;typeset(fb)}
+function restoreQuizzes(v){v.querySelectorAll(".quiz").forEach(q=>{const key=q.dataset.q;const st=S.q[key];if(st===undefined)return;const b=blockOf(key);
+  if(q.dataset.type==="num"){b.f.forEach((f,j)=>{const inp=q.querySelector(`[data-f="${j}"]`);inp.value=f.a;inp.classList.add("okv")});}
+  else if(q.dataset.type==="mc"){q.querySelectorAll(".opt").forEach((o,j)=>{if(j===b.k)o.classList.add("right")})}
+  else{q.querySelectorAll(".opt").forEach((o,j)=>{if(b.k.includes(j))o.classList.add("right")})}
+  setSt(q,true);showWhy(q,b,true);})}
+function updScore(ex){const key=ex.dataset.exam;const b=blockOf(key);let got=0,any=false,tot=0;b.parts.forEach((p,j)=>{tot+=p.p||0;const v=S.self[key+"#"+j];if(v!==undefined){any=true;got+=v*(p.p||0)}});const el=ex.querySelector("[data-escore]");el.textContent=any?`Deine Selbstbewertung: ${got} / ${tot} Punkte`:"";}
+
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button,a");if(!t)return;
+  if(t.dataset.go){e.preventDefault();if(t.dataset.doneGo){S.done[t.dataset.doneGo]=true;save();}go(t.dataset.go);return}
+  if(t.id==="brand"){e.preventDefault();go("home");return}
+  if(t.id==="menuBtn"){document.body.classList.toggle("nav-open");return}
+  if(t.id==="sheetBtn"){go("sheet");return}
+  if(t.id==="glBtn"){go("glossar");return}
+  if(t.id==="trBtn"){S.tr=!S.tr;save();applyTr();return}
+  if(t.dataset.done){S.done[t.dataset.done]=true;save();go(cur,false);return}
+  if(t.dataset.sheet){const k=t.dataset.sheet;S.sheetOff[k]=!S.sheetOff[k];save();const on=!S.sheetOff[k];t.setAttribute("aria-pressed",on);t.textContent=on?"✓ auf dem Formelblatt":"+ Formelblatt";return}
+  if(t.dataset.fsi){const k=t.dataset.fsi;S.sheetOff[k]=!S.sheetOff[k];save();t.classList.toggle("off",!!S.sheetOff[k]);return}
+  if(t.hasAttribute("data-next")||t.hasAttribute("data-all")){const ex=t.closest(".ex");const lis=[...ex.querySelectorAll(".steps li")];const hid=lis.filter(l=>l.hidden);
+    if(t.hasAttribute("data-all"))hid.forEach(l=>l.hidden=false);else if(hid.length)hid[0].hidden=false;
+    if(!lis.some(l=>l.hidden)){const a=ex.querySelector("[data-ans]");if(a)a.hidden=false;ex.querySelector("[data-next]").disabled=true}return}
+  if(t.dataset.sol!==undefined){const ex=t.closest(".epart");const s=ex.querySelector("[data-soln]");s.hidden=!s.hidden;t.textContent=s.hidden?"Musterlösung zeigen":"Musterlösung verbergen";return}
+  if(t.parentElement&&t.parentElement.dataset.self){const sk=t.parentElement.dataset.self;S.self[sk]=+t.dataset.v;save();t.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===t));updScore(t.closest(".exam"));return}
+  const q=t.closest(".quiz");if(!q)return;const key=q.dataset.q;const b=blockOf(key);
+  if(t.classList.contains("opt")){
+    if(q.dataset.type==="mc"){if(q.dataset.lock)return;const j=+t.dataset.o;const ok=j===b.k;
+      q.querySelectorAll(".opt").forEach((o,jj)=>{o.classList.remove("wrong");if(jj===j&&!ok)o.classList.add("wrong");if(ok&&jj===b.k)o.classList.add("right")});
+      if(ok){q.dataset.lock=1;S.q[key]=1;save();}
+      setSt(q,ok);showWhy(q,b,ok,ok?"":" Versuch es noch einmal — oder lies die Erklärung.");}
+    else{t.classList.toggle("sel");}
+    return}
+  if(t.hasAttribute("data-check")&&q.dataset.type==="multi"){const sel=[...q.querySelectorAll(".opt")].map((o,j)=>o.classList.contains("sel")?j:-1).filter(j=>j>=0);
+    const ok=sel.length===b.k.length&&sel.every(j=>b.k.includes(j));
+    q.querySelectorAll(".opt").forEach((o,j)=>{o.classList.remove("right","wrong");if(b.k.includes(j))o.classList.add(ok||o.classList.contains("sel")?"right":"");if(!b.k.includes(j)&&o.classList.contains("sel"))o.classList.add("wrong")});
+    if(ok){S.q[key]=1;save();}setSt(q,ok);showWhy(q,b,ok,ok?"":` Richtig wären: ${b.k.map(j=>String.fromCharCode(97+j)).join(", ")} (grün markiert).`);return}
+  if(t.hasAttribute("data-check")&&q.dataset.type==="num"){let all=true;const msgs=[];
+    b.f.forEach((f,j)=>{const inp=q.querySelector(`[data-f="${j}"]`);const v=parseNum(inp.value);const tol=f.tol!==undefined?f.tol:Math.max(5e-4,Math.abs(f.a)*1e-3);const ok=!isNaN(v)&&Math.abs(v-f.a)<=tol+1e-12;inp.classList.toggle("okv",ok);inp.classList.toggle("badv",!ok);if(!ok){all=false;if(isNaN(v))msgs.push(`„${esc(inp.value||"leer")}“ ist keine Zahl (Dezimalpunkt oder Bruch wie 5/36).`)}});
+    if(all){S.q[key]=1;save();}setSt(q,all);showWhy(q,b,all,all?"":(msgs.length?" "+msgs.join(" "):" Prüfe deinen Rechenweg — oder drücke „Lösung zeigen“."));return}
+  if(t.hasAttribute("data-show")&&q.dataset.type==="num"){b.f.forEach((f,j)=>{const inp=q.querySelector(`[data-f="${j}"]`);inp.value=f.a;inp.classList.remove("badv")});const fb=q.querySelector("[data-fb]");fb.innerHTML=`<div class="fb bad">Lösung eingeblendet — rechne den Weg unten nach.</div>${b.why?`<div class="why">${b.why}</div>`:""}`;typeset(fb);return}
+});
+document.addEventListener("input",e=>{if(e.target.id==="glq"){const q=e.target.value.toLowerCase().trim();document.querySelectorAll("#glb tr").forEach(r=>r.hidden=q&&!r.dataset.s.includes(q))}});
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.matches(".field input")){const b=e.target.closest(".quiz").querySelector("[data-check]");if(b)b.click()}});
+document.addEventListener("mouseover",e=>{const n=e.target.closest(".rnote");document.querySelectorAll(".ln.hit").forEach(x=>x.classList.remove("hit"));if(n){const box=n.closest(".blk").querySelector(".rbox");String(n.dataset.hl).split(/[,-]/).forEach(z=>{const el=box&&box.querySelector(`[data-ln="${z.trim()}"]`);if(el)el.classList.add("hit")})}});
+$("#scrim").addEventListener("click",()=>document.body.classList.remove("nav-open"));
+function applyTr(){document.body.classList.toggle("no-tr",!S.tr);$("#trBtn").setAttribute("aria-pressed",S.tr)}
+applyTr();
+go(fromHash(),false);
+window.addEventListener("hashchange",()=>{const h=fromHash();if(h!==cur)go(h,false)});
+})();
+</script>
