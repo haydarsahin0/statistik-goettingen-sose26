@@ -13,6 +13,11 @@ null an, prüft es mit Klausuraufgaben im Stil der Probeklausur und endet mit ei
 sind mindestens so schwer wie die Probeklausur. Die echte Probeklausur bleibt für
 die Generalprobe nach Tag 5 unberührt.
 
+Jeder Kompakt-Tag hat außerdem einen **Block E** mit allem, was in Vorlesungen,
+Tutorien, Testaten und R-Skripten vorkommt, aber nicht in der Probeklausur — und
+am Ende eine **Stoffabdeckungs-Tabelle**, die jede Quelle der passenden Stelle im
+PDF zuordnet.
+
 | Datei | Inhalt | Klausurbezug |
 |---|---|---|
 | `Kompakt_1_Beschreibende_Statistik.pdf` | Skalen, Häufigkeiten, Verteilungsfunktion, Histogramm, klassierte Daten, Lage, Streuung, Quantile, Boxplot, R-Grundlagen | A1, A2, B a–e |

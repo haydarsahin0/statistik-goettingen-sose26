@@ -26,8 +26,8 @@
   </p>
 
   <div class="cover-meta">
-    <span class="chip chip-lav"><span class="ic">◷</span> ca. 7 Stunden</span>
-    <span class="chip chip-mint"><span class="ic">▤</span> 4 Blöcke · 14 Schritte</span>
+    <span class="chip chip-lav"><span class="ic">◷</span> ca. 8 Stunden</span>
+    <span class="chip chip-mint"><span class="ic">▤</span> 5 Blöcke · 20 Schritte</span>
     <span class="chip chip-rose"><span class="ic">✎</span> Simulation · 46 Punkte · 60 min</span>
     <span class="chip chip-sky"><span class="ic">▶</span> R: d / p / q / r · TR açıklamalı</span>
   </div>
@@ -805,6 +805,237 @@ predict_thunder &lt;- <span class="fn">function</span>(y, lambda) {        <span
   </div>
 </div>
 
+
+<!-- ==================== BLOCK E: ERGÄNZUNGEN ==================== -->
+
+<div class="page-break"></div>
+<div class="section-rule"><span>Block E · Was sonst noch drankommen kann · 90 min</span></div>
+
+<div class="box box-merke">
+  <div class="box-label">◆ Warum dieser Block?</div>
+  <p>
+    Die Klausur prüft Vorlesungen, Tutorien und Übungen. V05–V07 und die Tutorien 5–7 enthalten mehr als die Probeklausur:
+    <b>gemeinsame Verteilungen</b> zweier Zufallsvariablen (diskret und stetig), die <b>bivariate Normalverteilung</b>,
+    die <b>hypergeometrische Verteilung</b> (Lotto) und das Chuck-a-Luck-Beispiel zu den Rechenregeln. Alles davon steht hier.
+  </p>
+</div>
+
+<!-- ---------- SCHRITT 15 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">15</div>
+    <div class="step-title">Hypergeometrische Verteilung — Ziehen ohne Zurücklegen
+      <small>V05 · Lotto</small></div>
+    <span class="exam-tag">V05 · Folie 12–15</span>
+  </div>
+
+  <div class="tldr">Binomial = <b>mit</b> Zurücklegen. Zieht man <b>ohne</b> Zurücklegen \(n\) aus \(N\) Objekten, von denen \(M\) „Treffer“ sind: \(P(X = x) = \dfrac{\binom Mx \binom{N-M}{n-x}}{\binom Nn}\).</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · 6 aus 49, genau 3 Richtige</div>
+    <p>\(N = 49\) Zahlen, \(M = 6\) davon sind richtig, man kreuzt \(n = 6\) an:</p>
+    \[ P(X = 3) = \frac{\binom 63 \binom{43}{3}}{\binom{49}{6}} = \frac{20 \cdot 12341}{13983816} = 0.0177 \]
+    <p>Idee: Auf wie viele Arten wähle ich 3 der 6 Richtigen \(\cdot\) 3 der 43 Falschen, geteilt durch alle möglichen Tipps.
+      Erwartete Anzahl Richtiger: \(E(X) = 0.7347\) (V06). In R: <code class="inline">dhyper(3, 6, 43, 6)</code>.</p>
+    <p><b>Binomialkoeffizient</b> ohne Taschenrechner-Taste: \(\binom{6}{3} = \dfrac{6 \cdot 5 \cdot 4}{3 \cdot 2 \cdot 1} = 20\) — oben \(x\) Faktoren abwärts, unten \(x!\).</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 16 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">16</div>
+    <div class="step-title">Zwei diskrete Zufallsvariablen
+      <small>V06 · Tutorium 5 · A1 — wie die Kontingenztafel, nur mit Wahrscheinlichkeiten</small></div>
+    <span class="exam-tag hot">Tutorium 5</span>
+  </div>
+
+  <div class="tldr">Gemeinsame Wahrscheinlichkeitsfunktion \(P(X = x, Y = y)\) als Tabelle. Ränder = Summen. Bedingt = Zelle durch Rand. Unabhängig ⇔ jede Zelle = Produkt der Ränder.</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 5, A1) · Gehalt \(X\) × Alter \(Y\)</div>
+    <table class="in-box ct small">
+      <thead><tr><th>\(X \setminus Y\)</th><th>1 (&lt;30)</th><th>2 (30–40)</th><th>3 (40–50)</th><th>4 (&gt;50)</th><th class="rand">\(f_{j\bullet}\)</th></tr></thead>
+      <tbody>
+        <tr><td><b>1</b> (&lt;2500 €)</td><td>0.13</td><td>0.08</td><td>0.05</td><td>0.03</td><td class="rand">0.29</td></tr>
+        <tr><td><b>2</b> (2500–4000 €)</td><td>0.07</td><td>0.21</td><td>0.07</td><td>0.09</td><td class="rand">0.44</td></tr>
+        <tr><td><b>3</b> (&gt;4000 €)</td><td>0.00</td><td>0.05</td><td>0.10</td><td>0.12</td><td class="rand">0.27</td></tr>
+        <tr><td class="rand">\(f_{\bullet k}\)</td><td class="rand">0.20</td><td class="rand">0.34</td><td class="rand">0.22</td><td class="rand">0.24</td><td class="tot">1</td></tr>
+      </tbody>
+    </table>
+    <ul class="clean" style="margin-top:8px">
+      <li>\(P(X = 2 \mid Y = 1) = \dfrac{0.07}{0.20} = 0.35\) · \(P(Y = 2 \mid X = 3) = \dfrac{0.05}{0.27} = 0.185\)</li>
+      <li>Bedingte Wahrscheinlichkeitsfunktion \(P(X = x \mid Y = 4)\): \(\dfrac{0.03}{0.24}, \dfrac{0.09}{0.24}, \dfrac{0.12}{0.24} = 0.125, 0.375, 0.5\) und <b>0 sonst</b> — das „0 sonst“ wird oft vergessen!</li>
+      <li>Unabhängig? \(P(X = 3, Y = 1) = 0 \ne 0.27 \cdot 0.20\) → <b>abhängig</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box box-def">
+    <div class="box-label">● Kovarianz und Korrelation von Zufallsvariablen (V06)</div>
+    \[ \mathrm{Cov}(X, Y) = E(XY) - E(X)\,E(Y) \qquad E(XY) = \sum_x \sum_y x\,y\,P(X = x, Y = y) \]
+    \[ \rho = \frac{\mathrm{Cov}(X, Y)}{\mathrm{sd}(X)\,\mathrm{sd}(Y)} \]
+    <p>Unabhängig ⇒ unkorreliert (\(\mathrm{Cov} = 0\)), aber nicht umgekehrt. \(|\rho| = 1\) ⇔ \(Y\) ist lineare Transformation von \(X\).</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 17 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">17</div>
+    <div class="step-title">Zwei stetige Zufallsvariablen: gemeinsame Dichte
+      <small>V06 · Tutorium 6 · A3–A4 — Doppelintegrale</small></div>
+    <span class="exam-tag hot">Tutorium 6</span>
+  </div>
+
+  <div class="tldr">\(P(a \le X \le b,\, c \le Y \le d) = \int_a^b \int_c^d f(x, y)\,dy\,dx\). Randdichte von \(X\): nach \(y\) integrieren. Unabhängig ⇔ \(f(x, y) = f_X(x)\,f_Y(y)\).</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 6, A3) · \(f(x, y) = 12x^3(1 - y)^2\) für \(0 \le x, y \le 1\)</div>
+    <ol class="calc-steps">
+      <li><b>Dichte?</b> \(f \ge 0\) ✓. \(\int_0^1 \int_0^1 12x^3(1-y)^2\,dx\,dy = \int_0^1 \big[3x^4(1-y)^2\big]_0^1 dy = \int_0^1 3(1-y)^2\,dy = \big[-(1-y)^3\big]_0^1 = 1\) ✓</li>
+      <li><b>Wahrscheinlichkeit:</b> \(P(X \lt \frac 12, Y \lt \frac 14) = \int_0^{1/4} \dfrac{3}{16}(1-y)^2\,dy = \left[-\dfrac{1}{16}(1-y)^3\right]_0^{1/4} = -\dfrac{27}{1024} + \dfrac{1}{16} = 0.036\)</li>
+      <li><b>Randdichten:</b> \(f_X(x) = \int_0^1 12x^3(1-y)^2\,dy = 4x^3\), \(f_Y(y) = \int_0^1 12x^3(1-y)^2\,dx = 3(1-y)^2\)</li>
+      <li><b>Unabhängig?</b> \(4x^3 \cdot 3(1-y)^2 = 12x^3(1-y)^2 = f(x, y)\) → <b>unabhängig</b>, also \(\rho = 0\)</li>
+      <li>\(E(X) = \int_0^1 x \cdot 4x^3\,dx = \frac 45 = 0.8\)</li>
+    </ol>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 6, A4) · bedingte Dichte, \(f(x, y) = 2y(x^2 + y)\) auf \([0, 1]^2\)</div>
+    <ul class="clean">
+      <li>\(f_X(x) = \int_0^1 2y(x^2 + y)\,dy = x^2 + \frac 23\) → \(E(X) = \int_0^1 x\left(x^2 + \frac 23\right)dx = \frac 14 + \frac 13 = \dfrac{7}{12}\)</li>
+      <li>\(f_Y(\frac 12) = 2 \cdot \frac 12 \left(\frac 13 + \frac 12\right) = \frac 56\) → bedingte Dichte \(f(x \mid y = \frac 12) = \dfrac{f(x, \frac 12)}{f_Y(\frac 12)} = \frac 65 x^2 + \frac 35\)</li>
+      <li>\(E(X \mid Y = \frac 12) = \int_0^1 x\left(\frac 65 x^2 + \frac 35\right)dx = \frac 3{10} + \frac 3{10} = \frac 35\)</li>
+      <li>\(E(X) = \dfrac{7}{12} \ne \frac 35 = E(X \mid Y = \frac 12)\) → <b>nicht unabhängig</b> (bei Unabhängigkeit hinge die bedingte Verteilung nicht von \(y\) ab).</li>
+    </ul>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Çift integral kuralları</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>iç integral</code><span>Önce içteki değişkene göre integral al, diğerini <b>sabit</b> gibi tut.</span></div>
+      <div class="tr-row"><code>sınırlar</code><span>\(dx\)'in sınırları x'e, \(dy\)'nin sınırları y'ye ait — karıştırma.</span></div>
+      <div class="tr-row"><code>marjinal</code><span>\(X\)'in marjinal yoğunluğu için <b>y'ye göre</b> integral al (tersi de aynı).</span></div>
+      <div class="tr-row"><code>bağımsız mı?</code><span>İki marjinali çarp: ortak yoğunluğu veriyorsa bağımsız → \(\rho = 0\).</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 18 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">18</div>
+    <div class="step-title">Die bivariate Normalverteilung
+      <small>V07 · Folie 38–45 · Tutorium 7 · A5</small></div>
+    <span class="exam-tag">V07</span>
+  </div>
+
+  <div class="tldr">Fünf Parameter: \(\mu_x, \mu_y, \sigma_x^2, \sigma_y^2, \rho\). Ränder sind normal. Die bedingte Verteilung ist normal mit verschobenem Mittel und <b>kleinerer</b> Varianz.</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Formeln</div>
+    \[ Y \mid X = x \;\sim\; N\!\left(\mu_y + \rho\,\frac{\sigma_y}{\sigma_x}\,(x - \mu_x),\;\; \sigma_y^2\,(1 - \rho^2)\right) \]
+    <ul class="clean">
+      <li>Randverteilungen: \(X \sim N(\mu_x, \sigma_x^2)\), \(Y \sim N(\mu_y, \sigma_y^2)\)</li>
+      <li>Nur bei der (gemeinsamen) Normalverteilung gilt: <b>unkorreliert ⇔ unabhängig</b> (\(\rho = 0\))</li>
+    </ul>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · Größe \(X\) und Gewicht \(Y\)</div>
+    <p>\(\mu_x = 170\), \(\mu_y = 70\), \(\sigma_x^2 = 100\), \(\sigma_y^2 = 64\), \(\rho = 0.6\). Gewicht bei 180 cm Größe:</p>
+    <p>\(E(Y \mid X = 180) = 70 + 0.6 \cdot \dfrac{8}{10}\cdot(180 - 170) = 74.8\) · \(\mathrm{Var}(Y \mid X = 180) = 64\,(1 - 0.36) = 40.96\)</p>
+    <p>In R wie in Tutorium 7: Parameter schätzen mit <code class="inline">mean()</code>, <code class="inline">var()</code>, <code class="inline">cov()</code>, <code class="inline">cor()</code>;
+      Wahrscheinlichkeit der bedingten Verteilung mit <code class="inline">pnorm(15, m, sqrt(v)) - pnorm(12, m, sqrt(v))</code>.</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 19 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">19</div>
+    <div class="step-title">Chuck-a-Luck: gleicher Erwartungswert, verschiedenes Risiko
+      <small>V06 · Folie 22–29 — Rechenregeln im Einsatz</small></div>
+    <span class="exam-tag">V06</span>
+  </div>
+
+  <div class="tldr">\(E(2X) = E(X + Y)\), aber \(\mathrm{Var}(2X) = 4\,\mathrm{Var}(X)\) und \(\mathrm{Var}(X + Y) = 2\,\mathrm{Var}(X)\) bei unabhängigen \(X, Y\) mit gleicher Verteilung.</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Gewinn \(G\) bei einem Einsatz auf die 6 (drei Würfel)</div>
+    <table class="in-box work">
+      <thead><tr><th>\(G\)</th><th>3</th><th>2</th><th>1</th><th>−1</th></tr></thead>
+      <tbody><tr><td>\(P\)</td><td>1/216</td><td>15/216</td><td>75/216</td><td>125/216</td></tr></tbody>
+    </table>
+    <p style="margin-top:6px">\(E(G) = \dfrac{3 + 30 + 75 - 125}{216} = -\dfrac{17}{216} = -0.0787\) · \(\mathrm{Var}(G) = 1.2392\)</p>
+    <ul class="clean">
+      <li>Strategie 1 — doppelter Einsatz auf die 6: \(E = -\dfrac{34}{216}\), \(\mathrm{Var}(2G) = 4 \cdot 1.2392 = 4.9567\)</li>
+      <li>Strategie 3 — je ein Einsatz in zwei <b>verschiedenen</b> Spielen: \(E = -\dfrac{34}{216}\), \(\mathrm{Var} = 2 \cdot 1.2392 = 2.4784\) (unabhängig)</li>
+      <li>Strategie 2 — Einsatz auf 1 und auf 6 im <b>selben</b> Wurf: nicht unabhängig → Varianz direkt berechnen (2.0030)</li>
+    </ul>
+    <p>Merksatz: Gleicher Erwartungswert heißt <b>nicht</b> gleiches Risiko. Die Varianz misst das Risiko.</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 20 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">20</div>
+    <div class="step-title">R-Skript 07 und Tutorium 5 komplett
+      <small>q-Funktionen, Gleichverteilung, Treppenfunktion</small></div>
+    <span class="exam-tag">R-Skript 07</span>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · was in Schritt 13 noch fehlte</div>
+<pre><span class="fn">qbinom</span>(p = <span class="nu">0.5</span>, size = <span class="nu">3</span>, prob = <span class="nu">0.5</span>)          <span class="cm"># Quantil einer diskreten Verteilung: 1</span>
+<span class="fn">qpois</span>(<span class="nu">0.1991483</span>, lambda = <span class="nu">3</span>)                    <span class="cm"># 2</span>
+<span class="fn">dunif</span>(<span class="nu">1</span>, min = <span class="nu">0</span>, max = <span class="nu">2</span>)                       <span class="cm"># Dichte 0.5</span>
+<span class="fn">punif</span>(<span class="nu">1.5</span>, <span class="nu">0</span>, <span class="nu">2</span>);  <span class="fn">qunif</span>(<span class="nu">0.75</span>, <span class="nu">0</span>, <span class="nu">2</span>)             <span class="cm"># 0.75 und 1.5</span>
+<span class="fn">pnorm</span>(<span class="fn">qnorm</span>(<span class="nu">0.6</span>))                               <span class="cm"># 0.6: p und q sind Umkehrfunktionen</span>
+<span class="fn">dhyper</span>(<span class="nu">3</span>, <span class="nu">6</span>, <span class="nu">43</span>, <span class="nu">6</span>)                              <span class="cm"># Lotto: 0.0177</span>
+
+<span class="fn">par</span>(mfrow = <span class="fn">c</span>(<span class="nu">1</span>, <span class="nu">2</span>))                              <span class="cm"># zwei Grafiken nebeneinander</span>
+vals &lt;- <span class="nu">0</span>:<span class="nu">15</span>
+<span class="fn">plot</span>(vals, <span class="fn">dpois</span>(vals, <span class="nu">3</span>), pch = <span class="nu">16</span>, main = <span class="st">"Wahrscheinlichkeitsfunktion"</span>)
+<span class="fn">plot</span>(vals, <span class="fn">ppois</span>(vals, <span class="nu">3</span>), pch = <span class="nu">16</span>, main = <span class="st">"Verteilungsfunktion"</span>)
+
+Tz &lt;- <span class="fn">c</span>(<span class="nu">1</span>, <span class="nu">2</span>, <span class="nu">3</span>, <span class="nu">5</span>);  Pz &lt;- <span class="fn">c</span>(<span class="nu">0.1</span>, <span class="nu">0.2</span>, <span class="nu">0.5</span>, <span class="nu">0.2</span>)     <span class="cm"># Tutorium 5, A2</span>
+<span class="fn">plot</span>(<span class="fn">stepfun</span>(Tz, <span class="fn">c</span>(<span class="nu">0</span>, <span class="fn">cumsum</span>(Pz))), pch = <span class="nu">16</span>, verticals = <span class="nu">FALSE</span>)   <span class="cm"># F(x) als Treppe</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Satır satır</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>q…(p)</code><span>kantil: \(F(q) \ge p\) olan en küçük değer. <code>pnorm(qnorm(p)) = p</code> — ters fonksiyonlar.</span></div>
+      <div class="tr-row"><code>par(mfrow = c(1, 2))</code><span>çizim alanını 1 satır × 2 sütuna böler.</span></div>
+      <div class="tr-row"><code>stepfun(x, c(0, cumsum(p)))</code><span>kesikli dağılım fonksiyonu (merdiven). Başa <b>0</b> eklenir çünkü ilk değerden önce F = 0.</span></div>
+      <div class="tr-row"><code>verticals = FALSE</code><span>basamaklar arasında dikey çizgi yok — doğru çizim.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- ZUSATZTRAINING ---------- -->
+<div class="box box-wort">
+  <div class="box-label">■ Zusatztraining Block E · Testat 4 komplett + Ergänzungen</div>
+  <p><b>(Z1 · wie Testat 4 A1)</b> \(X \in \{1, 2, 3\}\) mit \(F(1) = 0.3\); angenommen, die Grafik zeigt \(P(X = 2) = 0.5\). Ergänzen Sie \(F(x)\) für \(2 \le x \lt 3\), berechnen Sie \(E(X)\) und \(E(\log X)\).</p>
+  <p><b>(Z2 · Testat 4 A2)</b> 60 schwarze, 20 gelbe Kugeln, 5 Züge <b>mit</b> Zurücklegen. Verteilung der Anzahl gelber? \(P(X \gt 4)\)?</p>
+  <p><b>(Z3 · Testat 4 A6)</b> \(f(y) = \frac y6\) für \(0 \le y \le 2\), \(f(y) = \dfrac{6 - y}{12}\) für \(2 \lt y \le 6\). Bestimmen Sie \(E(Y)\).</p>
+  <p><b>(Z4 · Testat 4 A5)</b> \(f(x) = c(x - 2)\) auf \([2, 3]\): \(E(X)\) und \(E(X^2)\).</p>
+  <p><b>(Z5)</b> Wie viele Möglichkeiten gibt es, aus 10 Kugeln 4 ohne Reihenfolge zu ziehen? Und wie groß ist die Wahrscheinlichkeit, bei 4 Zügen ohne Zurücklegen aus 6 roten und 4 blauen Kugeln genau 2 rote zu ziehen?</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">Lösungen</span>
+  <p><b>(Z1)</b> \(F = 0.3 + 0.5 = \) <span class="key">0.8</span> für \(2 \le x \lt 3\) · \(P(X = 3) = 0.2\) · \(E(X) = 0.3 + 1.0 + 0.6 = \) <span class="key">1.9</span> ·
+    \(E(\log X) = 0.5 \log 2 + 0.2 \log 3 = 0.3466 + 0.2197 = \) <span class="key">0.566</span> (natürlicher Logarithmus)</p>
+  <p><b>(Z2)</b> \(X \sim B(5, 0.25)\) · \(P(X \gt 4) = P(X = 5) = 0.25^5 = \) <span class="key">0.001</span> (0.00098)</p>
+  <p><b>(Z3)</b> \(E(Y) = \int_0^2 \dfrac{y^2}{6}dy + \int_2^6 \dfrac{6y - y^2}{12}dy = \dfrac{8}{18} + \dfrac{1}{12}\left[3y^2 - \dfrac{y^3}{3}\right]_2^6 = 0.4444 + \dfrac{1}{12}\left(36 - \dfrac{28}{3}\right) = 0.4444 + 2.2222 = \) <span class="key">2.667</span></p>
+  <p><b>(Z4)</b> \(c = 2\) · \(E(X) = \int_2^3 2x(x - 2)\,dx = \left[\dfrac{2x^3}{3} - 2x^2\right]_2^3 = 0 - \left(-\frac 83\right) = \) <span class="key">2.667</span> ·
+    \(E(X^2) = \int_2^3 2x^2(x-2)\,dx = \left[\dfrac{x^4}{2} - \dfrac{4x^3}{3}\right]_2^3 = 4.5 - \left(-\dfrac{8}{3}\right) = \) <span class="key">7.167</span></p>
+  <p><b>(Z5)</b> \(\binom{10}{4} = 210\) · hypergeometrisch: \(\dfrac{\binom 62 \binom 42}{\binom{10}{4}} = \dfrac{15 \cdot 6}{210} = \) <span class="key">0.429</span></p>
+</div>
+
 <!-- ---------- FORMELBLATT ---------- -->
 
 <div class="cheat">
@@ -1064,3 +1295,24 @@ predict_thunder &lt;- <span class="fn">function</span>(y, lambda) {        <span
     </tbody>
   </table>
 </div>
+
+<!-- ==================== STOFFABDECKUNG ==================== -->
+<div class="page-break"></div>
+<div class="dash-head">
+  <h2>Stoffabdeckung Tag 3</h2>
+  <span>Jede Quelle → wo sie in diesem PDF steht</span>
+</div>
+<table class="topic-score">
+  <thead><tr><th style="width:170px">Quelle</th><th>Inhalt</th><th>hier</th></tr></thead>
+  <tbody>
+    <tr><td><b>V05</b> Zufallsvariablen</td><td>Definition · diskret/stetig · Träger · Wahrscheinlichkeitsfunktion · Binomialkoeffizient · Lotto (hypergeometrisch) · Dichte · Verteilungsfunktion · Quantile · Unabhängigkeit · uiv</td><td>1–2, 5–6, 12, 15</td></tr>
+    <tr><td><b>V06</b> Eigenschaften</td><td>Erwartungswert · Gesetz der großen Zahlen · Rechenregeln · \(E(g(X))\) · Varianz · Chuck-a-Luck · bivariate ZV · Rand-/bedingte Verteilung · Roulette · Kovarianz/Korrelation</td><td>3–4, 7, 16–17, 19</td></tr>
+    <tr><td><b>V07</b> Verteilungsmodelle</td><td>Bernoulli · Binomial · Poisson · Gleich · Exponential · Normal · ZGWS · Standardnormal · Quantile · Transformationen/Summen · bivariate Normalverteilung</td><td>8–12, 18</td></tr>
+    <tr><td><b>R-Skript 07</b></td><td>d/p/q/r für binom, pois, unif, exp, norm · Grafiken · par(mfrow)</td><td>13, 20</td></tr>
+    <tr><td><b>Tutorium 5</b></td><td>gemeinsame W.-Funktion · Würfelspiel (Träger, F, stepfun) · Dichte/Verteilungsfunktion · rnorm · pnorm/qnorm</td><td>2–3, 16, 20</td></tr>
+    <tr><td><b>Tutorium 6</b></td><td>Konstante c · E und Var · Rechenregeln · Dichte → F · Doppelintegrale · Randdichten · Unabhängigkeit · bedingte Dichte</td><td>2–7, 17</td></tr>
+    <tr><td><b>Tutorium 7</b></td><td>Bernoulli/Binomial · Poisson · Transformation · Exponential + eigene Funktion · Normal · bivariate Normal (Zuckerrohr)</td><td>8–14, 18</td></tr>
+    <tr><td><b>Testat 4</b></td><td>alle 9 Aufgaben</td><td>2–13, Zusatztraining</td></tr>
+    <tr><td><b>Testat 0</b></td><td>Integrale (Gleichverteilung) · Ableitungen · Log-Regeln</td><td>5–7, 10 · Log/Ableitung → Tag 4</td></tr>
+  </tbody>
+</table>

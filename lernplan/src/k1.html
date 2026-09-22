@@ -26,8 +26,8 @@
   </p>
 
   <div class="cover-meta">
-    <span class="chip chip-lav"><span class="ic">◷</span> ca. 6.5 Stunden</span>
-    <span class="chip chip-mint"><span class="ic">▤</span> 4 Blöcke · 14 Schritte</span>
+    <span class="chip chip-lav"><span class="ic">◷</span> ca. 7.5 Stunden</span>
+    <span class="chip chip-mint"><span class="ic">▤</span> 5 Blöcke · 20 Schritte</span>
     <span class="chip chip-rose"><span class="ic">✎</span> Simulation · 46 Punkte · 60 min</span>
     <span class="chip chip-sky"><span class="ic">▶</span> R für Teil B · TR açıklamalı</span>
   </div>
@@ -887,29 +887,30 @@
     <div class="rbox-head">▶ R · die ersten drei Aufgaben jeder B-Klausur</div>
 <pre><span class="fn">setwd</span>(<span class="fn">path.expand</span>(<span class="st">"~"</span>))                    <span class="cm"># (a) Arbeitsordner = Dokumente</span>
 
-d &lt;- <span class="fn">read.csv</span>(<span class="st">"WitcherData1.csv"</span>,             <span class="cm"># (b) Datei einlesen</span>
-              sep = <span class="st">";"</span>, dec = <span class="st">"."</span>, header = <span class="nu">TRUE</span>)
+d &lt;- <span class="fn">read.csv</span>(<span class="st">"WitcherData1.csv"</span>,             <span class="cm"># (b) Datei einlesen — so in der Musterlösung</span>
+              sep = <span class="st">","</span>, dec = <span class="st">"."</span>, header = <span class="nu">TRUE</span>)
 <span class="fn">head</span>(d)                                        <span class="cm">#     erste 6 Zeilen zeigen</span>
 
-<span class="fn">str</span>(d)                                         <span class="cm"># (c) Objekttypen aller Spalten</span>
-<span class="fn">class</span>(d$Tal)                                   <span class="cm">#     z. B. "character"</span>
-<span class="fn">class</span>(d$Muenzen)                               <span class="cm">#     z. B. "integer" / "numeric"</span></pre>
+<span class="fn">typeof</span>(d$Tal)                                  <span class="cm"># (c) "character"  (Musterlösung)</span>
+<span class="fn">typeof</span>(d$Muenzen)                              <span class="cm">#     "integer" — nur ganze Zahlen</span>
+<span class="fn">str</span>(d)                                         <span class="cm">#     Alternative: alle Spalten auf einmal</span></pre>
   </div>
 
   <div class="tr">
     <span class="tr-badge">TR · Satır satır</span>
     <div class="tr-rows">
       <div class="tr-row"><code>setwd(path.expand("~"))</code><span>Çalışma klasörünü "Dokumente" yapar. Sınavda bu komut <b>verilir</b>, aynen yaz.</span></div>
-      <div class="tr-row"><code>read.csv(..., sep = ";")</code><span>CSV dosyasını okur. <code>sep</code> = sütun ayırıcı (dosyaya bak: <b>;</b> mi <b>,</b> mi?). <code>dec</code> = ondalık işareti.</span></div>
+      <div class="tr-row"><code>read.csv(..., sep = ",")</code><span>CSV dosyasını okur. <code>sep</code> = sütun ayırıcı. Resmi çözümde WitcherData1 için <b>","</b>. Sınavda görevde ne yazıyorsa onu kullan; yazmıyorsa dosyayı aç ve bak (<b>;</b> mi <b>,</b> mi?). <code>dec</code> = ondalık işareti.</span></div>
       <div class="tr-row"><code>header = TRUE</code><span>İlk satır sütun <b>isimleri</b>dir.</span></div>
       <div class="tr-row"><code>d &lt;- ...</code><span>Sonucu <code>d</code> adıyla <b>kaydeder</b>. Görev "Objekt d" diyorsa isim tam <code>d</code> olmalı.</span></div>
       <div class="tr-row"><code>head(d)</code><span>İlk 6 satır. "ersten 6 Zeilen wiedergeben" → bu.</span></div>
-      <div class="tr-row"><code>str(d)</code><span>Her sütunun tipini gösterir: <code>chr</code> = character, <code>num</code> = numeric, <code>int</code> = integer, <code>Factor</code>, <code>logi</code>.</span></div>
+      <div class="tr-row"><code>typeof(d$Tal)</code><span>Tek sütunun tipi: "character", "integer", "double" (= numeric), "logical". Resmi çözüm bunu kullanıyor.</span></div>
+      <div class="tr-row"><code>str(d)</code><span>Tüm sütunların tipi birden: <code>chr</code> = character, <code>num</code> = numeric, <code>int</code> = integer, <code>Factor</code>, <code>logi</code>.</span></div>
       <div class="tr-row"><code>d$Tal</code><span>Data frame'in "Tal" sütunu. <b>$</b> = "içindeki".</span></div>
     </div>
     <div class="tr-rule">
       Cevap kutusuna <b>kodu ve R çıktısını</b> birlikte kopyala; ayrı kutuya tam cümleyle cevap yaz:
-      „Die Variable Tal ist vom Typ character, die Variable Muenzen vom Typ integer.“
+      „Bei der Variable Tal handelt es sich um ein character-Objekt, bei der Variable Muenzen um ein numerisches Objekt des Typs integer.“ (Wortlaut der Musterlösung)
     </div>
   </div>
 </div>
@@ -1002,6 +1003,305 @@ b &lt;- <span class="fn">boxplot</span>(x, plot = <span class="nu">FALSE</span>)
 b$stats      <span class="cm"># Whisker unten, Box unten, Median, Box oben, Whisker oben</span>
 b$out        <span class="cm"># Ausreißer</span></pre>
   </div>
+</div>
+
+
+<!-- ==================== BLOCK E: ERGÄNZUNGEN ==================== -->
+
+<div class="page-break"></div>
+<div class="section-rule"><span>Block E · Was sonst noch drankommen kann · 60 min</span></div>
+
+<div class="box box-merke">
+  <div class="box-label">◆ Warum dieser Block?</div>
+  <p>
+    Die Klausur prüft laut Abschlusssitzung den Stoff aus <b>Vorlesungen, Tutorien und Übungen</b> — nicht nur das, was in der
+    Probeklausur vorkam. Dieser Block sammelt alles aus V01–V02, R-Skript 01–02, Tutorium 1–2, Testat 0–1,
+    was in Block A–D noch fehlt.
+  </p>
+</div>
+
+<!-- ---------- SCHRITT 15 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">15</div>
+    <div class="step-title">Anteile aus einem Histogramm schätzen
+      <small>Tutorium 2 · A1 und Testat 1 · A7</small></div>
+    <span class="exam-tag hot">Testat 1</span>
+  </div>
+
+  <div class="tldr">Liegt ein Intervall nur <b>teilweise</b> in einer Klasse, nimmt man an, dass die Werte in der Klasse <b>gleichmäßig</b> verteilt sind: Anteil = Fläche des Histogramms über dem Intervall.</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Die zwei Umrechnungen</div>
+    <ul class="clean">
+      <li><b>Anzahl in einer Klasse</b> = Dichte · Klassenbreite · \(n\) (Rückweg vom normierten Histogramm)</li>
+      <li><b>Anteil in einem Teil einer Klasse</b> = \(\dfrac{\text{Länge des Teils}}{\text{Klassenbreite}} \cdot f_j\) (= Dichte · Länge des Teils)</li>
+    </ul>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · 50 Körpergrößen in vier Klassen</div>
+    <table class="in-box work">
+      <thead><tr><th>Klasse</th><th>\(h_j\)</th><th>\(f_j\)</th><th>Breite</th><th>Dichte</th></tr></thead>
+      <tbody>
+        <tr><td>[150, 160)</td><td>5</td><td>0.10</td><td>10</td><td>0.010</td></tr>
+        <tr><td>[160, 170)</td><td>12</td><td>0.24</td><td>10</td><td>0.024</td></tr>
+        <tr><td>[170, 180)</td><td>15</td><td>0.30</td><td>10</td><td class="sp">0.030</td></tr>
+        <tr><td>[180, 200]</td><td>18</td><td>0.36</td><td>20</td><td>0.018</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:8px"><b>Anteil im Intervall \((165, 185]\):</b></p>
+    \[ \underbrace{\tfrac{5}{10}\cdot 0.24}_{165\text{ bis }170} + \underbrace{0.30}_{\text{ganz}} + \underbrace{\tfrac{5}{20}\cdot 0.36}_{180\text{ bis }185} = 0.12 + 0.30 + 0.09 = 0.51 \]
+    <p>Also etwa 51 % — bei \(n = 50\) rund 25.5 Personen. Das ist eine <b>Schätzung</b> unter der Gleichverteilungsannahme.</p>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Testat-Falle: Modalklasse ≠ höchster Balken</div>
+    <p>
+      Die <b>Modalklasse</b> ist die Klasse mit der größten <b>Häufigkeit</b> (Tutorium 2, A5). Oben ist das \([180, 200]\) mit 18 Werten.
+      Der <b>höchste Balken</b> ist aber \([170, 180)\), weil die letzte Klasse doppelt so breit ist. Die Aussage
+      „Die Modalklasse ist immer die Klasse mit dem höchsten Kästchen“ ist deshalb <b>im Allgemeinen falsch</b> —
+      sie stimmt nur bei gleich breiten Klassen.
+    </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Kısmi aralık hesabı</span>
+    <p>Aralık bir sınıfın <b>bir kısmını</b> kapsıyorsa: o sınıfın oranını, kapsanan <b>uzunluk / sınıf genişliği</b> ile çarp.
+      Tam kapsanan sınıfları olduğu gibi ekle. Varsayım: sınıf içinde değerler eşit dağılmış (Gleichverteilung) — bunu cevaba yaz.</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 16 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">16</div>
+    <div class="step-title">Summenhäufigkeiten und die Sprache der Anteile
+      <small>Tutorium 2 · A2</small></div>
+    <span class="exam-tag">Tutorium 2</span>
+  </div>
+
+  <div class="tldr">\(H_j = h_1 + \dots + h_j\) (absolut kumuliert), \(F_j = H_j / n\) (relativ kumuliert). Jede Formulierung erst in „≤“ übersetzen.</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · Semesterzahlen von 23 Klausurteilnehmern</div>
+    <table class="in-box ct small">
+      <thead><tr><th>Semester</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr></thead>
+      <tbody>
+        <tr><td>\(h_j\)</td><td>1</td><td>7</td><td>5</td><td>5</td><td>1</td><td>4</td></tr>
+        <tr><td>\(H_j\)</td><td>1</td><td>8</td><td>13</td><td>18</td><td>19</td><td>23</td></tr>
+        <tr><td>\(F_j\)</td><td>1/23</td><td>8/23</td><td>13/23</td><td>18/23</td><td>19/23</td><td>1</td></tr>
+      </tbody>
+    </table>
+    <table class="in-box" style="margin-top:8px">
+      <tbody>
+        <tr><td>„größer als 3“</td><td>\(= 1 - F(3) = 1 - \dfrac{8}{23} = \dfrac{15}{23}\)</td></tr>
+        <tr><td>„mindestens 3“</td><td>\(= 1 - F(2) = 1 - \dfrac{1}{23} = \dfrac{22}{23}\)</td></tr>
+        <tr><td>„kleiner als 4“</td><td>\(= F(3) = \dfrac{8}{23}\)</td></tr>
+        <tr><td>„nicht größer als 5“</td><td>\(= F(5) = \dfrac{18}{23}\)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:6px">Lagemaße zur selben Tabelle (Kontrollergebnis Tutorium 2, A4): \(\bar x = 4.435\), \(x_{med} = x_{(12)} = 4\), \(x_{mod} = 3\), \(s^2 = 2.246\), \(s = 1.498\).</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 17 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">17</div>
+    <div class="step-title">Varianz klassierter Daten
+      <small>Tutorium 2 · A5</small></div>
+    <span class="exam-tag">Tutorium 2</span>
+  </div>
+
+  <div class="tldr">Wie der klassierte Mittelwert: jeder Wert sitzt in der Klassenmitte. \(s^2_K = \sum_j f_j\,(m_j - \bar x_K)^2\).</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · Arbeitsstunden pro Woche in der Vorlesungszeit</div>
+    <table class="in-box work">
+      <thead><tr><th>Klasse</th><th>\(f_j\)</th><th>\(m_j\)</th><th>\(f_j m_j\)</th><th>\(f_j (m_j - \bar x_K)^2\)</th></tr></thead>
+      <tbody>
+        <tr><td>[0, 4]</td><td>0.402</td><td>2</td><td>0.804</td><td>9.0015</td></tr>
+        <tr><td>(4, 8]</td><td>0.196</td><td>6</td><td>1.176</td><td>0.1050</td></tr>
+        <tr><td>(8, 12]</td><td>0.219</td><td>10</td><td>2.190</td><td>2.3389</td></tr>
+        <tr><td>(12, 16]</td><td>0.183</td><td>14</td><td>2.562</td><td>9.6668</td></tr>
+        <tr class="sum"><td>Σ</td><td>1</td><td></td><td>6.732</td><td>21.1122</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:6px">\(\bar x_K = 6.732\) · \(s^2_K = 21.112\) · <b>Modalklasse</b> = \([0, 4]\) (größter Anteil, 40.2 %).</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 18 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">18</div>
+    <div class="step-title">Stichproben, Modelle, Störvariablen — Theoriefragen
+      <small>Tutorium 1 · A13–A14 · Testat 1 · A2 · V01</small></div>
+    <span class="exam-tag">Theorie</span>
+  </div>
+
+  <div class="tldr">Theoriefragen kommen als Multiple Choice oder „Formulieren Sie richtig“. Die Musterantworten sind kurz — man muss sie nur <b>kennen</b>.</div>
+
+  <table>
+    <thead><tr><th>Situation</th><th>Verfahren</th></tr></thead>
+    <tbody>
+      <tr><td>Man wählt zufällig ganze Schulklassen aus und befragt dort alle</td><td><b>Klumpenstichprobe</b></td></tr>
+      <tr><td>Anteil jedes Studiengangs soll dem Anteil in der Studierendenschaft entsprechen</td><td><b>geschichtete Stichprobe / Quotenverfahren</b></td></tr>
+      <tr><td>Umfrage soll „repräsentativ für ganz Deutschland“ sein (Merkmale wie Alter, Region)</td><td><b>Quotenverfahren</b> oder geschichtete Zufallsstichprobe</td></tr>
+      <tr><td>Jede Person hat dieselbe Chance, ohne Gruppen</td><td><b>einfache Zufallsstichprobe</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="box box-merke" style="margin-top:12px">
+    <div class="box-label">◆ Richtig formuliert (Tutorium 1, A14)</div>
+    <ul class="clean">
+      <li>Ein <b>Modell</b> ist eine <b>vereinfachte</b> Beschreibung der Realität (nicht fehlerfrei).</li>
+      <li><b>Deterministisch</b> heißt: Im Modell liegt <b>keine</b> Unsicherheit vor.</li>
+      <li>Ein diskretes Merkmal kann auch <b>abzählbar unendlich</b> viele Werte haben (Autos zählen an der Autobahn).</li>
+      <li>Quantitative Merkmale können <b>diskret oder stetig</b> sein.</li>
+      <li>Ein Merkmal mit <b>endlich</b> vielen Ausprägungen ist <b>diskret</b>.</li>
+      <li>Punkte von 0–100 sind <b>kardinal</b>; eine Skala 1–5 („wie oft …“) ist <b>ordinal</b>, obwohl Zahlen dastehen.</li>
+    </ul>
+  </div>
+
+  <div class="box box-def">
+    <div class="box-label">● Störvariablen kontrollieren (V01)</div>
+    <p><b>Störvariablen</b> beeinflussen das Ergebnis, sind aber nicht Ziel der Untersuchung (z. B. Vorwissen bei einer Lehrmethode). Kontrolle durch:
+      <b>Homogenisierung</b> (in Teilgruppen untersuchen), <b>Randomisierung</b> (zufällige Zuteilung zu Gruppen), <b>statistische Modellierung</b>.</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 19 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">19</div>
+    <div class="step-title">Summen- und Produktzeichen
+      <small>Tutorium 1 · A3–A6 · Testat 0 · A4–A5 — Werkzeug für Tag 4</small></div>
+    <span class="exam-tag">Testat 0</span>
+  </div>
+
+  <div class="tldr">Konstanten darf man vor das Summenzeichen ziehen, Werte mit Index \(i\) <b>nicht</b>. \(\sum (x_i - \bar x) = 0\) immer.</div>
+
+  <table>
+    <thead><tr><th>Regel</th><th>Beispiel</th></tr></thead>
+    <tbody>
+      <tr><td>\(\sum_{i=1}^n c = n\,c\)</td><td>\(\sum_{i=1}^n \bar x = n\bar x = \sum x_i\)</td></tr>
+      <tr><td>\(\sum c\,x_i = c \sum x_i\)</td><td>\(\sum \dfrac{x_i}{n} = \frac 1n \sum x_i\)</td></tr>
+      <tr><td>\(\sum (x_i + y_i) = \sum x_i + \sum y_i\)</td><td>\(\sum (x_i - \bar x) = \sum x_i - n\bar x = 0\)</td></tr>
+      <tr><td>\(\sum \dfrac{x}{i^2} \ne \dfrac{1}{i^2}\sum x\)</td><td>\(i\) hängt am Index — darf nicht heraus</td></tr>
+      <tr><td>\(\prod_{i=1}^n c\,a_i = c^n \prod a_i\)</td><td>\(\prod_{i=1}^3 \theta^{x_i} e^{-\theta} = \theta^{1+2+3} e^{-3\theta} = \theta^6 e^{-3\theta}\) (Testat 0)</td></tr>
+      <tr><td>\(\prod a^{x_i} = a^{\sum x_i}\)</td><td>Produkt von Potenzen → Summe im Exponenten</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ---------- SCHRITT 20 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">20</div>
+    <div class="step-title">R-Grundlagen: Datenobjekte, Filtern, Schleifen, Funktionen
+      <small>R-Skript 01–02 · Tutorium 1 · A15–A17 · Testat 0 · A2</small></div>
+    <span class="exam-tag hot">Teil B</span>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Datenobjekte und Typen (R-Skript 01)</div>
+<pre>x &lt;- <span class="fn">c</span>(<span class="nu">1</span>, <span class="nu">2</span>, <span class="nu">3</span>);  y &lt;- <span class="fn">c</span>(<span class="nu">1</span>, <span class="nu">5</span>, <span class="nu">9</span>)
+l &lt;- x &gt;= y                               <span class="cm"># TRUE FALSE FALSE (logical)</span>
+f &lt;- <span class="fn">factor</span>(<span class="fn">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"a"</span>), levels = <span class="fn">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))
+<span class="fn">as.numeric</span>(f)                             <span class="cm"># 1 2 1 — die internen Codes!</span>
+M &lt;- <span class="fn">matrix</span>(<span class="nu">1</span>:<span class="nu">6</span>, nrow = <span class="nu">2</span>)                   <span class="cm"># spaltenweise gefüllt</span>
+M2 &lt;- <span class="fn">matrix</span>(<span class="nu">1</span>:<span class="nu">6</span>, nrow = <span class="nu">2</span>, byrow = <span class="nu">TRUE</span>)   <span class="cm"># zeilenweise gefüllt</span>
+L &lt;- <span class="fn">list</span>(); L$x &lt;- x; L$M &lt;- M              <span class="cm"># Liste: verschiedene Objekte</span>
+d &lt;- <span class="fn">data.frame</span>(x = x, z = <span class="fn">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>))   <span class="cm"># Data Frame = Liste gleich langer Spalten</span>
+<span class="fn">typeof</span>(x); <span class="fn">typeof</span>(l); <span class="fn">is.numeric</span>(x); <span class="fn">length</span>(x); <span class="fn">dim</span>(M); <span class="fn">nrow</span>(d); <span class="fn">names</span>(d)</pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Nesne tipleri</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>c(...)</code><span>vektör — hepsi <b>aynı tip</b>. Sayı ile metin karışırsa hepsi metin olur (<code>cbind(x, z)</code> de öyle).</span></div>
+      <div class="tr-row"><code>factor(..., levels)</code><span>kategorik değişken. <code>as.numeric(f)</code> etiketleri değil <b>sıra kodlarını</b> (1, 2, …) verir.</span></div>
+      <div class="tr-row"><code>matrix(1:6, nrow = 2)</code><span>2 satırlı matris, <b>sütun sütun</b> doldurulur. <code>byrow = TRUE</code> → satır satır.</span></div>
+      <div class="tr-row"><code>list / data.frame</code><span>liste farklı tipte nesneleri tutar; data frame = eşit uzunlukta sütunlardan oluşan özel liste.</span></div>
+      <div class="tr-row"><code>typeof / is.… / dim</code><span>tipi sorar; <code>dim</code> sadece matris ve data frame'de çalışır.</span></div>
+    </div>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Filtern, Gruppenmittel, Mengen</div>
+<pre>v &lt;- <span class="nu">1</span>:<span class="nu">20</span>
+v[<span class="fn">c</span>(<span class="nu">1</span>, <span class="nu">10</span>, <span class="fn">length</span>(v))]                    <span class="cm"># 1., 10. und letztes Element</span>
+t &lt;- <span class="fn">read.csv</span>(<span class="st">"titanic.csv"</span>)
+<span class="fn">mean</span>(t$fare, na.rm = <span class="nu">TRUE</span>)                 <span class="cm"># Durchschnittspreis</span>
+surv &lt;- t[t$survived == <span class="nu">1</span>, ]                   <span class="cm"># nur Überlebende (Zeilen filtern)</span>
+surv_f &lt;- <span class="fn">subset</span>(surv, sex == <span class="st">"female"</span>)       <span class="cm"># gleiches mit subset()</span>
+<span class="fn">table</span>(t$sex, t$survived)                      <span class="cm"># Kontingenztafel</span>
+<span class="fn">aggregate</span>(t$fare, by = <span class="fn">list</span>(t$sex), mean)     <span class="cm"># Mittel je Gruppe (R-Skript 01)</span>
+
+A &lt;- <span class="nu">3</span>:<span class="nu">6</span>; B &lt;- <span class="nu">4</span>:<span class="nu">2</span>; C &lt;- <span class="fn">seq</span>(<span class="nu">2</span>, <span class="nu">8</span>, by = <span class="nu">2</span>)     <span class="cm"># Testat 0, A2</span>
+<span class="fn">union</span>(A, B)        <span class="cm"># 3 4 5 6 2</span>
+<span class="fn">intersect</span>(A, C)    <span class="cm"># 4 6</span>
+<span class="fn">setdiff</span>(B, C)      <span class="cm"># 3</span>
+<span class="fn">is.element</span>(<span class="nu">6</span>, C)   <span class="cm"># TRUE</span></pre>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Schleife, Bedingung, Funktion (Tutorium 1, A16)</div>
+<pre>w &lt;- <span class="fn">rep</span>(<span class="nu">NA</span>, <span class="fn">length</span>(v))                 <span class="cm"># leeren Vektor passender Länge anlegen</span>
+<span class="fn">for</span> (i <span class="fn">in</span> <span class="nu">1</span>:<span class="fn">length</span>(v)) {
+  w[i] &lt;- v[i] * <span class="nu">1.5</span>
+}
+w2 &lt;- v * <span class="nu">1.5</span>                              <span class="cm"># dasselbe ohne Schleife</span>
+w3 &lt;- <span class="fn">ifelse</span>(w &gt; <span class="nu">10</span>, <span class="nu">1</span>, w)                <span class="cm"># alles über 10 wird 1</span>
+
+ersetze &lt;- <span class="fn">function</span>(vec) {
+  <span class="fn">for</span> (i <span class="fn">in</span> <span class="nu">1</span>:<span class="fn">length</span>(vec)) {
+    <span class="fn">if</span> (vec[i] &gt; <span class="nu">10</span>) { vec[i] &lt;- <span class="nu">1</span> } <span class="fn">else</span> { vec[i] &lt;- vec[i] }
+  }
+  <span class="fn">return</span>(vec)
+}
+<span class="fn">ersetze</span>(v)
+
+h &lt;- <span class="fn">hist</span>(v, breaks = <span class="fn">c</span>(<span class="nu">0</span>, <span class="nu">5</span>, <span class="nu">10</span>, <span class="nu">20</span>), plot = <span class="nu">FALSE</span>)   <span class="cm"># Kennzahlen ohne Grafik</span>
+h$counts;  h$density;  <span class="fn">cumsum</span>(h$counts)                    <span class="cm"># h_j, Dichte, H_j</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Satır satır</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>d[koşul, ]</code><span>Koşulu sağlayan satırlar. <code>==</code> karşılaştırma, <code>=</code> atama değildir!</span></div>
+      <div class="tr-row"><code>subset(d, koşul)</code><span>Aynı filtre, daha okunaklı.</span></div>
+      <div class="tr-row"><code>aggregate(x, by = list(g), mean)</code><span>Gruba göre ortalama.</span></div>
+      <div class="tr-row"><code>union / intersect / setdiff</code><span>birleşim ∪ / kesişim ∩ / fark \ — sıra: ilk kümede olup ikincide olmayan.</span></div>
+      <div class="tr-row"><code>for (i in 1:n) { }</code><span>i = 1, 2, …, n için gövdeyi tekrarlar. B-Teil (g) ve (h) tam bunu istiyor.</span></div>
+      <div class="tr-row"><code>if (...) { } else { }</code><span>tek değer için koşul; vektör için <code>ifelse(koşul, evet, hayır)</code>.</span></div>
+      <div class="tr-row"><code>hist(..., plot = FALSE)</code><span>Grafik çizmeden sayıları verir: <code>$counts</code> = \(h_j\), <code>$density</code> = yoğunluk.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- ZUSATZTRAINING ---------- -->
+<div class="box box-wort">
+  <div class="box-label">■ Zusatztraining Block E · 12 Punkte · 15 Minuten</div>
+  <p><b>(Z1)</b> Ein normiertes Histogramm für \(n = 200\) Alterswerte hat über \((20, 25]\) die Höhe 0.06 und über \((25, 35]\) die Höhe 0.04.
+    (a) Wie viele Personen sind zwischen 25 und 35? (b) Schätzen Sie den Anteil mit \(23 \lt x \le 30\). <i>(3P)</i></p>
+  <p><b>(Z2)</b> Welche Aussage ist richtig? (1) \(\sum_{i=1}^n (x_i - \bar x) = \bar x\) · (2) \(\sum_{i=1}^n (x_i - \bar x) = 0\) · (3) \(\sum_{i=1}^n (x_i - \bar x) = 1\) <i>(1P)</i></p>
+  <p><b>(Z3)</b> Ergänzen Sie die R-Ausgaben: <code class="inline">A &lt;- 2:5; B &lt;- c(5, 7); union(A, B); intersect(A, B); setdiff(A, B)</code> <i>(3P)</i></p>
+  <p><b>(Z4)</b> Was liefert <code class="inline">as.numeric(factor(c("mittel", "hoch", "mittel"), levels = c("niedrig", "mittel", "hoch")))</code>? <i>(1P)</i></p>
+  <p><b>(Z5)</b> Schreiben Sie eine Funktion <code class="inline">anteil_ueber(x, k)</code>, die den Anteil der Werte in <code class="inline">x</code> größer als <code class="inline">k</code> zurückgibt. <i>(2P)</i></p>
+  <p><b>(Z6)</b> Richtig oder falsch: „Eine Befragung auf einer Skala von 1 bis 5 ist kardinalskaliert, weil Zahlen verwendet werden.“ Begründen Sie. <i>(2P)</i></p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">Lösungen Zusatztraining</span>
+  <p><b>(Z1)</b> (a) \(0.04 \cdot 10 \cdot 200 = \) <span class="key">80</span> Personen. (b) \((23, 25]\): \(0.06 \cdot 2 = 0.12\); \((25, 30]\): \(0.04 \cdot 5 = 0.20\) → <span class="key">0.32</span> (Gleichverteilung in den Klassen angenommen).</p>
+  <p><b>(Z2)</b> <span class="key">(2)</span></p>
+  <p><b>(Z3)</b> <code class="inline">2 3 4 5 7</code> · <code class="inline">5</code> · <code class="inline">2 3 4</code></p>
+  <p><b>(Z4)</b> <code class="inline">2 3 2</code> — die Codes der Levels, nicht die Reihenfolge des Auftretens.</p>
+  <p><b>(Z5)</b> <code class="inline">anteil_ueber &lt;- function(x, k) { return(mean(x &gt; k)) }</code> — <code class="inline">mean</code> eines logischen Vektors ist der Anteil der TRUE.</p>
+  <p><b>(Z6)</b> <span class="key">Falsch.</span> Die Zahlen sind nur Codes für geordnete Kategorien; die Abstände sind nicht interpretierbar → ordinalskaliert.</p>
 </div>
 
 <!-- ---------- FORMELBLATT ---------- -->
@@ -1385,3 +1685,25 @@ ________                                                                   <span
     </tbody>
   </table>
 </div>
+
+<!-- ==================== STOFFABDECKUNG ==================== -->
+<div class="page-break"></div>
+<div class="dash-head">
+  <h2>Stoffabdeckung Tag 1</h2>
+  <span>Jede Quelle → wo sie in diesem PDF steht</span>
+</div>
+<table class="topic-score">
+  <thead><tr><th style="width:170px">Quelle</th><th>Inhalt</th><th>hier</th></tr></thead>
+  <tbody>
+    <tr><td><b>V01</b> Daten- und Merkmalstypen</td><td>Grundbegriffe · diskret/stetig · Skalen · Versuchsplanung · Störvariablen · Stichprobenverfahren</td><td>1–3, 18</td></tr>
+    <tr><td><b>V02</b> Deskriptive Statistik</td><td>Häufigkeiten · Säulendiagramm vs. Histogramm · Modalität und Schiefe · Lagemaße · Schichten · Transformationen · Quantile · Varianz · IQR · Boxplot</td><td>4–11</td></tr>
+    <tr><td><b>R-Skript 01</b></td><td>Vektoren · factor · matrix · list · data.frame · typeof/is.* · subset · aggregate · sample</td><td>20</td></tr>
+    <tr><td><b>R-Skript 02</b></td><td>unique/sort · cut (labels, right, include.lowest) · table · hist + pdf · which(table==max) · quantile · var/sd · boxplot</td><td>12–14, 20</td></tr>
+    <tr><td><b>Tutorium 1</b></td><td>Mengen · Summen/Produkte · Stichprobenverfahren · Modelle · R-Grundlagen (Schleife, if-else, Funktion, Titanic)</td><td>1–3, 18–20</td></tr>
+    <tr><td><b>Tutorium 2</b></td><td>Anteile aus Histogramm · Summenhäufigkeiten · Verteilungsfunktion zeichnen · hist-Optionen · Lage/Streuung · klassierte Varianz · Transformation · Boxplot in R</td><td>5–6, 9–11, 14–17</td></tr>
+    <tr><td><b>Tutorium 3 A1</b></td><td>Median als Intervall · var() = \(S^2_*\) · hist(prob = T)</td><td>7, 9, 13–14</td></tr>
+    <tr><td><b>Testat 0</b></td><td>Einlesen · Mengen in R · Summen · Produkte (Log, Ableitung, Integral → Tag 3/4)</td><td>12, 19–20</td></tr>
+    <tr><td><b>Testat 1</b></td><td>Skalen · Stichprobenverfahren · Lagemaße · sd() · Boxplot ablesen · Kausalität · Histogramm/Modalklasse</td><td>2–3, 7–11, 15, 18</td></tr>
+    <tr><td><b>Probeklausur A1, A2, B a–e</b></td><td>vollständig</td><td>alle Blöcke + Simulation</td></tr>
+  </tbody>
+</table>

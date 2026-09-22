@@ -26,8 +26,8 @@
   </p>
 
   <div class="cover-meta">
-    <span class="chip chip-lav"><span class="ic">◷</span> ca. 6.5 Stunden</span>
-    <span class="chip chip-mint"><span class="ic">▤</span> 4 Blöcke · 15 Schritte</span>
+    <span class="chip chip-lav"><span class="ic">◷</span> ca. 7.5 Stunden</span>
+    <span class="chip chip-mint"><span class="ic">▤</span> 5 Blöcke · 20 Schritte</span>
     <span class="chip chip-rose"><span class="ic">✎</span> Simulation · 46 Punkte · 60 min</span>
     <span class="chip chip-sky"><span class="ic">▶</span> R für Teil B · TR açıklamalı</span>
   </div>
@@ -960,6 +960,218 @@ kopfzahlen &lt;- <span class="fn">colSums</span>(wuerfe)                   <span
   </div>
 </div>
 
+
+<!-- ==================== BLOCK E: ERGÄNZUNGEN ==================== -->
+
+<div class="page-break"></div>
+<div class="section-rule"><span>Block E · Was sonst noch drankommen kann · 75 min</span></div>
+
+<div class="box box-merke">
+  <div class="box-label">◆ Warum dieser Block?</div>
+  <p>
+    Geprüft wird der Stoff aus <b>Vorlesungen, Tutorien und Übungen</b>. Hier steht alles aus V03–V04, R-Skript 03,
+    Tutorium 3–4 und Testat 2–3, was in Block A–D noch fehlt — inklusive <b>aller Testat-3-Aufgaben</b> mit Lösung.
+  </p>
+</div>
+
+<!-- ---------- SCHRITT 16 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">16</div>
+    <div class="step-title">Was ist Wahrscheinlichkeit? — die Begriffe aus V04
+      <small>Typische Theorie- und Multiple-Choice-Fragen</small></div>
+    <span class="exam-tag">V04 · Folie 4–11</span>
+  </div>
+
+  <div class="tldr">Drei Zugänge: <b>Laplace</b> (abzählen), <b>frequentistisch</b> (Grenzwert relativer Häufigkeiten), <b>subjektiv</b> (fairer Wetteinsatz). Alle erfüllen die Kolmogorov-Axiome.</div>
+
+  <table>
+    <thead><tr><th style="width:150px">Begriff</th><th>Bedeutung</th></tr></thead>
+    <tbody>
+      <tr><td><b>deterministisch</b></td><td>Ergebnis exakt berechenbar (Stromstärke \(I = U/R\))</td></tr>
+      <tr><td><b>Zufall</b></td><td>Ergebnis <b>vor</b> der Durchführung nicht vorhersagbar, aber Wahrscheinlichkeiten zuweisbar (Würfel wird geworfen)</td></tr>
+      <tr><td><b>Unsicherheit</b></td><td>Ergebnis steht schon fest, ist aber unbekannt (Würfel liegt unter dem Becher)</td></tr>
+      <tr><td><b>Chaos</b></td><td>deterministische Regeln, aber praktisch unvorhersagbar (Dreikörperproblem) — <b>Zufall ≠ Chaos</b></td></tr>
+      <tr><td><b>Laplace</b></td><td>alle Ergebnisse gleich wahrscheinlich: \(P(A) = |A| / |\Omega|\)</td></tr>
+      <tr><td><b>frequentistisch</b></td><td>\(P(A) = \lim_{n \to \infty} H_n(A)/n\) — relative Häufigkeit bei sehr vielen Wiederholungen</td></tr>
+      <tr><td><b>subjektiv</b></td><td>\(P(A) = \dfrac{\text{Wetteinsatz}}{\text{Gewinn} + \text{Wetteinsatz}}\) — fairer Einsatz für eine Wette</td></tr>
+      <tr><td><b>Elementarereignis</b> \(\omega\)</td><td>ein einzelnes Ergebnis; \(P(A) = \sum_{\omega \in A} P(\omega)\)</td></tr>
+      <tr><td><b>Potenzmenge</b> \(\mathcal P(\Omega)\)</td><td>Menge aller Teilmengen = alle möglichen Ereignisse; bei \(|\Omega| = n\) gibt es \(2^n\) davon</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ---------- SCHRITT 17 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">17</div>
+    <div class="step-title">Mengen mit drei Ereignissen und Umformungen
+      <small>Testat 0 · A3 · Tutorium 1 · A2 · Tutorium 4 · A1–A2</small></div>
+    <span class="exam-tag">Testat 0 · Tut. 4</span>
+  </div>
+
+  <div class="tldr">Bei drei Mengen gibt es im Venn-Diagramm 8 Felder. Lies jeden Ausdruck von innen nach außen und schraffiere Schritt für Schritt.</div>
+
+  <table>
+    <thead><tr><th>Ausdruck</th><th>schraffiertes Gebiet</th></tr></thead>
+    <tbody>
+      <tr><td>\(A \cap B \cap C\)</td><td>nur das Mittelstück, in dem sich alle drei überlappen</td></tr>
+      <tr><td>\((B \cap C) \setminus A\)</td><td>Überlappung von \(B\) und \(C\), aber <b>ohne</b> den Teil in \(A\)</td></tr>
+      <tr><td>\(C \setminus (A \cup B)\)</td><td>der Teil von \(C\), der weder in \(A\) noch in \(B\) liegt</td></tr>
+      <tr><td>\((A \cap C)^c\)</td><td><b>alles</b> außer der Überlappung von \(A\) und \(C\) (auch außerhalb der Kreise!)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 1) · \(\Omega = \{-2, -1, \dots, 7\}\), \(A = \{1, 2, 3\}\), \(B = \{2, 4, 6\}\)</div>
+    <ul class="clean">
+      <li>\((A \cup B) \setminus (A \cap B) = \{1, 3, 4, 6\}\) · \(\Omega \setminus (A \cup B) = \{-2, -1, 0, 5, 7\}\)</li>
+      <li>Komplement von \(A\) <b>bezüglich \(A \cup B\)</b>: \(\{4, 6\}\) — die Grundmenge kann wechseln!</li>
+    </ul>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 4) · Wahrscheinlichkeiten aus Teilstücken</div>
+    <ul class="clean">
+      <li>\(P(B) = 0.5\), \(P(B \setminus A) = 0.4\), \(P(A \setminus B) = 0.2\) → \(P(A \cap B) = 0.5 - 0.4 = 0.1\) → \(P(A) = 0.2 + 0.1 = 0.3\)</li>
+      <li>\(P(A \cup B) = 0.8\), \(P(A \setminus B) = P(B \setminus A) = 0.2\) → \(P(A \cap B) = 0.8 - 0.2 - 0.2 = 0.4\)</li>
+      <li>\(A, B\) unabhängig, \(P(A \cap B) = \frac 25\), \(P(B \setminus A) = \frac 15\) → \(P(B) = \frac 35\), \(P(A) = \dfrac{2/5}{3/5} = \frac 23\), \(P(A \cup B) = 1 - \frac 13 \cdot \frac 25 = \dfrac{13}{15}\)</li>
+    </ul>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Dört parçaya böl</span>
+    <p>İki olayda her şey 4 ayrık parçadan oluşur: \(A \cap B\), \(A \setminus B\), \(B \setminus A\), \(\overline{A \cup B}\). Toplamları 1. Verilen her bilgiyi bu parçalara yaz, eksik olanı çıkarma ile bul.</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 18 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">18</div>
+    <div class="step-title">Bayes-Denkfallen: Basisrate und Ziegenproblem
+      <small>Tutorium 4 · A5 und A6</small></div>
+    <span class="exam-tag">Tutorium 4</span>
+  </div>
+
+  <div class="tldr">\(P(G \mid I)\) und \(P(I \mid G)\) sind verschiedene Dinge. Wer nur „60 % der Infizierten sind geimpft“ sieht, vergisst, wie viele überhaupt geimpft sind.</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Basisrate (Tutorium 4, A5) · Impfquote 91 %, 60 % der Infizierten geimpft</div>
+    <p>22 Mio. Menschen über 60, davon 1 Mio. infiziert. \(P(G) = 0.91\), \(P(I) = \dfrac{1}{22}\), \(P(G \mid I) = 0.6\).</p>
+    <p>\(P(I \mid G) = \dfrac{P(G \mid I)\,P(I)}{P(G)} = \dfrac{0.6 / 22}{0.91} = 0.030\) · \(P(I \mid \bar G) = \dfrac{0.4/22}{0.09} = 0.200\)</p>
+    <p>Geimpfte infizieren sich also <b>viel seltener</b> (3 % gegenüber 20 %) — obwohl die meisten Infizierten geimpft sind. Grund: fast alle sind geimpft.</p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Ziegenproblem (Tutorium 4, A6)</div>
+    <p>Drei Tore, hinter einem ein Auto. Sie wählen Tor 1, der Moderator öffnet ein Ziegentor, z. B. Tor 2.</p>
+    <ul class="clean">
+      <li>\(P(M_2 \mid T_1) = \frac 12\) (Auto hinter Ihrem Tor: Moderator wählt zufällig) · \(P(M_2 \mid T_2) = 0\) · \(P(M_2 \mid T_3) = 1\)</li>
+      <li>\(P(M_2) = \frac 12 \cdot \frac 13 + 0 + 1 \cdot \frac 13 = \frac 12\)</li>
+      <li>\(P(T_3 \mid M_2) = \dfrac{1 \cdot \frac 13}{\frac 12} = \frac 23\) → <b>Wechseln lohnt sich</b> (Gewinnchance \(\frac 23\) statt \(\frac 13\)).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 19 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">19</div>
+    <div class="step-title">Ziehen ohne Zurücklegen und mehrstufige Experimente
+      <small>V04 · Folie 24–26 · Testat 3 · A2, A3, A6</small></div>
+    <span class="exam-tag">Testat 3</span>
+  </div>
+
+  <div class="tldr">Mehrstufig: Wahrscheinlichkeiten <b>entlang eines Pfades multiplizieren</b>. Ohne Zurücklegen ändert sich nach jedem Zug der Nenner.</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Urne 1, 2, 3, 4 — zweimal ziehen (V04)</div>
+    <p>\(A\) = „1 beim ersten Zug“, \(B\) = „2 beim zweiten Zug“.</p>
+    <ul class="clean">
+      <li>Mit Zurücklegen: \(|\Omega| = 16\), \(P(A \cap B) = \dfrac{1}{16} = \frac 14 \cdot \frac 14\) → <b>unabhängig</b></li>
+      <li>Ohne Zurücklegen: \(|\Omega| = 12\), \(P(A \cap B) = \dfrac{1}{12} \ne \frac 14 \cdot \frac 14\) → <b>abhängig</b></li>
+    </ul>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Testat 3 · A6 · 15 rote, 5 blaue, 5 gelbe Kugeln, ohne Zurücklegen</div>
+    <p>Rot = verloren, Blau = gewonnen, Gelb = nochmal ziehen.</p>
+    <ul class="clean">
+      <li>Verlieren im ersten Zug: \(\dfrac{15}{25} = 0.6\)</li>
+      <li>Gewinnen im zweiten Zug: erst gelb, dann blau: \(\dfrac{5}{25} \cdot \dfrac{5}{24} = 0.0417\) — im Nenner nur noch 24 Kugeln!</li>
+    </ul>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Testat 3 · A2 und A3 · Würfel und Münzen</div>
+    <ul class="clean">
+      <li>Zwei Würfel, Summe 8: Paare (2,6), (3,5), (4,4), (5,3), (6,2) → \(\dfrac{5}{36} = 0.139\)</li>
+      <li>Drei Münzwürfe, dreimal Kopf: \(\left(\frac 12\right)^3 = 0.125\)</li>
+      <li>\(P(Z_3 = 3 \mid Z_2 = 2)\): Die ersten zwei sind schon Kopf, nur der dritte zählt → \(0.5\)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ---------- ZUSATZTRAINING: TESTAT 3 KOMPLETT ---------- -->
+<div class="box box-wort">
+  <div class="box-label">■ Zusatztraining · Testat 3 komplett (Jahrmarkt) · erst selbst rechnen, dann Lösung</div>
+  <p><b>(T1)</b> \(P(A) = 0.2\), \(P(B) = 0.6\), \(P(A \mid B) = 0.3\). Bestimmen Sie \(P(A \cup B)\) und \(P(A \mid \bar B)\).</p>
+  <p><b>(T4)</b> Glücksrad, \(\Omega = \{1, \dots, 10\}\), \(A = \{1, \dots, 5\}\), \(B = \{2, 4, 6, 8, 10\}\), \(C = \{1, 4, 7, 10\}\).
+    Berechnen Sie \(P(A \cup C)\) und \(P(A \mid B)\). Sind \(A\) und \(B\) unabhängig?</p>
+  <p><b>(T5)</b> Wasserbomben: Die Spielerin zielt mit 0.4 / 0.25 / 0.35 auf Rechts / Mitte / Links. Der Betreiber fängt mit 0.5 / 0.2 / 0.2 ab.
+    (1) Wie wahrscheinlich trifft die Bombe? (2) Sie hat getroffen — wie wahrscheinlich hat sie auf die Mitte gezielt?</p>
+  <p><b>(T7)</b> \(P(A) = 0.05\), \(P(A \mid B) = 0.2\), \(P(A \cap B) = 0.02\). Berechnen Sie \(P(B)\) und \(P(B \mid A)\).</p>
+  <p><b>(T8)</b> \(P(A_2) = P(A_3) = 0.2\), \(P(\text{Br} \mid A_1) = 0.1\), \(P(\text{Br} \mid A_2) = 0.6\), \(P(\text{Br} \mid A_3) = 0.9\) (Br = Brennen auf der Haut; \(A_1\) unversehrt, \(A_2\) leichter, \(A_3\) starker Sonnenbrand).
+    (1) \(P(A_1)\) (2) \(P(\text{Brennen})\) (3) \(P(A_3 \mid \text{Brennen})\)</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">Lösungen</span>
+  <p><b>(T1)</b> \(P(A \cap B) = 0.3 \cdot 0.6 = 0.18\) → \(P(A \cup B) = 0.2 + 0.6 - 0.18 = \) <span class="key">0.62</span> ·
+    \(P(A \mid \bar B) = \dfrac{0.2 - 0.18}{0.4} = \) <span class="key">0.05</span></p>
+  <p><b>(T4)</b> \(A \cup C = \{1, 2, 3, 4, 5, 7, 10\}\) → <span class="key">0.7</span> · \(P(A \mid B) = \dfrac{|\{2, 4\}|}{5} = \) <span class="key">0.4</span> ·
+    \(P(A)P(B) = 0.25 \ne 0.2 = P(A \cap B)\) → <span class="key">abhängig</span></p>
+  <p><b>(T5)</b> (1) \(P(\text{trifft}) = 0.4 \cdot 0.5 + 0.25 \cdot 0.8 + 0.35 \cdot 0.8 = 0.2 + 0.2 + 0.28 = \) <span class="key">0.68</span> ·
+    (2) \(P(\text{Mitte} \mid \text{trifft}) = \dfrac{0.2}{0.68} = \) <span class="key">0.294</span> — Achtung: Treffen = <b>nicht</b> abgefangen, also \(1 - 0.2 = 0.8\).</p>
+  <p><b>(T7)</b> \(P(B) = \dfrac{P(A \cap B)}{P(A \mid B)} = \dfrac{0.02}{0.2} = \) <span class="key">0.1</span> · \(P(B \mid A) = \dfrac{0.02}{0.05} = \) <span class="key">0.4</span></p>
+  <p><b>(T8)</b> (1) \(1 - 0.2 - 0.2 = \) <span class="key">0.6</span> · (2) \(0.6 \cdot 0.1 + 0.2 \cdot 0.6 + 0.2 \cdot 0.9 = 0.06 + 0.12 + 0.18 = \) <span class="key">0.36</span> ·
+    (3) \(\dfrac{0.18}{0.36} = \) <span class="key">0.5</span></p>
+</div>
+
+<!-- ---------- SCHRITT 20 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">20</div>
+    <div class="step-title">R-Skript 03: Zusammenhänge von Hand in R
+      <small>Randverteilungen, erwartete Häufigkeiten, Rangkorrelation</small></div>
+    <span class="exam-tag">R-Skript 03</span>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · wie im Vorlesungsskript</div>
+<pre>z.r &lt;- z / <span class="fn">sum</span>(z)                                   <span class="cm"># relative Tafel</span>
+<span class="fn">apply</span>(z.r, <span class="nu">1</span>, sum);  <span class="fn">apply</span>(z.r, <span class="nu">2</span>, sum)                <span class="cm"># Randverteilungen (1 = Zeilen, 2 = Spalten)</span>
+<span class="fn">diag</span>(<span class="nu">1</span> / <span class="fn">apply</span>(z, <span class="nu">1</span>, sum)) <span class="fn">%*%</span> z                     <span class="cm"># bedingte Verteilung, zeilenweise</span>
+z.tilde &lt;- <span class="fn">apply</span>(z, <span class="nu">1</span>, sum) <span class="fn">%*%</span> <span class="fn">t</span>(<span class="fn">apply</span>(z, <span class="nu">2</span>, sum)) / <span class="fn">sum</span>(z)
+<span class="fn">sum</span>((z - z.tilde)^<span class="nu">2</span> / z.tilde)                       <span class="cm"># χ²-Koeffizient</span>
+
+rx &lt;- <span class="fn">rank</span>(x); ry &lt;- <span class="fn">rank</span>(y); d &lt;- rx - ry; n &lt;- <span class="fn">length</span>(x)
+<span class="nu">1</span> - <span class="nu">6</span> * <span class="fn">sum</span>(d^<span class="nu">2</span>) / (n * (n^<span class="nu">2</span> - <span class="nu">1</span>))                   <span class="cm"># Spearman ohne Bindungen</span>
+<span class="fn">cor</span>(rx, ry)                                         <span class="cm"># Spearman immer richtig</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Yeni komutlar</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>apply(z, 1, sum)</code><span>her <b>satırın</b> toplamı (2 → sütun). <code>rowSums</code> ile aynı.</span></div>
+      <div class="tr-row"><code>%*%</code><span>matris çarpımı; <code>t()</code> = transpoz (satır ↔ sütun).</span></div>
+      <div class="tr-row"><code>diag(v)</code><span>köşegeninde v olan matris — burada her satırı kendi toplamına bölmek için.</span></div>
+      <div class="tr-row"><code>rank(x)</code><span>sıralar; eşitlikte ortalama sıra.</span></div>
+    </div>
+  </div>
+</div>
+
 <!-- ---------- FORMELBLATT ---------- -->
 
 <div class="cheat">
@@ -1245,3 +1457,23 @@ kopfzahlen &lt;- <span class="fn">colSums</span>(wuerfe)                   <span
     </tbody>
   </table>
 </div>
+
+<!-- ==================== STOFFABDECKUNG ==================== -->
+<div class="page-break"></div>
+<div class="dash-head">
+  <h2>Stoffabdeckung Tag 2</h2>
+  <span>Jede Quelle → wo sie in diesem PDF steht</span>
+</div>
+<table class="topic-score">
+  <thead><tr><th style="width:170px">Quelle</th><th>Inhalt</th><th>hier</th></tr></thead>
+  <tbody>
+    <tr><td><b>V03</b> Zusammenhänge</td><td>gemeinsame/Rand-/bedingte Verteilung · Unabhängigkeit · \(\tilde h\) · \(\chi^2\) · Streudiagramm · Kovarianz · Pearson · Spearman · linear/monoton · Kausalität · ökologischer Fehlschluss</td><td>1–7</td></tr>
+    <tr><td><b>V04</b> Wahrscheinlichkeit</td><td>Zufall/Unsicherheit/Chaos · drei Wahrscheinlichkeitsbegriffe · \(\Omega\), Ereignisse, Mengen · Potenzmenge · Kolmogorov · Rechenregeln · bedingte W. · Unabhängigkeit · mit/ohne Zurücklegen · totale W. · Bayes</td><td>8–13, 16–19</td></tr>
+    <tr><td><b>R-Skript 03</b></td><td>cut · table · apply · bedingte Tafel · erwartete Häufigkeiten · \(\chi^2\) · plot · cor (pearson/spearman) · rank</td><td>14, 20</td></tr>
+    <tr><td><b>Tutorium 3</b></td><td>Tafel aus Text · Kovarianz in cm/m · Pearson · Filme-Spearman mit Bindungen</td><td>1, 4–6</td></tr>
+    <tr><td><b>Tutorium 4</b></td><td>Rechenregeln · Ereignis C bestimmen · Blutgruppen (totale W., Bayes) · befristete Verträge · Basisrate Impfung · Ziegenproblem</td><td>9–11, 17–18</td></tr>
+    <tr><td><b>Testat 2</b></td><td>Verschiebungssatz · Kovarianz/Korrelation aus Summen · plot()-Code · Richtig/Falsch zu \(\rho\) · cut + table · Randverteilung</td><td>4–7, 14</td></tr>
+    <tr><td><b>Testat 3</b></td><td>alle 8 Aufgaben (Jahrmarkt) inklusive Simulation mit sample()</td><td>10, 15, 19, Zusatztraining</td></tr>
+    <tr><td><b>Probeklausur A3, A4, A5</b></td><td>vollständig (mit Zwillingsaufgaben)</td><td>alle Blöcke + Simulation</td></tr>
+  </tbody>
+</table>
