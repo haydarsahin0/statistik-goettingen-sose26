@@ -15,6 +15,10 @@ Alles, was du zum Lernen brauchst, liegt in **`pdf/`**:
 | `Tag_00_Mathe_Fundament.pdf` | Mengen, Summen- und Produktzeichen, Logarithmusregeln, Ableiten, zweite Ableitung, R-Basis (Testat 0) |
 | `Tag_01_Daten_und_Merkmalstypen.pdf` | Grundbegriffe, diskret/stetig, Skalenniveaus, Stichproben, R-Grundlagen |
 | `Tag_02_Haeufigkeiten_und_Histogramm.pdf` | Absolute/relative Häufigkeiten, Klassen, Säulendiagramm vs. Histogramm, Dichte, empirische Verteilungsfunktion |
+| `Tag_03_Lagemasse.pdf` | Mittelwert, Median, Modus, klassierte und geschichtete Daten, Schiefe, lineare Transformation |
+| `Tag_04_Quantile_Streuung_Boxplot.pdf` | Quantilregel, Varianz, Verschiebungssatz, S² vs. S²*, IQR, Boxplot und Ausreißer |
+| `Tag_05_Kontingenztafel_und_Chi_Quadrat.pdf` | Kontingenztafel, Rand- und bedingte Verteilungen, Unabhängigkeit, erwartete Häufigkeiten, χ²-Koeffizient, `table()`/`cut()` |
+| `Tag_06_Korrelation_und_Kausalitaet.pdf` | Streudiagramm, Kovarianz, Bravais-Pearson, Spearman (mit Bindungen), Interpretation, Kausalität, Klausur-Zwilling zu Probeklausur A5 |
 
 **Sprache:** Der Statistikteil ist durchgehend auf Deutsch (einfache Sätze,
 Klausurvokabular). Der R-Teil hat zusätzlich türkische Erklärkästen, weil dort
@@ -35,6 +39,12 @@ Jedes Tages-PDF hat denselben Aufbau:
 4. **Wortschatz** und **Spickzettel** — die Zusammenfassung zum Abschreiben
 5. **Teil 2 · Test** — Aufgaben im Klausurformat, mit Dezimalpunkt und den Rundungsregeln der Klausur
 6. **Teil 3 · Lösungen** — ausführlich gerechnet, mit Selbstauswertung
+
+Ab Tag 5 kommen dazu: eine **Tagesübersicht** (Lernpfad mit Zeitangaben,
+Klausur-Radar mit den betroffenen Probeklausur-Punkten, persönlicher Fokus aus
+den bisherigen Tests), eine **Kernaussage** am Anfang jedes Schritts, grüne
+Kästen **„So schreibst du es in der Klausur“** mit dem Wortlaut der offiziellen
+Musterlösung, und im Test ein **eigenes Antwortfeld für jede Teilaufgabe**.
 
 ## Grundlage
 

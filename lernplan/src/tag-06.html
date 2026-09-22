@@ -1,0 +1,1727 @@
+<!--meta {
+  "title": "Tag 6 — Kovarianz, Korrelation und Kausalität",
+  "footer": "Tag 6 · Kovarianz, Korrelation, Kausalität · Lernplan SDS I",
+  "out": "Tag_06_Korrelation_und_Kausalitaet.pdf"
+} -->
+
+<!-- ==================== TITELSEITE ==================== -->
+<section class="cover">
+
+  <div class="cover-top">
+    <div class="brand">Statistik und Data Science I · Lernplan</div>
+    <div class="cover-date">Mittwoch, 23.09.2026</div>
+  </div>
+
+  <div class="day-badge">
+    <span class="lbl">Tag</span>
+    <span class="num">06</span>
+  </div>
+
+  <h1>Kovarianz, Korrelation und Kausalität</h1>
+
+  <p class="cover-sub">
+    Heute geht es um zwei <b>metrische</b> Merkmale: Lernstunden und Punkte, Größe und Gewicht.
+    Du lernst, einen Zusammenhang zu zeichnen, zu messen und — das bringt die meisten Punkte —
+    ihn in der Klausur <b>richtig zu formulieren</b>.
+  </p>
+
+  <div class="cover-meta">
+    <span class="chip chip-lav"><span class="ic">◷</span> ca. 3.5 Stunden</span>
+    <span class="chip chip-mint"><span class="ic">▤</span> 12 Schritte</span>
+    <span class="chip chip-rose"><span class="ic">✎</span> 14 Aufgaben · 34 Punkte</span>
+    <span class="chip chip-sky"><span class="ic">▶</span> R-Ecke · TR açıklamalı</span>
+  </div>
+
+  <div class="goals">
+    <h3>Das kannst du heute Abend</h3>
+    <ul class="goal-list">
+      <li>Du liest aus einem <b>Streudiagramm</b> Richtung, Form und Stärke ab.</li>
+      <li>Du berechnest die <b>Kovarianz</b> mit Arbeitstabelle und mit dem <b>Verschiebungssatz</b>.</li>
+      <li>Du berechnest den <b>Korrelationskoeffizienten nach Bravais-Pearson</b>.</li>
+      <li>Du <b>interpretierst</b> ihn mit den Sätzen aus der offiziellen Musterlösung.</li>
+      <li>Du berechnest die <b>Rangkorrelation nach Spearman</b> — auch mit Bindungen.</li>
+      <li>Du erklärst, warum <b>Korrelation keine Kausalität</b> beweist.</li>
+      <li>Du erstellst in R ein beschriftetes Streudiagramm und speicherst es als PDF.</li>
+    </ul>
+  </div>
+
+  <div class="cover-foot">
+    Grundlage: Vorlesung SDS1-V03 (Folien 24–46) · R-Skript <code class="inline">03StatDS-Zusammenhänge.R</code> ·
+    Tutorium 3, Aufgaben 3–4 · Testat 2, Aufgaben 1–2 · <b>Probeklausur Teil A, Aufgabe 5 (11 Punkte)</b>
+  </div>
+
+</section>
+
+<!-- ==================== TAGESÜBERSICHT ==================== -->
+
+<div class="dash-head">
+  <h2>Dein Tag auf einen Blick</h2>
+  <span>Erst lesen, dann loslegen · 3 Minuten</span>
+</div>
+
+<div class="path" style="--cols:4">
+  <div class="st"><b>Streudiagramm</b>Schritt 1–2 <i>· 20 min</i></div>
+  <div class="st"><b>Kovarianz</b>Schritt 3–5 <i>· 40 min</i></div>
+  <div class="st"><b>Pearson &amp; Deuten</b>Schritt 6–7 <i>· 35 min</i></div>
+  <div class="st"><b>Spearman</b>Schritt 8–9 <i>· 30 min</i></div>
+  <div class="st"><b>Kausalität</b>Schritt 10 <i>· 15 min</i></div>
+  <div class="st"><b>Klausur-Zwilling</b>Schritt 11 <i>· 25 min</i></div>
+  <div class="st r"><b>R-Ecke</b>Schritt 12 <i>· 25 min</i></div>
+  <div class="st test"><b>Test</b>14 Aufgaben <i>· 70 min</i></div>
+</div>
+
+<div class="radar">
+  <h3>Klausur-Radar · Wo kommt das dran?</h3>
+  <p>Dieser Tag ist einer der wertvollsten im ganzen Plan. Die Probeklausur hat eine komplette Aufgabe dazu.</p>
+  <div class="radar-row">
+    <span class="src">Probeklausur A5</span>
+    <span class="what">Varianz · Kovarianz · Korrelation · Interpretation · Kausalität · Skizze
+      <small>fünf Teilaufgaben, alle heute geübt · Schritt 3–11</small>
+      <span class="radar-bar"><i style="width:100%"></i></span></span>
+    <span class="p">11 P</span>
+  </div>
+  <div class="radar-row">
+    <span class="src">Teil B (R)</span>
+    <span class="what"><code class="inline">plot()</code> mit Beschriftung, als PDF speichern, <code class="inline">cor()</code>
+      <small>so im Testat 2 und in der B-Klausur verlangt · Schritt 12</small>
+      <span class="radar-bar"><i style="width:60%"></i></span></span>
+    <span class="p">≈ 6 P</span>
+  </div>
+  <div class="radar-row">
+    <span class="src">Testat 2</span>
+    <span class="what">Verschiebungssatz (MC) · Richtig/Falsch zu \(\rho\)
+      <small>typische Kurzfragen im A-Teil · Schritt 4, 9, 10</small>
+      <span class="radar-bar"><i style="width:40%"></i></span></span>
+    <span class="p">≈ 4 P</span>
+  </div>
+</div>
+
+<div class="focus">
+  <h3>Dein persönlicher Fokus · aus deinen bisherigen Tests</h3>
+  <div class="focus-grid">
+    <div class="focus-item"><b>„Begründen“ im Kreis</b>
+      Heute kostet das am meisten: Interpretation und Kausalität sind 4 von 11 Punkten.
+      <span class="fix">→ Schritt 7 und 10 geben dir die Sätze der offiziellen Musterlösung.</span></div>
+    <div class="focus-item"><b>Teilaufgaben ausgelassen</b>
+      A5 hat (a) bis (d) — eine Skizze ist schnell vergessen.
+      <span class="fix">→ Der Klausur-Zwilling in Schritt 11 ist genauso aufgebaut.</span></div>
+    <div class="focus-item"><b>Regel zu weit angewendet</b>
+      Du hast bei „Anzahl Vorlesungen“ den Mittelwert verboten.
+      <span class="fix">→ Schritt 9: welche Maßzahl bei welchem Skalenniveau — mit klarer Tabelle.</span></div>
+    <div class="focus-item"><b>Rechnen ist deine Stärke</b>
+      Deine Rechenaufgaben waren fast immer richtig.
+      <span class="fix">→ Die Arbeitstabelle macht auch die Kovarianz zur reinen Rechenroutine.</span></div>
+  </div>
+</div>
+
+<div class="box box-wort">
+  <div class="box-label">■ Was du von gestern und vorgestern brauchst</div>
+  <ul class="wort-list">
+    <li><b>\(\bar x = \frac 1n \sum x_i\)</b> — das arithmetische Mittel</li>
+    <li><b>\(S^2 = \frac 1n \sum (x_i - \bar x)^2 = \frac 1n \sum x_i^2 - \bar x^2\)</b> — die empirische Varianz (Verschiebungssatz, Tag 4)</li>
+    <li><b>R:</b> <code class="inline">var(x)</code> rechnet mit \(n-1\) — das gilt heute genauso für <code class="inline">cov(x, y)</code></li>
+    <li><b>Rang</b> — der Platz eines Werts nach dem Sortieren (kleinster Wert = Rang 1)</li>
+  </ul>
+</div>
+
+<!-- ==================== TEIL 1: LERNEN ==================== -->
+
+<div class="page-break"></div>
+<div class="section-rule"><span>Teil 1 · Lernen</span></div>
+
+<!-- ---------- SCHRITT 1 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">1</div>
+    <div class="step-title">Das Streudiagramm lesen
+      <small>Jeder Punkt ist eine Person</small></div>
+    <span class="exam-tag">V03 · Folie 24–26</span>
+  </div>
+
+  <div class="tldr">Im Streudiagramm liest du drei Dinge ab: die <b>Richtung</b>, die <b>Form</b> und die <b>Stärke</b> des Zusammenhangs.</div>
+
+  <p>
+    Für zwei metrische Merkmale zeichnet man jedes Paar \((x_i, y_i)\) als Punkt in ein
+    Koordinatensystem: \(x\) nach rechts, \(y\) nach oben. Das ist das <b>Streudiagramm</b>
+    (auch: Punktewolke).
+  </p>
+
+  <div class="shape-row" style="grid-template-columns:repeat(3,1fr)">
+    <div class="shape">
+<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="198" height="148" rx="10" fill="#FFFFFF" stroke="#D8D1E6"/>
+<circle cx="121.8" cy="62.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="169.0" cy="36.1" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="147.9" cy="47.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="52.4" cy="109.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="65.4" cy="88.9" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="164.9" cy="25.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="14.3" cy="131.9" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="155.8" cy="34.8" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="151.6" cy="44.8" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="94.5" cy="81.7" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="65.9" cy="68.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="61.6" cy="83.5" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="57.6" cy="106.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="90.5" cy="76.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="100.9" cy="65.6" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="109.3" cy="69.4" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="186.0" cy="21.4" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="150.8" cy="47.1" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="121.3" cy="54.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="184.9" cy="14.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="50.7" cy="104.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="41.1" cy="99.8" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="119.6" cy="67.1" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="21.0" cy="110.8" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="19.5" cy="125.4" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="102.6" cy="76.9" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="94.2" cy="77.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="172.4" cy="26.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="122.5" cy="48.7" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="102.5" cy="84.8" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="99.5" cy="80.8" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="56.3" cy="87.5" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="15.4" cy="136.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="46.7" cy="104.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="133.4" cy="56.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="48.1" cy="85.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="77.4" cy="76.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="14.0" cy="119.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="157.3" cy="47.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="40.1" cy="105.1" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+</svg>
+      <b>gleichgerichtet, linear, eng</b>
+      <small>Je größer \(x\), desto größer \(y\). \(\rho = 0.964\)</small>
+    </div>
+    <div class="shape">
+<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="198" height="148" rx="10" fill="#FFFFFF" stroke="#D8D1E6"/>
+<circle cx="47.5" cy="44.4" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="179.0" cy="116.2" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="111.8" cy="88.0" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="45.4" cy="46.9" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="171.1" cy="136.0" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="127.8" cy="102.8" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="114.9" cy="78.7" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="80.4" cy="88.8" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="86.6" cy="57.9" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="55.9" cy="71.3" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="19.9" cy="23.1" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="169.7" cy="122.0" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="96.7" cy="64.1" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="111.0" cy="79.2" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="70.7" cy="76.8" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="147.4" cy="85.9" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="17.6" cy="14.0" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="79.6" cy="64.6" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="18.5" cy="34.2" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="35.0" cy="41.8" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="186.0" cy="132.2" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="130.7" cy="78.6" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="89.6" cy="75.5" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="106.7" cy="79.0" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="169.1" cy="121.1" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="74.6" cy="68.4" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="118.6" cy="99.5" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="135.3" cy="79.3" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="76.6" cy="64.1" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="105.9" cy="66.9" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="149.9" cy="101.4" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="175.6" cy="123.4" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="40.1" cy="46.4" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="180.0" cy="124.2" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="14.0" cy="28.6" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="147.7" cy="104.7" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="158.0" cy="109.4" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="37.5" cy="57.2" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="88.0" cy="77.7" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+<circle cx="158.8" cy="87.4" r="3.1" fill="#C8556F" fill-opacity="0.75"/>
+</svg>
+      <b>gegengerichtet, linear, eng</b>
+      <small>Je größer \(x\), desto kleiner \(y\). \(\rho = -0.937\)</small>
+    </div>
+    <div class="shape">
+<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="198" height="148" rx="10" fill="#FFFFFF" stroke="#D8D1E6"/>
+<circle cx="177.6" cy="66.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="163.9" cy="16.1" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="30.8" cy="122.4" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="120.7" cy="44.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="97.9" cy="59.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="119.0" cy="44.1" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="130.8" cy="14.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="66.3" cy="39.9" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="186.0" cy="83.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="95.4" cy="119.1" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="125.1" cy="44.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="126.4" cy="93.5" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="43.9" cy="85.8" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="21.6" cy="68.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="85.5" cy="120.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="149.9" cy="117.7" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="159.3" cy="51.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="143.7" cy="60.7" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="31.0" cy="95.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="177.2" cy="53.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="156.9" cy="82.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="170.7" cy="96.6" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="105.9" cy="75.4" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="177.6" cy="80.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="18.8" cy="136.0" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="15.8" cy="78.4" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="14.0" cy="94.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="56.5" cy="71.5" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="55.7" cy="109.5" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="44.6" cy="103.2" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="113.9" cy="96.1" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="17.4" cy="115.8" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="118.2" cy="62.6" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="40.6" cy="107.5" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="134.2" cy="54.5" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="14.2" cy="83.3" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="67.1" cy="25.1" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="181.8" cy="90.7" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="108.7" cy="46.1" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+<circle cx="158.6" cy="60.8" r="3.1" fill="#7C63CE" fill-opacity="0.75"/>
+</svg>
+      <b>gleichgerichtet, schwach</b>
+      <small>Tendenz nach oben, aber breite Wolke. \(\rho = 0.375\)</small>
+    </div>
+    <div class="shape">
+<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="198" height="148" rx="10" fill="#FFFFFF" stroke="#D8D1E6"/>
+<circle cx="107.0" cy="58.1" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="72.8" cy="75.7" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="77.3" cy="103.9" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="78.3" cy="14.0" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="186.0" cy="88.3" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="123.7" cy="80.5" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="131.0" cy="64.5" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="70.4" cy="22.0" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="131.9" cy="81.5" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="34.1" cy="54.8" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="21.5" cy="73.7" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="161.9" cy="122.8" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="14.0" cy="52.0" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="184.5" cy="44.8" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="157.8" cy="84.4" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="150.5" cy="77.3" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="20.9" cy="124.0" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="48.9" cy="124.6" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="161.8" cy="89.1" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="88.5" cy="57.2" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="122.7" cy="91.6" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="33.9" cy="67.7" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="45.2" cy="46.5" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="99.8" cy="73.8" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="145.9" cy="58.8" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="107.3" cy="31.4" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="31.2" cy="116.0" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="164.7" cy="53.5" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="37.0" cy="136.0" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="89.7" cy="63.3" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="115.6" cy="70.5" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="68.5" cy="93.9" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="85.9" cy="110.7" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="168.3" cy="78.8" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="92.3" cy="89.7" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="107.2" cy="73.8" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="183.0" cy="105.3" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="60.9" cy="59.7" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="169.7" cy="109.4" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+<circle cx="76.0" cy="86.4" r="3.1" fill="#9A93AC" fill-opacity="0.75"/>
+</svg>
+      <b>kein Zusammenhang</b>
+      <small>Formlose Wolke. \(\rho = 0.001\)</small>
+    </div>
+    <div class="shape">
+<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="198" height="148" rx="10" fill="#FFFFFF" stroke="#D8D1E6"/>
+<circle cx="14.0" cy="14.0" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="18.4" cy="29.1" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="22.8" cy="31.1" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="27.2" cy="50.4" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="31.6" cy="53.2" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="36.1" cy="57.6" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="40.5" cy="75.9" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="44.9" cy="85.5" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="49.3" cy="88.8" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="53.7" cy="96.6" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="58.1" cy="108.1" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="62.5" cy="106.0" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="66.9" cy="102.8" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="71.3" cy="119.1" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="75.7" cy="122.6" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="80.2" cy="130.1" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="84.6" cy="125.4" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="89.0" cy="135.5" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="93.4" cy="136.0" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="97.8" cy="124.1" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="102.2" cy="135.6" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="106.6" cy="124.5" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="111.0" cy="120.9" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="115.4" cy="125.7" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="119.8" cy="121.7" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="124.3" cy="111.2" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="128.7" cy="118.8" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="133.1" cy="116.5" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="137.5" cy="115.5" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="141.9" cy="102.6" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="146.3" cy="88.9" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="150.7" cy="84.8" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="155.1" cy="87.3" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="159.5" cy="78.8" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="163.9" cy="68.2" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="168.4" cy="54.7" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="172.8" cy="47.4" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="177.2" cy="34.6" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="181.6" cy="23.0" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+<circle cx="186.0" cy="14.3" r="3.1" fill="#D4753F" fill-opacity="0.75"/>
+</svg>
+      <b>nichtlinear, nicht monoton</b>
+      <small>Klarer U-Zusammenhang — trotzdem \(\rho \approx 0\)!</small>
+    </div>
+    <div class="shape">
+<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="198" height="148" rx="10" fill="#FFFFFF" stroke="#D8D1E6"/>
+<circle cx="14.0" cy="136.0" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="18.4" cy="135.8" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="22.8" cy="135.8" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="27.2" cy="135.5" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="31.6" cy="134.6" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="36.1" cy="134.6" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="40.5" cy="134.6" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="44.9" cy="134.6" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="49.3" cy="134.6" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="53.7" cy="134.6" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="58.1" cy="134.6" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="62.5" cy="134.1" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="66.9" cy="133.9" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="71.3" cy="133.9" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="75.7" cy="133.9" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="80.2" cy="133.5" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="84.6" cy="133.1" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="89.0" cy="131.8" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="93.4" cy="130.1" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="97.8" cy="130.1" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="102.2" cy="130.1" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="106.6" cy="129.3" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="111.0" cy="127.4" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="115.4" cy="126.0" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="119.8" cy="124.8" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="124.3" cy="122.0" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="128.7" cy="120.4" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="133.1" cy="116.3" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="137.5" cy="113.1" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="141.9" cy="109.4" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="146.3" cy="106.0" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="150.7" cy="100.3" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="155.1" cy="94.7" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="159.5" cy="88.0" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="163.9" cy="79.9" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="168.4" cy="71.1" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="172.8" cy="60.2" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="177.2" cy="46.0" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="181.6" cy="31.7" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+<circle cx="186.0" cy="14.0" r="3.1" fill="#2F9B6E" fill-opacity="0.75"/>
+</svg>
+      <b>nichtlinear, aber monoton</b>
+      <small>Pearson \(\rho = 0.811\), Spearman \(= 0.997\)</small>
+    </div>
+  </div>
+
+  <table style="margin-top:12px">
+    <thead><tr><th style="width:120px">Frage</th><th>Begriffe aus der Vorlesung</th></tr></thead>
+    <tbody>
+      <tr><td><b>Richtung</b></td><td><b>gleichgerichtet</b> (positiv: steigt mit) oder <b>gegengerichtet</b> (negativ: fällt)</td></tr>
+      <tr><td><b>Form</b></td><td><b>linear</b> (Punkte um eine Gerade) oder <b>nichtlinear</b> (Kurve)</td></tr>
+      <tr><td><b>Stärke</b></td><td>Wie <b>eng</b> liegen die Punkte an dieser Linie oder Kurve?</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Merke dir das fünfte Bild</div>
+    <p>
+      Die U-Form ist ein <b>perfekter</b> Zusammenhang — kennt man \(x\), kennt man \(y\) fast genau.
+      Trotzdem ist der Korrelationskoeffizient ungefähr 0. Warum, verstehst du in Schritt 9.
+      Diese Idee wird im Testat und in Richtig/Falsch-Fragen gerne abgefragt.
+    </p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 2 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">2</div>
+    <div class="step-title">Konkordant und diskordant
+      <small>Die Idee hinter der Kovarianz</small></div>
+    <span class="exam-tag">V03 · Folie 27–30</span>
+  </div>
+
+  <div class="tldr">Zieh durch den Schwerpunkt \((\bar x, \bar y)\) ein Kreuz. Punkte oben rechts und unten links sprechen für einen positiven Zusammenhang.</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · 5 Studierende: Lernstunden pro Woche und Klausurpunkte</div>
+    <table class="in-box ct small">
+      <thead><tr><th>Person \(i\)</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+      <tbody>
+        <tr><td><b>\(x_i\)</b> Stunden</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td></tr>
+        <tr><td><b>\(y_i\)</b> Punkte</td><td>55</td><td>70</td><td>60</td><td>65</td><td>100</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:8px">Mittelwerte: \(\bar x = \dfrac{30}{5} = 6\) und \(\bar y = \dfrac{350}{5} = 70\).</p>
+    <div class="fig" style="margin-top:6px">
+<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+<rect x="295.0" y="20" width="235.0" height="134.3" fill="#EDFBF4"/>
+<rect x="60" y="154.3" width="235.0" height="100.7" fill="#EDFBF4"/>
+<rect x="60" y="20" width="235.0" height="134.3" fill="#FFF1F4"/>
+<rect x="295.0" y="154.3" width="235.0" height="100.7" fill="#FFF1F4"/>
+<text x="522" y="130" font-size="11" text-anchor="end" fill="#2F9B6E" font-weight="600">konkordant (+)</text>
+<text x="68" y="247" font-size="11" fill="#2F9B6E" font-weight="600">konkordant (+)</text>
+<text x="68" y="36" font-size="11" fill="#C8556F" font-weight="600">diskordant (−)</text>
+<text x="522" y="247" font-size="11" text-anchor="end" fill="#C8556F" font-weight="600">diskordant (−)</text>
+<line x1="60" y1="255" x2="530" y2="255" stroke="#2F2A3F" stroke-width="1.2"/>
+<line x1="60" y1="20" x2="60" y2="255" stroke="#2F2A3F" stroke-width="1.2"/>
+<text x="60.0" y="270" font-size="10" text-anchor="middle" fill="#9A93AC">0</text>
+<text x="138.3" y="270" font-size="10" text-anchor="middle" fill="#9A93AC">2</text>
+<text x="216.7" y="270" font-size="10" text-anchor="middle" fill="#9A93AC">4</text>
+<text x="295.0" y="270" font-size="10" text-anchor="middle" fill="#9A93AC">6</text>
+<text x="373.3" y="270" font-size="10" text-anchor="middle" fill="#9A93AC">8</text>
+<text x="451.7" y="270" font-size="10" text-anchor="middle" fill="#9A93AC">10</text>
+<text x="530.0" y="270" font-size="10" text-anchor="middle" fill="#9A93AC">12</text>
+<text x="53" y="258.5" font-size="10" text-anchor="end" fill="#9A93AC">40</text>
+<text x="53" y="224.9" font-size="10" text-anchor="end" fill="#9A93AC">50</text>
+<text x="53" y="191.4" font-size="10" text-anchor="end" fill="#9A93AC">60</text>
+<text x="53" y="157.8" font-size="10" text-anchor="end" fill="#9A93AC">70</text>
+<text x="53" y="124.2" font-size="10" text-anchor="end" fill="#9A93AC">80</text>
+<text x="53" y="90.6" font-size="10" text-anchor="end" fill="#9A93AC">90</text>
+<text x="53" y="57.1" font-size="10" text-anchor="end" fill="#9A93AC">100</text>
+<text x="53" y="23.5" font-size="10" text-anchor="end" fill="#9A93AC">110</text>
+<text x="295.0" y="292" font-size="11" text-anchor="middle" fill="#2F2A3F">Lernstunden pro Woche (x)</text>
+<text x="16" y="137.5" font-size="11" text-anchor="middle" fill="#2F2A3F" transform="rotate(-90 16 137.5)">Punkte (y)</text>
+<line x1="295.0" y1="20" x2="295.0" y2="255" stroke="#7C63CE" stroke-dasharray="5 4"/>
+<line x1="60" y1="154.3" x2="530" y2="154.3" stroke="#7C63CE" stroke-dasharray="5 4"/>
+<text x="300.0" y="50" font-size="10.5" fill="#7C63CE">x̄ = 6</text>
+<text x="68" y="149.3" font-size="10.5" fill="#7C63CE">ȳ = 70</text>
+<circle cx="138.3" cy="204.6" r="6" fill="#2F9B6E" stroke="#FFF" stroke-width="1.5"/>
+<text x="147.3" y="196.6" font-size="10.5" fill="#2F2A3F">(2, 55)</text>
+<circle cx="216.7" cy="154.3" r="6" fill="#9A93AC" stroke="#FFF" stroke-width="1.5"/>
+<text x="225.7" y="146.3" font-size="10.5" fill="#2F2A3F">(4, 70)</text>
+<circle cx="295.0" cy="187.9" r="6" fill="#9A93AC" stroke="#FFF" stroke-width="1.5"/>
+<text x="304.0" y="179.9" font-size="10.5" fill="#2F2A3F">(6, 60)</text>
+<circle cx="373.3" cy="171.1" r="6" fill="#C8556F" stroke="#FFF" stroke-width="1.5"/>
+<text x="382.3" y="163.1" font-size="10.5" fill="#2F2A3F">(8, 65)</text>
+<circle cx="451.7" cy="53.6" r="6" fill="#2F9B6E" stroke="#FFF" stroke-width="1.5"/>
+<text x="460.7" y="45.6" font-size="10.5" fill="#2F2A3F">(10, 100)</text>
+</svg>
+      <div class="fig-cap"><b>Grün:</b> konkordant, das Produkt \((x_i - \bar x)(y_i - \bar y)\) ist positiv.
+        <b>Rot:</b> diskordant, das Produkt ist negativ. <b>Grau:</b> liegt auf einer Mittellinie, Produkt 0.</div>
+    </div>
+  </div>
+
+  <div class="box box-def">
+    <div class="box-label">● Definition</div>
+    <p>Eine Beobachtung \((x_i, y_i)\) heißt</p>
+    <ul class="clean">
+      <li><b>konkordant</b>, wenn \(x_i \gt \bar x\) und \(y_i \gt \bar y\) <b>oder</b> \(x_i \lt \bar x\) und \(y_i \lt \bar y\).
+        Dann ist \((x_i - \bar x)(y_i - \bar y) \gt 0\).</li>
+      <li><b>diskordant</b>, wenn \(x_i \lt \bar x\) und \(y_i \gt \bar y\) <b>oder</b> \(x_i \gt \bar x\) und \(y_i \lt \bar y\).
+        Dann ist \((x_i - \bar x)(y_i - \bar y) \lt 0\).</li>
+    </ul>
+    <p>
+      Viele konkordante Punkte → gleichgerichteter Zusammenhang. Viele diskordante → gegengerichtet.
+    </p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 3 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">3</div>
+    <div class="step-title">Die Kovarianz
+      <small>Mit der Arbeitstabelle — Schritt für Schritt</small></div>
+    <span class="exam-tag hot">A5 · Teil von (b)</span>
+  </div>
+
+  <div class="tldr">Die Kovarianz ist der <b>Durchschnitt</b> aller Produkte \((x_i - \bar x)(y_i - \bar y)\).</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Definition</div>
+    \[ \mathrm{Cov}(X, Y) = \dfrac{1}{n}\sum_{i=1}^{n} (x_i - \bar x)(y_i - \bar y) \]
+    <ul class="clean">
+      <li>\(\mathrm{Cov} \gt 0\) → positiver linearer Zusammenhang</li>
+      <li>\(\mathrm{Cov} \lt 0\) → negativer linearer Zusammenhang</li>
+      <li>\(\mathrm{Cov} = 0\) → kein <b>linearer</b> Zusammenhang (\(X\) und \(Y\) sind <b>unkorreliert</b>)</li>
+    </ul>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Arbeitstabelle · Lernstunden und Punkte</div>
+    <table class="in-box work">
+      <thead><tr><th>\(i\)</th><th>\(x_i\)</th><th>\(y_i\)</th><th>\(x_i - \bar x\)</th><th>\(y_i - \bar y\)</th><th>Produkt</th><th>\((x_i - \bar x)^2\)</th><th>\((y_i - \bar y)^2\)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>2</td><td>55</td><td>−4</td><td>−15</td><td class="sp">60</td><td>16</td><td>225</td></tr>
+        <tr><td>2</td><td>4</td><td>70</td><td>−2</td><td>0</td><td class="sp">0</td><td>4</td><td>0</td></tr>
+        <tr><td>3</td><td>6</td><td>60</td><td>0</td><td>−10</td><td class="sp">0</td><td>0</td><td>100</td></tr>
+        <tr><td>4</td><td>8</td><td>65</td><td>2</td><td>−5</td><td class="sp">−10</td><td>4</td><td>25</td></tr>
+        <tr><td>5</td><td>10</td><td>100</td><td>4</td><td>30</td><td class="sp">120</td><td>16</td><td>900</td></tr>
+        <tr class="sum"><td>Σ</td><td>30</td><td>350</td><td>0</td><td>0</td><td>170</td><td>40</td><td>1250</td></tr>
+      </tbody>
+    </table>
+    \[ \mathrm{Cov}(X, Y) = \dfrac{170}{5} = 34 \]
+    <p>
+      Die beiden letzten Spalten brauchst du gleich für die Korrelation — in der Klausur rechnest du sie
+      <b>in derselben Tabelle</b> gleich mit. Probe: Die Spalten \(x_i - \bar x\) und \(y_i - \bar y\) summieren sich zu 0.
+    </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Kovaryans tablosu reçetesi</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>1. adım</code><span>\(\bar x\) ve \(\bar y\)'yi hesapla</span></div>
+      <div class="tr-row"><code>2. adım</code><span>Her satırda sapmaları yaz: \(x_i - \bar x\) ve \(y_i - \bar y\) (<b>işaretleriyle!</b>)</span></div>
+      <div class="tr-row"><code>3. adım</code><span>İki sapmayı <b>çarp</b> → "Produkt" sütunu</span></div>
+      <div class="tr-row"><code>4. adım</code><span>Produkt sütununu topla, <b>n</b>'ye böl → Cov</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>İşaret kontrolü:</b> Sapma sütunlarının toplamı <b>her zaman 0</b>. 0 çıkmıyorsa ortalamayı yanlış hesaplamışsın.
+      Negatif × negatif = <b>pozitif</b> (1. satır: −4 · −15 = +60).
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 4 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">4</div>
+    <div class="step-title">Der Verschiebungssatz für die Kovarianz
+      <small>Die Abkürzung, wenn nur Summen gegeben sind</small></div>
+    <span class="exam-tag hot">Testat 2 · A5 (b)</span>
+  </div>
+
+  <div class="tldr">\(\mathrm{Cov}(X, Y) = \dfrac 1n \sum x_i y_i - \bar x\, \bar y\) — genau wie bei der Varianz, nur mit \(x_i y_i\) statt \(x_i^2\).</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Verschiebungssatz</div>
+    \[ \mathrm{Cov}(X, Y) = \dfrac{1}{n}\sum_{i=1}^{n} x_i y_i \;-\; \bar x \cdot \bar y \]
+    <p>Vergleiche mit Tag 4: \(S^2 = \frac 1n \sum x_i^2 - \bar x^2\). Setzt man \(Y = X\), kommt genau das heraus.</p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Probe am Beispiel</div>
+    <p>\(\sum x_i y_i = 2\cdot 55 + 4\cdot 70 + 6\cdot 60 + 8\cdot 65 + 10\cdot 100 = 110 + 280 + 360 + 520 + 1000 = 2270\)</p>
+    \[ \mathrm{Cov}(X, Y) = \dfrac{2270}{5} - 6 \cdot 70 = 454 - 420 = 34 \quad ✓ \]
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Testat 2 · nur R-Summen gegeben</div>
+    <div class="rbox" style="margin:4px 0 8px">
+<pre><span class="out">&gt; length(x)     [1] 50        &gt; sum(x^2)   [1] 87611
+&gt; sum(x)        [1] 2019      &gt; sum(y^2)   [1] 301695
+&gt; sum(y)        [1] 3733      &gt; sum(x*y)   [1] 160064</span></pre>
+    </div>
+    <ol class="calc-steps">
+      <li>\(\bar x = \dfrac{2019}{50} = 40.38\) und \(\bar y = \dfrac{3733}{50} = 74.66\)</li>
+      <li>\(\mathrm{Cov} = \dfrac{160064}{50} - 40.38 \cdot 74.66 = 3201.28 - 3014.7708 = 186.5092\)</li>
+    </ol>
+    <p>Kovarianz \(\approx 186.509\). Die Korrelation dazu rechnen wir in Schritt 6 weiter.</p>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Die Multiple-Choice-Falle aus Testat 2</div>
+    <p>Nur <b>eine</b> Darstellung ist richtig:</p>
+    <table class="in-box">
+      <tbody>
+        <tr><td>\(\frac 1n \sum (x_i y_i - \bar x \bar y)\)</td><td class="tbl-ja">richtig, aber nicht vereinfacht</td></tr>
+        <tr><td>\(\dfrac{1}{n^2} \sum x_i y_i - \bar x \bar y\)</td><td class="tbl-nein">falsch: \(n^2\)</td></tr>
+        <tr><td>\(\frac 1n \sum x_i y_i - \bar x - \bar y\)</td><td class="tbl-nein">falsch: minus statt mal</td></tr>
+        <tr><td>\(\frac 1n \sum x_i y_i - \bar x \bar y\)</td><td class="tbl-ja"><b>die gesuchte vereinfachte Form</b></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:6px">Die erste Zeile ist mathematisch gleichwertig, aber nicht „so weit wie möglich vereinfacht“ — danach war gefragt.</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 5 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">5</div>
+    <div class="step-title">Eigenschaften der Kovarianz
+      <small>Und warum sie allein nicht reicht</small></div>
+    <span class="exam-tag">V03 · Folie 31–34</span>
+  </div>
+
+  <div class="tldr">Das <b>Vorzeichen</b> der Kovarianz ist aussagekräftig, ihre <b>Größe</b> nicht — sie hängt von den Einheiten ab.</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Drei Eigenschaften</div>
+    <ol class="clean">
+      <li>\(\mathrm{Cov}(X, X) = \mathrm{Var}(X)\) — die Kovarianz ist eine Verallgemeinerung der Varianz.</li>
+      <li>Sie ist <b>maßabhängig</b>: Ändert man die Einheit, ändert sich der Wert.
+        Allgemein: \(\mathrm{Cov}(a + bX,\; c + dY) = b\cdot d \cdot \mathrm{Cov}(X, Y)\).</li>
+      <li>Sie erkennt nur <b>lineare</b> Zusammenhänge. Nichtlineare werden nicht unbedingt erkannt.</li>
+    </ol>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Tutorium 3 · Anne und Bobo</div>
+    <p>
+      Fünf Männer, Gewicht in kg und Größe. Anne rechnet mit der Größe in <b>cm</b> und erhält
+      \(\mathrm{Cov} = 153.88\) kg·cm. Bobo rechnet mit der Größe in <b>m</b> und erhält \(1.5388\) kg·m.
+    </p>
+    <p>
+      <b>Beide haben richtig gerechnet.</b> Von cm zu m wird jede Größe mit \(d = 0.01\) multipliziert,
+      also auch die Kovarianz: \(153.88 \cdot 0.01 = 1.5388\).
+    </p>
+    <p>
+      Folge: „Die Kovarianz ist 153.88, also ist der Zusammenhang stark“ ist <b>sinnlos</b> — in Metern
+      wäre es dieselbe Stärke mit 1.54. Man braucht eine Zahl <b>ohne Einheit</b>. Das ist die Korrelation.
+    </p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 6 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">6</div>
+    <div class="step-title">Der Korrelationskoeffizient nach Bravais-Pearson
+      <small>Die normierte Kovarianz</small></div>
+    <span class="exam-tag hot">A5 (b) · 3 P</span>
+  </div>
+
+  <div class="tldr">\(\rho = \dfrac{\mathrm{Cov}(X,Y)}{S_X \cdot S_Y}\) — liegt immer zwischen −1 und 1 und hat keine Einheit.</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Definition</div>
+    \[ \rho(X, Y) = \dfrac{\mathrm{Cov}(X, Y)}{\sqrt{\mathrm{Var}(X)\cdot \mathrm{Var}(Y)}}
+       = \dfrac{\sum_i (x_i - \bar x)(y_i - \bar y)}{\sqrt{\sum_i (x_i - \bar x)^2 \cdot \sum_i (y_i - \bar y)^2}} \]
+    <ul class="clean">
+      <li>\(-1 \le \rho \le 1\)</li>
+      <li>\(\rho = 0\) ⇔ kein <b>linearer</b> Zusammenhang</li>
+      <li>\(|\rho| = 1\) ⇔ <b>perfekter</b> linearer Zusammenhang (alle Punkte auf einer Geraden)</li>
+      <li>Voraussetzung: beide Merkmale <b>metrisch</b> (es werden Abstände zum Mittelwert berechnet)</li>
+    </ul>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · Lernstunden und Punkte · zwei Wege, ein Ergebnis</div>
+    <p><b>Weg 1 — mit den Varianzen:</b> \(\mathrm{Var}(X) = \dfrac{40}{5} = 8\), \(\mathrm{Var}(Y) = \dfrac{1250}{5} = 250\)</p>
+    \[ \rho = \dfrac{34}{\sqrt{8 \cdot 250}} = \dfrac{34}{\sqrt{2000}} = \dfrac{34}{44.7214} = 0.7603 \]
+    <p><b>Weg 2 — direkt mit den Summen der Arbeitstabelle</b> (das \(\frac 1n\) kürzt sich weg):</p>
+    \[ \rho = \dfrac{170}{\sqrt{40 \cdot 1250}} = \dfrac{170}{\sqrt{50000}} = \dfrac{170}{223.6068} = 0.7603 \]
+    <p>Ergebnis: \(\rho \approx\) <b>0.760</b></p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Testat 2 · weiter mit den R-Summen aus Schritt 4</div>
+    <ol class="calc-steps">
+      <li>\(\mathrm{Var}(X) = \dfrac{87611}{50} - 40.38^2 = 1752.22 - 1630.5444 = 121.6756\)</li>
+      <li>\(\mathrm{Var}(Y) = \dfrac{301695}{50} - 74.66^2 = 6033.9 - 5574.1156 = 459.7844\)</li>
+      <li>\(\rho = \dfrac{186.5092}{\sqrt{121.6756 \cdot 459.7844}} = \dfrac{186.5092}{236.5260} = 0.7885\)</li>
+    </ol>
+    <p>Ergebnis: \(\rho \approx\) <b>0.789</b> — ein starker positiver linearer Zusammenhang.</p>
+  </div>
+
+  <div class="box box-merke">
+    <div class="box-label">◆ Gut zu wissen: \(n\) oder \(n-1\) ist hier egal</div>
+    <p>
+      Ob man Kovarianz und Varianzen mit \(\frac 1n\) oder mit \(\dfrac{1}{n-1}\) rechnet: Der Faktor
+      steht oben und unten und <b>kürzt sich weg</b>. Deshalb liefert <code class="inline">cor()</code> in R genau
+      den Wert der Vorlesung — anders als <code class="inline">var()</code> und <code class="inline">cov()</code>.
+      Wichtig ist nur, <b>nicht zu mischen</b>.
+    </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Korelasyon hesaplama yolu</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>Ham veri verildiyse</code><span>Arbeitstabelle kur → üç toplam: Produkt, \((x-\bar x)^2\), \((y-\bar y)^2\) → Weg 2 ile tek satırda \(\rho\)</span></div>
+      <div class="tr-row"><code>Sadece toplamlar verildiyse</code><span>Verschiebungssatz: önce Cov, sonra iki varyans, sonra \(\rho\) (Testat 2 yolu)</span></div>
+      <div class="tr-row"><code>Varyanslar hazır verildiyse</code><span>Direkt \(\rho = \mathrm{Cov}/\sqrt{\mathrm{Var}X \cdot \mathrm{Var}Y}\) (Probeklausur A5 yolu)</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Kontrol:</b> Sonuç −1 ile 1 arasında olmak <b>zorunda</b>. 1.3 çıktıysa kök almayı ya da bir varyansı unuttun.
+      Kovaryansın işareti ile \(\rho\)'nun işareti <b>hep aynıdır</b>.
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 7 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">7</div>
+    <div class="step-title">Den Koeffizienten interpretieren
+      <small>Die zwei Punkte, die viele verschenken</small></div>
+    <span class="exam-tag hot">A5 (b) · 2 P</span>
+  </div>
+
+  <div class="tldr">Eine Interpretation nennt: was \(\rho\) misst, den Wertebereich, die <b>Richtung</b>, die <b>Stärke</b> — und das Wort <b>linear</b>.</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Stärke · die Grenzen aus Tutorium 3</div>
+    <table class="in-box">
+      <thead><tr><th>Betrag \(|\rho|\)</th><th>Stärke des linearen Zusammenhangs</th></tr></thead>
+      <tbody>
+        <tr><td>\(0 \lt |\rho| \lt 0.3\)</td><td><b>schwach</b> (in der Musterlösung auch: „niedrig“)</td></tr>
+        <tr><td>\(0.3 \le |\rho| \lt 0.7\)</td><td><b>mittel</b></td></tr>
+        <tr><td>\(0.7 \le |\rho| \le 1\)</td><td><b>stark</b></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:6px">Das <b>Vorzeichen</b> gibt die Richtung: \(+\) gleichgerichtet, \(-\) gegengerichtet.</p>
+  </div>
+
+  <div class="satz">
+    <div class="box-label">✍ So schreibst du es in der Klausur · Wortlaut der offiziellen Musterlösung (Probeklausur A5)</div>
+    <span class="say">Es handelt sich um die normierte Kovarianz. Der Koeffizient gibt den Grad des linearen Zusammenhangs
+      von X und Y an. Der Korrelationskoeffizient kann Werte zwischen −1 und +1 annehmen. Ein positiver
+      Korrelationskoeffizient bedeutet eine positive Korrelation. Bei einer positiven Korrelation steigt eine
+      Variable, wenn die andere auch steigt. Hier kann man von einer niedrigen positiven Korrelation ausgehen.</span>
+    <p style="font-size:0.88rem;margin:8px 0 4px"><b>Dein Baukasten</b> — die fett gedruckten Teile passt du an:</p>
+    <ol>
+      <li><b>Was:</b> „Der Korrelationskoeffizient ist die normierte Kovarianz und misst den Grad des <b>linearen</b> Zusammenhangs.“</li>
+      <li><b>Bereich:</b> „Er kann Werte zwischen −1 und +1 annehmen.“</li>
+      <li><b>Richtung:</b> „Da \(\rho\) <b>positiv/negativ</b> ist, steigt Y tendenziell, wenn X <b>steigt/fällt</b>.“</li>
+      <li><b>Stärke:</b> „Mit \(\rho = \)<b>0.760</b> liegt ein <b>starker</b> positiver linearer Zusammenhang vor.“</li>
+    </ol>
+    <span class="no">„Der Zusammenhang ist stark, weil die Korrelation stark ist.“ — Kreis, keine Zahl, kein „linear“.</span>
+    <span class="no">„Mehr Lernen verursacht mehr Punkte.“ — Das ist Kausalität (Schritt 10). Nicht in eine Interpretation schreiben.</span>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Yorum = 4 parça</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>Ne ölçer?</code><span>"normierte Kovarianz", "<b>linearen</b> Zusammenhang" kelimeleri mutlaka geçsin</span></div>
+      <div class="tr-row"><code>Aralık</code><span>"zwischen −1 und +1"</span></div>
+      <div class="tr-row"><code>Yön</code><span>İşaret: + ise ikisi birlikte artar, − ise biri artarken diğeri azalır</span></div>
+      <div class="tr-row"><code>Güç</code><span>|ρ| &lt; 0.3 schwach · 0.3–0.7 mittel · ≥ 0.7 stark — <b>sayıyı cümlede yaz</b></span></div>
+    </div>
+    <div class="tr-rule">
+      Probeklausur'da bu kısım <b>2 puan</b>. Cümleler ezberlenebilir; her seferinde sadece sayı, yön ve güç kelimesi değişir.
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 8 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">8</div>
+    <div class="step-title">Die Rangkorrelation nach Spearman
+      <small>Für ordinale Daten und monotone Zusammenhänge</small></div>
+    <span class="exam-tag">V03 · Folie 38–40 · Tut. 3 A4</span>
+  </div>
+
+  <div class="tldr">Spearman = Pearson, angewendet auf die <b>Ränge</b> statt auf die Werte.</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Idee und Formeln</div>
+    <p>
+      Pearson braucht Abstände zum Mittelwert — das geht nur bei metrischen Daten. Ersetzt man jeden Wert durch
+      seinen <b>Rang</b> (kleinster Wert = 1, nächster = 2, …), kann man auch ordinale Merkmale korrelieren.
+    </p>
+    \[ r_{S} = \rho\big(\mathrm{rg}(X),\ \mathrm{rg}(Y)\big) \]
+    <p><b>Nur wenn es keine gleichen Werte gibt</b> (keine Bindungen), gilt die Abkürzung mit \(d_i = \mathrm{rg}(x_i) - \mathrm{rg}(y_i)\):</p>
+    \[ r_{S} = 1 - \dfrac{6\sum_i d_i^2}{n\,(n^2 - 1)} \]
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel ohne Bindungen · Lernstunden und Punkte</div>
+    <table class="in-box work">
+      <thead><tr><th>\(i\)</th><th>\(x_i\)</th><th>\(\mathrm{rg}(x_i)\)</th><th>\(y_i\)</th><th>\(\mathrm{rg}(y_i)\)</th><th>\(d_i\)</th><th>\(d_i^2\)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>2</td><td>1</td><td>55</td><td>1</td><td>0</td><td class="sp">0</td></tr>
+        <tr><td>2</td><td>4</td><td>2</td><td>70</td><td>4</td><td>−2</td><td class="sp">4</td></tr>
+        <tr><td>3</td><td>6</td><td>3</td><td>60</td><td>2</td><td>1</td><td class="sp">1</td></tr>
+        <tr><td>4</td><td>8</td><td>4</td><td>65</td><td>3</td><td>1</td><td class="sp">1</td></tr>
+        <tr><td>5</td><td>10</td><td>5</td><td>100</td><td>5</td><td>0</td><td class="sp">0</td></tr>
+        <tr class="sum"><td>Σ</td><td></td><td>15</td><td></td><td>15</td><td>0</td><td>6</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:6px">So findest du \(\mathrm{rg}(y)\): sortiert ist \(55 \lt 60 \lt 65 \lt 70 \lt 100\), also hat 55 Rang 1, 60 Rang 2, 65 Rang 3, 70 Rang 4, 100 Rang 5.</p>
+    \[ r_S = 1 - \dfrac{6 \cdot 6}{5\,(25 - 1)} = 1 - \dfrac{36}{120} = 0.7 \]
+    <p>Spearman \(= 0.700\), Pearson war \(0.760\). Beide zeigen einen starken positiven Zusammenhang.</p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel mit Bindungen · Durchschnittsränge</div>
+    <p>\(x = (3, 5, 5, 8, 9)\) und \(y = (2, 4, 3, 6, 7)\). Der Wert 5 kommt in \(x\) zweimal vor.</p>
+    <ol class="calc-steps">
+      <li><b>Ränge für \(x\):</b> Die beiden Fünfen belegen die Plätze 2 und 3. Jede bekommt den <b>Durchschnitt</b>
+        \(\dfrac{2+3}{2} = 2.5\). Also \(\mathrm{rg}(x) = (1,\ 2.5,\ 2.5,\ 4,\ 5)\).</li>
+      <li><b>Ränge für \(y\):</b> keine Bindung, \(\mathrm{rg}(y) = (1, 3, 2, 4, 5)\).</li>
+      <li><b>Pearson auf die Ränge:</b> Mittelwert beider Rangreihen \(= 3\).
+        Abweichungen \((-2, -0.5, -0.5, 1, 2)\) und \((-2, 0, -1, 1, 2)\).
+        Produkte \(4 + 0 + 0.5 + 1 + 4 = 9.5\). Quadratsummen \(9.5\) und \(10\).</li>
+    </ol>
+    \[ r_S = \dfrac{9.5}{\sqrt{9.5 \cdot 10}} = \dfrac{9.5}{9.7468} = 0.9747 \]
+    <p>
+      Die Abkürzung mit \(d_i\) gäbe hier \(0.975\) — zufällig fast gleich. Beim offiziellen Filme-Beispiel
+      aus Tutorium 3 (viele Bindungen) ist der Unterschied sichtbar: richtig \(0.551\), Abkürzung \(0.558\).
+    </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Sıra (Rang) verme reçetesi</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>1. adım</code><span>Her değişkeni <b>ayrı ayrı</b> küçükten büyüğe sırala</span></div>
+      <div class="tr-row"><code>2. adım</code><span>En küçük = 1, sonraki = 2, …</span></div>
+      <div class="tr-row"><code>Eşitlik (Bindung)</code><span>Aynı değerler hangi sıraları kaplıyorsa onların <b>ortalamasını</b> alır. 2. ve 3. sıra → ikisi de 2.5</span></div>
+      <div class="tr-row"><code>3. adım</code><span>Eşitlik <b>yoksa</b>: \(d_i\) formülü. Eşitlik <b>varsa</b>: sıralar üzerinde Pearson hesapla.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Kontrol:</b> Sıraların toplamı her zaman \(\dfrac{n(n+1)}{2}\) olmalı. \(n = 5\) için 15. Eşitlikte de bu tutar (1 + 2.5 + 2.5 + 4 + 5 = 15).
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 9 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">9</div>
+    <div class="step-title">Linear, monoton, nicht monoton
+      <small>Wann Pearson und Spearman sich unterscheiden · welches Maß wann</small></div>
+    <span class="exam-tag hot">Testat 2 · A2</span>
+  </div>
+
+  <div class="tldr">Pearson misst <b>lineare</b>, Spearman <b>monotone</b> Zusammenhänge. Keiner von beiden erkennt eine U-Form.</div>
+
+  <table>
+    <thead><tr><th>Zusammenhang (V03, Folie 40)</th><th class="num">Pearson</th><th class="num">Spearman</th><th>Warum</th></tr></thead>
+    <tbody>
+      <tr><td><b>linear</b></td><td class="num">0.98</td><td class="num">0.97</td><td>Beide erkennen ihn.</td></tr>
+      <tr><td><b>monoton, nichtlinear</b> (z. B. exponentiell)</td><td class="num">0.48</td><td class="num">1</td><td>Die Ränge steigen perfekt mit, die Werte nicht linear.</td></tr>
+      <tr><td><b>nicht monoton</b> (Welle, U-Form)</td><td class="num">−0.36</td><td class="num">−0.35</td><td>Beide versagen.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · \(Y = X^2\) hat Korrelation 0</div>
+    <p>\(x = (-2, -1, 0, 1, 2)\) und \(y = x^2 = (4, 1, 0, 1, 4)\). Dann \(\bar x = 0\), \(\bar y = 2\) und</p>
+    \[ \mathrm{Cov} = \frac 15 \sum x_i y_i - \bar x \bar y = \frac 15 (-8 - 1 + 0 + 1 + 8) - 0 \cdot 2 = 0 \]
+    <p>
+      Also \(\rho = 0\). Trotzdem hängt \(Y\) <b>vollständig</b> von \(X\) ab. Die linke Hälfte fällt, die rechte steigt —
+      die konkordanten und diskordanten Beiträge heben sich genau auf.
+    </p>
+  </div>
+
+  <div class="box box-merke">
+    <div class="box-label">◆ Die logische Richtung — Richtig/Falsch-Klassiker</div>
+    <table class="in-box">
+      <tbody>
+        <tr><td>unabhängig ⇒ \(\rho = 0\)</td><td class="tbl-ja">richtig</td></tr>
+        <tr><td>\(\rho \ne 0\) ⇒ nicht unabhängig</td><td class="tbl-ja">richtig (dieselbe Aussage umgedreht)</td></tr>
+        <tr><td>\(\rho = 0\) ⇒ unabhängig</td><td class="tbl-nein">falsch — siehe \(Y = X^2\)</td></tr>
+        <tr><td>\(Y = -X^2\) ⇒ \(\rho\) kann ≈ 0 sein</td><td class="tbl-ja">richtig (Testat 2)</td></tr>
+        <tr><td>\(X = Y\) ⇒ \(\rho = 1\)</td><td class="tbl-ja">richtig (perfekt linear mit Steigung 1)</td></tr>
+        <tr><td>\(\mathrm{Cov} \ge 0.8\) ⇒ starker Zusammenhang</td><td class="tbl-nein">falsch — Kovarianz ist maßabhängig</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Welches Maß ist erlaubt?</h4>
+  <table>
+    <thead><tr><th>Skalenniveau beider Merkmale</th><th>erlaubt</th><th>Beispiel</th></tr></thead>
+    <tbody>
+      <tr><td><b>nominal</b></td><td>Kontingenztafel, \(\chi^2\) (Tag 5)</td><td>Geschlecht × Studienfach</td></tr>
+      <tr><td><b>ordinal</b></td><td>Spearman (und Tag-5-Methoden)</td><td>Schulnote × Zufriedenheit</td></tr>
+      <tr><td><b>metrisch</b></td><td><b>Pearson</b>, Spearman, Kovarianz</td><td>Lernstunden × Punkte</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.88rem;margin-top:8px">
+    Die Regel geht nur <b>nach unten</b>: Was für ordinale Daten erlaubt ist, darf man auch bei metrischen benutzen,
+    nicht umgekehrt. Eine Anzahl (z. B. „Anzahl der Vorlesungen“) ist metrisch — Pearson ist erlaubt.
+  </p>
+</div>
+
+<!-- ---------- SCHRITT 10 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">10</div>
+    <div class="step-title">Korrelation ist keine Kausalität
+      <small>Und der ökologische Fehlschluss</small></div>
+    <span class="exam-tag hot">A5 (c) · 2 P</span>
+  </div>
+
+  <div class="tldr">Eine Korrelation zeigt einen <b>statistischen</b> Zusammenhang. Ob \(X\) die <b>Ursache</b> von \(Y\) ist, zeigt sie nicht.</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Kausalität (V03, Folie 41–42)</div>
+    <p><b>Kausalität:</b> Aus einer Veränderung von \(X\) ergibt sich <b>ursächlich</b> eine Veränderung von \(Y\).</p>
+    <p>Zum Nachweis braucht man:</p>
+    <ul class="clean">
+      <li>eine <b>gezielte Manipulation</b> der Ursache \(X\) in der Untersuchung (Experiment)</li>
+      <li>die <b>Kontrolle</b> aller weiteren Einflussgrößen, zum Beispiel durch <b>Randomisierung</b></li>
+    </ul>
+    <p>Die meisten Datenanalysen tun beides nicht. Sie liefern deshalb nur einen statistischen Zusammenhang.</p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Drittvariablen · „Scheinkorrelationen“</div>
+    <table class="in-box">
+      <thead><tr><th>Beobachtet</th><th>Falscher Schluss</th><th>Wirklicher Grund</th></tr></thead>
+      <tbody>
+        <tr><td>Eisverkauf und Sonnenbrände korrelieren positiv</td><td>Eis verursacht Sonnenbrand</td><td>Drittvariable <b>Sonnenwetter</b></td></tr>
+        <tr><td>Mehr Feuerwehrleute im Einsatz, höherer Schaden</td><td>Feuerwehr verursacht Schaden</td><td>Drittvariable <b>Größe des Brandes</b></td></tr>
+        <tr><td>Margarinekonsum und Scheidungsrate (Tutorium 3)</td><td>Margarine zerstört Ehen</td><td><b>Zufall</b> / gemeinsamer Zeittrend</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Ökologischer Fehlschluss (V03, Folie 43–45)</div>
+    <p>
+      Man schließt von <b>Gruppendaten</b> (Stadtbezirke, Länder) unzulässig auf <b>einzelne Personen</b>.
+    </p>
+    <p>
+      <b>EHEC, Hamburg 2011:</b> In Bezirken mit vielen Grünen-Wählern gab es mehr Erkrankungen.
+      Falscher Schluss: Grün wählen erhöht das Risiko. Tatsächlich kamen die Erreger aus Sprossen aus
+      ökologischem Anbau. Zwei Probleme: (1) Aus Bezirksdaten weiß man nicht, ob die Erkrankten selbst
+      Grünen-Wähler waren. (2) Die Drittvariable Ernährung wurde nicht beachtet.
+    </p>
+  </div>
+
+  <div class="satz">
+    <div class="box-label">✍ So schreibst du es in der Klausur · Wortlaut der offiziellen Musterlösung</div>
+    <span class="say">Nein, statistische Analysen liefern keinen Nachweis einer Kausalität, der Zusammenhang
+      könnte auch durch dritte Variablen entstehen.</span>
+    <p style="font-size:0.88rem;margin:6px 0 0">
+      Noch sicherer mit einem Beispiel für die Drittvariable, z. B.: „… etwa durch die allgemeine Tagesform,
+      die sowohl das Schießen als auch das Laufen beeinflusst.“ <b>Immer mit „Nein“ oder „Ja“ beginnen</b> —
+      die Frage war „Stimmen Sie zu?“.
+    </p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Nedensellik sorusu</span>
+    <p>
+      Soru "X, Y'ye <b>neden oluyor mu</b>?" / "führt zu …?" / "verursacht …?" ise cevap bu derste
+      <b>hemen hemen her zaman "Nein"</b>. Sebep: korelasyon sadece <b>istatistiksel ilişki</b> gösterir;
+      nedensellik için <b>deney</b> (X'i bilerek değiştirmek) ve <b>diğer etkenleri kontrol</b> (randomizasyon) gerekir.
+    </p>
+    <div class="tr-rule">
+      <b>Tam puan cümlesi:</b> "Nein" + "keine Kausalität" + "Drittvariable" + mümkünse <b>bir örnek</b> drittvariable.
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 11 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">11</div>
+    <div class="step-title">Der Klausur-Zwilling
+      <small>Genau wie Probeklausur A5 — nur mit anderen Zahlen</small></div>
+    <span class="exam-tag hot">11 P · komplett</span>
+  </div>
+
+  <div class="tldr">Die Probeklausur selbst sparst du dir für die Generalprobe auf. Hier übst du ihren exakten Aufbau.</div>
+
+  <div class="box box-wort">
+    <div class="box-label">■ Aufgabe</div>
+    <p>
+      Eine Studentin vermutet einen Zusammenhang zwischen ihrem Kaffeekonsum am Nachmittag (\(X\), Tassen)
+      und ihrer Schlafdauer in der folgenden Nacht (\(Y\), Stunden). Grundlage sind 6 Tage:
+    </p>
+    <table class="in-box ct small">
+      <thead><tr><th>Tag \(\nu\)</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+      <tbody>
+        <tr><td><b>Tassen \(x_\nu\)</b></td><td>2</td><td>5</td><td>1</td><td>4</td><td>3</td><td>3</td></tr>
+        <tr><td><b>Schlaf \(y_\nu\)</b></td><td>7</td><td>5</td><td>8</td><td>6</td><td>8</td><td>5</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:6px;font-size:0.9rem">
+      (a) Berechnen Sie die empirische Varianz von \(X\). <i>(2P)</i> ·
+      (b) Berechnen Sie \(\rho_{xy}\) mit \(s_y^2 = 1.5833\), \(\bar y = 6.5\), \(\sum x_\nu y_\nu = 110\) und interpretieren Sie. <i>(3P + 2P)</i> ·
+      (c) „Der Kaffee führt zum schlechten Schlaf.“ Stimmen Sie zu? <i>(2P)</i> ·
+      (d) Skizzieren Sie ein Streudiagramm für \(\rho_{xy} = 0\). <i>(2P)</i>
+    </p>
+  </div>
+
+  <div class="sol" style="margin-top:12px">
+    <span class="sol-num">(a) · 2 Punkte</span>
+    <p>\(\bar x = \dfrac{2 + 5 + 1 + 4 + 3 + 3}{6} = \dfrac{18}{6} = 3\) und \(\frac 1n \sum x_\nu^2 = \dfrac{4 + 25 + 1 + 16 + 9 + 9}{6} = \dfrac{64}{6} = 10.6667\)</p>
+    \[ s_x^2 = \frac 1n \sum x_\nu^2 - \bar x^2 = 10.6667 - 9 = 1.6667 \]
+    <p>Also \(s_x^2 \approx\) <span class="key">1.667</span></p>
+  </div>
+
+  <div class="sol">
+    <span class="sol-num">(b) Rechnung · 3 Punkte</span>
+    <p>Kovarianz mit dem Verschiebungssatz:</p>
+    \[ s_{xy} = \dfrac{1}{6}\sum x_\nu y_\nu - \bar x\, \bar y = \dfrac{110}{6} - 3 \cdot 6.5 = 18.3333 - 19.5 = -1.1667 \]
+    \[ \rho_{xy} = \dfrac{s_{xy}}{\sqrt{s_x^2 \cdot s_y^2}} = \dfrac{-1.1667}{\sqrt{1.6667 \cdot 1.5833}} = \dfrac{-1.1667}{1.6245} = -0.7182 \]
+    <p>Also \(\rho_{xy} \approx\) <span class="key">−0.718</span></p>
+  </div>
+
+  <div class="sol">
+    <span class="sol-num">(b) Interpretation · 2 Punkte</span>
+    <p>
+      Es handelt sich um die normierte Kovarianz. Der Koeffizient gibt den Grad des linearen Zusammenhangs
+      von X und Y an und kann Werte zwischen −1 und +1 annehmen. Ein negativer Korrelationskoeffizient
+      bedeutet eine negative Korrelation: Wenn die eine Variable steigt, sinkt die andere tendenziell.
+      Hier liegt mit \(\rho_{xy} = -0.718\) eine <b>starke negative</b> Korrelation vor.
+    </p>
+  </div>
+
+  <div class="sol">
+    <span class="sol-num">(c) · 2 Punkte</span>
+    <p>
+      <b>Nein.</b> Statistische Analysen liefern keinen Nachweis einer Kausalität; der Zusammenhang könnte auch
+      durch dritte Variablen entstehen — zum Beispiel durch Stress in Prüfungsphasen, der sowohl zu mehr Kaffee
+      als auch zu schlechterem Schlaf führt.
+    </p>
+  </div>
+
+  <div class="sol">
+    <span class="sol-num">(d) · 2 Punkte</span>
+    <div class="fig-pair" style="grid-template-columns:1fr 1.2fr;align-items:center">
+      <div class="fig" style="margin:0">
+<svg viewBox="0 0 320 210" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+<line x1="46" y1="170" x2="305" y2="170" stroke="#2F2A3F" stroke-width="1.3" marker-end="url(#a)"/>
+<line x1="46" y1="170" x2="46" y2="14" stroke="#2F2A3F" stroke-width="1.3"/>
+<polygon points="305,170 298,166 298,174" fill="#2F2A3F"/><polygon points="46,14 42,21 50,21" fill="#2F2A3F"/>
+<circle cx="123.0" cy="144.9" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="167.1" cy="111.2" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="84.4" cy="128.4" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="182.1" cy="77.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="154.4" cy="65.7" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="72.2" cy="64.4" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="78.9" cy="54.3" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="295.0" cy="140.5" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="223.8" cy="58.3" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="164.1" cy="130.3" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="210.7" cy="88.5" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="120.7" cy="133.9" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="128.3" cy="48.8" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="72.7" cy="150.2" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="67.6" cy="103.7" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="251.4" cy="74.5" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="252.9" cy="65.3" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="56.0" cy="152.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="135.2" cy="24.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="76.5" cy="124.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="168.8" cy="101.5" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="205.2" cy="122.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="189.0" cy="160.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="87.4" cy="130.5" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="225.9" cy="118.6" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="204.1" cy="82.9" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="168.6" cy="155.7" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="127.2" cy="31.7" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="278.5" cy="137.1" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="75.1" cy="89.5" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<text x="175.5" y="196" font-size="11" text-anchor="middle" fill="#2F2A3F">Kaffeetassen (X)</text>
+<text x="15" y="92.0" font-size="11" text-anchor="middle" fill="#2F2A3F" transform="rotate(-90 15 92.0)">Schlafdauer in h (Y)</text>
+</svg>
+      </div>
+      <div style="font-size:0.88rem">
+        <p>Eine <b>formlose Wolke</b> ohne Richtung und ohne erkennbare Gerade.</p>
+        <p><b>Punkte gibt es für:</b> beschriftete Achsen (X: Kaffeetassen, Y: Schlafdauer) und eine
+          Wolke ohne steigenden oder fallenden Trend.</p>
+        <p>Auch richtig: eine U-Form — sie hat ebenfalls \(\rho = 0\).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 12: R ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">12</div>
+    <div class="step-title">Die R-Ecke
+      <small>Streudiagramm, Kovarianz, Korrelation</small></div>
+    <span class="exam-tag hot">Teil B</span>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Streudiagramm als PDF speichern · so wie in der B-Klausur</div>
+<pre>x &lt;- <span class="fn">c</span>(<span class="nu">2</span>, <span class="nu">4</span>, <span class="nu">6</span>, <span class="nu">8</span>, <span class="nu">10</span>)            <span class="cm"># Lernstunden</span>
+y &lt;- <span class="fn">c</span>(<span class="nu">55</span>, <span class="nu">70</span>, <span class="nu">60</span>, <span class="nu">65</span>, <span class="nu">100</span>)       <span class="cm"># Punkte</span>
+
+<span class="fn">pdf</span>(<span class="st">"Streudiagramm.pdf"</span>)            <span class="cm"># 1. Datei öffnen</span>
+<span class="fn">plot</span>(x, y,                            <span class="cm"># 2. zeichnen: erst x, dann y</span>
+     pch  = <span class="nu">16</span>,                        <span class="cm">#    ausgefüllte Punkte</span>
+     cex  = <span class="nu">0.8</span>,                       <span class="cm">#    Punktgröße</span>
+     main = <span class="st">"Sitz 00, Matr.Nr. 12345678, Aufgabenteil c)"</span>,
+     xlab = <span class="st">"Lernstunden pro Woche"</span>,
+     ylab = <span class="st">"Punkte"</span>)
+<span class="fn">dev.off</span>()                              <span class="cm"># 3. Datei schließen — sonst ist das PDF leer!</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Satır satır</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>pdf("Dosya.pdf")</code><span>Çizimi ekrana değil, bu <b>dosyaya</b> yazmaya başla. PNG için <code>png("dosya.png")</code>.</span></div>
+      <div class="tr-row"><code>plot(x, y, ...)</code><span>Serpme diyagramı. <b>İlk</b> vektör yatay eksen, <b>ikinci</b> dikey eksen.</span></div>
+      <div class="tr-row"><code>pch = 16</code><span>Nokta şekli (16 = dolu yuvarlak). <code>cex</code> = nokta boyutu.</span></div>
+      <div class="tr-row"><code>main / xlab / ylab</code><span>Başlık / x ekseni adı / y ekseni adı. B-sınavında başlıkta <b>Sitz, Matr.Nr., Aufgabenteil</b> olmak zorunda.</span></div>
+      <div class="tr-row"><code>dev.off()</code><span>Dosyayı <b>kapat ve kaydet</b>. Unutursan PDF boş/bozuk olur — Tutorium'da "häufige Fehlerquelle".</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Sıra ezberle:</b> aç (<code>pdf</code>) → çiz (<code>plot</code>) → kapat (<code>dev.off</code>).
+      Testat 2'de boşluk doldurma olarak soruldu: <code>plot</code>, <code>main</code>, <code>xlab</code>, <code>ylab</code>, <code>dev</code>.
+    </div>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Kovarianz und Korrelation</div>
+<pre><span class="fn">cov</span>(x, y)                   <span class="cm"># ACHTUNG: Nenner n-1, wie var()</span>
+<span class="out">[1] 42.5</span>
+n &lt;- <span class="fn">length</span>(x)
+(n - <span class="nu">1</span>) / n * <span class="fn">cov</span>(x, y)       <span class="cm"># empirische Kovarianz der Vorlesung</span>
+<span class="out">[1] 34</span>
+
+<span class="fn">cor</span>(x, y)                   <span class="cm"># Pearson (Standard) — kein Umrechnen nötig</span>
+<span class="out">[1] 0.7602631</span>
+<span class="fn">round</span>(<span class="fn">cor</span>(x, y), <span class="nu">3</span>)
+<span class="out">[1] 0.76</span>                     <span class="cm"># R lässt die Null weg — du schreibst 0.760</span>
+
+<span class="fn">cor</span>(x, y, method = <span class="st">"spearman"</span>)
+<span class="out">[1] 0.7</span>
+<span class="fn">rank</span>(y)                     <span class="cm"># Ränge; bei Bindungen automatisch Durchschnittsränge</span>
+<span class="out">[1] 1 4 2 3 5</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Hangi fonksiyon neyi verir</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>cov(x, y)</code><span>Kovaryans ama <b>n−1</b> ile (tıpkı <code>var</code> gibi). Dersteki değer için \(\dfrac{n-1}{n}\) ile çarp.</span></div>
+      <div class="tr-row"><code>cor(x, y)</code><span>Pearson. <b>Düzeltmeye gerek yok</b> — n−1 pay ve paydada birbirini götürür.</span></div>
+      <div class="tr-row"><code>method = "spearman"</code><span>Spearman sıra korelasyonu. Eşitliklerde ortalama sırayı kendisi kullanır.</span></div>
+      <div class="tr-row"><code>rank(y)</code><span>Her değerin sırası. Kontrol için kullanışlı.</span></div>
+    </div>
+    <div class="tr-rule">
+      <b>Kural:</b> <code>var</code> ve <code>cov</code> → dikkat, n−1. <code>cor</code> → güvenli, aynen yaz.
+    </div>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Korrelationsmatrix für einen ganzen Data Frame</div>
+<pre>d &lt;- <span class="fn">data.frame</span>(Stunden = x, Punkte = y, Fehltage = <span class="fn">c</span>(<span class="nu">9</span>, <span class="nu">6</span>, <span class="nu">7</span>, <span class="nu">4</span>, <span class="nu">1</span>))
+<span class="fn">round</span>(<span class="fn">cor</span>(d), <span class="nu">3</span>)
+<span class="out">         Stunden Punkte Fehltage
+Stunden    1.000  0.760   -0.933
+Punkte     0.760  1.000   -0.904
+Fehltage  -0.933 -0.904    1.000</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Korelasyon matrisi nasıl okunur</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>Köşegen (1.000)</code><span>Her değişkenin kendisiyle korelasyonu — <b>her zaman 1</b>, bilgi taşımaz</span></div>
+      <div class="tr-row"><code>Köşegen dışı</code><span>Aradığın sayılar burada. Satır "Punkte", sütun "Fehltage" → −0.904</span></div>
+      <div class="tr-row"><code>Simetri</code><span>Üst üçgen = alt üçgen. Her çifti bir kez oku.</span></div>
+    </div>
+    <div class="tr-rule">
+      Tutorium hatası: köşegendeki 1'i "mükemmel korelasyon bulundu" diye yorumlamak. <b>Nebendiagonale</b> (köşegen dışı) önemli olan.
+    </div>
+  </div>
+
+  <div class="box box-wort">
+    <div class="box-label">■ Ausblick · Regression (V13)</div>
+    <p style="font-size:0.9rem">
+      In der letzten Vorlesung kommt die <b>Regressionsgerade</b>: die Gerade, die am besten durch die Punktewolke passt.
+      In R: <code class="inline">lm(y ~ x)</code> und <code class="inline">abline(lm(y ~ x))</code>. Für heute reicht:
+      Korrelation misst, <b>wie gut</b> die Punkte auf einer Geraden liegen — die Regression sagt, <b>welche</b> Gerade es ist.
+    </p>
+  </div>
+</div>
+
+<!-- ---------- SPICKZETTEL ---------- -->
+
+<div class="cheat">
+  <h3>Spickzettel Tag 6 · aufs Formelblatt</h3>
+  <div class="cheat-grid">
+    <div class="cheat-item">
+      <b>Kovarianz</b>
+      \(\mathrm{Cov} = \frac 1n \sum (x_i - \bar x)(y_i - \bar y)\)
+    </div>
+    <div class="cheat-item">
+      <b>Verschiebungssatz</b>
+      \(\mathrm{Cov} = \frac 1n \sum x_i y_i - \bar x \bar y\)
+    </div>
+    <div class="cheat-item wide">
+      <b>Pearson</b>
+      \(\rho = \dfrac{\mathrm{Cov}}{\sqrt{\mathrm{Var}X \cdot \mathrm{Var}Y}} = \dfrac{\sum (x_i-\bar x)(y_i-\bar y)}{\sqrt{\sum (x_i-\bar x)^2 \sum (y_i-\bar y)^2}}\)
+      &nbsp;·&nbsp; \(-1 \le \rho \le 1\) · nur <b>linear</b> · metrisch
+    </div>
+    <div class="cheat-item">
+      <b>Stärke</b>
+      \(|\rho| \lt 0.3\) schwach · \(0.3\)–\(0.7\) mittel · \(\ge 0.7\) stark
+    </div>
+    <div class="cheat-item">
+      <b>Maßabhängig</b>
+      \(\mathrm{Cov}(a{+}bX, c{+}dY) = bd\,\mathrm{Cov}\) · \(\rho\) bleibt (bis aufs Vorzeichen)
+    </div>
+    <div class="cheat-item wide">
+      <b>Spearman</b>
+      Pearson auf die Ränge · Bindungen → Durchschnittsrang · ohne Bindungen:
+      \(r_S = 1 - \dfrac{6\sum d_i^2}{n(n^2-1)}\) · misst <b>monotone</b> Zusammenhänge · ab ordinal
+    </div>
+    <div class="cheat-item wide">
+      <b>Logik</b>
+      unabhängig ⇒ \(\rho = 0\) · aber \(\rho = 0\) ⇏ unabhängig (\(Y = X^2\)) · Korrelation ⇏ Kausalität
+      (Nachweis: Manipulation + Randomisierung) · ökologischer Fehlschluss: Gruppe ⇏ Individuum
+    </div>
+    <div class="cheat-item wide">
+      <b>R</b>
+      <code class="inline">pdf("…")</code> → <code class="inline">plot(x, y, main=, xlab=, ylab=)</code> → <code class="inline">dev.off()</code> ·
+      <code class="inline">cov()</code> = n−1! · <code class="inline">cor(x, y)</code> ·
+      <code class="inline">cor(x, y, method="spearman")</code> · <code class="inline">rank()</code>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TEIL 2: TEST ==================== -->
+
+<div class="page-break"></div>
+
+<div class="quiz-intro">
+  <h2>Teste dich selbst</h2>
+  <p>
+    14 Aufgaben · 34 Punkte · Taschenrechner erlaubt · ca. 70 Minuten.
+  </p>
+  <p style="margin-top:9px">
+    <b>Klausurregeln:</b> Dezimal<b>punkt</b> · Zwischenergebnisse auf <b>vier</b>,
+    Endergebnisse auf <b>drei</b> Nachkommastellen · Lösungsweg angeben · Antwortsätze in ganzen Sätzen.
+  </p>
+  <p style="margin-top:9px;font-weight:600;color:var(--rose-600)">
+    Bei jeder Interpretation: Zahl nennen, Richtung, Stärke, das Wort „linear“. Bei jeder
+    Kausalitätsfrage: erst „Ja“ oder „Nein“, dann die Begründung.
+  </p>
+</div>
+
+<!-- A1 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 1</span>
+    <span class="q-text">Arbeitstabelle <span class="pts">(4 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:4px">Fünf Studierende: bearbeitete Übungsblätter \(x\) und Testatpunkte \(y\).</p>
+  <table class="ct small" style="max-width:380px;margin:0 auto 6px">
+    <tbody>
+      <tr><td><b>\(x_i\)</b></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+      <tr><td><b>\(y_i\)</b></td><td>3</td><td>5</td><td>4</td><td>8</td><td>10</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    (a) \(\bar x\) und \(\bar y\) · (b) Kovarianz mit Arbeitstabelle · (c) \(\rho\) · (d) Interpretation in einem Satz</p>
+  <div class="ans">
+    <div class="slot"><b>a</b><div></div></div>
+    <div class="slot h5"><b>b</b><div></div></div>
+    <div class="slot h2"><b>c</b><div></div></div>
+    <div class="slot h2"><b>d</b><div></div></div>
+  </div>
+</div>
+
+<!-- A2 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 2</span>
+    <span class="q-text">Nur Summen gegeben <span class="pts">(3 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    \(n = 8\), \(\sum x_i = 40\), \(\sum y_i = 64\), \(\sum x_i^2 = 240\), \(\sum y_i^2 = 560\), \(\sum x_i y_i = 344\).
+    Berechnen Sie (a) die Kovarianz, (b) beide Varianzen, (c) \(\rho\).</p>
+  <div class="ans">
+    <div class="slot h2"><b>a</b><div></div></div>
+    <div class="slot h2"><b>b</b><div></div></div>
+    <div class="slot"><b>c</b><div></div></div>
+  </div>
+</div>
+
+<!-- A3 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 3</span>
+    <span class="q-text">Verschiebungssatz · Multiple Choice <span class="pts">(1 Punkt)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">Welche Darstellung ist die vollständig vereinfachte Form von \(\frac 1n \sum (x_i - \bar x)(y_i - \bar y)\)?</p>
+  <ul class="opts">
+    <li data-k="a">\(\dfrac{1}{n}\sum x_i y_i - \bar x - \bar y\)</li>
+    <li data-k="b">\(\dfrac{1}{n}\sum x_i y_i - \bar x \bar y\)</li>
+    <li data-k="c">\(\dfrac{1}{n^2}\sum x_i y_i - \bar x \bar y\)</li>
+    <li data-k="d">\(\dfrac{1}{n}\sum (x_i y_i - \bar x \bar y)\)</li>
+  </ul>
+  <div class="ans"><div class="slot"><b>—</b><div></div></div></div>
+</div>
+
+<!-- A4 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 4</span>
+    <span class="q-text">Interpretieren <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    Für \(X\) = tägliche Bildschirmzeit (h) und \(Y\) = Schlafdauer (h) ergibt sich \(\rho = -0.42\).
+    Interpretieren Sie den Wert vollständig.</p>
+  <div class="ans"><div class="slot h3"><b>—</b><div></div></div></div>
+</div>
+
+<!-- A5 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 5</span>
+    <span class="q-text">Kausalität <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    Bei Bränden korrelieren die Anzahl der eingesetzten Feuerwehrleute und die Schadenshöhe mit \(\rho = 0.81\).
+    Ein Politiker folgert: „Weniger Feuerwehrleute würden den Schaden senken.“ Stimmen Sie zu? Begründen Sie in 1–2 Sätzen.</p>
+  <div class="ans"><div class="slot h3"><b>—</b><div></div></div></div>
+</div>
+
+<!-- A6 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 6</span>
+    <span class="q-text">Skizze <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    Skizzieren Sie ein mögliches Streudiagramm für \(X\) = Fehlstunden und \(Y\) = Klausurpunkte mit \(\rho \approx -0.9\).</p>
+  <div class="sketch"></div>
+</div>
+
+<!-- A7 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 7</span>
+    <span class="q-text">Spearman ohne Bindungen <span class="pts">(3 Punkte)</span></span></div>
+  <table class="ct small" style="max-width:420px;margin:0 auto 6px">
+    <tbody>
+      <tr><td><b>Mathe \(x_i\)</b></td><td>12</td><td>15</td><td>9</td><td>20</td><td>18</td><td>11</td></tr>
+      <tr><td><b>Statistik \(y_i\)</b></td><td>30</td><td>28</td><td>25</td><td>40</td><td>41</td><td>27</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.91rem;margin-bottom:0">(a) Bestimmen Sie die Ränge beider Merkmale. (b) Berechnen Sie \(r_S\).</p>
+  <div class="ans">
+    <div class="slot h2"><b>a</b><div></div></div>
+    <div class="slot h3"><b>b</b><div></div></div>
+  </div>
+</div>
+
+<!-- A8 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 8</span>
+    <span class="q-text">Spearman mit Bindungen <span class="pts">(3 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    \(x = (2, 4, 4, 6, 7)\) und \(y = (10, 14, 12, 12, 20)\).
+    (a) Bestimmen Sie die Ränge (mit Durchschnittsrängen). (b) Berechnen Sie \(r_S\) als Pearson-Korrelation der Ränge.
+    (c) Warum darf man hier die Formel mit \(d_i^2\) nicht benutzen?</p>
+  <div class="ans">
+    <div class="slot h2"><b>a</b><div></div></div>
+    <div class="slot h3"><b>b</b><div></div></div>
+    <div class="slot"><b>c</b><div></div></div>
+  </div>
+</div>
+
+<!-- A9 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 9</span>
+    <span class="q-text">Richtig oder falsch? <span class="pts">(3 Punkte · je 0.5)</span></span></div>
+  <ul class="opts">
+    <li data-k="a">Wenn \(\rho_{XY} \ne 0\), sind \(X\) und \(Y\) niemals unabhängig.</li>
+    <li data-k="b">Wenn \(Y = -X^2\), kann \(\rho_{XY}\) annähernd 0 sein.</li>
+    <li data-k="c">Wenn \(X = Y\) (und \(X\) nicht konstant), gilt \(\rho_{XY} = 1\).</li>
+    <li data-k="d">Wenn \(\rho_{XY} \ne 0\), besteht stets ein kausaler Zusammenhang.</li>
+    <li data-k="e">Wenn \(\mathrm{Cov}(X,Y) \ge 0.8\), spricht man immer von einem starken Zusammenhang.</li>
+    <li data-k="f">Wenn \(\rho_{XY} = 0\), sind \(X\) und \(Y\) unabhängig.</li>
+  </ul>
+  <div class="ans two">
+    <div class="slot"><b>a</b><div></div></div><div class="slot"><b>b</b><div></div></div>
+    <div class="slot"><b>c</b><div></div></div><div class="slot"><b>d</b><div></div></div>
+    <div class="slot"><b>e</b><div></div></div><div class="slot"><b>f</b><div></div></div>
+  </div>
+</div>
+
+<!-- A10 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 10</span>
+    <span class="q-text">Einheiten wechseln <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    Für Gewicht (kg) und Größe (cm) gilt \(\mathrm{Cov} = 153.88\) und \(\rho = 0.836\).
+    Die Größe wird nun in Metern angegeben. (a) Wie groß ist die neue Kovarianz? (b) Wie groß ist das neue \(\rho\)? Begründen Sie.</p>
+  <div class="ans">
+    <div class="slot"><b>a</b><div></div></div>
+    <div class="slot h2"><b>b</b><div></div></div>
+  </div>
+</div>
+
+<!-- A11 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 11</span>
+    <span class="q-text">Quadratischer Zusammenhang <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    \(x = (-3, -1, 0, 1, 3)\) und \(y_i = x_i^2\). (a) Berechnen Sie \(\rho\). (b) Folgt daraus, dass kein Zusammenhang besteht?</p>
+  <div class="ans">
+    <div class="slot h2"><b>a</b><div></div></div>
+    <div class="slot"><b>b</b><div></div></div>
+  </div>
+</div>
+
+<!-- A12 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 12</span>
+    <span class="q-text">Welches Maß? <span class="pts">(2 Punkte · je 0.5)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    Nennen Sie jeweils ein geeignetes Zusammenhangsmaß:
+    (a) Schulnote (1–6) und Zufriedenheit (sehr / eher / kaum / nicht) ·
+    (b) Wohnfläche (qm) und Nettomiete (€) ·
+    (c) Geschlecht und Studienfach ·
+    (d) Platzierung im Rennen und Platzierung im Vorjahr</p>
+  <div class="ans two">
+    <div class="slot"><b>a</b><div></div></div><div class="slot"><b>b</b><div></div></div>
+    <div class="slot"><b>c</b><div></div></div><div class="slot"><b>d</b><div></div></div>
+  </div>
+</div>
+
+<!-- A13 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 13</span>
+    <span class="q-text">R-Code ergänzen <span class="pts">(2 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:4px">Das Streudiagramm von <code class="inline">d$Kampfzeit</code> (x-Achse) und
+    <code class="inline">d$Muenzen</code> (y-Achse) soll als PDF gespeichert werden.</p>
+  <div class="rbox" style="margin:6px 0">
+<pre><span class="fn">pdf</span>(<span class="st">"Streudiagramm.pdf"</span>)
+_______( _________ , _________ ,
+     pch = <span class="nu">16</span>,
+     ______ = <span class="st">"Streudiagramm"</span>,
+     xlab = <span class="st">"Kampfzeit (min.)"</span>,
+     ylab = ___________ )
+______.off()</pre>
+  </div>
+  <div class="ans"><div class="slot h3"><b>—</b><div></div></div></div>
+</div>
+
+<!-- A14 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">A 14</span>
+    <span class="q-text">R-Output auswerten <span class="pts">(3 Punkte)</span></span></div>
+  <div class="rbox" style="margin:6px 0">
+<pre><span class="out">&gt; length(x)
+[1] 5
+&gt; cov(x, y)
+[1] 12.5
+&gt; var(x); var(y)
+[1] 2.5
+[1] 100</span></pre>
+  </div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    (a) Wie groß ist die empirische Kovarianz im Sinne der Vorlesung (Nenner \(n\))?
+    (b) Berechnen Sie \(\rho\) aus dem Output. Muss man vorher umrechnen?
+    (c) Mit welchem Befehl erhält man Spearmans \(r_S\)?</p>
+  <div class="ans">
+    <div class="slot"><b>a</b><div></div></div>
+    <div class="slot h2"><b>b</b><div></div></div>
+    <div class="slot"><b>c</b><div></div></div>
+  </div>
+</div>
+
+<!-- ==================== LÖSUNGEN ==================== -->
+
+<div class="page-break"></div>
+
+<div class="loesung-intro">
+  <h2>Lösungen</h2>
+  <p>
+    Vergleiche ehrlich — Teilaufgabe für Teilaufgabe. Bei Interpretationen: Hast du Zahl, Richtung,
+    Stärke und „linear“ genannt? Jedes fehlende Element kostet in der Klausur Punkte.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 1 · 4 Punkte</span>
+  <p><b>(a)</b> \(\bar x = \dfrac{15}{5} = \) <span class="key">3</span>, \(\bar y = \dfrac{30}{5} = \) <span class="key">6</span></p>
+  <table class="work" style="margin:6px 0">
+    <thead><tr><th>\(i\)</th><th>\(x_i - \bar x\)</th><th>\(y_i - \bar y\)</th><th>Produkt</th><th>\((x_i-\bar x)^2\)</th><th>\((y_i-\bar y)^2\)</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>−2</td><td>−3</td><td class="sp">6</td><td>4</td><td>9</td></tr>
+      <tr><td>2</td><td>−1</td><td>−1</td><td class="sp">1</td><td>1</td><td>1</td></tr>
+      <tr><td>3</td><td>0</td><td>−2</td><td class="sp">0</td><td>0</td><td>4</td></tr>
+      <tr><td>4</td><td>1</td><td>2</td><td class="sp">2</td><td>1</td><td>4</td></tr>
+      <tr><td>5</td><td>2</td><td>4</td><td class="sp">8</td><td>4</td><td>16</td></tr>
+      <tr class="sum"><td>Σ</td><td>0</td><td>0</td><td>17</td><td>10</td><td>34</td></tr>
+    </tbody>
+  </table>
+  <p><b>(b)</b> \(\mathrm{Cov} = \dfrac{17}{5} = \) <span class="key">3.400</span></p>
+  <p><b>(c)</b> \(\rho = \dfrac{17}{\sqrt{10 \cdot 34}} = \dfrac{17}{18.4391} = 0.9220 \approx\) <span class="key">0.922</span></p>
+  <p><b>(d)</b> Es liegt ein <b>starker positiver linearer</b> Zusammenhang vor: Wer mehr Übungsblätter bearbeitet,
+    hat tendenziell mehr Testatpunkte (\(\rho = 0.922 \ge 0.7\)).</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 2 · 3 Punkte</span>
+  <p>\(\bar x = \dfrac{40}{8} = 5\), \(\bar y = \dfrac{64}{8} = 8\)</p>
+  <p><b>(a)</b> \(\mathrm{Cov} = \dfrac{344}{8} - 5 \cdot 8 = 43 - 40 = \) <span class="key">3.000</span></p>
+  <p><b>(b)</b> \(\mathrm{Var}(X) = \dfrac{240}{8} - 5^2 = 30 - 25 = \) <span class="key">5</span>,
+    \(\mathrm{Var}(Y) = \dfrac{560}{8} - 8^2 = 70 - 64 = \) <span class="key">6</span></p>
+  <p><b>(c)</b> \(\rho = \dfrac{3}{\sqrt{5 \cdot 6}} = \dfrac{3}{5.4772} = 0.5477 \approx\) <span class="key">0.548</span> (mittlerer positiver linearer Zusammenhang)</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 3 · 1 Punkt</span>
+  <p><span class="key">(b)</span>. (d) ist zwar gleichwertig, aber nicht vereinfacht; (a) und (c) sind falsch.</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 4 · 2 Punkte</span>
+  <p>
+    Der Korrelationskoeffizient ist die normierte Kovarianz und misst den Grad des <b>linearen</b> Zusammenhangs;
+    er liegt zwischen −1 und +1. Da \(\rho = -0.42\) negativ ist, liegt eine <b>negative</b> Korrelation vor:
+    Mit steigender Bildschirmzeit sinkt die Schlafdauer tendenziell. Wegen \(0.3 \le 0.42 \lt 0.7\) ist der
+    lineare Zusammenhang <span class="key">mittelstark</span>.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 5 · 2 Punkte</span>
+  <p>
+    <span class="key">Nein.</span> Statistische Analysen liefern keinen Nachweis einer Kausalität; der Zusammenhang
+    entsteht durch eine dritte Variable: die <b>Größe des Brandes</b>. Große Brände verursachen großen Schaden
+    <b>und</b> erfordern viele Feuerwehrleute.
+  </p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 6 · 2 Punkte</span>
+  <div class="fig-pair" style="grid-template-columns:1fr 1.2fr;align-items:center">
+    <div class="fig" style="margin:0">
+<svg viewBox="0 0 320 210" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+<line x1="46" y1="170" x2="305" y2="170" stroke="#2F2A3F" stroke-width="1.3" marker-end="url(#a)"/>
+<line x1="46" y1="170" x2="46" y2="14" stroke="#2F2A3F" stroke-width="1.3"/>
+<polygon points="305,170 298,166 298,174" fill="#2F2A3F"/><polygon points="46,14 42,21 50,21" fill="#2F2A3F"/>
+<circle cx="88.9" cy="36.8" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="236.7" cy="107.6" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="238.1" cy="118.9" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="189.8" cy="107.3" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="282.1" cy="156.9" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="95.6" cy="61.1" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="263.8" cy="118.4" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="86.0" cy="65.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="293.4" cy="160.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="204.5" cy="110.7" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="200.2" cy="101.1" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="295.0" cy="145.1" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="247.1" cy="145.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="247.9" cy="151.8" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="56.0" cy="30.1" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="138.2" cy="56.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="64.0" cy="24.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="92.4" cy="45.8" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="97.7" cy="55.7" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="265.8" cy="133.9" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="74.9" cy="43.0" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="119.3" cy="51.6" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="170.4" cy="99.5" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="263.4" cy="134.8" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<circle cx="293.6" cy="153.6" r="3.4" fill="#7C63CE" fill-opacity="0.8"/>
+<text x="175.5" y="196" font-size="11" text-anchor="middle" fill="#2F2A3F">Fehlstunden (X)</text>
+<text x="15" y="92.0" font-size="11" text-anchor="middle" fill="#2F2A3F" transform="rotate(-90 15 92.0)">Klausurpunkte (Y)</text>
+</svg>
+    </div>
+    <div style="font-size:0.88rem">
+      <p>Punkte eng um eine <b>fallende</b> Gerade, von links oben nach rechts unten.</p>
+      <p><b>1 Punkt</b> für die Achsenbeschriftung (Fehlstunden, Klausurpunkte), <b>1 Punkt</b> für eine enge, fallende Wolke.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 7 · 3 Punkte</span>
+  <p><b>(a)</b> Sortiert: \(x\): 9, 11, 12, 15, 18, 20 · \(y\): 25, 27, 28, 30, 40, 41</p>
+  <table class="work" style="margin:6px 0">
+    <thead><tr><th>\(i\)</th><th>\(x_i\)</th><th>rg\((x_i)\)</th><th>\(y_i\)</th><th>rg\((y_i)\)</th><th>\(d_i\)</th><th>\(d_i^2\)</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>12</td><td>3</td><td>30</td><td>4</td><td>−1</td><td class="sp">1</td></tr>
+      <tr><td>2</td><td>15</td><td>4</td><td>28</td><td>3</td><td>1</td><td class="sp">1</td></tr>
+      <tr><td>3</td><td>9</td><td>1</td><td>25</td><td>1</td><td>0</td><td class="sp">0</td></tr>
+      <tr><td>4</td><td>20</td><td>6</td><td>40</td><td>5</td><td>1</td><td class="sp">1</td></tr>
+      <tr><td>5</td><td>18</td><td>5</td><td>41</td><td>6</td><td>−1</td><td class="sp">1</td></tr>
+      <tr><td>6</td><td>11</td><td>2</td><td>27</td><td>2</td><td>0</td><td class="sp">0</td></tr>
+      <tr class="sum"><td>Σ</td><td></td><td>21</td><td></td><td>21</td><td>0</td><td>4</td></tr>
+    </tbody>
+  </table>
+  <p><b>(b)</b> \(r_S = 1 - \dfrac{6 \cdot 4}{6\,(36 - 1)} = 1 - \dfrac{24}{210} = 0.8857 \approx\) <span class="key">0.886</span></p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 8 · 3 Punkte</span>
+  <p><b>(a)</b> \(x\): die beiden Vieren belegen Platz 2 und 3 → je 2.5. rg\((x) = (1,\ 2.5,\ 2.5,\ 4,\ 5)\).<br>
+    \(y\): sortiert 10, 12, 12, 14, 20; die beiden Zwölfen belegen Platz 2 und 3 → je 2.5. rg\((y) = (1,\ 4,\ 2.5,\ 2.5,\ 5)\).</p>
+  <p><b>(b)</b> Beide Rang-Mittelwerte sind 3. Abweichungen: \((-2, -0.5, -0.5, 1, 2)\) und \((-2, 1, -0.5, -0.5, 2)\).</p>
+  <p>Produkte: \(4 - 0.5 + 0.25 - 0.5 + 4 = 7.25\) · Quadratsummen: \(9.5\) und \(9.5\)</p>
+  \[ r_S = \dfrac{7.25}{\sqrt{9.5 \cdot 9.5}} = \dfrac{7.25}{9.5} = 0.7632 \]
+  <p>Also \(r_S \approx\) <span class="key">0.763</span></p>
+  <p><b>(c)</b> Es gibt <b>Bindungen</b>. Die \(d_i\)-Formel gilt nur ohne Bindungen; hier würde sie \(0.775\) liefern — falsch.</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 9 · 3 Punkte</span>
+  <p><b>(a)</b> <span class="key">richtig</span> — Unabhängigkeit hätte \(\rho = 0\) zur Folge.
+    <b>(b)</b> <span class="key">richtig</span> — symmetrische Parabel, wie \(Y = X^2\).
+    <b>(c)</b> <span class="key">richtig</span> — alle Punkte liegen auf der Geraden mit Steigung 1.</p>
+  <p><b>(d)</b> <span class="key">falsch</span> — Korrelation ist keine Kausalität.
+    <b>(e)</b> <span class="key">falsch</span> — die Kovarianz ist maßabhängig; über Stärke sagt nur \(\rho\) etwas.
+    <b>(f)</b> <span class="key">falsch</span> — \(\rho = 0\) heißt nur: kein <b>linearer</b> Zusammenhang.</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 10 · 2 Punkte</span>
+  <p><b>(a)</b> Jede Größe wird mit 0.01 multipliziert, also auch die Kovarianz: \(153.88 \cdot 0.01 = \) <span class="key">1.539</span></p>
+  <p><b>(b)</b> <span class="key">\(\rho = 0.836\)</span> bleibt gleich. Der Faktor 0.01 steht auch in \(S_Y\) im Nenner und kürzt sich;
+    der Korrelationskoeffizient ist dimensionslos.</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 11 · 2 Punkte</span>
+  <p><b>(a)</b> \(y = (9, 1, 0, 1, 9)\), \(\bar x = 0\), \(\bar y = 4\), \(\sum x_i y_i = -27 - 1 + 0 + 1 + 27 = 0\).
+    \(\mathrm{Cov} = \frac 05 - 0 \cdot 4 = 0\), also <span class="key">\(\rho = 0\)</span>.</p>
+  <p><b>(b)</b> <span class="key">Nein.</span> Es besteht ein perfekter, aber <b>nichtlinearer</b> (quadratischer) Zusammenhang.
+    \(\rho = 0\) heißt nur, dass kein <b>linearer</b> Zusammenhang besteht.</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 12 · 2 Punkte</span>
+  <p><b>(a)</b> beide ordinal → <span class="key">Spearman</span> ·
+    <b>(b)</b> beide metrisch → <span class="key">Pearson</span> (Spearman auch möglich) ·
+    <b>(c)</b> nominal → <span class="key">Kontingenztafel / \(\chi^2\)</span> ·
+    <b>(d)</b> Platzierungen sind Ränge, also ordinal → <span class="key">Spearman</span></p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 13 · 2 Punkte</span>
+  <p><span class="key"><code class="inline">plot</code></span> ( <span class="key"><code class="inline">d$Kampfzeit</code></span> ,
+    <span class="key"><code class="inline">d$Muenzen</code></span> , … <span class="key"><code class="inline">main</code></span> = "Streudiagramm", …
+    ylab = <span class="key"><code class="inline">"Muenzen"</code></span> ) &nbsp;und&nbsp;
+    <span class="key"><code class="inline">dev</code></span>.off()</p>
+  <p>Achtung: zuerst die x-Variable, dann die y-Variable. Die Achsenbeschriftung braucht Anführungszeichen.</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">A 14 · 3 Punkte</span>
+  <p><b>(a)</b> <code class="inline">cov()</code> teilt durch \(n - 1\): \(\dfrac{n-1}{n}\cdot 12.5 = \frac 45 \cdot 12.5 = \) <span class="key">10.000</span></p>
+  <p><b>(b)</b> <b>Keine</b> Umrechnung nötig, weil alle drei Werte denselben Nenner \(n-1\) haben:</p>
+  \[ \rho = \dfrac{12.5}{\sqrt{2.5 \cdot 100}} = \dfrac{12.5}{15.8114} = 0.7906 \]
+  <p>Also \(\rho \approx\) <span class="key">0.791</span>. Probe mit Nenner \(n\): \(\dfrac{10}{\sqrt{2 \cdot 80}} = \dfrac{10}{12.6491} = 0.7906\) ✓</p>
+  <p><b>(c)</b> <span class="key"><code class="inline">cor(x, y, method = "spearman")</code></span></p>
+</div>
+
+<div class="score">
+  <h3>Deine Auswertung</h3>
+  <table>
+    <thead>
+      <tr><th style="width:110px">Punkte</th><th>Was das bedeutet</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>28 – 34</b></td><td>Sehr gut. Probeklausur-Aufgabe 5 kannst du jetzt voll lösen — 11 von 75 Punkten.</td></tr>
+      <tr><td><b>21 – 27</b></td><td>Gut. Schau in die Themen-Tabelle unten und wiederhole genau den einen Block.</td></tr>
+      <tr><td><b>14 – 20</b></td><td>Rechne den Klausur-Zwilling (Schritt 11) morgen noch einmal ohne Lösung, dann A1, A4, A5 erneut.</td></tr>
+      <tr><td><b>0 – 13</b></td><td>Arbeite Schritt 3, 6, 7 und 10 morgen früh noch einmal durch (45 Minuten) und mache den Test erneut.</td></tr>
+    </tbody>
+  </table>
+  <table class="topic-score">
+    <thead><tr><th>Themenblock</th><th>Aufgaben</th><th>zurück zu</th></tr></thead>
+    <tbody>
+      <tr><td>Rechnen: Kovarianz, Pearson</td><td>A1a–c, A2, A3, A10, A14</td><td>Schritt 3–6</td></tr>
+      <tr><td>Formulieren: Interpretation, Kausalität</td><td>A1d, A4, A5</td><td>Schritt 7, 10</td></tr>
+      <tr><td>Spearman und Grenzen der Korrelation</td><td>A7, A8, A9, A11, A12</td><td>Schritt 8, 9</td></tr>
+      <tr><td>Zeichnen und R</td><td>A6, A13</td><td>Schritt 1, 11, 12</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box box-merke" style="margin-top:18px">
+  <div class="box-label">◆ Was du jetzt kannst</div>
+  <p>
+    Damit ist die <b>gesamte beschreibende Statistik</b> abgeschlossen: ein Merkmal (Tag 2–4) und zwei Merkmale (Tag 5–6).
+    In der Probeklausur sind das die Aufgaben 1, 2 und 5 — <b>35 von 75 Punkten</b>.
+  </p>
+  <p>
+    Ab morgen beginnt der zweite große Block: <b>Wahrscheinlichkeitsrechnung</b>. Die bedingten Anteile von
+    gestern heißen dort bedingte Wahrscheinlichkeiten — und führen direkt zu Bayes (Probeklausur A3, 11 Punkte).
+  </p>
+</div>
