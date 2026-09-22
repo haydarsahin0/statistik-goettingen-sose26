@@ -5,7 +5,23 @@ der Vorlesung *Statistik und Data Science I* (SoSe 2026, Universität Göttingen
 Tag für Tag in einfacher Sprache erklärt — mit vielen Beispielen, R-Code und
 einem Selbsttest samt Lösungen an jedem Tagesende.
 
-## Die fertigen PDFs
+## Kompaktkurs: alles in 5 Tagen
+
+Die schnellste Route zur Klausur. Jeder Kompakt-Tag erklärt ein Stoffpaket von
+null an, prüft es mit Klausuraufgaben im Stil der Probeklausur und endet mit einer
+**Klausur-Simulation** (46 Punkte, 60 Minuten) samt Punkteschema. Die Aufgaben
+sind mindestens so schwer wie die Probeklausur. Die echte Probeklausur bleibt für
+die Generalprobe nach Tag 5 unberührt.
+
+| Datei | Inhalt | Klausurbezug |
+|---|---|---|
+| `Kompakt_1_Beschreibende_Statistik.pdf` | Skalen, Häufigkeiten, Verteilungsfunktion, Histogramm, klassierte Daten, Lage, Streuung, Quantile, Boxplot, R-Grundlagen | A1, A2, B a–e |
+| `Kompakt_2_Zusammenhaenge_und_Wahrscheinlichkeit.pdf` | Kontingenztafel, χ², Kovarianz, Korrelation, Spearman, Kausalität, Mengen, Laplace, bedingte Wahrscheinlichkeit, Bayes | A3, A4, A5 |
+| `Kompakt_3_Zufallsvariablen_und_Verteilungen.pdf` | Wahrscheinlichkeits-, Dichte- und Verteilungsfunktion, E und Var, Binomial, Poisson, Exponential, Weibull, Normal, ZGWS, R d/p/q/r, Φ-Tabelle | Basis für A3c, A6–A8, B f |
+| Tag 4 (folgt) | Maximum-Likelihood, Schätzgüte, Kerndichte, Konfidenzintervalle | A6, A7, B f–g |
+| Tag 5 (folgt) | Tests, p-Wert, `t.test()`, Teil B komplett (Funktionen, Schleifen, `paste`) | A8, B h |
+
+## Die ausführlichen Tages-PDFs
 
 Alles, was du zum Lernen brauchst, liegt in **`pdf/`**:
 

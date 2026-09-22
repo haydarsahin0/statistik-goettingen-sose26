@@ -1183,3 +1183,9 @@ table.work tr.sum td {
 /* Auswertung nach Themen */
 .topic-score { font-size: 0.86rem; margin-top: 10px; }
 .topic-score td:last-child { text-align: right; white-space: nowrap; }
+
+/* Tabelle der Standardnormalverteilung */
+table.phi { font-size: 0.7rem; margin: 8px 0; }
+table.phi th, table.phi td { padding: 2.5px 5px; text-align: right; font-variant-numeric: tabular-nums; }
+table.phi th:first-child, table.phi td:first-child { text-align: left; }
+table.phi tbody tr:nth-child(5n) td { border-bottom: 1px solid var(--lav-100); }

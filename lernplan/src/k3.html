@@ -1,0 +1,1066 @@
+<!--meta {
+  "title": "Kompaktkurs Tag 3 — Zufallsvariablen und Verteilungen",
+  "footer": "Kompaktkurs · Tag 3 von 5 · Zufallsvariablen und Verteilungen",
+  "out": "Kompakt_3_Zufallsvariablen_und_Verteilungen.pdf"
+} -->
+
+<!-- ==================== TITELSEITE ==================== -->
+<section class="cover">
+
+  <div class="cover-top">
+    <div class="brand">Statistik und Data Science I · Kompaktkurs</div>
+    <div class="cover-date">Tag 3 von 5</div>
+  </div>
+
+  <div class="day-badge">
+    <span class="lbl">Kompakt</span>
+    <span class="num">3</span>
+  </div>
+
+  <h1>Zufallsvariablen und Verteilungen</h1>
+
+  <p class="cover-sub">
+    Heute bekommt der Zufall eine Formel. Du lernst diskrete und stetige Zufallsvariablen, Erwartungswert und Varianz,
+    und die sechs Verteilungen, die in der Klausur vorkommen — bis zur Normalverteilung mit \(\Phi\)-Tabelle.
+    Das ist das Fundament für Schätzen (Tag 4) und Testen (Tag 5).
+  </p>
+
+  <div class="cover-meta">
+    <span class="chip chip-lav"><span class="ic">◷</span> ca. 7 Stunden</span>
+    <span class="chip chip-mint"><span class="ic">▤</span> 4 Blöcke · 14 Schritte</span>
+    <span class="chip chip-rose"><span class="ic">✎</span> Simulation · 46 Punkte · 60 min</span>
+    <span class="chip chip-sky"><span class="ic">▶</span> R: d / p / q / r · TR açıklamalı</span>
+  </div>
+
+  <div class="goals">
+    <h3>Das kannst du heute Abend</h3>
+    <ul class="goal-list">
+      <li>Du prüfst, ob eine Funktion eine gültige <b>Wahrscheinlichkeitsfunktion</b> oder <b>Dichte</b> ist, und bestimmst die Konstante \(c\).</li>
+      <li>Du stellst die <b>Verteilungsfunktion</b> \(F(x)\) auf — als Treppe (diskret) oder per Integral (stetig).</li>
+      <li>Du berechnest \(E(X)\) und \(\mathrm{Var}(X)\) und wendest die <b>Rechenregeln</b> für \(aX + b\) und Summen an.</li>
+      <li>Du erkennst, welches <b>Verteilungsmodell</b> passt: Bernoulli, Binomial, Poisson, Gleich, Exponential, Normal.</li>
+      <li>Du rechnest Normalverteilungs-Wahrscheinlichkeiten durch <b>Standardisieren</b> und die \(\Phi\)-Tabelle.</li>
+      <li>Du wendest den <b>zentralen Grenzwertsatz</b> an und benutzt in R <code class="inline">dbinom</code>, <code class="inline">ppois</code>, <code class="inline">pnorm</code>, <code class="inline">qnorm</code> …</li>
+    </ul>
+  </div>
+
+  <div class="cover-foot">
+    Grundlage: Vorlesungen SDS1-V05, V06 und V07 · Tutorien 5–7 · Testat 4 ·
+    Probeklausur A3 (c), A6, A8 und Teil B (f)
+  </div>
+
+</section>
+
+<!-- ==================== TAGESÜBERSICHT ==================== -->
+
+<div class="dash-head">
+  <h2>Dein Tag auf einen Blick</h2>
+  <span>Kompaktkurs · Tag 3 von 5</span>
+</div>
+
+<div class="path" style="--cols:4">
+  <div class="st"><b>Diskrete ZV</b>Block A · Schritt 1–4 <i>· 70 min</i></div>
+  <div class="st"><b>Stetige ZV</b>Block B · Schritt 5–7 <i>· 80 min</i></div>
+  <div class="st"><b>Verteilungsmodelle</b>Block C · Schritt 8–12 <i>· 120 min</i></div>
+  <div class="st r"><b>R-Ecke</b>Block D · Schritt 13–14 <i>· 35 min</i></div>
+  <div class="st"><b>Formelblatt</b>abschreiben <i>· 10 min</i></div>
+  <div class="st test"><b>Simulation</b>46 Punkte <i>· 60 min</i></div>
+  <div class="st"><b>Korrigieren</b>Punkteschema <i>· 30 min</i></div>
+  <div class="st"><b>Fehlerheft</b>jeden Fehler notieren <i>· 10 min</i></div>
+</div>
+
+<div class="radar">
+  <h3>Klausur-Radar · Warum dieser Tag unverzichtbar ist</h3>
+  <p>In der Probeklausur gibt es keine eigene „Verteilungs-Aufgabe“ — aber ohne diesen Tag kannst du drei andere nicht lösen.</p>
+  <div class="radar-row">
+    <span class="src">Probeklausur A6</span>
+    <span class="what">Weibull-Dichte → Maximum-Likelihood (Tag 4)
+      <small>Dichte lesen, \(r = 1\) = Exponentialverteilung · Schritt 5, 10</small>
+      <span class="radar-bar"><i style="width:90%"></i></span></span>
+    <span class="p">10 P</span>
+  </div>
+  <div class="radar-row">
+    <span class="src">Probeklausur A8</span>
+    <span class="what">Gauß-Test: \(Z = \dfrac{\bar X - \mu_0}{\sigma}\sqrt n \sim N(0,1)\) (Tag 5)
+      <small>Standardisieren und ZGWS · Schritt 11–12</small>
+      <span class="radar-bar"><i style="width:75%"></i></span></span>
+    <span class="p">8 P</span>
+  </div>
+  <div class="radar-row">
+    <span class="src">A3 (c) · A7 · B (f)</span>
+    <span class="what">Binomial „mindestens einer“ · \(E\)-Rechenregeln · <code class="inline">dpois()</code>-Likelihood
+      <small>Schritt 4, 8, 9, 13</small>
+      <span class="radar-bar"><i style="width:65%"></i></span></span>
+    <span class="p">≈ 13 P</span>
+  </div>
+</div>
+
+<div class="focus">
+  <h3>Die drei typischen Fallen heute</h3>
+  <div class="focus-grid">
+    <div class="focus-item"><b>&lt; oder ≤ bei diskreten ZV</b>
+      \(P(X \lt 4) = P(X \le 3)\), nicht \(P(X \le 4)\).
+      <span class="fix">→ Schritt 2 und 13: immer erst in „≤“ umschreiben.</span></div>
+    <div class="focus-item"><b>Dichte ist keine Wahrscheinlichkeit</b>
+      \(f(x) = 1.5\) ist erlaubt, \(P(X = x) = 0\).
+      <span class="fix">→ Schritt 5: Wahrscheinlichkeit = Fläche.</span></div>
+    <div class="focus-item"><b>Var(aX) = a · Var(X)</b>
+      Falsch — das \(a\) wird quadriert.
+      <span class="fix">→ Schritt 4: \(\mathrm{Var}(aX + b) = a^2\,\mathrm{Var}(X)\).</span></div>
+    <div class="focus-item"><b>R: Varianz statt Standardabweichung</b>
+      <code class="inline">pnorm(x, mean, sd)</code> will \(\sigma\), nicht \(\sigma^2\).
+      <span class="fix">→ Schritt 13: bei \(N(500, 9)\) ist <code class="inline">sd = 3</code>.</span></div>
+  </div>
+</div>
+
+<!-- ==================== BLOCK A ==================== -->
+
+<div class="page-break"></div>
+<div class="section-rule"><span>Block A · Diskrete Zufallsvariablen · 70 min</span></div>
+
+<!-- ---------- SCHRITT 1 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">1</div>
+    <div class="step-title">Was ist eine Zufallsvariable?
+      <small>Das theoretische Gegenstück zum Merkmal</small></div>
+    <span class="exam-tag">V05 · Folie 5–8</span>
+  </div>
+
+  <div class="tldr">Eine Zufallsvariable \(X\) ordnet jedem Ergebnis eines Zufallsexperiments eine <b>Zahl</b> zu. Statt Häufigkeiten hat sie <b>Wahrscheinlichkeiten</b>.</div>
+
+  <table>
+    <thead><tr><th>Deskriptive Statistik (Tag 1)</th><th>Wahrscheinlichkeitsrechnung (heute)</th></tr></thead>
+    <tbody>
+      <tr><td>Merkmal \(X\)</td><td>Zufallsvariable \(X\)</td></tr>
+      <tr><td>Merkmalsausprägungen</td><td><b>Träger</b> \(T\) = mögliche Werte</td></tr>
+      <tr><td>relative Häufigkeit \(f_j\)</td><td>Wahrscheinlichkeit \(P(X = x)\) bzw. Dichte \(f(x)\)</td></tr>
+      <tr><td>empirische Verteilungsfunktion \(\hat F\)</td><td>Verteilungsfunktion \(F(x) = P(X \le x)\)</td></tr>
+      <tr><td>Mittelwert \(\bar x\), Varianz \(S^2\)</td><td>Erwartungswert \(E(X)\), Varianz \(\mathrm{Var}(X)\)</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:10px">
+    Beispiel: Zwei Würfel werden geworfen. \(\Omega\) hat 36 Paare. \(X\) = Augensumme ordnet z. B. dem Paar \((2, 5)\) die Zahl 7 zu.
+    \(X\) ist <b>diskret</b> (Träger \(\{2, \dots, 12\}\)). Eine Wartezeit ist dagegen <b>stetig</b>.
+  </p>
+</div>
+
+<!-- ---------- SCHRITT 2 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">2</div>
+    <div class="step-title">Wahrscheinlichkeitsfunktion und Verteilungsfunktion
+      <small>Die zwei Beschreibungen einer diskreten ZV</small></div>
+    <span class="exam-tag hot">Testat 4 · A1</span>
+  </div>
+
+  <div class="tldr">\(P(X = x_i) = p_i\) mit \(p_i \ge 0\) und \(\sum p_i = 1\). Die Verteilungsfunktion \(F(x) = P(X \le x)\) ist eine Treppe — genau wie \(\hat F\) an Tag 1.</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 6) · \(P(X = x) = \dfrac{x}{c}\) für \(x \in \{1, 2, 3, 4\}\), sonst 0</div>
+    <p><b>Konstante bestimmen:</b> Alle Wahrscheinlichkeiten müssen zusammen 1 ergeben:</p>
+    \[ \frac 1c + \frac 2c + \frac 3c + \frac 4c = \frac{10}{c} \overset{!}{=} 1 \quad\Rightarrow\quad c = 10 \]
+    <div class="fig-pair" style="grid-template-columns:1fr 1fr">
+      <div class="fig" style="margin:0">
+<svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+<line x1="44" x2="280" y1="176.0" y2="176.0" stroke="#EAE4F2"/>
+<text x="37" y="179.5" font-size="10" text-anchor="end" fill="#9A93AC">0</text>
+<line x1="44" x2="280" y1="140.4" y2="140.4" stroke="#EAE4F2"/>
+<text x="37" y="143.9" font-size="10" text-anchor="end" fill="#9A93AC">0.1</text>
+<line x1="44" x2="280" y1="104.9" y2="104.9" stroke="#EAE4F2"/>
+<text x="37" y="108.4" font-size="10" text-anchor="end" fill="#9A93AC">0.2</text>
+<line x1="44" x2="280" y1="69.3" y2="69.3" stroke="#EAE4F2"/>
+<text x="37" y="72.8" font-size="10" text-anchor="end" fill="#9A93AC">0.3</text>
+<line x1="44" x2="280" y1="33.8" y2="33.8" stroke="#EAE4F2"/>
+<text x="37" y="37.3" font-size="10" text-anchor="end" fill="#9A93AC">0.4</text>
+<text x="44.0" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">0</text>
+<text x="91.2" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">1</text>
+<text x="138.4" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">2</text>
+<text x="185.6" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">3</text>
+<text x="232.8" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">4</text>
+<text x="280.0" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">5</text>
+<line x1="44" x2="280" y1="176.0" y2="176.0" stroke="#2F2A3F" stroke-width="1.2"/>
+<line x1="44" x2="44" y1="16" y2="176.0" stroke="#2F2A3F" stroke-width="1.2"/>
+<text x="162.0" y="212" font-size="11" text-anchor="middle" fill="#2F2A3F">x</text>
+<text x="14" y="96.0" font-size="11" text-anchor="middle" fill="#2F2A3F" transform="rotate(-90 14 96.0)">P(X = x)</text>
+<line x1="91.2" x2="91.2" y1="176.0" y2="140.4" stroke="#7C63CE" stroke-width="5" stroke-linecap="round"/>
+<text x="91.2" y="131.6" font-size="10.5" text-anchor="middle" fill="#2F2A3F" font-weight="600">0.1</text>
+<line x1="138.4" x2="138.4" y1="176.0" y2="104.9" stroke="#7C63CE" stroke-width="5" stroke-linecap="round"/>
+<text x="138.4" y="96.0" font-size="10.5" text-anchor="middle" fill="#2F2A3F" font-weight="600">0.2</text>
+<line x1="185.6" x2="185.6" y1="176.0" y2="69.3" stroke="#7C63CE" stroke-width="5" stroke-linecap="round"/>
+<text x="185.6" y="60.4" font-size="10.5" text-anchor="middle" fill="#2F2A3F" font-weight="600">0.3</text>
+<line x1="232.8" x2="232.8" y1="176.0" y2="33.8" stroke="#7C63CE" stroke-width="5" stroke-linecap="round"/>
+<text x="232.8" y="24.9" font-size="10.5" text-anchor="middle" fill="#2F2A3F" font-weight="600">0.4</text>
+</svg>
+        <div class="fig-cap"><b>Wahrscheinlichkeitsfunktion</b> — Stäbe, keine Flächen.</div>
+      </div>
+      <div class="fig" style="margin:0">
+<svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+<line x1="44" x2="280" y1="176.0" y2="176.0" stroke="#EAE4F2"/>
+<text x="37" y="179.5" font-size="10" text-anchor="end" fill="#9A93AC">0</text>
+<line x1="44" x2="280" y1="137.9" y2="137.9" stroke="#EAE4F2"/>
+<text x="37" y="141.4" font-size="10" text-anchor="end" fill="#9A93AC">0.25</text>
+<line x1="44" x2="280" y1="99.8" y2="99.8" stroke="#EAE4F2"/>
+<text x="37" y="103.3" font-size="10" text-anchor="end" fill="#9A93AC">0.5</text>
+<line x1="44" x2="280" y1="61.7" y2="61.7" stroke="#EAE4F2"/>
+<text x="37" y="65.2" font-size="10" text-anchor="end" fill="#9A93AC">0.75</text>
+<line x1="44" x2="280" y1="23.6" y2="23.6" stroke="#EAE4F2"/>
+<text x="37" y="27.1" font-size="10" text-anchor="end" fill="#9A93AC">1</text>
+<text x="44.0" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">0</text>
+<text x="91.2" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">1</text>
+<text x="138.4" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">2</text>
+<text x="185.6" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">3</text>
+<text x="232.8" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">4</text>
+<text x="280.0" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">5</text>
+<line x1="44" x2="280" y1="176.0" y2="176.0" stroke="#2F2A3F" stroke-width="1.2"/>
+<line x1="44" x2="44" y1="16" y2="176.0" stroke="#2F2A3F" stroke-width="1.2"/>
+<text x="162.0" y="212" font-size="11" text-anchor="middle" fill="#2F2A3F">x</text>
+<text x="14" y="96.0" font-size="11" text-anchor="middle" fill="#2F2A3F" transform="rotate(-90 14 96.0)">F(x)</text>
+<line x1="44.0" x2="91.2" y1="176.0" y2="176.0" stroke="#7C63CE" stroke-width="2.4"/>
+<line x1="91.2" x2="138.4" y1="160.8" y2="160.8" stroke="#7C63CE" stroke-width="2.4"/>
+<line x1="91.2" x2="91.2" y1="176.0" y2="160.8" stroke="#7C63CE" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+<circle cx="91.2" cy="176.0" r="4" fill="#FFFFFF" stroke="#7C63CE" stroke-width="1.8"/>
+<circle cx="91.2" cy="160.8" r="4.2" fill="#7C63CE"/>
+<text x="99.2" y="153.8" font-size="10.5" fill="#2F2A3F" font-weight="600">0.1</text>
+<line x1="138.4" x2="185.6" y1="130.3" y2="130.3" stroke="#7C63CE" stroke-width="2.4"/>
+<line x1="138.4" x2="138.4" y1="160.8" y2="130.3" stroke="#7C63CE" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+<circle cx="138.4" cy="160.8" r="4" fill="#FFFFFF" stroke="#7C63CE" stroke-width="1.8"/>
+<circle cx="138.4" cy="130.3" r="4.2" fill="#7C63CE"/>
+<text x="146.4" y="123.3" font-size="10.5" fill="#2F2A3F" font-weight="600">0.3</text>
+<line x1="185.6" x2="232.8" y1="84.6" y2="84.6" stroke="#7C63CE" stroke-width="2.4"/>
+<line x1="185.6" x2="185.6" y1="130.3" y2="84.6" stroke="#7C63CE" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+<circle cx="185.6" cy="130.3" r="4" fill="#FFFFFF" stroke="#7C63CE" stroke-width="1.8"/>
+<circle cx="185.6" cy="84.6" r="4.2" fill="#7C63CE"/>
+<text x="193.6" y="77.6" font-size="10.5" fill="#2F2A3F" font-weight="600">0.6</text>
+<line x1="232.8" x2="280.0" y1="23.6" y2="23.6" stroke="#7C63CE" stroke-width="2.4"/>
+<line x1="232.8" x2="232.8" y1="84.6" y2="23.6" stroke="#7C63CE" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+<circle cx="232.8" cy="84.6" r="4" fill="#FFFFFF" stroke="#7C63CE" stroke-width="1.8"/>
+<circle cx="232.8" cy="23.6" r="4.2" fill="#7C63CE"/>
+<text x="240.8" y="16.6" font-size="10.5" fill="#2F2A3F" font-weight="600">1</text>
+</svg>
+        <div class="fig-cap"><b>Verteilungsfunktion</b> — Treppe, Sprung = \(p_i\).</div>
+      </div>
+    </div>
+    \[ F(x) = \begin{cases} 0 & x \lt 1 \\ 0.1 & 1 \le x \lt 2 \\ 0.3 & 2 \le x \lt 3 \\ 0.6 & 3 \le x \lt 4 \\ 1 & x \ge 4 \end{cases} \]
+  </div>
+
+  <div class="box box-def">
+    <div class="box-label">● Wahrscheinlichkeiten ablesen — diskret!</div>
+    <table class="in-box">
+      <tbody>
+        <tr><td>\(P(X \le b) = F(b)\)</td><td>\(P(X \le 2) = 0.3\)</td></tr>
+        <tr><td>\(P(X \lt b) = F(\text{nächstkleinerer Wert})\)</td><td>\(P(X \lt 3) = P(X \le 2) = 0.3\)</td></tr>
+        <tr><td>\(P(X \gt a) = 1 - F(a)\)</td><td>\(P(X \gt 2) = 1 - 0.3 = 0.7\)</td></tr>
+        <tr><td>\(P(X \ge a) = 1 - F(\text{nächstkleinerer Wert})\)</td><td>\(P(X \ge 2) = 1 - P(X \le 1) = 0.9\)</td></tr>
+        <tr><td>\(P(a \lt X \le b) = F(b) - F(a)\)</td><td>\(P(1 \lt X \le 3) = 0.6 - 0.1 = 0.5\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Kesikli değişkende &lt; ve ≤ farkı</span>
+    <p>Kesikli (sayma) değişkende \(P(X \lt 4)\) ile \(P(X \le 4)\) <b>farklıdır</b> — aradaki fark tam \(P(X = 4)\).
+      Kural: her şeyi "\(\le\)" biçimine çevir. \(X \lt 4\) → \(X \le 3\). \(X \ge 2\) → \(1 - P(X \le 1)\). Tutorium bunu "häufiger Fehler" diye işaretliyor.</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 3 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">3</div>
+    <div class="step-title">Erwartungswert und Varianz (diskret)
+      <small>Wie Mittelwert und Varianz — mit Wahrscheinlichkeiten als Gewichten</small></div>
+    <span class="exam-tag">V06 · Folie 4–20</span>
+  </div>
+
+  <div class="tldr">\(E(X) = \sum x\,P(X = x)\). \(\mathrm{Var}(X) = E(X^2) - (E(X))^2\) mit \(E(X^2) = \sum x^2 P(X = x)\).</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Formeln</div>
+    \[ E(X) = \sum_x x \cdot P(X = x) \qquad E(g(X)) = \sum_x g(x)\, P(X = x) \qquad \mathrm{Var}(X) = E(X^2) - \big(E(X)\big)^2 \]
+    <p>Gesetz der großen Zahlen: Wiederholt man das Experiment sehr oft, nähert sich der Mittelwert der Ergebnisse \(E(X)\).</p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Weiter mit \(P(X = x) = x/10\)</div>
+    <table class="in-box work">
+      <thead><tr><th>\(x\)</th><th>\(P(X = x)\)</th><th>\(x \cdot P\)</th><th>\(x^2 \cdot P\)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>0.1</td><td class="sp">0.1</td><td>0.1</td></tr>
+        <tr><td>2</td><td>0.2</td><td class="sp">0.4</td><td>0.8</td></tr>
+        <tr><td>3</td><td>0.3</td><td class="sp">0.9</td><td>2.7</td></tr>
+        <tr><td>4</td><td>0.4</td><td class="sp">1.6</td><td>6.4</td></tr>
+        <tr class="sum"><td>Σ</td><td>1</td><td>3</td><td>10</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:6px">\(E(X) = 3\) · \(\mathrm{Var}(X) = 10 - 3^2 = 1\)</p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · Würfelspiel (Tutorium 5)</div>
+    <p>Einsatz 3 €, Auszahlung = Augenzahl. Gewinn \(G = \text{Augenzahl} - 3\), Träger \(\{-2, -1, 0, 1, 2, 3\}\), jeweils \(\frac 16\).</p>
+    <p>\(E(G) = \dfrac{-2 - 1 + 0 + 1 + 2 + 3}{6} = 0.5\) · \(E(G^2) = \dfrac{4 + 1 + 0 + 1 + 4 + 9}{6} = \dfrac{19}{6}\) · \(\mathrm{Var}(G) = \dfrac{19}{6} - 0.25 = 2.9167\)</p>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ \(E(g(X)) \ne g(E(X))\)</div>
+    <p>Testat 4 fragt \(E(\log X)\). Man muss \(\sum \log(x)\,P(X = x)\) rechnen — <b>nicht</b> \(\log(E(X))\). Für die Verteilung oben:
+      \(E(\log X) = 0.1\log 1 + 0.2 \log 2 + 0.3 \log 3 + 0.4 \log 4 = 1.0227\), aber \(\log 3 = 1.0986\).</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 4 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">4</div>
+    <div class="step-title">Rechenregeln für \(E\) und Var
+      <small>Die Werkzeuge für A7 und für alle Tests</small></div>
+    <span class="exam-tag hot">A7 · 5 P</span>
+  </div>
+
+  <div class="tldr">Konstanten ziehst du aus \(E\) einfach heraus, aus Var <b>quadriert</b>. Summen darf man bei \(E\) immer, bei Var nur bei <b>Unabhängigkeit</b> zerlegen.</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Die Regeln</div>
+    <table class="in-box">
+      <tbody>
+        <tr><td>\(E(aX + b) = a\,E(X) + b\)</td><td>\(\mathrm{Var}(aX + b) = a^2\,\mathrm{Var}(X)\) · \(\mathrm{sd}(aX + b) = |a|\,\mathrm{sd}(X)\)</td></tr>
+        <tr><td>\(E(X + Y) = E(X) + E(Y)\) — <b>immer</b></td><td>\(\mathrm{Var}(X + Y) = \mathrm{Var}(X) + \mathrm{Var}(Y)\) — <b>nur unabhängig</b></td></tr>
+        <tr><td>\(E(X \cdot Y) = E(X)\,E(Y)\) — nur unabhängig</td><td>allgemein: \(\mathrm{Var}(X + Y) = \mathrm{Var}X + \mathrm{Var}Y + 2\,\mathrm{Cov}(X, Y)\)</td></tr>
+        <tr><td>\(E(c) = c\) für eine Konstante</td><td>\(\mathrm{Var}(c) = 0\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 6) · \(Z = 0.5X + Y\), unabhängig, \(E(Z) = 8.5\), \(\mathrm{Var}(Y) = 1\)</div>
+    <p>\(E(Z) = 0.5 \cdot 3 + E(Y) = 8.5\) → \(E(Y) = 7\) · \(\mathrm{Var}(Z) = 0.5^2 \cdot 1 + 1 = 1.25\)</p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · A7 tipi soru için taktik</span>
+    <p>İfadeyi toplamlara ayır, her terimde sabitleri dışarı çek, bilinen \(E(X_i)\)'yi yerine koy. \(E\left(\frac 14\right) = \frac 14\) (sabit). Çarpım/bölümde
+      dikkat: \(E\left(\dfrac{1}{X}\right) \ne \dfrac{1}{E(X)}\) genelde. Tag 4'te A7'yi tam çözeceğiz.</p>
+  </div>
+</div>
+
+<!-- ==================== BLOCK B ==================== -->
+
+<div class="section-rule"><span>Block B · Stetige Zufallsvariablen · 80 min</span></div>
+
+<!-- ---------- SCHRITT 5 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">5</div>
+    <div class="step-title">Die Dichte
+      <small>Wahrscheinlichkeit = Fläche</small></div>
+    <span class="exam-tag hot">Testat 4 · A4–A5</span>
+  </div>
+
+  <div class="tldr">Bei stetigen ZV hat jeder einzelne Wert Wahrscheinlichkeit 0. Wahrscheinlichkeiten sind <b>Flächen</b> unter der Dichte \(f\): \(P(a \le X \le b) = \int_a^b f(x)\,dx\).</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Eine gültige Dichte braucht genau zwei Dinge (Testat 4, A4)</div>
+    <ul class="clean">
+      <li>\(f(x) \ge 0\) für alle \(x\)</li>
+      <li>\(\int_{-\infty}^{\infty} f(x)\,dx = 1\)</li>
+    </ul>
+    <p><b>Nicht</b> nötig: \(f(x) \le 1\) (Werte über 1 sind erlaubt!), Stetigkeit oder Monotonie. Und \(P(X = x) = 0 \ne f(x)\).
+      Deshalb ist bei stetigen ZV \(P(X \lt b) = P(X \le b)\).</p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Testat 4) · \(f(x) = c\,(x - 2)\) für \(2 \le x \le 3\), sonst 0</div>
+    \[ \int_2^3 c\,(x - 2)\,dx = c\left[\frac{x^2}{2} - 2x\right]_2^3 = c\,\big((4.5 - 6) - (2 - 4)\big) = c \cdot 0.5 \overset{!}{=} 1 \;\Rightarrow\; c = 2 \]
+    <p>Und \(c = 2 \gt 0\), also ist \(f \ge 0\) auf \([2, 3]\) ✓. Beachte: \(f(3) = 2 \gt 1\) — trotzdem gültig.</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 6 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">6</div>
+    <div class="step-title">Verteilungsfunktion und Quantile (stetig)
+      <small>Einmal integrieren, danach nur noch einsetzen</small></div>
+    <span class="exam-tag">Tutorium 6 · A2</span>
+  </div>
+
+  <div class="tldr">\(F(x) = \int_{-\infty}^x f(t)\,dt\). Danach: \(P(a \lt X \le b) = F(b) - F(a)\). Ein Quantil \(q_\alpha\) löst \(F(q_\alpha) = \alpha\).</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 6) · \(f(x) = \frac 12 (x - 4)\) für \(4 \le x \le 6\)</div>
+    <div class="fig">
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+<line x1="58" x2="540" y1="196.0" y2="196.0" stroke="#EAE4F2"/>
+<text x="51" y="199.5" font-size="10" text-anchor="end" fill="#9A93AC">0</text>
+<line x1="58" x2="540" y1="155.1" y2="155.1" stroke="#EAE4F2"/>
+<text x="51" y="158.6" font-size="10" text-anchor="end" fill="#9A93AC">0.25</text>
+<line x1="58" x2="540" y1="114.2" y2="114.2" stroke="#EAE4F2"/>
+<text x="51" y="117.7" font-size="10" text-anchor="end" fill="#9A93AC">0.5</text>
+<line x1="58" x2="540" y1="73.3" y2="73.3" stroke="#EAE4F2"/>
+<text x="51" y="76.8" font-size="10" text-anchor="end" fill="#9A93AC">0.75</text>
+<line x1="58" x2="540" y1="32.4" y2="32.4" stroke="#EAE4F2"/>
+<text x="51" y="35.9" font-size="10" text-anchor="end" fill="#9A93AC">1</text>
+<text x="58.0" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">3.5</text>
+<text x="138.3" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">4</text>
+<text x="218.7" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">4.5</text>
+<text x="299.0" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">5</text>
+<text x="379.3" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">5.5</text>
+<text x="459.7" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">6</text>
+<text x="540.0" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">6.5</text>
+<line x1="58" x2="540" y1="196.0" y2="196.0" stroke="#2F2A3F" stroke-width="1.2"/>
+<line x1="58" x2="58" y1="16" y2="196.0" stroke="#2F2A3F" stroke-width="1.2"/>
+<text x="299.0" y="232" font-size="11" text-anchor="middle" fill="#2F2A3F">x</text>
+<text x="14" y="106.0" font-size="11" text-anchor="middle" fill="#2F2A3F" transform="rotate(-90 14 106.0)">f(x)</text>
+<path d="M331.1,97.8 L459.7,32.4 L459.7,196.0 L331.1,196.0 Z" fill="#C8556F" fill-opacity="0.35" stroke="none"/>
+<path d="M331.1,97.8 L459.7,32.4" fill="none" stroke="#C8556F" stroke-width="0"/>
+<path d="M58.0,196.0 L138.3,196.0 L459.7,32.4 L459.7,196.0 L540.0,196.0" fill="none" stroke="#7C63CE" stroke-width="2.2"/>
+<text x="398.6" y="150.2" font-size="11" text-anchor="middle" fill="#C8556F" font-weight="700">P(X > 5.2) = 0.64</text>
+<text x="234.7" y="97.8" font-size="11" text-anchor="middle" fill="#7C63CE" font-weight="600">f(x) = ½(x − 4)</text>
+</svg>
+    </div>
+    <p><b>Verteilungsfunktion</b> (Integrationsvariable \(t\), obere Grenze \(x\)):</p>
+    \[ F(x) = \int_4^x \frac 12 (t - 4)\,dt = \left[\frac{t^2}{4} - 2t\right]_4^x = \frac{x^2}{4} - 2x + 4 \qquad (4 \le x \le 6) \]
+    \[ F(x) = \begin{cases} 0 & x \lt 4 \\ \frac 14 x^2 - 2x + 4 & 4 \le x \le 6 \\ 1 & x \gt 6 \end{cases} \]
+    <ul class="clean">
+      <li>\(P(X \gt 5.2) = 1 - F(5.2) = 1 - (6.76 - 10.4 + 4) = 1 - 0.36 = 0.64\)</li>
+      <li>\(P(X \lt 5.1) = F(5.1) = 6.5025 - 10.2 + 4 = 0.3025\)</li>
+      <li>\(P(4.5 \lt X \lt 5.5) = F(5.5) - F(4.5) = 0.5625 - 0.0625 = 0.5\)</li>
+      <li><b>Median:</b> \(\frac 14 q^2 - 2q + 4 = 0.5\) → \(q^2 - 8q + 14 = 0\) → \(q = 4 + \sqrt 2 = 5.4142\) (die andere Lösung \(4 - \sqrt 2\) liegt nicht in \([4, 6]\))</li>
+    </ul>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Drei Punkteverluste bei \(F(x)\)</div>
+    <ul class="clean">
+      <li>Nur den mittleren Teil angeben — die Fälle \(x \lt 4\) (\(F = 0\)) und \(x \gt 6\) (\(F = 1\)) gehören dazu.</li>
+      <li>Die untere Grenze vergessen: \(\left[\dfrac{t^2}{4} - 2t\right]_4^x\) liefert das \(+4\).</li>
+      <li>Probe vergessen: \(F(6)\) muss 1 sein: \(9 - 12 + 4 = 1\) ✓</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 7 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">7</div>
+    <div class="step-title">Erwartungswert und Varianz (stetig)
+      <small>Summe wird Integral</small></div>
+    <span class="exam-tag">V06 · Folie 4–20</span>
+  </div>
+
+  <div class="tldr">\(E(X) = \int x f(x)\,dx\), \(E(X^2) = \int x^2 f(x)\,dx\), \(\mathrm{Var}(X) = E(X^2) - (E(X))^2\). Symmetrische Dichte um \(a\) → \(E(X) = a\).</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Weiter mit \(f(x) = \frac 12 (x - 4)\)</div>
+    \[ E(X) = \int_4^6 x \cdot \tfrac 12 (x - 4)\,dx = \left[\frac{x^3}{6} - x^2\right]_4^6 = (36 - 36) - \left(\frac{64}{6} - 16\right) = \frac{16}{3} = 5.3333 \]
+    \[ E(X^2) = \int_4^6 x^2 \cdot \tfrac 12 (x - 4)\,dx = \left[\frac{x^4}{8} - \frac{2x^3}{3}\right]_4^6 = 18 - (-10.6667) = 28.6667 \]
+    <p>→ \(\mathrm{Var}(X) = 28.6667 - 5.3333^2 = 28.6667 - 28.4444 = 0.2222\)</p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · İntegral adımları</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>1. çarp</code><span>\(x \cdot f(x)\)'i aç: \(\frac 12 x^2 - 2x\)</span></div>
+      <div class="tr-row"><code>2. integral al</code><span>\(x^n \to \dfrac{x^{n+1}}{n+1}\)</span></div>
+      <div class="tr-row"><code>3. sınırlar</code><span>üst sınırı koy − alt sınırı koy. <b>Alt sınırı unutma!</b></span></div>
+      <div class="tr-row"><code>4. varyans</code><span>önce \(E(X^2)\), sonra \(- (E(X))^2\). Varyans <b>negatif çıkamaz</b> — çıkarsa hata var.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BLOCK C ==================== -->
+
+<div class="section-rule"><span>Block C · Die Verteilungsmodelle · 120 min</span></div>
+
+<div class="box box-merke">
+  <div class="box-label">◆ Welches Modell passt? — die Entscheidungstabelle</div>
+  <table class="in-box">
+    <thead><tr><th>Situation</th><th>Modell</th><th>\(E(X)\)</th><th>\(\mathrm{Var}(X)\)</th></tr></thead>
+    <tbody>
+      <tr><td>ein Versuch, Erfolg ja/nein (Münze, „Lehrstuhl stößt an“)</td><td><b>Bernoulli</b> \(Be(\pi)\)</td><td>\(\pi\)</td><td>\(\pi(1-\pi)\)</td></tr>
+      <tr><td>Anzahl Erfolge in \(n\) unabhängigen Versuchen (<b>mit</b> Zurücklegen)</td><td><b>Binomial</b> \(B(n, \pi)\)</td><td>\(n\pi\)</td><td>\(n\pi(1-\pi)\)</td></tr>
+      <tr><td>Anzahl Ereignisse in einem Zeitraum, <b>ohne</b> Obergrenze (Tore, Anrufe, Schäden)</td><td><b>Poisson</b> \(Po(\lambda)\)</td><td>\(\lambda\)</td><td>\(\lambda\)</td></tr>
+      <tr><td>jeder Wert in \([a, b]\) gleich wahrscheinlich</td><td><b>Gleich</b> \(U(a, b)\)</td><td>\(\dfrac{a+b}{2}\)</td><td>\(\dfrac{(b-a)^2}{12}\)</td></tr>
+      <tr><td><b>Wartezeit</b> / Dauer bis zum nächsten Ereignis</td><td><b>Exponential</b> \(Exp(\lambda)\)</td><td>\(\frac 1\lambda\)</td><td>\(\dfrac{1}{\lambda^2}\)</td></tr>
+      <tr><td>symmetrische Glocke, Messwerte, Mittelwerte (ZGWS)</td><td><b>Normal</b> \(N(\mu, \sigma^2)\)</td><td>\(\mu\)</td><td>\(\sigma^2\)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ---------- SCHRITT 8 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">8</div>
+    <div class="step-title">Bernoulli und Binomial
+      <small>Zählen von Erfolgen</small></div>
+    <span class="exam-tag hot">A3 (c) · Testat 4 · A2</span>
+  </div>
+
+  <div class="tldr">\(X \sim B(n, \pi)\): \(P(X = x) = \binom nx \pi^x (1-\pi)^{n-x}\). Voraussetzung: \(n\) <b>unabhängige</b> Versuche mit <b>gleicher</b> Erfolgswahrscheinlichkeit \(\pi\).</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Formeln</div>
+    \[ P(X = x) = \binom{n}{x}\,\pi^x\,(1 - \pi)^{n - x}, \quad x = 0, 1, \dots, n \qquad \binom nx = \frac{n!}{x!\,(n - x)!} \]
+    <p>\(X = X_1 + \dots + X_n\) mit \(X_i \sim Be(\pi)\) unabhängig → \(E(X) = n\pi\), \(\mathrm{Var}(X) = n\pi(1 - \pi)\).</p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 7) · Würfelsumme durch 4 teilbar</div>
+    <p>Zwei Würfel: Summen 4, 8, 12 → 3 + 5 + 1 = 9 von 36 Paaren → \(\pi = 0.25\). 10 Würfe: \(Y \sim B(10, 0.25)\), \(E(Y) = 2.5\), \(\mathrm{Var}(Y) = 1.875\).</p>
+    <ul class="clean">
+      <li>\(P(Y = 1) = \binom{10}{1} 0.25^1\, 0.75^9 = 10 \cdot 0.25 \cdot 0.0751 = 0.188\)</li>
+      <li>\(P(Y = 2) = \binom{10}{2} 0.25^2\, 0.75^8 = 45 \cdot 0.0625 \cdot 0.1001 = 0.282\)</li>
+      <li>\(P(Y \le 2) = 0.0563 + 0.1877 + 0.2816 = 0.526\)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 9 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">9</div>
+    <div class="step-title">Poisson
+      <small>Zählen ohne Obergrenze — wichtig für Teil B</small></div>
+    <span class="exam-tag hot">B (f)(g) · 15 P</span>
+  </div>
+
+  <div class="tldr">\(X \sim Po(\lambda)\): \(P(X = x) = \dfrac{\lambda^x}{x!} e^{-\lambda}\), \(x = 0, 1, 2, \dots\) Besonderheit: \(E(X) = \mathrm{Var}(X) = \lambda\).</div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 7) · Tore pro Spiel, \(X \sim Po(2)\)</div>
+    <ul class="clean">
+      <li>\(P(X = 3) = \dfrac{2^3}{3!}e^{-2} = \frac 86 \cdot 0.1353 = 0.180\)</li>
+      <li>\(P(X \ge 2) = 1 - P(X = 0) - P(X = 1) = 1 - e^{-2}(1 + 2) = 1 - 0.4060 = 0.594\)</li>
+      <li>\(Z = 2X + 4\): \(E(Z) = 8\), \(\mathrm{Var}(Z) = 4 \cdot 2 = 8\). \(V = 2X + 1\): \(E(V) = 5 \ne \mathrm{Var}(V) = 8\) → \(V\) ist <b>nicht</b> poissonverteilt.</li>
+    </ul>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Probeklausur Teil B (f)</div>
+    <p>„Nehmen Sie an, \(X \sim Po(\lambda)\) mit \(\lambda = 20\) … individuelle Likelihoods“ — das ist einfach \(P(X = x_i)\) für jede Beobachtung,
+      in R <code class="inline">dpois(x, 20)</code>. Das Produkt aller Werte ist die Likelihood (Tag 4).</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 10 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">10</div>
+    <div class="step-title">Gleichverteilung, Exponentialverteilung, Weibull
+      <small>Die stetigen Modelle ohne Tabelle</small></div>
+    <span class="exam-tag hot">A6 · Testat 4 · A8</span>
+  </div>
+
+  <div class="tldr">Exponential: \(F(x) = 1 - e^{-\lambda x}\), also \(P(X \gt x) = e^{-\lambda x}\) und \(E(X) = 1/\lambda\). Aus „im Mittel 3 Stunden“ folgt \(\lambda = 1/3\).</div>
+
+  <div class="duo">
+    <div class="box box-def">
+      <div class="box-label">● Gleichverteilung \(U(a, b)\)</div>
+      \[ f(x) = \frac{1}{b - a}, \; a \le x \le b \]
+      \[ F(x) = \frac{x - a}{b - a} \]
+      <p>\(E = \dfrac{a + b}{2}\) · \(\mathrm{Var} = \dfrac{(b - a)^2}{12}\)</p>
+    </div>
+    <div class="box box-def">
+      <div class="box-label">● Exponential \(Exp(\lambda)\)</div>
+      \[ f(x) = \lambda e^{-\lambda x}, \; x \ge 0 \]
+      \[ F(x) = 1 - e^{-\lambda x} \]
+      <p>\(E = \frac 1\lambda\) · \(\mathrm{Var} = \dfrac{1}{\lambda^2}\)</p>
+    </div>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Tutorium 7) · Zeit zwischen zwei Gewittern, im Mittel 3 Monate</div>
+    <p>\(E(Y) = 3 = \frac 1\lambda\) → \(\lambda = \frac 13\), \(\mathrm{Var}(Y) = 9\). \(P(Y \gt 4) = e^{-4/3} = 0.2636\).</p>
+    <div class="fig">
+<svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+<line x1="58" x2="540" y1="176.0" y2="176.0" stroke="#EAE4F2"/>
+<text x="51" y="179.5" font-size="10" text-anchor="end" fill="#9A93AC">0</text>
+<line x1="58" x2="540" y1="131.6" y2="131.6" stroke="#EAE4F2"/>
+<text x="51" y="135.1" font-size="10" text-anchor="end" fill="#9A93AC">0.1</text>
+<line x1="58" x2="540" y1="87.1" y2="87.1" stroke="#EAE4F2"/>
+<text x="51" y="90.6" font-size="10" text-anchor="end" fill="#9A93AC">0.2</text>
+<line x1="58" x2="540" y1="42.7" y2="42.7" stroke="#EAE4F2"/>
+<text x="51" y="46.2" font-size="10" text-anchor="end" fill="#9A93AC">0.3</text>
+<text x="58.0" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">0</text>
+<text x="138.3" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">2</text>
+<text x="218.7" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">4</text>
+<text x="299.0" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">6</text>
+<text x="379.3" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">8</text>
+<text x="459.7" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">10</text>
+<text x="540.0" y="191" font-size="10" text-anchor="middle" fill="#9A93AC">12</text>
+<line x1="58" x2="540" y1="176.0" y2="176.0" stroke="#2F2A3F" stroke-width="1.2"/>
+<line x1="58" x2="58" y1="16" y2="176.0" stroke="#2F2A3F" stroke-width="1.2"/>
+<text x="299.0" y="212" font-size="11" text-anchor="middle" fill="#2F2A3F">Wartezeit y in Monaten</text>
+<text x="14" y="96.0" font-size="11" text-anchor="middle" fill="#2F2A3F" transform="rotate(-90 14 96.0)">f(y)</text>
+<path d="M218.7,136.9 L222.7,138.2 L226.7,139.5 L230.7,140.7 L234.7,141.8 L238.8,142.9 L242.8,144.0 L246.8,145.1 L250.8,146.1 L254.8,147.1 L258.8,148.0 L262.9,148.9 L266.9,149.8 L270.9,150.7 L274.9,151.5 L278.9,152.3 L282.9,153.1 L287.0,153.8 L291.0,154.6 L295.0,155.3 L299.0,156.0 L303.0,156.6 L307.0,157.2 L311.1,157.9 L315.1,158.5 L319.1,159.0 L323.1,159.6 L327.1,160.1 L331.1,160.6 L335.2,161.1 L339.2,161.6 L343.2,162.1 L347.2,162.6 L351.2,163.0 L355.2,163.4 L359.2,163.8 L363.3,164.2 L367.3,164.6 L371.3,165.0 L375.3,165.4 L379.3,165.7 L383.4,166.0 L387.4,166.4 L391.4,166.7 L395.4,167.0 L399.4,167.3 L403.4,167.6 L407.4,167.8 L411.5,168.1 L415.5,168.4 L419.5,168.6 L423.5,168.9 L427.5,169.1 L431.6,169.3 L435.6,169.5 L439.6,169.8 L443.6,170.0 L447.6,170.2 L451.6,170.4 L455.7,170.5 L459.7,170.7 L463.7,170.9 L467.7,171.1 L471.7,171.2 L475.7,171.4 L479.8,171.5 L483.8,171.7 L487.8,171.8 L491.8,172.0 L495.8,172.1 L499.8,172.2 L503.9,172.3 L507.9,172.5 L511.9,172.6 L515.9,172.7 L519.9,172.8 L523.9,172.9 L528.0,173.0 L532.0,173.1 L536.0,173.2 L540.0,173.3 L540.0,176.0 L218.7,176.0 Z" fill="#C8556F" fill-opacity="0.35" stroke="none"/>
+<path d="M218.7,136.9 L222.7,138.2 L226.7,139.5 L230.7,140.7 L234.7,141.8 L238.8,142.9 L242.8,144.0 L246.8,145.1 L250.8,146.1 L254.8,147.1 L258.8,148.0 L262.9,148.9 L266.9,149.8 L270.9,150.7 L274.9,151.5 L278.9,152.3 L282.9,153.1 L287.0,153.8 L291.0,154.6 L295.0,155.3 L299.0,156.0 L303.0,156.6 L307.0,157.2 L311.1,157.9 L315.1,158.5 L319.1,159.0 L323.1,159.6 L327.1,160.1 L331.1,160.6 L335.2,161.1 L339.2,161.6 L343.2,162.1 L347.2,162.6 L351.2,163.0 L355.2,163.4 L359.2,163.8 L363.3,164.2 L367.3,164.6 L371.3,165.0 L375.3,165.4 L379.3,165.7 L383.4,166.0 L387.4,166.4 L391.4,166.7 L395.4,167.0 L399.4,167.3 L403.4,167.6 L407.4,167.8 L411.5,168.1 L415.5,168.4 L419.5,168.6 L423.5,168.9 L427.5,169.1 L431.6,169.3 L435.6,169.5 L439.6,169.8 L443.6,170.0 L447.6,170.2 L451.6,170.4 L455.7,170.5 L459.7,170.7 L463.7,170.9 L467.7,171.1 L471.7,171.2 L475.7,171.4 L479.8,171.5 L483.8,171.7 L487.8,171.8 L491.8,172.0 L495.8,172.1 L499.8,172.2 L503.9,172.3 L507.9,172.5 L511.9,172.6 L515.9,172.7 L519.9,172.8 L523.9,172.9 L528.0,173.0 L532.0,173.1 L536.0,173.2 L540.0,173.3" fill="none" stroke="#C8556F" stroke-width="0"/>
+<path d="M58.0,27.9 L62.0,32.7 L66.0,37.4 L70.0,42.0 L74.1,46.3 L78.1,50.6 L82.1,54.7 L86.1,58.7 L90.1,62.5 L94.2,66.2 L98.2,69.8 L102.2,73.3 L106.2,76.7 L110.2,79.9 L114.2,83.1 L118.2,86.1 L122.3,89.1 L126.3,91.9 L130.3,94.7 L134.3,97.4 L138.3,99.9 L142.4,102.4 L146.4,104.8 L150.4,107.2 L154.4,109.4 L158.4,111.6 L162.4,113.7 L166.4,115.8 L170.5,117.7 L174.5,119.7 L178.5,121.5 L182.5,123.3 L186.5,125.0 L190.6,126.7 L194.6,128.3 L198.6,129.9 L202.6,131.4 L206.6,132.8 L210.6,134.3 L214.7,135.6 L218.7,136.9 L222.7,138.2 L226.7,139.5 L230.7,140.7 L234.7,141.8 L238.8,142.9 L242.8,144.0 L246.8,145.1 L250.8,146.1 L254.8,147.1 L258.8,148.0 L262.9,148.9 L266.9,149.8 L270.9,150.7 L274.9,151.5 L278.9,152.3 L282.9,153.1 L287.0,153.8 L291.0,154.6 L295.0,155.3 L299.0,156.0 L303.0,156.6 L307.0,157.2 L311.1,157.9 L315.1,158.5 L319.1,159.0 L323.1,159.6 L327.1,160.1 L331.1,160.6 L335.2,161.1 L339.2,161.6 L343.2,162.1 L347.2,162.6 L351.2,163.0 L355.2,163.4 L359.2,163.8 L363.3,164.2 L367.3,164.6 L371.3,165.0 L375.3,165.4 L379.3,165.7 L383.3,166.0 L387.4,166.4 L391.4,166.7 L395.4,167.0 L399.4,167.3 L403.4,167.6 L407.5,167.8 L411.5,168.1 L415.5,168.4 L419.5,168.6 L423.5,168.9 L427.5,169.1 L431.6,169.3 L435.6,169.5 L439.6,169.8 L443.6,170.0 L447.6,170.2 L451.6,170.4 L455.7,170.5 L459.7,170.7 L463.7,170.9 L467.7,171.1 L471.7,171.2 L475.7,171.4 L479.8,171.5 L483.8,171.7 L487.8,171.8 L491.8,172.0 L495.8,172.1 L499.8,172.2 L503.9,172.3 L507.9,172.5 L511.9,172.6 L515.9,172.7 L519.9,172.8 L523.9,172.9 L528.0,173.0 L532.0,173.1 L536.0,173.2 L540.0,173.3" fill="none" stroke="#7C63CE" stroke-width="2.2"/>
+<text x="347.2" y="136.0" font-size="11" text-anchor="middle" fill="#C8556F" font-weight="700">P(Y > 4) = e^(−4/3) = 0.2636</text>
+<text x="146.4" y="42.7" font-size="11" text-anchor="middle" fill="#7C63CE" font-weight="600">λ = 1/3, E(Y) = 3</text>
+</svg>
+    </div>
+    <p>Testat 4: Fuchs jagt im Mittel 3 Stunden → \(P(X \gt 10) = e^{-10/3} = 0.0357\).</p>
+  </div>
+
+  <div class="box box-def">
+    <div class="box-label">● Weibull-Verteilung (Probeklausur A6)</div>
+    \[ f(x; \lambda, r) = r\lambda(\lambda x)^{r-1}\exp\big(-(\lambda x)^r\big) \qquad F(x) = 1 - \exp\big(-(\lambda x)^r\big) \]
+    <p>Mit \(r = 1\): \(f(x) = \lambda e^{-\lambda x}\) — das ist genau die <b>Exponentialverteilung</b>. Genau das nutzt A6: „Nehmen Sie an, dass \(r = 1\).“</p>
+  </div>
+
+  <div class="box box-achtung">
+    <div class="box-label">▲ Dichtewerte addieren ist falsch (Tutorium 7, A3 h)</div>
+    <p><code class="inline">sum(dexp(1:6, 1/3))</code> = 0.729 ist <b>keine</b> Wahrscheinlichkeit. Richtig: \(P(1 \lt Y \lt 6) = F(6) - F(1)\) =
+      <code class="inline">pexp(6, 1/3) - pexp(1, 1/3)</code> = 0.581.</p>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 11 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">11</div>
+    <div class="step-title">Normalverteilung und Standardisieren
+      <small>Jede Normalverteilung mit einer einzigen Tabelle</small></div>
+    <span class="exam-tag hot">A8 · Testat 4 · A9</span>
+  </div>
+
+  <div class="tldr">\(X \sim N(\mu, \sigma^2)\) → \(Z = \dfrac{X - \mu}{\sigma} \sim N(0, 1)\) → \(P(X \le x) = \Phi\!\left(\dfrac{x - \mu}{\sigma}\right)\). Negative \(z\): \(\Phi(-z) = 1 - \Phi(z)\).</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Das Rezept</div>
+    <ol class="calc-steps">
+      <li>\(\mu\) und \(\sigma\) aufschreiben — Achtung: \(N(500, 9)\) heißt \(\sigma^2 = 9\), also \(\sigma = 3\).</li>
+      <li>Standardisieren: \(z = \dfrac{x - \mu}{\sigma}\), auf <b>zwei</b> Nachkommastellen runden (Tabelle).</li>
+      <li>\(\Phi(z)\) in der Tabelle ablesen (Anhang). Für \(z \lt 0\): \(\Phi(z) = 1 - \Phi(-z)\).</li>
+      <li>\(P(X \gt x) = 1 - \Phi(z)\) · \(P(a \lt X \lt b) = \Phi(z_b) - \Phi(z_a)\)</li>
+    </ol>
+    <p>Quantile rückwärts: \(q_\alpha = \mu + \sigma z_\alpha\) mit \(z_{0.9} = 1.28\), \(z_{0.95} = 1.64\), \(z_{0.975} = 1.96\), \(z_{0.99} = 2.33\) (Vorlesungstabelle). Symmetrie: \(z_\alpha = -z_{1-\alpha}\).</p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Vorlesungsbeispiel · Flugzeit \(X \sim N(183, 14^2)\)</div>
+    <p>\(P(180 \lt X \lt 190) = \Phi\left(\dfrac{190 - 183}{14}\right) - \Phi\left(\dfrac{180 - 183}{14}\right) = \Phi(0.5) - \Phi(-0.21) = 0.6915 - (1 - 0.5832) = 0.2747\)</p>
+    <div class="fig">
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+<line x1="58" x2="540" y1="196.0" y2="196.0" stroke="#EAE4F2"/>
+<text x="51" y="199.5" font-size="10" text-anchor="end" fill="#9A93AC">0</text>
+<line x1="58" x2="540" y1="139.8" y2="139.8" stroke="#EAE4F2"/>
+<text x="51" y="143.2" font-size="10" text-anchor="end" fill="#9A93AC">0.01</text>
+<line x1="58" x2="540" y1="83.5" y2="83.5" stroke="#EAE4F2"/>
+<text x="51" y="87.0" font-size="10" text-anchor="end" fill="#9A93AC">0.02</text>
+<line x1="58" x2="540" y1="27.2" y2="27.2" stroke="#EAE4F2"/>
+<text x="51" y="30.8" font-size="10" text-anchor="end" fill="#9A93AC">0.03</text>
+<text x="103.5" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">140</text>
+<text x="194.4" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">160</text>
+<text x="285.4" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">180</text>
+<text x="376.3" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">200</text>
+<text x="467.2" y="211" font-size="10" text-anchor="middle" fill="#9A93AC">220</text>
+<line x1="58" x2="540" y1="196.0" y2="196.0" stroke="#2F2A3F" stroke-width="1.2"/>
+<line x1="58" x2="58" y1="16" y2="196.0" stroke="#2F2A3F" stroke-width="1.2"/>
+<text x="299.0" y="232" font-size="11" text-anchor="middle" fill="#2F2A3F">Flugzeit in Minuten</text>
+<text x="14" y="106.0" font-size="11" text-anchor="middle" fill="#2F2A3F" transform="rotate(-90 14 106.0)">f(x)</text>
+<path d="M285.4,39.3 L286.5,38.8 L287.6,38.2 L288.8,37.8 L289.9,37.3 L291.0,37.0 L292.2,36.6 L293.3,36.3 L294.5,36.1 L295.6,35.9 L296.7,35.8 L297.9,35.7 L299.0,35.7 L300.1,35.7 L301.3,35.8 L302.4,35.9 L303.5,36.1 L304.7,36.3 L305.8,36.6 L307.0,37.0 L308.1,37.3 L309.2,37.8 L310.4,38.2 L311.5,38.8 L312.6,39.3 L313.8,40.0 L314.9,40.6 L316.1,41.4 L317.2,42.1 L318.3,42.9 L319.5,43.8 L320.6,44.7 L321.7,45.6 L322.9,46.6 L324.0,47.6 L325.1,48.7 L326.3,49.8 L327.4,50.9 L328.6,52.1 L329.7,53.3 L330.8,54.5 L330.8,196.0 L285.4,196.0 Z" fill="#2F9B6E" fill-opacity="0.35" stroke="none"/>
+<path d="M285.4,39.3 L286.5,38.8 L287.6,38.2 L288.8,37.8 L289.9,37.3 L291.0,37.0 L292.2,36.6 L293.3,36.3 L294.5,36.1 L295.6,35.9 L296.7,35.8 L297.9,35.7 L299.0,35.7 L300.1,35.7 L301.3,35.8 L302.4,35.9 L303.5,36.1 L304.7,36.3 L305.8,36.6 L307.0,37.0 L308.1,37.3 L309.2,37.8 L310.4,38.2 L311.5,38.8 L312.6,39.3 L313.8,40.0 L314.9,40.6 L316.1,41.4 L317.2,42.1 L318.3,42.9 L319.5,43.8 L320.6,44.7 L321.7,45.6 L322.9,46.6 L324.0,47.6 L325.1,48.7 L326.3,49.8 L327.4,50.9 L328.6,52.1 L329.7,53.3 L330.8,54.5" fill="none" stroke="#2F9B6E" stroke-width="0"/>
+<path d="M58.0,195.9 L60.3,195.9 L62.5,195.8 L64.8,195.8 L67.1,195.8 L69.4,195.8 L71.6,195.7 L73.9,195.7 L76.2,195.6 L78.5,195.6 L80.7,195.6 L83.0,195.5 L85.3,195.4 L87.6,195.4 L89.8,195.3 L92.1,195.2 L94.4,195.1 L96.7,195.0 L98.9,194.9 L101.2,194.7 L103.5,194.6 L105.7,194.4 L108.0,194.2 L110.3,194.0 L112.6,193.8 L114.8,193.6 L117.1,193.3 L119.4,193.0 L121.7,192.7 L123.9,192.3 L126.2,192.0 L128.5,191.6 L130.8,191.1 L133.0,190.6 L135.3,190.1 L137.6,189.6 L139.8,189.0 L142.1,188.3 L144.4,187.6 L146.7,186.8 L148.9,186.0 L151.2,185.2 L153.5,184.2 L155.8,183.2 L158.0,182.2 L160.3,181.1 L162.6,179.9 L164.9,178.6 L167.1,177.2 L169.4,175.8 L171.7,174.3 L174.0,172.7 L176.2,171.0 L178.5,169.3 L180.8,167.4 L183.0,165.5 L185.3,163.5 L187.6,161.3 L189.9,159.1 L192.1,156.8 L194.4,154.4 L196.7,151.9 L199.0,149.4 L201.2,146.7 L203.5,144.0 L205.8,141.1 L208.1,138.2 L210.3,135.2 L212.6,132.2 L214.9,129.1 L217.2,125.9 L219.4,122.6 L221.7,119.3 L224.0,116.0 L226.2,112.6 L228.5,109.2 L230.8,105.7 L233.1,102.3 L235.3,98.8 L237.6,95.3 L239.9,91.8 L242.2,88.4 L244.4,85.0 L246.7,81.6 L249.0,78.3 L251.3,75.0 L253.5,71.8 L255.8,68.7 L258.1,65.6 L260.3,62.7 L262.6,59.9 L264.9,57.1 L267.2,54.5 L269.4,52.1 L271.7,49.8 L274.0,47.6 L276.3,45.6 L278.5,43.8 L280.8,42.1 L283.1,40.6 L285.4,39.3 L287.6,38.2 L289.9,37.3 L292.2,36.6 L294.5,36.1 L296.7,35.8 L299.0,35.7 L301.3,35.8 L303.5,36.1 L305.8,36.6 L308.1,37.3 L310.4,38.2 L312.6,39.3 L314.9,40.6 L317.2,42.1 L319.5,43.8 L321.7,45.6 L324.0,47.6 L326.3,49.8 L328.6,52.1 L330.8,54.5 L333.1,57.1 L335.4,59.9 L337.7,62.7 L339.9,65.6 L342.2,68.7 L344.5,71.8 L346.7,75.0 L349.0,78.3 L351.3,81.6 L353.6,85.0 L355.8,88.4 L358.1,91.8 L360.4,95.3 L362.7,98.8 L364.9,102.3 L367.2,105.7 L369.5,109.2 L371.8,112.6 L374.0,116.0 L376.3,119.3 L378.6,122.6 L380.8,125.9 L383.1,129.1 L385.4,132.2 L387.7,135.2 L389.9,138.2 L392.2,141.1 L394.5,144.0 L396.8,146.7 L399.0,149.4 L401.3,151.9 L403.6,154.4 L405.9,156.8 L408.1,159.1 L410.4,161.3 L412.7,163.5 L415.0,165.5 L417.2,167.4 L419.5,169.3 L421.8,171.0 L424.0,172.7 L426.3,174.3 L428.6,175.8 L430.9,177.2 L433.1,178.6 L435.4,179.9 L437.7,181.1 L440.0,182.2 L442.2,183.2 L444.5,184.2 L446.8,185.2 L449.1,186.0 L451.3,186.8 L453.6,187.6 L455.9,188.3 L458.2,189.0 L460.4,189.6 L462.7,190.1 L465.0,190.6 L467.2,191.1 L469.5,191.6 L471.8,192.0 L474.1,192.3 L476.3,192.7 L478.6,193.0 L480.9,193.3 L483.2,193.6 L485.4,193.8 L487.7,194.0 L490.0,194.2 L492.3,194.4 L494.5,194.6 L496.8,194.7 L499.1,194.9 L501.3,195.0 L503.6,195.1 L505.9,195.2 L508.2,195.3 L510.4,195.4 L512.7,195.4 L515.0,195.5 L517.3,195.6 L519.5,195.6 L521.8,195.6 L524.1,195.7 L526.4,195.7 L528.6,195.8 L530.9,195.8 L533.2,195.8 L535.5,195.8 L537.7,195.9 L540.0,195.9" fill="none" stroke="#7C63CE" stroke-width="2.2"/>
+<line x1="299.0" x2="299.0" y1="196.0" y2="35.7" stroke="#9A93AC" stroke-width="1.3" stroke-dasharray="5 4"/>
+<text x="299.0" y="26.1" font-size="10" text-anchor="middle" fill="#9A93AC" font-weight="500">μ = 183</text>
+<text x="421.8" y="72.2" font-size="11" text-anchor="middle" fill="#2F9B6E" font-weight="700">P(180 < X < 190) = 0.2747</text>
+</svg>
+    </div>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel (Testat 4) · Mehlpackungen \(X \sim N(500, 9)\), also \(\sigma = 3\)</div>
+    <ul class="clean">
+      <li>\(P(X \gt 500) = 1 - \Phi(0) = 0.5\) (Symmetrie)</li>
+      <li>\(P(X \ge 505) = 1 - \Phi\left(\dfrac{5}{3}\right) = 1 - \Phi(1.67) = 1 - 0.9525 = 0.0475\)</li>
+      <li>\(P(496 \le X \le 502) = \Phi(0.67) - \Phi(-1.33) = 0.7486 - (1 - 0.9082) = 0.6568\)</li>
+    </ul>
+  </div>
+
+  <div class="box box-def">
+    <div class="box-label">● Transformationen und Summen</div>
+    <p>\(Y = aX + b\) → \(Y \sim N(a\mu + b,\; a^2\sigma^2)\) · \(X, Y\) unabhängig normal → \(X + Y \sim N(\mu_X + \mu_Y,\; \sigma_X^2 + \sigma_Y^2)\).</p>
+    <p>Beispiel: 10 Packungen à \(N(500, 16)\) unabhängig → Summe \(S \sim N(5000, 160)\), \(\sigma_S = \sqrt{160} = 12.6491\) — <b>nicht</b> \(10 \cdot 4\)!</p>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Φ tablosu nasıl okunur</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>z = 1.67</code><span>Satır <b>1.6</b>, sütun <b>0.07</b> → 0.9525</span></div>
+      <div class="tr-row"><code>z = −1.33</code><span>Tabloda negatif yok: \(\Phi(-1.33) = 1 - \Phi(1.33) = 1 - 0.9082\)</span></div>
+      <div class="tr-row"><code>"büyüktür"</code><span>\(P(X \gt x) = 1 - \Phi(z)\). Sürekli dağılımda \(\gt\) ile \(\ge\) aynı.</span></div>
+      <div class="tr-row"><code>\(N(\mu, \sigma^2)\)</code><span>İkinci sayı <b>varyans</b>! Standartlaştırırken <b>karekökünü</b> al.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 12 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">12</div>
+    <div class="step-title">Zentraler Grenzwertsatz und uiv
+      <small>Warum die Normalverteilung überall auftaucht</small></div>
+    <span class="exam-tag hot">A8 · Testat 4 · A7</span>
+  </div>
+
+  <div class="tldr">Sind \(X_1, \dots, X_n\) unabhängig und identisch verteilt (uiv/iid) mit \(E = \mu\) und Var \(= \sigma^2\), dann ist \(\bar X\) für großes \(n\) ungefähr \(N\!\left(\mu, \dfrac{\sigma^2}{n}\right)\) — egal welche Verteilung die \(X_i\) haben.</div>
+
+  <div class="box box-def">
+    <div class="box-label">● Die zwei Formen</div>
+    \[ \bar X \overset{a}{\sim} N\!\left(\mu,\; \frac{\sigma^2}{n}\right) \qquad\qquad \sqrt{n}\,\frac{\bar X - \mu}{\sigma} \overset{a}{\sim} N(0, 1) \]
+    <p>Die zweite Form ist genau die Prüfgröße des Gauß-Tests in A8: \(Z = \dfrac{\bar X - \mu_0}{\sigma}\sqrt n\).
+      Ohne ZGWS gilt schon exakt: \(E(\bar X) = \mu\), \(\mathrm{Var}(\bar X) = \dfrac{\sigma^2}{n}\) (Rechenregeln aus Schritt 4).</p>
+  </div>
+
+  <div class="box box-bsp">
+    <div class="box-label">✓ Beispiel · \(n = 100\), \(\mu = 4\), \(\sigma^2 = 3\)</div>
+    <p>\(\bar X \overset{a}{\sim} N(4,\, 0.03)\), \(\mathrm{sd}(\bar X) = \sqrt{0.03} = 0.1732\).
+      \(P(\bar X \lt 4.3) = \Phi\left(\dfrac{0.3}{0.1732}\right) = \Phi(1.73) = 0.9582\). Und \(P(\bar X \lt 4) = \Phi(0) = 0.5\) (Testat 4).</p>
+  </div>
+</div>
+
+<!-- ==================== BLOCK D ==================== -->
+
+<div class="section-rule"><span>Block D · R · 35 min</span></div>
+
+<!-- ---------- SCHRITT 13 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">13</div>
+    <div class="step-title">Die d/p/q/r-Familie
+      <small>Vier Buchstaben, jede Verteilung</small></div>
+    <span class="exam-tag hot">Teil B · Testat 4</span>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Binomial, Poisson, Exponential, Normal</div>
+<pre><span class="fn">dbinom</span>(<span class="nu">7</span>, size = <span class="nu">10</span>, prob = <span class="nu">0.25</span>)       <span class="cm"># P(Y = 7)</span>
+<span class="fn">pbinom</span>(<span class="nu">3</span>, <span class="nu">10</span>, <span class="nu">0.25</span>)                     <span class="cm"># P(Y &lt;= 3) = P(Y &lt; 4)</span>
+<span class="nu">1</span> - <span class="fn">pbinom</span>(<span class="nu">5</span>, <span class="nu">10</span>, <span class="nu">0.25</span>)                 <span class="cm"># P(Y &gt; 5)</span>
+<span class="fn">pbinom</span>(<span class="nu">5</span>, <span class="nu">10</span>, <span class="nu">0.25</span>) - <span class="fn">pbinom</span>(<span class="nu">2</span>, <span class="nu">10</span>, <span class="nu">0.25</span>) <span class="cm"># P(2 &lt; Y &lt; 6) = P(Y&lt;=5) - P(Y&lt;=2)</span>
+
+<span class="fn">dpois</span>(<span class="nu">3</span>, lambda = <span class="nu">2</span>)                     <span class="cm"># P(X = 3)</span>
+<span class="nu">1</span> - <span class="fn">ppois</span>(<span class="nu">1</span>, <span class="nu">2</span>)                         <span class="cm"># P(X &gt;= 2)</span>
+
+<span class="nu">1</span> - <span class="fn">pexp</span>(<span class="nu">4</span>, rate = <span class="nu">1</span>/<span class="nu">3</span>)                   <span class="cm"># P(Y &gt; 4)</span>
+<span class="fn">pnorm</span>(<span class="nu">502</span>, mean = <span class="nu">500</span>, sd = <span class="nu">3</span>) - <span class="fn">pnorm</span>(<span class="nu">496</span>, <span class="nu">500</span>, <span class="nu">3</span>)
+<span class="fn">pnorm</span>((<span class="nu">502</span> - <span class="nu">500</span>) / <span class="nu">3</span>) - <span class="fn">pnorm</span>((<span class="nu">496</span> - <span class="nu">500</span>) / <span class="nu">3</span>)   <span class="cm"># standardisiert, gleich</span>
+<span class="fn">qnorm</span>(<span class="nu">0.95</span>)                              <span class="cm"># z_0.95 = 1.645</span>
+<span class="fn">rnorm</span>(<span class="nu">50</span>, mean = <span class="nu">175</span>, sd = <span class="nu">9.5</span>)          <span class="cm"># 50 Zufallszahlen</span>
+<span class="fn">rbinom</span>(<span class="nu">10000</span>, size = <span class="nu">5</span>, prob = <span class="nu">0.25</span>)     <span class="cm"># Testat 4, Aufgabe 2</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Harf = görev</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>d…</code><span><b>d</b>ensity: kesikli → \(P(X = x)\); sürekli → yoğunluk \(f(x)\) (<b>olasılık değil!</b>)</span></div>
+      <div class="tr-row"><code>p…</code><span><b>p</b>robability: \(F(x) = P(X \le x)\). "büyüktür" için <code>1 - p…</code></span></div>
+      <div class="tr-row"><code>q…</code><span><b>q</b>uantile: \(F\)'nin tersi. <code>qnorm(0.95)</code> = 1.645</span></div>
+      <div class="tr-row"><code>r…</code><span><b>r</b>andom: rastgele sayı üretir (simülasyon).</span></div>
+      <div class="tr-row"><code>pnorm(x, mean, sd)</code><span>Üçüncü argüman <b>standart sapma</b>. \(N(500, 9)\) → <code>sd = 3</code>.</span></div>
+      <div class="tr-row"><code>ppois(1, 2)</code><span>\(P(X \le 1)\). Kesiklide \(P(X \ge 2) = 1 - P(X \le 1)\) → <code>1 - ppois(1, 2)</code>.</span></div>
+    </div>
+    <div class="tr-rule">
+      Testat 4 çoktan seçmeli: \(P(Y \gt 2)\) için doğru olanlar <code>1 - ppois(2, 2)</code> <b>ve</b>
+      <code>1 - dpois(0, 2) - dpois(1, 2) - dpois(2, 2)</code>. İkisi de doğru!
+    </div>
+  </div>
+</div>
+
+<!-- ---------- SCHRITT 14 ---------- -->
+<div class="step">
+  <div class="step-head">
+    <div class="step-num">14</div>
+    <div class="step-title">Grafiken und eigene Funktionen
+      <small>Tutorium 7 · Vorbereitung auf B (g)</small></div>
+    <span class="exam-tag">Teil B</span>
+  </div>
+
+  <div class="rbox">
+    <div class="rbox-head">▶ R · Histogramm mit Dichtekurve · Wahrscheinlichkeitsfunktion · eigene Funktion</div>
+<pre><span class="fn">hist</span>(y, freq = <span class="nu">FALSE</span>, main = <span class="st">"Zeit zwischen Gewittern"</span>, xlab = <span class="st">"Monate"</span>)
+<span class="fn">curve</span>(<span class="fn">dexp</span>(x, <span class="nu">1</span>/<span class="nu">3</span>), add = <span class="nu">TRUE</span>, col = <span class="st">"blue"</span>, lwd = <span class="nu">2</span>)   <span class="cm"># Dichte darüber</span>
+
+Tx &lt;- <span class="nu">-2</span>:<span class="nu">3</span>;  Px &lt;- <span class="fn">rep</span>(<span class="nu">1</span>/<span class="nu">6</span>, <span class="nu">6</span>)
+<span class="fn">plot</span>(Tx, Px, type = <span class="st">"h"</span>, xlab = <span class="st">"Gewinn"</span>, ylab = <span class="st">"P(X = x)"</span>)          <span class="cm"># Stabdiagramm</span>
+
+predict_thunder &lt;- <span class="fn">function</span>(y, lambda) {        <span class="cm"># P(Y &gt; y) für Exp(lambda)</span>
+  res &lt;- <span class="nu">1</span> - <span class="fn">pexp</span>(y, lambda)
+  <span class="fn">return</span>(res)
+}
+<span class="fn">predict_thunder</span>(<span class="nu">6</span>, <span class="nu">1</span>/<span class="nu">3</span>)                          <span class="cm"># 0.135</span></pre>
+  </div>
+
+  <div class="tr">
+    <span class="tr-badge">TR · Fonksiyon yazmak</span>
+    <div class="tr-rows">
+      <div class="tr-row"><code>isim &lt;- function(a, b) { }</code><span>Yeni fonksiyon tanımlar. Parantez içi = girdiler (argümanlar).</span></div>
+      <div class="tr-row"><code>{ ... }</code><span>Gövde: yapılacak hesap.</span></div>
+      <div class="tr-row"><code>return(res)</code><span>Sonucu dışarı verir.</span></div>
+      <div class="tr-row"><code>curve(..., add = TRUE)</code><span>Eğriyi <b>mevcut</b> grafiğin üstüne çizer.</span></div>
+      <div class="tr-row"><code>type = "h"</code><span>Dikey çubuklar — kesikli olasılık fonksiyonu için.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- FORMELBLATT ---------- -->
+
+<div class="cheat">
+  <h3>Formelblatt Tag 3 · Vorlage für dein A4-Blatt</h3>
+  <div class="cheat-grid">
+    <div class="cheat-item">
+      <b>Diskret</b>
+      \(p_i \ge 0\), \(\sum p_i = 1\) · \(E = \sum x p\) · \(E(X^2) = \sum x^2 p\)
+    </div>
+    <div class="cheat-item">
+      <b>Stetig</b>
+      \(f \ge 0\), \(\int f = 1\) · \(F(x) = \int_{-\infty}^x f\) · \(E = \int x f\)
+    </div>
+    <div class="cheat-item wide">
+      <b>Varianz und Regeln</b>
+      \(\mathrm{Var} = E(X^2) - E(X)^2\) · \(E(aX+b) = aE(X)+b\) · \(\mathrm{Var}(aX+b) = a^2\mathrm{Var}(X)\) ·
+      \(\mathrm{Var}(X+Y) = \mathrm{Var}X + \mathrm{Var}Y\) nur unabhängig · \(E(g(X)) \ne g(E(X))\)
+    </div>
+    <div class="cheat-item wide">
+      <b>Diskret: &lt; und ≤</b>
+      \(P(X \lt k) = F(k-1)\) · \(P(X \ge k) = 1 - F(k-1)\) · \(P(a \lt X \le b) = F(b) - F(a)\) · stetig: egal
+    </div>
+    <div class="cheat-item">
+      <b>Binomial</b>
+      \(\binom nx \pi^x(1-\pi)^{n-x}\) · \(E = n\pi\) · \(\mathrm{Var} = n\pi(1-\pi)\)
+    </div>
+    <div class="cheat-item">
+      <b>Poisson</b>
+      \(\dfrac{\lambda^x}{x!}e^{-\lambda}\) · \(E = \mathrm{Var} = \lambda\)
+    </div>
+    <div class="cheat-item">
+      <b>Exponential</b>
+      \(F = 1 - e^{-\lambda x}\) · \(E = 1/\lambda\) · \(\mathrm{Var} = 1/\lambda^2\)
+    </div>
+    <div class="cheat-item">
+      <b>Gleich</b>
+      \(F = \dfrac{x-a}{b-a}\) · \(E = \dfrac{a+b}{2}\) · \(\mathrm{Var} = \dfrac{(b-a)^2}{12}\)
+    </div>
+    <div class="cheat-item wide">
+      <b>Normal</b>
+      \(P(X \le x) = \Phi\left(\dfrac{x - \mu}{\sigma}\right)\) · \(\Phi(-z) = 1 - \Phi(z)\) · \(q_\alpha = \mu + \sigma z_\alpha\) ·
+      \(z_{0.95} = 1.64\), \(z_{0.975} = 1.96\) · \(aX+b \sim N(a\mu+b, a^2\sigma^2)\)
+    </div>
+    <div class="cheat-item wide">
+      <b>ZGWS</b> \(\bar X \overset a\sim N(\mu, \sigma^2/n)\) · \(\sqrt n\,\dfrac{\bar X - \mu}{\sigma} \overset a\sim N(0,1)\) ·
+      <b>Weibull</b> \(F = 1 - e^{-(\lambda x)^r}\), \(r = 1\) = Exponential
+    </div>
+    <div class="cheat-item wide">
+      <b>R</b>
+      <code class="inline">dbinom(x, n, p)</code> · <code class="inline">pbinom</code> · <code class="inline">dpois(x, lambda)</code> ·
+      <code class="inline">ppois</code> · <code class="inline">pexp(x, rate)</code> · <code class="inline">pnorm(x, mean, sd)</code> ·
+      <code class="inline">qnorm(p)</code> · <code class="inline">rnorm(n, mean, sd)</code> · „&gt;“: <code class="inline">1 - p…</code>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== KLAUSUR-SIMULATION ==================== -->
+
+<div class="page-break"></div>
+
+<div class="quiz-intro">
+  <h2>Klausur-Simulation Tag 3</h2>
+  <p>5 Aufgaben · <b>46 Punkte</b> · <b>60 Minuten</b> · Taschenrechner · \(\Phi\)-Tabelle im Anhang · kein Skript.</p>
+  <p style="margin-top:9px">
+    <b>Klausurregeln:</b> Dezimal<b>punkt</b> · Zwischenergebnisse auf <b>vier</b>, Endergebnisse auf <b>drei</b>
+    Nachkommastellen · vollständiger Lösungsweg.
+  </p>
+  <p style="margin-top:9px;font-weight:600;color:var(--rose-600)">
+    Bei jeder Wahrscheinlichkeit zuerst: Welche Verteilung? Welche Parameter? Diskret oder stetig (&lt; oder ≤)?
+  </p>
+</div>
+
+<!-- S1 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">Aufgabe 1</span>
+    <span class="q-text">Eine diskrete Zufallsvariable <span class="pts">(10 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    Die Anzahl \(X\) der Mensabesuche einer Studentin pro Woche hat die Wahrscheinlichkeitsfunktion
+    \(P(X = x) = c\,(5 - x)\) für \(x \in \{1, 2, 3, 4\}\) und 0 sonst.<br>
+    (a) Bestimmen Sie \(c\). <i>(1P)</i><br>
+    (b) Geben Sie die Verteilungsfunktion \(F(x)\) vollständig an. <i>(3P)</i><br>
+    (c) Berechnen Sie \(E(X)\) und \(\mathrm{Var}(X)\). <i>(3P)</i><br>
+    (d) Pro Besuch spart sie 2 € gegenüber dem Selbstkochen, hat aber 3 € Fixkosten für die Mensakarte: \(Y = 2X - 3\).
+    Berechnen Sie \(E(Y)\) und \(\mathrm{Var}(Y)\). <i>(2P)</i><br>
+    (e) Berechnen Sie \(P(X \ge 2)\). <i>(1P)</i>
+  </p>
+  <div class="ans">
+    <div class="slot"><b>a</b><div></div></div>
+    <div class="slot h3"><b>b</b><div></div></div>
+    <div class="slot h3"><b>c</b><div></div></div>
+    <div class="slot h2"><b>d</b><div></div></div>
+    <div class="slot"><b>e</b><div></div></div>
+  </div>
+</div>
+
+<!-- S2 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">Aufgabe 2</span>
+    <span class="q-text">Eine stetige Zufallsvariable <span class="pts">(11 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    Die Bearbeitungszeit \(X\) (in Stunden) eines Übungsblatts hat die Dichte \(f(x) = c\,x\,(2 - x)\) für \(0 \le x \le 2\) und 0 sonst.<br>
+    (a) Bestimmen Sie \(c\) so, dass \(f\) eine Dichte ist, und nennen Sie die zweite Bedingung, die erfüllt sein muss. <i>(2P)</i><br>
+    (b) Leiten Sie die Verteilungsfunktion \(F(x)\) her. <i>(3P)</i><br>
+    (c) Wie groß ist die Wahrscheinlichkeit, dass ein Blatt länger als 1.5 Stunden dauert? <i>(2P)</i><br>
+    (d) Bestimmen Sie \(E(X)\) ohne Integral und begründen Sie. <i>(1P)</i><br>
+    (e) Berechnen Sie \(\mathrm{Var}(X)\). <i>(3P)</i>
+  </p>
+  <div class="ans">
+    <div class="slot h2"><b>a</b><div></div></div>
+    <div class="slot h3"><b>b</b><div></div></div>
+    <div class="slot h2"><b>c</b><div></div></div>
+    <div class="slot"><b>d</b><div></div></div>
+    <div class="slot h3"><b>e</b><div></div></div>
+  </div>
+</div>
+
+<!-- S3 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">Aufgabe 3</span>
+    <span class="q-text">Die Hotline <span class="pts">(12 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    Bei der Studierenden-Hotline gehen im Mittel 3 Anrufe pro 10 Minuten ein.<br>
+    (a) Welche Verteilung eignet sich für \(X\) = „Anzahl der Anrufe in 10 Minuten“? Mit Parameter. <i>(1P)</i><br>
+    (b) Berechnen Sie per Hand \(P(X = 2)\). <i>(2P)</i><br>
+    (c) Berechnen Sie per Hand die Wahrscheinlichkeit für mindestens zwei Anrufe. <i>(2P)</i><br>
+    (d) Die Zeit \(T\) (in Minuten) bis zum nächsten Anruf ist exponentialverteilt mit \(\lambda = 0.3\). Wie groß ist \(P(T \gt 5)\)? <i>(2P)</i><br>
+    (e) Welcher R-Befehl berechnet \(P(X \gt 2)\)?
+      (1) <code class="inline">ppois(2, 3)</code> (2) <code class="inline">1 - ppois(2, 3)</code> (3) <code class="inline">1 - dpois(2, 3)</code> (4) <code class="inline">1 - ppois(3, 3)</code> <i>(2P)</i><br>
+    (f) Von 50 Anrufenden ist jede Person unabhängig mit Wahrscheinlichkeit 0.1 unzufrieden. Geben Sie Verteilung, Erwartungswert und Varianz
+    der Anzahl Unzufriedener an und berechnen Sie die Wahrscheinlichkeit für höchstens einen Unzufriedenen. <i>(3P)</i>
+  </p>
+  <div class="ans">
+    <div class="slot"><b>a</b><div></div></div>
+    <div class="slot h2"><b>b</b><div></div></div>
+    <div class="slot h2"><b>c</b><div></div></div>
+    <div class="slot h2"><b>d</b><div></div></div>
+    <div class="slot"><b>e</b><div></div></div>
+    <div class="slot h3"><b>f</b><div></div></div>
+  </div>
+</div>
+
+<!-- S4 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">Aufgabe 4</span>
+    <span class="q-text">Kaffeepackungen <span class="pts">(9 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    Das Gewicht \(X\) einer Kaffeepackung (in g) sei \(N(500, 16)\)-verteilt. Nutzen Sie die \(\Phi\)-Tabelle.<br>
+    (a) \(P(X \lt 506)\) <i>(2P)</i> · (b) \(P(494 \lt X \lt 502)\) <i>(2P)</i> · (c) Welches Gewicht wird nur von 5 % der Packungen überschritten? <i>(2P)</i><br>
+    (d) Ein Karton enthält 10 unabhängige Packungen. Wie ist das Gesamtgewicht \(S\) verteilt, und wie groß ist \(P(S \gt 5010)\)? <i>(3P)</i>
+  </p>
+  <div class="ans">
+    <div class="slot h2"><b>a</b><div></div></div>
+    <div class="slot h2"><b>b</b><div></div></div>
+    <div class="slot h2"><b>c</b><div></div></div>
+    <div class="slot h3"><b>d</b><div></div></div>
+  </div>
+</div>
+
+<!-- S5 -->
+<div class="q">
+  <div class="q-head"><span class="q-num">Aufgabe 5</span>
+    <span class="q-text">Zentraler Grenzwertsatz <span class="pts">(4 Punkte)</span></span></div>
+  <p style="font-size:0.91rem;margin-bottom:0">
+    \(X_1, \dots, X_{100}\) seien uiv mit \(E(X_i) = 4\) und \(\mathrm{Var}(X_i) = 9\) (Verteilung unbekannt).<br>
+    (a) Berechnen Sie \(E(\bar X)\) und \(\mathrm{Var}(\bar X)\) und geben Sie die approximative Verteilung von \(\bar X\) an. <i>(2P)</i><br>
+    (b) Berechnen Sie näherungsweise \(P(\bar X \gt 4.45)\). <i>(2P)</i>
+  </p>
+  <div class="ans">
+    <div class="slot h2"><b>a</b><div></div></div>
+    <div class="slot h2"><b>b</b><div></div></div>
+  </div>
+</div>
+
+<!-- ANHANG -->
+<div class="box box-wort" style="margin-top:16px">
+  <div class="box-label">■ Anhang · Tabelle der Standardnormalverteilung Φ(z) · Zeile = erste, Spalte = zweite Nachkommastelle</div>
+<table class="phi"><thead><tr><th>z</th><th>0.00</th><th>0.01</th><th>0.02</th><th>0.03</th><th>0.04</th><th>0.05</th><th>0.06</th><th>0.07</th><th>0.08</th><th>0.09</th></tr></thead><tbody><tr><td><b>0.0</b></td><td>0.5000</td><td>0.5040</td><td>0.5080</td><td>0.5120</td><td>0.5160</td><td>0.5199</td><td>0.5239</td><td>0.5279</td><td>0.5319</td><td>0.5359</td></tr><tr><td><b>0.1</b></td><td>0.5398</td><td>0.5438</td><td>0.5478</td><td>0.5517</td><td>0.5557</td><td>0.5596</td><td>0.5636</td><td>0.5675</td><td>0.5714</td><td>0.5753</td></tr><tr><td><b>0.2</b></td><td>0.5793</td><td>0.5832</td><td>0.5871</td><td>0.5910</td><td>0.5948</td><td>0.5987</td><td>0.6026</td><td>0.6064</td><td>0.6103</td><td>0.6141</td></tr><tr><td><b>0.3</b></td><td>0.6179</td><td>0.6217</td><td>0.6255</td><td>0.6293</td><td>0.6331</td><td>0.6368</td><td>0.6406</td><td>0.6443</td><td>0.6480</td><td>0.6517</td></tr><tr><td><b>0.4</b></td><td>0.6554</td><td>0.6591</td><td>0.6628</td><td>0.6664</td><td>0.6700</td><td>0.6736</td><td>0.6772</td><td>0.6808</td><td>0.6844</td><td>0.6879</td></tr><tr><td><b>0.5</b></td><td>0.6915</td><td>0.6950</td><td>0.6985</td><td>0.7019</td><td>0.7054</td><td>0.7088</td><td>0.7123</td><td>0.7157</td><td>0.7190</td><td>0.7224</td></tr><tr><td><b>0.6</b></td><td>0.7257</td><td>0.7291</td><td>0.7324</td><td>0.7357</td><td>0.7389</td><td>0.7422</td><td>0.7454</td><td>0.7486</td><td>0.7517</td><td>0.7549</td></tr><tr><td><b>0.7</b></td><td>0.7580</td><td>0.7611</td><td>0.7642</td><td>0.7673</td><td>0.7704</td><td>0.7734</td><td>0.7764</td><td>0.7794</td><td>0.7823</td><td>0.7852</td></tr><tr><td><b>0.8</b></td><td>0.7881</td><td>0.7910</td><td>0.7939</td><td>0.7967</td><td>0.7995</td><td>0.8023</td><td>0.8051</td><td>0.8078</td><td>0.8106</td><td>0.8133</td></tr><tr><td><b>0.9</b></td><td>0.8159</td><td>0.8186</td><td>0.8212</td><td>0.8238</td><td>0.8264</td><td>0.8289</td><td>0.8315</td><td>0.8340</td><td>0.8365</td><td>0.8389</td></tr><tr><td><b>1.0</b></td><td>0.8413</td><td>0.8438</td><td>0.8461</td><td>0.8485</td><td>0.8508</td><td>0.8531</td><td>0.8554</td><td>0.8577</td><td>0.8599</td><td>0.8621</td></tr><tr><td><b>1.1</b></td><td>0.8643</td><td>0.8665</td><td>0.8686</td><td>0.8708</td><td>0.8729</td><td>0.8749</td><td>0.8770</td><td>0.8790</td><td>0.8810</td><td>0.8830</td></tr><tr><td><b>1.2</b></td><td>0.8849</td><td>0.8869</td><td>0.8888</td><td>0.8907</td><td>0.8925</td><td>0.8944</td><td>0.8962</td><td>0.8980</td><td>0.8997</td><td>0.9015</td></tr><tr><td><b>1.3</b></td><td>0.9032</td><td>0.9049</td><td>0.9066</td><td>0.9082</td><td>0.9099</td><td>0.9115</td><td>0.9131</td><td>0.9147</td><td>0.9162</td><td>0.9177</td></tr><tr><td><b>1.4</b></td><td>0.9192</td><td>0.9207</td><td>0.9222</td><td>0.9236</td><td>0.9251</td><td>0.9265</td><td>0.9279</td><td>0.9292</td><td>0.9306</td><td>0.9319</td></tr><tr><td><b>1.5</b></td><td>0.9332</td><td>0.9345</td><td>0.9357</td><td>0.9370</td><td>0.9382</td><td>0.9394</td><td>0.9406</td><td>0.9418</td><td>0.9429</td><td>0.9441</td></tr><tr><td><b>1.6</b></td><td>0.9452</td><td>0.9463</td><td>0.9474</td><td>0.9484</td><td>0.9495</td><td>0.9505</td><td>0.9515</td><td>0.9525</td><td>0.9535</td><td>0.9545</td></tr><tr><td><b>1.7</b></td><td>0.9554</td><td>0.9564</td><td>0.9573</td><td>0.9582</td><td>0.9591</td><td>0.9599</td><td>0.9608</td><td>0.9616</td><td>0.9625</td><td>0.9633</td></tr><tr><td><b>1.8</b></td><td>0.9641</td><td>0.9649</td><td>0.9656</td><td>0.9664</td><td>0.9671</td><td>0.9678</td><td>0.9686</td><td>0.9693</td><td>0.9699</td><td>0.9706</td></tr><tr><td><b>1.9</b></td><td>0.9713</td><td>0.9719</td><td>0.9726</td><td>0.9732</td><td>0.9738</td><td>0.9744</td><td>0.9750</td><td>0.9756</td><td>0.9761</td><td>0.9767</td></tr><tr><td><b>2.0</b></td><td>0.9772</td><td>0.9778</td><td>0.9783</td><td>0.9788</td><td>0.9793</td><td>0.9798</td><td>0.9803</td><td>0.9808</td><td>0.9812</td><td>0.9817</td></tr><tr><td><b>2.1</b></td><td>0.9821</td><td>0.9826</td><td>0.9830</td><td>0.9834</td><td>0.9838</td><td>0.9842</td><td>0.9846</td><td>0.9850</td><td>0.9854</td><td>0.9857</td></tr><tr><td><b>2.2</b></td><td>0.9861</td><td>0.9864</td><td>0.9868</td><td>0.9871</td><td>0.9875</td><td>0.9878</td><td>0.9881</td><td>0.9884</td><td>0.9887</td><td>0.9890</td></tr><tr><td><b>2.3</b></td><td>0.9893</td><td>0.9896</td><td>0.9898</td><td>0.9901</td><td>0.9904</td><td>0.9906</td><td>0.9909</td><td>0.9911</td><td>0.9913</td><td>0.9916</td></tr><tr><td><b>2.4</b></td><td>0.9918</td><td>0.9920</td><td>0.9922</td><td>0.9925</td><td>0.9927</td><td>0.9929</td><td>0.9931</td><td>0.9932</td><td>0.9934</td><td>0.9936</td></tr><tr><td><b>2.5</b></td><td>0.9938</td><td>0.9940</td><td>0.9941</td><td>0.9943</td><td>0.9945</td><td>0.9946</td><td>0.9948</td><td>0.9949</td><td>0.9951</td><td>0.9952</td></tr><tr><td><b>2.6</b></td><td>0.9953</td><td>0.9955</td><td>0.9956</td><td>0.9957</td><td>0.9959</td><td>0.9960</td><td>0.9961</td><td>0.9962</td><td>0.9963</td><td>0.9964</td></tr><tr><td><b>2.7</b></td><td>0.9965</td><td>0.9966</td><td>0.9967</td><td>0.9968</td><td>0.9969</td><td>0.9970</td><td>0.9971</td><td>0.9972</td><td>0.9973</td><td>0.9974</td></tr><tr><td><b>2.8</b></td><td>0.9974</td><td>0.9975</td><td>0.9976</td><td>0.9977</td><td>0.9977</td><td>0.9978</td><td>0.9979</td><td>0.9979</td><td>0.9980</td><td>0.9981</td></tr><tr><td><b>2.9</b></td><td>0.9981</td><td>0.9982</td><td>0.9982</td><td>0.9983</td><td>0.9984</td><td>0.9984</td><td>0.9985</td><td>0.9985</td><td>0.9986</td><td>0.9986</td></tr><tr><td><b>3.0</b></td><td>0.9987</td><td>0.9987</td><td>0.9987</td><td>0.9988</td><td>0.9988</td><td>0.9989</td><td>0.9989</td><td>0.9989</td><td>0.9990</td><td>0.9990</td></tr></tbody></table>
+  <p style="font-size:0.84rem;margin:4px 0 0">Für negative \(z\): \(\Phi(-z) = 1 - \Phi(z)\). Quantile: \(z_{0.9} = 1.28\), \(z_{0.95} = 1.64\) (genauer 1.645), \(z_{0.975} = 1.96\), \(z_{0.99} = 2.33\).</p>
+</div>
+
+<!-- ==================== LÖSUNGEN ==================== -->
+
+<div class="page-break"></div>
+
+<div class="loesung-intro">
+  <h2>Lösungen mit Punkteschema</h2>
+  <p>Vergleiche Schritt für Schritt. Bei Integralen gibt es Teilpunkte für den richtigen Ansatz, auch wenn das Ergebnis falsch ist.</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">Aufgabe 1 · 10 Punkte</span>
+  <p><b>(a)</b> \(c(4 + 3 + 2 + 1) = 10c = 1\) → \(c = \) <span class="key">0.1</span> (1P). Also \(P(X = 1) = 0.4\), \(P(X = 2) = 0.3\), \(P(X = 3) = 0.2\), \(P(X = 4) = 0.1\).</p>
+  <p><b>(b)</b></p>
+  \[ F(x) = \begin{cases} 0 & x \lt 1 \\ 0.4 & 1 \le x \lt 2 \\ 0.7 & 2 \le x \lt 3 \\ 0.9 & 3 \le x \lt 4 \\ 1 & x \ge 4 \end{cases} \]
+  <p>(3P: innere Stufen 2P, Ränder 0 und 1 mit richtigen Grenzen 1P)</p>
+  <p><b>(c)</b> \(E(X) = 0.4 + 0.6 + 0.6 + 0.4 = \) <span class="key">2</span> (1P) · \(E(X^2) = 0.4 + 1.2 + 1.8 + 1.6 = 5\) (1P) · \(\mathrm{Var}(X) = 5 - 4 = \) <span class="key">1</span> (1P)</p>
+  <p><b>(d)</b> \(E(Y) = 2 \cdot 2 - 3 = \) <span class="key">1</span> · \(\mathrm{Var}(Y) = 2^2 \cdot 1 = \) <span class="key">4</span> (je 1P) — die −3 fällt bei der Varianz weg.</p>
+  <p><b>(e)</b> \(P(X \ge 2) = 1 - P(X \le 1) = 1 - 0.4 = \) <span class="key">0.6</span> (1P)</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">Aufgabe 2 · 11 Punkte</span>
+  <p><b>(a)</b> \(\int_0^2 c(2x - x^2)\,dx = c\left[x^2 - \dfrac{x^3}{3}\right]_0^2 = c\left(4 - \frac 83\right) = \frac 43 c \overset!= 1\) → \(c = \) <span class="key">0.75</span> (1P).
+    Zweite Bedingung: \(f(x) \ge 0\) für alle \(x\) — erfüllt, da \(x(2 - x) \ge 0\) auf \([0, 2]\) und \(c \gt 0\). (1P)</p>
+  <p><b>(b)</b> \(F(x) = \int_0^x 0.75(2t - t^2)\,dt = 0.75\left(x^2 - \dfrac{x^3}{3}\right) = 0.75x^2 - 0.25x^3\) für \(0 \le x \le 2\) (2P); \(F = 0\) für \(x \lt 0\), \(F = 1\) für \(x \gt 2\) (1P). Probe: \(F(2) = 3 - 2 = 1\) ✓</p>
+  <p><b>(c)</b> \(P(X \gt 1.5) = 1 - F(1.5) = 1 - (0.75 \cdot 2.25 - 0.25 \cdot 3.375) = 1 - (1.6875 - 0.84375) = \) <span class="key">0.156</span> (0.15625) (2P)</p>
+  <p><b>(d)</b> Die Dichte ist symmetrisch um \(x = 1\) (\(f(1 + h) = f(1 - h)\)) → \(E(X) = \) <span class="key">1</span> (1P)</p>
+  <p><b>(e)</b> \(E(X^2) = \int_0^2 x^2 \cdot 0.75(2x - x^2)\,dx = 0.75\left[\dfrac{x^4}{2} - \dfrac{x^5}{5}\right]_0^2 = 0.75\,(8 - 6.4) = 1.2\) (2P) ·
+    \(\mathrm{Var}(X) = 1.2 - 1^2 = \) <span class="key">0.2</span> (1P)</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">Aufgabe 3 · 12 Punkte</span>
+  <p><b>(a)</b> Anzahl von Ereignissen in einem Zeitraum ohne Obergrenze → <span class="key">\(X \sim Po(3)\)</span> (1P)</p>
+  <p><b>(b)</b> \(P(X = 2) = \dfrac{3^2}{2!}e^{-3} = 4.5 \cdot 0.0498 = \) <span class="key">0.224</span> (2P)</p>
+  <p><b>(c)</b> \(P(X \ge 2) = 1 - P(X = 0) - P(X = 1) = 1 - e^{-3}(1 + 3) = 1 - 0.1991 = \) <span class="key">0.801</span> (2P)</p>
+  <p><b>(d)</b> \(P(T \gt 5) = 1 - F(5) = e^{-0.3 \cdot 5} = e^{-1.5} = \) <span class="key">0.223</span> (2P)</p>
+  <p><b>(e)</b> <span class="key">(2)</span>: \(P(X \gt 2) = 1 - P(X \le 2)\) (2P). (3) wäre \(1 - P(X = 2)\), (4) wäre \(P(X \gt 3)\).</p>
+  <p><b>(f)</b> \(Y \sim B(50, 0.1)\) (1P) · \(E(Y) = 5\), \(\mathrm{Var}(Y) = 4.5\) (1P) ·
+    \(P(Y \le 1) = 0.9^{50} + 50 \cdot 0.1 \cdot 0.9^{49} = 0.0052 + 0.0286 = \) <span class="key">0.034</span> (1P)</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">Aufgabe 4 · 9 Punkte</span>
+  <p>\(N(500, 16)\) → \(\sigma = 4\)!</p>
+  <p><b>(a)</b> \(P(X \lt 506) = \Phi\left(\dfrac{506 - 500}{4}\right) = \Phi(1.5) = \) <span class="key">0.933</span> (0.9332) (2P)</p>
+  <p><b>(b)</b> \(\Phi(0.5) - \Phi(-1.5) = 0.6915 - (1 - 0.9332) = 0.6915 - 0.0668 = \) <span class="key">0.625</span> (0.6247) (2P)</p>
+  <p><b>(c)</b> Gesucht \(q_{0.95} = \mu + \sigma z_{0.95} = 500 + 4 \cdot 1.64 = \) <span class="key">506.56</span> g (mit 1.645: 506.58) (2P)</p>
+  <p><b>(d)</b> \(S \sim N(10 \cdot 500,\; 10 \cdot 16) = N(5000, 160)\) (1P), \(\sigma_S = \sqrt{160} = 12.6491\) (1P)</p>
+  <p>\(P(S \gt 5010) = 1 - \Phi\left(\dfrac{10}{12.6491}\right) = 1 - \Phi(0.79) = 1 - 0.7852 = \) <span class="key">0.215</span> (1P)</p>
+</div>
+
+<div class="sol">
+  <span class="sol-num">Aufgabe 5 · 4 Punkte</span>
+  <p><b>(a)</b> \(E(\bar X) = 4\), \(\mathrm{Var}(\bar X) = \dfrac{9}{100} = 0.09\) → \(\bar X \overset a\sim N(4, 0.09)\) (2P)</p>
+  <p><b>(b)</b> \(P(\bar X \gt 4.45) = 1 - \Phi\left(\dfrac{4.45 - 4}{0.3}\right) = 1 - \Phi(1.5) = 1 - 0.9332 = \) <span class="key">0.067</span> (2P)</p>
+</div>
+
+<div class="score">
+  <h3>Deine Auswertung</h3>
+  <table>
+    <thead><tr><th style="width:110px">Punkte</th><th>Was das bedeutet</th></tr></thead>
+    <tbody>
+      <tr><td><b>39 – 46</b></td><td>Sehr gut. Du bist bereit für Maximum-Likelihood und Tests.</td></tr>
+      <tr><td><b>30 – 38</b></td><td>Gut. Themen-Tabelle nutzen, gezielt wiederholen.</td></tr>
+      <tr><td><b>20 – 29</b></td><td>Schritt 5–7 (Integrale) und 11 (Normalverteilung) wiederholen, dann Aufgabe 2 und 4 erneut.</td></tr>
+      <tr><td><b>0 – 19</b></td><td>Block A und B morgen früh noch einmal, dann die Simulation wiederholen, bevor du Tag 4 beginnst.</td></tr>
+    </tbody>
+  </table>
+  <table class="topic-score">
+    <thead><tr><th>Themenblock</th><th>Aufgaben</th><th>zurück zu</th></tr></thead>
+    <tbody>
+      <tr><td>Diskrete ZV, \(E\), Var, Regeln</td><td>1</td><td>Schritt 2–4</td></tr>
+      <tr><td>Dichte, Verteilungsfunktion, Integrale</td><td>2</td><td>Schritt 5–7</td></tr>
+      <tr><td>Binomial, Poisson, Exponential, R</td><td>3</td><td>Schritt 8–10, 13</td></tr>
+      <tr><td>Normalverteilung, ZGWS</td><td>4, 5</td><td>Schritt 11–12</td></tr>
+    </tbody>
+  </table>
+</div>
