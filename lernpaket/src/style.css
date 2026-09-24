@@ -1,0 +1,134 @@
+:root{
+  --ink:#1f2937; --muted:#5b6474; --line:#e3e7ee; --bg:#ffffff;
+  --c:#0f766e; --c-soft:#e6f4f2; --c-dark:#0b4f49;
+  --merke:#fff7d6; --merke-b:#e9b949;
+  --formel:#eaf2ff; --formel-b:#3b6fd8;
+  --bsp:#f4f6f9; --bsp-b:#9aa5b8;
+  --achtung:#fdecec; --achtung-b:#d64545;
+  --tipp:#e8f7ec; --tipp-b:#2f9e5a;
+  --frage:#f2edff; --frage-b:#7453d6;
+  --code:#1e2433; --code-ink:#e6e9f2;
+}
+.t1{--c:#0f766e;--c-soft:#e3f3f1;--c-dark:#0b4f49}
+.t2{--c:#6d3fc6;--c-soft:#efe9fb;--c-dark:#4a2a8a}
+.t3{--c:#d9601c;--c-soft:#fdeee4;--c-dark:#9a4212}
+.t4{--c:#1d63c4;--c-soft:#e5eefb;--c-dark:#134187}
+.t5{--c:#1f8a4c;--c-soft:#e4f4ea;--c-dark:#145c32}
+.t0{--c:#334155;--c-soft:#eef1f5;--c-dark:#1e293b}
+
+*{box-sizing:border-box}
+html{font-size:10.4pt}
+body{margin:0;color:var(--ink);background:var(--bg);font-family:'Nunito',Arial,sans-serif;line-height:1.5;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+p{margin:.35em 0 .6em}
+ul,ol{margin:.3em 0 .7em;padding-left:1.3em}
+li{margin:.15em 0}
+b,strong{font-weight:800}
+code{font-family:'JetBrains Mono',monospace;font-size:.86em;background:#eef1f6;padding:.05em .3em;border-radius:3px}
+.katex{font-size:1.06em}
+.katex-display{margin:.5em 0}
+
+/* ---------- Titel ---------- */
+.cover{height:262mm;display:flex;flex-direction:column;justify-content:space-between;
+  background:linear-gradient(150deg,#0f766e 0%,#1d63c4 55%,#6d3fc6 100%);color:#fff;border-radius:14px;padding:22mm 18mm;
+  page-break-after:always}
+.cover .kicker{letter-spacing:.2em;text-transform:uppercase;font-weight:800;font-size:.85rem;opacity:.85}
+.cover h1{font-size:3.1rem;line-height:1.05;margin:.3em 0 .2em;font-weight:900}
+.cover .sub{font-size:1.25rem;opacity:.95;max-width:125mm}
+.cover .days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10mm}
+.cover .days div{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:10px;padding:8px 9px;font-size:.8rem;line-height:1.3}
+.cover .days b{display:block;font-size:1.05rem}
+.cover .foot{font-size:.85rem;opacity:.9}
+
+/* ---------- Tagesdeckblatt ---------- */
+.daycover{page-break-before:always;border-radius:14px;background:var(--c);color:#fff;padding:14mm 13mm 11mm;margin-bottom:8mm;position:relative;overflow:hidden}
+.daycover::after{content:attr(data-n);position:absolute;right:8mm;top:-6mm;font-size:9rem;font-weight:900;opacity:.14;line-height:1}
+.daycover .kicker{text-transform:uppercase;letter-spacing:.18em;font-weight:800;font-size:.8rem;opacity:.9}
+.daycover h1{font-size:2.3rem;margin:.15em 0 .25em;font-weight:900;line-height:1.1}
+.daycover p{opacity:.95;max-width:150mm}
+.daycover .chips{margin-top:4mm}
+.chip{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:2px 10px;margin:2px 4px 2px 0;font-size:.8rem;font-weight:700}
+
+.plan{width:100%;border-collapse:separate;border-spacing:0;margin:.4em 0 1em;font-size:.92rem}
+.plan th{background:var(--c-soft);color:var(--c-dark);text-align:left;padding:6px 8px;font-weight:800}
+.plan td{border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.plan td:first-child{white-space:nowrap;font-weight:800;color:var(--c-dark)}
+
+/* ---------- Überschriften ---------- */
+h2.lek{font-size:1.45rem;font-weight:900;color:var(--c-dark);margin:1.3em 0 .4em;display:flex;align-items:center;gap:10px;
+  page-break-after:avoid;break-after:avoid}
+h2.lek .num{background:var(--c);color:#fff;border-radius:8px;padding:1px 9px;font-size:1.05rem}
+h2.lek .ear{margin-left:auto;font-size:.7rem;font-weight:800;color:var(--c);border:1.5px solid var(--c);border-radius:99px;padding:1px 9px;white-space:nowrap}
+h2.lek.neu{page-break-before:always}
+h3{font-size:1.1rem;font-weight:800;color:var(--c-dark);margin:1em 0 .3em;page-break-after:avoid;break-after:avoid}
+h4{font-size:.98rem;font-weight:800;margin:.8em 0 .2em;page-break-after:avoid}
+
+/* ---------- Boxen ---------- */
+.box{border-radius:10px;padding:9px 12px 7px;margin:.7em 0;border-left:5px solid;page-break-inside:avoid;break-inside:avoid}
+.box > .t{font-weight:900;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+.box.merke{background:var(--merke);border-color:var(--merke-b)} .box.merke>.t{color:#9a6a00}
+.box.formel{background:var(--formel);border-color:var(--formel-b)} .box.formel>.t{color:#224a9c}
+.box.bsp{background:var(--bsp);border-color:var(--bsp-b)} .box.bsp>.t{color:#4b5566}
+.box.achtung{background:var(--achtung);border-color:var(--achtung-b)} .box.achtung>.t{color:#a32222}
+.box.tipp{background:var(--tipp);border-color:var(--tipp-b)} .box.tipp>.t{color:#1c6e3d}
+.box.frage{background:var(--frage);border-color:var(--frage-b)} .box.frage>.t{color:#4d33a3}
+.box.rbox{background:#f3f5fa;border-color:#1e2433} .box.rbox>.t{color:#1e2433}
+.box.lang{page-break-inside:auto;break-inside:auto}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:.2em}
+
+/* Kontrollfragen */
+ol.fragen{counter-reset:q;list-style:none;padding-left:0}
+ol.fragen>li{counter-increment:q;position:relative;padding-left:2.1em;margin:.35em 0}
+ol.fragen>li::before{content:counter(q);position:absolute;left:0;top:.05em;width:1.5em;height:1.5em;border-radius:50%;background:var(--frage-b);color:#fff;
+  font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+.linie{display:block;border-bottom:1px dashed #b9b2d9;height:1.4em;margin:.1em 0}
+
+/* ---------- Code ---------- */
+pre{font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.45;background:var(--code);color:var(--code-ink);border-radius:9px;
+  padding:9px 12px;margin:.5em 0;white-space:pre-wrap;page-break-inside:avoid;break-inside:avoid}
+pre .c{color:#8b97b3;font-style:italic} pre .o{color:#9fe0b5} pre .k{color:#ffcf73}
+pre.out{background:#f0f2f6;color:#1f2937;border:1px dashed #b7bfcd}
+
+/* ---------- Tabellen ---------- */
+table.tab{border-collapse:collapse;margin:.5em 0 .8em;font-size:.9rem;page-break-inside:avoid}
+table.tab th,table.tab td{border:1px solid #cfd6e2;padding:4px 8px;text-align:center}
+table.tab th{background:var(--c-soft);color:var(--c-dark);font-weight:800}
+table.tab td.l,table.tab th.l{text-align:left}
+table.wide{width:100%}
+
+/* ---------- Abbildungen ---------- */
+figure{margin:.6em 0 .9em;text-align:center;page-break-inside:avoid}
+figure img{max-width:100%}
+figcaption{font-size:.82rem;color:var(--muted);margin-top:2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+
+/* ---------- Lösungen ---------- */
+.loes{page-break-before:always}
+.loes h2{font-size:1.4rem;font-weight:900;color:var(--c-dark);border-bottom:3px solid var(--c);padding-bottom:3px}
+.loes ol>li{margin:.4em 0}
+.small{font-size:.88rem}
+.muted{color:var(--muted)}
+.center{text-align:center}
+.nobreak{page-break-inside:avoid}
+.pb{page-break-before:always}
+
+/* Checkliste */
+ul.check{list-style:none;padding-left:0}
+ul.check li{padding-left:1.6em;position:relative}
+ul.check li::before{content:"";position:absolute;left:0;top:.25em;width:.95em;height:.95em;border:2px solid var(--c);border-radius:3px}
+
+/* Glossar */
+table.gloss{width:100%;border-collapse:collapse;font-size:.88rem;margin:.4em 0}
+table.gloss td{border-bottom:1px solid var(--line);padding:3px 6px;vertical-align:top}
+table.gloss td:first-child{font-weight:800;color:var(--c-dark);width:30%}
+table.gloss td:nth-child(2){font-style:italic;color:#8a3b12;width:26%}
+
+.toc{columns:2;column-gap:10mm;font-size:.92rem}
+.toc div{break-inside:avoid;margin-bottom:.5em}
+.toc b{color:var(--c-dark)}
+.steps{counter-reset:s;list-style:none;padding-left:0}
+.steps>li{counter-increment:s;padding-left:2em;position:relative;margin:.35em 0}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;background:var(--c);color:#fff;border-radius:6px;width:1.45em;text-align:center;font-weight:800;font-size:.85rem}
+.kasten{border:2px solid var(--c);border-radius:10px;padding:8px 12px;margin:.6em 0;page-break-inside:avoid}
+pre,code{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}

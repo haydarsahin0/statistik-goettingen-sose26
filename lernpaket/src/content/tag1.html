@@ -1,0 +1,471 @@
+<section class="t1">
+<div class="daycover" data-n="1">
+  <div class="kicker">Tag 1 · Vorlesungen V01–V03 · Tutorien 1–3 · Testate 1–2</div>
+  <h1>Daten beschreiben:<br>deskriptive Statistik</h1>
+  <p>Heute lernst du die Sprache der Statistik. Du lernst, wie man Daten ordnet, zeichnet und mit wenigen Zahlen beschreibt – für ein Merkmal und für zwei Merkmale zusammen. Am Ende machst du die ersten Schritte in R.</p>
+  <div class="chips"><span class="chip">Skalenniveau</span><span class="chip">Histogramm</span><span class="chip">Verteilungsfunktion</span><span class="chip">Mittelwert &amp; Median</span><span class="chip">Varianz</span><span class="chip">Boxplot</span><span class="chip">Korrelation</span><span class="chip">R-Start</span></div>
+</div>
+
+<table class="plan">
+<tr><th>Zeit</th><th>Was du machst</th></tr>
+<tr><td>09:00–10:30</td><td>Hörtext 0 + 1.1–1.3 hören und mitlesen, Kontrollfragen 1.1–1.3</td></tr>
+<tr><td>10:45–12:30</td><td>Hörtext 1.4–1.6 (Häufigkeiten, Lagemaße, Streuung), alle Beispiele mitrechnen</td></tr>
+<tr><td>13:30–15:00</td><td>Hörtext 1.7–1.8 (Zusammenhänge), Kontrollfragen</td></tr>
+<tr><td>15:15–16:30</td><td>1.9 R-Start: RStudio öffnen, alle Befehle abtippen</td></tr>
+<tr><td>16:45–18:00</td><td>Klausuraufgaben Tag 1 rechnen, mit Lösungen vergleichen, Formelblatt ergänzen</td></tr>
+</table>
+
+<!-- ============ 1.1 ============ -->
+<h2 class="lek"><span class="num">1.1</span> Grundbegriffe der Statistik <span class="ear">Hörtext 1.1</span></h2>
+<p>Statistik beschreibt und analysiert <b>Daten</b>. Bevor wir rechnen, brauchen wir ein paar Wörter:</p>
+<table class="tab wide">
+<tr><th class="l">Begriff</th><th class="l">Bedeutung</th><th class="l">Beispiel: Wahlumfrage</th></tr>
+<tr><td class="l"><b>statistische Einheit</b></td><td class="l">Das Objekt, an dem wir etwas messen</td><td class="l">eine wahlberechtigte Person</td></tr>
+<tr><td class="l"><b>Grundgesamtheit</b> (Population)</td><td class="l">Alle Einheiten, die für die Frage wichtig sind</td><td class="l">alle Wahlberechtigten in Deutschland</td></tr>
+<tr><td class="l"><b>Stichprobe</b></td><td class="l">Der Teil der Grundgesamtheit, den wir wirklich untersuchen</td><td class="l">die 1000 befragten Personen</td></tr>
+<tr><td class="l"><b>Merkmal</b> (Variable) \(X\)</td><td class="l">Eigenschaft, die wir messen (Großbuchstabe)</td><td class="l">Alter, Partei</td></tr>
+<tr><td class="l"><b>Merkmalsausprägung</b> \(x\)</td><td class="l">Der konkrete Wert bei einer Einheit (Kleinbuchstabe)</td><td class="l">23 Jahre, SPD</td></tr>
+</table>
+<div class="box merke"><div class="t">Merke</div>
+<p>Meistens kennen wir nur eine <b>Stichprobe</b>. Die große Aufgabe der Statistik ist: von der Stichprobe auf die <b>Grundgesamtheit</b> schließen – und dabei die <b>Unsicherheit</b> angeben. Das nennt man <b>induktive Statistik</b> (Tag 3 und 4). Heute machen wir <b>deskriptive Statistik</b>: Wir beschreiben nur die Daten, die wir haben.</p></div>
+<p><b>Störvariablen</b> sind Merkmale, die das Ergebnis auch beeinflussen, die uns aber gerade nicht interessieren (z.&nbsp;B. Vorwissen, wenn wir eine neue Lehrmethode testen). Man kontrolliert sie durch <b>Homogenisierung</b> (Gruppen bilden), <b>Randomisierung</b> (zufällig in Gruppen einteilen) oder <b>statistische Modellierung</b>.</p>
+
+<!-- ============ 1.2 ============ -->
+<h2 class="lek"><span class="num">1.2</span> Merkmalstypen und Skalenniveaus <span class="ear">Hörtext 1.2</span></h2>
+<h3>Diskret oder stetig?</h3>
+<div class="two">
+<div class="kasten"><b>diskret</b>: endlich viele oder <b>abzählbar</b> unendlich viele Werte (man kann sie durchzählen: 0, 1, 2, …).<br><span class="small muted">Beispiele: Anzahl Likes, Anzahl Mensabesuche, Partei, Studienfach, Alter in ganzen Jahren</span></div>
+<div class="kasten"><b>stetig</b>: <b>überabzählbar</b> viele Werte, jede reelle Zahl in einem Intervall ist möglich.<br><span class="small muted">Beispiele: Körpergröße, Einkommen in Euro, Liter Bier, Zeit, Gewinn einer Firma</span></div>
+</div>
+<p>Stetige Merkmale sind immer auch <b>metrisch</b> (kardinal). Geld (Einkommen in Euro) wird in der Statistik meist als <b>stetig</b> behandelt (quasi-stetig), weil es sehr viele mögliche Werte hat.</p>
+
+<h3>Die drei Skalenniveaus</h3>
+<table class="tab wide">
+<tr><th>Skala</th><th class="l">Was kann man machen?</th><th class="l">Beispiele</th><th>Häufigkeiten</th><th>Reihenfolge</th><th>Abstände</th></tr>
+<tr><td><b>nominal</b></td><td class="l">nur Namen / Kategorien, keine Ordnung</td><td class="l">Partei, Nationalität, Mensastandort, Herkunft (BY/NRW), Geschlecht</td><td>ja</td><td>nein</td><td>nein</td></tr>
+<tr><td><b>ordinal</b></td><td class="l">man kann sortieren, aber Abstände sind nicht sinnvoll</td><td class="l">Schulnoten, Zufriedenheit 1–7, Rang im Wettkampf</td><td>ja</td><td>ja</td><td>nein</td></tr>
+<tr><td><b>kardinal</b> (metrisch)</td><td class="l">Zahlen mit sinnvollen Abständen (und meist Verhältnissen)</td><td class="l">Alter, Einkommen, Körpergröße, Punkte 0–100, Anzahl</td><td>ja</td><td>ja</td><td>ja</td></tr>
+</table>
+<div class="box achtung"><div class="t">Achtung – typische Fehler</div>
+<ul>
+<li>Eine Skala „von 1 bis 5“ oder „von 1 bis 7“ (Zufriedenheit) ist <b>ordinal</b>, nicht kardinal – auch wenn es Zahlen sind! Der Abstand von 1 zu 2 ist nicht unbedingt gleich wie von 6 zu 7.</li>
+<li>Punkte in einem Test (0–100) sind <b>kardinal</b>: 80 Punkte sind 20 Punkte mehr als 60.</li>
+<li>Ein 0/1-Merkmal (richtig/falsch, ja/nein) ist <b>nominal</b> (binär). Man darf trotzdem den Mittelwert ausrechnen: er ist der <b>Anteil</b> der Einsen.</li>
+<li>„Diskret“ heißt nicht „endlich“: auch abzählbar unendlich viele Werte (0, 1, 2, … ohne Ende) sind diskret.</li>
+</ul></div>
+<div class="box bsp"><div class="t">Beispiel aus Testat 1 (Mensa-Umfrage)</div>
+<table class="tab">
+<tr><th class="l">Merkmal</th><th>Skala</th><th>diskret/stetig</th></tr>
+<tr><td class="l">Alter in ganzen Jahren</td><td>kardinal</td><td>diskret</td></tr>
+<tr><td class="l">Anzahl Mensabesuche letzte Woche</td><td>kardinal</td><td>diskret</td></tr>
+<tr><td class="l">Präferierter Mensastandort</td><td>nominal</td><td>diskret</td></tr>
+<tr><td class="l">Zufriedenheit 1 bis 7</td><td>ordinal</td><td>diskret</td></tr>
+<tr><td class="l">Monatseinkommen in Euro</td><td>kardinal</td><td>stetig</td></tr>
+</table></div>
+
+<!-- ============ 1.3 ============ -->
+<h2 class="lek"><span class="num">1.3</span> Wie zieht man eine Stichprobe? <span class="ear">Hörtext 1.3</span></h2>
+<p>Eine gute Stichprobe ist <b>repräsentativ</b>: Sie sieht im Kleinen so aus wie die Grundgesamtheit.</p>
+<table class="tab wide">
+<tr><th class="l">Verfahren</th><th class="l">Wie?</th><th class="l">Wann sinnvoll?</th></tr>
+<tr><td class="l"><b>Einfache Zufallsstichprobe</b></td><td class="l">Ziehen ohne Zurücklegen aus der Liste aller Einheiten; jede Einheit und jede mögliche Stichprobe hat die gleiche Chance</td><td class="l">Standardfall; nur zufällige, keine systematischen Unterschiede</td></tr>
+<tr><td class="l"><b>Geschichtete Stichprobe</b></td><td class="l">Grundgesamtheit in Gruppen (Schichten) teilen, dann in <b>jeder</b> Schicht zufällig ziehen</td><td class="l">Gruppen sollen passend vertreten sein (z.&nbsp;B. jeder Studiengang mit seinem Anteil). Anteile müssen bekannt sein.</td></tr>
+<tr><td class="l"><b>Klumpenstichprobe</b></td><td class="l">Zufällig ganze Klumpen ziehen (Schulklassen, Städte, Familien) und darin alle / viele befragen</td><td class="l">billig und einfach; Klumpen sollen innen sehr verschieden, untereinander ähnlich sein</td></tr>
+<tr><td class="l"><b>Quotenverfahren</b> (bewusste Auswahl)</td><td class="l">Feste Quoten müssen erfüllt sein (z.&nbsp;B. 50&nbsp;% Frauen)</td><td class="l">Umfragen, die „repräsentativ für Bevölkerungsgruppen“ sein sollen</td></tr>
+</table>
+<div class="box bsp"><div class="t">Beispiele aus Tutorium 1 und Testat 1</div>
+<ul>
+<li>Leistungen aller Zehntklässler in Deutschland, getestet an Schulen in Göttingen → <b>Klumpenstichprobe</b>.</li>
+<li>Umfrage, die repräsentativ für Bevölkerungsgruppen sein soll → <b>Quotenverfahren</b> oder <b>geschichtete Stichprobe</b>.</li>
+<li>Der Anteil jedes Studiengangs in der Stichprobe soll dem Anteil an allen Studierenden entsprechen → <b>geschichtete Stichprobe / Quotenverfahren</b>.</li>
+</ul></div>
+<div class="box frage"><div class="t">Kontrollfragen 1.1 – 1.3</div>
+<ol class="fragen">
+<li>Eine Firma befragt 200 ihrer 5000 Kunden zur Zufriedenheit. Nenne Einheit, Grundgesamtheit, Stichprobe.</li>
+<li>Bestimme Skala und diskret/stetig: (a) Wartezeit in Minuten, (b) Hotelsterne 1–5, (c) Blutgruppe, (d) Anzahl Geschwister.</li>
+<li>Richtig oder falsch? „Ein diskretes Merkmal kann nur endlich viele Werte annehmen.“</li>
+<li>Du willst Göttinger Haushalte befragen und wählst zufällig 20 Straßen aus. Dort befragst du alle Haushalte. Welches Verfahren ist das?</li>
+</ol></div>
+
+<!-- ============ 1.4 ============ -->
+<h2 class="lek neu"><span class="num">1.4</span> Häufigkeiten, Histogramm und Verteilungsfunktion <span class="ear">Hörtext 1.4</span></h2>
+<p>Wir haben Beobachtungen \(x_1,\dots,x_n\) (\(n\) = Stichprobenumfang). Die möglichen Werte heißen \(a_1 &lt; a_2 &lt; \dots &lt; a_J\).</p>
+<div class="box formel"><div class="t">Formel: Häufigkeiten</div>
+\[h_j = \text{absolute Häufigkeit von } a_j,\qquad f_j=\frac{h_j}{n}\ \text{(relative Häufigkeit)},\qquad \sum_j f_j = 1\]
+\[H_j = h_1+\dots+h_j \ \text{(kumuliert absolut)},\qquad F_j=\frac{H_j}{n}\ \text{(kumuliert relativ)}\]
+</div>
+<div class="box bsp"><div class="t">Beispiel (Tutorium 2): Semesterzahlen von n = 23 Studierenden</div>
+<table class="tab">
+<tr><th>Semester \(a_j\)</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><th>Σ</th></tr>
+<tr><th>\(h_j\)</th><td>1</td><td>7</td><td>5</td><td>5</td><td>1</td><td>4</td><td>23</td></tr>
+<tr><th>\(f_j\)</th><td>1/23</td><td>7/23</td><td>5/23</td><td>5/23</td><td>1/23</td><td>4/23</td><td>1</td></tr>
+<tr><th>\(F_j\)</th><td>1/23</td><td>8/23</td><td>13/23</td><td>18/23</td><td>19/23</td><td>23/23</td><td></td></tr>
+</table>
+<p>Anteil „mehr als 3 Semester“: \(1-F(3) = 1-\tfrac{8}{23}=\tfrac{15}{23}\). Anteil „mindestens 3“: \(1-\tfrac{1}{23}=\tfrac{22}{23}\). Anteil „kleiner als 4“ \(=F(3)=\tfrac{8}{23}\).</p></div>
+<div class="box achtung"><div class="t">Achtung</div>Bei diskreten Daten ist „größer als 3“ (\(&gt;3\)) etwas anderes als „mindestens 3“ (\(\ge 3\)). Lies die Wörter genau!</div>
+
+<h3>Säulendiagramm oder Histogramm?</h3>
+<p>Bei stetigen Daten bilden wir <b>Klassen</b> (Intervalle), z.&nbsp;B. \([0,10], (10,20], (20,100]\).</p>
+<ul>
+<li><b>Säulendiagramm</b>: Die <b>Höhe</b> der Säule ist die Häufigkeit. Bei ungleich breiten Klassen sieht das falsch aus (breite Klassen wirken zu groß).</li>
+<li><b>Histogramm</b>: Die <b>Fläche</b> der Säule ist die relative Häufigkeit. Die Gesamtfläche ist <b>1</b>. Das ist in dieser Vorlesung der „Goldstandard“.</li>
+</ul>
+<div class="box formel"><div class="t">Formel: Höhe im Histogramm (Dichte)</div>
+\[\text{Höhe}_j=\frac{f_j}{\text{Klassenbreite}_j}=\frac{h_j}{n\cdot(c_j-c_{j-1})}\qquad\Longrightarrow\qquad\text{Fläche}_j = f_j\]
+</div>
+<figure><img src="fig/saeule_hist.svg" style="width:94%"><figcaption>Gleiche Daten (Zimmergrößen, R-Skript V02), links Säulendiagramm, rechts Histogramm. Die breite Klasse (20,100] sieht links riesig aus – rechts ist sie richtig flach.</figcaption></figure>
+<div class="box bsp"><div class="t">Beispiel: Anteil aus einem Histogramm schätzen (Tutorium 2, Aufgabe 1)</div>
+<p>20 Personen, Klassenbreite 5 cm; in (165,170] liegen 3 Personen, in (170,175] liegen 5 Personen. Gesucht: Anteil in \((167, 172]\).</p>
+<p><b>Annahme</b>: Innerhalb einer Klasse sind die Werte <b>gleichmäßig verteilt</b>. Dann nimmt man vom Anteil der Klasse nur den passenden Teil:</p>
+\[\underbrace{\tfrac{3}{5}\cdot\tfrac{3}{20}}_{(167,170]}+\underbrace{\tfrac{2}{5}\cdot\tfrac{5}{20}}_{(170,172]} = 0.09+0.10 = 0.19\]
+<p>Die Höhe im normierten Histogramm für (170,175] wäre \(\frac{5}{20\cdot 5}=0.05\).</p></div>
+
+<h3>Die empirische Verteilungsfunktion</h3>
+<div class="box formel"><div class="t">Formel</div>
+\[\hat F(x)=\frac{\text{Anzahl der } x_i \le x}{n}\qquad(\text{Anteil der Werte, die höchstens } x \text{ sind})\]
+</div>
+<p>Sie ist eine <b>Treppenfunktion</b>: Sie startet bei 0, springt an jedem beobachteten Wert nach oben (um \(f_j\)) und endet bei 1.</p>
+<div class="box bsp lang"><div class="t">Klausuraufgabe (Probeklausur A, Aufgabe 2b, 6 Punkte!): Bierkonsum</div>
+<p>Daten (Liter): 8.5, 8.5, 4.0, 4.0, 12.0, 12.0, 8.5, 15.7, 4.0, 8.5. Also \(n=10\).</p>
+<p><b>Schritt 1 – sortieren und zählen:</b> 4.0 kommt 3-mal vor, 8.5 kommt 4-mal, 12.0 kommt 2-mal, 15.7 kommt 1-mal.</p>
+<p><b>Schritt 2 – kumulieren:</b> \(0.3,\ 0.3+0.4=0.7,\ 0.7+0.2=0.9,\ 0.9+0.1=1\).</p>
+\[\hat F(x)=\begin{cases}0 &amp; x&lt;4\\ 0.3 &amp; 4\le x&lt;8.5\\ 0.7 &amp; 8.5\le x&lt;12\\ 0.9 &amp; 12\le x&lt;15.7\\ 1 &amp; x\ge 15.7\end{cases}\]
+<figure><img src="fig/ecdf_bier.svg" style="width:72%"></figure>
+</div>
+<div class="box tipp"><div class="t">Klausur-Tipp: So bekommst du alle 6 Punkte beim Zeichnen</div>
+<ul><li>Achsen beschriften (x-Achse mit Einheit, y-Achse \(\hat F(x)\)) und Werte an die Achsen schreiben.</li>
+<li>Waagerechte Stufen, <b>keine</b> senkrechten Linien verbinden.</li>
+<li>Voller Punkt ● am linken Ende jeder Stufe (Wert gehört dazu), offener Kreis ○ am rechten Ende.</li>
+<li>Links bei 0 anfangen, rechts bei 1 enden, Pfeil nach rechts (geht bis unendlich weiter).</li></ul></div>
+
+<!-- ============ 1.5 ============ -->
+<h2 class="lek neu"><span class="num">1.5</span> Lagemaße: Wo ist die Mitte? <span class="ear">Hörtext 1.5</span></h2>
+<div class="box formel"><div class="t">Formel: Die drei Lagemaße</div>
+<p><b>Arithmetisches Mittel</b> (Durchschnitt):</p>
+\[\bar x=\frac1n\sum_{i=1}^n x_i=\sum_{j=1}^J a_j f_j\]
+<p><b>Median</b> (die Mitte der <b>sortierten</b> Werte \(x_{(1)}\le\dots\le x_{(n)}\)):</p>
+\[x_{med}=\begin{cases}x_{\left(\frac{n+1}{2}\right)} &amp; n \text{ ungerade}\\[4pt] \in\left[x_{(n/2)},\,x_{(n/2+1)}\right],\ \text{meist } \dfrac{x_{(n/2)}+x_{(n/2+1)}}{2} &amp; n\text{ gerade}\end{cases}\]
+<p><b>Modus</b> \(x_{mod}\): der Wert, der am häufigsten vorkommt.</p>
+</div>
+<table class="tab wide">
+<tr><th>Lagemaß</th><th class="l">ab welcher Skala?</th><th class="l">Eigenschaft</th></tr>
+<tr><td>Modus</td><td class="l">jede Skala (auch nominal)</td><td class="l">bei stetigen Daten oft nicht sinnvoll</td></tr>
+<tr><td>Median</td><td class="l">ab ordinal</td><td class="l"><b>robust</b> gegen Ausreißer</td></tr>
+<tr><td>Mittelwert</td><td class="l">kardinal (auch für 0/1-Daten → Anteil)</td><td class="l">empfindlich gegen Ausreißer; \(\sum(x_i-\bar x)=0\)</td></tr>
+</table>
+<div class="box bsp"><div class="t">Beispiel: Ausreißer (Tutorium 2)</div>
+<p>Datensatz I: 5, 6, 7, 8, <b>14</b> → \(\bar x = 8\), \(x_{med}=7\). Datensatz II: 5, 6, 7, 8, 9 → \(\bar x = 7\), \(x_{med}=7\).<br>Nur ein Wert ist anders. Der Mittelwert ändert sich, der Median nicht. <b>Der Median ist robuster gegenüber Extremwerten.</b> (Diesen Satz wollte die Probeklausur B als Antwort sehen!)</p></div>
+<div class="box bsp"><div class="t">Beispiel: Semesterzahlen (n = 23)</div>
+<p>\(\bar x = \frac{1}{23}(2\cdot1+3\cdot7+4\cdot5+5\cdot5+6\cdot1+7\cdot4)=\frac{102}{23}=4.435\).<br>
+Median: \(n=23\) ungerade → \(x_{(12)}\). Sortiert: 2, 3,3,3,3,3,3,3, 4,4,4,<b>4</b>,… → \(x_{med}=4\). Modus: 3 (kommt 7-mal vor).</p></div>
+<h3>Lagemaße und Form der Verteilung</h3>
+<figure><img src="fig/schiefe.svg" style="width:98%"></figure>
+<div class="box merke"><div class="t">Merke</div>
+<p><b>rechtsschief</b> (= linkssteil, langer Schwanz nach rechts): \(\bar x &gt; x_{med} &gt; x_{mod}\). Typisch für Einkommen.<br>
+<b>symmetrisch</b>: \(\bar x\approx x_{med}\approx x_{mod}\).<br>
+<b>linksschief</b> (= rechtssteil): \(\bar x &lt; x_{med} &lt; x_{mod}\).<br>
+Eselsbrücke: Der Mittelwert wird vom langen Schwanz „weggezogen“.</p></div>
+<h3>Rechenregeln</h3>
+<ul>
+<li><b>Lineare Transformation</b> \(y_i=a+b\,x_i\): \(\bar y = a+b\,\bar x\).</li>
+<li><b>Monotone Transformation</b> \(y_i=g(x_i)\) (z.&nbsp;B. log): \(y_{med}=g(x_{med})\). Für den Mittelwert gilt das <b>nicht</b>.</li>
+<li><b>Mittelwert aus Gruppen</b> (Schichten): \(\bar x=\frac1n\sum_{j} n_j\bar x_j\) (gewichteter Durchschnitt).</li>
+</ul>
+<h3>Klassierte Daten</h3>
+<p>Wenn wir nur Klassen kennen, nehmen wir die <b>Klassenmitte</b> \(m_j\) als Stellvertreter:</p>
+<div class="box formel"><div class="t">Formel: klassierte Daten</div>
+\[\bar x_K=\sum_{j} f_j\, m_j\qquad\qquad s_K^2=\sum_j f_j\,(m_j-\bar x_K)^2\]</div>
+<div class="box bsp"><div class="t">Klausuraufgabe (Probeklausur A, 2c, 4 Punkte)</div>
+<p>Bier in Klassen \(K_1=[0,10)\) und \(K_2=[10,20]\). In \(K_1\): 4, 4, 4, 8.5, 8.5, 8.5, 8.5 → 7 Werte. In \(K_2\): 12, 12, 15.7 → 3 Werte. Mitten: \(m_1=5,\ m_2=15\).</p>
+\[\bar x_K=\tfrac{1}{10}(7\cdot 5+3\cdot 15)=\tfrac{80}{10}=8\]
+<p>(Der echte Mittelwert ist 8.57 – die Klassenmitte ist nur eine Näherung.)</p></div>
+
+<div class="box frage"><div class="t">Kontrollfragen 1.4 – 1.5</div>
+<ol class="fragen">
+<li>Warum ist bei ungleich breiten Klassen ein Histogramm besser als ein Säulendiagramm?</li>
+<li>Eine Klasse (20, 40] enthält 30 % der Daten. Wie hoch ist die Säule im Histogramm?</li>
+<li>Daten: 3, 1, 7, 2, 100, 4. Berechne Mittelwert und Median. Welches Maß beschreibt die „Mitte“ besser?</li>
+<li>Einkommen sind meist rechtsschief. Was ist größer: Mittelwert oder Median?</li>
+<li>Welches Lagemaß kannst du für „Lieblingsmensa“ angeben? Welche für „Zufriedenheit 1–7“?</li>
+</ol></div>
+
+<!-- ============ 1.6 ============ -->
+<h2 class="lek neu"><span class="num">1.6</span> Quantile, Streuung und Boxplot <span class="ear">Hörtext 1.6</span></h2>
+<h3>Quantile</h3>
+<p>Das \(\alpha\)-Quantil \(x_\alpha\) teilt die sortierten Daten: mindestens \(\alpha\cdot 100\,\%\) der Werte sind kleiner oder gleich \(x_\alpha\). Der Median ist \(x_{0.5}\). Die <b>Quartile</b> sind \(x_{0.25}, x_{0.5}, x_{0.75}\).</p>
+<div class="box formel"><div class="t">Formel: Quantil (Definition aus der Vorlesung)</div>
+\[x_\alpha=\begin{cases}x_{(\lfloor n\alpha\rfloor+1)} &amp; n\alpha \text{ keine ganze Zahl (aufrunden!)}\\[3pt] \in\big[x_{(n\alpha)},\ x_{(n\alpha+1)}\big] &amp; n\alpha \text{ ganze Zahl (meist Mittelwert der beiden)}\end{cases}\]</div>
+<div class="box bsp"><div class="t">Beispiel: Mietspiegel (V02), n = 26 sortierte Mieten</div>
+<p>\(x_{0.25}\): \(0.25\cdot 26 = 6.5\) → keine ganze Zahl → aufrunden auf 7 → \(x_{(7)}=170.04\).<br>
+\(x_{0.5}\): \(0.5\cdot 26=13\) → ganze Zahl → zwischen \(x_{(13)}=243.44\) und \(x_{(14)}=255.75\) → Mittelwert \(249.6\).<br>
+\(x_{0.75}\): \(0.75\cdot 26=19.5\) → aufrunden auf 20 → \(x_{(20)}=311.87\).</p></div>
+<h3>Streuungsmaße</h3>
+<div class="box formel"><div class="t">Formel: Varianz und Standardabweichung</div>
+\[s^2=\frac1n\sum_{i=1}^n (x_i-\bar x)^2 \overset{\text{Verschiebungssatz}}{=} \frac1n\sum_{i=1}^n x_i^2-\bar x^2 = \overline{x^2}-\bar x^2\]
+\[s^2_*=\frac{1}{n-1}\sum_{i=1}^n (x_i-\bar x)^2=\frac{n}{n-1}\,s^2\qquad\text{(unverzerrte / korrigierte Varianz)}\]
+\[s=\sqrt{s^2}\qquad\qquad \text{IQR}=x_{0.75}-x_{0.25}\]</div>
+<div class="box achtung"><div class="t">Achtung: 1/n oder 1/(n−1)?</div>
+<ul><li>„Empirische Varianz“ per Hand in Teil A: meistens \(s^2\) mit \(\frac1n\) (so rechnen die Lösungen).</li>
+<li><b>R</b> rechnet mit <code>var()</code> und <code>sd()</code> immer die <b>unverzerrte</b> Version \(s^2_*\) mit \(\frac{1}{n-1}\)!</li>
+<li>Umrechnen: \(s^2 = \frac{n-1}{n}\,s^2_*\) bzw. \(n\,s^2=(n-1)\,s^2_*\).</li>
+<li>Wenn in der Aufgabe „unverzerrter Schätzer“ oder „Stichprobenvarianz \(s^2_*\)“ steht: \(\frac{1}{n-1}\).</li></ul></div>
+<p><b>Vorteil der Standardabweichung:</b> Sie hat die <b>gleiche Einheit</b> wie das Merkmal (Euro statt Euro²).</p>
+<div class="box bsp"><div class="t">Klausuraufgabe (Probeklausur A, 5a): Schießfehler 3, 2, 5, 1, 3, 4</div>
+\[\bar x = \tfrac{18}{6}=3,\qquad \overline{x^2}=\tfrac{9+4+25+1+9+16}{6}=\tfrac{64}{6}=10.6667\]
+\[s_x^2=10.6667-3^2=1.667\]</div>
+<p><b>Lineare Transformation</b> \(y_i=a+bx_i\): \(s_y^2=b^2 s_x^2\), \(s_y=|b|\,s_x\), \(\text{IQR}_y=|b|\,\text{IQR}_x\). Die Verschiebung \(a\) ändert die Streuung nicht! (Tutorium 2: Datensatz III = 2 · Datensatz II → Varianz 4-mal so groß: 8 statt 2.)</p>
+
+<h3>Der Boxplot</h3>
+<p>Der Boxplot ist eine <b>Fünf-Punkte-Zusammenfassung</b>: Minimum, \(x_{0.25}\), Median, \(x_{0.75}\), Maximum. <b>Ausreißer</b> sind Werte, die mehr als \(1.5\cdot\text{IQR}\) unter \(x_{0.25}\) oder über \(x_{0.75}\) liegen. Der Whisker endet beim extremsten Wert, der <b>noch innerhalb</b> dieser Grenzen liegt.</p>
+<div class="box bsp"><div class="t">Beispiel (Tutorium 2, Aufgabe 7): 20 Semesterzahlen</div>
+<p>1,1,1,1,2,2,3,3,3,4,4,5,6,6,6,6,7,9,13,14. \(n\alpha=20\cdot0.25=5\) (ganz) → \(x_{0.25}\in[x_{(5)},x_{(6)}]=[2,2]=2\); analog \(x_{0.75}=6\). IQR = 4.<br>
+Obere Grenze: \(6+1.5\cdot4=12\) → oberer Whisker = größter Wert \(\le 12\) = <b>9</b>; 13 und 14 sind Ausreißer.<br>
+Untere Grenze: \(2-6=-4\) → unterer Whisker = Minimum = 1.</p>
+<figure><img src="fig/boxplot.svg" style="width:80%"></figure></div>
+
+<div class="box frage"><div class="t">Kontrollfragen 1.6</div>
+<ol class="fragen">
+<li>Daten: 2, 4, 4, 5, 7, 8, 9, 11 (n = 8). Bestimme \(x_{0.25}\), Median, \(x_{0.75}\) nach der Vorlesungsdefinition.</li>
+<li>Berechne für 2, 4, 6 die Varianz \(s^2\) (mit 1/n) und \(s^2_*\) (mit 1/(n−1)). Was gibt R mit <code>var(c(2,4,6))</code> aus?</li>
+<li>Alle Preise werden in Cent statt Euro angegeben (mal 100). Was passiert mit Mittelwert, Varianz und Standardabweichung?</li>
+<li>Was ist ein Ausreißer im Boxplot?</li>
+</ol></div>
+
+<!-- ============ 1.7 ============ -->
+<h2 class="lek neu"><span class="num">1.7</span> Zwei Merkmale: Kontingenztafel und χ²-Koeffizient <span class="ear">Hörtext 1.7</span></h2>
+<p>Jetzt schauen wir zwei Merkmale \(X\) und \(Y\) <b>zusammen</b> an. Die <b>gemeinsame Verteilung</b> steht in einer <b>Kontingenztafel</b>. Die Summen am Rand heißen <b>Randverteilungen</b>.</p>
+<div class="box bsp"><div class="t">Beispiel (Tutorium 3): 1000 Verkehrsunfälle</div>
+<p>380 tödlich (T), davon 160 mit alkoholisiertem Fahrer (A). 720 Unfälle ohne Alkohol (Ā).</p>
+<table class="tab">
+<tr><th></th><th>A (Alkohol)</th><th>Ā (kein Alkohol)</th><th>Σ</th></tr>
+<tr><th>T (tödlich)</th><td>160</td><td>220</td><td>380</td></tr>
+<tr><th>T̄ (nicht tödlich)</th><td>120</td><td>500</td><td>620</td></tr>
+<tr><th>Σ</th><td>280</td><td>720</td><td>1000</td></tr>
+</table>
+<p>Fehlende Zahlen durch Differenzen: \(380-160=220\), \(1000-720=280\), \(280-160=120\), …</p></div>
+<div class="box formel"><div class="t">Formel: Rand und bedingte Verteilung</div>
+\[h_{j\bullet}=\sum_k h_{jk}\ \ (\text{Zeilensumme}),\qquad h_{\bullet k}=\sum_j h_{jk}\ \ (\text{Spaltensumme}),\qquad f_{jk}=\frac{h_{jk}}{n}\]
+\[\text{bedingt: } f(Y=b_k\mid X=a_j)=\frac{h_{jk}}{h_{j\bullet}}\quad(\text{Zeile durch Zeilensumme})\]</div>
+<p>Im Beispiel: \(f(T\mid A)=\frac{160}{280}=0.571\) und \(f(T\mid \bar A)=\frac{220}{720}=0.306\). Die bedingten Verteilungen sind <b>verschieden</b> → es gibt einen <b>Zusammenhang</b>. Wären alle bedingten Verteilungen gleich, wären die Merkmale <b>unabhängig</b>.</p>
+<div class="box formel"><div class="t">Formel: χ²-Koeffizient</div>
+\[\tilde h_{jk}=\frac{h_{j\bullet}\cdot h_{\bullet k}}{n}\quad\text{(erwartet bei Unabhängigkeit)}\qquad \chi^2=\sum_{j}\sum_{k}\frac{(h_{jk}-\tilde h_{jk})^2}{\tilde h_{jk}}\]
+<p>\(\chi^2\approx 0\) → (fast) unabhängig. \(\chi^2\) groß → starker Zusammenhang.</p></div>
+<div class="box bsp"><div class="t">Rechnung für die Unfälle</div>
+<p>\(\tilde h_{T,A}=\frac{380\cdot 280}{1000}=106.4\), \(\tilde h_{T,\bar A}=273.6\), \(\tilde h_{\bar T,A}=173.6\), \(\tilde h_{\bar T,\bar A}=446.4\). Alle Differenzen sind \(\pm 53.6\):</p>
+\[\chi^2=53.6^2\Big(\tfrac{1}{106.4}+\tfrac{1}{273.6}+\tfrac{1}{173.6}+\tfrac{1}{446.4}\Big)=60.487\]</div>
+<p>Am Tag 4 machen wir daraus einen <b>Test</b> (χ²-Unabhängigkeitstest).</p>
+
+<!-- ============ 1.8 ============ -->
+<h2 class="lek neu"><span class="num">1.8</span> Kovarianz und Korrelation <span class="ear">Hörtext 1.8</span></h2>
+<p>Für zwei <b>metrische</b> Merkmale zeichnen wir ein <b>Streudiagramm</b> (Punktwolke). Die Kovarianz misst, ob die Punkte eher von links unten nach rechts oben liegen (positiv) oder von links oben nach rechts unten (negativ).</p>
+<div class="box formel"><div class="t">Formel: Kovarianz und Korrelation (Bravais-Pearson)</div>
+\[s_{xy}=\text{Cov}(X,Y)=\frac1n\sum_{i=1}^n(x_i-\bar x)(y_i-\bar y)=\frac1n\sum_{i=1}^n x_iy_i-\bar x\,\bar y=\overline{xy}-\bar x\bar y\]
+\[r_{xy}=\rho_{xy}=\frac{s_{xy}}{s_x\,s_y}=\frac{s_{xy}}{\sqrt{s_x^2\,s_y^2}}\in[-1,1]\]</div>
+<figure><img src="fig/korrelation.svg" style="width:98%"></figure>
+<table class="tab">
+<tr><th>\(|r|\)</th><td>0 bis &lt; 0.3</td><td>0.3 bis &lt; 0.7</td><td>0.7 bis 1</td></tr>
+<tr><th>Stärke</th><td>schwach</td><td>mittel</td><td>stark</td></tr>
+</table>
+<div class="box merke"><div class="t">Merke – die wichtigsten Eigenschaften</div>
+<ul>
+<li>Die Kovarianz hängt von den <b>Einheiten</b> ab (cm oder m?) → ihr Wert ist schwer zu deuten. Nur das <b>Vorzeichen</b> sagt etwas.</li>
+<li>Die Korrelation hat <b>keine Einheit</b> und liegt immer zwischen −1 und 1. \(|r|=1\): alle Punkte auf einer Geraden.</li>
+<li>\(r\) misst nur <b>lineare</b> Zusammenhänge. \(r\approx 0\) heißt <b>nicht</b> „kein Zusammenhang“: bei \(y=x^2\) kann \(r\approx0\) sein.</li>
+<li>Unabhängig ⇒ unkorreliert. Aber: unkorreliert ⇏ unabhängig.</li>
+<li>\(\text{Cov}(X,X)=\text{Var}(X)\); wenn \(X=Y\), dann \(r=1\).</li>
+</ul></div>
+<div class="box bsp lang"><div class="t">Klausuraufgabe (Probeklausur A, 5b, 5 Punkte)</div>
+<p>Gegeben: \(s_y^2=10,\ s_x^2=1.6,\ \bar y=22,\ \bar x = 3,\ \sum x_\nu y_\nu=399,\ n=6\).</p>
+\[s_{xy}=\frac{399}{6}-3\cdot 22=66.5-66=0.5\qquad r_{xy}=\frac{0.5}{\sqrt{1.6\cdot 10}}=\frac{0.5}{4}=0.125\]
+<p><b>Interpretation</b> (2 Punkte): Der Korrelationskoeffizient misst die Stärke des <b>linearen</b> Zusammenhangs und liegt zwischen −1 und 1. \(r=0.125\) ist positiv, aber klein: Es gibt einen <b>schwachen positiven linearen Zusammenhang</b> zwischen Schießfehlern und Laufzeit. Mehr Fehler gehen tendenziell mit etwas längerer Laufzeit einher.</p>
+<p><b>5c – Kausalität?</b> Nein. Eine Korrelation beweist <b>keine Kausalität</b>. Der Zusammenhang kann durch eine dritte Variable (z.&nbsp;B. Müdigkeit, Wetter) oder Zufall entstehen.</p>
+<p><b>5d</b>: Skizze für \(r=0\): Punktwolke ohne Richtung (rundliche Wolke) – Achsen beschriften (x: Schießfehler, y: Laufzeit)!</p></div>
+<h3>Rangkorrelation nach Spearman</h3>
+<p>Für <b>ordinale</b> Daten (oder wenn der Zusammenhang monoton, aber nicht linear ist) ersetzt man die Werte durch ihre <b>Ränge</b> (kleinster Wert = Rang 1) und berechnet Pearson mit den Rängen. Bei gleichen Werten (Bindungen) nimmt man <b>Durchschnittsränge</b> (z.&nbsp;B. Platz 4 und 5 → beide 4.5). In R: <code>cor(x, y, method = "spearman")</code>.</p>
+<h3>Korrelation ist keine Kausalität</h3>
+<ul>
+<li><b>Kausalität</b>: Eine Änderung von \(X\) <b>verursacht</b> eine Änderung von \(Y\). Nachweis nur mit Experiment (gezielte Manipulation von \(X\)) und Kontrolle aller anderen Einflüsse (z.&nbsp;B. Randomisierung).</li>
+<li><b>Scheinkorrelation</b>: Margarineverbrauch und Scheidungsrate in Maine haben \(r=0.99\) – aber Margarine verursacht keine Scheidungen. Mögliche dritte Variable: wirtschaftliche Lage; oder einfach Zufall.</li>
+<li><b>Ökologischer Fehlschluss</b>: Man schließt von Gruppen-Daten (Stadtbezirke) auf einzelne Personen. Beispiel EHEC: Bezirke mit vielen Grünen-Wählern hatten mehr Kranke – aber die Ursache war Sprossengemüse, nicht die Partei.</li>
+</ul>
+<div class="box frage"><div class="t">Kontrollfragen 1.7 – 1.8</div>
+<ol class="fragen">
+<li>Anne misst die Größe in cm und bekommt \(s_{xy}=153.88\), Bobo misst in m und bekommt 1.5388. Wer hat recht? Was ist besser zu vergleichen?</li>
+<li>Berechne mit dem Verschiebungssatz: \(n=50,\ \sum x=2019,\ \sum y=3733,\ \sum x^2=87611,\ \sum y^2=301695,\ \sum xy=160064\). Gesucht: \(s_{xy}\) und \(r\).</li>
+<li>Richtig oder falsch? (a) Wenn \(r\ne0\), sind X und Y abhängig. (b) Wenn \(Y=-X^2\), kann \(r\approx0\) sein. (c) Wenn \(r\neq 0\), gibt es einen kausalen Zusammenhang. (d) \(\text{Cov}\ge0.8\) bedeutet immer starken Zusammenhang.</li>
+<li>Wann sind zwei Merkmale in einer Kontingenztafel unabhängig?</li>
+</ol></div>
+
+<!-- ============ 1.9 ============ -->
+<h2 class="lek neu"><span class="num">1.9</span> R-Start: die ersten Befehle <span class="ear">Hörtext 1.9</span></h2>
+<p>In Teil B arbeitest du mit <b>RStudio</b>. Oben schreibst du das <b>Skript</b>, unten in der <b>Konsole</b> siehst du das Ergebnis. Mit <b>Strg + Enter</b> führst du eine Zeile aus. Speichere dein Skript oft!</p>
+<div class="box rbox"><div class="t">R-Ecke: Objekte und Vektoren</div>
+<pre><span class="c"># Zuweisung mit &lt;-  (sprich: "bekommt")</span>
+x &lt;- c(3, 2, 5, 1, 3, 4)     <span class="c"># c() = combine: Vektor</span>
+y &lt;- 1:6                     <span class="c"># 1 2 3 4 5 6</span>
+z &lt;- seq(2, 8, by = 2)       <span class="c"># 2 4 6 8</span>
+x[1]; x[length(x)]           <span class="c"># erstes und letztes Element</span>
+x * 1.5                      <span class="c"># rechnet mit jedem Element</span>
+typeof(x)                    <span class="c"># "double"  (Kommazahl)</span>
+typeof(1:6)                  <span class="c"># "integer" (ganze Zahlen)</span>
+typeof(c("A","B"))           <span class="c"># "character" (Text)</span>
+typeof(x &gt; 2)                <span class="c"># "logical" (TRUE/FALSE)</span>
+f &lt;- factor(c("a","b","a"))  <span class="c"># Faktor = Kategorien</span>
+class(f)                     <span class="c"># "factor"</span></pre></div>
+<div class="box rbox"><div class="t">R-Ecke: Datensatz einlesen (kommt in JEDER Teil-B-Klausur!)</div>
+<pre>setwd(path.expand("~"))                  <span class="c"># Arbeitsordner = Dokumente</span>
+d &lt;- read.csv("daten.csv", header = TRUE, sep = ",", dec = ".")
+head(d)            <span class="c"># erste 6 Zeilen</span>
+str(d)             <span class="c"># Struktur: Variablen und Typen</span>
+d$Muenzen          <span class="c"># eine Spalte mit $</span>
+typeof(d$Tal)      <span class="c"># z.B. "character"</span>
+class(d$Muenzen)   <span class="c"># z.B. "integer"</span>
+dim(d); nrow(d)    <span class="c"># Anzahl Zeilen/Spalten</span></pre>
+<p class="small">Wichtig: <code>sep</code> = Trennzeichen zwischen Spalten („,“ oder „;“), <code>dec</code> = Dezimalzeichen („.“ oder „,“), <code>header = TRUE</code> = erste Zeile enthält die Namen. Schau die Datei vorher an! Alternative: <code>read.table(..., header = TRUE, sep = ";")</code>.</p></div>
+<div class="box rbox"><div class="t">R-Ecke: Kennzahlen von Tag 1</div>
+<pre>mean(x); median(x)                 <span class="c"># Mittelwert, Median</span>
+var(x); sd(x)                      <span class="c"># ACHTUNG: mit 1/(n-1) !</span>
+var(x) * (length(x)-1)/length(x)   <span class="c"># Varianz mit 1/n</span>
+quantile(x, 0.25)                  <span class="c"># Quantil (R-Methode kann leicht abweichen)</span>
+IQR(x); range(x); min(x); max(x)
+summary(x)                         <span class="c"># Min, Quartile, Median, Mittel, Max</span>
+table(x)                           <span class="c"># absolute Häufigkeiten</span>
+prop.table(table(x))               <span class="c"># relative Häufigkeiten</span>
+which(table(x) == max(table(x)))   <span class="c"># Modus</span>
+round(mean(x), 3)                  <span class="c"># auf 3 Nachkommastellen</span>
+mean(x, na.rm = TRUE)              <span class="c"># fehlende Werte (NA) ignorieren</span></pre></div>
+<div class="box rbox"><div class="t">R-Ecke: Grafiken und Zusammenhänge</div>
+<pre>hist(x, breaks = c(0, 2, 4, 6), freq = FALSE,   <span class="c"># freq=FALSE -> Dichte (normiert)</span>
+     right = TRUE,                               <span class="c"># Intervalle (a,b] ; FALSE -> [a,b)</span>
+     main = "Titel", xlab = "x-Achse", ylab = "Dichte")
+boxplot(x, main = "Boxplot", ylab = "Semester")
+boxplot(x, plot = FALSE)$stats                   <span class="c"># Whisker, Quartile, Median</span>
+plot(x, y, xlab = "x", ylab = "y", main = "Streudiagramm")
+cor(x, y)                            <span class="c"># Pearson</span>
+cor(x, y, method = "spearman")       <span class="c"># Spearman</span>
+table(d$A, d$B)                      <span class="c"># Kontingenztafel</span>
+k &lt;- cut(x, breaks = c(0, 5, 60, Inf), right = FALSE)  <span class="c"># in Klassen einteilen -> factor</span></pre>
+<p class="small"><code>freq = FALSE</code> und <code>prob = TRUE</code> machen beide ein normiertes Histogramm (Fläche 1). <code>freq = TRUE</code> (Standard) zeigt absolute Häufigkeiten – das ist nur bei gleich breiten Klassen okay.</p></div>
+<div class="box frage"><div class="t">Kontrollfragen 1.9</div>
+<ol class="fragen">
+<li>Warum gibt <code>var(c(2,4,6))</code> den Wert 4 und nicht 2.667?</li>
+<li>Ergänze: <code>d &lt;- read.____("WitcherData2.csv", sep = ___, ___ = ".", header = ____)</code></li>
+<li>Welcher Befehl erzeugt ein <b>normiertes</b> Histogramm: <code>hist(x, freq = TRUE)</code> oder <code>hist(x, freq = FALSE)</code>?</li>
+<li>Was ist der Unterschied zwischen <code>table(x)</code> und <code>prop.table(table(x))</code>?</li>
+</ol></div>
+
+<!-- ============ Klausuraufgaben ============ -->
+<h2 class="lek neu"><span class="num">K1</span> Klausuraufgaben Tag 1 – rechne selbst!</h2>
+<p>Nimm Stift, Papier und Taschenrechner. Stoppe die Zeit. Die Punkte zeigen dir, wie viele Minuten du ungefähr hast (1 Punkt ≈ 1.3 Minuten).</p>
+<div class="box bsp lang"><div class="t">Aufgabe 1.A (10 Punkte) – Probeklausur A, Aufgabe 1</div>
+<p>Harry befragt 20 Schüler*innen, ob die Vorhersagen einer Wahrsagerin richtig waren (1 = richtig, 0 = falsch). R-Output:</p>
+<pre class="out">&gt; sort(Vorhersagen)
+ [1] 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1</pre>
+<p>(a) Welches Skalenniveau hat „Korrektheit der Vorhersage“? (b) Berechne \(x_{mod}\), \(x_{med}\), \(\bar x\) und \(s^2_x\). Wenn ein Wert nicht sinnvoll ist, begründe kurz.</p></div>
+<div class="box bsp lang"><div class="t">Aufgabe 1.B (14 Punkte) – Probeklausur A, Aufgabe 2</div>
+<p>Bierkonsum \(X\) (Liter) und Herkunft \(Y\) (BY/NRW) von 10 Gästen: X = 8.5, 8.5, 4.0, 4.0, 12.0, 12.0, 8.5, 15.7, 4.0, 8.5; Y = BY, BY, NRW, BY, NRW, BY, BY, NRW, NRW, BY. Hinweis: \(\sum x_i=85.7\), \(\sum x_i^2=871.49\).</p>
+<p>(a) Diskret oder stetig? Skalenniveau von X und Y? (4P) (b) Zeichne die empirische Verteilungsfunktion von X. (6P) (c) Klassen \([0,10)\), \([10,20]\): Mittelwert der klassierten Daten. (4P) (d) Zusatz: Berechne \(\bar x\), \(s^2\) und den Modus von Y.</p></div>
+<div class="box bsp lang"><div class="t">Aufgabe 1.C (8 Punkte) – nach Tutorium 3</div>
+<p>Filmbewertungen von 5 Filmen: Portal A: 6, 8, 7, 9, 5; Portal B: 7, 9, 6, 10, 6.<br>(a) Berechne \(\bar x,\ \bar y,\ s_x^2,\ s_y^2,\ s_{xy}\) (mit 1/n) und \(r_{xy}\). (b) Interpretiere \(r\). (c) Bestimme die Ränge und den Spearman-Koeffizienten.</p></div>
+<div class="box bsp lang"><div class="t">Aufgabe 1.D (6 Punkte) – nach Tutorium 2, Aufgabe 5</div>
+<p>Arbeitszeit pro Woche während der Vorlesungszeit: [0,4]: 40.2 %, (4,8]: 19.6 %, (8,12]: 21.9 %, (12,16]: 18.3 %.<br>(a) Welche Klasse ist die Modalklasse? (b) Berechne näherungsweise Mittelwert und Varianz mit den Klassenmitten. (c) Wie hoch ist die Säule der Klasse (4,8] im Histogramm?</p></div>
+<div class="box bsp lang"><div class="t">Aufgabe 1.E (R, 6 Punkte)</div>
+<p>Der Vektor <code>x</code> enthält Monatseinkommen. (a) Schreibe den Befehl für die Standardabweichung (zwei Möglichkeiten). (b) Erstelle ein normiertes Histogramm mit den Klassen [0,1000), [1000,2000), [2000,5000) mit Titel und Achsenbeschriftung und speichere es als <code>Einkommen.pdf</code>. (c) Wie berechnest du den Anteil der Werte unter 1000?</p></div>
+
+<!-- ============ Lösungen ============ -->
+<div class="loes">
+<h2>Lösungen Tag 1</h2>
+<h3>Kontrollfragen 1.1 – 1.3</h3>
+<ol>
+<li>Einheit: ein Kunde. Grundgesamtheit: alle 5000 Kunden. Stichprobe: die 200 befragten Kunden.</li>
+<li>(a) kardinal, stetig; (b) ordinal, diskret; (c) nominal, diskret; (d) kardinal, diskret.</li>
+<li>Falsch. Diskret = endlich <b>oder abzählbar unendlich</b> viele Werte.</li>
+<li>Klumpenstichprobe (die Straßen sind die Klumpen).</li>
+</ol>
+<h3>Kontrollfragen 1.4 – 1.5</h3>
+<ol>
+<li>Beim Säulendiagramm wirken breite Klassen zu groß. Im Histogramm ist die <b>Fläche</b> proportional zum Anteil – das Bild ist ehrlich.</li>
+<li>Höhe = 0.30 / 20 = 0.015.</li>
+<li>Sortiert: 1, 2, 3, 4, 7, 100. \(\bar x=117/6=19.5\); Median \(=(3+4)/2=3.5\). Der Median beschreibt die Mitte besser (Ausreißer 100).</li>
+<li>Der Mittelwert ist größer als der Median.</li>
+<li>Lieblingsmensa (nominal): nur Modus. Zufriedenheit (ordinal): Modus und Median (Mittelwert eigentlich nicht erlaubt).</li>
+</ol>
+<h3>Kontrollfragen 1.6</h3>
+<ol>
+<li>\(n\alpha = 2\) (ganz) → \(x_{0.25}=(x_{(2)}+x_{(3)})/2=(4+4)/2=4\); Median \(=(5+7)/2=6\); \(8\cdot0.75=6\) → \(x_{0.75}=(x_{(6)}+x_{(7)})/2=(8+9)/2=8.5\).</li>
+<li>\(\bar x=4\); \(s^2=\frac{4+0+4}{3}=2.667\); \(s^2_*=\frac{8}{2}=4\). R gibt 4 aus.</li>
+<li>Mittelwert ×100, Standardabweichung ×100, Varianz ×10 000.</li>
+<li>Ein Wert, der mehr als 1.5 · IQR unter dem unteren oder über dem oberen Quartil liegt.</li>
+</ol>
+<h3>Kontrollfragen 1.7 – 1.8</h3>
+<ol>
+<li>Beide rechnen richtig, nur mit anderer Einheit (Faktor 100). Die Kovarianz hängt von der Einheit ab. Besser: der Korrelationskoeffizient (ohne Einheit, hier 0.836).</li>
+<li>\(\bar x=40.38,\ \bar y=74.66\). \(s_{xy}=\frac{160064}{50}-40.38\cdot74.66=3201.28-3014.7708=186.509\). \(s_x^2=1752.22-1630.5444=121.6756\), \(s_y^2=6033.9-5574.1156=459.7844\). \(r=\frac{186.5092}{\sqrt{121.6756\cdot459.7844}}=0.789\) → starker positiver linearer Zusammenhang.</li>
+<li>(a) richtig (unabhängig ⇒ \(r=0\), also ist \(r\ne0\) ⇒ abhängig); (b) richtig; (c) falsch; (d) falsch (Kovarianz hängt von der Einheit ab).</li>
+<li>Wenn alle bedingten Verteilungen gleich sind, also \(h_{jk}=\frac{h_{j\bullet}h_{\bullet k}}{n}\) für alle Felder (dann \(\chi^2=0\)).</li>
+</ol>
+<h3>Kontrollfragen 1.9</h3>
+<ol>
+<li>R rechnet die unverzerrte Varianz mit \(\frac{1}{n-1}\): \(8/2=4\).</li>
+<li><code>d &lt;- read.csv("WitcherData2.csv", sep = ",", dec = ".", header = TRUE)</code></li>
+<li><code>hist(x, freq = FALSE)</code></li>
+<li><code>table</code> zählt (absolute Häufigkeiten), <code>prop.table(table(x))</code> gibt Anteile (relative Häufigkeiten).</li>
+</ol>
+<h3>Aufgabe 1.A</h3>
+<p>(a) <b>Nominal</b> (binär, 0/1-kodiert: richtig/falsch haben keine echte Ordnung). (b) \(x_{mod}=0\) (11-mal). Median: \(n=20\) gerade → zwischen \(x_{(10)}=0\) und \(x_{(11)}=0\) → \(x_{med}=0\). <i>Begründung, wenn man streng ist:</i> Für nominale Daten ist der Median eigentlich nicht definiert (keine Ordnung); bei 0/1-Kodierung kann man ihn berechnen (= 0). \(\bar x=\frac{9}{20}=0.45\) – sinnvoll, denn bei 0/1-Daten ist das der <b>Anteil</b> richtiger Vorhersagen (45 %). \(s^2=\overline{x^2}-\bar x^2=0.45-0.2025=0.248\) (genau 0.2475; das ist \(\bar x(1-\bar x)\)).</p>
+<h3>Aufgabe 1.B</h3>
+<p>(a) X: <b>stetig</b>, kardinal (Verhältnisskala). Y: <b>diskret</b>, <b>nominal</b>.<br>
+(b) Siehe Beispiel in 1.4: Stufen 0 / 0.3 / 0.7 / 0.9 / 1 an den Stellen 4, 8.5, 12, 15.7.<br>
+(c) \(\bar x_K=\frac{1}{10}(7\cdot5+3\cdot15)=8\).<br>
+(d) \(\bar x=85.7/10=8.570\); \(s^2=87.149-8.57^2=13.704\) (\(s=3.702\)); Modus(Y) = BY (6-mal).</p>
+<h3>Aufgabe 1.C</h3>
+<p>(a) \(\bar x=7,\ \bar y=7.6\). \(\sum x^2=255\Rightarrow s_x^2=51-49=2\). \(\sum y^2=302\Rightarrow s_y^2=60.4-57.76=2.64\). \(\sum xy=42+72+42+90+30=276\Rightarrow s_{xy}=55.2-53.2=2\). \(r=\frac{2}{\sqrt{2\cdot2.64}}=\frac{2}{2.2978}=0.870\).<br>
+(b) Starker positiver linearer Zusammenhang: Filme mit guter Bewertung bei A haben meist auch gute Bewertungen bei B.<br>
+(c) Ränge A: 6→2, 8→4, 7→3, 9→5, 5→1. Ränge B: 7→3, 9→4, 6→1.5, 10→5, 6→1.5. Mittlerer Rang 3. \(\sum rk_x rk_y = 6+16+4.5+25+1.5=53\); \(\sum rk_x^2=55\); \(\sum rk_y^2=9+16+2.25+25+2.25=54.5\).<br>
+\(r_{Sp}=\frac{53-5\cdot 9}{\sqrt{(55-45)(54.5-45)}}=\frac{8}{\sqrt{95}}=0.821\).</p>
+<h3>Aufgabe 1.D</h3>
+<p>(a) [0,4] (40.2 %). (b) Mitten 2, 6, 10, 14: \(\bar x=0.402\cdot2+0.196\cdot6+0.219\cdot10+0.183\cdot14=6.732\). \(s^2=0.402(2-6.732)^2+0.196(6-6.732)^2+0.219(10-6.732)^2+0.183(14-6.732)^2=21.112\). (c) \(0.196/4=0.049\).</p>
+<h3>Aufgabe 1.E</h3>
+<pre>sd(x)                    <span class="c"># oder: sqrt(var(x))</span>
+pdf("Einkommen.pdf")
+hist(x, breaks = c(0, 1000, 2000, 5000), right = FALSE, freq = FALSE,
+     main = "Einkommen", xlab = "Einkommen in Euro", ylab = "Dichte")
+dev.off()
+mean(x &lt; 1000)           <span class="c"># Anteil (TRUE zählt als 1)</span></pre>
+
+<h3>Dein Formelblatt – Teil für Tag 1</h3>
+<div class="box formel lang"><div class="t">Das schreibst du heute mit der Hand auf dein A4-Blatt</div>
+<ul>
+<li>Skalen: nominal (Modus) · ordinal (+ Median) · kardinal (+ Mittelwert); diskret = abzählbar, stetig = Intervall</li>
+<li>\(f_j=h_j/n\); Histogramm-Höhe \(=f_j/\text{Breite}\); \(\hat F(x)=\#\{x_i\le x\}/n\) (Treppe, ● links, ○ rechts)</li>
+<li>\(\bar x=\frac1n\sum x_i=\sum a_jf_j\); klassiert \(\bar x_K=\sum f_jm_j\); Median: \(x_{((n+1)/2)}\) bzw. Mittel der beiden mittleren</li>
+<li>Quantil: \(n\alpha\) nicht ganz → aufrunden, \(x_{(\lceil n\alpha\rceil)}\); ganz → \(\frac{x_{(n\alpha)}+x_{(n\alpha+1)}}{2}\)</li>
+<li>\(s^2=\overline{x^2}-\bar x^2\); \(s_*^2=\frac{n}{n-1}s^2\) (R: var, sd!); \(y=a+bx\Rightarrow s_y^2=b^2s_x^2\)</li>
+<li>Boxplot: Ausreißer außerhalb \([x_{0.25}-1.5\,\text{IQR};\ x_{0.75}+1.5\,\text{IQR}]\)</li>
+<li>rechtsschief: \(\bar x&gt;x_{med}&gt;x_{mod}\)</li>
+<li>\(\tilde h_{jk}=\frac{h_{j\bullet}h_{\bullet k}}{n}\), \(\chi^2=\sum\frac{(h_{jk}-\tilde h_{jk})^2}{\tilde h_{jk}}\)</li>
+<li>\(s_{xy}=\overline{xy}-\bar x\bar y\); \(r=\frac{s_{xy}}{s_xs_y}\); |r|: &lt;0.3 schwach, 0.3–0.7 mittel, ≥0.7 stark; Korrelation ≠ Kausalität</li>
+</ul></div>
+
+<h3>Wörterliste Tag 1 (Deutsch – Türkçe)</h3>
+<table class="gloss">
+<tr><td>Grundgesamtheit</td><td>ana kütle / evren</td><td>alle Einheiten, die uns interessieren</td></tr>
+<tr><td>Stichprobe</td><td>örneklem</td><td>der untersuchte Teil</td></tr>
+<tr><td>Merkmal / Ausprägung</td><td>değişken / değer</td><td>Eigenschaft / konkreter Wert</td></tr>
+<tr><td>Skalenniveau</td><td>ölçek düzeyi</td><td>nominal, ordinal, kardinal</td></tr>
+<tr><td>Häufigkeit (absolut/relativ)</td><td>frekans (mutlak/göreli)</td><td>Anzahl / Anteil</td></tr>
+<tr><td>Verteilungsfunktion</td><td>(birikimli) dağılım fonksiyonu</td><td>Anteil der Werte ≤ x</td></tr>
+<tr><td>arithmetisches Mittel</td><td>aritmetik ortalama</td><td>Durchschnitt</td></tr>
+<tr><td>Median / Modus</td><td>medyan / mod</td><td>Mitte / häufigster Wert</td></tr>
+<tr><td>Streuung, Varianz</td><td>yayılım, varyans</td><td>wie weit die Werte auseinander liegen</td></tr>
+<tr><td>Standardabweichung</td><td>standart sapma</td><td>Wurzel aus der Varianz</td></tr>
+<tr><td>Quantil / Quartil</td><td>kantil / çeyreklik</td><td>Grenze, unter der α·100 % liegen</td></tr>
+<tr><td>Ausreißer</td><td>aykırı değer</td><td>extremer Wert</td></tr>
+<tr><td>Kontingenztafel</td><td>çapraz tablo / olumsallık tablosu</td><td>Tabelle für zwei Merkmale</td></tr>
+<tr><td>Zusammenhang</td><td>ilişki</td><td>Merkmale hängen zusammen</td></tr>
+<tr><td>Kovarianz / Korrelation</td><td>kovaryans / korelasyon</td><td>Maße für linearen Zusammenhang</td></tr>
+<tr><td>Kausalität</td><td>nedensellik</td><td>Ursache → Wirkung</td></tr>
+<tr><td>schief (rechts/links)</td><td>çarpık (sağa/sola)</td><td>unsymmetrische Verteilung</td></tr>
+</table>
+</div>
+</section>

@@ -1,0 +1,95 @@
+<section class="t0">
+<div class="cover">
+  <div>
+    <div class="kicker">Statistik und Data Science I · SoSe 2026 · Uni Göttingen</div>
+    <h1>In 5 Tagen<br>zur 1,x in Statistik</h1>
+    <div class="sub">Dein Lernbuch zum Mitlesen und Mitdenken – für Klausurteil A (Statistik, schriftlich) und Klausurteil B (R am Computer). In einfachem Deutsch, mit Beispielen, Fragen und Lösungen.</div>
+    <div class="days">
+      <div><b>Tag 1</b>Daten beschreiben: deskriptive Statistik</div>
+      <div><b>Tag 2</b>Wahrscheinlichkeit &amp; Zufallsvariablen</div>
+      <div><b>Tag 3</b>Verteilungen &amp; Maximum-Likelihood</div>
+      <div><b>Tag 4</b>Schätzer, Konfidenzintervalle, Tests</div>
+      <div><b>Tag 5</b>R-Klausur (Teil B) &amp; Generalprobe</div>
+    </div>
+  </div>
+  <div class="foot">Grundlage: Vorlesungen SDS1-V01 bis V13, Tutorien 1–13, Testate 0–6, Probeklausuren Teil A und Teil B, Übungen zur ML-Schätzung.<br>
+  Zu jedem Tag gibt es einen <b>Hörtext</b> (Ordner <i>hoertexte</i>). Die Nummern der Abschnitte im Hörtext und in diesem Buch sind gleich.</div>
+</div>
+</section>
+
+<section class="t0">
+<h2 class="lek"><span class="num">0.1</span> Willkommen! So benutzt du dieses Buch <span class="ear">Hörtext Tag 1 · Abschnitt 0</span></h2>
+<p>Hallo! Schön, dass du da bist. In den nächsten fünf Tagen lernen wir zusammen alles, was du für die Statistik-Klausur brauchst. Wir fangen ganz vorne an. Du musst nichts vorher wissen. Wir gehen Schritt für Schritt.</p>
+<p>Das Lernpaket hat <b>zwei Teile</b>, die zusammengehören:</p>
+<ul>
+<li><b>Die Hörtexte</b> (eine Datei pro Tag): Das ist die Stimme deiner Lehrerin. Du kannst sie mit einer KI-Stimme vorlesen lassen und zuhören.</li>
+<li><b>Dieses Lernbuch</b>: Hier siehst du beim Zuhören die Formeln, Tabellen, Bilder und den R-Code. Jeder Abschnitt hat eine Nummer, zum Beispiel <b>1.3</b>. Im Hörtext hörst du dieselbe Nummer: „Abschnitt eins Punkt drei“. So weißt du immer, wo wir gerade sind.</li>
+</ul>
+
+<div class="box tipp"><div class="t">So lernst du am besten</div>
+<ol>
+<li><b>Hören + Mitlesen</b>: Höre den Abschnitt und schau gleichzeitig ins Buch.</li>
+<li><b>Anhalten</b>: Wenn im Hörtext eine Frage kommt („Halte kurz an …“), stoppe die Aufnahme und denke selbst nach.</li>
+<li><b>Kontrollfragen</b>: Am Ende jeder Lektion stehen Fragen (lila Kasten). Beantworte sie schriftlich. Die Lösungen stehen am Ende des Tages.</li>
+<li><b>Rechnen</b>: Rechne die Klausuraufgaben selbst mit Stift und Taschenrechner. Erst danach schaust du in die Lösung.</li>
+<li><b>Formelblatt</b>: Schreibe jeden Tag die wichtigen Formeln auf dein eigenes A4-Blatt (siehe Anhang). In der Klausur darfst du ein handgeschriebenes Blatt pro Klausurteil benutzen!</li>
+</ol></div>
+
+<h3>Die Kästen in diesem Buch</h3>
+<div class="two small">
+<div class="box merke"><div class="t">Merke</div>Das Wichtigste in einem Satz. Unbedingt lernen.</div>
+<div class="box formel"><div class="t">Formel</div>Diese Formel kommt auf dein Formelblatt.</div>
+<div class="box bsp"><div class="t">Beispiel</div>Eine Aufgabe, Schritt für Schritt gerechnet.</div>
+<div class="box achtung"><div class="t">Achtung – typischer Fehler</div>Hier machen viele Studierende Fehler.</div>
+<div class="box tipp"><div class="t">Klausur-Tipp</div>So holst du in der Klausur die Punkte.</div>
+<div class="box rbox"><div class="t">R-Ecke</div>Der passende R-Code für Klausurteil B.</div>
+</div>
+<div class="box frage"><div class="t">Kontrollfragen</div>Fragen zum Selbsttest. Lösungen am Ende jedes Tages.</div>
+
+<h2 class="lek pb"><span class="num">0.2</span> Die Klausur: Was genau kommt dran? <span class="ear">Hörtext Tag 1 · Abschnitt 0</span></h2>
+<p>Die Klausur hat <b>zwei Teile</b>. Du schreibst sie am selben Tag, zuerst Teil A, dann Teil B.</p>
+<table class="tab wide">
+<tr><th></th><th>Teil A: Statistik</th><th>Teil B: R</th></tr>
+<tr><td class="l"><b>Ort</b></td><td>Hörsaal, auf Papier</td><td>E-Prüfungsraum, am Computer (ILIAS + RStudio)</td></tr>
+<tr><td class="l"><b>Zeit</b></td><td>100 Minuten</td><td>60 Minuten</td></tr>
+<tr><td class="l"><b>Punkte</b></td><td>75 Punkte</td><td>45 Punkte</td></tr>
+<tr><td class="l"><b>Hilfsmittel</b></td><td colspan="2">1 handgeschriebenes A4-Blatt (beidseitig) <b>pro Teil</b>, nicht-programmierbarer Taschenrechner mit Sticker, Kugelschreiber (kein Bleistift, nicht grün/rot)</td></tr>
+<tr><td class="l"><b>Typische Aufgaben</b></td><td class="l">Skalenniveau, Lage- und Streuungsmaße, Verteilungsfunktion zeichnen, Bayes/totale Wahrscheinlichkeit, Korrelation, ML-Schätzer herleiten, Erwartungstreue prüfen, Hypothesentest, R-Output deuten</td><td class="l">Daten einlesen, Objekttypen, Mittelwert/SD, Histogramm als PDF speichern, Likelihood mit <code>dpois</code>/<code>prod</code>, eigene Funktion und for-Schleife, <code>nlm</code>, <code>pgamma</code>/<code>qgamma</code>, Antwortsätze</td></tr>
+</table>
+
+<div class="box merke"><div class="t">Rundungsregeln (sehr wichtig für die Punkte!)</div>
+<ul>
+<li><b>Zwischenergebnisse</b>: mindestens <b>4</b> Nachkommastellen.</li>
+<li><b>Endergebnisse</b>: <b>3</b> Nachkommastellen (kaufmännisch runden) – oder ein gekürzter Bruch.</li>
+<li>Ausnahmen: ganze Zahlen; „schöne“ Ausdrücke wie \(\sqrt 2\) oder \(\log 4\); andere Anweisung in der Aufgabe.</li>
+<li>Dezimal<b>punkt</b> benutzen: 0.125 (nicht 0,125).</li>
+<li>In Teil B immer mit R runden: <code>round(x, 3)</code>.</li>
+</ul></div>
+
+<h3>Wie bekommst du eine 1,x?</h3>
+<p>Eine sehr gute Note bekommst du, wenn du die <b>Standardaufgaben sicher und schnell</b> löst. Die Klausuraufgaben sind jedes Jahr sehr ähnlich. Wenn du die Probeklausuren, die Testate und die Tutorien verstehst, bist du vorbereitet. Genau darauf ist dieses Buch aufgebaut. Für Teil A hast du ungefähr <b>1,3 Minuten pro Punkt</b>. Für Teil B hast du ungefähr <b>1,3 Minuten pro Punkt</b>. Also: nicht lange an einer Aufgabe hängen bleiben!</p>
+
+<h2 class="lek pb"><span class="num">0.3</span> Dein 5-Tage-Plan</h2>
+<p>Jeder Tag hat etwa <b>7–8 Stunden</b> Lernzeit mit Pausen. Mache nach 50 Minuten immer 10 Minuten Pause. Schlafe genug – im Schlaf speichert dein Gehirn das Gelernte.</p>
+<table class="plan">
+<tr><th>Tag</th><th>Themen (Vorlesung)</th><th>So arbeitest du</th></tr>
+<tr><td>Tag 1</td><td>Grundbegriffe, Skalenniveaus, Stichproben (V01) · Häufigkeiten, Histogramm, Verteilungsfunktion, Lage- und Streuungsmaße, Quantile, Boxplot (V02) · Kontingenztafel, χ²-Koeffizient, Kovarianz, Korrelation, Kausalität (V03) · <b>R-Grundlagen</b></td><td>Vormittag: Hörtext 1.1–1.5 + Kontrollfragen. Nachmittag: Hörtext 1.6–1.9, Klausuraufgaben Tag 1 rechnen, R-Befehle am Computer ausprobieren.</td></tr>
+<tr><td>Tag 2</td><td>Mengen, Laplace, Kolmogorov, Rechenregeln, bedingte Wahrscheinlichkeit, Unabhängigkeit, totale Wahrscheinlichkeit, Bayes (V04) · Zufallsvariablen, Dichte, Verteilungsfunktion, Erwartungswert, Varianz, Rechenregeln, bivariate Verteilungen (V05, V06)</td><td>Vormittag: Wahrscheinlichkeit (2.1–2.5), Baumdiagramme zeichnen. Nachmittag: Zufallsvariablen (2.6–2.9), Integrale üben, Testat 3 und 4 nachrechnen.</td></tr>
+<tr><td>Tag 3</td><td>Bernoulli, Binomial, Poisson, Gleich-, Exponential-, Normalverteilung, Standardisieren, zentraler Grenzwertsatz, R-Funktionen d/p/q/r (V07) · <b>Maximum-Likelihood</b> (V08)</td><td>Vormittag: Verteilungen (3.1–3.5). Nachmittag: ML-Rezept (3.6–3.8) und <b>alle</b> ML-Übungsaufgaben selbst herleiten. ML bringt in Teil A ca. 10 Punkte!</td></tr>
+<tr><td>Tag 4</td><td>Bias, Varianz, MSE, Konsistenz, Histogramm und Kerndichte (V09) · Konfidenzintervalle (V10) · Hypothesentests, p-Wert, z-/t-/χ²-/Binomialtest, Vorzeichentest, χ²-Unabhängigkeit, Anpassungstest (V11, V12) · Regression (V13)</td><td>Vormittag: Schätzer + KI (4.1–4.4). Nachmittag: Tests (4.5–4.9). Abends: Testat 5 und 6.</td></tr>
+<tr><td>Tag 5</td><td><b>Klausurteil B</b>: kompletter R-Ablauf, Witcher-Klausur, Lungenvolumen-Klausur (nlm) · <b>Generalprobe Teil A</b> (Probeklausur 04.03.2022) · Formelblatt fertig machen</td><td>Vormittag: Tag-5-Hörtext + R-Probeklausuren am Computer (auf Zeit: 60 Min.). Nachmittag: Probeklausur A auf Zeit (100 Min.), danach Korrektur mit Lösungen. Abends: Formelblatt schreiben, früh schlafen.</td></tr>
+</table>
+
+<div class="box achtung"><div class="t">Ehrlich gesagt</div>
+<p>Fünf Tage sind kurz. Das schaffst du nur, wenn du wirklich aktiv arbeitest: selbst rechnen, selbst R-Code tippen. Nur Zuhören reicht nicht für eine 1,x. Der Hörtext erklärt dir alles – aber die Punkte holst du mit dem Stift und an der Tastatur.</p></div>
+
+<h3>Inhalt</h3>
+<div class="toc">
+<div><b>Tag 1 · Daten beschreiben</b><br>1.1 Grundbegriffe · 1.2 Merkmalstypen &amp; Skalen · 1.3 Stichproben · 1.4 Häufigkeiten, Histogramm, Verteilungsfunktion · 1.5 Lagemaße · 1.6 Quantile, Streuung, Boxplot · 1.7 Zwei Merkmale: Kontingenztafel &amp; χ² · 1.8 Kovarianz &amp; Korrelation · 1.9 R-Start · Klausuraufgaben · Lösungen</div>
+<div><b>Tag 2 · Wahrscheinlichkeit</b><br>2.1 Zufallsexperiment &amp; Mengen · 2.2 Wahrscheinlichkeit &amp; Regeln · 2.3 Bedingte W. &amp; Unabhängigkeit · 2.4 Totale W. &amp; Bayes · 2.5 Zufallsvariablen · 2.6 Dichte &amp; Verteilungsfunktion · 2.7 Erwartungswert &amp; Varianz · 2.8 Zwei Zufallsvariablen · Klausuraufgaben · Lösungen</div>
+<div><b>Tag 3 · Verteilungen &amp; ML</b><br>3.1 Bernoulli &amp; Binomial · 3.2 Poisson · 3.3 Gleich- &amp; Exponentialverteilung · 3.4 Normalverteilung · 3.5 Zentraler Grenzwertsatz &amp; R · 3.6 Idee der Likelihood · 3.7 Das ML-Rezept · 3.8 ML-Training · Klausuraufgaben · Lösungen</div>
+<div><b>Tag 4 · Inferenz</b><br>4.1 Gütekriterien von Schätzern · 4.2 Erwartungstreue prüfen · 4.3 Histogramm &amp; Kerndichte · 4.4 Konfidenzintervalle · 4.5 Testprinzip · 4.6 Tests für μ · 4.7 Varianz-, Binomial-, Vorzeichentest · 4.8 χ²-Tests · 4.9 R-Output lesen &amp; Regression · Klausuraufgaben · Lösungen</div>
+<div><b>Tag 5 · R-Klausur &amp; Generalprobe</b><br>5.1 So läuft Teil B ab · 5.2 Einlesen &amp; Objekttypen · 5.3 Kennzahlen &amp; Grafiken · 5.4 Likelihood in R · 5.5 Funktionen, Schleifen, paste · 5.6 nlm &amp; Transformation · 5.7 Probeklausur B komplett · 5.8 Generalprobe Teil A · 5.9 Letzte Tipps</div>
+<div><b>Anhang</b><br>Formelblatt-Vorlage Teil A · R-Spickzettel Teil B · Wichtige Quantile · Wörterliste Deutsch–Türkçe</div>
+</div>
+</section>
