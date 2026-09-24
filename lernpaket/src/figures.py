@@ -269,3 +269,17 @@ ax.text(-.6, .12, "Fläche = 0.975\n= Φ(1.96)\n= pnorm(1.96)", fontsize=8.5, ha
 ax.set_yticks([]); ax.set_title("Standardnormalverteilung N(0, 1): p-Funktion ↔ q-Funktion")
 save(fig, "quantil")
 print("Abbildungen fertig:", len(os.listdir(OUT)))
+
+# 16 Histogramm Wartezeiten Schritt für Schritt
+w = np.array([2,3,3,4,5,5,6,7,8,9,10,11,12,14,15,18,22,25,31,38])
+br = np.array([0, 5, 10, 20, 40]); cnt, _ = np.histogram(w, bins=br); dens = cnt / len(w) / np.diff(br)
+fig, ax = plt.subplots(figsize=(6.8, 2.9))
+ax.bar(br[:-1], dens, width=np.diff(br), align="edge", color="#cfe9e5", edgecolor=TEAL, lw=1.4)
+for a, b, d, c in zip(br[:-1], br[1:], dens, cnt):
+    ax.text((a + b) / 2, d + .002, f"Höhe {d:.2f}\n({c} Werte, f={c/20:.1f})", ha="center", fontsize=7.8)
+m15 = (15, 30); ax.axvspan(*m15, color=ORA, alpha=.12); ax.text(22.5, .075, "gesucht: Anteil 15 bis 30", color=ORA, ha="center", fontsize=8.3)
+ax.axvline(12.4, color=RED, ls="--", lw=1.4); ax.axvline(9.5, color=GRN, ls="--", lw=1.4)
+ax.text(12.9, .062, "x̄ = 12.4", color=RED, fontsize=8.3); ax.text(3.2, .07, "Median = 9.5", color=GRN, fontsize=8.3)
+ax.set_xticks(br); ax.set_ylim(0, .085); ax.set_xlabel("Wartezeit in Minuten"); ax.set_ylabel("Dichte")
+ax.set_title("Histogramm der 20 Wartezeiten (rechtsschief: x̄ > Median)")
+save(fig, "hist_warte")

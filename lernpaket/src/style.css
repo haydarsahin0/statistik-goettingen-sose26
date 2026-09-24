@@ -132,3 +132,21 @@ table.gloss td:nth-child(2){font-style:italic;color:#8a3b12;width:26%}
 .steps>li::before{content:counter(s);position:absolute;left:0;top:0;background:var(--c);color:#fff;border-radius:6px;width:1.45em;text-align:center;font-weight:800;font-size:.85rem}
 .kasten{border:2px solid var(--c);border-radius:10px;padding:8px 12px;margin:.6em 0;page-break-inside:avoid}
 pre,code{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+/* Klausurtraining im Prüfungsstil */
+.kt{border:2px solid var(--c);border-radius:10px;margin:1em 0;page-break-inside:auto;break-inside:auto}
+.kt>.kh{background:var(--c);color:#fff;padding:5px 12px;font-weight:900;border-radius:7px 7px 0 0;display:flex;justify-content:space-between}
+.kt>.kb{padding:8px 12px 6px}
+.kt ol.tl{list-style:none;padding-left:0;margin:.3em 0}
+.kt ol.tl>li{padding-left:2em;position:relative;margin:.45em 0}
+.kt ol.tl>li>.lb{position:absolute;left:0;font-weight:900;color:var(--c-dark)}
+.kt .pt{float:right;font-weight:800;color:var(--c-dark);font-size:.85rem;margin-left:8px}
+.antwort{border:1.5px dashed #b9c2d0;border-radius:6px;height:2.2em;margin:.25em 0 .1em}
+.antwort.gross{height:5em}
+/* Türkçe */
+.box.tr{background:#fff4ec;border-color:#e0703a} .box.tr>.t{color:#b0471a}
+/* R-Lektion */
+.rstep{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:start;page-break-inside:avoid;break-inside:avoid;margin:.4em 0}
+.rstep pre{margin:0}
+.rstep .ex{font-size:.88rem}
+.cmd{font-family:'JetBrains Mono',monospace;font-weight:600;color:#1e2433;background:#eef1f6;padding:0 .3em;border-radius:3px;font-size:.86em}
+table.rtab td:first-child{font-family:'JetBrains Mono',monospace;font-size:.82rem;white-space:nowrap;text-align:left}

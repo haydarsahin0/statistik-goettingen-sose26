@@ -1,0 +1,488 @@
+<section class="t1">
+<!-- ============ 1.9 R-Kurs ============ -->
+<h2 class="lek neu"><span class="num">1.9</span> R-Kurs von null an <span class="ear">Hörtext Teil 3 · 1.9</span></h2>
+<p>Klausurteil B (45 Punkte, 60 Minuten) schreibst du am Computer mit <b>RStudio</b>. Hier lernst du R <b>Befehl für Befehl</b>. Bei jedem Befehl siehst du: den Code (dunkler Kasten), die echte Ausgabe von R (heller Kasten, beginnt oft mit <code>[1]</code>) und eine Erklärung. Bei schwierigen Stellen gibt es eine <b>türkische Erklärung</b>.</p>
+<div class="box tipp"><div class="t">So lernst du R richtig</div>
+<p>Öffne RStudio und tippe <b>jeden</b> Befehl selbst ab (nicht kopieren!). Die Übungsdatei <code>Taverne.csv</code> liegt im Ordner <code>lernpaket/uebungsdaten</code>. Lege sie in deinen Ordner <i>Dokumente</i>. R lernt man nur mit den Fingern.</p></div>
+<div class="box tr"><div class="t">Türkçe açıklama</div>
+<p>R'ı sadece okuyarak öğrenemezsin. Her komutu RStudio'da <b>kendin yaz</b> ve Enter'a bas. Çıkan sonucu buradaki açık renkli kutuyla karşılaştır. Hata alırsan panik yapma: hata mesajını oku, genelde bir virgül, tırnak işareti ya da büyük/küçük harf hatasıdır. Sınav B kısmının 45 puanı tamamen buna bağlı.</p></div>
+
+<h3>1.9.1 RStudio kennenlernen</h3>
+<table class="tab wide">
+<tr><th class="l">Fenster</th><th class="l">Was ist das?</th><th class="l">Türkçe</th></tr>
+<tr><td class="l"><b>Skript</b> (oben links)</td><td class="l">Hier schreibst du deine Befehle. Datei → New File → R Script. Speichern mit Strg + S (Datei endet auf <code>.R</code>).</td><td class="l">Kodları yazdığın defter. Kaydedilir.</td></tr>
+<tr><td class="l"><b>Konsole</b> (unten links)</td><td class="l">Hier führt R die Befehle aus und zeigt das Ergebnis. Zeichen <code>&gt;</code> = R wartet.</td><td class="l">Sonuçların çıktığı yer.</td></tr>
+<tr><td class="l"><b>Environment</b> (oben rechts)</td><td class="l">Liste aller Objekte, die du gespeichert hast (z.&nbsp;B. <code>d</code>, <code>x</code>).</td><td class="l">Kaydettiğin nesnelerin listesi.</td></tr>
+<tr><td class="l"><b>Plots / Files / Help</b> (unten rechts)</td><td class="l">Grafiken, Dateien im Ordner, Hilfe zu Befehlen.</td><td class="l">Grafikler, dosyalar, yardım.</td></tr>
+</table>
+<p><b>Ausführen:</b> Cursor in die Zeile setzen und <b>Strg + Enter</b> drücken (Mac: Cmd + Enter). Mehrere Zeilen markieren und Strg + Enter führt alle aus. <b>Kommentare</b> beginnen mit <code>#</code> – R ignoriert alles dahinter. Schreibe Kommentare, damit die Korrektoren deinen Weg verstehen.</p>
+
+<h3>1.9.2 R als Taschenrechner und Objekte</h3>
+<pre>3 + 4 * 2          <span class="c"># Punkt vor Strich</span>
+(3 + 4) * 2
+2^3                <span class="c"># Potenz: 2 hoch 3</span>
+sqrt(16)           <span class="c"># Wurzel</span>
+log(10); exp(1)    <span class="c"># natürlicher Logarithmus, e hoch 1</span>
+choose(10, 2)      <span class="c"># Binomialkoeffizient "10 über 2"</span></pre>
+<pre class="out">[1] 11
+[1] 14
+[1] 8
+[1] 4
+[1] 2.302585
+[1] 2.718282
+[1] 45</pre>
+<p>Das <code>[1]</code> bedeutet nur: „Hier beginnt das erste Element der Ausgabe“. Es ist kein Teil des Ergebnisses.</p>
+<pre>a &lt;- 5             <span class="c"># Objekt a bekommt den Wert 5</span>
+b &lt;- a * 2
+b</pre>
+<pre class="out">[1] 10</pre>
+<ul>
+<li><code>&lt;-</code> ist der <b>Zuweisungspfeil</b> („bekommt“): kleiner-Zeichen und Minus. Man kann auch <code>=</code> schreiben, aber <code>&lt;-</code> ist üblich.</li>
+<li>Bei einer Zuweisung zeigt R <b>nichts</b> an. Um den Inhalt zu sehen, tippt man den Namen (<code>b</code>) oder setzt Klammern um die ganze Zeile: <code>(b &lt;- a * 2)</code>.</li>
+<li>Namen: Buchstaben, Zahlen, Punkt, Unterstrich; nicht mit einer Zahl beginnen. <b>Groß-/Kleinschreibung zählt</b>: <code>d</code> und <code>D</code> sind zwei verschiedene Objekte.</li>
+<li>Dezimalzahlen immer mit <b>Punkt</b>: <code>2.5</code>. Das Komma trennt in R die Argumente eines Befehls!</li>
+</ul>
+<div class="box tr"><div class="t">Türkçe açıklama</div>
+<p><code>&lt;-</code> işareti “içine koy / ata” demektir: <code>a &lt;- 5</code> → “a adlı kutuya 5’i koy”. Ondalık sayılarda <b>nokta</b> kullan (2.5); virgül R’da komutun parçalarını (argümanları) ayırır. Büyük-küçük harf farklıdır: <code>Mean</code> çalışmaz, <code>mean</code> çalışır.</p></div>
+
+<h3>1.9.3 Vektoren – die wichtigste Datenstruktur</h3>
+<p>Ein <b>Vektor</b> ist eine Reihe von Werten des gleichen Typs, z.&nbsp;B. alle Beobachtungen eines Merkmals.</p>
+<pre>x &lt;- c(3, 2, 5, 1, 3, 4)   <span class="c"># c() = "combine": Werte zusammenfügen</span>
+x
+length(x)                  <span class="c"># Anzahl der Werte = n</span></pre>
+<pre class="out">[1] 3 2 5 1 3 4
+[1] 6</pre>
+<p><b>Auf Elemente zugreifen</b> mit eckigen Klammern <code>[ ]</code> (Position zählt ab 1):</p>
+<pre>x[1]          <span class="c"># erstes Element</span>
+x[c(2, 4)]    <span class="c"># zweites und viertes Element</span>
+x[-1]         <span class="c"># alle AUSSER dem ersten</span></pre>
+<pre class="out">[1] 3
+[1] 2 1
+[1] 2 5 1 3 4</pre>
+<p><b>Rechnen mit Vektoren</b>: R rechnet automatisch mit <b>jedem</b> Element („vektorisiert“) – du brauchst keine Schleife.</p>
+<pre>x * 2
+x + 10
+sum(x)
+sort(x)       <span class="c"># aufsteigend sortieren</span></pre>
+<pre class="out">[1]  6  4 10  2  6  8
+[1] 13 12 15 11 13 14
+[1] 18
+[1] 1 2 3 3 4 5</pre>
+<p><b>Bedingungen</b> (logische Vektoren): Ein Vergleich gibt für jedes Element <code>TRUE</code> (wahr) oder <code>FALSE</code> (falsch).</p>
+<pre>x &gt; 2
+x[x &gt; 2]      <span class="c"># nur die Werte, bei denen die Bedingung TRUE ist</span>
+sum(x &gt; 2)    <span class="c"># wie viele sind größer als 2?  (TRUE zählt als 1)</span>
+mean(x &gt; 2)   <span class="c"># welcher ANTEIL ist größer als 2?</span></pre>
+<pre class="out">[1]  TRUE FALSE  TRUE FALSE  TRUE  TRUE
+[1] 3 5 3 4
+[1] 4
+[1] 0.6666667</pre>
+<p>Vergleichszeichen: <code>&gt;</code>, <code>&gt;=</code> (größer gleich), <code>&lt;</code>, <code>&lt;=</code>, <code>==</code> (gleich – <b>zwei</b> Gleichheitszeichen!), <code>!=</code> (ungleich). Verknüpfen: <code>&amp;</code> (und), <code>|</code> (oder).</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div>
+<p><code>x &gt; 2</code> her eleman için “doğru mu yanlış mı?” sorusunu sorar. R’da TRUE = 1, FALSE = 0 sayılır. Bu yüzden <code>sum(x &gt; 2)</code> kaç tane olduğunu, <code>mean(x &gt; 2)</code> ise <b>oranını</b> verir. “Eşittir” için <b>iki</b> eşittir işareti yazılır: <code>==</code>. Tek <code>=</code> atama yapar, karşılaştırma yapmaz!</p></div>
+<p><b>Folgen erzeugen:</b></p>
+<pre>1:6                     <span class="c"># ganze Zahlen von 1 bis 6</span>
+seq(0, 20, by = 5)      <span class="c"># von 0 bis 20 in 5er-Schritten</span>
+rep(1/6, 3)             <span class="c"># den Wert 1/6 dreimal wiederholen</span></pre>
+<pre class="out">[1] 1 2 3 4 5 6
+[1]  0  5 10 15 20
+[1] 0.1666667 0.1666667 0.1666667</pre>
+
+<h3>1.9.4 Datentypen: typeof, class, factor</h3>
+<p>In beiden R-Probeklausuren gab es 2–4 Punkte für die Frage: <b>„Welchen Objekttyp hat die Variable?“</b></p>
+<pre>typeof(x)                   <span class="c"># x = c(3, 2, 5, 1, 3, 4)</span>
+typeof(1:6)
+typeof(c("Wolf", "Troll"))
+typeof(x &gt; 2)</pre>
+<pre class="out">[1] "double"
+[1] "integer"
+[1] "character"
+[1] "logical"</pre>
+<table class="tab wide rtab">
+<tr><th class="l">Typ</th><th class="l">Bedeutung</th><th class="l">Beispiel</th><th class="l">Türkçe</th></tr>
+<tr><td>double</td><td class="l">Kommazahl (Oberbegriff: <b>numeric</b>)</td><td class="l">Lungenvolumen 2.35, Kampfzeit 12.5</td><td class="l">ondalıklı sayı</td></tr>
+<tr><td>integer</td><td class="l">ganze Zahl (auch <b>numeric</b>)</td><td class="l">Anzahl Münzen 18</td><td class="l">tam sayı</td></tr>
+<tr><td>character</td><td class="l">Text (in Anführungszeichen)</td><td class="l">"Bergtal"</td><td class="l">metin</td></tr>
+<tr><td>logical</td><td class="l">TRUE / FALSE</td><td class="l">x &gt; 2</td><td class="l">mantıksal (doğru/yanlış)</td></tr>
+<tr><td>factor</td><td class="l">Kategorien mit festen Stufen (levels); mit <code>class()</code> erkennen</td><td class="l">Ergebnis von <code>cut()</code></td><td class="l">kategorik değişken</td></tr>
+</table>
+<pre>f &lt;- factor(c("Wolf", "Troll", "Wolf"))
+f
+class(f)
+levels(f)       <span class="c"># die möglichen Kategorien (alphabetisch sortiert)</span></pre>
+<pre class="out">[1] Wolf  Troll Wolf
+Levels: Troll Wolf
+[1] "factor"
+[1] "Troll" "Wolf" </pre>
+<p><code>typeof()</code> zeigt den <b>Speichertyp</b>, <code>class()</code> die <b>Klasse</b>. Bei einem Faktor sagt <code>typeof</code> „integer“ (intern Nummern), <code>class</code> aber „factor“. In der Klausur ist beides als Befehl okay (Musterlösung: „typeof(), alternativ class(), str(d)“).</p>
+
+<h3>1.9.5 Einen Datensatz einlesen</h3>
+<p>Die Übungsdatei <code>Taverne.csv</code> sieht als Text so aus (erste Zeilen):</p>
+<pre class="out">Taverne;Tal;Monster;Muenzen;Kampfzeit
+T01;Flusstal;Ghul;18;12.5
+T02;Bergtal;Troll;25;45.0
+T03;Flusstal;Wolf;12;3.2</pre>
+<p>Man sieht: Die erste Zeile enthält die <b>Namen</b> (header), die Spalten sind mit <b>Semikolon</b> getrennt (sep), Dezimalzeichen ist der <b>Punkt</b> (dec).</p>
+<pre>setwd(path.expand("~"))     <span class="c"># Arbeitsordner = Dokumente (genau so in der Klausur!)</span>
+getwd()                     <span class="c"># zeigt den aktuellen Arbeitsordner</span>
+d &lt;- read.csv("Taverne.csv", header = TRUE, sep = ";", dec = ".")
+head(d)                     <span class="c"># die ersten 6 Zeilen</span></pre>
+<pre class="out">  Taverne      Tal Monster Muenzen Kampfzeit
+1     T01 Flusstal    Ghul      18      12.5
+2     T02  Bergtal   Troll      25      45.0
+3     T03 Flusstal    Wolf      12       3.2
+4     T04  Waldtal   Greif      30      75.5
+5     T05  Bergtal    Ghul      22       8.0
+6     T06  Waldtal    Wolf      15       4.5</pre>
+<table class="tab wide rtab">
+<tr><th class="l">Teil</th><th class="l">Bedeutung</th><th class="l">Türkçe</th></tr>
+<tr><td>setwd(...)</td><td class="l">„set working directory“: In diesem Ordner sucht R Dateien und speichert PDFs.</td><td class="l">Çalışma klasörünü ayarla.</td></tr>
+<tr><td>path.expand("~")</td><td class="l">„~“ ist der Benutzerordner; im Prüfungsraum ist das <i>Dokumente</i>.</td><td class="l">Kullanıcı klasörü (sınavda Dokumente).</td></tr>
+<tr><td>d &lt;- read.csv(...)</td><td class="l">Datei lesen und als <b>Data Frame</b> (Tabelle) im Objekt <code>d</code> speichern.</td><td class="l">Dosyayı oku, tabloyu d’ye kaydet.</td></tr>
+<tr><td>"Taverne.csv"</td><td class="l">Dateiname in Anführungszeichen, genau so geschrieben.</td><td class="l">Dosya adı, tırnak içinde.</td></tr>
+<tr><td>header = TRUE</td><td class="l">Die erste Zeile enthält die Spaltennamen.</td><td class="l">İlk satır sütun isimleri.</td></tr>
+<tr><td>sep = ";"</td><td class="l">Trennzeichen zwischen den Spalten (oft "," oder ";").</td><td class="l">Sütunları ayıran işaret.</td></tr>
+<tr><td>dec = "."</td><td class="l">Dezimalzeichen in der Datei ("." oder ",").</td><td class="l">Ondalık işareti.</td></tr>
+</table>
+<p><b>Die Struktur ansehen</b> – der wichtigste Befehl nach dem Einlesen:</p>
+<pre>str(d)</pre>
+<pre class="out">'data.frame':	12 obs. of  5 variables:
+ $ Taverne  : chr  "T01" "T02" "T03" "T04" ...
+ $ Tal      : chr  "Flusstal" "Bergtal" "Flusstal" "Waldtal" ...
+ $ Monster  : chr  "Ghul" "Troll" "Wolf" "Greif" ...
+ $ Muenzen  : int  18 25 12 30 22 15 27 33 20 10 ...
+ $ Kampfzeit: num  12.5 45 3.2 75.5 8 4.5 50 90 15 2.5 ...</pre>
+<p>Lies so: 12 Beobachtungen (Zeilen), 5 Variablen (Spalten). <code>chr</code> = character, <code>int</code> = integer, <code>num</code> = numeric/double. <b>Prüfe hier immer, ob das Einlesen geklappt hat!</b> Wenn alles in einer einzigen Spalte steht, war <code>sep</code> falsch. Wenn Zahlen als <code>chr</code> erscheinen, war oft <code>dec</code> falsch.</p>
+<pre>names(d)                    <span class="c"># Spaltennamen</span>
+dim(d)                      <span class="c"># Zeilen, Spalten</span>
+d$Muenzen                   <span class="c"># eine Spalte mit $ auswählen -&gt; Vektor</span></pre>
+<pre class="out">[1] "Taverne"   "Tal"       "Monster"   "Muenzen"   "Kampfzeit"
+[1] 12  5
+ [1] 18 25 12 30 22 15 27 33 20 10 24 29</pre>
+<p><b>Zeilen und Spalten auswählen</b> mit <code>d[Zeile, Spalte]</code>. Leer lassen = „alle“:</p>
+<pre>d[2, ]                          <span class="c"># Zeile 2, alle Spalten</span>
+d[1:3, c("Tal", "Muenzen")]     <span class="c"># Zeilen 1-3, zwei Spalten</span></pre>
+<pre class="out">  Taverne     Tal Monster Muenzen Kampfzeit
+2     T02 Bergtal   Troll      25        45
+       Tal Muenzen
+1 Flusstal      18
+2  Bergtal      25
+3 Flusstal      12</pre>
+<pre>typeof(d$Tal)
+typeof(d$Muenzen)
+typeof(d$Kampfzeit)</pre>
+<pre class="out">[1] "character"
+[1] "integer"
+[1] "double"</pre>
+<div class="box tr"><div class="t">Türkçe açıklama</div>
+<p>Data frame = Excel tablosu gibi bir tablo. Her sütun bir değişken, her satır bir gözlem. <code>d$Muenzen</code> → “d tablosundaki Muenzen sütunu”. <code>d[2, ]</code> → “2. satır, bütün sütunlar” (virgülden önce satır, sonra sütun). Veriyi okuduktan hemen sonra <code>str(d)</code> yaz: veri doğru okunduysa sayılar <code>int</code>/<code>num</code>, metinler <code>chr</code> görünür. Her şey tek sütundaysa <code>sep</code> yanlıştır.</p></div>
+
+<h3>1.9.6 Kennzahlen berechnen</h3>
+<pre>mean(d$Muenzen)                 <span class="c"># arithmetisches Mittel</span>
+median(d$Muenzen)               <span class="c"># Median</span>
+var(d$Muenzen)                  <span class="c"># Varianz  -&gt; mit 1/(n-1) !</span>
+sd(d$Muenzen)                   <span class="c"># Standardabweichung -&gt; mit 1/(n-1) !</span></pre>
+<pre class="out">[1] 22.08333
+[1] 23
+[1] 53.17424
+[1] 7.292067</pre>
+<div class="box achtung"><div class="t">Achtung: var() und sd() sind die UNVERZERRTEN Versionen</div>
+<p>R teilt durch \(n-1\). Das ist genau der „unverzerrte Schätzer für die Standardabweichung \(s_*\)“ aus der Probeklausur B. Brauchst du die Varianz mit \(\frac1n\), rechnest du um:</p>
+<pre>n &lt;- length(d$Muenzen)
+var(d$Muenzen) * (n - 1) / n       <span class="c"># Varianz mit 1/n</span></pre>
+<pre class="out">[1] 48.74306</pre></div>
+<pre>round(mean(d$Muenzen), 3)       <span class="c"># IMMER runden, wenn eine Zahl gefragt ist</span>
+round(sd(d$Muenzen), 3)
+range(d$Muenzen)                <span class="c"># Minimum und Maximum (Wertebereich)</span>
+quantile(d$Muenzen, c(0.25, 0.5, 0.75))
+IQR(d$Muenzen)
+summary(d$Muenzen)</pre>
+<pre class="out">[1] 22.083
+[1] 7.292
+[1] 10 33
+  25%   50%   75%
+17.25 23.00 27.50
+[1] 10.25
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+  10.00   17.25   23.00   22.08   27.50   33.00 </pre>
+<p><code>round(wert, 3)</code>: erstes Argument = was gerundet wird, zweites = Anzahl Nachkommastellen. Man kann Befehle <b>verschachteln</b>: R rechnet von innen nach außen – erst <code>mean</code>, dann <code>round</code>. (Die Quantile von R sind interpoliert und können von der Handrechnung abweichen – in Teil B ist der R-Wert richtig.)</p>
+<p><b>Häufigkeiten</b> für kategoriale Variablen:</p>
+<pre>table(d$Monster)                     <span class="c"># absolute Häufigkeiten</span>
+prop.table(table(d$Monster))         <span class="c"># relative Häufigkeiten (Anteile)</span>
+which(table(d$Monster) == max(table(d$Monster)))   <span class="c"># Modus</span></pre>
+<pre class="out"> Ghul Greif Troll  Wolf
+    3     2     4     3
+
+     Ghul     Greif     Troll      Wolf
+0.2500000 0.1666667 0.3333333 0.2500000
+
+Troll
+    3 </pre>
+<p>Beim Modus liest du den <b>Namen</b> (Troll) – die 3 darunter ist nur die Position in der Tabelle, nicht die Anzahl!</p>
+<p><b>Nach Gruppen rechnen und filtern:</b></p>
+<pre>tapply(d$Muenzen, d$Tal, mean)       <span class="c"># Mittelwert von Muenzen für jedes Tal</span>
+subset(d, Tal == "Bergtal")          <span class="c"># nur die Zeilen aus dem Bergtal</span>
+d[d$Muenzen &gt; 25, ]                  <span class="c"># nur Zeilen mit mehr als 25 Münzen</span>
+mean(d$Muenzen &gt; 25)                 <span class="c"># Anteil mit mehr als 25 Münzen</span></pre>
+<pre class="out"> Bergtal Flusstal  Waldtal
+   26.00    16.75    23.50
+   Taverne     Tal Monster Muenzen Kampfzeit
+2      T02 Bergtal   Troll      25        45
+5      T05 Bergtal    Ghul      22         8
+8      T08 Bergtal   Greif      33        90
+11     T11 Bergtal   Troll      24        38
+   Taverne      Tal Monster Muenzen Kampfzeit
+4      T04  Waldtal   Greif      30      75.5
+7      T07 Flusstal   Troll      27      50.0
+8      T08  Bergtal   Greif      33      90.0
+12     T12  Waldtal   Troll      29      62.0
+[1] 0.3333333</pre>
+<div class="box tr"><div class="t">Türkçe açıklama</div>
+<p><code>tapply(A, B, mean)</code> → “A değişkeninin ortalamasını, B’nin her grubu için ayrı ayrı hesapla”. <code>subset(d, Tal == "Bergtal")</code> → “sadece Bergtal satırlarını al”. <code>d[d$Muenzen &gt; 25, ]</code> aynı mantık: köşeli parantezin içinde, virgülden önce bir koşul yazarsan sadece koşulu sağlayan satırlar gelir.</p></div>
+<p><b>Fehlende Werte (NA):</b></p>
+<pre>x &lt;- c(3, 2, 5, NA, 4)
+mean(x)
+mean(x, na.rm = TRUE)      <span class="c"># na.rm = "NA remove": fehlende Werte weglassen</span></pre>
+<pre class="out">[1] NA
+[1] 3.5</pre>
+
+<h3>1.9.7 Grafiken zeichnen und als PDF speichern</h3>
+<p>In der Klausur musst du Grafiken als PDF-Datei speichern und hochladen (z.&nbsp;B. 7–8 Punkte für ein Histogramm!). Das geht in <b>drei Schritten</b>:</p>
+<pre>pdf("Histogramm.pdf")                        <span class="c"># 1. PDF-Datei öffnen</span>
+hist(d$Muenzen,                              <span class="c"># 2. Grafik zeichnen</span>
+     breaks = c(10, 20, 30, 40),             <span class="c">#    Klassengrenzen</span>
+     right  = FALSE,                         <span class="c">#    Intervalle [a, b)</span>
+     freq   = FALSE,                         <span class="c">#    Dichte statt Anzahl -&gt; normiert</span>
+     main   = "Sitz 12, Matr.Nr. 12345678, Aufgabenteil d)",
+     xlab   = "Muenzen",
+     ylab   = "Dichte")
+dev.off()                                    <span class="c"># 3. PDF-Datei schließen (WICHTIG!)</span></pre>
+<div class="two"><figure><img src="fig/r_hist.svg" style="width:100%"><figcaption>So sieht die gespeicherte Grafik aus.</figcaption></figure>
+<div>
+<table class="tab rtab small">
+<tr><th class="l">Argument</th><th class="l">Bedeutung</th></tr>
+<tr><td>breaks = c(...)</td><td class="l">Klassengrenzen</td></tr>
+<tr><td>right = TRUE</td><td class="l">(a, b] – rechts geschlossen (Standard)</td></tr>
+<tr><td>right = FALSE</td><td class="l">[a, b) – links geschlossen</td></tr>
+<tr><td>freq = FALSE</td><td class="l">normiert: y = Dichte, Fläche 1 (= prob = TRUE)</td></tr>
+<tr><td>freq = TRUE</td><td class="l">y = absolute Anzahl (Standard)</td></tr>
+<tr><td>main</td><td class="l">Titel (Aufgabenteil, Matr.-Nr., Sitz!)</td></tr>
+<tr><td>xlab, ylab</td><td class="l">Beschriftung der Achsen</td></tr>
+<tr><td>ylim = c(0, 0.1)</td><td class="l">Bereich der y-Achse</td></tr>
+</table></div></div>
+<p>Die Zahlen hinter dem Histogramm bekommst du mit <code>plot = FALSE</code>:</p>
+<pre>h &lt;- hist(d$Muenzen, breaks = c(10, 20, 30, 40), right = FALSE, plot = FALSE)
+h$counts          <span class="c"># Anzahl pro Klasse</span>
+h$density         <span class="c"># Höhe pro Klasse = Anteil / Breite</span></pre>
+<pre class="out">[1] 4 6 2
+[1] 0.03333333 0.05000000 0.01666667</pre>
+<p>Kontrolle: 4 von 12 Werten in [10, 20) → Anteil 0.3333, Breite 10 → Höhe 0.0333. ✓</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div>
+<p>Grafiği PDF olarak kaydetmek üç adımdır: <b>(1)</b> <code>pdf("isim.pdf")</code> ile dosyayı aç, <b>(2)</b> grafiği çiz, <b>(3)</b> <code>dev.off()</code> ile dosyayı kapat. <code>dev.off()</code> unutulursa PDF boş kalır ve puan gider! Başlıkta (<code>main</code>) sınavda mutlaka <b>alt görev harfi, matrikül numarası ve oturduğun yer numarası</b> olmalı. <code>freq = FALSE</code> histogramı “normalleştirir”: y ekseninde yoğunluk olur, toplam alan 1’dir.</p></div>
+<p><b>Weitere Grafiken:</b></p>
+<pre>plot(d$Kampfzeit, d$Muenzen, pch = 16,              <span class="c"># Streudiagramm: erst x, dann y</span>
+     xlab = "Kampfzeit (min)", ylab = "Muenzen", main = "Streudiagramm")
+boxplot(Muenzen ~ Tal, data = d,                   <span class="c"># Boxplot je Gruppe</span>
+        main = "Muenzen je Tal", xlab = "Tal", ylab = "Muenzen")
+boxplot(d$Kampfzeit, plot = FALSE)$stats           <span class="c"># Zahlen des Boxplots</span></pre>
+<pre class="out">      [,1]
+[1,]  2.50
+[2,]  6.25
+[3,] 26.50
+[4,] 56.00
+[5,] 90.00</pre>
+<p>Die fünf Zahlen sind: unterer Whisker, unteres Quartil, Median, oberes Quartil, oberer Whisker. <code>pch = 16</code> macht gefüllte Punkte.</p>
+<div class="two"><figure><img src="fig/r_scatter.svg" style="width:100%"></figure><figure><img src="fig/r_box.svg" style="width:100%"></figure></div>
+<p><b>Alternative zu pdf()/dev.off()</b>: Grafik im Plots-Fenster zeichnen und über <i>Export → Save as PDF</i> speichern. Mit <code>pdf()</code> ist es aber sicherer und steht im Skript.</p>
+
+<h3>1.9.8 Klassen bilden, Kontingenztafeln, Korrelation</h3>
+<p>Mit <code>cut()</code> teilt man eine metrische Variable in Klassen. Das Ergebnis ist ein <b>factor</b>.</p>
+<pre>d$Kampfzeit.3 &lt;- cut(d$Kampfzeit, breaks = c(0, 5, 60, Inf), right = FALSE)
+d$Kampfzeit.3
+table(d$Kampfzeit.3)</pre>
+<pre class="out"> [1] [5,60)   [5,60)   [0,5)    [60,Inf) [5,60)   [0,5)    [5,60)   [60,Inf)
+ [9] [5,60)   [0,5)    [5,60)   [60,Inf)
+Levels: [0,5) [5,60) [60,Inf)
+
+   [0,5)   [5,60) [60,Inf)
+       3        6        3 </pre>
+<ul><li><code>d$Kampfzeit.3 &lt;- ...</code> legt eine <b>neue Spalte</b> im Data Frame an.</li>
+<li><code>Inf</code> = unendlich (für „60 Minuten oder mehr“).</li>
+<li><code>right = FALSE</code>: [0,5) = „weniger als 5 Minuten“, [5,60) = „5 bis weniger als 60“. Für „bis zu 10“, „mehr als 10 bis 20“ brauchst du <code>right = TRUE</code>: (0,10], (10,20].</li>
+<li>Eigene Namen für die Klassen mit <code>labels</code>:</li></ul>
+<pre>d$Muenzen.3 &lt;- cut(d$Muenzen, breaks = c(0, 15, 25, Inf),
+                   labels = c("wenig", "mittel", "viel"))
+table(d$Muenzen.3)</pre>
+<pre class="out"> wenig mittel   viel
+     3      5      4 </pre>
+<p><b>Kontingenztafel</b> und bedingte Anteile:</p>
+<pre>table(d$Tal, d$Kampfzeit.3)                 <span class="c"># Zeilen = Tal, Spalten = Kampfzeit-Klasse</span>
+round(prop.table(table(d$Tal[d$Kampfzeit.3 == "[5,60)"])), 2)</pre>
+<pre class="out">           [0,5) [5,60) [60,Inf)
+  Bergtal      0      3        1
+  Flusstal     2      2        0
+  Waldtal      1      1        2
+
+ Bergtal Flusstal  Waldtal
+    0.50     0.33     0.17 </pre>
+<p>Die zweite Zeile liest man von innen nach außen: nimm die Täler <code>d$Tal</code>, aber nur dort, wo die Kampfzeit in [5,60) liegt (<code>[...]</code>), zähle sie (<code>table</code>), mache Anteile daraus (<code>prop.table</code>), runde auf 2 Stellen (<code>round</code>). Das ist genau Testat 2, Aufgabe 3.7 (Randverteilung für eine Teilgruppe).</p>
+<pre>cor(d$Muenzen, d$Kampfzeit)                       <span class="c"># Pearson</span>
+cor(d$Muenzen, d$Kampfzeit, method = "spearman")  <span class="c"># Spearman</span></pre>
+<pre class="out">[1] 0.9275322
+[1] 0.979021</pre>
+<div class="box tr"><div class="t">Türkçe açıklama</div>
+<p><code>cut()</code> sürekli bir değişkeni sınıflara (aralıklara) böler ve bir <b>factor</b> üretir. <code>breaks</code> sınır noktalarıdır; <code>Inf</code> sonsuz demektir. <code>right = FALSE</code> → aralıklar <b>[a, b)</b>: sol sınır dahil, sağ sınır hariç (“5 dakikadan az” gibi ifadeler için). <code>right = TRUE</code> → <b>(a, b]</b>: “en fazla 10” gibi ifadeler için. Soru metnindeki kelimelere çok dikkat et: “weniger als” (-den az) ve “bis zu / maximal” (en fazla) farklı sınırlar demektir.</p></div>
+
+<h3>1.9.9 Hilfe und typische Fehlermeldungen</h3>
+<pre>?hist           <span class="c"># Hilfeseite zu hist öffnen (auch in der Klausur erlaubt!)</span>
+help(read.csv)</pre>
+<table class="tab wide">
+<tr><th class="l">Fehlermeldung</th><th class="l">Ursache</th><th class="l">Lösung</th></tr>
+<tr><td class="l"><code>object 'd' not found</code></td><td class="l">Objekt existiert (noch) nicht</td><td class="l">Einlese-Zeile zuerst ausführen; Schreibweise prüfen</td></tr>
+<tr><td class="l"><code>cannot open file 'X.csv': No such file</code></td><td class="l">falscher Ordner oder Dateiname</td><td class="l"><code>setwd(path.expand("~"))</code>, <code>list.files()</code> zeigt die Dateien</td></tr>
+<tr><td class="l"><code>could not find function "Mean"</code></td><td class="l">Tippfehler / Großschreibung</td><td class="l"><code>mean</code></td></tr>
+<tr><td class="l"><code>unexpected ')'</code> oder <code>'+'</code> in der Konsole</td><td class="l">Klammer oder Anführungszeichen fehlt</td><td class="l">Esc drücken, Klammern zählen</td></tr>
+<tr><td class="l">Ergebnis <code>NA</code></td><td class="l">fehlende Werte</td><td class="l"><code>na.rm = TRUE</code></td></tr>
+<tr><td class="l">PDF ist leer / beschädigt</td><td class="l"><code>dev.off()</code> vergessen</td><td class="l"><code>dev.off()</code> ausführen</td></tr>
+</table>
+
+<h3>1.9.10 Die wichtigsten Befehle von Tag 1 auf einen Blick</h3>
+<table class="tab wide rtab">
+<tr><th class="l">Befehl</th><th class="l">Was er macht</th><th class="l">Türkçe</th></tr>
+<tr><td>c(1, 2, 3)</td><td class="l">Vektor erstellen</td><td class="l">vektör oluştur</td></tr>
+<tr><td>setwd(path.expand("~"))</td><td class="l">Arbeitsordner Dokumente</td><td class="l">çalışma klasörü</td></tr>
+<tr><td>read.csv(datei, header, sep, dec)</td><td class="l">CSV einlesen</td><td class="l">CSV dosyasını oku</td></tr>
+<tr><td>head(d) / str(d)</td><td class="l">erste 6 Zeilen / Struktur</td><td class="l">ilk 6 satır / yapı</td></tr>
+<tr><td>typeof(x) / class(x)</td><td class="l">Objekttyp</td><td class="l">nesne tipi</td></tr>
+<tr><td>d$Spalte, d[z, s]</td><td class="l">Spalte / Zeilen und Spalten auswählen</td><td class="l">sütun / satır seç</td></tr>
+<tr><td>mean, median</td><td class="l">Mittelwert, Median</td><td class="l">ortalama, medyan</td></tr>
+<tr><td>var, sd</td><td class="l">Varianz, Std.-abw. (mit n−1!)</td><td class="l">varyans, std. sapma (n−1)</td></tr>
+<tr><td>quantile(x, p), IQR, range, summary</td><td class="l">Quantile, IQR, Min/Max, Übersicht</td><td class="l">kantiller, özet</td></tr>
+<tr><td>table, prop.table</td><td class="l">absolute / relative Häufigkeiten</td><td class="l">frekans / oran tablosu</td></tr>
+<tr><td>tapply(x, gruppe, mean)</td><td class="l">Kennzahl je Gruppe</td><td class="l">gruplara göre hesap</td></tr>
+<tr><td>subset(d, bedingung)</td><td class="l">Zeilen filtern</td><td class="l">satır filtrele</td></tr>
+<tr><td>round(x, 3)</td><td class="l">auf 3 Stellen runden</td><td class="l">3 basamağa yuvarla</td></tr>
+<tr><td>hist(x, breaks, right, freq=FALSE, main, xlab, ylab)</td><td class="l">Histogramm</td><td class="l">histogram</td></tr>
+<tr><td>pdf("a.pdf") … dev.off()</td><td class="l">Grafik als PDF speichern</td><td class="l">grafiği PDF kaydet</td></tr>
+<tr><td>boxplot, plot(x, y)</td><td class="l">Boxplot, Streudiagramm</td><td class="l">kutu grafiği, serpilme</td></tr>
+<tr><td>cut(x, breaks, right, labels)</td><td class="l">in Klassen einteilen (factor)</td><td class="l">sınıflara böl</td></tr>
+<tr><td>cor(x, y, method)</td><td class="l">Korrelation (pearson/spearman)</td><td class="l">korelasyon</td></tr>
+</table>
+
+<div class="kt"><div class="kh"><span>Klausurtraining 1.H · R (Teil B) · Tavernen-Daten</span><span>32 Punkte</span></div><div class="kb">
+<p>Der Barde Jaskier sammelt Daten über seine Auftritte in Tavernen. Die Daten sind in der Datei <code>Taverne.csv</code> abgespeichert. Diese Datei liegt auf Ihrem lokalen Laufwerk im Ordner <i>Dokumente</i>. Der Datensatz enthält die Variablen: <code>Taverne</code> (Kennung), <code>Tal</code> (Ort der Taverne), <code>Monster</code> (besiegtes Monster), <code>Muenzen</code> (Anzahl erhaltener Münzen), <code>Kampfzeit</code> (Dauer des Kampfes in Minuten).</p>
+<p class="small muted">Beantworten Sie jede Teilaufgabe wie in ILIAS: (1) R-Code und R-Output, (2) wenn gefragt, eine inhaltliche Antwort in einem ganzen Satz. Runden Sie auf drei Nachkommastellen mit einem R-Befehl.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Setzen Sie mittels <code>setwd(path.expand("~"))</code> Ihr Working Directory. <span class="pt">(2 P)</span></li>
+<li><span class="lb">(b)</span>Speichern Sie die Daten als Data-Frame-Objekt <code>d</code> in R ab und geben Sie die ersten 6 Zeilen wieder. <span class="pt">(4 P)</span></li>
+<li><span class="lb">(c)</span>Ermitteln Sie unter Einbezug eines passenden R-Befehls die Objekttypen der Variablen <code>Monster</code> und <code>Kampfzeit</code>. <span class="pt">(4 P)</span></li>
+<li><span class="lb">(d)</span>Berechnen und nennen Sie das arithmetische Mittel und den unverzerrten Schätzer der Standardabweichung der Variable <code>Kampfzeit</code>. <span class="pt">(4 P)</span></li>
+<li><span class="lb">(e)</span>Erstellen Sie ein normiertes Histogramm der Variable <code>Kampfzeit</code> mit den Intervallen [0, 10), [10, 40), [40, 100). Titel: „Sitz …, Matr.Nr. …, Aufgabenteil e)“, x-Achse „Kampfzeit in Minuten“, y-Achse „Dichte“. Speichern Sie die Grafik als <code>Histogramm.pdf</code>. <span class="pt">(8 P)</span></li>
+<li><span class="lb">(f)</span>Bestimmen Sie den Median und den Interquartilsabstand der Variable <code>Muenzen</code>. <span class="pt">(3 P)</span></li>
+<li><span class="lb">(g)</span>Berechnen Sie die durchschnittliche Anzahl an Münzen für jedes Tal. In welchem Tal verdient Jaskier im Durchschnitt am meisten? <span class="pt">(3 P)</span></li>
+<li><span class="lb">(h)</span>Wie stark ist der lineare Zusammenhang zwischen <code>Kampfzeit</code> und <code>Muenzen</code>? Berechnen und interpretieren Sie eine geeignete Maßzahl. <span class="pt">(4 P)</span></li>
+</ol></div></div>
+
+<!-- ============ 1.10 ============ -->
+<h2 class="lek neu"><span class="num">1.10</span> Antworten richtig formulieren <span class="ear">Hörtext Teil 3 · 1.10</span></h2>
+<p>Viele Punkte gehen verloren, weil die Antwort unklar ist. Hier sind <b>Mustersätze</b>, die du fast wörtlich benutzen kannst.</p>
+<table class="tab wide">
+<tr><th class="l">Frage</th><th class="l">Mustersatz</th></tr>
+<tr><td class="l">Skalenniveau</td><td class="l">„X ist ein stetiges, kardinal (metrisch) skaliertes Merkmal, weil die Abstände zwischen den Werten sinnvoll interpretierbar sind.“</td></tr>
+<tr><td class="l">Parameter nicht sinnvoll</td><td class="l">„Der Median ist für nominale Merkmale nicht sinnvoll, weil sich die Ausprägungen nicht der Größe nach ordnen lassen.“</td></tr>
+<tr><td class="l">Mittelwert (Teil B)</td><td class="l">„Das arithmetische Mittel der Variable Muenzen beträgt 22.083.“</td></tr>
+<tr><td class="l">Vorteil Median</td><td class="l">„Der Median ist robuster gegenüber Extremwerten (Ausreißern) als das arithmetische Mittel.“</td></tr>
+<tr><td class="l">Vorteil Standardabweichung</td><td class="l">„Die Standardabweichung hat dieselbe Maßeinheit wie das Merkmal.“</td></tr>
+<tr><td class="l">Korrelation deuten</td><td class="l">„Der Korrelationskoeffizient von 0.836 zeigt einen starken positiven linearen Zusammenhang zwischen Gewicht und Größe.“</td></tr>
+<tr><td class="l">Kausalität</td><td class="l">„Nein. Eine Korrelation belegt keine Kausalität. Der Zusammenhang könnte durch Drittvariablen oder Zufall entstehen; für Kausalität bräuchte man z. B. ein randomisiertes Experiment.“</td></tr>
+<tr><td class="l">Kovarianz</td><td class="l">„Das positive Vorzeichen deutet auf einen positiven linearen Zusammenhang hin; die Höhe ist nicht interpretierbar, da sie von den Einheiten abhängt.“</td></tr>
+<tr><td class="l">Objekttyp (Teil B)</td><td class="l">„Die Variable Tal ist ein character-Objekt; die Variable Muenzen ist numerisch vom Typ integer (nur ganze Zahlen).“</td></tr>
+</table>
+<div class="box tipp"><div class="t">Klausur-Regeln für die Form</div>
+<ul><li>Teil A: Nur das Endergebnis ins Lösungskästchen, außer ein Lösungsweg ist verlangt. <b>Nie</b> zwei Lösungen hinschreiben – falsche Versuche durchstreichen.</li>
+<li>Teil B: Pro Teilaufgabe gibt es oft zwei Kästchen: (1) R-Code <b>und</b> R-Output hineinkopieren, (2) inhaltliche Antwort in einem <b>ganzen Satz</b> ohne Code, auf 3 Nachkommastellen gerundet. Fehlerhaften Code, der nicht zur Antwort gehört, löschen.</li>
+<li>Folgefehler werden berücksichtigt: Wenn du eine Teilaufgabe nicht kannst, rechne mit einem plausiblen Wert weiter und schreibe das dazu.</li>
+<li>Hältst du eine Aufgabe für unlösbar: „nicht lösbar“ ins Kästchen und Begründung in das Feld am Ende.</li></ul></div>
+
+<!-- ============ Zusammenfassung ============ -->
+<h2 class="lek neu"><span class="num">Z1</span> Tag 1 auf einer Seite</h2>
+<table class="tab wide small">
+<tr><th class="l">Thema</th><th class="l">Das Wichtigste</th></tr>
+<tr><td class="l">Grundbegriffe</td><td class="l">Einheit, Grundgesamtheit, Stichprobe, Merkmal \(X\), Ausprägung \(x\); deskriptiv (beschreiben) vs. induktiv (schließen + Unsicherheit)</td></tr>
+<tr><td class="l">Skalen</td><td class="l">nominal (nur Namen) · ordinal (Reihenfolge) · kardinal (Abstände); diskret (abzählbar) vs. stetig (Intervall); 1–7-Skala = ordinal; 0/1 = nominal, Mittel = Anteil</td></tr>
+<tr><td class="l">Stichproben</td><td class="l">einfach zufällig · geschichtet (aus allen Gruppen) · Klumpen (ganze Gruppen) · Quote (bewusst)</td></tr>
+<tr><td class="l">Häufigkeiten</td><td class="l">\(h_j\), \(f_j=h_j/n\); Histogramm: Höhe \(=f_j/\)Breite, Fläche = Anteil, Gesamtfläche 1; Anteil in Teilintervall: Breite × Höhe</td></tr>
+<tr><td class="l">Verteilungsfunktion</td><td class="l">\(\hat F(x)\) = Anteil \(\le x\); Treppe von 0 bis 1, ● links ○ rechts</td></tr>
+<tr><td class="l">Lagemaße</td><td class="l">Modus (alle Skalen), Median (ab ordinal, robust), Mittel (kardinal); rechtsschief: \(\bar x&gt;x_{med}&gt;x_{mod}\); klassiert: \(\sum f_jm_j\); Gruppen: gewichtet</td></tr>
+<tr><td class="l">Quantile</td><td class="l">\(n\alpha\) nicht ganz → aufrunden; ganz → Mittel aus \(x_{(n\alpha)}\) und \(x_{(n\alpha+1)}\)</td></tr>
+<tr><td class="l">Streuung</td><td class="l">\(s^2=\overline{x^2}-\bar x^2\) (1/n); \(s_*^2=\frac{n}{n-1}s^2\) (R!); \(s\) gleiche Einheit; \(a+bx\): Varianz ×\(b^2\)</td></tr>
+<tr><td class="l">Boxplot</td><td class="l">Min, \(x_{0.25}\), Median, \(x_{0.75}\), Max; Ausreißer: mehr als 1.5·IQR außerhalb der Box</td></tr>
+<tr><td class="l">Kontingenztafel</td><td class="l">Rand = Summen; bedingt = Zeile/Zeilensumme; \(\tilde h_{jk}=h_{j\bullet}h_{\bullet k}/n\); \(\chi^2=\sum(h-\tilde h)^2/\tilde h\)</td></tr>
+<tr><td class="l">Korrelation</td><td class="l">\(s_{xy}=\overline{xy}-\bar x\bar y\); \(r=s_{xy}/(s_xs_y)\in[-1,1]\); nur linear; Spearman = Pearson der Ränge; Korrelation ≠ Kausalität</td></tr>
+<tr><td class="l">R</td><td class="l">setwd, read.csv, head, str, typeof, mean, sd (n−1!), quantile, table, tapply, hist(freq=FALSE), pdf()…dev.off(), cut, cor, round(…, 3)</td></tr>
+</table>
+<h3>Checkliste: Das kann ich jetzt</h3>
+<ul class="check">
+<li>Ich bestimme Skalenniveau und diskret/stetig für jedes Merkmal und begründe es.</li>
+<li>Ich baue aus Rohdaten eine Häufigkeitstabelle und ein Histogramm mit richtigen Höhen.</li>
+<li>Ich zeichne eine empirische Verteilungsfunktion korrekt (Punkte, Kreise, Achsen).</li>
+<li>Ich berechne Mittelwert, Median, Modus, Quantile, Varianz (1/n und 1/(n−1)) und Standardabweichung.</li>
+<li>Ich bestimme Whisker und Ausreißer eines Boxplots.</li>
+<li>Ich ergänze eine Kontingenztafel, berechne bedingte Verteilungen und den χ²-Koeffizienten.</li>
+<li>Ich berechne Kovarianz, Pearson- und Spearman-Korrelation und interpretiere sie richtig.</li>
+<li>Ich erkläre, warum Korrelation keine Kausalität ist.</li>
+<li>Ich lese in R einen Datensatz ein, bestimme Typen und Kennzahlen, filtere nach Gruppen und speichere ein Histogramm als PDF.</li>
+</ul>
+
+<!-- ============ Klausuraufgaben ============ -->
+<h2 class="lek neu"><span class="num">K1</span> Gemischte Klausuraufgaben Tag 1 – Generalprobe</h2>
+<p>Das sind echte Aufgaben aus der Probeklausur und aus Tutorien. Rechne sie am Ende des Tages <b>auf Zeit</b>: zusammen 38 Punkte ≈ 50 Minuten.</p>
+<div class="kt"><div class="kh"><span>Aufgabe K1.1 · Wahrsagerin (Probeklausur A, Aufgabe 1)</span><span>10 Punkte</span></div><div class="kb">
+<p>Harry möchte die Genauigkeit der Vorhersagen der Wahrsagerin Giesela Baumrasen untersuchen. Er befragt zufällig 20 Schüler*innen, ob ihre Vorhersagen eingetroffen sind (1 = korrekt, 0 = falsch).</p>
+<pre class="out">&gt; sort(Vorhersagen)
+ [1] 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1</pre>
+<ol class="tl">
+<li><span class="lb">(a)</span>Geben Sie das Skalenniveau des Merkmals „Korrektheit der Vorhersagen“ an. <span class="pt">(2 P)</span></li>
+<li><span class="lb">(b)</span>Berechnen Sie \(x_{mod}\), \(x_{med}\), \(\bar x\) und \(s_x^2\). Falls ein Parameter nicht sinnvoll angegeben werden kann, begründen Sie kurz in einem Satz. <span class="pt">(8 P)</span></li>
+</ol></div></div>
+<div class="kt"><div class="kh"><span>Aufgabe K1.2 · Bier (Probeklausur A, Aufgabe 2)</span><span>14 Punkte</span></div><div class="kb">
+<p>Der Betreiber der Bar „BierWirdGeschafft“ erfasst die Menge des getrunkenen Bieres \(X\) (Liter) und die Herkunft der Gäste \(Y\) (BY oder NRW):</p>
+<table class="tab"><tr><th>\(x_i\)</th><td>8.5</td><td>8.5</td><td>4.0</td><td>4.0</td><td>12.0</td><td>12.0</td><td>8.5</td><td>15.7</td><td>4.0</td><td>8.5</td></tr>
+<tr><th>\(y_i\)</th><td>BY</td><td>BY</td><td>NRW</td><td>BY</td><td>NRW</td><td>BY</td><td>BY</td><td>NRW</td><td>NRW</td><td>BY</td></tr></table>
+<p>Hinweis: \(\sum x_i=85.7;\ \sum x_i^2=871.49\)</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Geben Sie für X und Y an, ob ein diskretes oder stetiges Merkmal vorliegt. Welches Skalenniveau liegt jeweils zugrunde? <span class="pt">(4 P)</span></li>
+<li><span class="lb">(b)</span>Zeichnen Sie die empirische Verteilungsfunktion für X. <span class="pt">(6 P)</span></li>
+<li><span class="lb">(c)</span>Klassieren Sie den Bierkonsum in die Klassen \(K_1=[0,10)\) und \(K_2=[10,20]\) und bestimmen Sie den Mittelwert für die klassierten Daten. <span class="pt">(4 P)</span></li>
+<li><span class="lb">(d)</span><i>Zusatz:</i> Berechnen Sie \(\bar x\), \(s^2\), \(s\) und den Modus von Y.</li>
+</ol></div></div>
+<div class="kt"><div class="kh"><span>Aufgabe K1.3 · Filmbewertungen (nach Tutorium 3)</span><span>8 Punkte</span></div><div class="kb">
+<p>Bewertungen von 5 Filmen auf zwei Portalen: Portal A: 6, 8, 7, 9, 5; Portal B: 7, 9, 6, 10, 6.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie \(\bar x,\ \bar y,\ s_x^2,\ s_y^2,\ s_{xy}\) (mit 1/n) und \(r_{xy}\). <span class="pt">(4 P)</span></li>
+<li><span class="lb">(b)</span>Interpretieren Sie \(r_{xy}\). <span class="pt">(1 P)</span></li>
+<li><span class="lb">(c)</span>Bestimmen Sie die Ränge und den Spearman-Koeffizienten. <span class="pt">(3 P)</span></li>
+</ol></div></div>
+<div class="kt"><div class="kh"><span>Aufgabe K1.4 · Arbeitszeit (nach Tutorium 2, Aufgabe 5)</span><span>6 Punkte</span></div><div class="kb">
+<p>Arbeitszeit pro Woche während der Vorlesungszeit: [0,4]: 40.2 %, (4,8]: 19.6 %, (8,12]: 21.9 %, (12,16]: 18.3 %.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Welche Klasse ist die Modalklasse? <span class="pt">(1 P)</span></li>
+<li><span class="lb">(b)</span>Berechnen Sie näherungsweise Mittelwert und Varianz mit den Klassenmitten. <span class="pt">(3 P)</span></li>
+<li><span class="lb">(c)</span>Wie hoch ist die Säule der Klasse (4,8] im Histogramm? Schätzen Sie den Anteil mit mehr als 10 Stunden. <span class="pt">(2 P)</span></li>
+</ol></div></div>
+<div class="kt"><div class="kh"><span>Aufgabe K1.5 · Mensa-Pilotstudie (im Stil von Testat 1)</span><span>8 Punkte</span></div><div class="kb">
+<p>Häufigkeitstabelle der Mensabesuche in der letzten Woche: \(a_j\): 0, 1, 2, 3, 4 mit \(h_j\): 4, 6, 7, 2, 1.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Bestimmen Sie die Stichprobengröße \(n\) und das Skalenniveau. <span class="pt">(2 P)</span></li>
+<li><span class="lb">(b)</span>Bestimmen Sie Modus, Median und Mittelwert. <span class="pt">(3 P)</span></li>
+<li><span class="lb">(c)</span>Berechnen Sie \(s^2\) und \(s_*^2\). <span class="pt">(2 P)</span></li>
+<li><span class="lb">(d)</span>Wie groß ist der Anteil der Studierenden mit mindestens 2 Besuchen? <span class="pt">(1 P)</span></li>
+</ol></div></div>
+<div class="kt"><div class="kh"><span>Aufgabe K1.6 · Kampfzeiten und Boxplot</span><span>6 Punkte</span></div><div class="kb">
+<p>Kampfzeiten in Minuten (sortiert): 1, 3, 4, 4, 6, 7, 8, 9, 10, 12, 30.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Bestimmen Sie \(x_{0.25}\), Median, \(x_{0.75}\) und IQR nach der Vorlesungsdefinition. <span class="pt">(3 P)</span></li>
+<li><span class="lb">(b)</span>Gibt es Ausreißer? Wo enden die Whisker? <span class="pt">(2 P)</span></li>
+<li><span class="lb">(c)</span>Ist die Verteilung eher rechts- oder linksschief? Begründen Sie mit Mittelwert und Median. <span class="pt">(1 P)</span></li>
+</ol></div></div>
+</section>

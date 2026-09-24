@@ -1,0 +1,238 @@
+HÖRTEXT TAG 1, TEIL 1 VON 3
+Willkommen, die Klausur, Grundbegriffe, Skalenniveaus und Stichproben
+Im Lernbuch: Abschnitt 0 und Abschnitte 1.1 bis 1.3, Klausurtraining 1.A
+
+
+Abschnitt 0. Willkommen!
+
+Hallo, und herzlich willkommen!
+Schön, dass du da bist.
+Ich bin in den nächsten fünf Tagen deine Lehrerin. Zusammen bereiten wir dich auf die Statistik-Klausur vor. Unser Ziel ist klar: eine Note mit einer Eins vor dem Komma. Mindestens aber eine gute Zwei.
+
+Bevor wir anfangen, erkläre ich dir kurz, wie wir arbeiten. Das ist wichtig, damit du das Beste aus diesen Tagen herausholst.
+
+Du hörst gerade meinen Text. Gleichzeitig hast du das Lernbuch vor dir, als PDF. Im Lernbuch siehst du alle Formeln, alle Tabellen und alle Bilder. Beim Hören kannst du keine Formel sehen. Deshalb schaust du immer ins Buch.
+Jeder Abschnitt hat eine Nummer. Wenn ich sage „Abschnitt eins Punkt drei“, dann suchst du im Lernbuch die Überschrift mit der Nummer eins Punkt drei. Rechts neben der Überschrift steht außerdem ein kleines Schild: „Hörtext Teil eins, eins Punkt drei“. So weißt du immer, wo wir gerade sind.
+
+Der Hörtext für Tag eins hat drei Teile. Das hier ist Teil eins. In Teil eins lernen wir die Grundbegriffe, die Skalenniveaus und die Stichproben. In Teil zwei lernen wir Häufigkeiten, Histogramme, Mittelwert, Median und Varianz. In Teil drei lernen wir Zusammenhänge zwischen zwei Merkmalen, und dann lernen wir R ganz von vorne.
+
+Manchmal stelle ich dir eine Frage. Dann sage ich: „Halte kurz an.“ Bitte drücke dann wirklich auf Pause und denke selbst nach. Erst danach hörst du weiter. Das ist sehr wichtig. Denn nur was du selbst denkst, bleibt in deinem Kopf.
+
+Nach jedem Thema gibt es im Lernbuch ein Klausurtraining. Das ist ein Kasten mit einem grünen Rahmen. Darin steht eine Aufgabe, die genauso aussieht wie in der echten Klausur. Zuerst kommt eine kleine Geschichte. Dann kommen Teilaufgaben: a, b, c und so weiter. Hinter jeder Teilaufgabe steht, wie viele Punkte es gibt. Diese Aufgaben rechnest du auf Papier. Die Lösungen stehen ganz am Ende von Tag eins im Lernbuch.
+
+
+Jetzt schauen wir uns die Klausur genauer an. Bitte öffne im Lernbuch den Abschnitt null Punkt zwei.
+
+Die Klausur hat zwei Teile. Du schreibst beide Teile am selben Tag.
+
+Teil A ist die Statistik-Klausur. Du schreibst sie im Hörsaal, auf Papier, mit Kugelschreiber. Sie dauert einhundert Minuten. Du kannst fünfundsiebzig Punkte bekommen.
+Teil B ist die R-Klausur. Du schreibst sie am Computer, in einem besonderen Prüfungsraum. Dort benutzt du das Programm RStudio und die Lernplattform ILIAS. Teil B dauert sechzig Minuten. Du kannst fünfundvierzig Punkte bekommen.
+
+Welche Hilfsmittel darfst du benutzen?
+Erstens: ein Blatt Papier im Format A4. Du darfst es auf beiden Seiten mit der Hand beschreiben. Das ist dein Formelblatt. Du darfst für jeden Klausurteil ein eigenes Blatt haben. Also ein Blatt für Teil A und ein Blatt für Teil B. Wir schreiben dieses Formelblatt Stück für Stück, jeden Tag ein bisschen.
+Zweitens: einen Taschenrechner, der nicht programmierbar ist. Er braucht einen Zulassungs-Aufkleber.
+Drittens: Stifte. Aber keinen Bleistift. Und keine grüne oder rote Farbe. Was mit Bleistift geschrieben ist, wird nicht bewertet.
+
+Ganz wichtig sind die Rundungsregeln. Hier verlieren viele Studierende unnötig Punkte. Bitte merke dir:
+Zwischenergebnisse rundest du auf mindestens vier Stellen nach dem Komma.
+Endergebnisse rundest du auf drei Stellen nach dem Komma.
+Ausnahmen sind ganze Zahlen, oder schöne Ausdrücke wie die Wurzel aus zwei oder der Logarithmus von vier. Die darfst du so stehen lassen.
+Und: In der Klausur schreibt man einen Punkt statt einem Komma. Also schreibst du „null Punkt eins zwei fünf“. Nicht „null Komma eins zwei fünf“. So wie im Englischen.
+
+Wie viel Zeit hast du pro Punkt? In Teil A hast du einhundert Minuten für fünfundsiebzig Punkte. Das sind ungefähr eins Komma drei Minuten pro Punkt. Eine Aufgabe mit zehn Punkten sollte also ungefähr dreizehn Minuten dauern. In Teil B ist es ungefähr genauso. Das heißt: Bleib nicht zu lange an einer Aufgabe hängen. Wenn du nicht weiterkommst, mach zuerst die nächste Aufgabe.
+
+Jetzt schau bitte auf Abschnitt null Punkt drei. Dort ist dein Fünf-Tage-Plan.
+Heute, am Tag eins, lernen wir, wie man Daten beschreibt. Das nennt man deskriptive Statistik. Und wir lernen die Grundlagen von R.
+Am Tag zwei lernen wir Wahrscheinlichkeitsrechnung und Zufallsvariablen.
+Am Tag drei lernen wir die wichtigen Verteilungen und die Maximum-Likelihood-Schätzung. Das ist ein großes Klausurthema.
+Am Tag vier lernen wir Schätzer, Konfidenzintervalle und Hypothesentests.
+Und am Tag fünf trainieren wir die R-Klausur und machen eine Generalprobe mit der Probeklausur.
+
+Ich möchte ehrlich zu dir sein. Fünf Tage sind nicht viel für den ganzen Stoff eines Semesters. Aber es ist machbar. Die Bedingung ist: Du arbeitest aktiv mit. Du rechnest selbst. Du tippst den R-Code selbst. Nur zuhören reicht nicht. Aber keine Sorge: Ich erkläre dir wirklich alles, Schritt für Schritt, mit vielen Beispielen. Du schaffst das!
+
+Also: Los geht's.
+
+
+Abschnitt 1 Punkt 1. Grundbegriffe der Statistik.
+
+Was ist Statistik eigentlich?
+Statistik beschreibt und analysiert Daten. Zum Beispiel diese Fragen: Wie viele Menschen wählen eine bestimmte Partei? Wie lange arbeiten Studierende pro Woche? Macht eine neue Lehrmethode die Studierenden besser?
+
+Damit wir über solche Fragen sprechen können, brauchen wir ein paar Wörter. Schau bitte auf die Tabelle im Abschnitt eins Punkt eins. Wir lernen die Wörter an zwei Beispielen aus der Vorlesung.
+
+Das erste Beispiel ist eine Wahlumfrage. Ein Institut möchte wissen, welche Partei die Menschen wählen wollen.
+Das zweite Beispiel ist eine Politikmaßnahme. Die Regierung führt eine neue Regel für Firmen ein. Sie möchte wissen: Stoßen die Firmen danach weniger Abgase aus?
+
+Das erste Wort ist: statistische Einheit.
+Die statistische Einheit ist das Objekt, an dem wir etwas messen. Bei der Wahlumfrage ist die Einheit eine Person, die wählen darf. Bei der Politikmaßnahme ist die Einheit eine Firma. Eine Einheit muss also kein Mensch sein.
+
+Das zweite Wort ist: Grundgesamtheit. Manchmal sagt man auch Population.
+Die Grundgesamtheit sind alle Einheiten, die für unsere Frage wichtig sind. Bei der Wahlumfrage sind das alle Menschen, die bei der nächsten Bundestagswahl wählen dürfen. Das sind viele Millionen Menschen. Bei der Politikmaßnahme sind das alle Firmen, für die die neue Regel gilt.
+
+Wir können natürlich nicht alle Millionen Menschen fragen. Das ist zu teuer und dauert zu lange. Deshalb fragen wir nur einen Teil. Dieser Teil heißt: Stichprobe.
+Die Stichprobe ist also der Teil der Grundgesamtheit, den wir wirklich untersuchen. Bei der Wahlumfrage sind das zum Beispiel tausend befragte Personen. Bei der Politikmaßnahme sind das die Firmen, für die wir wirklich Daten haben, vorher und nachher.
+
+Das vierte Wort ist: Merkmal. Man sagt auch Variable.
+Ein Merkmal ist eine Eigenschaft, die wir messen. Zum Beispiel das Alter, das Geschlecht oder die Partei. Merkmale schreibt man mit einem großen Buchstaben, meistens großes X oder großes Y.
+
+Und das fünfte Wort ist: Merkmalsausprägung.
+Das ist der konkrete Wert bei einer Einheit. Zum Beispiel: Die Person ist dreiundzwanzig Jahre alt. Oder: Die Person wählt die SPD. Oder: Die Firma stößt eintausendzweihundertfünfzig Tonnen Abgase aus. Die Ausprägung schreibt man mit einem kleinen Buchstaben, kleines x.
+
+Ein kleines Beispiel zum Mitdenken. Halte kurz an und überlege: Eine Bäckerei fragt fünfzig ihrer Kunden, wie viele Brötchen sie pro Woche kaufen. Was ist die Einheit? Was ist die Stichprobe? Was ist das Merkmal?
+...
+Die Einheit ist ein Kunde. Die Stichprobe sind die fünfzig befragten Kunden. Die Grundgesamtheit sind alle Kunden der Bäckerei. Das Merkmal ist die Anzahl der Brötchen pro Woche. Und eine Ausprägung wäre zum Beispiel „zwölf Brötchen“.
+
+Noch ein interessanter Punkt aus der Vorlesung: Die Grundgesamtheit kann auch nur gedacht sein, also hypothetisch. Zum Beispiel: Ein Bauer testet einen neuen Dünger. Die Grundgesamtheit sind dann alle Felder, auf denen man diesen Dünger jemals benutzen könnte. Die gibt es noch gar nicht alle. Aber wir denken sie uns.
+
+Jetzt kommt ein ganz wichtiger Gedanke. Bitte merke ihn dir gut. Er steht auch im gelben Merke-Kasten.
+Meistens kennen wir nur die Stichprobe. Aber eigentlich wollen wir etwas über die Grundgesamtheit wissen. Die große Aufgabe der Statistik ist also: von der Stichprobe auf die Grundgesamtheit schließen. Und dabei müssen wir ehrlich sagen, wie unsicher wir sind.
+Das nennt man induktive Statistik. Induktiv heißt: vom Kleinen auf das Große schließen. Das machen wir am Tag drei und am Tag vier.
+Heute machen wir deskriptive Statistik. Deskriptiv heißt: beschreibend. Wir beschreiben nur die Daten, die wir wirklich haben. Mit Tabellen, mit Bildern und mit Kennzahlen, zum Beispiel dem Durchschnitt.
+
+Jetzt noch ein Thema aus der ersten Vorlesung: die Versuchsplanung und die Störvariablen.
+Bevor man Daten sammelt, plant man eine Studie. Man legt fest: Was ist das Ziel? Welche Methoden benutzen wir? Wie sammeln wir die Daten?
+Dabei gibt es ein Problem. Stell dir vor, die Universität testet eine neue Lehrmethode. Sie möchte wissen: Lernen die Studierenden mit der neuen Methode besser?
+Aber der Lernerfolg hängt nicht nur von der Methode ab. Er hängt auch vom Alter ab, vom Vorwissen, und davon, wie fleißig jemand lernt. Diese anderen Dinge nennt man Störvariablen. Sie stören, weil sie das Ergebnis auch beeinflussen, aber uns gerade nicht interessieren.
+Stell dir vor, in der Gruppe mit der neuen Methode sind zufällig nur Studierende mit viel Vorwissen. Dann sind sie besser, aber nicht wegen der Methode, sondern wegen des Vorwissens. Das wäre ein falscher Schluss.
+
+Deshalb muss man die Störvariablen kontrollieren. Dafür gibt es drei Wege.
+Erstens: Homogenisierung. Homogen heißt gleichartig. Man bildet Gruppen mit sehr ähnlichen Personen. Zum Beispiel vergleicht man nur Erstsemester mit dem gleichen Vorwissen.
+Zweitens: Randomisierung. Das ist der beste Weg. Man teilt die Personen zufällig in zwei Gruppen ein. Zum Beispiel mit einem Münzwurf. Eine Gruppe bekommt die neue Methode, die andere nicht. Weil der Zufall entscheidet, sind Vorwissen, Alter und Fleiß in beiden Gruppen im Durchschnitt gleich. Dann ist der einzige systematische Unterschied die Methode.
+Drittens: statistische Modellierung. Man nimmt die Störvariablen mit in die Rechnung auf. Das lernt man in späteren Kursen genauer.
+
+Zum Schluss dieses Abschnitts: Im Lernbuch steht der Kreislauf der Datenanalyse. Planung, dann Datenerhebung, dann Aufbereitung und Prüfung der Daten, dann die Analyse, dann die Interpretation, dann die Veröffentlichung von Daten und Code, und am Ende die Wiederverwendung. Das musst du nicht auswendig lernen, aber du solltest es einmal gehört haben.
+
+
+Abschnitt 1 Punkt 2. Merkmalstypen und Skalenniveaus.
+
+Jetzt wird es richtig wichtig für die Klausur. In fast jeder Klausur gibt es eine Frage wie: „Welches Skalenniveau hat das Merkmal? Ist es diskret oder stetig?“
+In der Probeklausur gab es dafür insgesamt fünf Punkte. Das sind leichte Punkte, wenn man die Regeln genau kennt. Also lernen wir sie jetzt ganz genau.
+
+Wir stellen uns immer zwei Fragen.
+
+Die erste Frage lautet: Ist das Merkmal diskret oder stetig?
+
+Ein Merkmal ist diskret, wenn es nur endlich viele Werte hat. Oder abzählbar unendlich viele Werte.
+Was heißt abzählbar? Abzählbar heißt: Man kann die Werte durchzählen. Null, eins, zwei, drei, vier und so weiter.
+Ein Beispiel: die Anzahl der Likes unter einem Foto. Es gibt keine halben Likes. Man kann nur ganze Likes zählen: null, eins, zwei, drei. Es gibt theoretisch keine obere Grenze. Ein Foto könnte eine Million Likes haben. Trotzdem ist das Merkmal diskret, weil man zählen kann.
+Im Tutorium gab es dafür ein schönes Bild: Jemand sitzt an einer Autobahn und zählt die Autos. Er kann unendlich lange sitzen und unendlich viele Autos zählen. Aber es fahren nur ganze Autos vorbei, keine halben Autos. Deshalb ist die Anzahl der Autos diskret.
+Weitere diskrete Merkmale: die Anzahl der Mensabesuche, die Anzahl der Geschwister, das Alter in ganzen Jahren. Und auch Kategorien wie Partei oder Studienfach sind diskret, weil es nur endlich viele Möglichkeiten gibt.
+
+Ein Merkmal ist stetig, wenn jede Zahl in einem Intervall möglich ist. Zwischen zwei Werten gibt es immer noch weitere Werte.
+Ein Beispiel: die Körpergröße. Eine Person kann einhundertsiebzig Zentimeter groß sein. Oder einhundertsiebzig Komma fünf. Oder einhundertsiebzig Komma fünf zwei drei. Wenn wir genau genug messen könnten, gäbe es unendlich viele mögliche Werte, und man kann sie nicht durchzählen.
+Weitere stetige Merkmale: das Gewicht, die Zeit, die Temperatur, die Menge in Litern, und auch das Einkommen in Euro.
+
+Beim Einkommen denkst du vielleicht: Aber es gibt doch nur ganze Cent! Das stimmt. Aber es gibt so unglaublich viele verschiedene Werte, dass man das Einkommen wie ein stetiges Merkmal behandelt. Man sagt dann: quasi-stetig. Das Gleiche gilt für die Körpergröße in ganzen Zentimetern. Man misst nur ganze Zentimeter, aber das Merkmal selbst ist stetig.
+
+Die zweite Frage lautet: Welches Skalenniveau hat das Merkmal?
+Es gibt drei Skalenniveaus. Schau bitte auf die Tabelle im Lernbuch.
+
+Die erste Skala heißt nominal.
+Das Wort kommt vom lateinischen Wort für Name. Bei einer nominalen Skala sind die Werte nur Namen. Man kann sie nicht sinnvoll sortieren.
+Beispiele: Partei, Nationalität, Lieblingsmensa, Blutgruppe, die Herkunft aus Bayern oder aus Nordrhein-Westfalen.
+Ist die CDU größer als die SPD? Ist Bayern mehr als Nordrhein-Westfalen? Diese Fragen haben keinen Sinn. Man kann hier nur zählen: Wie oft kommt was vor?
+
+Achtung, jetzt kommt ein Trick: Auch Zahlen können nominal sein! Das beste Beispiel ist die Postleitzahl. Göttingen hat zum Beispiel die Postleitzahl drei sieben null sieben drei. Aber man kann mit Postleitzahlen nicht rechnen. Eine Postleitzahl minus eine andere Postleitzahl ergibt keinen Sinn. Die Zahl ist nur ein Name für einen Ort. Also ist die Postleitzahl nominal.
+
+Die zweite Skala heißt ordinal.
+Ordinal kommt von Ordnung. Man kann die Werte sortieren. Aber die Abstände zwischen den Werten sind nicht sinnvoll.
+Das klassische Beispiel sind Schulnoten. Eine Eins ist besser als eine Zwei. Eine Zwei ist besser als eine Drei. Man kann also sortieren. Aber: Ist der Abstand von der Eins zur Zwei genauso groß wie von der Vier zur Fünf? Das weiß niemand. Die Abstände haben keine feste Bedeutung.
+Weitere Beispiele: die Zufriedenheit auf einer Skala von eins bis sieben, die Sterne eines Hotels, der Platz in einem Wettkampf, oder Kleidergrößen wie S, M, L und XL.
+
+Die dritte Skala heißt kardinal. Man sagt auch metrisch.
+Hier sind die Werte echte Zahlen, und die Abstände haben eine Bedeutung. Man kann sinnvoll rechnen.
+Beispiele: Alter, Einkommen, Körpergröße, Punkte in einem Test, Anzahlen.
+Wenn eine Person achtzig Punkte hat und eine andere sechzig Punkte, dann hat die erste genau zwanzig Punkte mehr. Das ist sinnvoll. Und wenn eine Person zweitausend Euro verdient und eine andere viertausend Euro, dann verdient die zweite doppelt so viel. Auch das ist sinnvoll.
+Kleines Zusatzwissen: Wenn sogar „doppelt so viel“ sinnvoll ist, weil es einen echten Nullpunkt gibt, dann spricht man auch von einer Verhältnisskala. Die Musterlösung der Probeklausur hat beim Bier geschrieben: metrisch skaliert, Verhältnisskala. Das musst du nicht unbedingt schreiben, aber es ist ein Pluspunkt.
+
+Im Lernbuch gibt es einen grünen Kasten mit einem Entscheidungsweg in drei Fragen. Den gehen wir jetzt zusammen durch.
+Erste Frage: Sind die Werte nur Namen, die man nicht sortieren kann? Dann ist das Merkmal nominal.
+Zweite Frage: Kann man sortieren, aber die Abstände sind nicht klar gleich groß? Dann ist es ordinal.
+Dritte Frage: Kann man sinnvoll rechnen, also sagen „fünf mehr“ oder „doppelt so viel“? Dann ist es kardinal.
+Und danach entscheidest du noch: diskret oder stetig.
+
+Jetzt kommen die typischen Fehler. Die stehen im roten Kasten. Bitte hör genau zu, denn genau hier verlieren viele Studierende Punkte.
+
+Erster Fehler: Eine Zufriedenheit von eins bis sieben sieht aus wie Zahlen. Viele sagen dann: kardinal. Das ist falsch! Die Zahlen sind nur eine Reihenfolge. Die Skala ist ordinal.
+
+Zweiter Fehler: Punkte in einem Test von null bis hundert. Viele denken: Das ist wie eine Note, also ordinal. Das ist auch falsch! Punkte haben feste Abstände. Ein Punkt ist ein Punkt. Also kardinal.
+
+Dritter Fehler: Ein Merkmal mit nur zwei Werten, null und eins. Zum Beispiel: Die Vorhersage war richtig, das ist eins. Die Vorhersage war falsch, das ist null. Welche Skala ist das? Nominal! Genauer sagt man: binär, also zwei Kategorien. Richtig und falsch sind eigentlich nur Namen.
+Aber es gibt einen Trick, den du dir merken musst: Man darf bei null-eins-Daten trotzdem den Mittelwert ausrechnen. Und der Mittelwert hat eine schöne Bedeutung: Er ist der Anteil der Einsen. Wenn neun von zwanzig Vorhersagen richtig sind, dann ist der Mittelwert neun durch zwanzig, gleich null Komma vier fünf. Das heißt: fünfundvierzig Prozent der Vorhersagen waren richtig. Das kommt genau so in der Probeklausur vor. Wir rechnen diese Aufgabe später zusammen.
+
+Vierter Fehler: Viele denken, diskret heißt endlich. Aber das stimmt nicht. Diskret heißt: endlich oder abzählbar unendlich. Denk an die Autos auf der Autobahn.
+
+Halte jetzt kurz an und überlege zu drei Merkmalen: Welches Skalenniveau hat die Blutgruppe? Welches die Anzahl der Geschwister? Und welches die Kleidergröße S, M, L?
+...
+Die Blutgruppe ist nominal und diskret. Man kann Blutgruppen nicht sortieren.
+Die Anzahl der Geschwister ist kardinal und diskret. Man kann zählen und sinnvoll rechnen.
+Die Kleidergröße ist ordinal und diskret. S ist kleiner als M, M ist kleiner als L. Aber der Abstand ist nicht genau festgelegt.
+
+Schau jetzt auf die Übungstabelle mit zehn Merkmalen im Lernbuch. Lies jede Zeile. Deck die Lösungsspalten mit einem Blatt Papier ab und entscheide selbst. Dann vergleiche.
+Zwei Beispiele daraus erkläre ich noch: Die Laufzeit für sieben Komma fünf Kilometer in Minuten ist kardinal und stetig, weil Zeit stetig ist. Und die Herkunft aus Bayern oder Nordrhein-Westfalen ist nominal und diskret, weil es nur zwei Namen sind.
+
+Warum ist das Skalenniveau überhaupt so wichtig? Weil es bestimmt, was man rechnen darf.
+Bei nominalen Daten darf man nur zählen und den häufigsten Wert angeben, den Modus.
+Bei ordinalen Daten darf man zusätzlich sortieren. Also darf man den Median und die Quantile angeben.
+Bei kardinalen Daten darf man alles: auch den Mittelwert, die Varianz und die Korrelation.
+In der Klausur steht deshalb oft: „Falls ein Parameter nicht sinnvoll angegeben werden kann, begründen Sie kurz.“ Dann musst du genau mit dem Skalenniveau argumentieren. Zum Beispiel: „Der Mittelwert ist hier nicht sinnvoll, weil das Merkmal nominal ist.“
+
+
+Abschnitt 1 Punkt 3. Wie zieht man eine Stichprobe?
+
+Eine Stichprobe soll repräsentativ sein. Das heißt: Sie soll im Kleinen so aussehen wie die Grundgesamtheit im Großen. Es soll keine systematischen Unterschiede geben.
+
+Was kann schiefgehen? Die Vorlesung nennt zwei Probleme.
+Erstens: In der Stichprobe sind Einheiten, die gar nicht zur Grundgesamtheit gehören. Zum Beispiel: Eine Wahlumfrage befragt auch Personen, die gar nicht wählen dürfen.
+Zweitens: Nicht alle Einheiten der Grundgesamtheit haben eine Chance, in die Stichprobe zu kommen. Zum Beispiel bei einer Online-Umfrage: Menschen ohne Internet können gar nicht mitmachen. Dann fehlen vielleicht viele ältere Menschen.
+
+Es gibt vier Verfahren, die du kennen musst. Schau bitte auf die Tabelle.
+
+Das erste Verfahren ist die einfache Zufallsstichprobe.
+Man hat eine Liste mit allen Einheiten. Dann zieht man zufällig, ohne Zurücklegen. Stell dir einen großen Lostopf vor, in dem alle Namen liegen. Jede Person hat die gleiche Chance, gezogen zu werden. Und jede mögliche Stichprobe hat die gleiche Chance. Dann gibt es nur zufällige Unterschiede zur Grundgesamtheit, aber keine systematischen. Das Problem: Man braucht eine vollständige Liste aller Einheiten. Die hat man nicht immer.
+
+Das zweite Verfahren ist die geschichtete Stichprobe.
+Man teilt die Grundgesamtheit zuerst in Gruppen. Diese Gruppen heißen Schichten. Zum Beispiel: die Studiengänge. Dann zieht man in jeder Schicht zufällig einige Personen. Stell dir vor, du hast für jeden Studiengang einen eigenen Lostopf.
+Der Vorteil: Jede Gruppe ist sicher in der Stichprobe. Man kann die Gruppen sogar genau mit ihrem richtigen Anteil vertreten lassen. Wenn zwanzig Prozent aller Studierenden Wirtschaft studieren, dann nimmt man auch zwanzig Prozent Wirtschaftsstudierende in die Stichprobe.
+Die Voraussetzung: Man muss wissen, wie groß die Gruppen sind, und zu welcher Gruppe jede Person gehört.
+
+Das dritte Verfahren ist die Klumpenstichprobe.
+Hier zieht man zufällig ganze Gruppen. Diese Gruppen heißen Klumpen. Zum Beispiel ganze Schulklassen, ganze Straßen, ganze Familien oder ganze Orte. Und dann befragt man alle oder fast alle Personen in diesen Klumpen.
+Der Vorteil: Das ist billig und einfach. Man muss nur in wenige Schulen gehen, nicht in hundert verschiedene.
+Die Voraussetzung: Innerhalb eines Klumpens sollen die Personen möglichst verschieden sein. Und die Klumpen untereinander sollen sich möglichst ähnlich sein. Dann ist jeder Klumpen wie eine kleine Kopie der Grundgesamtheit.
+
+Das vierte Verfahren ist das Quotenverfahren. Man nennt es auch bewusste Auswahl.
+Hier legt man vorher Quoten fest. Zum Beispiel: fünfzig Prozent Frauen, fünfzig Prozent Männer, zwanzig Prozent über sechzig Jahre. Dann befragt ein Interviewer so lange Menschen, bis alle Quoten erfüllt sind. Die Auswahl ist nicht ganz zufällig, sondern bewusst.
+
+Jetzt kommt eine Stelle, an der viele Studierende Fehler machen. Der Unterschied zwischen geschichtet und Klumpen. Hör gut zu.
+Bei der geschichteten Stichprobe ziehen wir aus allen Gruppen, aber in jeder Gruppe nur einige Personen.
+Bei der Klumpenstichprobe ziehen wir nur einige Gruppen, aber in diesen Gruppen alle Personen.
+Also: geschichtet heißt „alle Gruppen, wenige Personen“. Klumpen heißt „wenige Gruppen, alle Personen“.
+
+Wir machen die Beispiele aus dem Tutorium und dem Testat.
+Erstes Beispiel: Man möchte die Leistungen aller Zehntklässler in Deutschland untersuchen. Man testet aber nur Schulen in Göttingen. Welches Verfahren ist das? Halte kurz an.
+...
+Das ist eine Klumpenstichprobe. Göttingen ist der Klumpen. Man nimmt nur einen Ort, aber dort viele Schüler. Viele Studierende haben im Tutorium „geschichtet“ gesagt. Das war falsch.
+
+Zweites Beispiel: Die öffentlich-rechtlichen Sender machen eine Umfrage. Die Stichprobe soll repräsentativ für die verschiedenen Bevölkerungsgruppen sein. Welches Verfahren? ... Das Quotenverfahren oder eine geschichtete Stichprobe. Achtung: Das Wort „repräsentativ für Bevölkerungsgruppen“ ist der Hinweis. Wer das überliest und „einfache Zufallsstichprobe“ sagt, bekommt keinen Punkt.
+
+Drittes Beispiel aus dem Testat: Der Anteil jedes Studiengangs in der Stichprobe soll dem Anteil an allen Studierenden entsprechen. Das ist wieder eine geschichtete Stichprobe, beziehungsweise das Quotenverfahren.
+
+
+Kontrollfragen und Klausurtraining 1.A.
+
+Sehr gut! Du hast den ersten Teil geschafft. Jetzt kommt die wichtigste Arbeit: das Üben.
+
+Beantworte zuerst die drei kurzen Kontrollfragen im lila Kasten.
+
+Dann kommt das Klausurtraining eins A. Es geht um ein Fitnessstudio in Göttingen. Das Studio hat zweitausendvierhundert Mitglieder und plant eine Befragung. Es gibt sechs Merkmale: Alter in ganzen Jahren, Trainingsdauer pro Woche in Stunden, Tarif, Zufriedenheit, Anzahl der Besuche und die Postleitzahl.
+In Teilaufgabe a sollst du für jedes Merkmal das Skalenniveau angeben und sagen, ob es diskret oder stetig ist. Denk an unsere Fallen! Besonders bei der Zufriedenheit und bei der Postleitzahl.
+In Teilaufgabe b fragt die Aufgabe nach der Einheit und der Grundgesamtheit.
+In c und d geht es um Stichprobenverfahren. Denk an die Regel: alle Gruppen mit wenigen Personen, oder wenige Gruppen mit allen Personen?
+Und in e sollst du sagen, ob man eine durchschnittliche Postleitzahl berechnen kann, und ob man für die Zufriedenheit einen Median angeben kann.
+
+Nimm dir für diese Aufgabe ungefähr fünfzehn Minuten. Schreib deine Antworten auf. Und dann vergleiche mit der Lösung am Ende von Tag eins.
+
+Wenn du fertig bist, mach eine kurze Pause. Trink ein Glas Wasser. Dann geht es weiter mit Teil zwei. Dort fangen wir an zu rechnen: Häufigkeiten, Histogramme, Mittelwert und Varianz.
+
+Bis gleich!
