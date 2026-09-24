@@ -150,3 +150,13 @@ pre,code{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
 .rstep .ex{font-size:.88rem}
 .cmd{font-family:'JetBrains Mono',monospace;font-weight:600;color:#1e2433;background:#eef1f6;padding:0 .3em;border-radius:3px;font-size:.86em}
 table.rtab td:first-child{font-family:'JetBrains Mono',monospace;font-size:.82rem;white-space:nowrap;text-align:left}
+/* Aufgabentyp-Katalog */
+.typ{border:1.5px solid #c9d3e3;border-radius:10px;margin:.9em 0;background:#fbfcfe;page-break-inside:auto;break-inside:auto}
+.typ>.th{background:#eef3fb;border-radius:9px 9px 0 0;padding:6px 12px;font-weight:900;color:#1e2a44;display:flex;align-items:center;gap:8px;page-break-after:avoid;break-after:avoid}
+.typ>.th .tn{background:#1e2a44;color:#fff;border-radius:6px;padding:1px 8px;font-size:.8rem;white-space:nowrap}
+.typ>.tb{padding:7px 12px 5px}
+.typ .erk{background:#fff;border:1px dashed #c9d3e3;border-radius:6px;padding:4px 8px;font-size:.9rem}
+.typ .lab{font-weight:900;color:var(--c-dark)}
+.katalog-titel{margin-top:1.2em;padding:6px 12px;border-radius:8px;background:#1e2a44;color:#fff;font-weight:900;font-size:1.05rem;page-break-after:avoid}
+.zu{border:2px dashed var(--c);border-radius:10px;padding:8px 12px;margin:.9em 0;page-break-inside:avoid}
+.zu>.t{font-weight:900;color:var(--c-dark);margin-bottom:3px}

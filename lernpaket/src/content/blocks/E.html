@@ -1,0 +1,76 @@
+<div class="katalog-titel">Aufgabentypen-Katalog 1.7 · Kontingenztafel und χ²</div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 31</span> Kontingenztafel aus einem Text mit Prozenten bauen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Ein Text mit Anzahlen und Prozentangaben; „Erstellen Sie die vollständige Kontingenztafel (inkl. Randhäufigkeiten).“ (Tutorium 3, KT 1.F)</p>
+<p><span class="lab">Rezept:</span> (1) Leere Tafel mit Σ-Zeile und Σ-Spalte zeichnen. (2) Jede Zahl aus dem Text an den richtigen Platz. Prozente <b>von wem</b>? („30 % der Frauen“ → 30 % der Zeilensumme Frauen). (3) Rest mit Differenzen füllen. (4) Kontrolle: alle Summen stimmen.</p>
+<p><span class="lab">Musterbeispiel:</span> 500 Personen werden befragt, 40 % davon sind Frauen. 30 % der Frauen und 50 % der Männer nutzen täglich TikTok.</p>
+<ol class="steps">
+<li>Frauen: \(0.4\cdot500=200\); Männer: \(500-200=300\).</li>
+<li>Frauen mit TikTok: \(0.3\cdot200=60\); ohne: \(140\).</li>
+<li>Männer mit TikTok: \(0.5\cdot300=150\); ohne: \(150\).</li>
+<li>Spaltensummen: TikTok \(60+150=210\), kein TikTok \(140+150=290\).</li>
+</ol>
+<table class="tab"><tr><th></th><th>TikTok (T)</th><th>kein TikTok</th><th>Σ</th></tr>
+<tr><th>Frau</th><td>60</td><td>140</td><td>200</td></tr>
+<tr><th>Mann</th><td>150</td><td>150</td><td>300</td></tr>
+<tr><th>Σ</th><td>210</td><td>290</td><td>500</td></tr></table>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>„30 % der Frauen“ = kadınların %30'u → kadın satır toplamı (200) ile çarpılır, 500 ile <b>değil</b>. „30 % aller Befragten sind Frauen, die TikTok nutzen“ olsaydı 500 ile çarpardın. Cümlede „der/von“ kelimesinden sonra gelen grup, çarpılacak toplamdır.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 32</span> Bedingte Anteile berechnen und deuten</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Berechnen Sie den Anteil … unter den …“ · „Deutet das auf einen Zusammenhang hin?“ · „Berechnen Sie die bedingte Verteilung von Y gegeben X.“</p>
+<p><span class="lab">Rezept:</span> „Anteil von A <b>unter</b> B“ = \(\frac{h(A\text{ und }B)}{h(B)}\) → Nenner ist die Gruppe nach „unter“. Zusammenhang: bedingte Anteile in den Gruppen <b>verschieden</b> → Zusammenhang; gleich → kein Zusammenhang (Unabhängigkeit).</p>
+<p><span class="lab">Musterbeispiel:</span> Tafel aus Typ 31. (a) Anteil TikTok-Nutzer unter Frauen und unter Männern. (b) Anteil Frauen unter den TikTok-Nutzern. (c) Zusammenhang?</p>
+<p><span class="lab">Lösung:</span> (a) \(f(T\mid\text{Frau})=\frac{60}{200}=0.3\), \(f(T\mid\text{Mann})=\frac{150}{300}=0.5\). (b) \(f(\text{Frau}\mid T)=\frac{60}{210}=0.286\) – <b>anderer</b> Nenner als in (a)! (c) Ja: 0.3 ≠ 0.5, Männer nutzen TikTok häufiger → Zusammenhang zwischen Geschlecht und Nutzung (aber keine Aussage über Ursachen).</p>
+<p><span class="lab">Bedingte Verteilung als Tabelle</span> (zeilenweise, jede Zeile summiert sich zu 1):</p>
+<table class="tab"><tr><th></th><th>T</th><th>kein T</th><th>Σ</th></tr>
+<tr><th>Frau</th><td>0.3</td><td>0.7</td><td>1</td></tr>
+<tr><th>Mann</th><td>0.5</td><td>0.5</td><td>1</td></tr>
+<tr><th><i>Rand</i></th><td>0.42</td><td>0.58</td><td>1</td></tr></table>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 33</span> χ²-Koeffizient für eine größere Tafel (2 × 3)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Berechnen Sie die bei Unabhängigkeit erwarteten Häufigkeiten und den χ²-Koeffizienten.“</p>
+<p><span class="lab">Rezept:</span> Für jede Zelle: \(\tilde h=\frac{\text{Zeilensumme}\cdot\text{Spaltensumme}}{n}\). Dann pro Zelle \(\frac{(h-\tilde h)^2}{\tilde h}\) und alles addieren. Kontrolle: Die erwarteten Häufigkeiten haben dieselben Randsummen.</p>
+<p><span class="lab">Musterbeispiel:</span> 200 Studierende, Studienfach und Klausurergebnis:</p>
+<table class="tab"><tr><th></th><th>gut</th><th>mittel</th><th>schlecht</th><th>Σ</th></tr>
+<tr><th>BWL</th><td>30</td><td>50</td><td>20</td><td>100</td></tr>
+<tr><th>VWL</th><td>20</td><td>30</td><td>50</td><td>100</td></tr>
+<tr><th>Σ</th><td>50</td><td>80</td><td>70</td><td>200</td></tr></table>
+<ol class="steps">
+<li>Erwartet: \(\tilde h_{11}=\frac{100\cdot50}{200}=25\), \(\tilde h_{12}=\frac{100\cdot80}{200}=40\), \(\tilde h_{13}=\frac{100\cdot70}{200}=35\); Zeile VWL genauso (25, 40, 35), weil die Zeilensummen gleich sind.</li>
+<li>Differenzen \(h-\tilde h\): BWL: \(+5, +10, -15\); VWL: \(-5, -10, +15\).</li>
+<li>\(\chi^2=2\cdot\left(\frac{5^2}{25}+\frac{10^2}{40}+\frac{15^2}{35}\right)=2\cdot(1+2.5+6.429)=19.857\).</li>
+</ol>
+<p><span class="lab">Interpretation:</span> \(\chi^2=19.857&gt;0\) → es gibt einen Zusammenhang zwischen Studienfach und Ergebnis (VWL-Studierende schneiden häufiger schlecht ab). Ob er „signifikant“ ist, lernst du am Tag 4.</p>
+<p class="small">R-Kontrolle: <code>chisq.test(matrix(c(30,20,50,30,20,50), 2), correct = FALSE)</code> → X-squared = 19.857.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 34</span> Tafel bei Unabhängigkeit auffüllen / fehlende Zelle finden</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Wie müsste die Tabelle aussehen, wenn X und Y unabhängig wären?“ · „Welchen Wert muss \(h_{11}\) haben, damit χ² = 0 ist?“</p>
+<p><span class="lab">Rezept:</span> Unabhängig ⇔ jede Zelle = \(\frac{\text{Zeile}\cdot\text{Spalte}}{n}\) ⇔ alle Zeilen haben die gleiche bedingte Verteilung ⇔ \(\chi^2=0\).</p>
+<p><span class="lab">Musterbeispiel 1:</span> Zeilensummen 40 und 60, Spaltensummen 30 und 70, \(n=100\). Tafel bei Unabhängigkeit?</p>
+<p><span class="lab">Lösung:</span> \(\frac{40\cdot30}{100}=12\), \(\frac{40\cdot70}{100}=28\), \(\frac{60\cdot30}{100}=18\), \(\frac{60\cdot70}{100}=42\).</p>
+<p><span class="lab">Musterbeispiel 2:</span> Tafel mit Unbekannter \(a\): erste Zeile \((a, 20)\), zweite Zeile \((30, 60)\). Für welches \(a\) sind die Merkmale unabhängig?</p>
+<p><span class="lab">Lösung:</span> Die Zeilen müssen dasselbe Verhältnis haben: \(\frac{a}{20}=\frac{30}{60}\) → \(a=10\). Kontrolle: Zeilensumme 30, Spaltensumme 40, \(n=120\): \(\frac{30\cdot40}{120}=10\) ✓ → \(\chi^2=0\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 35</span> Eigenschaften von χ² (richtig/falsch)</div><div class="tb">
+<table class="tab wide small">
+<tr><th class="l">Aussage</th><th>R/F</th><th class="l">Begründung</th></tr>
+<tr><td class="l">χ² kann negativ sein.</td><td>F</td><td class="l">Summe von Quadraten geteilt durch positive Zahlen → \(\chi^2\ge0\).</td></tr>
+<tr><td class="l">\(\chi^2=0\) genau dann, wenn beobachtete = erwartete Häufigkeiten.</td><td>R</td><td class="l">Dann sind die Merkmale (empirisch) unabhängig.</td></tr>
+<tr><td class="l">Verdoppelt man alle Häufigkeiten, bleibt χ² gleich.</td><td>F</td><td class="l">χ² <b>verdoppelt</b> sich (Unfall-Beispiel: 60.487 → 120.97). χ² hängt von \(n\) ab und ist zwischen Studien mit verschiedenem \(n\) schlecht vergleichbar.</td></tr>
+<tr><td class="l">χ² sagt, welche Variable die andere beeinflusst.</td><td>F</td><td class="l">χ² ist symmetrisch und misst nur die Stärke des Zusammenhangs, keine Richtung und keine Ursache.</td></tr>
+<tr><td class="l">χ² kann man schon für nominale Merkmale berechnen.</td><td>R</td><td class="l">Es werden nur Häufigkeiten gebraucht.</td></tr>
+<tr><td class="l">Aus den Randverteilungen allein kann man die gemeinsame Verteilung immer bestimmen.</td><td>F</td><td class="l">Nur bei Unabhängigkeit.</td></tr>
+</table>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z5</div>
+<ol>
+<li>Von 400 Kund*innen zahlen 250 mit Karte. 70 % der Kartenzahlenden sind unter 40 Jahre alt, von den Barzahlenden sind es 40 %. Erstelle die Kontingenztafel.</li>
+<li>Berechne für die Tafel aus Aufgabe 1 den Anteil der Kartenzahlenden unter den Personen unter 40 und unter den Personen ab 40.</li>
+<li>Berechne die erwarteten Häufigkeiten und χ² für die Tafel aus Aufgabe 1.</li>
+<li>Die Zeilen einer Tafel lauten (12, 18) und (20, 30). Wie groß ist χ²? Begründe ohne Rechnung.</li>
+</ol></div>

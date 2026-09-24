@@ -1,0 +1,84 @@
+<div class="katalog-titel">Aufgabentypen-Katalog 1.6 · Quantile, Streuung, Boxplot</div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 24</span> Quantile nach der Vorlesungsdefinition</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Bestimmen Sie das untere und obere Quartil (nach Definition der Vorlesung).“ · „Bestimmen Sie das 10 %- und das 90 %-Quantil.“</p>
+<p><span class="lab">Rezept:</span> (1) Sortieren. (2) \(n\cdot\alpha\) rechnen. (3) Keine ganze Zahl → <b>aufrunden</b> → dieser Platz. Ganze Zahl \(k\) → Mittel aus Platz \(k\) und \(k+1\).</p>
+<p><span class="lab">Musterbeispiel:</span> \(n=10\) sortierte Werte: 3, 5, 6, 8, 9, 11, 12, 14, 17, 25. Gesucht: \(x_{0.1}, x_{0.25}, x_{0.5}, x_{0.75}, x_{0.9}\), IQR.</p>
+<table class="tab"><tr><th>\(\alpha\)</th><th>\(n\alpha\)</th><th>ganz?</th><th>Plätze</th><th>\(x_\alpha\)</th></tr>
+<tr><td>0.10</td><td>1</td><td>ja</td><td>1 und 2</td><td>\(\frac{3+5}{2}=4\)</td></tr>
+<tr><td>0.25</td><td>2.5</td><td>nein</td><td>3</td><td>6</td></tr>
+<tr><td>0.50</td><td>5</td><td>ja</td><td>5 und 6</td><td>\(\frac{9+11}{2}=10\)</td></tr>
+<tr><td>0.75</td><td>7.5</td><td>nein</td><td>8</td><td>14</td></tr>
+<tr><td>0.90</td><td>9</td><td>ja</td><td>9 und 10</td><td>\(\frac{17+25}{2}=21\)</td></tr></table>
+<p><span class="lab">Lösung:</span> IQR \(=14-6=8\). Interpretation von \(x_{0.9}=21\): „Mindestens 90 % der Werte sind kleiner oder gleich 21.“</p>
+<div class="box achtung"><div class="t">Vorsicht mit R</div><p><code>quantile(x, c(.1,.25,.5,.75,.9))</code> liefert hier 4.8, 6.5, 10, 13.5, 17.8 – andere Methode! In Teil A zählt die Vorlesungsdefinition, in Teil B der R-Output.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 25</span> Varianz aus Summen (Verschiebungssatz)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Es sind \(n\), \(\sum x_i\) und \(\sum x_i^2\) gegeben (oft als R-Output <code>sum(x)</code>, <code>sum(x^2)</code>).</p>
+<p><span class="lab">Rezept:</span> \(\bar x=\frac{\sum x_i}{n}\) → \(s^2=\frac{\sum x_i^2}{n}-\bar x^2\) → \(s=\sqrt{s^2}\). Unverzerrt: \(s_*^2=\frac{n}{n-1}s^2\).</p>
+<p><span class="lab">Musterbeispiel:</span> \(n=8\), \(\sum x_i=40\), \(\sum x_i^2=260\).</p>
+<p><span class="lab">Lösung:</span> \(\bar x=5\); \(s^2=\frac{260}{8}-25=32.5-25=7.5\); \(s=\sqrt{7.5}=2.739\); \(s_*^2=\frac{8}{7}\cdot7.5=8.571\), \(s_*=2.928\).</p>
+<p><span class="lab">Umgekehrt (R-Output umrechnen):</span> R zeigt <code>var(x)</code> = 12 bei \(n=5\). Empirische Varianz: \(s^2=\frac{4}{5}\cdot12=9.6\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 26</span> Varianz aus einer Häufigkeitstabelle</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Tabelle mit \(a_j\) und \(h_j\); „Berechnen Sie die empirische Varianz.“</p>
+<p><span class="lab">Rezept:</span> Spalte \(a_j^2h_j\) ergänzen. \(s^2=\frac1n\sum a_j^2h_j-\bar x^2\).</p>
+<p><span class="lab">Musterbeispiel:</span> Kinder-Tabelle aus Typ 16 (\(n=20\), \(\bar x=1.3\)).</p>
+<table class="tab"><tr><th>\(a_j\)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><th>Σ</th></tr>
+<tr><th>\(h_j\)</th><td>5</td><td>8</td><td>4</td><td>2</td><td>1</td><td>20</td></tr>
+<tr><th>\(a_j^2h_j\)</th><td>0</td><td>8</td><td>16</td><td>18</td><td>16</td><td>58</td></tr></table>
+<p><span class="lab">Lösung:</span> \(s^2=\frac{58}{20}-1.3^2=2.9-1.69=1.21\); \(s=1.1\) Kinder.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 27</span> Boxplot erstellen mit Ausreißern und Whiskern</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Gibt es Ausreißer? Bis wohin reichen die Whisker? Zeichnen Sie den Boxplot.“ (Tutorium 2, Aufgabe 7)</p>
+<p><span class="lab">Rezept:</span> (1) \(x_{0.25}\), Median, \(x_{0.75}\) nach Typ 24. (2) IQR. (3) Zäune: \(x_{0.25}-1.5\,\text{IQR}\) und \(x_{0.75}+1.5\,\text{IQR}\). (4) Werte außerhalb = Ausreißer (Punkte). (5) Whisker bis zum extremsten Wert <b>innerhalb</b> der Zäune.</p>
+<p><span class="lab">Musterbeispiel:</span> 2, 4, 5, 5, 6, 7, 7, 8, 9, 21 (\(n=10\)).</p>
+<ol class="steps">
+<li>\(10\cdot0.25=2.5\) → Platz 3 → \(x_{0.25}=5\). Median: Plätze 5, 6 → \(\frac{6+7}{2}=6.5\). \(10\cdot0.75=7.5\) → Platz 8 → \(x_{0.75}=8\).</li>
+<li>IQR \(=8-5=3\); \(1.5\cdot3=4.5\).</li>
+<li>Zäune: unten \(5-4.5=0.5\), oben \(8+4.5=12.5\).</li>
+<li>21 &gt; 12.5 → <b>Ausreißer</b>. Unten: 2 &gt; 0.5 → kein Ausreißer.</li>
+<li>Oberer Whisker: größter Wert \(\le 12.5\) = <b>9</b> (nicht 12.5!). Unterer Whisker: 2.</li>
+</ol>
+<p>Skizze: Achse von 0 bis 22, Box von 5 bis 8, Strich bei 6.5, Whisker 2 bis 9, einzelner Punkt bei 21.</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Whisker (bıyık) <b>sınıra (12.5) kadar değil</b>, sınırın içinde kalan <b>en uç gerçek veriye</b> (9) kadar çizilir. Sınav bunu çok sever. Sınırın dışındaki her değer ayrı bir nokta olarak çizilir.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 28</span> Streuung nach Transformation</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Die Lieferzeiten werden in Stunden umgerechnet.“ · „Datensatz III = 2 · Datensatz II.“ · „Zu jedem Wert werden 10 addiert.“</p>
+<p><span class="lab">Rezept:</span> \(y=a+bx\): \(s_y^2=b^2s_x^2\), \(s_y=|b|s_x\), \(\text{IQR}_y=|b|\,\text{IQR}_x\). Das \(a\) ist egal!</p>
+<p><span class="lab">Musterbeispiel:</span> \(\bar x=5\), \(s_x^2=7.5\), IQR = 4. Neu: \(y=10+3x\).</p>
+<p><span class="lab">Lösung:</span> \(\bar y=10+15=25\); \(s_y^2=9\cdot7.5=67.5\); \(s_y=3\cdot2.739=8.216\); \(\text{IQR}_y=12\). Bei \(y=-2x\): \(s_y^2=4\cdot7.5=30\) (Varianz wird nie negativ!).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 29</span> Boxplots lesen und vergleichen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Mehrere Boxplots nebeneinander (z.&nbsp;B. Gewicht nach Geschlecht) und Aussagen zum Ankreuzen (Testat 1, Aufgabe 6).</p>
+<p><span class="lab">Musterbeispiel:</span> Fünf-Punkte-Zusammenfassung der Kampfzeiten: Gruppe A: Min 2, \(x_{0.25}\) 5, Median 8, \(x_{0.75}\) 20, Max 40 (keine Punkte). Gruppe B: 10, 14, 16, 18, 22, dazu ein Punkt bei 35. Welche Aussagen stimmen?</p>
+<table class="tab wide small">
+<tr><th class="l">Aussage</th><th>R/F</th><th class="l">Begründung</th></tr>
+<tr><td class="l">In A liegen 50 % der Werte zwischen 5 und 20.</td><td>R</td><td class="l">Die Box enthält die mittleren 50 %.</td></tr>
+<tr><td class="l">A streut stärker als B.</td><td>R</td><td class="l">IQR A = 15, IQR B = 4.</td></tr>
+<tr><td class="l">A hat einen Ausreißer bei 40.</td><td>F</td><td class="l">Kein Punkt eingezeichnet → kein Ausreißer; 40 ist das Ende des Whiskers.</td></tr>
+<tr><td class="l">A ist rechtsschief.</td><td>R</td><td class="l">Median nah am unteren Boxrand, langer oberer Whisker.</td></tr>
+<tr><td class="l">Mehr als die Hälfte von B ist größer als der Median von A.</td><td>R</td><td class="l">Schon \(\text{Min}_B=10&gt;8\) → alle Werte von B.</td></tr>
+<tr><td class="l">Gruppe B verursacht längere Kämpfe.</td><td>F</td><td class="l">Ein Unterschied ist keine Kausalität.</td></tr>
+</table>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 30</span> Ein Wert kommt hinzu – was passiert mit \(\bar x\) und \(s^2\)?</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Ein zusätzlicher Wert … wird aufgenommen. Wie ändern sich Mittelwert und Varianz?“</p>
+<p><span class="lab">Rezept:</span> Über Summen gehen: \(\sum x_i=n\bar x\), \(\sum (x_i-\bar x)^2=n s^2\).</p>
+<p><span class="lab">Musterbeispiel:</span> \(n=9\), \(\bar x=10\), \(s^2=4\). Neuer Wert \(x_{10}=10\).</p>
+<p><span class="lab">Lösung:</span> Neue Summe \(90+10=100\) → \(\bar x_{neu}=10\) (unverändert). Quadratsumme der Abweichungen \(9\cdot4=36\), neue Abweichung \((10-10)^2=0\) → \(s^2_{neu}=\frac{36}{10}=3.6\). Ein Wert genau im Mittelwert <b>verkleinert</b> die Varianz.</p>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z4</div>
+<ol>
+<li>Daten (\(n=9\)): 1, 3, 3, 4, 6, 7, 8, 10, 30. Bestimme die Quartile nach Vorlesungsdefinition, IQR, die Zäune und die Whisker. Gibt es Ausreißer?</li>
+<li>\(n=5\): \(\sum x=30\), \(\sum x^2=220\). Berechne \(s^2\), \(s\), \(s_*^2\).</li>
+<li>Für eine Stichprobe liefert R <code>sd(x)</code> = 3 bei \(n=10\). Wie groß ist die empirische Varianz \(s^2\) (mit 1/n)?</li>
+<li>Temperaturen in °C: \(s=4\). Wie groß ist die Standardabweichung in °F (\(F=32+1.8C\))?</li>
+</ol></div>

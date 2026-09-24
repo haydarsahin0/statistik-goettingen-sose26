@@ -1,0 +1,86 @@
+<div class="katalog-titel">Aufgabentypen-Katalog 1.4 · Häufigkeiten, Histogramm, Verteilungsfunktion</div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 7</span> Häufigkeitstabelle vervollständigen und Anteile ablesen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Vervollständigen Sie die Tabelle, indem Sie relative Häufigkeiten, absolute und relative Summenhäufigkeiten berechnen.“ · „Bestimmen Sie die Anteile, deren Semesterzahl größer als 3 / mindestens 3 … ist.“ (Tutorium 2) · „Bestimmen Sie n.“ (Testat 1)</p>
+<p><span class="lab">Rezept:</span> \(n=\sum h_j\) · \(f_j=h_j/n\) · \(H_j\) = alles bis \(j\) addieren · \(h_j=H_j-H_{j-1}\) (rückwärts!) · \(F_j=H_j/n\). Dann Wörter übersetzen: höchstens \(k\) → \(F(k)\); mehr als \(k\) → \(1-F(k)\); mindestens \(k\) → \(1-F(k-1)\); weniger als \(k\) → \(F(k-1)\).</p>
+<p><span class="lab">Musterbeispiel:</span> 30 Personen wurden gefragt, wie viele Bücher (1 bis 5) sie im letzten Monat gelesen haben. Bekannt: \(h_1=4\), \(H_2=12\), \(f_3=\tfrac13\), \(F_4=\tfrac{28}{30}\). Vervollständigen Sie die Tabelle und bestimmen Sie die Anteile mit (i) mehr als 2, (ii) mindestens 4, (iii) höchstens 3 Büchern.</p>
+<p><span class="lab">Lösung:</span></p>
+<ol class="steps">
+<li>\(h_2=H_2-h_1=12-4=8\).</li>
+<li>\(h_3=f_3\cdot n=\tfrac13\cdot30=10\) ⇒ \(H_3=12+10=22\).</li>
+<li>\(H_4=F_4\cdot n=28\) ⇒ \(h_4=28-22=6\).</li>
+<li>\(h_5=30-28=2\) (Summe muss \(n\) sein).</li>
+</ol>
+<table class="tab"><tr><th>Bücher \(a_j\)</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><th>Σ</th></tr>
+<tr><th>\(h_j\)</th><td>4</td><td>8</td><td>10</td><td>6</td><td>2</td><td>30</td></tr>
+<tr><th>\(f_j\)</th><td>0.133</td><td>0.267</td><td>0.333</td><td>0.2</td><td>0.067</td><td>1</td></tr>
+<tr><th>\(H_j\)</th><td>4</td><td>12</td><td>22</td><td>28</td><td>30</td><td></td></tr>
+<tr><th>\(F_j\)</th><td>0.133</td><td>0.4</td><td>0.733</td><td>0.933</td><td>1</td><td></td></tr></table>
+<p>(i) mehr als 2: \(1-F(2)=1-0.4=0.6\). (ii) mindestens 4: \(1-F(3)=1-\tfrac{22}{30}=\tfrac{8}{30}=0.267\). (iii) höchstens 3: \(F(3)=\tfrac{22}{30}=0.733\).</p>
+<p class="small">Tipp: Wenn möglich, gib Anteile als gekürzte Brüche an (\(\tfrac{8}{30}=\tfrac{4}{15}\)) – das ist in der Klausur ausdrücklich erlaubt und vermeidet Rundungsfehler.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 8</span> Höhen eines (normierten) Histogramms berechnen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Welche y-Werte würden Sie den einzelnen Säulen zuweisen?“ (Tutorium 2, Aufgabe 1b) · „Berechnen Sie die y-Werte der einzelnen Klassen selbst.“ (Tutorium 3)</p>
+<p><span class="lab">Rezept:</span> Tabelle mit Spalten: Klasse · \(h_j\) · \(f_j=h_j/n\) · Breite · Höhe \(=f_j/\)Breite · Kontrolle (Summe der Flächen = 1).</p>
+<p><span class="lab">Musterbeispiel:</span> Monatseinkommen von 50 Personen (in €): [0, 1000): 12 · [1000, 2000): 20 · [2000, 4000): 14 · [4000, 8000]: 4.</p>
+<table class="tab"><tr><th>Klasse</th><th>\(h_j\)</th><th>\(f_j\)</th><th>Breite</th><th>Höhe</th></tr>
+<tr><td>[0, 1000)</td><td>12</td><td>0.24</td><td>1000</td><td>0.00024</td></tr>
+<tr><td>[1000, 2000)</td><td>20</td><td>0.40</td><td>1000</td><td>0.00040</td></tr>
+<tr><td>[2000, 4000)</td><td>14</td><td>0.28</td><td>2000</td><td>0.00014</td></tr>
+<tr><td>[4000, 8000]</td><td>4</td><td>0.08</td><td>4000</td><td>0.00002</td></tr></table>
+<p>Kontrolle: \(0.00024\cdot1000+0.0004\cdot1000+0.00014\cdot2000+0.00002\cdot4000=0.24+0.40+0.28+0.08=1\) ✓. Die kleinen Zahlen sind normal, weil die Klassen breit sind (Einheit: „Anteil pro Euro“).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 9</span> Anteil (oder Anzahl) in einem beliebigen Intervall schätzen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Schätzen Sie den Anteil von Beobachtungen in der Grundgesamtheit in den Intervallen …“ (Tutorium 2, Aufgabe 1a) · „Benutzen Sie das Histogramm, um den Anteil … zu schätzen.“ (Testat 1, Aufgabe 7.2)</p>
+<p><span class="lab">Rezept:</span> Intervall in Stücke zerlegen, die jeweils in <b>einer</b> Klasse liegen. Für jedes Stück: Länge des Stücks × Höhe der Klasse. Alles addieren. <b>Annahme hinschreiben:</b> „Die Werte sind innerhalb der Klassen gleichmäßig verteilt.“ Anzahl = Anteil × n.</p>
+<p><span class="lab">Musterbeispiel (Einkommen aus Typ 8):</span> Schätzen Sie den Anteil und die Anzahl der Personen mit einem Einkommen zwischen 1500 € und 3000 €, sowie den Anteil über 5000 €.</p>
+<p><span class="lab">Lösung:</span> 1500–2000 liegt in [1000, 2000): \(500\cdot0.0004=0.20\). 2000–3000 liegt in [2000, 4000): \(1000\cdot0.00014=0.14\). Zusammen <b>0.34</b>, also ca. \(0.34\cdot50=17\) Personen. Über 5000 €: \((8000-5000)\cdot0.00002=0.06\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 10</span> Anzahl der Beobachtungen aus einem normierten Histogramm ablesen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Bestimmen Sie die Anzahl der Beobachtungen mit 25 &lt; x ≤ 30.“ (Testat 1, Aufgabe 7.1 – gegeben ist nur das Histogramm und n)</p>
+<p><span class="lab">Rezept:</span> Höhe ablesen → Fläche = Höhe × Breite = Anteil → Anzahl = Anteil × n.</p>
+<p><span class="lab">Musterbeispiel:</span> 500 Personen, Klasse (25, 30] hat im Histogramm die Höhe 0.04. Klasse (20, 25] hat die Höhe 0.06. (a) Anzahl in (25, 30]? (b) Anteil mit 21 &lt; x ≤ 24?</p>
+<p><span class="lab">Lösung:</span> (a) Anteil \(=0.04\cdot5=0.2\) ⇒ Anzahl \(=0.2\cdot500=100\). (b) Das Stück (21, 24] hat Länge 3 und liegt in (20, 25]: \(3\cdot0.06=0.18\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 11</span> Empirische Verteilungsfunktion aufstellen und zeichnen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Zeichnen Sie die empirische Verteilungsfunktion für X!“ (Probeklausur A 2b, 6 P) · „Zeichnen Sie die Verteilungsfunktion der relativen Summenhäufigkeiten.“ (Tutorium 2)</p>
+<p><span class="lab">Rezept:</span> (1) Sortieren. (2) Jeden verschiedenen Wert zählen. (3) \(f_j\) und dann kumulieren. (4) Fallunterscheidung aufschreiben: 0 vor dem kleinsten Wert, dann Stufen, 1 ab dem größten Wert. (5) Zeichnen: waagerechte Stufen, ● links, ○ rechts, keine senkrechten Linien, Achsen beschriften.</p>
+<p><span class="lab">Musterbeispiel:</span> Anzahl Kinder in 8 Familien: 0, 0, 1, 1, 1, 2, 2, 3.</p>
+<p><span class="lab">Lösung:</span> Häufigkeiten: 0 → 2, 1 → 3, 2 → 2, 3 → 1. Anteile: 0.25, 0.375, 0.25, 0.125. Kumuliert: 0.25, 0.625, 0.875, 1.</p>
+\[\hat F(x)=\begin{cases}0 &amp; x&lt;0\\0.25 &amp; 0\le x&lt;1\\0.625&amp;1\le x&lt;2\\0.875&amp;2\le x&lt;3\\1&amp;x\ge3\end{cases}\]
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 12</span> Aus einer Verteilungsfunktion zurückrechnen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Eine (gezeichnete oder notierte) Treppenfunktion ist gegeben. Gefragt: Häufigkeiten, Mittelwert, Median, Anteile.</p>
+<p><span class="lab">Rezept:</span> Sprunghöhe = \(f_j\) (neuer Wert minus alter Wert). \(h_j=f_j\cdot n\). Danach wie gewohnt rechnen. Median: Wo erreicht \(F\) zum ersten Mal 0.5? Ist \(F\) an einer Stelle <b>genau</b> 0.5, liegt der Median zwischen diesem und dem nächsten Wert.</p>
+<p><span class="lab">Musterbeispiel:</span> \(n=20\). \(\hat F\) springt bei 1 auf 0.2, bei 2 auf 0.5, bei 4 auf 0.9 und bei 5 auf 1. Bestimmen Sie \(h_j\), \(\bar x\), Median und Modus.</p>
+<p><span class="lab">Lösung:</span> Sprünge: \(f=0.2,\ 0.3,\ 0.4,\ 0.1\) für die Werte 1, 2, 4, 5 ⇒ \(h=4,\ 6,\ 8,\ 2\).<br>
+\(\bar x=1\cdot0.2+2\cdot0.3+4\cdot0.4+5\cdot0.1=0.2+0.6+1.6+0.5=2.9\).<br>
+Median: \(n=20\) ⇒ Mittel aus \(x_{(10)}\) und \(x_{(11)}\). Wegen \(F(2)=0.5\) ist \(x_{(10)}=2\) (die ersten 10 Werte sind ≤ 2) und \(x_{(11)}=4\) ⇒ \(x_{med}=\frac{2+4}{2}=3\). Modus: 4 (Sprung 0.4 ist der größte).</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Basamak fonksiyonunda her <b>sıçramanın yüksekliği</b> o değerin oranıdır (f). F tam 0.5’e eşit olduğu yerde medyan o değer ile bir sonraki değerin ortalamasıdır – bu klasik bir tuzaktır.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 13</span> Modalklasse bestimmen – mit Falle</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Welche Klasse ist die Modalklasse?“ · „Ist die Behauptung ‚Die Modalklasse ist immer die Klasse mit dem höchsten Kästchen im Histogramm‘ korrekt?“ (Testat 1)</p>
+<p><span class="lab">Rezept:</span> Modalklasse = Klasse mit der <b>größten Anzahl</b> \(h_j\) (bzw. \(f_j\)). Nicht die Höhe vergleichen, wenn die Klassen ungleich breit sind!</p>
+<p><span class="lab">Musterbeispiel:</span> 25 Werte: [0, 10): 10 Werte, [10, 40): 15 Werte. Modalklasse? Welche Säule ist höher?</p>
+<p><span class="lab">Lösung:</span> Modalklasse: [10, 40) (15 Werte). Höhen: \(\frac{10/25}{10}=0.04\) und \(\frac{15/25}{30}=0.02\). Die höhere Säule ist [0, 10) – also ist die Behauptung <b>im Allgemeinen falsch</b>; sie stimmt nur bei gleich breiten Klassen.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 14</span> Histogramm oder Säulendiagramm? (auch als R-Frage)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Wieso handelt es sich hierbei nicht um ein (normiertes) Histogramm? Was ist der Nachteil? Wie könnte der R-Befehl geändert werden?“ (Tutorium 2, Aufgabe 3h–i) · „Mit welchem R-Befehl lässt sich ein normiertes Histogramm erstellen?“ (Testat 1)</p>
+<p><span class="lab">Musterbeispiel:</span> <code>hist(Gewicht_m, breaks = c(50, 60, 70, 80, 90, 200), prob = F)</code> – Warum kein normiertes Histogramm?</p>
+<p><span class="lab">Lösung:</span> Mit <code>prob = F</code> stehen <b>absolute Häufigkeiten</b> auf der y-Achse. Weil die letzte Klasse (90, 200] viel breiter ist, sieht sie viel zu groß aus → verzerrte Darstellung (Säulendiagramm). Richtig: <code>prob = TRUE</code> oder <code>freq = FALSE</code> → y-Achse = Dichte = relative Häufigkeit / Klassenbreite, Gesamtfläche 1.</p>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z2</div>
+<ol>
+<li>Daten: 1, 1, 2, 2, 2, 3, 5, 5. Erstelle die Häufigkeitstabelle (h, f, H, F), stelle \(\hat F(x)\) auf und bestimme die Anteile „mehr als 2“ und „mindestens 2“.</li>
+<li>200 Werte: [0, 20): 40 · [20, 50): 90 · [50, 100]: 70. (a) Höhen im Histogramm. (b) Geschätzter Anteil zwischen 10 und 30. (c) Modalklasse.</li>
+<li>Ein normiertes Histogramm von 400 Beobachtungen hat über der Klasse (30, 40] die Höhe 0.025. Wie viele Beobachtungen liegen in dieser Klasse?</li>
+<li>\(\hat F\) springt bei 10 auf 0.3, bei 20 auf 0.6 und bei 30 auf 1 (\(n=10\)). Berechne \(h_j\), \(\bar x\) und den Median.</li>
+</ol></div>

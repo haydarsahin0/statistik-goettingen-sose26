@@ -1,0 +1,58 @@
+<h3>Zusatzübungen Z1 · Skalen und Stichproben</h3>
+<p>1. (a) Hausnummer: nominal (die Zahl ist nur ein Name; Rechnen ist sinnlos), diskret. (b) Wohnfläche: kardinal (metrisch), stetig. (c) Energieeffizienzklasse: ordinal, diskret. (d) Bundesland: nominal, diskret. (e) Anzahl Zimmer: kardinal, diskret. (f) Puls pro Minute: kardinal, diskret (Zählung).<br>
+2. (a) geschichtete Stichprobe (aus <b>jeder</b> Gruppe wird gezogen). (b) einfache Zufallsstichprobe. (c) Klumpenstichprobe (ganze Gruppen werden gezogen und komplett befragt).<br>
+3. (a) Richtig – Randomisierung verteilt die Störvariablen gleichmäßig auf die Gruppen. (b) Falsch – ordinal: nur Median und Modus sind sinnvoll. (c) Falsch – eine Grundgesamtheit kann auch hypothetisch/unendlich sein (z.&nbsp;B. alle zukünftigen Produkte einer Maschine).</p>
+
+<h3>Zusatzübungen Z2 · Häufigkeiten, Histogramm, ECDF</h3>
+<p>1. \(n=8\): \(a_j\) = 1, 2, 3, 5; \(h_j\) = 2, 3, 1, 2; \(f_j\) = 0.25, 0.375, 0.125, 0.25; \(H_j\) = 2, 5, 6, 8; \(F_j\) = 0.25, 0.625, 0.75, 1.<br>
+\(\hat F(x)=0\) für \(x&lt;1\); 0.25 für \(1\le x&lt;2\); 0.625 für \(2\le x&lt;3\); 0.75 für \(3\le x&lt;5\); 1 für \(x\ge5\).<br>
+Mehr als 2: \(1-F(2)=0.375\). Mindestens 2: \(1-F(1)=0.75\).<br>
+2. (a) \(f\) = 0.2, 0.45, 0.35 → Höhen \(0.2/20=0.01\), \(0.45/30=0.015\), \(0.35/50=0.007\). (b) \(10\cdot0.01+10\cdot0.015=0.25\) (25 %). (c) Modalklasse [20, 50) (90 Werte).<br>
+3. Fläche \(=10\cdot0.025=0.25\) → \(0.25\cdot400=100\) Beobachtungen.<br>
+4. Sprunghöhen 0.3, 0.3, 0.4 → \(h_j\) = 3, 3, 4. \(\bar x=\frac{3\cdot10+3\cdot20+4\cdot30}{10}=21\). Median: Plätze 5 und 6 sind beide 20 → \(x_{med}=20\).</p>
+
+<h3>Zusatzübungen Z3 · Lagemaße</h3>
+<p>1. Sortiert: 2, 3, 3, 3, 4, 5, 6, 8, 20 (\(n=9\)). \(\bar x=\frac{54}{9}=6\); \(x_{med}=x_{(5)}=4\); \(x_{mod}=3\). \(6&gt;4&gt;3\) → rechtsschief.<br>
+2. \(\bar x=\frac{3+14+27+16+10}{25}=\frac{70}{25}=2.8\); Median \(x_{(13)}\): \(H\) = 3, 10, 19 → Note 3; Modus 3. Noten sind ordinal → eigentlich sind nur <b>Median und Modus</b> sinnvoll (der Mittelwert setzt gleiche Abstände voraus).<br>
+3. \(f\) = 0.2, 0.5, 0.3; Mitten 10, 30, 70 → \(\bar x_K=2+15+21=38\). Modalklasse [20, 40).<br>
+4. Summe vorher \(8\cdot12=96\), nachher \(9\cdot13=117\) → neunte Zahl \(=21\).<br>
+5. Median \(32+1.8\cdot15=59\) °F; Mittel \(32+1.8\cdot14=57.2\) °F.</p>
+
+<h3>Zusatzübungen Z4 · Quantile, Streuung, Boxplot</h3>
+<p>1. \(9\cdot0.25=2.25\) → Platz 3 → \(x_{0.25}=3\); Median \(x_{(5)}=6\); \(9\cdot0.75=6.75\) → Platz 7 → \(x_{0.75}=8\). IQR = 5. Zäune: \(3-7.5=-4.5\) und \(8+7.5=15.5\). 30 ist ein Ausreißer. Whisker: unten 1, oben 10.<br>
+2. \(\bar x=6\); \(s^2=\frac{220}{5}-36=8\); \(s=2.828\); \(s_*^2=\frac54\cdot8=10\).<br>
+3. \(s_*^2=9\) → \(s^2=\frac{9}{10}\cdot9=8.1\).<br>
+4. \(s_F=1.8\cdot4=7.2\) °F (die 32 spielt keine Rolle).</p>
+
+<h3>Zusatzübungen Z5 · Kontingenztafel und χ²</h3>
+<table class="tab"><tr><th></th><th>unter 40</th><th>ab 40</th><th>Σ</th></tr>
+<tr><th>Karte</th><td>175</td><td>75</td><td>250</td></tr>
+<tr><th>bar</th><td>60</td><td>90</td><td>150</td></tr>
+<tr><th>Σ</th><td>235</td><td>165</td><td>400</td></tr></table>
+<p>1. \(0.7\cdot250=175\), \(0.4\cdot150=60\), Rest durch Differenzen.<br>
+2. Unter 40: \(\frac{175}{235}=0.745\); ab 40: \(\frac{75}{165}=0.455\) → Jüngere zahlen deutlich häufiger mit Karte (Zusammenhang).<br>
+3. Erwartet: \(\frac{250\cdot235}{400}=146.875\), \(103.125\), \(88.125\), \(61.875\). Differenzen jeweils \(\pm28.125\). \(\chi^2=28.125^2\left(\frac1{146.875}+\frac1{103.125}+\frac1{88.125}+\frac1{61.875}\right)=34.816\).<br>
+4. Die zweite Zeile ist genau \(\frac{5}{3}\) mal die erste (gleiche bedingte Verteilung 0.4 / 0.6) → Unabhängigkeit → \(\chi^2=0\).</p>
+
+<h3>Zusatzübungen Z6 · Kovarianz und Korrelation</h3>
+<p>1. \(\bar x=5\), \(\bar y=6\); \(\sum xy=94\), \(\sum x^2=120\), \(\sum y^2=178\). \(s_{xy}=23.5-30=-6.5\); \(s_x^2=5\), \(s_y^2=8.5\); \(r=\frac{-6.5}{\sqrt{42.5}}=-0.997\). \(y\) fällt immer, wenn \(x\) steigt → \(r_{Sp}=-1\).<br>
+2. \(s_{xy}=\frac{760}{20}-4\cdot10=-2\); \(r=\frac{-2}{2\cdot5}=-0.2\) (schwacher negativer linearer Zusammenhang).<br>
+3. \(s_{xy}=1.8\cdot120=216\); \(r=0.8\) bleibt gleich.<br>
+4. \(d\) = −3, −1, 2, 2; \(\sum d^2=18\); \(r_{Sp}=1-\frac{6\cdot18}{4\cdot15}=1-1.8=-0.8\).<br>
+5. Nein, Korrelation ist keine Kausalität. Drittvariable: <b>Rauchen</b> – Raucher*innen trinken oft mehr Kaffee und haben ein höheres Lungenkrebsrisiko. Nachweis nur mit Studien, die das Rauchen kontrollieren.</p>
+
+<h3>Zusatzübungen Z7 · R (Taverne.csv)</h3>
+<pre>round(median(d$Kampfzeit), 2); round(IQR(d$Kampfzeit), 2)   # 26.5 und 45.88
+sum(d$Tal == "Flusstal")                                      # 4
+mean(d$Monster == "Troll")                                    # 0.3333333
+round(tapply(d$Kampfzeit, d$Tal, mean), 3)  # Bergtal 45.25  Flusstal 17.05  Waldtal 39.25
+pdf("Boxplot.pdf")
+boxplot(Muenzen ~ Tal, data = d, main = "Münzen nach Tal")
+dev.off()
+d$Muenzen.2 &lt;- cut(d$Muenzen, breaks = c(0, 20, Inf), right = TRUE)
+table(d$Tal, d$Muenzen.2)</pre>
+<pre class="out">           (0,20] (20,Inf]
+  Bergtal       0        4
+  Flusstal      3        1
+  Waldtal       2        2</pre>
+<p>Die Kämpfe sind im <b>Flusstal</b> am kürzesten (17.05 Minuten im Mittel).</p>

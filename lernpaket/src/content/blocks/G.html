@@ -1,0 +1,179 @@
+<div class="katalog-titel">Aufgabentypen-Katalog 1.9 · R in Teil B (ILIAS)</div>
+<p>Alle Beispiele benutzen <code>Taverne.csv</code> (12 Tavernen) aus dem R-Kurs. Alle Outputs sind <b>echt</b> – so sieht es in RStudio aus. Tippe jeden Befehl selbst ab!</p>
+
+<div class="box merke"><div class="t">Übersetzer: Fragewort → R-Befehl</div>
+<table class="tab wide small">
+<tr><th class="l">In der Aufgabe steht …</th><th class="l">Du tippst …</th></tr>
+<tr><td class="l">„Setzen Sie Ihr Working Directory“</td><td class="l"><code>setwd(path.expand("~"))</code></td></tr>
+<tr><td class="l">„Speichern Sie die Daten als Data-Frame-Objekt d“</td><td class="l"><code>d &lt;- read.csv("Datei.csv", sep = ";", dec = ".", header = TRUE)</code></td></tr>
+<tr><td class="l">„Geben Sie die ersten 6 Zeilen wieder“</td><td class="l"><code>head(d)</code></td></tr>
+<tr><td class="l">„Wie viele Beobachtungen / Variablen?“</td><td class="l"><code>nrow(d)</code> / <code>ncol(d)</code> / <code>dim(d)</code></td></tr>
+<tr><td class="l">„Objekttyp / Struktur ermitteln“</td><td class="l"><code>str(d)</code>, <code>class(d$X)</code>, <code>typeof(d$X)</code></td></tr>
+<tr><td class="l">„arithmetisches Mittel“ · „Median“</td><td class="l"><code>mean(d$X)</code> · <code>median(d$X)</code></td></tr>
+<tr><td class="l">„unverzerrter Schätzer der Standardabweichung / Varianz“</td><td class="l"><code>sd(d$X)</code> / <code>var(d$X)</code></td></tr>
+<tr><td class="l">„empirische (unkorrigierte) Varianz“</td><td class="l"><code>var(d$X) * (n - 1) / n</code></td></tr>
+<tr><td class="l">„Interquartilsabstand“ · „Quantil“</td><td class="l"><code>IQR(d$X)</code> · <code>quantile(d$X, 0.9)</code></td></tr>
+<tr><td class="l">„Runden Sie auf drei Nachkommastellen“</td><td class="l"><code>round(…, 3)</code></td></tr>
+<tr><td class="l">„absolute / relative Häufigkeiten“</td><td class="l"><code>table(d$X)</code> / <code>prop.table(table(d$X))</code></td></tr>
+<tr><td class="l">„Kontingenztafel“</td><td class="l"><code>table(d$X, d$Y)</code></td></tr>
+<tr><td class="l">„für jedes Tal / jede Gruppe“</td><td class="l"><code>tapply(d$Zahl, d$Gruppe, mean)</code></td></tr>
+<tr><td class="l">„nur die Beobachtungen, bei denen …“</td><td class="l"><code>subset(d, Bedingung)</code> oder <code>d$X[Bedingung]</code></td></tr>
+<tr><td class="l">„Wie viele / welcher Anteil … größer als 20?“</td><td class="l"><code>sum(d$X &gt; 20)</code> / <code>mean(d$X &gt; 20)</code></td></tr>
+<tr><td class="l">„neue Variable mit Klassen, als Factor“</td><td class="l"><code>d$X.3 &lt;- cut(d$X, breaks = c(…), right = …)</code></td></tr>
+<tr><td class="l">„(normiertes) Histogramm“</td><td class="l"><code>hist(d$X, breaks = c(…), freq = FALSE, right = FALSE, main = , xlab = , ylab = )</code></td></tr>
+<tr><td class="l">„Streudiagramm“ · „Boxplot“ · „Säulendiagramm“</td><td class="l"><code>plot(x, y)</code> · <code>boxplot(Zahl ~ Gruppe, data = d)</code> · <code>barplot(table(d$X))</code></td></tr>
+<tr><td class="l">„Speichern Sie die Grafik als PDF“</td><td class="l"><code>pdf("Name.pdf")</code> … Grafik … <code>dev.off()</code></td></tr>
+<tr><td class="l">„Pearson-Korrelation“ · „Spearman“</td><td class="l"><code>cor(x, y)</code> · <code>cor(x, y, method = "spearman")</code></td></tr>
+<tr><td class="l">„Kovarianz“</td><td class="l"><code>cov(x, y)</code> (mit \(n-1\)!)</td></tr>
+</table></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 46</span> Einlese-Befehl vervollständigen (Lückentext)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> <code>d ___ read.___("WitcherData2.csv", sep = ___, ___ = ".", header = ___)</code> (Testat 2, 3.1)</p>
+<p><span class="lab">Rezept:</span> Erst die Datei anschauen (in RStudio: Files → Datei anklicken → View File). Trennzeichen zwischen den Spalten = <code>sep</code>; Dezimalzeichen = <code>dec</code>; erste Zeile mit Namen → <code>header = TRUE</code>.</p>
+<p><span class="lab">Lösung:</span></p>
+<pre>setwd(path.expand("~"))
+d &lt;- read.csv("WitcherData2.csv", sep = ";", dec = ".", header = TRUE)
+head(d)</pre>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Boşluklar: <code>&lt;-</code> (atama oku), <code>csv</code>, <code>";"</code> (tırnak içinde!), <code>dec</code>, <code>TRUE</code>, sonra <code>head</code>. Dosyanın ilk satırı <code>Taverne;Tal;Monster;…</code> gibi görünüyorsa ayırıcı <code>";"</code>'dir. Eğer <code>str(d)</code> sadece <b>1 değişken</b> gösteriyorsa, <code>sep</code> yanlış seçilmiştir – hemen düzelt.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 47</span> Objekttypen bestimmen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Ermitteln Sie unter Einbezug eines passenden R-Befehls die Objekttypen der Variablen …“ (Ankreuzen: numeric / character / logical / factor / date)</p>
+<pre>str(d)</pre>
+<pre class="out">'data.frame':	12 obs. of  5 variables:
+ $ Taverne  : chr  "T01" "T02" "T03" "T04" ...
+ $ Tal      : chr  "Flusstal" "Bergtal" "Flusstal" "Waldtal" ...
+ $ Monster  : chr  "Ghul" "Troll" "Wolf" "Greif" ...
+ $ Muenzen  : int  18 25 12 30 22 15 27 33 20 10 ...
+ $ Kampfzeit: num  12.5 45 3.2 75.5 8 4.5 50 90 15 2.5 ...</pre>
+<p><span class="lab">Lösung:</span> <code>chr</code> → <b>character</b> (Taverne, Tal, Monster); <code>int</code> → <b>numeric</b> (ganze Zahlen, Typ integer); <code>num</code> → <b>numeric</b> (double). Antwortsatz: „Die Variable Monster ist vom Typ character, die Variable Kampfzeit ist numeric.“ Nach <code>cut()</code> entsteht ein <b>factor</b>.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 48</span> Kennzahlen berechnen und korrekt runden</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Berechnen und nennen Sie …; runden Sie auf drei Nachkommastellen.“</p>
+<pre>round(mean(d$Kampfzeit), 3)
+round(sd(d$Kampfzeit), 3)
+median(d$Kampfzeit)
+IQR(d$Kampfzeit)
+round(var(d$Muenzen), 3)          # unverzerrt (n-1)
+round(var(d$Muenzen) * 11 / 12, 3) # empirisch (1/n), n = 12
+round(quantile(d$Kampfzeit, 0.9), 3)
+summary(d$Kampfzeit)</pre>
+<pre class="out">[1] 33.85
+[1] 30.667
+[1] 26.5
+[1] 45.875
+[1] 53.174
+[1] 48.743
+  90%
+74.15
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+  2.500   7.125  26.500  33.850  53.000  90.000 </pre>
+<p><span class="lab">Antwortsätze:</span> „Das arithmetische Mittel der Kampfzeit beträgt 33.85 Minuten, der unverzerrte Schätzer der Standardabweichung 30.667 Minuten.“ · „90 % der Kämpfe dauern höchstens 74.15 Minuten.“</p>
+<div class="box achtung"><div class="t">Stolperfallen</div><p>(1) Fehlende Werte (<code>NA</code>) → Ergebnis <code>NA</code>. Lösung: <code>mean(d$X, na.rm = TRUE)</code>. (2) <code>round(mean(x, 3))</code> ist falsch – die Klammer der 3 gehört zu <code>round</code>. (3) R zeigt 33.85 statt 33.850 – das ist trotzdem auf 3 Stellen gerundet (Nullen am Ende fallen weg).</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 49</span> Normiertes Histogramm mit festen Klassen als PDF speichern</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Erstellen Sie ein normiertes Histogramm mit den Intervallen …; Titel …; speichern Sie die Grafik als … .pdf“ (8 Punkte!)</p>
+<pre>pdf("Histogramm.pdf")
+hist(d$Kampfzeit,
+     breaks = c(0, 10, 40, 100),
+     freq   = FALSE,
+     right  = FALSE,
+     main   = "Sitz 17, Matr.Nr. 12345678, Aufgabenteil e)",
+     xlab   = "Kampfzeit in Minuten",
+     ylab   = "Dichte")
+dev.off()</pre>
+<p><span class="lab">Checkliste für volle Punkte:</span> ☐ <code>pdf()</code> <b>vor</b> und <code>dev.off()</code> <b>nach</b> der Grafik · ☐ Dateiname genau wie verlangt · ☐ <code>freq = FALSE</code> (normiert) · ☐ <code>breaks</code> decken Min und Max ab · ☐ <code>right = FALSE</code> bei Intervallen der Form [a, b) · ☐ Titel und Achsen exakt · ☐ PDF im Ordner prüfen und in ILIAS hochladen.</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p><code>right = FALSE</code> → aralık <b>solda kapalı</b> [a, b) demektir. <code>right = TRUE</code> (varsayılan) → (a, b]. Soruda köşeli parantez sol tarafta ise <code>FALSE</code> yaz. Hata „some 'x' not counted“ çıkarsa: bir değer <code>breaks</code> dışında kalmıştır → sınırları genişlet.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 50</span> Klassen bilden mit <code>cut()</code> (Lückentext Testat 2)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Die Variable Kampfzeit.3 stellt eine vereinfachte Darstellung … mit drei Ausprägungen dar: {Weniger als 5 Minuten, 5 Minuten bis weniger als eine Stunde, Eine Stunde oder mehr} … als Factor-Objekt.“</p>
+<p><span class="lab">Rezept:</span> Grenzen in <code>breaks</code> (mit <code>0</code> bzw. <code>-Inf</code> und <code>Inf</code> an den Rändern). „weniger als“ / „bis weniger als“ → [a, b) → <code>right = FALSE</code>. „bis zu“ / „maximal“ → (a, b] → <code>right = TRUE</code>.</p>
+<pre>d$Kampfzeit.3 &lt;- cut(d$Kampfzeit, breaks = c(0, 5, 60, Inf), right = FALSE)
+d$Muenzen.4   &lt;- cut(d$Muenzen,   breaks = c(0, 10, 20, 30, Inf), right = TRUE)
+table(d$Kampfzeit.3)</pre>
+<pre class="out">   [0,5)   [5,60) [60,Inf)
+       3        6        3 </pre>
+<p class="small">„Eine Stunde“ = 60 Minuten! Die Einheit der Variable (Minuten) bestimmt die Zahlen in <code>breaks</code>.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 51</span> Kontingenztafel, Zelle ablesen, Randverteilung einer Teilgruppe</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Wie häufig lag bei einer Kampfzeit zwischen 5 Minuten und einer Stunde die Anzahl der Münzen zwischen 10 und 20?“ · „Ermitteln Sie für diese Beobachtungen die Randverteilung … auf zwei Dezimalstellen.“ (Testat 2, 3.6–3.7)</p>
+<pre>Kontingenz.Tafel &lt;- table(d$Muenzen.4, d$Kampfzeit.3)
+Kontingenz.Tafel
+s &lt;- subset(d, Kampfzeit &gt;= 5 &amp; Kampfzeit &lt; 60)
+round(prop.table(table(s$Muenzen.4)), 2)</pre>
+<pre class="out">
+           [0,5) [5,60) [60,Inf)
+  (0,10]       1      0        0
+  (10,20]      2      2        0
+  (20,30]      0      4        2
+  (30,Inf]     0      0        1
+
+  (0,10]  (10,20]  (20,30] (30,Inf]
+    0.00     0.33     0.67     0.00 </pre>
+<p><span class="lab">Lösung:</span> Zeile (10,20], Spalte [5,60) → <b>2-mal</b>. Randverteilung in der Teilgruppe: 0.00 / 0.33 / 0.67 / 0.00.</p>
+<p><span class="lab">Bedingte Verteilung pro Zeile:</span> <code>round(prop.table(table(d$Tal, d$Monster), 1), 3)</code> – die <code>1</code> heißt „zeilenweise“ (jede Zeile summiert zu 1), <code>2</code> heißt „spaltenweise“.</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p><code>&amp;</code> = „ve“ (iki koşul birlikte), <code>|</code> = „veya“. „Mindestens 5“ = <code>&gt;= 5</code>, „weniger als 60“ = <code>&lt; 60</code>. <code>subset</code> yeni, küçük bir veri seti oluşturur; sonra her şeyi <code>s$…</code> ile ondan hesaplarsın, <code>d$…</code> ile <b>değil</b>.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 52</span> Gruppenvergleich mit <code>tapply</code> und Zählen mit logischen Vektoren</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Berechnen Sie … für jedes Tal/Monster.“ · „In welchem Tal …?“ · „Wie viele Tavernen / welcher Anteil zahlte mehr als 20 Münzen?“</p>
+<pre>round(tapply(d$Kampfzeit, d$Monster, mean), 3)
+sum(d$Muenzen &gt; 20)
+mean(d$Muenzen &gt; 20)
+mean(d$Muenzen[d$Tal == "Bergtal"])
+d[d$Muenzen == max(d$Muenzen), ]</pre>
+<pre class="out">  Ghul  Greif  Troll   Wolf
+11.833 82.750 48.750  3.400
+[1] 7
+[1] 0.5833333
+[1] 26
+  Taverne     Tal Monster Muenzen Kampfzeit
+8     T08 Bergtal   Greif      33        90</pre>
+<p><span class="lab">Antwortsätze:</span> „Kämpfe gegen Greife dauern im Durchschnitt am längsten (82.75 Minuten).“ · „In 7 von 12 Tavernen (58.333 %) erhielt Jaskier mehr als 20 Münzen.“</p>
+<p class="small">Warum funktioniert <code>mean(d$Muenzen &gt; 20)</code>? Der Vergleich macht TRUE/FALSE; R rechnet TRUE = 1 und FALSE = 0 → der Mittelwert ist der Anteil (wie Typ 22!).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 53</span> Streudiagramm-Code vervollständigen und Korrelation deuten</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Lückentext wie <code>pdf("Streudiagramm.pdf")</code> / <code>___(___, ___, pch = 16, ___ = "Streudiagramm", ___ = "Kampfzeit (min.)", ylab = ___)</code> / <code>___.off()</code> (Testat 2, 3.4)</p>
+<pre>pdf("Streudiagramm.pdf")
+plot(d$Kampfzeit, d$Muenzen,
+     pch  = 16,
+     cex  = 0.3,
+     main = "Streudiagramm",
+     xlab = "Kampfzeit (min.)",
+     ylab = "Muenzen")
+dev.off()
+round(cor(d$Kampfzeit, d$Muenzen), 3)
+round(cor(d$Kampfzeit, d$Muenzen, method = "spearman"), 3)</pre>
+<pre class="out">[1] 0.928
+[1] 0.979</pre>
+<p><span class="lab">Regeln:</span> Erste Variable in <code>plot()</code> = x-Achse (steht bei <code>xlab</code>), zweite = y-Achse. Bei <code>png()</code> steht zusätzlich <code>width</code>, <code>height</code>, <code>res</code>. Das Ende ist immer <code>dev.off()</code>.</p>
+<p><span class="lab">Antwortsatz:</span> „Der Korrelationskoeffizient nach Pearson beträgt 0.928; es besteht ein starker positiver linearer Zusammenhang zwischen Kampfzeit und Münzen.“</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 54</span> R-Output interpretieren (ohne selbst zu rechnen) – auch in Teil A!</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Ein Output ist abgedruckt, und du sollst Werte ablesen oder weiterrechnen (Testat 2, 1.2; Probeklausur).</p>
+<p><span class="lab">Musterbeispiel:</span></p>
+<pre class="out">&gt; length(x)
+[1] 12
+&gt; var(x)
+[1] 53.17424
+&gt; summary(x)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+  10.00   17.25   23.00   22.08   27.50   33.00 </pre>
+<p>(a) Empirische Varianz (1/n)? (b) IQR laut R? (c) Ist die Verteilung eher symmetrisch oder schief? (d) Gibt es Ausreißer nach der 1.5·IQR-Regel?</p>
+<p><span class="lab">Lösung:</span> (a) \(s^2=\frac{11}{12}\cdot53.174=48.743\). (b) \(27.5-17.25=10.25\). (c) Mittel 22.08 ≈ Median 23 (etwas kleiner) → annähernd symmetrisch, leicht linksschief. (d) Zäune \(17.25-15.375=1.875\) und \(27.5+15.375=42.875\); Min 10 und Max 33 liegen innerhalb → keine Ausreißer.</p>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z7 (am Rechner mit Taverne.csv)</div>
+<ol>
+<li>Berechne Median und Interquartilsabstand der Variable <code>Kampfzeit</code>, gerundet auf zwei Nachkommastellen.</li>
+<li>Wie viele Tavernen liegen im Flusstal? Welcher Anteil der Kämpfe war gegen einen Troll?</li>
+<li>Berechne für jedes Tal die mittlere Kampfzeit (3 Nachkommastellen). Wo sind die Kämpfe am kürzesten?</li>
+<li>Erstelle einen Boxplot der Münzen getrennt nach Tal, speichere ihn als <code>Boxplot.pdf</code> mit Titel „Münzen nach Tal“.</li>
+<li>Bilde <code>Muenzen.2</code> mit den Klassen „bis 20 Münzen“ und „mehr als 20 Münzen“ und erstelle eine Kontingenztafel mit <code>Tal</code>.</li>
+</ol></div>

@@ -1,0 +1,105 @@
+<div class="katalog-titel">Aufgabentypen-Katalog 1.8 · Kovarianz, Korrelation, Kausalität</div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 36</span> Kovarianz und Korrelation aus Rohdaten (Arbeitstabelle)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Zwei Zeilen \(x_\nu\), \(y_\nu\) mit wenigen Werten. „Berechnen Sie Kovarianz und Korrelationskoeffizienten nach Bravais-Pearson.“</p>
+<p><span class="lab">Rezept:</span> Tabelle mit Spalten \(x, y, x^2, y^2, xy\) → fünf Summen → \(\bar x,\bar y\) → \(s_x^2=\overline{x^2}-\bar x^2\), \(s_y^2=\overline{y^2}-\bar y^2\), \(s_{xy}=\overline{xy}-\bar x\bar y\) → \(r=\frac{s_{xy}}{\sqrt{s_x^2s_y^2}}\).</p>
+<p><span class="lab">Musterbeispiel:</span> Übungsstunden \(x\) und Punkte \(y\) (in 10er-Punkten) von 5 Personen.</p>
+<table class="tab"><tr><th>ν</th><th>\(x\)</th><th>\(y\)</th><th>\(x^2\)</th><th>\(y^2\)</th><th>\(xy\)</th></tr>
+<tr><td>1</td><td>1</td><td>2</td><td>1</td><td>4</td><td>2</td></tr>
+<tr><td>2</td><td>2</td><td>4</td><td>4</td><td>16</td><td>8</td></tr>
+<tr><td>3</td><td>3</td><td>5</td><td>9</td><td>25</td><td>15</td></tr>
+<tr><td>4</td><td>4</td><td>4</td><td>16</td><td>16</td><td>16</td></tr>
+<tr><td>5</td><td>5</td><td>5</td><td>25</td><td>25</td><td>25</td></tr>
+<tr><th>Σ</th><td>15</td><td>20</td><td>55</td><td>86</td><td>66</td></tr></table>
+<ol class="steps">
+<li>\(\bar x=3\), \(\bar y=4\).</li>
+<li>\(s_x^2=\frac{55}{5}-9=2\); \(s_y^2=\frac{86}{5}-16=1.2\).</li>
+<li>\(s_{xy}=\frac{66}{5}-3\cdot4=13.2-12=1.2\).</li>
+<li>\(r=\frac{1.2}{\sqrt{2\cdot1.2}}=\frac{1.2}{1.549}=0.775\).</li>
+<li>„Es besteht ein starker positiver linearer Zusammenhang zwischen Übungsstunden und Punkten.“</li>
+</ol>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 37</span> Kovarianz und Korrelation aus gegebenen Summen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> R-Output mit <code>length(x)</code>, <code>sum(x)</code>, <code>sum(x^2)</code>, <code>sum(x*y)</code> … (Testat 2, Aufgabe 1.2).</p>
+<p><span class="lab">Musterbeispiel:</span> \(n=10\), \(\sum x=50\), \(\sum y=80\), \(\sum x^2=290\), \(\sum y^2=700\), \(\sum xy=430\).</p>
+<p><span class="lab">Lösung:</span> \(\bar x=5\), \(\bar y=8\). \(s_x^2=29-25=4\), \(s_y^2=70-64=6\), \(s_{xy}=43-40=3\). \(r=\frac{3}{\sqrt{4\cdot6}}=\frac{3}{4.899}=0.612\) → mittlerer positiver linearer Zusammenhang.</p>
+<p><span class="lab">Welche Formel ist richtig?</span> (Testat 2, 1.1) \(\text{Cov}(X,Y)=\frac1n\sum x_iy_i-\bar x\bar y\) – Antwort (d). Achtung: \(\frac1n\sum(x_iy_i-\bar x\bar y)\) ist zwar gleich viel, aber nicht die „vereinfachte“ Form.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 38</span> Rückwärts: Kovarianz aus \(r\) oder \(r\) aus Standardabweichungen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Gegeben: \(s_x^2=1.6\), \(s_y^2=10\) …“ (Probeklausur A, 5b) oder \(r\) ist gegeben und die Kovarianz gesucht.</p>
+<p><span class="lab">Rezept:</span> \(s_{xy}=r\cdot s_x\cdot s_y\). Achtung: gegeben sind oft <b>Varianzen</b> → erst die Wurzel ziehen!</p>
+<p><span class="lab">Musterbeispiel:</span> \(r=-0.6\), \(s_x^2=4\), \(s_y^2=25\).</p>
+<p><span class="lab">Lösung:</span> \(s_x=2\), \(s_y=5\) → \(s_{xy}=-0.6\cdot2\cdot5=-6\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 39</span> Einheiten ändern: Was passiert mit Kovarianz und Korrelation?</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Der Umsatz wird in Euro statt in Tsd. € angegeben.“ · „Größe in m statt cm.“</p>
+<p><span class="lab">Rezept:</span> \(u=a+bx\), \(v=c+dy\): \(s_{uv}=b\,d\,s_{xy}\). \(r_{uv}=r_{xy}\), wenn \(b\cdot d&gt;0\); \(r_{uv}=-r_{xy}\), wenn \(b\cdot d&lt;0\). Verschiebungen \(a,c\) sind egal.</p>
+<p><span class="lab">Musterbeispiel:</span> \(s_{xy}=153.88\) kg·cm, \(r=0.836\). (a) Größe in m. (b) Gewicht in Gramm und Größe in m. (c) \(u=-x\).</p>
+<p><span class="lab">Lösung:</span> (a) \(d=0.01\) → \(s=1.5388\) kg·m, \(r=0.836\). (b) \(b=1000\), \(d=0.01\) → \(s=1538.8\) g·m, \(r=0.836\). (c) \(s=-153.88\), \(r=-0.836\).</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Kovaryans birime bağlıdır (cm → m olunca 100'e bölünür). Korelasyon birimsizdir, <b>değişmez</b>. Tek istisna: bir değişkeni negatif bir sayıyla çarparsan korelasyonun sadece <b>işareti</b> döner.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 40</span> Spearman-Rangkorrelation (ohne und mit Bindungen)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Ordinale Daten (Platzierungen, Noten, Zufriedenheit) oder „monotoner Zusammenhang“. „Bestimmen Sie den Rangkorrelationskoeffizienten nach Spearman.“</p>
+<p><span class="lab">Rezept:</span> (1) Ränge vergeben (kleinster = 1, Bindungen = Durchschnittsrang). (2) Pearson mit den Rängen. Ohne Bindungen geht es schneller mit \(r_{Sp}=1-\frac{6\sum d_i^2}{n(n^2-1)}\), \(d_i=rk(x_i)-rk(y_i)\).</p>
+<p><span class="lab">Musterbeispiel:</span> Zwei Jurorinnen ordnen 5 Bands: Jurorin A: Ränge 1, 2, 3, 4, 5; Jurorin B: Ränge 2, 1, 4, 3, 5.</p>
+<p><span class="lab">Lösung:</span> \(d=-1, 1, -1, 1, 0\); \(\sum d^2=4\); \(r_{Sp}=1-\frac{6\cdot4}{5\cdot24}=1-0.2=0.8\) → starker positiver monotoner Zusammenhang, die Jurorinnen urteilen ähnlich.</p>
+<p><span class="lab">Schnelltrick (KT 1.G d):</span> Sind die \(x\)-Ränge und die \(y\)-Ränge <b>genau gleich</b> (größeres \(x\) → immer größeres \(y\)), ist \(r_{Sp}=1\) ohne Rechnung; genau umgekehrt → \(-1\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 41</span> Kovarianz aus einer gemeinsamen Häufigkeitstabelle</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Kontingenztafel mit Zahlenwerten als Zeilen/Spalten und relativen Häufigkeiten (Tutorium 3, Aufgabe 5).</p>
+<p><span class="lab">Rezept:</span> Ränder → \(\bar x,\bar y, s_x^2, s_y^2\). \(\overline{xy}=\sum_j\sum_k a_jb_kf_{jk}\) (Zellen mit 0 fallen weg). \(s_{xy}=\overline{xy}-\bar x\bar y\).</p>
+<p><span class="lab">Musterbeispiel:</span> \(X\) = Kind im Haushalt (0/1), \(Y\) = Haustier (0/1):</p>
+<table class="tab"><tr><th>X \ Y</th><th>0</th><th>1</th><th>Σ</th></tr>
+<tr><th>0</th><td>0.4</td><td>0.1</td><td>0.5</td></tr>
+<tr><th>1</th><td>0.2</td><td>0.3</td><td>0.5</td></tr>
+<tr><th>Σ</th><td>0.6</td><td>0.4</td><td>1</td></tr></table>
+<p><span class="lab">Lösung:</span> \(\bar x=0.5\), \(\bar y=0.4\); \(s_x^2=0.5\cdot0.5=0.25\), \(s_y^2=0.4\cdot0.6=0.24\) (0/1-Trick aus Typ 22). \(\overline{xy}=1\cdot1\cdot0.3=0.3\). \(s_{xy}=0.3-0.2=0.1\). \(r=\frac{0.1}{\sqrt{0.25\cdot0.24}}=0.408\) → mittlerer positiver Zusammenhang.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 42</span> Streudiagramm lesen, zuordnen und skizzieren</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Welche Aussage lässt sich anhand der Punktewolke über \(\rho\) treffen?“ (Testat 2, 1.4) · „Skizzieren Sie ein Streudiagramm mit \(r=0\).“ (Probeklausur A, 5d) · „Ordnen Sie die Werte −0.9, 0, 0.5, 0.95 den Grafiken zu.“</p>
+<p><span class="lab">Rezept:</span> Richtung: steigt die Wolke → \(r&gt;0\); fällt → \(r&lt;0\); keine Richtung → \(r\approx0\). Stärke: je <b>schmaler</b> die Wolke um eine Gerade, desto näher an ±1. Die <b>Steigung</b> sagt nichts über die Stärke!</p>
+<p><span class="lab">Musterlösung für Zuordnung:</span> fast perfekte steigende Linie → 0.95; locker steigende Wolke → 0.5; rundliche Wolke oder Parabel/U-Form → 0; eng fallende Linie → −0.9.</p>
+<p><span class="lab">Skizze \(r=0\):</span> Achsen beschriften (Name + Einheit), Titel, runde Punktwolke ohne Richtung – oder eine U-Form (zeigt: Zusammenhang da, aber nicht linear).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 43</span> Nichtlinearer Zusammenhang mit \(r=0\)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Wenn \(Y=-X^2\), kann \(\rho\) annähernd 0 sein.“ (Testat 2) · „Unkorreliert heißt unabhängig?“</p>
+<p><span class="lab">Musterbeispiel:</span> \(x=-2,-1,0,1,2\) und \(y=x^2=4,1,0,1,4\).</p>
+<p><span class="lab">Lösung:</span> \(\bar x=0\); \(\sum xy=\sum x^3=-8-1+0+1+8=0\) → \(s_{xy}=0-0\cdot\bar y=0\) → \(r=0\). Trotzdem hängt \(y\) <b>perfekt</b> von \(x\) ab! Also: unkorreliert ⇏ unabhängig; \(r\) misst nur <b>lineare</b> Zusammenhänge. (Auch Spearman ist hier 0, weil der Zusammenhang nicht monoton ist.)</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 44</span> Richtig/falsch zu Korrelation (Testat-2-Stil)</div><div class="tb">
+<table class="tab wide small">
+<tr><th class="l">Aussage</th><th>R/F</th><th class="l">Begründung</th></tr>
+<tr><td class="l">Wenn \(\rho\ne0\), sind X und Y niemals unabhängig.</td><td>R</td><td class="l">Unabhängig ⇒ \(\rho=0\); also \(\rho\ne0\) ⇒ abhängig.</td></tr>
+<tr><td class="l">Wenn \(Y=-X^2\), kann \(\rho\approx0\) sein.</td><td>R</td><td class="l">Parabel, symmetrisch um 0 → nicht linear.</td></tr>
+<tr><td class="l">Wenn \(X=Y\), gilt immer \(\rho=1\).</td><td>R</td><td class="l">\(\text{Cov}(X,X)=\text{Var}(X)\) → \(r=1\) (wenn \(s_x&gt;0\)).</td></tr>
+<tr><td class="l">Wenn \(\rho\ne0\), besteht ein kausaler Zusammenhang.</td><td>F</td><td class="l">Korrelation ≠ Kausalität (Drittvariablen, Zufall).</td></tr>
+<tr><td class="l">\(\text{Cov}\ge0.8\) bedeutet immer einen starken Zusammenhang.</td><td>F</td><td class="l">Die Kovarianz hängt von den Einheiten ab; nur \(r\) ist normiert.</td></tr>
+<tr><td class="l">Mit mehr als 60 Stunden Lernen hat man auf jeden Fall mehr als 100 Punkte.</td><td>F</td><td class="l">Stochastischer, nicht deterministischer Zusammenhang: Es gibt Ausnahmen.</td></tr>
+<tr><td class="l">\(r=-0.9\) ist ein schwächerer Zusammenhang als \(r=0.5\).</td><td>F</td><td class="l">Die Stärke ist \(|r|\): 0.9 &gt; 0.5.</td></tr>
+</table>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 45</span> Kausalität beurteilen und Drittvariable nennen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Die Geschäftsführung folgert … Beurteilen Sie.“ · „Kann man daraus schließen, dass …?“ · „Nennen Sie eine mögliche Drittvariable.“ (Probeklausur A, 5c)</p>
+<p><span class="lab">Mustergerüst (3 Sätze):</span> (1) „Nein, eine Korrelation belegt keine Kausalität.“ (2) „Der Zusammenhang könnte durch eine Drittvariable wie <i>…</i> entstehen, die beide Merkmale beeinflusst (oder durch Zufall / umgekehrte Richtung).“ (3) „Für einen Kausalnachweis bräuchte man ein Experiment mit zufälliger Zuteilung (Randomisierung).“</p>
+<p><span class="lab">Musterbeispiel:</span> In Städten mit mehr Störchen werden mehr Kinder geboren (\(r=0.7\)).</p>
+<p><span class="lab">Lösung:</span> Nein, Störche bringen keine Kinder. Drittvariable: <b>ländliche Gegend / Größe der Region</b> – auf dem Land gibt es mehr Störche und tendenziell mehr Geburten pro Kopf. Weitere Klassiker: Eisverkauf ↔ Ertrinken (Drittvariable: Temperatur/Sommer); Feuerwehrleute ↔ Schaden (Drittvariable: Größe des Brandes); umgekehrte Richtung: Krankenhausaufenthalt ↔ Krankheit.</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Bu soru tipinde puanı <b>gerekçe</b> getirir. Sadece „Nein“ yazma. Kalıp: <i>Hayır + üçüncü değişken örneği + randomize deney gerekir</i>. Üçüncü değişken (Drittvariable/Störvariable) her iki değişkeni birden etkileyen şeydir.</p></div>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z6</div>
+<ol>
+<li>\(x\): 2, 4, 6, 8; \(y\): 10, 7, 5, 2. Berechne \(s_{xy}\) und \(r\). Wie groß ist \(r_{Sp}\) (ohne Rechnung)?</li>
+<li>\(n=20\), \(\bar x=4\), \(\bar y=10\), \(\sum xy=760\), \(s_x=2\), \(s_y=5\). Berechne \(s_{xy}\) und \(r\).</li>
+<li>Temperatur in °C und Eisverkauf in Stück haben \(s_{xy}=120\) und \(r=0.8\). Wie lauten beide Werte, wenn die Temperatur in °F (\(F=32+1.8C\)) angegeben wird?</li>
+<li>Zwei Lehrer ordnen 4 Aufsätze: Ränge A: 1, 2, 3, 4; Ränge B: 4, 3, 1, 2. Berechne \(r_{Sp}\).</li>
+<li>„Menschen, die mehr Kaffee trinken, haben häufiger Lungenkrebs.“ Beurteile die Aussage „Kaffee verursacht Lungenkrebs“ und nenne eine Drittvariable.</li>
+</ol></div>

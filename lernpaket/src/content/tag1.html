@@ -8,17 +8,20 @@
 
 <table class="plan">
 <tr><th>Zeit</th><th>Was du machst</th></tr>
-<tr><td>09:00–10:45</td><td><b>Hörtext Teil 1</b> (Abschnitt 0, 1.1–1.3) · Kontrollfragen · Klausurtraining 1.A</td></tr>
-<tr><td>11:00–13:30</td><td><b>Hörtext Teil 2</b> (1.4–1.6): Häufigkeiten, Histogramm, Lagemaße, Streuung · Klausurtraining 1.B–1.E mit Taschenrechner</td></tr>
-<tr><td>14:30–16:00</td><td><b>Hörtext Teil 3, erste Hälfte</b> (1.7–1.8): Zusammenhänge · Klausurtraining 1.F–1.G</td></tr>
-<tr><td>16:15–18:00</td><td><b>Hörtext Teil 3, zweite Hälfte</b> (1.9–1.10): R-Kurs. RStudio öffnen, <b>jeden</b> Befehl selbst tippen, Übungsdatei <code>Taverne.csv</code> benutzen · R-Klausurtraining 1.H</td></tr>
-<tr><td>18:15–19:30</td><td>Gemischte Klausuraufgaben K1 auf Zeit, Lösungen vergleichen, Formelblatt schreiben</td></tr>
+<tr><td>08:30–10:30</td><td><b>Lesen</b> 1.1–1.3 · Musterbeispiele Typ 1–6 mit abgedeckter Lösung nachrechnen · Z1 · Klausurtraining 1.A</td></tr>
+<tr><td>10:45–13:15</td><td><b>Lesen</b> 1.4–1.6 · Typ 7–30 (erst selbst rechnen, dann Lösung aufdecken) · Z2–Z4 · Klausurtraining 1.B–1.E</td></tr>
+<tr><td>14:15–16:15</td><td><b>Lesen</b> 1.7–1.8 · Typ 31–45 · Z5–Z6 · Klausurtraining 1.F–1.G</td></tr>
+<tr><td>16:30–18:30</td><td><b>R-Kurs 1.9</b> am Computer: jeden Befehl selbst tippen (<code>Taverne.csv</code>) · Typ 46–54 · Z7 · R-Klausurtraining 1.H</td></tr>
+<tr><td>18:45–20:00</td><td>Generalprobe K1 auf Zeit · Fehlerliste schreiben · Formelblatt Tag 1</td></tr>
 </table>
+<div class="box tipp"><div class="t">So arbeitest du mit den Aufgabentypen (blaue Kästen „Typ …“)</div>
+<p>Jeder Typ ist eine Aufgabenart, die in Klausur, Testat oder Tutorium schon vorkam. (1) Lies „So erkennst du ihn“ und das <b>Rezept</b>. (2) <b>Decke die Lösung mit einem Blatt ab</b> und rechne das Musterbeispiel selbst. (3) Vergleiche Schritt für Schritt. (4) Falsch? Schreib den Fehler in deine <b>Fehlerliste</b> und rechne das Beispiel am Abend noch einmal. Die gestrichelten Kästen „Übe selbst“ sind neue Zahlen zum gleichen Typ – Lösungen am Ende von Tag 1.</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Bu kitap artık dinlemeden, <b>okuyarak ve çözerek</b> çalışmak için tasarlandı. Her konu: açıklama → soru tipleri (Typ) → kendi başına alıştırma (Z) → sınav formatında Klausurtraining. Çözümü okumadan önce <b>mutlaka</b> kendin dene; sınavda puanı getiren şey elinle yazdığın çözüm yolu.</p></div></div>
 <div class="box tipp"><div class="t">Wie du mit dem Klausurtraining arbeitest</div>
 <p>Die grünen Kästen „Klausurtraining“ sind wie echte Klausuraufgaben gebaut: Zuerst kommt eine Situation, dann Teilaufgaben (a), (b), (c) … mit Punkten. Rechne sie <b>auf Papier</b>, mit Lösungsweg, und stoppe die Zeit (1 Punkt ≈ 1.3 Minuten). Alle Lösungen stehen ausführlich am Ende von Tag 1.</p></div>
 
 <!-- ============ 1.1 ============ -->
-<h2 class="lek"><span class="num">1.1</span> Grundbegriffe der Statistik <span class="ear">Hörtext Teil 1 · 1.1</span></h2>
+<h2 class="lek"><span class="num">1.1</span> Grundbegriffe der Statistik</h2>
 <p>Statistik beschreibt und analysiert <b>Daten</b>. Bevor wir rechnen, brauchen wir ein paar Wörter. Wir lernen sie an zwei Beispielen aus der Vorlesung.</p>
 <table class="tab wide">
 <tr><th class="l">Begriff</th><th class="l">Bedeutung</th><th class="l">Beispiel 1: Wahlumfrage</th><th class="l">Beispiel 2: Politikmaßnahme</th></tr>
@@ -47,7 +50,7 @@
 <p><b>Kreislauf der Datenanalyse:</b> Planung → Datenerhebung → Aufbereitung und Prüfung der Daten → Datenanalyse → Interpretation → Publikation von Daten und Code → Wiederverwendung.</p>
 
 <!-- ============ 1.2 ============ -->
-<h2 class="lek neu"><span class="num">1.2</span> Merkmalstypen und Skalenniveaus <span class="ear">Hörtext Teil 1 · 1.2</span></h2>
+<h2 class="lek neu"><span class="num">1.2</span> Merkmalstypen und Skalenniveaus</h2>
 <p>Diese Frage kommt in fast jeder Klausur (Probeklausur A: Aufgabe 1a und 2a = 5 Punkte; Testat 1: Aufgabe 1). Es sind <b>leichte Punkte</b> – wenn man die Regeln genau kennt.</p>
 <h3>Frage 1: Diskret oder stetig?</h3>
 <div class="two">
@@ -94,7 +97,7 @@
 <p>Es bestimmt, <b>welche Rechnungen erlaubt sind</b>: Bei nominalen Daten nur Häufigkeiten und Modus; bei ordinalen Daten zusätzlich Median und Quantile; bei kardinalen Daten auch Mittelwert, Varianz, Korrelation. Genau das wird in der Klausur gefragt: „Falls ein Parameter nicht sinnvoll angegeben werden kann, begründen Sie kurz.“</p></div>
 
 <!-- ============ 1.3 ============ -->
-<h2 class="lek neu"><span class="num">1.3</span> Wie zieht man eine Stichprobe? <span class="ear">Hörtext Teil 1 · 1.3</span></h2>
+<h2 class="lek neu"><span class="num">1.3</span> Wie zieht man eine Stichprobe?</h2>
 <p>Eine gute Stichprobe ist <b>repräsentativ</b>: Sie hat keine systematischen Unterschiede zur Grundgesamtheit. Zwei Probleme können passieren: (1) Die Stichprobe enthält Einheiten, die <b>nicht</b> zur Grundgesamtheit gehören. (2) Nicht alle Einheiten der Grundgesamtheit haben eine Chance, in die Stichprobe zu kommen (z.&nbsp;B. Online-Umfrage: Menschen ohne Internet fehlen).</p>
 <table class="tab wide">
 <tr><th class="l">Verfahren</th><th class="l">Wie?</th><th class="l">Vorteil / Voraussetzung</th><th class="l">Bild</th></tr>
@@ -118,6 +121,75 @@
 <li>Eine Studie teilt Personen per Münzwurf in eine Gruppe mit und eine ohne neues Medikament. Wie heißt diese Methode und warum ist sie gut?</li>
 </ol></div>
 
+<div class="katalog-titel">Aufgabentypen-Katalog 1.1 – 1.3 · So kommen diese Themen in der Klausur vor</div>
+<p class="small">Jeder Typ hat: <b>So erkennst du ihn</b> (typische Formulierung in der Klausur) → <b>Rezept</b> (Schritte) → <b>Musterbeispiel</b> (komplett gelöst). Lies das Musterbeispiel, decke dann die Lösung ab und löse es selbst noch einmal.</p>
+
+<div class="typ"><div class="th"><span class="tn">Typ 1</span> Skalenniveau und diskret/stetig bestimmen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Geben Sie für X und Y an, ob ein diskretes oder stetiges Merkmal vorliegt. Welches Skalenniveau liegt jeweils zugrunde?“ (Probeklausur A 2a, 4 P) · „Wählen Sie das korrekte Skalenniveau aus“ (Testat 1)</p>
+<p><span class="lab">Rezept:</span> (1) Sind die Werte nur Namen? → nominal. (2) Sortierbar, Abstände unklar? → ordinal. (3) Sinnvoll rechnen („5 mehr“)? → kardinal. (4) Durchzählbar? → diskret; jede Zahl in einem Intervall möglich (Zeit, Geld, Gewicht, Länge, Volumen)? → stetig. (5) Einen kurzen Grund dazuschreiben.</p>
+<p><span class="lab">Musterbeispiel:</span> Eine Autovermietung erfasst: (a) Kilometerstand, (b) Automarke, (c) Kundenbewertung 1–5 Sterne, (d) Anzahl der Mietvorgänge pro Kunde, (e) Kennzeichen, (f) Tankfüllung in Litern.</p>
+<table class="tab wide"><tr><th class="l">Merkmal</th><th>Skala</th><th>diskret/stetig</th><th class="l">Grund (1 Satz reicht)</th></tr>
+<tr><td class="l">(a) Kilometerstand</td><td>kardinal</td><td>stetig</td><td class="l">Strecke kann jeden Wert annehmen, Abstände sinnvoll</td></tr>
+<tr><td class="l">(b) Automarke</td><td>nominal</td><td>diskret</td><td class="l">nur Namen, keine Ordnung</td></tr>
+<tr><td class="l">(c) Sterne 1–5</td><td>ordinal</td><td>diskret</td><td class="l">sortierbar, Abstände zwischen den Sternen nicht gleich interpretierbar</td></tr>
+<tr><td class="l">(d) Anzahl Mietvorgänge</td><td>kardinal</td><td>diskret</td><td class="l">Zählvariable</td></tr>
+<tr><td class="l">(e) Kennzeichen</td><td>nominal</td><td>diskret</td><td class="l">Buchstaben/Zahlen sind nur Namen</td></tr>
+<tr><td class="l">(f) Tankfüllung in Litern</td><td>kardinal</td><td>stetig</td><td class="l">Messwert (Volumen)</td></tr></table>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Kısa yol: <b>Sayabiliyorsan</b> (0, 1, 2 …) kesikli (diskret), <b>ölçüyorsan</b> (süre, para, ağırlık, uzunluk, litre) sürekli (stetig). Rakam olması kardinal olduğu anlamına gelmez: posta kodu, plaka ve hane numarası <b>nominal</b>; 1–5 yıldız ya da not <b>ordinal</b>.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 2</span> Welche Lagemaße / Kennzahlen sind sinnvoll?</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Falls Sie der Meinung sind, dass ein Parameter nicht sinnvoll angegeben werden kann, begründen Sie kurz“ (Probeklausur A 1b) · „Welches Lagemaß kann benutzt werden, um … zu beschreiben?“ (Testat 1, Aufgabe 3)</p>
+<p><span class="lab">Rezept:</span> Skalenniveau bestimmen → Tabelle anwenden: nominal: nur Modus · ordinal: Modus, Median, Quantile · kardinal: alles (Mittelwert, Varianz, Korrelation …). Ausnahme: 0/1-Merkmal → Mittelwert = Anteil ist sinnvoll.</p>
+<p><span class="lab">Musterbeispiel (Testat 1):</span> Welche Lagemaße beschreiben (1) den präferierten Mensastandort, (2) die Zufriedenheit auf einer Skala 1–7?</p>
+<p><span class="lab">Lösung:</span> (1) Mensastandort ist nominal → nur der <b>Modus</b>. Median und Mittelwert sind nicht sinnvoll, weil sich Standorte nicht ordnen lassen. (2) Zufriedenheit ist ordinal → <b>Modus und Median</b>. Der Mittelwert ist streng genommen nicht sinnvoll, weil die Abstände zwischen den Stufen nicht interpretierbar sind.</p>
+<p class="small"><b>Mustersatz für „nicht sinnvoll“:</b> „Das arithmetische Mittel ist hier nicht sinnvoll, da das Merkmal nominal skaliert ist und sich die Ausprägungen nicht als Zahlen interpretieren lassen.“</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 3</span> Richtig/falsch zu Grundbegriffen – Sätze korrigieren</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Formulieren Sie die folgenden Sätze derart um, dass sie korrekte Aussagen darstellen“ (Tutorium 1, Aufgabe 14) · Multiple-Choice im Testat</p>
+<p><span class="lab">Musterbeispiel mit Lösung (Tutorium 1):</span></p>
+<table class="tab wide"><tr><th class="l">Falsche Aussage</th><th class="l">Korrigierte Aussage</th></tr>
+<tr><td class="l">Ein Modell ist die korrekte, fehlerfreie Wiedergabe der Realität.</td><td class="l">Ein Modell ist eine <b>vereinfachte Beschreibung</b> der Realität.</td></tr>
+<tr><td class="l">Deterministische Modelle sind Modelle, deren Unsicherheit man quantifizieren kann.</td><td class="l">In deterministischen Modellen gibt es <b>keine Unsicherheit</b>.</td></tr>
+<tr><td class="l">Ein diskretes Merkmal kann nur endlich viele Werte annehmen.</td><td class="l">… endlich oder <b>abzählbar unendlich</b> viele Werte.</td></tr>
+<tr><td class="l">Quantitative Merkmale sind stets stetig.</td><td class="l">Quantitative Merkmale können <b>diskret oder stetig</b> sein.</td></tr>
+<tr><td class="l">Ein Merkmal mit endlich vielen Ausprägungen kann stetig sein.</td><td class="l">Ein Merkmal mit endlich vielen Ausprägungen ist <b>diskret</b>.</td></tr>
+<tr><td class="l">Die Stichprobe ist immer repräsentativ für die Grundgesamtheit.</td><td class="l">Eine Stichprobe <b>soll</b> repräsentativ sein; sie kann aber Einheiten außerhalb der Grundgesamtheit enthalten oder Teile der Grundgesamtheit auslassen.</td></tr>
+</table></div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 4</span> Stichprobenverfahren erkennen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Welche Methode zum Ziehen der Stichprobe sollte angewandt werden?“ (Tutorium 1, Testat 1 Aufgabe 2)</p>
+<p><span class="lab">Rezept (Schlüsselwörter):</span> „zufällig aus der Liste aller“ → einfache Zufallsstichprobe · „Anteil jeder Gruppe soll stimmen“, „repräsentativ für Gruppen“, Anteile bekannt → geschichtet (oder Quotenverfahren) · „ganze Klassen/Straßen/Orte/Kurse“, „nur in Göttingen“ → Klumpen · „Interviewer erfüllen feste Quoten“ → Quotenverfahren.</p>
+<p><span class="lab">Musterbeispiel:</span> Welches Verfahren liegt vor?</p>
+<ol>
+<li>Die Uni zieht mit einem Zufallsgenerator 500 Namen aus der Liste aller 30 000 Studierenden. → <b>Einfache Zufallsstichprobe</b>.</li>
+<li>Eine Umfrage soll 60 % Frauen und 40 % Männer enthalten, wie in der Grundgesamtheit; in jeder Gruppe wird zufällig gezogen. → <b>Geschichtete Stichprobe</b>.</li>
+<li>Es werden zufällig 10 Göttinger Supermärkte gewählt und dort an einem Tag alle Kunden befragt. → <b>Klumpenstichprobe</b>.</li>
+<li>Interviewer in der Fußgängerzone sollen je 50 Personen unter und über 40 Jahren befragen. → <b>Quotenverfahren</b>.</li>
+</ol></div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 5</span> Einheit, Grundgesamtheit, Stichprobe, Merkmal benennen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Benennen Sie die statistische Einheit und die Grundgesamtheit.“ · „Erläutern Sie die Unterschiede von Stichprobe und Grundgesamtheit.“</p>
+<p><span class="lab">Rezept:</span> Einheit = <b>ein</b> Objekt (Singular!). Grundgesamtheit = <b>alle</b> Einheiten, für die die Frage gilt (möglichst genau: Ort, Zeit). Stichprobe = die wirklich untersuchten Einheiten.</p>
+<p><span class="lab">Musterbeispiel:</span> Eine Krankenkasse untersucht bei 800 zufällig gewählten Versicherten aus Niedersachsen die Anzahl der Arztbesuche im Jahr 2025.</p>
+<p><span class="lab">Lösung:</span> Einheit: <b>eine versicherte Person</b>. Grundgesamtheit: alle Versicherten dieser Krankenkasse in Niedersachsen (im Jahr 2025). Stichprobe: die 800 ausgewählten Versicherten. Merkmal: Anzahl der Arztbesuche (kardinal, diskret).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 6</span> Störvariablen und Versuchsplanung</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Nennen Sie eine mögliche Störvariable …“, „Wie kann man … kontrollieren?“, „Ist eine kausale Aussage zulässig?“ (Testat 1, Aufgabe 6)</p>
+<p><span class="lab">Musterbeispiel:</span> Ein Forschungsteam will prüfen, ob Kaffee die Konzentration verbessert. Es vergleicht Studierende, die morgens Kaffee trinken, mit Studierenden, die keinen Kaffee trinken. (a) Nennen Sie zwei Störvariablen. (b) Wie kann man sie kontrollieren?</p>
+<p><span class="lab">Lösung:</span> (a) z.&nbsp;B. <b>Schlafdauer</b>, <b>Alter</b>, Vorwissen, Tageszeit. (b) Am besten <b>Randomisierung</b>: Die Personen werden zufällig (z.&nbsp;B. per Los) einer Kaffee- oder einer Wassergruppe zugeteilt; dann sind die Störvariablen im Mittel in beiden Gruppen gleich. Alternativ Homogenisierung (nur Personen mit ähnlicher Schlafdauer vergleichen) oder statistische Modellierung.</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Störvariable = karıştırıcı değişken: sonucu etkileyen ama asıl sorumuz olmayan değişken. <b>Randomisierung</b> (rastgele atama) bu değişkenleri iki gruba eşit dağıttığı için en iyi yöntemdir. Deney yoksa sadece “ilişki” denir, “neden” denemez.</p></div>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z1 (Lösungen am Ende von Tag 1)</div>
+<ol>
+<li>Bestimme Skalenniveau und diskret/stetig: (a) Hausnummer, (b) Wohnfläche in m², (c) Energieeffizienzklasse A+++ bis G, (d) Bundesland, (e) Anzahl Zimmer, (f) Pulsfrequenz pro Minute.</li>
+<li>Welches Verfahren? (a) Aus jedem der 5 Göttinger Stadtteile werden zufällig 100 Haushalte gezogen. (b) Aus dem Einwohnerregister werden zufällig 1000 Personen gezogen. (c) Es werden zufällig 3 Schulen gewählt und alle Lehrkräfte befragt.</li>
+<li>Richtig oder falsch? (a) „Mit Randomisierung kann man Störvariablen kontrollieren.“ (b) „Für die Energieeffizienzklasse ist der Mittelwert sinnvoll.“ (c) „Die Grundgesamtheit ist immer eine real existierende, endliche Menge.“</li>
+</ol></div>
+
 <div class="kt"><div class="kh"><span>Klausurtraining 1.A · Fitnessstudio</span><span>12 Punkte</span></div><div class="kb">
 <p>Das Göttinger Fitnessstudio „FitGö“ hat 2400 Mitglieder. Die Leitung möchte das Angebot verbessern und plant eine Befragung. Für jedes befragte Mitglied sollen folgende Merkmale erhoben werden:</p>
 <ol><li>Alter in ganzen Jahren</li><li>Trainingsdauer pro Woche (in Stunden)</li><li>Tarif (Basic, Premium, Student)</li><li>Zufriedenheit (sehr unzufrieden, unzufrieden, neutral, zufrieden, sehr zufrieden)</li><li>Anzahl der Besuche im letzten Monat</li><li>Postleitzahl des Wohnorts</li></ol>
@@ -130,7 +202,7 @@
 </ol></div></div>
 
 <!-- ============ 1.4 ============ -->
-<h2 class="lek neu"><span class="num">1.4</span> Häufigkeiten, Histogramm und Verteilungsfunktion <span class="ear">Hörtext Teil 2 · 1.4</span></h2>
+<h2 class="lek neu"><span class="num">1.4</span> Häufigkeiten, Histogramm und Verteilungsfunktion</h2>
 <p>Wir haben Beobachtungen \(x_1,\dots,x_n\) (\(n\) = Stichprobenumfang). Die möglichen verschiedenen Werte heißen \(a_1 &lt; a_2 &lt; \dots &lt; a_J\).</p>
 <div class="box formel"><div class="t">Formel: Häufigkeiten</div>
 \[h_j = \text{absolute Häufigkeit von } a_j\ (\text{Anzahl}),\qquad f_j=\frac{h_j}{n}\ \text{(relative Häufigkeit, Anteil)},\qquad \sum_j h_j=n,\quad \sum_j f_j = 1\]
@@ -220,6 +292,93 @@
 <li>Links bei 0 anfangen, rechts bei 1 enden, Pfeil nach rechts (geht bis unendlich weiter).</li>
 <li>Zusätzlich die Funktion mit Fallunterscheidung (wie oben) aufschreiben – dann ist die Antwort eindeutig.</li></ul></div>
 
+<div class="katalog-titel">Aufgabentypen-Katalog 1.4 · Häufigkeiten, Histogramm, Verteilungsfunktion</div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 7</span> Häufigkeitstabelle vervollständigen und Anteile ablesen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Vervollständigen Sie die Tabelle, indem Sie relative Häufigkeiten, absolute und relative Summenhäufigkeiten berechnen.“ · „Bestimmen Sie die Anteile, deren Semesterzahl größer als 3 / mindestens 3 … ist.“ (Tutorium 2) · „Bestimmen Sie n.“ (Testat 1)</p>
+<p><span class="lab">Rezept:</span> \(n=\sum h_j\) · \(f_j=h_j/n\) · \(H_j\) = alles bis \(j\) addieren · \(h_j=H_j-H_{j-1}\) (rückwärts!) · \(F_j=H_j/n\). Dann Wörter übersetzen: höchstens \(k\) → \(F(k)\); mehr als \(k\) → \(1-F(k)\); mindestens \(k\) → \(1-F(k-1)\); weniger als \(k\) → \(F(k-1)\).</p>
+<p><span class="lab">Musterbeispiel:</span> 30 Personen wurden gefragt, wie viele Bücher (1 bis 5) sie im letzten Monat gelesen haben. Bekannt: \(h_1=4\), \(H_2=12\), \(f_3=\tfrac13\), \(F_4=\tfrac{28}{30}\). Vervollständigen Sie die Tabelle und bestimmen Sie die Anteile mit (i) mehr als 2, (ii) mindestens 4, (iii) höchstens 3 Büchern.</p>
+<p><span class="lab">Lösung:</span></p>
+<ol class="steps">
+<li>\(h_2=H_2-h_1=12-4=8\).</li>
+<li>\(h_3=f_3\cdot n=\tfrac13\cdot30=10\) ⇒ \(H_3=12+10=22\).</li>
+<li>\(H_4=F_4\cdot n=28\) ⇒ \(h_4=28-22=6\).</li>
+<li>\(h_5=30-28=2\) (Summe muss \(n\) sein).</li>
+</ol>
+<table class="tab"><tr><th>Bücher \(a_j\)</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><th>Σ</th></tr>
+<tr><th>\(h_j\)</th><td>4</td><td>8</td><td>10</td><td>6</td><td>2</td><td>30</td></tr>
+<tr><th>\(f_j\)</th><td>0.133</td><td>0.267</td><td>0.333</td><td>0.2</td><td>0.067</td><td>1</td></tr>
+<tr><th>\(H_j\)</th><td>4</td><td>12</td><td>22</td><td>28</td><td>30</td><td></td></tr>
+<tr><th>\(F_j\)</th><td>0.133</td><td>0.4</td><td>0.733</td><td>0.933</td><td>1</td><td></td></tr></table>
+<p>(i) mehr als 2: \(1-F(2)=1-0.4=0.6\). (ii) mindestens 4: \(1-F(3)=1-\tfrac{22}{30}=\tfrac{8}{30}=0.267\). (iii) höchstens 3: \(F(3)=\tfrac{22}{30}=0.733\).</p>
+<p class="small">Tipp: Wenn möglich, gib Anteile als gekürzte Brüche an (\(\tfrac{8}{30}=\tfrac{4}{15}\)) – das ist in der Klausur ausdrücklich erlaubt und vermeidet Rundungsfehler.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 8</span> Höhen eines (normierten) Histogramms berechnen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Welche y-Werte würden Sie den einzelnen Säulen zuweisen?“ (Tutorium 2, Aufgabe 1b) · „Berechnen Sie die y-Werte der einzelnen Klassen selbst.“ (Tutorium 3)</p>
+<p><span class="lab">Rezept:</span> Tabelle mit Spalten: Klasse · \(h_j\) · \(f_j=h_j/n\) · Breite · Höhe \(=f_j/\)Breite · Kontrolle (Summe der Flächen = 1).</p>
+<p><span class="lab">Musterbeispiel:</span> Monatseinkommen von 50 Personen (in €): [0, 1000): 12 · [1000, 2000): 20 · [2000, 4000): 14 · [4000, 8000]: 4.</p>
+<table class="tab"><tr><th>Klasse</th><th>\(h_j\)</th><th>\(f_j\)</th><th>Breite</th><th>Höhe</th></tr>
+<tr><td>[0, 1000)</td><td>12</td><td>0.24</td><td>1000</td><td>0.00024</td></tr>
+<tr><td>[1000, 2000)</td><td>20</td><td>0.40</td><td>1000</td><td>0.00040</td></tr>
+<tr><td>[2000, 4000)</td><td>14</td><td>0.28</td><td>2000</td><td>0.00014</td></tr>
+<tr><td>[4000, 8000]</td><td>4</td><td>0.08</td><td>4000</td><td>0.00002</td></tr></table>
+<p>Kontrolle: \(0.00024\cdot1000+0.0004\cdot1000+0.00014\cdot2000+0.00002\cdot4000=0.24+0.40+0.28+0.08=1\) ✓. Die kleinen Zahlen sind normal, weil die Klassen breit sind (Einheit: „Anteil pro Euro“).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 9</span> Anteil (oder Anzahl) in einem beliebigen Intervall schätzen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Schätzen Sie den Anteil von Beobachtungen in der Grundgesamtheit in den Intervallen …“ (Tutorium 2, Aufgabe 1a) · „Benutzen Sie das Histogramm, um den Anteil … zu schätzen.“ (Testat 1, Aufgabe 7.2)</p>
+<p><span class="lab">Rezept:</span> Intervall in Stücke zerlegen, die jeweils in <b>einer</b> Klasse liegen. Für jedes Stück: Länge des Stücks × Höhe der Klasse. Alles addieren. <b>Annahme hinschreiben:</b> „Die Werte sind innerhalb der Klassen gleichmäßig verteilt.“ Anzahl = Anteil × n.</p>
+<p><span class="lab">Musterbeispiel (Einkommen aus Typ 8):</span> Schätzen Sie den Anteil und die Anzahl der Personen mit einem Einkommen zwischen 1500 € und 3000 €, sowie den Anteil über 5000 €.</p>
+<p><span class="lab">Lösung:</span> 1500–2000 liegt in [1000, 2000): \(500\cdot0.0004=0.20\). 2000–3000 liegt in [2000, 4000): \(1000\cdot0.00014=0.14\). Zusammen <b>0.34</b>, also ca. \(0.34\cdot50=17\) Personen. Über 5000 €: \((8000-5000)\cdot0.00002=0.06\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 10</span> Anzahl der Beobachtungen aus einem normierten Histogramm ablesen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Bestimmen Sie die Anzahl der Beobachtungen mit 25 &lt; x ≤ 30.“ (Testat 1, Aufgabe 7.1 – gegeben ist nur das Histogramm und n)</p>
+<p><span class="lab">Rezept:</span> Höhe ablesen → Fläche = Höhe × Breite = Anteil → Anzahl = Anteil × n.</p>
+<p><span class="lab">Musterbeispiel:</span> 500 Personen, Klasse (25, 30] hat im Histogramm die Höhe 0.04. Klasse (20, 25] hat die Höhe 0.06. (a) Anzahl in (25, 30]? (b) Anteil mit 21 &lt; x ≤ 24?</p>
+<p><span class="lab">Lösung:</span> (a) Anteil \(=0.04\cdot5=0.2\) ⇒ Anzahl \(=0.2\cdot500=100\). (b) Das Stück (21, 24] hat Länge 3 und liegt in (20, 25]: \(3\cdot0.06=0.18\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 11</span> Empirische Verteilungsfunktion aufstellen und zeichnen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Zeichnen Sie die empirische Verteilungsfunktion für X!“ (Probeklausur A 2b, 6 P) · „Zeichnen Sie die Verteilungsfunktion der relativen Summenhäufigkeiten.“ (Tutorium 2)</p>
+<p><span class="lab">Rezept:</span> (1) Sortieren. (2) Jeden verschiedenen Wert zählen. (3) \(f_j\) und dann kumulieren. (4) Fallunterscheidung aufschreiben: 0 vor dem kleinsten Wert, dann Stufen, 1 ab dem größten Wert. (5) Zeichnen: waagerechte Stufen, ● links, ○ rechts, keine senkrechten Linien, Achsen beschriften.</p>
+<p><span class="lab">Musterbeispiel:</span> Anzahl Kinder in 8 Familien: 0, 0, 1, 1, 1, 2, 2, 3.</p>
+<p><span class="lab">Lösung:</span> Häufigkeiten: 0 → 2, 1 → 3, 2 → 2, 3 → 1. Anteile: 0.25, 0.375, 0.25, 0.125. Kumuliert: 0.25, 0.625, 0.875, 1.</p>
+\[\hat F(x)=\begin{cases}0 &amp; x&lt;0\\0.25 &amp; 0\le x&lt;1\\0.625&amp;1\le x&lt;2\\0.875&amp;2\le x&lt;3\\1&amp;x\ge3\end{cases}\]
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 12</span> Aus einer Verteilungsfunktion zurückrechnen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Eine (gezeichnete oder notierte) Treppenfunktion ist gegeben. Gefragt: Häufigkeiten, Mittelwert, Median, Anteile.</p>
+<p><span class="lab">Rezept:</span> Sprunghöhe = \(f_j\) (neuer Wert minus alter Wert). \(h_j=f_j\cdot n\). Danach wie gewohnt rechnen. Median: Wo erreicht \(F\) zum ersten Mal 0.5? Ist \(F\) an einer Stelle <b>genau</b> 0.5, liegt der Median zwischen diesem und dem nächsten Wert.</p>
+<p><span class="lab">Musterbeispiel:</span> \(n=20\). \(\hat F\) springt bei 1 auf 0.2, bei 2 auf 0.5, bei 4 auf 0.9 und bei 5 auf 1. Bestimmen Sie \(h_j\), \(\bar x\), Median und Modus.</p>
+<p><span class="lab">Lösung:</span> Sprünge: \(f=0.2,\ 0.3,\ 0.4,\ 0.1\) für die Werte 1, 2, 4, 5 ⇒ \(h=4,\ 6,\ 8,\ 2\).<br>
+\(\bar x=1\cdot0.2+2\cdot0.3+4\cdot0.4+5\cdot0.1=0.2+0.6+1.6+0.5=2.9\).<br>
+Median: \(n=20\) ⇒ Mittel aus \(x_{(10)}\) und \(x_{(11)}\). Wegen \(F(2)=0.5\) ist \(x_{(10)}=2\) (die ersten 10 Werte sind ≤ 2) und \(x_{(11)}=4\) ⇒ \(x_{med}=\frac{2+4}{2}=3\). Modus: 4 (Sprung 0.4 ist der größte).</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Basamak fonksiyonunda her <b>sıçramanın yüksekliği</b> o değerin oranıdır (f). F tam 0.5’e eşit olduğu yerde medyan o değer ile bir sonraki değerin ortalamasıdır – bu klasik bir tuzaktır.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 13</span> Modalklasse bestimmen – mit Falle</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Welche Klasse ist die Modalklasse?“ · „Ist die Behauptung ‚Die Modalklasse ist immer die Klasse mit dem höchsten Kästchen im Histogramm‘ korrekt?“ (Testat 1)</p>
+<p><span class="lab">Rezept:</span> Modalklasse = Klasse mit der <b>größten Anzahl</b> \(h_j\) (bzw. \(f_j\)). Nicht die Höhe vergleichen, wenn die Klassen ungleich breit sind!</p>
+<p><span class="lab">Musterbeispiel:</span> 25 Werte: [0, 10): 10 Werte, [10, 40): 15 Werte. Modalklasse? Welche Säule ist höher?</p>
+<p><span class="lab">Lösung:</span> Modalklasse: [10, 40) (15 Werte). Höhen: \(\frac{10/25}{10}=0.04\) und \(\frac{15/25}{30}=0.02\). Die höhere Säule ist [0, 10) – also ist die Behauptung <b>im Allgemeinen falsch</b>; sie stimmt nur bei gleich breiten Klassen.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 14</span> Histogramm oder Säulendiagramm? (auch als R-Frage)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Wieso handelt es sich hierbei nicht um ein (normiertes) Histogramm? Was ist der Nachteil? Wie könnte der R-Befehl geändert werden?“ (Tutorium 2, Aufgabe 3h–i) · „Mit welchem R-Befehl lässt sich ein normiertes Histogramm erstellen?“ (Testat 1)</p>
+<p><span class="lab">Musterbeispiel:</span> <code>hist(Gewicht_m, breaks = c(50, 60, 70, 80, 90, 200), prob = F)</code> – Warum kein normiertes Histogramm?</p>
+<p><span class="lab">Lösung:</span> Mit <code>prob = F</code> stehen <b>absolute Häufigkeiten</b> auf der y-Achse. Weil die letzte Klasse (90, 200] viel breiter ist, sieht sie viel zu groß aus → verzerrte Darstellung (Säulendiagramm). Richtig: <code>prob = TRUE</code> oder <code>freq = FALSE</code> → y-Achse = Dichte = relative Häufigkeit / Klassenbreite, Gesamtfläche 1.</p>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z2</div>
+<ol>
+<li>Daten: 1, 1, 2, 2, 2, 3, 5, 5. Erstelle die Häufigkeitstabelle (h, f, H, F), stelle \(\hat F(x)\) auf und bestimme die Anteile „mehr als 2“ und „mindestens 2“.</li>
+<li>200 Werte: [0, 20): 40 · [20, 50): 90 · [50, 100]: 70. (a) Höhen im Histogramm. (b) Geschätzter Anteil zwischen 10 und 30. (c) Modalklasse.</li>
+<li>Ein normiertes Histogramm von 400 Beobachtungen hat über der Klasse (30, 40] die Höhe 0.025. Wie viele Beobachtungen liegen in dieser Klasse?</li>
+<li>\(\hat F\) springt bei 10 auf 0.3, bei 20 auf 0.6 und bei 30 auf 1 (\(n=10\)). Berechne \(h_j\), \(\bar x\) und den Median.</li>
+</ol></div>
+
 <div class="kt"><div class="kh"><span>Klausurtraining 1.B · Pendelzeiten</span><span>12 Punkte</span></div><div class="kb">
 <p>Eine Umfrage unter 50 Studierenden der Universität Göttingen ergab folgende Pendelzeiten zur Uni (in Minuten):</p>
 <table class="tab"><tr><th>Klasse</th><td>[0, 10)</td><td>[10, 20)</td><td>[20, 30)</td><td>[30, 60)</td><td>[60, 90]</td></tr>
@@ -244,7 +403,7 @@
 </ol></div></div>
 
 <!-- ============ 1.5 ============ -->
-<h2 class="lek neu"><span class="num">1.5</span> Lagemaße: Wo ist die Mitte? <span class="ear">Hörtext Teil 2 · 1.5</span></h2>
+<h2 class="lek neu"><span class="num">1.5</span> Lagemaße: Wo ist die Mitte?</h2>
 <div class="box formel"><div class="t">Formel: Die drei Lagemaße</div>
 <p><b>Arithmetisches Mittel</b> (Durchschnitt): alle Werte addieren und durch \(n\) teilen – oder mit Häufigkeitstabelle: jeden Wert mal seinen Anteil.</p>
 \[\bar x=\frac1n\sum_{i=1}^n x_i=\frac1n\sum_{j=1}^J a_j h_j=\sum_{j=1}^J a_j f_j\]
@@ -295,6 +454,109 @@ Eselsbrücke: Der Mittelwert wird vom langen Schwanz „weggezogen“. Im Wartez
 \[\bar x_K=\tfrac{1}{10}(7\cdot 5+3\cdot 15)=\tfrac{80}{10}=8\]
 <p>(Der echte Mittelwert ist 8.57 – die Klassenmitte ist nur eine Näherung.)</p></div>
 
+<div class="katalog-titel">Aufgabentypen-Katalog 1.5 · Lagemaße (Mittelwert, Median, Modus)</div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 15</span> Mittelwert, Median und Modus aus Rohdaten</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Berechnen Sie das arithmetische Mittel, den Median und den Modus.“ Es steht eine kurze Liste von Zahlen da (meistens unsortiert!).</p>
+<p><span class="lab">Rezept:</span> (1) Zahlen <b>sortieren</b> und zählen (\(n\)). (2) Mittel = Summe / \(n\). (3) Median: \(n\) ungerade → mittlerer Wert \(x_{((n+1)/2)}\); \(n\) gerade → Mittel aus \(x_{(n/2)}\) und \(x_{(n/2+1)}\). (4) Modus = häufigster Wert.</p>
+<p><span class="lab">Musterbeispiel:</span> Wartezeiten (min) an einer Bushaltestelle: 12, 7, 3, 9, 7, 15, 7, 10.</p>
+<p><span class="lab">Lösung:</span></p>
+<ol class="steps">
+<li>Sortiert: 3, 7, 7, 7, 9, 10, 12, 15 → \(n=8\).</li>
+<li>\(\bar x=\frac{3+7+7+7+9+10+12+15}{8}=\frac{70}{8}=8.75\) Minuten.</li>
+<li>\(n=8\) gerade → \(x_{med}=\frac{x_{(4)}+x_{(5)}}{2}=\frac{7+9}{2}=8\) Minuten.</li>
+<li>Modus: 7 kommt dreimal vor → \(x_{mod}=7\) Minuten.</li>
+<li>Antwortsatz: „Das arithmetische Mittel beträgt 8.75 Minuten, der Median 8 Minuten und der Modus 7 Minuten.“</li>
+</ol>
+<div class="box achtung"><div class="t">Typische Fehler</div><p>Median aus der <b>unsortierten</b> Liste ablesen (hier käme 9 und 7 → falsch!). Bei geradem \(n\) nur einen Wert nehmen. Einheit im Antwortsatz vergessen.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 16</span> Lagemaße aus einer Häufigkeitstabelle</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Statt einer Liste gibt es eine Tabelle mit Ausprägungen \(a_j\) und Häufigkeiten \(h_j\) (oder \(f_j\)). „Wie viele Kinder hat ein Haushalt im Durchschnitt?“</p>
+<p><span class="lab">Rezept:</span> \(\bar x=\frac1n\sum_j a_j h_j=\sum_j a_j f_j\). Median: Summenhäufigkeiten \(H_j\) bilden und schauen, bei welcher Ausprägung die Position \(\frac{n+1}{2}\) (bzw. \(\frac n2\) und \(\frac n2+1\)) liegt. Modus = \(a_j\) mit dem größten \(h_j\).</p>
+<p><span class="lab">Musterbeispiel:</span> 20 Haushalte, Anzahl Kinder:</p>
+<table class="tab"><tr><th>\(a_j\)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><th>Σ</th></tr>
+<tr><th>\(h_j\)</th><td>5</td><td>8</td><td>4</td><td>2</td><td>1</td><td>20</td></tr>
+<tr><th>\(a_jh_j\)</th><td>0</td><td>8</td><td>8</td><td>6</td><td>4</td><td>26</td></tr>
+<tr><th>\(H_j\)</th><td>5</td><td>13</td><td>17</td><td>19</td><td>20</td><td></td></tr></table>
+<p><span class="lab">Lösung:</span> \(\bar x=\frac{26}{20}=1.3\) Kinder. \(n=20\) gerade → Median = Mittel aus \(x_{(10)}\) und \(x_{(11)}\). Wegen \(H_1=5&lt;10\) und \(H_2=13\ge 11\) sind beide Werte 1 → \(x_{med}=1\). Modus: \(h_j\) maximal bei 1 → \(x_{mod}=1\).</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Tabloda her değer \(h_j\) kez tekrar ediyor. Yani 0'ı 5 kere, 1'i 8 kere yazmış gibi düşün. Medyan için sıralı listede 10. ve 11. elemanı arıyorsun: birikimli sıklık \(H_j\) ilk kez 10'u geçtiği yerde duruyorsun. Burada 1'in bloğu 6. elemandan 13. elemana kadar sürüyor → medyan 1.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 17</span> Mittelwert und Varianz bei klassierten Daten</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Nur Klassen und Häufigkeiten sind gegeben. „Berechnen Sie den Mittelwert der klassierten Daten.“ (Probeklausur A, 2c) · „Bestimmen Sie die Modalklasse.“</p>
+<p><span class="lab">Rezept:</span> Klassenmitte \(m_j=\frac{\text{untere}+\text{obere Grenze}}{2}\). \(\bar x_K=\sum f_jm_j\). \(s_K^2=\sum f_jm_j^2-\bar x_K^2\). Immer als Tabelle rechnen!</p>
+<p><span class="lab">Musterbeispiel:</span> Monatseinkommen von 50 Personen (aus Typ 8):</p>
+<table class="tab"><tr><th>Klasse</th><th>\(h_j\)</th><th>\(f_j\)</th><th>\(m_j\)</th><th>\(f_jm_j\)</th><th>\(f_jm_j^2\)</th></tr>
+<tr><td>[0, 1000)</td><td>12</td><td>0.24</td><td>500</td><td>120</td><td>60 000</td></tr>
+<tr><td>[1000, 2000)</td><td>20</td><td>0.40</td><td>1500</td><td>600</td><td>900 000</td></tr>
+<tr><td>[2000, 4000)</td><td>14</td><td>0.28</td><td>3000</td><td>840</td><td>2 520 000</td></tr>
+<tr><td>[4000, 8000]</td><td>4</td><td>0.08</td><td>6000</td><td>480</td><td>2 880 000</td></tr>
+<tr><th>Σ</th><td>50</td><td>1</td><td></td><td>2040</td><td>6 360 000</td></tr></table>
+<p><span class="lab">Lösung:</span> \(\bar x_K=2040\) €. \(s_K^2=6\,360\,000-2040^2=6\,360\,000-4\,161\,600=2\,198\,400\) €². \(s_K=\sqrt{2\,198\,400}=1482.7\) €. Modalklasse: [1000, 2000) (größtes \(h_j=20\)).</p>
+<p class="small">Merke: Das ist nur eine <b>Näherung</b>, weil wir annehmen, dass alle Werte in der Klassenmitte liegen.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 18</span> Gesamtmittel aus Gruppen (gewichtetes Mittel)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Filiale A hat … im Durchschnitt …, Filiale B …; wie hoch ist der Durchschnitt aller?“ (KT 1.D e) · Schichten mit unterschiedlicher Größe.</p>
+<p><span class="lab">Rezept:</span> \(\bar x=\frac{n_1\bar x_1+n_2\bar x_2+\dots}{n_1+n_2+\dots}\). Nie einfach die Mittelwerte mitteln (außer die Gruppen sind gleich groß)!</p>
+<p><span class="lab">Musterbeispiel:</span> In Tutorium A schreiben 12 Studierende im Schnitt die Note 2.1, in Tutorium B 18 Studierende im Schnitt 2.6. Durchschnittsnote aller?</p>
+<p><span class="lab">Lösung:</span> \(\bar x=\frac{12\cdot2.1+18\cdot2.6}{30}=\frac{25.2+46.8}{30}=\frac{72}{30}=2.4\). (Falsch wäre \(\frac{2.1+2.6}{2}=2.35\).)</p>
+<p><span class="lab">Variante rückwärts:</span> Gesamtschnitt 2.4 bei 30 Personen, Gruppe A (12 Pers.) hat 2.1. Schnitt von B? \(\bar x_B=\frac{30\cdot2.4-12\cdot2.1}{18}=\frac{72-25.2}{18}=2.6\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 19</span> Fehlender, falscher oder neuer Wert</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Der Mittelwert von 5 Werten ist 6; vier Werte sind … Wie lautet der fünfte?“ · „Ein Wert wurde falsch eingetragen …“ · „Ein weiterer Wert kommt hinzu …“</p>
+<p><span class="lab">Rezept:</span> Immer über die <b>Summe</b> gehen: \(\sum x_i=n\cdot\bar x\). Dann korrigieren und neu durch \(n\) teilen. Beim Median: neu sortieren und schauen, ob sich die Mitte verschiebt.</p>
+<p><span class="lab">Musterbeispiel:</span> (a) 5 Werte, \(\bar x=6\); bekannt: 4, 8, 5, 7. Fünfter Wert? (b) 10 Werte mit \(\bar x=50\); der Wert 80 war ein Tippfehler, richtig ist 30. Neues Mittel? (c) Was passiert in (b) mit dem Median, wenn 80 der größte Wert war und 30 immer noch über dem Median liegt?</p>
+<p><span class="lab">Lösung:</span> (a) Summe \(=5\cdot6=30\); bekannt \(4+8+5+7=24\) → fehlender Wert \(=30-24=6\). (b) alte Summe \(=500\); neue Summe \(=500-80+30=450\) → \(\bar x_{neu}=45\). (c) Der Median bleibt <b>gleich</b>, weil sich die Reihenfolge in der Mitte nicht ändert – das zeigt: der Median ist <b>robust</b>, der Mittelwert nicht.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 20</span> Lagemaße nach einer Transformation</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Alle Gehälter steigen um 5 %.“ · „Umrechnung in °F / in Stunden / in Euro.“ · „Jeder erhält 100 € Bonus.“</p>
+<p><span class="lab">Rezept:</span> Linear \(y=a+bx\): \(\bar y=a+b\bar x\), \(y_{med}=a+bx_{med}\), \(y_{mod}=a+bx_{mod}\). Monoton (z.&nbsp;B. \(\log\), \(\sqrt{\ }\)): <b>nur</b> Median und Modus werden mittransformiert, der Mittelwert <b>nicht</b>.</p>
+<p><span class="lab">Musterbeispiel:</span> Median der Gehälter 3.6 Tsd. €, Mittel 4.84 Tsd. €. (a) +5 % für alle. (b) Jeder bekommt 200 € mehr. (c) Man betrachtet \(\log(\text{Gehalt})\).</p>
+<p><span class="lab">Lösung:</span> (a) \(b=1.05\): \(\bar y=1.05\cdot4.84=5.082\), \(y_{med}=1.05\cdot3.6=3.78\) Tsd. €. (b) \(a=0.2\): \(\bar y=5.04\), \(y_{med}=3.8\) Tsd. €. (c) Median von \(\log x\) = \(\log(3.6)\); aber das Mittel von \(\log x\) ist <b>nicht</b> \(\log(4.84)\) – man muss es neu berechnen.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 21</span> Schiefe aus Lagemaßen oder Grafik bestimmen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Ist die Verteilung rechtsschief, symmetrisch oder linksschief? Begründen Sie.“ · Histogramm oder Boxplot ist abgebildet.</p>
+<p><span class="lab">Rezept:</span> rechtsschief (= linkssteil): \(\bar x&gt;x_{med}&gt;x_{mod}\), langer Schwanz nach <b>rechts</b>. linksschief: \(\bar x&lt;x_{med}&lt;x_{mod}\). Im Boxplot: Median nah am unteren Boxrand + langer oberer Whisker → rechtsschief.</p>
+<p><span class="lab">Musterbeispiel:</span> Aus Typ 15: \(\bar x=8.75\), \(x_{med}=8\), \(x_{mod}=7\).</p>
+<p><span class="lab">Lösung:</span> „Da \(\bar x=8.75&gt;x_{med}=8&gt;x_{mod}=7\), ist die Verteilung <b>rechtsschief</b> (linkssteil). Der große Wert 15 zieht den Mittelwert nach rechts.“</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>„Rechtsschief“ = kuyruk <b>sağda</b> uzun (sağa çarpık). Birkaç çok büyük değer ortalamayı sağa çeker, medyan yerinde kalır. Gelir, bekleme süresi, kira gibi değişkenler genelde sağa çarpıktır. Ezber: <i>ortalama kuyruğa kaçar</i>.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 22</span> Mittelwert von 0/1-Daten = Anteil</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Merkmal mit nur zwei Werten (ja = 1, nein = 0). „Was bedeutet der Mittelwert hier?“ · „Ist der Mittelwert bei einem nominalen Merkmal sinnvoll?“</p>
+<p><span class="lab">Rezept:</span> \(\bar x=\frac{\text{Anzahl Einsen}}{n}=\) Anteil der „ja“-Antworten. Varianz (1/n): \(s^2=\bar x(1-\bar x)\).</p>
+<p><span class="lab">Musterbeispiel:</span> 20 Personen, 7 davon haben ein Auto (1), 13 nicht (0).</p>
+<p><span class="lab">Lösung:</span> \(\bar x=\frac{7}{20}=0.35\): 35 % der Befragten haben ein Auto. \(s^2=0.35\cdot0.65=0.2275\). Der Mittelwert ist hier sinnvoll interpretierbar (als Anteil), obwohl das Merkmal eigentlich nominal ist – das ist die <b>Ausnahme</b> bei 0/1-Kodierung.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 23</span> Aussagen über Lagemaße: richtig oder falsch?</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Welche der folgenden Aussagen sind korrekt?“ (Testat 1, Tutorium 2). Bei falschen Aussagen immer <b>kurz korrigieren</b>.</p>
+<table class="tab wide small">
+<tr><th class="l">Aussage</th><th>R/F</th><th class="l">Begründung</th></tr>
+<tr><td class="l">Der Median ist robuster gegenüber Ausreißern als der Mittelwert.</td><td>R</td><td class="l">Ein extremer Wert ändert nur die Summe, nicht die Mitte der Reihenfolge.</td></tr>
+<tr><td class="l">Der Mittelwert ist immer einer der beobachteten Werte.</td><td>F</td><td class="l">Z.&nbsp;B. 1.3 Kinder – kein Haushalt hat 1.3 Kinder.</td></tr>
+<tr><td class="l">Der Modus ist immer eindeutig.</td><td>F</td><td class="l">Es kann mehrere häufigste Werte geben (bimodal).</td></tr>
+<tr><td class="l">Für nominale Merkmale ist nur der Modus sinnvoll.</td><td>R</td><td class="l">Median braucht Reihenfolge, Mittel braucht Abstände.</td></tr>
+<tr><td class="l">Wenn \(\bar x=x_{med}\), ist die Verteilung sicher symmetrisch.</td><td>F</td><td class="l">Das ist nur ein Hinweis, kein Beweis.</td></tr>
+<tr><td class="l">Verdoppelt man den größten Wert, ändert sich der Median nicht.</td><td>R</td><td class="l">(bei \(n\ge 3\)) Die Mitte bleibt gleich.</td></tr>
+<tr><td class="l">Die Summe der Abweichungen vom Mittelwert ist 0.</td><td>R</td><td class="l">\(\sum(x_i-\bar x)=n\bar x-n\bar x=0\).</td></tr>
+</table>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z3</div>
+<ol>
+<li>Daten: 4, 20, 3, 6, 3, 2, 8, 3, 5. Berechne \(\bar x\), \(x_{med}\), \(x_{mod}\) und bestimme die Schiefe.</li>
+<li>Noten von 25 Studierenden: Note 1: 3×, Note 2: 7×, Note 3: 9×, Note 4: 4×, Note 5: 2×. Berechne Mittel, Median und Modus. Welches Lagemaß ist für Noten (ordinal!) eigentlich angemessen?</li>
+<li>Klassen [0, 20): 10 Personen, [20, 40): 25, [40, 100]: 15. Berechne \(\bar x_K\) und die Modalklasse.</li>
+<li>Der Mittelwert von 8 Zahlen ist 12. Eine neunte Zahl kommt dazu, danach ist der Mittelwert 13. Wie groß ist die neunte Zahl?</li>
+<li>Die Temperaturen einer Woche haben Median 15 °C und Mittel 14 °C. Berechne Median und Mittel in °F (\(F=32+1.8C\)).</li>
+</ol></div>
+
 <div class="kt"><div class="kh"><span>Klausurtraining 1.D · Gehälter</span><span>12 Punkte</span></div><div class="kb">
 <p>Ein kleines Göttinger Start-up hat 9 Mitarbeitende. Ihre Monatsgehälter (in Tausend Euro) sind:</p>
 <pre class="out">&gt; sort(Gehalt)
@@ -310,7 +572,7 @@ Eselsbrücke: Der Mittelwert wird vom langen Schwanz „weggezogen“. Im Wartez
 </ol></div></div>
 
 <!-- ============ 1.6 ============ -->
-<h2 class="lek neu"><span class="num">1.6</span> Quantile, Streuung und Boxplot <span class="ear">Hörtext Teil 2 · 1.6</span></h2>
+<h2 class="lek neu"><span class="num">1.6</span> Quantile, Streuung und Boxplot</h2>
 <h3>Quantile</h3>
 <p>Das \(\alpha\)-Quantil \(x_\alpha\) teilt die sortierten Daten: mindestens \(\alpha\cdot 100\,\%\) der Werte sind kleiner oder gleich \(x_\alpha\), und mindestens \((1-\alpha)\cdot 100\,\%\) sind größer oder gleich. Wichtige Quantile: Median \(x_{0.5}\); <b>Quartile</b> \(x_{0.25}, x_{0.5}, x_{0.75}\); Dezile \(x_{0.1},\dots,x_{0.9}\). Voraussetzung: mindestens ordinal.</p>
 <div class="box formel"><div class="t">Formel: Quantil (Definition aus der Vorlesung)</div>
@@ -375,6 +637,91 @@ Untere Grenze: \(2-6=-4\) → unterer Whisker = Minimum = 1.</p>
 <li><b>Vergleich von Gruppen</b> (mehrere Boxplots nebeneinander): Unterschiede in Lage und Streuung sehen. Aber: Ein Unterschied der Mediane beweist <b>keine Ursache</b> (keine Kausalität ohne Experiment/Kontrolle der Störvariablen).</li>
 <li>Sind <b>keine Punkte</b> eingezeichnet, gibt es <b>keine Ausreißer</b>. Ein langer Whisker ist kein Ausreißer!</li></ul></div>
 
+<div class="katalog-titel">Aufgabentypen-Katalog 1.6 · Quantile, Streuung, Boxplot</div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 24</span> Quantile nach der Vorlesungsdefinition</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Bestimmen Sie das untere und obere Quartil (nach Definition der Vorlesung).“ · „Bestimmen Sie das 10 %- und das 90 %-Quantil.“</p>
+<p><span class="lab">Rezept:</span> (1) Sortieren. (2) \(n\cdot\alpha\) rechnen. (3) Keine ganze Zahl → <b>aufrunden</b> → dieser Platz. Ganze Zahl \(k\) → Mittel aus Platz \(k\) und \(k+1\).</p>
+<p><span class="lab">Musterbeispiel:</span> \(n=10\) sortierte Werte: 3, 5, 6, 8, 9, 11, 12, 14, 17, 25. Gesucht: \(x_{0.1}, x_{0.25}, x_{0.5}, x_{0.75}, x_{0.9}\), IQR.</p>
+<table class="tab"><tr><th>\(\alpha\)</th><th>\(n\alpha\)</th><th>ganz?</th><th>Plätze</th><th>\(x_\alpha\)</th></tr>
+<tr><td>0.10</td><td>1</td><td>ja</td><td>1 und 2</td><td>\(\frac{3+5}{2}=4\)</td></tr>
+<tr><td>0.25</td><td>2.5</td><td>nein</td><td>3</td><td>6</td></tr>
+<tr><td>0.50</td><td>5</td><td>ja</td><td>5 und 6</td><td>\(\frac{9+11}{2}=10\)</td></tr>
+<tr><td>0.75</td><td>7.5</td><td>nein</td><td>8</td><td>14</td></tr>
+<tr><td>0.90</td><td>9</td><td>ja</td><td>9 und 10</td><td>\(\frac{17+25}{2}=21\)</td></tr></table>
+<p><span class="lab">Lösung:</span> IQR \(=14-6=8\). Interpretation von \(x_{0.9}=21\): „Mindestens 90 % der Werte sind kleiner oder gleich 21.“</p>
+<div class="box achtung"><div class="t">Vorsicht mit R</div><p><code>quantile(x, c(.1,.25,.5,.75,.9))</code> liefert hier 4.8, 6.5, 10, 13.5, 17.8 – andere Methode! In Teil A zählt die Vorlesungsdefinition, in Teil B der R-Output.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 25</span> Varianz aus Summen (Verschiebungssatz)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Es sind \(n\), \(\sum x_i\) und \(\sum x_i^2\) gegeben (oft als R-Output <code>sum(x)</code>, <code>sum(x^2)</code>).</p>
+<p><span class="lab">Rezept:</span> \(\bar x=\frac{\sum x_i}{n}\) → \(s^2=\frac{\sum x_i^2}{n}-\bar x^2\) → \(s=\sqrt{s^2}\). Unverzerrt: \(s_*^2=\frac{n}{n-1}s^2\).</p>
+<p><span class="lab">Musterbeispiel:</span> \(n=8\), \(\sum x_i=40\), \(\sum x_i^2=260\).</p>
+<p><span class="lab">Lösung:</span> \(\bar x=5\); \(s^2=\frac{260}{8}-25=32.5-25=7.5\); \(s=\sqrt{7.5}=2.739\); \(s_*^2=\frac{8}{7}\cdot7.5=8.571\), \(s_*=2.928\).</p>
+<p><span class="lab">Umgekehrt (R-Output umrechnen):</span> R zeigt <code>var(x)</code> = 12 bei \(n=5\). Empirische Varianz: \(s^2=\frac{4}{5}\cdot12=9.6\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 26</span> Varianz aus einer Häufigkeitstabelle</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Tabelle mit \(a_j\) und \(h_j\); „Berechnen Sie die empirische Varianz.“</p>
+<p><span class="lab">Rezept:</span> Spalte \(a_j^2h_j\) ergänzen. \(s^2=\frac1n\sum a_j^2h_j-\bar x^2\).</p>
+<p><span class="lab">Musterbeispiel:</span> Kinder-Tabelle aus Typ 16 (\(n=20\), \(\bar x=1.3\)).</p>
+<table class="tab"><tr><th>\(a_j\)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><th>Σ</th></tr>
+<tr><th>\(h_j\)</th><td>5</td><td>8</td><td>4</td><td>2</td><td>1</td><td>20</td></tr>
+<tr><th>\(a_j^2h_j\)</th><td>0</td><td>8</td><td>16</td><td>18</td><td>16</td><td>58</td></tr></table>
+<p><span class="lab">Lösung:</span> \(s^2=\frac{58}{20}-1.3^2=2.9-1.69=1.21\); \(s=1.1\) Kinder.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 27</span> Boxplot erstellen mit Ausreißern und Whiskern</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Gibt es Ausreißer? Bis wohin reichen die Whisker? Zeichnen Sie den Boxplot.“ (Tutorium 2, Aufgabe 7)</p>
+<p><span class="lab">Rezept:</span> (1) \(x_{0.25}\), Median, \(x_{0.75}\) nach Typ 24. (2) IQR. (3) Zäune: \(x_{0.25}-1.5\,\text{IQR}\) und \(x_{0.75}+1.5\,\text{IQR}\). (4) Werte außerhalb = Ausreißer (Punkte). (5) Whisker bis zum extremsten Wert <b>innerhalb</b> der Zäune.</p>
+<p><span class="lab">Musterbeispiel:</span> 2, 4, 5, 5, 6, 7, 7, 8, 9, 21 (\(n=10\)).</p>
+<ol class="steps">
+<li>\(10\cdot0.25=2.5\) → Platz 3 → \(x_{0.25}=5\). Median: Plätze 5, 6 → \(\frac{6+7}{2}=6.5\). \(10\cdot0.75=7.5\) → Platz 8 → \(x_{0.75}=8\).</li>
+<li>IQR \(=8-5=3\); \(1.5\cdot3=4.5\).</li>
+<li>Zäune: unten \(5-4.5=0.5\), oben \(8+4.5=12.5\).</li>
+<li>21 &gt; 12.5 → <b>Ausreißer</b>. Unten: 2 &gt; 0.5 → kein Ausreißer.</li>
+<li>Oberer Whisker: größter Wert \(\le 12.5\) = <b>9</b> (nicht 12.5!). Unterer Whisker: 2.</li>
+</ol>
+<p>Skizze: Achse von 0 bis 22, Box von 5 bis 8, Strich bei 6.5, Whisker 2 bis 9, einzelner Punkt bei 21.</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Whisker (bıyık) <b>sınıra (12.5) kadar değil</b>, sınırın içinde kalan <b>en uç gerçek veriye</b> (9) kadar çizilir. Sınav bunu çok sever. Sınırın dışındaki her değer ayrı bir nokta olarak çizilir.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 28</span> Streuung nach Transformation</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Die Lieferzeiten werden in Stunden umgerechnet.“ · „Datensatz III = 2 · Datensatz II.“ · „Zu jedem Wert werden 10 addiert.“</p>
+<p><span class="lab">Rezept:</span> \(y=a+bx\): \(s_y^2=b^2s_x^2\), \(s_y=|b|s_x\), \(\text{IQR}_y=|b|\,\text{IQR}_x\). Das \(a\) ist egal!</p>
+<p><span class="lab">Musterbeispiel:</span> \(\bar x=5\), \(s_x^2=7.5\), IQR = 4. Neu: \(y=10+3x\).</p>
+<p><span class="lab">Lösung:</span> \(\bar y=10+15=25\); \(s_y^2=9\cdot7.5=67.5\); \(s_y=3\cdot2.739=8.216\); \(\text{IQR}_y=12\). Bei \(y=-2x\): \(s_y^2=4\cdot7.5=30\) (Varianz wird nie negativ!).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 29</span> Boxplots lesen und vergleichen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Mehrere Boxplots nebeneinander (z.&nbsp;B. Gewicht nach Geschlecht) und Aussagen zum Ankreuzen (Testat 1, Aufgabe 6).</p>
+<p><span class="lab">Musterbeispiel:</span> Fünf-Punkte-Zusammenfassung der Kampfzeiten: Gruppe A: Min 2, \(x_{0.25}\) 5, Median 8, \(x_{0.75}\) 20, Max 40 (keine Punkte). Gruppe B: 10, 14, 16, 18, 22, dazu ein Punkt bei 35. Welche Aussagen stimmen?</p>
+<table class="tab wide small">
+<tr><th class="l">Aussage</th><th>R/F</th><th class="l">Begründung</th></tr>
+<tr><td class="l">In A liegen 50 % der Werte zwischen 5 und 20.</td><td>R</td><td class="l">Die Box enthält die mittleren 50 %.</td></tr>
+<tr><td class="l">A streut stärker als B.</td><td>R</td><td class="l">IQR A = 15, IQR B = 4.</td></tr>
+<tr><td class="l">A hat einen Ausreißer bei 40.</td><td>F</td><td class="l">Kein Punkt eingezeichnet → kein Ausreißer; 40 ist das Ende des Whiskers.</td></tr>
+<tr><td class="l">A ist rechtsschief.</td><td>R</td><td class="l">Median nah am unteren Boxrand, langer oberer Whisker.</td></tr>
+<tr><td class="l">Mehr als die Hälfte von B ist größer als der Median von A.</td><td>R</td><td class="l">Schon \(\text{Min}_B=10&gt;8\) → alle Werte von B.</td></tr>
+<tr><td class="l">Gruppe B verursacht längere Kämpfe.</td><td>F</td><td class="l">Ein Unterschied ist keine Kausalität.</td></tr>
+</table>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 30</span> Ein Wert kommt hinzu – was passiert mit \(\bar x\) und \(s^2\)?</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Ein zusätzlicher Wert … wird aufgenommen. Wie ändern sich Mittelwert und Varianz?“</p>
+<p><span class="lab">Rezept:</span> Über Summen gehen: \(\sum x_i=n\bar x\), \(\sum (x_i-\bar x)^2=n s^2\).</p>
+<p><span class="lab">Musterbeispiel:</span> \(n=9\), \(\bar x=10\), \(s^2=4\). Neuer Wert \(x_{10}=10\).</p>
+<p><span class="lab">Lösung:</span> Neue Summe \(90+10=100\) → \(\bar x_{neu}=10\) (unverändert). Quadratsumme der Abweichungen \(9\cdot4=36\), neue Abweichung \((10-10)^2=0\) → \(s^2_{neu}=\frac{36}{10}=3.6\). Ein Wert genau im Mittelwert <b>verkleinert</b> die Varianz.</p>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z4</div>
+<ol>
+<li>Daten (\(n=9\)): 1, 3, 3, 4, 6, 7, 8, 10, 30. Bestimme die Quartile nach Vorlesungsdefinition, IQR, die Zäune und die Whisker. Gibt es Ausreißer?</li>
+<li>\(n=5\): \(\sum x=30\), \(\sum x^2=220\). Berechne \(s^2\), \(s\), \(s_*^2\).</li>
+<li>Für eine Stichprobe liefert R <code>sd(x)</code> = 3 bei \(n=10\). Wie groß ist die empirische Varianz \(s^2\) (mit 1/n)?</li>
+<li>Temperaturen in °C: \(s=4\). Wie groß ist die Standardabweichung in °F (\(F=32+1.8C\))?</li>
+</ol></div>
+
 <div class="kt"><div class="kh"><span>Klausurtraining 1.E · Lieferzeiten</span><span>13 Punkte</span></div><div class="kb">
 <p>Ein Online-Shop notiert für 12 Bestellungen die Lieferzeit in Tagen:</p>
 <pre class="out">&gt; sort(Lieferzeit)
@@ -389,7 +736,7 @@ Untere Grenze: \(2-6=-4\) → unterer Whisker = Minimum = 1.</p>
 </ol></div></div>
 
 <!-- ============ 1.7 ============ -->
-<h2 class="lek neu"><span class="num">1.7</span> Zwei Merkmale: Kontingenztafel und χ²-Koeffizient <span class="ear">Hörtext Teil 3 · 1.7</span></h2>
+<h2 class="lek neu"><span class="num">1.7</span> Zwei Merkmale: Kontingenztafel und χ²-Koeffizient</h2>
 <p>Jetzt schauen wir zwei Merkmale \(X\) und \(Y\) <b>zusammen</b> an, gemessen an denselben Einheiten. Die <b>gemeinsame Verteilung</b> steht in einer <b>Kontingenztafel</b>. Die Summen am Rand heißen <b>Randverteilungen</b> (die Verteilung eines Merkmals allein).</p>
 <div class="box merke"><div class="t">Merke</div><p>Aus der gemeinsamen Verteilung kann man die Randverteilungen immer ausrechnen. Umgekehrt geht das <b>nur</b>, wenn die Merkmale <b>unabhängig</b> sind. Die gemeinsame Verteilung enthält also mehr Information – nämlich über den <b>Zusammenhang</b>.</p></div>
 <div class="box bsp"><div class="t">Beispiel (Tutorium 3): 1000 Verkehrsunfälle – Tabelle aus einem Text bauen</div>
@@ -432,6 +779,83 @@ Anteil nicht tödlicher Unfälle: \(620/1000=0.62\). Anteil „tödlich <b>und</
 \[\chi^2=\frac{53.6^2}{106.4}+\frac{53.6^2}{273.6}+\frac{53.6^2}{173.6}+\frac{53.6^2}{446.4}=27.0015+10.5006+16.5493+6.4359=60.487\]
 <p>Ein großer Wert → deutlicher Zusammenhang zwischen Alkohol und tödlichem Ausgang. Am Tag 4 machen wir daraus einen <b>Test</b> (χ²-Unabhängigkeitstest).</p></div>
 
+<div class="katalog-titel">Aufgabentypen-Katalog 1.7 · Kontingenztafel und χ²</div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 31</span> Kontingenztafel aus einem Text mit Prozenten bauen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Ein Text mit Anzahlen und Prozentangaben; „Erstellen Sie die vollständige Kontingenztafel (inkl. Randhäufigkeiten).“ (Tutorium 3, KT 1.F)</p>
+<p><span class="lab">Rezept:</span> (1) Leere Tafel mit Σ-Zeile und Σ-Spalte zeichnen. (2) Jede Zahl aus dem Text an den richtigen Platz. Prozente <b>von wem</b>? („30 % der Frauen“ → 30 % der Zeilensumme Frauen). (3) Rest mit Differenzen füllen. (4) Kontrolle: alle Summen stimmen.</p>
+<p><span class="lab">Musterbeispiel:</span> 500 Personen werden befragt, 40 % davon sind Frauen. 30 % der Frauen und 50 % der Männer nutzen täglich TikTok.</p>
+<ol class="steps">
+<li>Frauen: \(0.4\cdot500=200\); Männer: \(500-200=300\).</li>
+<li>Frauen mit TikTok: \(0.3\cdot200=60\); ohne: \(140\).</li>
+<li>Männer mit TikTok: \(0.5\cdot300=150\); ohne: \(150\).</li>
+<li>Spaltensummen: TikTok \(60+150=210\), kein TikTok \(140+150=290\).</li>
+</ol>
+<table class="tab"><tr><th></th><th>TikTok (T)</th><th>kein TikTok</th><th>Σ</th></tr>
+<tr><th>Frau</th><td>60</td><td>140</td><td>200</td></tr>
+<tr><th>Mann</th><td>150</td><td>150</td><td>300</td></tr>
+<tr><th>Σ</th><td>210</td><td>290</td><td>500</td></tr></table>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>„30 % der Frauen“ = kadınların %30'u → kadın satır toplamı (200) ile çarpılır, 500 ile <b>değil</b>. „30 % aller Befragten sind Frauen, die TikTok nutzen“ olsaydı 500 ile çarpardın. Cümlede „der/von“ kelimesinden sonra gelen grup, çarpılacak toplamdır.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 32</span> Bedingte Anteile berechnen und deuten</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Berechnen Sie den Anteil … unter den …“ · „Deutet das auf einen Zusammenhang hin?“ · „Berechnen Sie die bedingte Verteilung von Y gegeben X.“</p>
+<p><span class="lab">Rezept:</span> „Anteil von A <b>unter</b> B“ = \(\frac{h(A\text{ und }B)}{h(B)}\) → Nenner ist die Gruppe nach „unter“. Zusammenhang: bedingte Anteile in den Gruppen <b>verschieden</b> → Zusammenhang; gleich → kein Zusammenhang (Unabhängigkeit).</p>
+<p><span class="lab">Musterbeispiel:</span> Tafel aus Typ 31. (a) Anteil TikTok-Nutzer unter Frauen und unter Männern. (b) Anteil Frauen unter den TikTok-Nutzern. (c) Zusammenhang?</p>
+<p><span class="lab">Lösung:</span> (a) \(f(T\mid\text{Frau})=\frac{60}{200}=0.3\), \(f(T\mid\text{Mann})=\frac{150}{300}=0.5\). (b) \(f(\text{Frau}\mid T)=\frac{60}{210}=0.286\) – <b>anderer</b> Nenner als in (a)! (c) Ja: 0.3 ≠ 0.5, Männer nutzen TikTok häufiger → Zusammenhang zwischen Geschlecht und Nutzung (aber keine Aussage über Ursachen).</p>
+<p><span class="lab">Bedingte Verteilung als Tabelle</span> (zeilenweise, jede Zeile summiert sich zu 1):</p>
+<table class="tab"><tr><th></th><th>T</th><th>kein T</th><th>Σ</th></tr>
+<tr><th>Frau</th><td>0.3</td><td>0.7</td><td>1</td></tr>
+<tr><th>Mann</th><td>0.5</td><td>0.5</td><td>1</td></tr>
+<tr><th><i>Rand</i></th><td>0.42</td><td>0.58</td><td>1</td></tr></table>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 33</span> χ²-Koeffizient für eine größere Tafel (2 × 3)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Berechnen Sie die bei Unabhängigkeit erwarteten Häufigkeiten und den χ²-Koeffizienten.“</p>
+<p><span class="lab">Rezept:</span> Für jede Zelle: \(\tilde h=\frac{\text{Zeilensumme}\cdot\text{Spaltensumme}}{n}\). Dann pro Zelle \(\frac{(h-\tilde h)^2}{\tilde h}\) und alles addieren. Kontrolle: Die erwarteten Häufigkeiten haben dieselben Randsummen.</p>
+<p><span class="lab">Musterbeispiel:</span> 200 Studierende, Studienfach und Klausurergebnis:</p>
+<table class="tab"><tr><th></th><th>gut</th><th>mittel</th><th>schlecht</th><th>Σ</th></tr>
+<tr><th>BWL</th><td>30</td><td>50</td><td>20</td><td>100</td></tr>
+<tr><th>VWL</th><td>20</td><td>30</td><td>50</td><td>100</td></tr>
+<tr><th>Σ</th><td>50</td><td>80</td><td>70</td><td>200</td></tr></table>
+<ol class="steps">
+<li>Erwartet: \(\tilde h_{11}=\frac{100\cdot50}{200}=25\), \(\tilde h_{12}=\frac{100\cdot80}{200}=40\), \(\tilde h_{13}=\frac{100\cdot70}{200}=35\); Zeile VWL genauso (25, 40, 35), weil die Zeilensummen gleich sind.</li>
+<li>Differenzen \(h-\tilde h\): BWL: \(+5, +10, -15\); VWL: \(-5, -10, +15\).</li>
+<li>\(\chi^2=2\cdot\left(\frac{5^2}{25}+\frac{10^2}{40}+\frac{15^2}{35}\right)=2\cdot(1+2.5+6.429)=19.857\).</li>
+</ol>
+<p><span class="lab">Interpretation:</span> \(\chi^2=19.857&gt;0\) → es gibt einen Zusammenhang zwischen Studienfach und Ergebnis (VWL-Studierende schneiden häufiger schlecht ab). Ob er „signifikant“ ist, lernst du am Tag 4.</p>
+<p class="small">R-Kontrolle: <code>chisq.test(matrix(c(30,20,50,30,20,50), 2), correct = FALSE)</code> → X-squared = 19.857.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 34</span> Tafel bei Unabhängigkeit auffüllen / fehlende Zelle finden</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Wie müsste die Tabelle aussehen, wenn X und Y unabhängig wären?“ · „Welchen Wert muss \(h_{11}\) haben, damit χ² = 0 ist?“</p>
+<p><span class="lab">Rezept:</span> Unabhängig ⇔ jede Zelle = \(\frac{\text{Zeile}\cdot\text{Spalte}}{n}\) ⇔ alle Zeilen haben die gleiche bedingte Verteilung ⇔ \(\chi^2=0\).</p>
+<p><span class="lab">Musterbeispiel 1:</span> Zeilensummen 40 und 60, Spaltensummen 30 und 70, \(n=100\). Tafel bei Unabhängigkeit?</p>
+<p><span class="lab">Lösung:</span> \(\frac{40\cdot30}{100}=12\), \(\frac{40\cdot70}{100}=28\), \(\frac{60\cdot30}{100}=18\), \(\frac{60\cdot70}{100}=42\).</p>
+<p><span class="lab">Musterbeispiel 2:</span> Tafel mit Unbekannter \(a\): erste Zeile \((a, 20)\), zweite Zeile \((30, 60)\). Für welches \(a\) sind die Merkmale unabhängig?</p>
+<p><span class="lab">Lösung:</span> Die Zeilen müssen dasselbe Verhältnis haben: \(\frac{a}{20}=\frac{30}{60}\) → \(a=10\). Kontrolle: Zeilensumme 30, Spaltensumme 40, \(n=120\): \(\frac{30\cdot40}{120}=10\) ✓ → \(\chi^2=0\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 35</span> Eigenschaften von χ² (richtig/falsch)</div><div class="tb">
+<table class="tab wide small">
+<tr><th class="l">Aussage</th><th>R/F</th><th class="l">Begründung</th></tr>
+<tr><td class="l">χ² kann negativ sein.</td><td>F</td><td class="l">Summe von Quadraten geteilt durch positive Zahlen → \(\chi^2\ge0\).</td></tr>
+<tr><td class="l">\(\chi^2=0\) genau dann, wenn beobachtete = erwartete Häufigkeiten.</td><td>R</td><td class="l">Dann sind die Merkmale (empirisch) unabhängig.</td></tr>
+<tr><td class="l">Verdoppelt man alle Häufigkeiten, bleibt χ² gleich.</td><td>F</td><td class="l">χ² <b>verdoppelt</b> sich (Unfall-Beispiel: 60.487 → 120.97). χ² hängt von \(n\) ab und ist zwischen Studien mit verschiedenem \(n\) schlecht vergleichbar.</td></tr>
+<tr><td class="l">χ² sagt, welche Variable die andere beeinflusst.</td><td>F</td><td class="l">χ² ist symmetrisch und misst nur die Stärke des Zusammenhangs, keine Richtung und keine Ursache.</td></tr>
+<tr><td class="l">χ² kann man schon für nominale Merkmale berechnen.</td><td>R</td><td class="l">Es werden nur Häufigkeiten gebraucht.</td></tr>
+<tr><td class="l">Aus den Randverteilungen allein kann man die gemeinsame Verteilung immer bestimmen.</td><td>F</td><td class="l">Nur bei Unabhängigkeit.</td></tr>
+</table>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z5</div>
+<ol>
+<li>Von 400 Kund*innen zahlen 250 mit Karte. 70 % der Kartenzahlenden sind unter 40 Jahre alt, von den Barzahlenden sind es 40 %. Erstelle die Kontingenztafel.</li>
+<li>Berechne für die Tafel aus Aufgabe 1 den Anteil der Kartenzahlenden unter den Personen unter 40 und unter den Personen ab 40.</li>
+<li>Berechne die erwarteten Häufigkeiten und χ² für die Tafel aus Aufgabe 1.</li>
+<li>Die Zeilen einer Tafel lauten (12, 18) und (20, 30). Wie groß ist χ²? Begründe ohne Rechnung.</li>
+</ol></div>
+
 <div class="kt"><div class="kh"><span>Klausurtraining 1.F · Rauchen und Sport</span><span>12 Punkte</span></div><div class="kb">
 <p>In einer Befragung von 200 Studierenden gaben 60 Personen an, zu rauchen (R). Von den Rauchenden treiben 15 regelmäßig Sport (S). Insgesamt treiben 110 der Befragten keinen regelmäßigen Sport.</p>
 <ol class="tl">
@@ -443,7 +867,7 @@ Anteil nicht tödlicher Unfälle: \(620/1000=0.62\). Anteil „tödlich <b>und</
 </ol></div></div>
 
 <!-- ============ 1.8 ============ -->
-<h2 class="lek neu"><span class="num">1.8</span> Kovarianz und Korrelation <span class="ear">Hörtext Teil 3 · 1.8</span></h2>
+<h2 class="lek neu"><span class="num">1.8</span> Kovarianz und Korrelation</h2>
 <p>Für zwei <b>metrische</b> Merkmale zeichnen wir ein <b>Streudiagramm</b> (Punktwolke): jede Einheit ist ein Punkt \((x_i,y_i)\). Daran sieht man: gleich gerichtet (steigend) oder gegengerichtet (fallend)? Linear oder nicht linear?</p>
 <p><b>Idee der Kovarianz:</b> Wir legen ein Kreuz durch den Mittelpunkt \((\bar x,\bar y)\). Ein Punkt rechts oben oder links unten ist <b>konkordant</b>: \((x_i-\bar x)(y_i-\bar y)&gt;0\). Ein Punkt links oben oder rechts unten ist <b>diskordant</b>: das Produkt ist negativ. Die Kovarianz ist der Durchschnitt dieser Produkte.</p>
 <div class="box formel"><div class="t">Formel: Kovarianz und Korrelation (Bravais-Pearson)</div>
@@ -523,6 +947,112 @@ Anteil nicht tödlicher Unfälle: \(620/1000=0.62\). Anteil „tödlich <b>und</
 <ol class="fragen">
 <li>Richtig oder falsch (Testat 2)? (a) Wenn \(r\ne0\), sind X und Y abhängig. (b) Wenn \(Y=-X^2\), kann \(r\approx0\) sein. (c) Wenn \(X=Y\), gilt \(r=1\). (d) Wenn \(r\neq 0\), gibt es einen kausalen Zusammenhang. (e) \(\text{Cov}\ge0.8\) bedeutet immer starken Zusammenhang.</li>
 <li>Berechne mit dem Verschiebungssatz (Testat 2): \(n=50,\ \sum x=2019,\ \sum y=3733,\ \sum x^2=87611,\ \sum y^2=301695,\ \sum xy=160064\). Gesucht: \(s_{xy}\) und \(r\).</li>
+</ol></div>
+
+<div class="katalog-titel">Aufgabentypen-Katalog 1.8 · Kovarianz, Korrelation, Kausalität</div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 36</span> Kovarianz und Korrelation aus Rohdaten (Arbeitstabelle)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Zwei Zeilen \(x_\nu\), \(y_\nu\) mit wenigen Werten. „Berechnen Sie Kovarianz und Korrelationskoeffizienten nach Bravais-Pearson.“</p>
+<p><span class="lab">Rezept:</span> Tabelle mit Spalten \(x, y, x^2, y^2, xy\) → fünf Summen → \(\bar x,\bar y\) → \(s_x^2=\overline{x^2}-\bar x^2\), \(s_y^2=\overline{y^2}-\bar y^2\), \(s_{xy}=\overline{xy}-\bar x\bar y\) → \(r=\frac{s_{xy}}{\sqrt{s_x^2s_y^2}}\).</p>
+<p><span class="lab">Musterbeispiel:</span> Übungsstunden \(x\) und Punkte \(y\) (in 10er-Punkten) von 5 Personen.</p>
+<table class="tab"><tr><th>ν</th><th>\(x\)</th><th>\(y\)</th><th>\(x^2\)</th><th>\(y^2\)</th><th>\(xy\)</th></tr>
+<tr><td>1</td><td>1</td><td>2</td><td>1</td><td>4</td><td>2</td></tr>
+<tr><td>2</td><td>2</td><td>4</td><td>4</td><td>16</td><td>8</td></tr>
+<tr><td>3</td><td>3</td><td>5</td><td>9</td><td>25</td><td>15</td></tr>
+<tr><td>4</td><td>4</td><td>4</td><td>16</td><td>16</td><td>16</td></tr>
+<tr><td>5</td><td>5</td><td>5</td><td>25</td><td>25</td><td>25</td></tr>
+<tr><th>Σ</th><td>15</td><td>20</td><td>55</td><td>86</td><td>66</td></tr></table>
+<ol class="steps">
+<li>\(\bar x=3\), \(\bar y=4\).</li>
+<li>\(s_x^2=\frac{55}{5}-9=2\); \(s_y^2=\frac{86}{5}-16=1.2\).</li>
+<li>\(s_{xy}=\frac{66}{5}-3\cdot4=13.2-12=1.2\).</li>
+<li>\(r=\frac{1.2}{\sqrt{2\cdot1.2}}=\frac{1.2}{1.549}=0.775\).</li>
+<li>„Es besteht ein starker positiver linearer Zusammenhang zwischen Übungsstunden und Punkten.“</li>
+</ol>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 37</span> Kovarianz und Korrelation aus gegebenen Summen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> R-Output mit <code>length(x)</code>, <code>sum(x)</code>, <code>sum(x^2)</code>, <code>sum(x*y)</code> … (Testat 2, Aufgabe 1.2).</p>
+<p><span class="lab">Musterbeispiel:</span> \(n=10\), \(\sum x=50\), \(\sum y=80\), \(\sum x^2=290\), \(\sum y^2=700\), \(\sum xy=430\).</p>
+<p><span class="lab">Lösung:</span> \(\bar x=5\), \(\bar y=8\). \(s_x^2=29-25=4\), \(s_y^2=70-64=6\), \(s_{xy}=43-40=3\). \(r=\frac{3}{\sqrt{4\cdot6}}=\frac{3}{4.899}=0.612\) → mittlerer positiver linearer Zusammenhang.</p>
+<p><span class="lab">Welche Formel ist richtig?</span> (Testat 2, 1.1) \(\text{Cov}(X,Y)=\frac1n\sum x_iy_i-\bar x\bar y\) – Antwort (d). Achtung: \(\frac1n\sum(x_iy_i-\bar x\bar y)\) ist zwar gleich viel, aber nicht die „vereinfachte“ Form.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 38</span> Rückwärts: Kovarianz aus \(r\) oder \(r\) aus Standardabweichungen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Gegeben: \(s_x^2=1.6\), \(s_y^2=10\) …“ (Probeklausur A, 5b) oder \(r\) ist gegeben und die Kovarianz gesucht.</p>
+<p><span class="lab">Rezept:</span> \(s_{xy}=r\cdot s_x\cdot s_y\). Achtung: gegeben sind oft <b>Varianzen</b> → erst die Wurzel ziehen!</p>
+<p><span class="lab">Musterbeispiel:</span> \(r=-0.6\), \(s_x^2=4\), \(s_y^2=25\).</p>
+<p><span class="lab">Lösung:</span> \(s_x=2\), \(s_y=5\) → \(s_{xy}=-0.6\cdot2\cdot5=-6\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 39</span> Einheiten ändern: Was passiert mit Kovarianz und Korrelation?</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Der Umsatz wird in Euro statt in Tsd. € angegeben.“ · „Größe in m statt cm.“</p>
+<p><span class="lab">Rezept:</span> \(u=a+bx\), \(v=c+dy\): \(s_{uv}=b\,d\,s_{xy}\). \(r_{uv}=r_{xy}\), wenn \(b\cdot d&gt;0\); \(r_{uv}=-r_{xy}\), wenn \(b\cdot d&lt;0\). Verschiebungen \(a,c\) sind egal.</p>
+<p><span class="lab">Musterbeispiel:</span> \(s_{xy}=153.88\) kg·cm, \(r=0.836\). (a) Größe in m. (b) Gewicht in Gramm und Größe in m. (c) \(u=-x\).</p>
+<p><span class="lab">Lösung:</span> (a) \(d=0.01\) → \(s=1.5388\) kg·m, \(r=0.836\). (b) \(b=1000\), \(d=0.01\) → \(s=1538.8\) g·m, \(r=0.836\). (c) \(s=-153.88\), \(r=-0.836\).</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Kovaryans birime bağlıdır (cm → m olunca 100'e bölünür). Korelasyon birimsizdir, <b>değişmez</b>. Tek istisna: bir değişkeni negatif bir sayıyla çarparsan korelasyonun sadece <b>işareti</b> döner.</p></div>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 40</span> Spearman-Rangkorrelation (ohne und mit Bindungen)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Ordinale Daten (Platzierungen, Noten, Zufriedenheit) oder „monotoner Zusammenhang“. „Bestimmen Sie den Rangkorrelationskoeffizienten nach Spearman.“</p>
+<p><span class="lab">Rezept:</span> (1) Ränge vergeben (kleinster = 1, Bindungen = Durchschnittsrang). (2) Pearson mit den Rängen. Ohne Bindungen geht es schneller mit \(r_{Sp}=1-\frac{6\sum d_i^2}{n(n^2-1)}\), \(d_i=rk(x_i)-rk(y_i)\).</p>
+<p><span class="lab">Musterbeispiel:</span> Zwei Jurorinnen ordnen 5 Bands: Jurorin A: Ränge 1, 2, 3, 4, 5; Jurorin B: Ränge 2, 1, 4, 3, 5.</p>
+<p><span class="lab">Lösung:</span> \(d=-1, 1, -1, 1, 0\); \(\sum d^2=4\); \(r_{Sp}=1-\frac{6\cdot4}{5\cdot24}=1-0.2=0.8\) → starker positiver monotoner Zusammenhang, die Jurorinnen urteilen ähnlich.</p>
+<p><span class="lab">Schnelltrick (KT 1.G d):</span> Sind die \(x\)-Ränge und die \(y\)-Ränge <b>genau gleich</b> (größeres \(x\) → immer größeres \(y\)), ist \(r_{Sp}=1\) ohne Rechnung; genau umgekehrt → \(-1\).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 41</span> Kovarianz aus einer gemeinsamen Häufigkeitstabelle</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> Kontingenztafel mit Zahlenwerten als Zeilen/Spalten und relativen Häufigkeiten (Tutorium 3, Aufgabe 5).</p>
+<p><span class="lab">Rezept:</span> Ränder → \(\bar x,\bar y, s_x^2, s_y^2\). \(\overline{xy}=\sum_j\sum_k a_jb_kf_{jk}\) (Zellen mit 0 fallen weg). \(s_{xy}=\overline{xy}-\bar x\bar y\).</p>
+<p><span class="lab">Musterbeispiel:</span> \(X\) = Kind im Haushalt (0/1), \(Y\) = Haustier (0/1):</p>
+<table class="tab"><tr><th>X \ Y</th><th>0</th><th>1</th><th>Σ</th></tr>
+<tr><th>0</th><td>0.4</td><td>0.1</td><td>0.5</td></tr>
+<tr><th>1</th><td>0.2</td><td>0.3</td><td>0.5</td></tr>
+<tr><th>Σ</th><td>0.6</td><td>0.4</td><td>1</td></tr></table>
+<p><span class="lab">Lösung:</span> \(\bar x=0.5\), \(\bar y=0.4\); \(s_x^2=0.5\cdot0.5=0.25\), \(s_y^2=0.4\cdot0.6=0.24\) (0/1-Trick aus Typ 22). \(\overline{xy}=1\cdot1\cdot0.3=0.3\). \(s_{xy}=0.3-0.2=0.1\). \(r=\frac{0.1}{\sqrt{0.25\cdot0.24}}=0.408\) → mittlerer positiver Zusammenhang.</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 42</span> Streudiagramm lesen, zuordnen und skizzieren</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Welche Aussage lässt sich anhand der Punktewolke über \(\rho\) treffen?“ (Testat 2, 1.4) · „Skizzieren Sie ein Streudiagramm mit \(r=0\).“ (Probeklausur A, 5d) · „Ordnen Sie die Werte −0.9, 0, 0.5, 0.95 den Grafiken zu.“</p>
+<p><span class="lab">Rezept:</span> Richtung: steigt die Wolke → \(r&gt;0\); fällt → \(r&lt;0\); keine Richtung → \(r\approx0\). Stärke: je <b>schmaler</b> die Wolke um eine Gerade, desto näher an ±1. Die <b>Steigung</b> sagt nichts über die Stärke!</p>
+<p><span class="lab">Musterlösung für Zuordnung:</span> fast perfekte steigende Linie → 0.95; locker steigende Wolke → 0.5; rundliche Wolke oder Parabel/U-Form → 0; eng fallende Linie → −0.9.</p>
+<p><span class="lab">Skizze \(r=0\):</span> Achsen beschriften (Name + Einheit), Titel, runde Punktwolke ohne Richtung – oder eine U-Form (zeigt: Zusammenhang da, aber nicht linear).</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 43</span> Nichtlinearer Zusammenhang mit \(r=0\)</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Wenn \(Y=-X^2\), kann \(\rho\) annähernd 0 sein.“ (Testat 2) · „Unkorreliert heißt unabhängig?“</p>
+<p><span class="lab">Musterbeispiel:</span> \(x=-2,-1,0,1,2\) und \(y=x^2=4,1,0,1,4\).</p>
+<p><span class="lab">Lösung:</span> \(\bar x=0\); \(\sum xy=\sum x^3=-8-1+0+1+8=0\) → \(s_{xy}=0-0\cdot\bar y=0\) → \(r=0\). Trotzdem hängt \(y\) <b>perfekt</b> von \(x\) ab! Also: unkorreliert ⇏ unabhängig; \(r\) misst nur <b>lineare</b> Zusammenhänge. (Auch Spearman ist hier 0, weil der Zusammenhang nicht monoton ist.)</p>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 44</span> Richtig/falsch zu Korrelation (Testat-2-Stil)</div><div class="tb">
+<table class="tab wide small">
+<tr><th class="l">Aussage</th><th>R/F</th><th class="l">Begründung</th></tr>
+<tr><td class="l">Wenn \(\rho\ne0\), sind X und Y niemals unabhängig.</td><td>R</td><td class="l">Unabhängig ⇒ \(\rho=0\); also \(\rho\ne0\) ⇒ abhängig.</td></tr>
+<tr><td class="l">Wenn \(Y=-X^2\), kann \(\rho\approx0\) sein.</td><td>R</td><td class="l">Parabel, symmetrisch um 0 → nicht linear.</td></tr>
+<tr><td class="l">Wenn \(X=Y\), gilt immer \(\rho=1\).</td><td>R</td><td class="l">\(\text{Cov}(X,X)=\text{Var}(X)\) → \(r=1\) (wenn \(s_x&gt;0\)).</td></tr>
+<tr><td class="l">Wenn \(\rho\ne0\), besteht ein kausaler Zusammenhang.</td><td>F</td><td class="l">Korrelation ≠ Kausalität (Drittvariablen, Zufall).</td></tr>
+<tr><td class="l">\(\text{Cov}\ge0.8\) bedeutet immer einen starken Zusammenhang.</td><td>F</td><td class="l">Die Kovarianz hängt von den Einheiten ab; nur \(r\) ist normiert.</td></tr>
+<tr><td class="l">Mit mehr als 60 Stunden Lernen hat man auf jeden Fall mehr als 100 Punkte.</td><td>F</td><td class="l">Stochastischer, nicht deterministischer Zusammenhang: Es gibt Ausnahmen.</td></tr>
+<tr><td class="l">\(r=-0.9\) ist ein schwächerer Zusammenhang als \(r=0.5\).</td><td>F</td><td class="l">Die Stärke ist \(|r|\): 0.9 &gt; 0.5.</td></tr>
+</table>
+</div></div>
+
+<div class="typ"><div class="th"><span class="tn">Typ 45</span> Kausalität beurteilen und Drittvariable nennen</div><div class="tb">
+<p class="erk"><b>So erkennst du ihn:</b> „Die Geschäftsführung folgert … Beurteilen Sie.“ · „Kann man daraus schließen, dass …?“ · „Nennen Sie eine mögliche Drittvariable.“ (Probeklausur A, 5c)</p>
+<p><span class="lab">Mustergerüst (3 Sätze):</span> (1) „Nein, eine Korrelation belegt keine Kausalität.“ (2) „Der Zusammenhang könnte durch eine Drittvariable wie <i>…</i> entstehen, die beide Merkmale beeinflusst (oder durch Zufall / umgekehrte Richtung).“ (3) „Für einen Kausalnachweis bräuchte man ein Experiment mit zufälliger Zuteilung (Randomisierung).“</p>
+<p><span class="lab">Musterbeispiel:</span> In Städten mit mehr Störchen werden mehr Kinder geboren (\(r=0.7\)).</p>
+<p><span class="lab">Lösung:</span> Nein, Störche bringen keine Kinder. Drittvariable: <b>ländliche Gegend / Größe der Region</b> – auf dem Land gibt es mehr Störche und tendenziell mehr Geburten pro Kopf. Weitere Klassiker: Eisverkauf ↔ Ertrinken (Drittvariable: Temperatur/Sommer); Feuerwehrleute ↔ Schaden (Drittvariable: Größe des Brandes); umgekehrte Richtung: Krankenhausaufenthalt ↔ Krankheit.</p>
+<div class="box tr"><div class="t">Türkçe açıklama</div><p>Bu soru tipinde puanı <b>gerekçe</b> getirir. Sadece „Nein“ yazma. Kalıp: <i>Hayır + üçüncü değişken örneği + randomize deney gerekir</i>. Üçüncü değişken (Drittvariable/Störvariable) her iki değişkeni birden etkileyen şeydir.</p></div>
+</div></div>
+
+<div class="zu"><div class="t">Übe selbst · Zusatzübungen Z6</div>
+<ol>
+<li>\(x\): 2, 4, 6, 8; \(y\): 10, 7, 5, 2. Berechne \(s_{xy}\) und \(r\). Wie groß ist \(r_{Sp}\) (ohne Rechnung)?</li>
+<li>\(n=20\), \(\bar x=4\), \(\bar y=10\), \(\sum xy=760\), \(s_x=2\), \(s_y=5\). Berechne \(s_{xy}\) und \(r\).</li>
+<li>Temperatur in °C und Eisverkauf in Stück haben \(s_{xy}=120\) und \(r=0.8\). Wie lauten beide Werte, wenn die Temperatur in °F (\(F=32+1.8C\)) angegeben wird?</li>
+<li>Zwei Lehrer ordnen 4 Aufsätze: Ränge A: 1, 2, 3, 4; Ränge B: 4, 3, 1, 2. Berechne \(r_{Sp}\).</li>
+<li>„Menschen, die mehr Kaffee trinken, haben häufiger Lungenkrebs.“ Beurteile die Aussage „Kaffee verursacht Lungenkrebs“ und nenne eine Drittvariable.</li>
 </ol></div>
 
 <div class="kt"><div class="kh"><span>Klausurtraining 1.G · Werbung und Umsatz</span><span>14 Punkte</span></div><div class="kb">
