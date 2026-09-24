@@ -2,8 +2,8 @@ HÖRTEXT TAG 1, TEIL 2 VON 3
 Häufigkeiten, Histogramm, Verteilungsfunktion, Lagemaße, Quantile, Streuung und Boxplot
 Im Lernbuch: Abschnitte 1.4 bis 1.6, Klausurtraining 1.B bis 1.E
 
-Willkommen zurück zu Teil zwei!
-Jetzt fangen wir an zu rechnen. Bitte leg deinen Taschenrechner, ein Blatt Papier und einen Stift bereit. Ich rechne alle Beispiele langsam mit dir. Rechne bitte mit, dann bleibt es viel besser im Kopf.
+<excited> Willkommen zurück zu Teil zwei!
+Jetzt fangen wir an zu rechnen. <pause> Bitte leg deinen Taschenrechner, ein Blatt Papier und einen Stift bereit. Ich rechne alle Beispiele langsam mit dir. Rechne bitte mit, dann bleibt es viel besser im Kopf.
 
 
 Abschnitt 1 Punkt 4. Häufigkeiten, Histogramm und Verteilungsfunktion.
@@ -20,7 +20,7 @@ Viertens: die kumulierte relative Häufigkeit, großes F j. Das ist der Anteil a
 
 Schauen wir uns Beispiel eins an: die Mensabesuche. Vierundzwanzig Studierende wurden gefragt, wie oft sie letzte Woche in der Mensa waren.
 Drei Studierende waren nullmal da. Fünf waren einmal da. Acht waren zweimal da. Sechs waren dreimal da. Und zwei waren viermal da.
-Wie groß ist n? Wir addieren: drei plus fünf plus acht plus sechs plus zwei. Das ist vierundzwanzig. So eine Frage kam im Testat eins: „Bestimmen Sie die Stichprobengröße.“ Man muss einfach alle Häufigkeiten addieren.
+Wie groß ist n? Halte kurz an und rechne selbst. <pause> Wir addieren: drei plus fünf plus acht plus sechs plus zwei. Das ist vierundzwanzig. So eine Frage kam im Testat eins: „Bestimmen Sie die Stichprobengröße.“ Man muss einfach alle Häufigkeiten addieren.
 Die relative Häufigkeit von „zweimal“ ist acht durch vierundzwanzig, also null Komma drei drei drei drei. Ein Drittel der Studierenden war zweimal in der Mensa.
 Die kumulierten Häufigkeiten sind: drei, dann drei plus fünf gleich acht, dann acht plus acht gleich sechzehn, dann sechzehn plus sechs gleich zweiundzwanzig, und am Ende vierundzwanzig.
 
@@ -28,10 +28,10 @@ Beispiel zwei ist aus dem Tutorium: die Semesterzahlen von dreiundzwanzig Studie
 Einer ist im zweiten Semester. Sieben sind im dritten. Fünf im vierten. Fünf im fünften. Einer im sechsten. Und vier im siebten.
 Die kumulierten Anteile sind: ein Dreiundzwanzigstel, acht Dreiundzwanzigstel, dreizehn Dreiundzwanzigstel, achtzehn Dreiundzwanzigstel, neunzehn Dreiundzwanzigstel, und am Ende dreiundzwanzig Dreiundzwanzigstel, also eins.
 
-Jetzt kommen vier Fragen. Und hier ist eine ganz wichtige Falle. Es geht um die Wörter.
+Jetzt kommen vier Fragen. <gasp> Und hier ist eine ganz wichtige Falle. Es geht um die Wörter.
 Erste Frage: Welcher Anteil hat mehr als drei Semester? „Mehr als drei“ heißt: vier, fünf, sechs oder sieben. Die Drei gehört nicht dazu. Wir rechnen: eins minus den Anteil bis einschließlich drei. Also eins minus acht Dreiundzwanzigstel gleich fünfzehn Dreiundzwanzigstel.
 Zweite Frage: Welcher Anteil hat mindestens drei Semester? „Mindestens drei“ heißt: drei oder mehr. Jetzt gehört die Drei dazu! Wir rechnen: eins minus den Anteil bis zwei. Also eins minus ein Dreiundzwanzigstel gleich zweiundzwanzig Dreiundzwanzigstel.
-Siehst du den Unterschied? Fünfzehn gegen zweiundzwanzig. Ein einziges Wort macht einen großen Unterschied.
+Siehst du den Unterschied? <pause> Fünfzehn gegen zweiundzwanzig. <sigh> Ein einziges Wort macht einen großen Unterschied. Genau hier verlieren viele Studierende ihre Punkte.
 Dritte Frage: kleiner als vier. Das ist das Gleiche wie höchstens drei. Also acht Dreiundzwanzigstel.
 Vierte Frage: nicht größer als fünf. Das ist das Gleiche wie höchstens fünf. Also achtzehn Dreiundzwanzigstel.
 
@@ -50,12 +50,12 @@ Beim Säulendiagramm ist die Höhe der Säule die Häufigkeit.
 Beim Histogramm ist die Fläche der Säule der Anteil.
 
 Warum ist dieser Unterschied so wichtig? Schau auf das Bild im Lernbuch mit den Zimmergrößen. Es gibt drei Klassen: null bis zehn, zehn bis zwanzig, und zwanzig bis hundert Quadratmeter. Die letzte Klasse ist sehr breit, achtzig Quadratmeter breit.
-Links siehst du das Säulendiagramm. Die breite Klasse sieht riesig aus. Man denkt: Da sind ja die meisten Wohnungen! Aber das ist irreführend. Die Klasse ist nur so groß, weil sie so breit ist.
+Links siehst du das Säulendiagramm. Die breite Klasse sieht riesig aus. Man denkt: <gasp> Da sind ja die meisten Wohnungen! <chuckle> Aber das ist irreführend. Die Klasse ist nur so groß, weil sie so breit ist.
 Rechts siehst du das Histogramm. Hier ist die breite Klasse flach. Denn die Wohnungen verteilen sich auf eine große Breite. Das Bild ist ehrlich.
 Deshalb gilt in dieser Vorlesung: Das Histogramm ist der Goldstandard für stetige Merkmale. Und: Die Gesamtfläche eines Histogramms ist immer genau eins. Denn alle Anteile zusammen ergeben eins.
 
 Wie hoch ist eine Säule im Histogramm? Das ist die wichtigste Formel in diesem Abschnitt. Die Höhe heißt auch Dichte.
-Höhe gleich relative Häufigkeit geteilt durch Klassenbreite.
+<pause> Höhe gleich relative Häufigkeit geteilt durch Klassenbreite. <pause> Noch einmal, ganz langsam: Höhe gleich Anteil geteilt durch Breite.
 Wenn du die absolute Häufigkeit hast, rechnest du: absolute Häufigkeit geteilt durch n mal Klassenbreite.
 Und umgekehrt: Fläche gleich Höhe mal Breite, und das ist wieder die relative Häufigkeit.
 
@@ -64,29 +64,29 @@ Zwanzig Personen warten beim Arzt. Die Wartezeiten in Minuten sind, schon sortie
 Die Klassen sind: null bis unter fünf, fünf bis unter zehn, zehn bis unter zwanzig, und zwanzig bis unter vierzig.
 
 Schritt eins: Wir zählen die Werte in jeder Klasse.
-In der Klasse null bis unter fünf liegen: zwei, drei, drei, vier. Das sind vier Werte. Achtung: Die Fünf gehört nicht mehr dazu, weil die Klasse rechts offen ist.
+In der Klasse null bis unter fünf liegen: zwei, drei, drei, vier. Das sind vier Werte. <gasp> Achtung: Die Fünf gehört nicht mehr dazu, weil die Klasse rechts offen ist.
 In der Klasse fünf bis unter zehn liegen: fünf, fünf, sechs, sieben, acht, neun. Das sind sechs Werte.
 In der Klasse zehn bis unter zwanzig liegen: zehn, elf, zwölf, vierzehn, fünfzehn, achtzehn. Das sind auch sechs Werte.
 In der Klasse zwanzig bis unter vierzig liegen: zweiundzwanzig, fünfundzwanzig, einunddreißig, achtunddreißig. Das sind vier Werte.
-Kontrolle: vier plus sechs plus sechs plus vier gleich zwanzig. Stimmt.
+Kontrolle: vier plus sechs plus sechs plus vier gleich zwanzig. <happy> Stimmt.
 
 Schritt zwei: relative Häufigkeiten. Wir teilen durch zwanzig. Vier durch zwanzig ist null Komma zwei. Sechs durch zwanzig ist null Komma drei. Also: null Komma zwei, null Komma drei, null Komma drei, null Komma zwei.
 
 Schritt drei: Klassenbreiten. Die ersten beiden Klassen sind fünf Minuten breit. Die dritte Klasse ist zehn Minuten breit. Die vierte ist zwanzig Minuten breit.
 
-Schritt vier: die Höhen. Relative Häufigkeit geteilt durch Breite.
+Schritt vier: die Höhen. Relative Häufigkeit geteilt durch Breite. Versuch es zuerst selbst für die erste Klasse. <pause>
 Erste Klasse: null Komma zwei durch fünf gleich null Komma null vier.
 Zweite Klasse: null Komma drei durch fünf gleich null Komma null sechs.
 Dritte Klasse: null Komma drei durch zehn gleich null Komma null drei.
 Vierte Klasse: null Komma zwei durch zwanzig gleich null Komma null eins.
 
-Schau auf das Bild im Lernbuch. Interessant: Die zweite und die dritte Klasse haben beide sechs Werte. Aber die dritte Säule ist nur halb so hoch. Warum? Weil die dritte Klasse doppelt so breit ist. Die Fläche ist aber gleich, nämlich null Komma drei.
+Schau auf das Bild im Lernbuch. Interessant: Die zweite und die dritte Klasse haben beide sechs Werte. Aber die dritte Säule ist nur halb so hoch. <curious> Warum? <pause> Weil die dritte Klasse doppelt so breit ist. Die Fläche ist aber gleich, nämlich null Komma drei.
 
 Jetzt eine typische Klausurfrage: Welcher Anteil der Personen wartet zwischen fünfzehn und dreißig Minuten?
 Dafür machen wir eine Annahme: Innerhalb einer Klasse sind die Werte gleichmäßig verteilt. Dann ist der Anteil einfach die Fläche unter dem Histogramm zwischen fünfzehn und dreißig.
 Von fünfzehn bis zwanzig liegen wir in der dritten Klasse. Die Höhe ist null Komma null drei. Die Breite ist fünf. Fläche: fünf mal null Komma null drei gleich null Komma eins fünf.
 Von zwanzig bis dreißig liegen wir in der vierten Klasse. Die Höhe ist null Komma null eins. Die Breite ist zehn. Fläche: zehn mal null Komma null eins gleich null Komma eins.
-Zusammen: null Komma eins fünf plus null Komma eins gleich null Komma zwei fünf. Wir schätzen also: fünfundzwanzig Prozent warten zwischen fünfzehn und dreißig Minuten.
+Zusammen: null Komma eins fünf plus null Komma eins gleich null Komma zwei fünf. <excited> Wir schätzen also: fünfundzwanzig Prozent warten zwischen fünfzehn und dreißig Minuten.
 In den echten Daten sind es übrigens vier von zwanzig, also zwanzig Prozent. Das Histogramm gibt uns nur eine Schätzung. Das ist normal.
 
 Das Beispiel vier aus dem Tutorium funktioniert genauso, nur mit Brüchen. Zwanzig Personen, die Klassenbreite ist fünf Zentimeter. In der Klasse einhundertfünfundsechzig bis einhundertsiebzig liegen drei Personen. In der Klasse einhundertsiebzig bis einhundertfünfundsiebzig liegen fünf Personen. Gesucht ist der Anteil von einhundertsiebenundsechzig bis einhundertzweiundsiebzig.
@@ -94,13 +94,13 @@ Von einhundertsiebenundsechzig bis einhundertsiebzig sind drei von fünf Zentime
 Von einhundertsiebzig bis einhundertzweiundsiebzig sind zwei von fünf Zentimetern. Also zwei Fünftel von fünf Zwanzigsteln. Das sind null Komma eins.
 Zusammen: null Komma eins neun.
 
-Jetzt kommt eine Falle aus dem Testat eins. Die Frage war: „Ist die Modalklasse immer die Klasse mit der höchsten Säule im Histogramm?“
+<gasp> Jetzt kommt eine Falle aus dem Testat eins. Die Frage war: „Ist die Modalklasse immer die Klasse mit der höchsten Säule im Histogramm?“
 Die Modalklasse ist die Klasse mit der größten Häufigkeit, also mit den meisten Werten.
-Die Antwort ist: Nein, nicht im Allgemeinen! Wenn die Klassen unterschiedlich breit sind, zeigt die Höhe die Dichte, nicht die Anzahl. Denk an unser Wartezeit-Beispiel: Die Klasse zehn bis zwanzig hat genauso viele Werte wie die Klasse fünf bis zehn, aber sie ist nur halb so hoch. Nur wenn alle Klassen gleich breit sind, ist die höchste Säule auch die Modalklasse.
+Was denkst du? <pause> Die Antwort ist: Nein, nicht im Allgemeinen! Wenn die Klassen unterschiedlich breit sind, zeigt die Höhe die Dichte, nicht die Anzahl. Denk an unser Wartezeit-Beispiel: Die Klasse zehn bis zwanzig hat genauso viele Werte wie die Klasse fünf bis zehn, aber sie ist nur halb so hoch. Nur wenn alle Klassen gleich breit sind, ist die höchste Säule auch die Modalklasse.
 
 Am Histogramm sieht man auch die Form einer Verteilung. Hat sie einen Gipfel, sagt man unimodal. Hat sie zwei Gipfel, sagt man bimodal. Und sie kann symmetrisch sein oder schief. Zur Schiefe kommen wir gleich.
 
-Jetzt die empirische Verteilungsfunktion. Die ist sehr wichtig. In der Probeklausur gab es dafür sechs Punkte!
+Jetzt die empirische Verteilungsfunktion. Die ist sehr wichtig. <excited> In der Probeklausur gab es dafür sechs Punkte!
 Man schreibt F Dach von x. Sie beantwortet die Frage: Welcher Anteil der Daten ist kleiner oder gleich x?
 Sie ist eine Treppe. Links beginnt sie bei null. An jedem Wert, der in den Daten vorkommt, springt sie nach oben. Und zwar um den Anteil dieses Wertes. Rechts endet sie bei eins. Sie geht nie nach unten.
 
@@ -116,9 +116,9 @@ Für x von acht Komma fünf bis unter zwölf ist F gleich null Komma sieben.
 Für x von zwölf bis unter fünfzehn Komma sieben ist F gleich null Komma neun.
 Und für x ab fünfzehn Komma sieben ist F gleich eins.
 
-Wie liest man die Funktion ab? F an der Stelle zehn ist null Komma sieben. Das heißt: siebzig Prozent der Gäste haben höchstens zehn Liter getrunken. Und der Anteil mit mehr als zehn Litern ist eins minus null Komma sieben, also null Komma drei.
+Wie liest man die Funktion ab? Was ist F an der Stelle zehn? Halte kurz an. <pause> F an der Stelle zehn ist null Komma sieben. Das heißt: siebzig Prozent der Gäste haben höchstens zehn Liter getrunken. Und der Anteil mit mehr als zehn Litern ist eins minus null Komma sieben, also null Komma drei.
 
-Beim Zeichnen gibt es Punkte für die Details. Schau auf den grünen Tipp-Kasten.
+<whisper> Und jetzt ein kleines Geheimnis für die Klausur: <pause> Beim Zeichnen gibt es Punkte für die Details. Schau auf den grünen Tipp-Kasten.
 Du zeichnest waagerechte Stufen.
 Du verbindest die Stufen nicht mit senkrechten Linien.
 Am linken Ende jeder Stufe machst du einen vollen Punkt. Das bedeutet: Dieser Wert gehört dazu.
@@ -127,10 +127,10 @@ Du fängst links bei null an, und rechts endest du bei eins. Am besten mit einem
 Du beschriftest die Achsen: unten „x, Liter Bier“, links „F Dach von x“. Und du schreibst die Sprungstellen und die Höhen an die Achsen.
 Und am besten schreibst du zusätzlich die Funktion mit der Fallunterscheidung auf. Dann ist deine Antwort eindeutig.
 
-Jetzt kommen zwei Klausurtrainings. Halte hier an und rechne das Klausurtraining eins B über Pendelzeiten und das Klausurtraining eins C über Kaffee.
+<pause> Jetzt kommen zwei Klausurtrainings. Halte hier an und rechne das Klausurtraining eins B über Pendelzeiten und das Klausurtraining eins C über Kaffee.
 Ein paar Tipps:
 Bei den Pendelzeiten sind die Klassen unterschiedlich breit. Die letzten beiden Klassen sind dreißig Minuten breit. Denk an die Formel: Höhe gleich Anteil geteilt durch Breite. Und bei Teilaufgabe b benutzt du die Fläche, genau wie bei den Wartezeiten.
-Beim Kaffee hast du diskrete Daten: null, eins, eins, zwei, zwei, zwei, drei, drei, vier, sechs. Stell die Verteilungsfunktion genau wie beim Bier auf. Achtung: Bei der Fünf gibt es keinen Sprung, weil niemand fünf Tassen getrunken hat.
+Beim Kaffee hast du diskrete Daten: null, eins, eins, zwei, zwei, zwei, drei, drei, vier, sechs. Stell die Verteilungsfunktion genau wie beim Bier auf. <whisper> Achtung: Bei der Fünf gibt es keinen Sprung, weil niemand fünf Tassen getrunken hat.
 Nimm dir zusammen ungefähr fünfundzwanzig Minuten.
 
 
@@ -143,12 +143,12 @@ Man rechnet: Summe aller Werte, geteilt durch n.
 Wenn man eine Häufigkeitstabelle hat, geht es auch so: jeden Wert mal seine Häufigkeit, alles addieren, und durch n teilen. Oder: jeden Wert mal seinen Anteil, und alles addieren.
 
 Das zweite ist der Median. Der Median ist der Wert in der Mitte, wenn man die Daten sortiert. Die Hälfte der Werte ist kleiner oder gleich, die Hälfte ist größer oder gleich.
-Ganz wichtig: Zuerst sortieren! Viele vergessen das.
+<gasp> Ganz wichtig: Zuerst sortieren! <sigh> Viele vergessen das.
 Wenn n ungerade ist, gibt es genau einen Wert in der Mitte. Man nimmt den Wert an der Stelle n plus eins, geteilt durch zwei.
 Wenn n gerade ist, gibt es zwei Werte in der Mitte. Dann nimmt man meistens den Durchschnitt dieser beiden Werte.
 
 Wir üben das gleich. Schau auf den Kasten „Median Schritt für Schritt“.
-Die Daten sind: sieben, zwei, neun, vier, fünf. Zuerst sortieren: zwei, vier, fünf, sieben, neun. Wir haben fünf Werte, also ist n ungerade. n plus eins durch zwei ist sechs durch zwei, also drei. Der Median ist der dritte Wert. Das ist fünf.
+Die Daten sind: sieben, zwei, neun, vier, fünf. Versuch es zuerst selbst. <pause> Zuerst sortieren: zwei, vier, fünf, sieben, neun. Wir haben fünf Werte, also ist n ungerade. n plus eins durch zwei ist sechs durch zwei, also drei. Der Median ist der dritte Wert. Das ist fünf.
 Jetzt nehmen wir noch die Zehn dazu: sieben, zwei, neun, vier, fünf, zehn. Sortiert: zwei, vier, fünf, sieben, neun, zehn. Jetzt ist n gleich sechs, also gerade. Die beiden mittleren Werte sind der dritte und der vierte Wert, also fünf und sieben. Der Median ist fünf plus sieben durch zwei, gleich sechs.
 
 Das dritte ist der Modus. Der Modus ist der Wert, der am häufigsten vorkommt.
@@ -166,9 +166,9 @@ Der Mittelwert: null mal drei, plus eins mal fünf, plus zwei mal acht, plus dre
 Jetzt ein ganz wichtiger Unterschied: Der Median ist robust gegenüber Ausreißern. Der Mittelwert ist es nicht.
 Schau auf das Beispiel aus dem Tutorium. Datensatz eins: fünf, sechs, sieben, acht, vierzehn. Der Mittelwert ist vierzig durch fünf, gleich acht. Der Median ist der dritte Wert, also sieben.
 Datensatz zwei: fünf, sechs, sieben, acht, neun. Der Mittelwert ist fünfunddreißig durch fünf, gleich sieben. Der Median ist auch sieben.
-Nur ein einziger Wert ist anders: vierzehn statt neun. Der Mittelwert ist von sieben auf acht gestiegen. Der Median ist gleich geblieben.
-Warum? Der Median hängt nur von der Reihenfolge ab. Es ist ihm egal, ob der größte Wert neun oder vierzehn oder eine Million ist. Der Mittelwert dagegen benutzt jeden Wert genau, und ein extremer Wert zieht ihn in seine Richtung.
-Diesen Satz lernst du bitte wörtlich: „Der Median ist robuster gegenüber Extremwerten als das arithmetische Mittel.“ Genau diese Antwort stand in der Musterlösung der R-Probeklausur.
+Nur ein einziger Wert ist anders: vierzehn statt neun. Der Mittelwert ist von sieben auf acht gestiegen. <gasp> Der Median ist gleich geblieben.
+Warum? Der Median hängt nur von der Reihenfolge ab. Es ist ihm egal, ob der größte Wert neun oder vierzehn oder eine Million ist. <chuckle> Der Mittelwert dagegen benutzt jeden Wert genau, und ein extremer Wert zieht ihn in seine Richtung.
+<pause> Diesen Satz lernst du bitte wörtlich: „Der Median ist robuster gegenüber Extremwerten als das arithmetische Mittel.“ Genau diese Antwort stand in der Musterlösung der R-Probeklausur.
 
 Noch ein Beispiel mit null-eins-Daten. Zehn Personen, eins bedeutet „bestanden“. Die Daten sind: eins, null, eins, eins, eins, null, eins, eins, null, eins. Das sind sieben Einsen. Der Mittelwert ist sieben durch zehn, gleich null Komma sieben. Das ist die Bestehensquote: siebzig Prozent.
 
@@ -178,8 +178,8 @@ Bei einer rechtsschiefen Verteilung gilt: Mittelwert größer als Median größe
 In der Mitte ist eine symmetrische Verteilung. Hier sind alle drei ungefähr gleich.
 Rechts ist eine linksschiefe Verteilung, man sagt auch rechtssteil. Hier ist es umgekehrt: Mittelwert kleiner als Median kleiner als Modus.
 
-Wie merkt man sich das? Mit einer Eselsbrücke: Der Mittelwert wird vom langen Schwanz weggezogen. Ist der lange Schwanz rechts, liegt der Mittelwert rechts, also ist er am größten.
-Denk an unsere Wartezeiten: Der Mittelwert ist zwölf Komma vier, der Median ist neun Komma fünf. Der Mittelwert ist größer. Also ist die Verteilung rechtsschief. Das passt: Einige wenige Personen haben sehr lange gewartet, über dreißig Minuten.
+Wie merkt man sich das? <whisper> Mit einer Eselsbrücke: <pause> Der Mittelwert wird vom langen Schwanz weggezogen. Ist der lange Schwanz rechts, liegt der Mittelwert rechts, also ist er am größten.
+Denk an unsere Wartezeiten: Der Mittelwert ist zwölf Komma vier, der Median ist neun Komma fünf. Welche Schiefe ist das? <pause> Der Mittelwert ist größer. Also ist die Verteilung rechtsschief. Das passt: Einige wenige Personen haben sehr lange gewartet, über dreißig Minuten.
 
 Jetzt drei Rechenregeln.
 Erstens: lineare Transformation. Wenn man alle Werte mit einer Zahl b multipliziert und eine Zahl a addiert, also y gleich a plus b mal x, dann gilt für den Mittelwert das Gleiche: y quer gleich a plus b mal x quer.
@@ -187,9 +187,9 @@ Beispiel: Temperatur von Grad Celsius in Grad Fahrenheit. Die Formel ist: Fahren
 
 Zweitens: Beim Median gilt das sogar für jede monotone Funktion, zum Beispiel für den Logarithmus. Der Median der logarithmierten Werte ist der Logarithmus des Medians. Beim Mittelwert gilt das für den Logarithmus nicht.
 
-Drittens: Mittelwert aus Gruppen. Das ist eine beliebte Falle.
-Kurs A hat zwanzig Personen mit einem Durchschnitt von sechzig Punkten. Kurs B hat dreißig Personen mit einem Durchschnitt von siebzig Punkten. Wie groß ist der Durchschnitt aller fünfzig Personen?
-Viele sagen: sechzig plus siebzig durch zwei, gleich fünfundsechzig. Das ist falsch! Kurs B ist größer und muss mehr Gewicht bekommen.
+Drittens: Mittelwert aus Gruppen. <gasp> Das ist eine beliebte Falle.
+Kurs A hat zwanzig Personen mit einem Durchschnitt von sechzig Punkten. Kurs B hat dreißig Personen mit einem Durchschnitt von siebzig Punkten. Wie groß ist der Durchschnitt aller fünfzig Personen? Halte kurz an. <pause>
+Viele sagen: sechzig plus siebzig durch zwei, gleich fünfundsechzig. <laugh> Das ist falsch! Kurs B ist größer und muss mehr Gewicht bekommen.
 Richtig ist: zwanzig mal sechzig plus dreißig mal siebzig, geteilt durch fünfzig. Das ist eintausendzweihundert plus zweitausendeinhundert, gleich dreitausenddreihundert. Geteilt durch fünfzig gleich sechsundsechzig.
 Das nennt man einen gewichteten Durchschnitt.
 
@@ -200,15 +200,15 @@ In der Probeklausur sollten die Bier-Daten in zwei Klassen eingeteilt werden. Di
 In der ersten Klasse liegen die drei Vieren und die vier Acht-Komma-fünfs. Das sind sieben Werte. In der zweiten Klasse liegen die zwei Zwölfen und die Fünfzehn Komma sieben. Das sind drei Werte.
 Die Mitten sind fünf und fünfzehn.
 Der Mittelwert der klassierten Daten ist: ein Zehntel mal, sieben mal fünf plus drei mal fünfzehn. Das ist fünfunddreißig plus fünfundvierzig gleich achtzig, geteilt durch zehn, gleich acht.
-Der echte Mittelwert ist acht Komma fünf sieben. Die Klassenmitte ist also nur eine Näherung. Das waren in der Klausur vier Punkte.
+Der echte Mittelwert ist acht Komma fünf sieben. Die Klassenmitte ist also nur eine Näherung. <excited> Das waren in der Klausur vier leichte Punkte.
 
 Jetzt halte an und rechne das Klausurtraining eins D über Gehälter. Es geht um neun Mitarbeitende eines Start-ups. Ein Gehalt ist sehr hoch: fünfzehntausend Euro. Denk an alles, was wir gerade gelernt haben: Ausreißer, Median, Schiefe, lineare Transformation und den gewichteten Durchschnitt. Nimm dir ungefähr fünfzehn Minuten.
 
 
 Abschnitt 1 Punkt 6. Quantile, Streuung und Boxplot.
 
-Willkommen zurück. Wir haben jetzt die Mitte der Daten. Aber das reicht nicht.
-Stell dir zwei Datensätze vor. Der erste ist: fünf, fünf, fünf. Der zweite ist: null, fünf, zehn. Beide haben den Mittelwert fünf. Aber sie sind ganz verschieden! Im ersten liegen alle Werte zusammen. Im zweiten liegen sie weit auseinander. Dieses Auseinanderliegen nennt man Streuung.
+<happy> Willkommen zurück. Wir haben jetzt die Mitte der Daten. Aber das reicht nicht.
+Stell dir zwei Datensätze vor. Der erste ist: fünf, fünf, fünf. Der zweite ist: null, fünf, zehn. Beide haben den Mittelwert fünf. <gasp> Aber sie sind ganz verschieden! Im ersten liegen alle Werte zusammen. Im zweiten liegen sie weit auseinander. Dieses Auseinanderliegen nennt man Streuung.
 
 Zuerst aber die Quantile.
 Das Alpha-Quantil ist ein Wert, unter dem ungefähr Alpha mal hundert Prozent der Daten liegen. Genauer: Mindestens Alpha mal hundert Prozent der Werte sind kleiner oder gleich diesem Wert.
@@ -220,14 +220,14 @@ Fall eins: n mal Alpha ist keine ganze Zahl. Dann rundest du auf. Das Quantil is
 Fall zwei: n mal Alpha ist eine ganze Zahl. Dann liegt das Quantil zwischen diesem Wert und dem nächsten. Man nimmt meistens den Durchschnitt der beiden.
 
 Beispiel A im Lernbuch: sieben Werte, schon sortiert: zwei, vier, vier, fünf, fünf, sieben, acht.
-Unteres Quartil: sieben mal null Komma zwei fünf gleich eins Komma sieben fünf. Das ist keine ganze Zahl. Wir runden auf zwei. Der zweite Wert ist vier. Das untere Quartil ist vier.
+Rechne zuerst selbst das untere Quartil. <pause> Unteres Quartil: sieben mal null Komma zwei fünf gleich eins Komma sieben fünf. Das ist keine ganze Zahl. Wir runden auf zwei. Der zweite Wert ist vier. Das untere Quartil ist vier.
 Median: sieben mal null Komma fünf gleich drei Komma fünf. Aufrunden auf vier. Der vierte Wert ist fünf.
 Oberes Quartil: sieben mal null Komma sieben fünf gleich fünf Komma zwei fünf. Aufrunden auf sechs. Der sechste Wert ist sieben.
 Der Interquartilsabstand, kurz IQR, ist oberes Quartil minus unteres Quartil. Also sieben minus vier gleich drei.
 
 Beispiel B ist der Mietspiegel aus der Vorlesung. Sechsundzwanzig Mieten.
 Unteres Quartil: sechsundzwanzig mal null Komma zwei fünf gleich sechs Komma fünf. Keine ganze Zahl, also aufrunden auf sieben. Der siebte Wert ist einhundertsiebzig Komma null vier.
-Median: sechsundzwanzig mal null Komma fünf gleich dreizehn. Das ist eine ganze Zahl! Also nehmen wir den Durchschnitt aus dem dreizehnten und dem vierzehnten Wert: zweihundertdreiundvierzig Komma vier vier und zweihundertfünfundfünfzig Komma sieben fünf. Das gibt zweihundertneunundvierzig Komma sechs.
+Median: sechsundzwanzig mal null Komma fünf gleich dreizehn. <gasp> Das ist eine ganze Zahl! Also nehmen wir den Durchschnitt aus dem dreizehnten und dem vierzehnten Wert: zweihundertdreiundvierzig Komma vier vier und zweihundertfünfundfünfzig Komma sieben fünf. Das gibt zweihundertneunundvierzig Komma sechs.
 Oberes Quartil: sechsundzwanzig mal null Komma sieben fünf gleich neunzehn Komma fünf. Aufrunden auf zwanzig. Der zwanzigste Wert ist dreihundertelf Komma acht sieben.
 
 Ein Hinweis zu R: Wenn du in R den Befehl quantile benutzt, rechnet R mit einer anderen Methode. Die Ergebnisse können leicht anders sein. In Teil A rechnest du immer mit der Regel aus der Vorlesung. In Teil B nimmst du einfach den R-Befehl.
@@ -235,7 +235,7 @@ Ein Hinweis zu R: Wenn du in R den Befehl quantile benutzt, rechnet R mit einer 
 Jetzt zur Varianz. Die Varianz ist das wichtigste Streuungsmaß.
 Die Idee ist: Wir schauen, wie weit jeder Wert vom Mittelwert entfernt ist. Diese Abstände quadrieren wir. Warum quadrieren? Weil sonst die positiven und negativen Abstände sich gegenseitig aufheben würden. Die Summe der Abstände zum Mittelwert ist nämlich immer genau null. Dann bilden wir den Durchschnitt der quadrierten Abstände. Das ist die Varianz. Man schreibt s Quadrat.
 
-Es gibt einen Trick, der viel Zeit spart. Er heißt Verschiebungssatz. Die Varianz ist gleich: der Mittelwert der Quadrate minus das Quadrat des Mittelwerts. Man schreibt: x Quadrat quer minus x quer zum Quadrat. Diese Formel brauchst du ständig. Schreib sie groß auf dein Formelblatt!
+<whisper> Es gibt einen Trick, der viel Zeit spart. <pause> Er heißt Verschiebungssatz. Die Varianz ist gleich: der Mittelwert der Quadrate minus das Quadrat des Mittelwerts. Man schreibt: x Quadrat quer minus x quer zum Quadrat. Diese Formel brauchst du ständig. Schreib sie groß auf dein Formelblatt!
 
 Wir rechnen ein Beispiel auf beiden Wegen. Die Daten sind wieder: zwei, vier, vier, fünf, fünf, sieben, acht. Also sieben Werte. Die Summe ist fünfunddreißig. Der Mittelwert ist fünfunddreißig durch sieben gleich fünf.
 
@@ -244,31 +244,31 @@ Jetzt quadrieren wir: neun, eins, eins, null, null, vier, neun. Die Summe ist vi
 Die Varianz ist vierundzwanzig durch sieben, gleich drei Komma vier zwei neun.
 
 Weg zwei, der Verschiebungssatz. Wir quadrieren die Werte selbst: vier, sechzehn, sechzehn, fünfundzwanzig, fünfundzwanzig, neunundvierzig, vierundsechzig. Die Summe ist einhundertneunundneunzig.
-Dann: einhundertneunundneunzig durch sieben ist achtundzwanzig Komma vier zwei acht sechs. Minus fünf zum Quadrat, also minus fünfundzwanzig. Ergebnis: drei Komma vier zwei neun. Das Gleiche! Aber schneller, besonders wenn die Summe der Quadrate schon gegeben ist. In der Klausur ist sie oft als Hinweis gegeben.
+Dann: einhundertneunundneunzig durch sieben ist achtundzwanzig Komma vier zwei acht sechs. Minus fünf zum Quadrat, also minus fünfundzwanzig. Ergebnis: drei Komma vier zwei neun. <excited> Das Gleiche! Aber schneller, besonders wenn die Summe der Quadrate schon gegeben ist. In der Klausur ist sie oft als Hinweis gegeben.
 
 Die Standardabweichung ist die Wurzel aus der Varianz. Hier: die Wurzel aus drei Komma vier zwei acht sechs, gleich eins Komma acht fünf zwei.
-Warum braucht man die Standardabweichung? Die Varianz hat eine komische Einheit. Wenn die Daten in Euro sind, dann ist die Varianz in Euro zum Quadrat. Das versteht niemand. Die Standardabweichung hat wieder die Einheit Euro. Das ist ihr Vorteil: Sie hat die gleiche Maßeinheit wie das Merkmal. Diese Frage kam im Testat eins.
+Warum braucht man die Standardabweichung? Die Varianz hat eine komische Einheit. Wenn die Daten in Euro sind, dann ist die Varianz in Euro zum Quadrat. <laugh> Euro zum Quadrat, das versteht niemand. Die Standardabweichung hat wieder die Einheit Euro. Das ist ihr Vorteil: Sie hat die gleiche Maßeinheit wie das Merkmal. Diese Frage kam im Testat eins.
 
-Jetzt kommt eine sehr wichtige Falle. Bitte gut zuhören.
+<gasp> Jetzt kommt eine sehr wichtige Falle. <pause> Bitte gut zuhören.
 Es gibt zwei Versionen der Varianz. Die eine teilt durch n. Das ist die, die wir gerade gerechnet haben. Die andere teilt durch n minus eins. Man nennt sie die unverzerrte oder korrigierte Varianz und schreibt s Stern Quadrat.
 Im Beispiel wäre das: vierundzwanzig durch sechs, gleich vier.
 Welche nimmt man wann?
 In Teil A, wenn nach der empirischen Varianz gefragt ist, rechnet man meistens mit n. So machen es die Musterlösungen.
-Aber: R rechnet mit den Befehlen var und sd immer mit n minus eins! Das ist die unverzerrte Version.
+<pause> Aber: R rechnet mit den Befehlen var und sd immer mit n minus eins! Das ist die unverzerrte Version.
 Und wenn in einer Aufgabe steht „unverzerrter Schätzer“ oder „Stichprobenvarianz s Stern“, dann nimmst du n minus eins.
 Umrechnen ist einfach: s Stern Quadrat gleich n durch n minus eins mal s Quadrat.
 
-Noch zwei Beispiele. Erstens die Probeklausur-Aufgabe mit den Schießfehlern: drei, zwei, fünf, eins, drei, vier. Die Summe ist achtzehn, der Mittelwert ist drei. Die Quadrate sind neun, vier, fünfundzwanzig, eins, neun, sechzehn. Zusammen vierundsechzig. Geteilt durch sechs: zehn Komma sechs sechs sechs sieben. Minus drei zum Quadrat, also minus neun. Ergebnis: eins Komma sechs sechs sieben. Das waren zwei Punkte.
+Noch zwei Beispiele. Erstens die Probeklausur-Aufgabe mit den Schießfehlern: drei, zwei, fünf, eins, drei, vier. Die Summe ist achtzehn, der Mittelwert ist drei. Die Quadrate sind neun, vier, fünfundzwanzig, eins, neun, sechzehn. Zusammen vierundsechzig. Geteilt durch sechs: zehn Komma sechs sechs sechs sieben. Minus drei zum Quadrat, also minus neun. Ergebnis: eins Komma sechs sechs sieben. <happy> Das waren zwei Punkte.
 Zweitens mit der Häufigkeitstabelle der Mensabesuche: Der Mittelwert der Quadrate ist: null mal drei plus eins mal fünf plus vier mal acht plus neun mal sechs plus sechzehn mal zwei. Das ist null plus fünf plus zweiunddreißig plus vierundfünfzig plus zweiunddreißig, gleich einhundertdreiundzwanzig. Geteilt durch vierundzwanzig ist fünf Komma eins zwei fünf. Minus eins Komma neun fünf acht drei zum Quadrat. Das gibt eins Komma zwei neun.
 
 Was passiert mit der Streuung bei einer linearen Transformation? Wenn y gleich a plus b mal x ist, dann wird die Varianz mit b zum Quadrat multipliziert. Die Standardabweichung wird mit dem Betrag von b multipliziert. Und das a, also die Verschiebung, ändert an der Streuung gar nichts.
-Logisch: Wenn jeder Preis um einen Euro steigt, liegen die Preise immer noch gleich weit auseinander. Aber wenn man alle Preise in Cent statt in Euro schreibt, also mal hundert, dann wird die Standardabweichung hundertmal so groß, und die Varianz zehntausendmal so groß.
-Im Tutorium war der Datensatz drei genau das Doppelte von Datensatz zwei. Die Varianz war nicht doppelt so groß, sondern viermal so groß: acht statt zwei. Denn zwei zum Quadrat ist vier.
+Was denkst du: Ändert sich die Streuung, wenn jeder Preis um einen Euro steigt? <pause> Nein. Logisch: Wenn jeder Preis um einen Euro steigt, liegen die Preise immer noch gleich weit auseinander. Aber wenn man alle Preise in Cent statt in Euro schreibt, also mal hundert, dann wird die Standardabweichung hundertmal so groß, und die Varianz zehntausendmal so groß.
+Im Tutorium war der Datensatz drei genau das Doppelte von Datensatz zwei. <gasp> Die Varianz war nicht doppelt so groß, sondern viermal so groß: acht statt zwei. Denn zwei zum Quadrat ist vier.
 
 Und damit kommen wir zum Boxplot. Schau auf das Bild im Lernbuch.
 Der Boxplot ist eine Zusammenfassung mit fünf Zahlen: das Minimum, das untere Quartil, der Median, das obere Quartil und das Maximum.
 Die Box, also der Kasten, geht vom unteren zum oberen Quartil. In der Box liegen die mittleren fünfzig Prozent der Daten. Der Strich in der Box ist der Median.
-Die Linien links und rechts heißen Whisker. Das ist das englische Wort für die Barthaare einer Katze.
+Die Linien links und rechts heißen Whisker. <chuckle> Das ist das englische Wort für die Barthaare einer Katze.
 Ausreißer werden als einzelne Punkte gezeichnet. Ein Ausreißer ist ein Wert, der mehr als eineinhalb Interquartilsabstände unter dem unteren Quartil oder über dem oberen Quartil liegt.
 Der Whisker endet beim extremsten Wert, der noch innerhalb dieser Grenzen liegt.
 
@@ -276,13 +276,13 @@ Wir rechnen das Beispiel aus dem Tutorium. Zwanzig Semesterzahlen: eins, eins, e
 Unteres Quartil: zwanzig mal null Komma zwei fünf gleich fünf. Das ist eine ganze Zahl. Also liegt das Quartil zwischen dem fünften und sechsten Wert. Beide sind zwei. Also ist das untere Quartil zwei.
 Oberes Quartil: zwanzig mal null Komma sieben fünf gleich fünfzehn. Der fünfzehnte und sechzehnte Wert sind beide sechs. Also ist das obere Quartil sechs.
 Der Interquartilsabstand ist sechs minus zwei gleich vier.
-Die obere Grenze ist sechs plus eineinhalb mal vier, also sechs plus sechs, gleich zwölf. Welche Werte liegen über zwölf? Dreizehn und vierzehn. Das sind Ausreißer. Der obere Whisker endet beim größten Wert, der noch höchstens zwölf ist. Das ist die Neun.
+Die obere Grenze ist sechs plus eineinhalb mal vier, also sechs plus sechs, gleich zwölf. Welche Werte liegen über zwölf? <pause> Dreizehn und vierzehn. Das sind Ausreißer. Der obere Whisker endet beim größten Wert, der noch höchstens zwölf ist. Das ist die Neun.
 Die untere Grenze ist zwei minus sechs gleich minus vier. Kein Wert liegt darunter. Der untere Whisker endet beim Minimum, also bei eins.
 
 Was kann man aus einem Boxplot ablesen? Natürlich den Median, die Quartile und die Ausreißer. Aber auch die Schiefe: Wenn der Median nah am unteren Rand der Box liegt und der obere Whisker lang ist, dann ist die Verteilung rechtsschief.
-Man kann auch mehrere Gruppen vergleichen, mit mehreren Boxplots nebeneinander. Das kam im Testat eins: Zufriedenheit je Mensa. Aber Achtung: Wenn die Mediane verschieden sind, beweist das keine Ursache. Eine Mitarbeiterin sagte: „Die Mensa bestimmt die Zufriedenheit.“ Das darf man ohne Experiment nicht sagen. Man kann nur sagen: Es gibt einen Zusammenhang.
-Und noch eine Falle aus dem Testat: Wenn keine Punkte eingezeichnet sind, gibt es keine Ausreißer. Ein langer Whisker ist kein Ausreißer!
+Man kann auch mehrere Gruppen vergleichen, mit mehreren Boxplots nebeneinander. Das kam im Testat eins: Zufriedenheit je Mensa. <gasp> Aber Achtung: Wenn die Mediane verschieden sind, beweist das keine Ursache. Eine Mitarbeiterin sagte: „Die Mensa bestimmt die Zufriedenheit.“ Das darf man ohne Experiment nicht sagen. Man kann nur sagen: Es gibt einen Zusammenhang.
+<whisper> Und noch eine Falle aus dem Testat: Wenn keine Punkte eingezeichnet sind, gibt es keine Ausreißer. Ein langer Whisker ist kein Ausreißer!
 
 Jetzt halte an und rechne das Klausurtraining eins E über Lieferzeiten. Zwölf Bestellungen, die Lieferzeiten sind: zwei, drei, drei, vier, vier, vier, fünf, fünf, sechs, sieben, neun, vierzehn. Die Summe und die Summe der Quadrate sind als Hinweis gegeben. Du berechnest Mittelwert, Median, Quartile, beide Varianzen, die Standardabweichung, prüfst auf Ausreißer, und am Ende rechnest du in Stunden um. Denk bei den Quartilen an die Regel: Zwölf mal null Komma zwei fünf ist drei, eine ganze Zahl! Nimm dir ungefähr zwanzig Minuten.
 
-Das war Teil zwei. Du hast jetzt die ganze Beschreibung eines einzelnen Merkmals gelernt. Das ist ein großer Teil der deskriptiven Statistik. Mach jetzt eine längere Pause, zum Beispiel eine Mittagspause. Danach geht es weiter mit Teil drei: Zusammenhänge zwischen zwei Merkmalen, und dann der R-Kurs.
+<excited> Das war Teil zwei! Du hast jetzt die ganze Beschreibung eines einzelnen Merkmals gelernt. Das ist ein großer Teil der deskriptiven Statistik. Mach jetzt eine längere Pause, zum Beispiel eine Mittagspause. Danach geht es weiter mit Teil drei: Zusammenhänge zwischen zwei Merkmalen, und dann der R-Kurs.

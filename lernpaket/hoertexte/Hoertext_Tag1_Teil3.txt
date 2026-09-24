@@ -2,13 +2,13 @@ HÖRTEXT TAG 1, TEIL 3 VON 3
 Kontingenztafel, Chi-Quadrat, Kovarianz, Korrelation, der R-Kurs und Antworten formulieren
 Im Lernbuch: Abschnitte 1.7 bis 1.10, Klausurtraining 1.F bis 1.H, Generalprobe K1
 
-Willkommen zu Teil drei!
+<excited> Willkommen zu Teil drei!
 Das ist der letzte Teil für heute. Er hat zwei Hälften. In der ersten Hälfte lernen wir, wie man den Zusammenhang zwischen zwei Merkmalen beschreibt. In der zweiten Hälfte lernen wir R, ganz von vorne. Für die zweite Hälfte solltest du deinen Computer mit RStudio bereit haben.
 
 
 Abschnitt 1 Punkt 7. Zwei Merkmale: Kontingenztafel und Chi-Quadrat-Koeffizient.
 
-Bis jetzt hatten wir immer nur ein Merkmal. Jetzt schauen wir zwei Merkmale zusammen an. Und zwar für dieselben Personen. Die große Frage ist: Hängen die beiden Merkmale zusammen?
+Bis jetzt hatten wir immer nur ein Merkmal. Jetzt schauen wir zwei Merkmale zusammen an. Und zwar für dieselben Personen. <curious> Die große Frage ist: Hängen die beiden Merkmale zusammen?
 Zum Beispiel: Hängt die Dauer der Arbeitslosigkeit mit der Ausbildung zusammen? Hängt der tödliche Ausgang eines Unfalls mit Alkohol zusammen?
 
 Für diskrete Merkmale benutzen wir eine Kontingenztafel. Das ist eine Tabelle. In den Zeilen stehen die Werte des einen Merkmals, in den Spalten die Werte des anderen Merkmals. In jeder Zelle steht, wie oft diese Kombination vorkommt. Das nennt man die gemeinsame Verteilung.
@@ -20,27 +20,27 @@ In der Klausur bekommt man oft einen Text und muss daraus die Tabelle bauen. Das
 Der Text lautet: Von tausend Verkehrsunfällen waren dreihundertachtzig tödlich. Bei einhundertsechzig tödlichen Unfällen war der Fahrer alkoholisiert. Insgesamt gab es siebenhundertzwanzig Unfälle, bei denen der Fahrer nicht alkoholisiert war.
 Schritt eins: Wir zeichnen eine leere Tabelle mit zwei Zeilen, tödlich und nicht tödlich, und zwei Spalten, Alkohol und kein Alkohol. Dazu eine Summenzeile und eine Summenspalte.
 Schritt zwei: Wir tragen ein, was im Text steht. Tödlich insgesamt: dreihundertachtzig. Tödlich mit Alkohol: einhundertsechzig. Kein Alkohol insgesamt: siebenhundertzwanzig. Und ganz unten rechts: tausend.
-Schritt drei: Wir füllen den Rest durch Abziehen.
+Schritt drei: Wir füllen den Rest durch Abziehen. Versuch es zuerst selbst. <pause>
 Tödlich ohne Alkohol: dreihundertachtzig minus einhundertsechzig gleich zweihundertzwanzig.
 Nicht tödlich insgesamt: tausend minus dreihundertachtzig gleich sechshundertzwanzig.
 Mit Alkohol insgesamt: tausend minus siebenhundertzwanzig gleich zweihundertachtzig.
 Nicht tödlich mit Alkohol: zweihundertachtzig minus einhundertsechzig gleich einhundertzwanzig.
 Nicht tödlich ohne Alkohol: siebenhundertzwanzig minus zweihundertzwanzig gleich fünfhundert.
-Kontrolle: einhundertzwanzig plus fünfhundert gleich sechshundertzwanzig. Stimmt.
+Kontrolle: einhundertzwanzig plus fünfhundert gleich sechshundertzwanzig. <happy> Stimmt.
 
-Jetzt kann man Anteile ablesen. Der Anteil der nicht tödlichen Unfälle ist sechshundertzwanzig durch tausend, gleich null Komma sechs zwei. Der Anteil der Unfälle, die tödlich waren und ohne Alkohol, ist zweihundertzwanzig durch tausend, gleich null Komma zwei zwei. Achtung: Hier geht es um „tödlich und ohne Alkohol“ gleichzeitig. Man teilt durch alle tausend Unfälle.
+Jetzt kann man Anteile ablesen. Der Anteil der nicht tödlichen Unfälle ist sechshundertzwanzig durch tausend, gleich null Komma sechs zwei. Der Anteil der Unfälle, die tödlich waren und ohne Alkohol, ist zweihundertzwanzig durch tausend, gleich null Komma zwei zwei. <gasp> Achtung: Hier geht es um „tödlich und ohne Alkohol“ gleichzeitig. Man teilt durch alle tausend Unfälle.
 
 Jetzt kommt die bedingte Verteilung. Das ist ein sehr wichtiges Konzept, auch für Tag zwei.
-Wir fragen: Wie groß ist der Anteil tödlicher Unfälle, wenn Alkohol im Spiel war?
+Wir fragen: Wie groß ist der Anteil tödlicher Unfälle, wenn Alkohol im Spiel war? Halte kurz an und überlege, durch welche Zahl du teilen musst. <pause>
 Das Wort „wenn“ ist der Hinweis. Wir schauen nur auf die Unfälle mit Alkohol. Das sind zweihundertachtzig. Davon waren einhundertsechzig tödlich. Also ist der Anteil einhundertsechzig durch zweihundertachtzig, gleich null Komma fünf sieben eins.
 Und ohne Alkohol? Wir schauen nur auf die siebenhundertzwanzig Unfälle ohne Alkohol. Davon waren zweihundertzwanzig tödlich. Das ist zweihundertzwanzig durch siebenhundertzwanzig, gleich null Komma drei null sechs.
-Mit Alkohol endet mehr als jeder zweite Unfall tödlich. Ohne Alkohol ist es knapp jeder dritte. Die beiden bedingten Verteilungen sind sehr verschieden. Das heißt: Es gibt einen Zusammenhang zwischen Alkohol und tödlichem Ausgang.
+<sigh> Mit Alkohol endet mehr als jeder zweite Unfall tödlich. Ohne Alkohol ist es knapp jeder dritte. Die beiden bedingten Verteilungen sind sehr verschieden. Das heißt: Es gibt einen Zusammenhang zwischen Alkohol und tödlichem Ausgang.
 Die Regel lautet: Wenn alle bedingten Verteilungen gleich sind, dann sind die Merkmale unabhängig. Wenn sie verschieden sind, gibt es einen Zusammenhang.
 
 Im Lernbuch steht noch das Beispiel aus der Vorlesung: Ausbildung und Dauer der Arbeitslosigkeit. Die Tabelle zeigt die bedingten Verteilungen, zeilenweise. Jede Zeile summiert sich zu eins. Man sieht: Bei Menschen ohne Ausbildung sind knapp fünfzehn Prozent lange arbeitslos. Bei Menschen mit Hochschulabschluss sind es nur gut acht Prozent. Und die kurze Arbeitslosigkeit ist bei Hochschulabsolventen mit achtzig Prozent am häufigsten. Also: Je höher die Ausbildung, desto kürzer die Arbeitslosigkeit, tendenziell.
 
 Wie misst man die Stärke des Zusammenhangs mit einer einzigen Zahl? Mit dem Chi-Quadrat-Koeffizienten.
-Die Idee ist so: Wir fragen uns: Wie würde die Tabelle aussehen, wenn es keinen Zusammenhang gäbe? Diese Zahlen heißen erwartete Häufigkeiten. Dann vergleichen wir die beobachteten Zahlen mit den erwarteten Zahlen. Je größer der Unterschied, desto stärker der Zusammenhang.
+Die Idee ist so: <pause> Wir fragen uns: Wie würde die Tabelle aussehen, wenn es keinen Zusammenhang gäbe? Diese Zahlen heißen erwartete Häufigkeiten. Dann vergleichen wir die beobachteten Zahlen mit den erwarteten Zahlen. Je größer der Unterschied, desto stärker der Zusammenhang.
 Die erwartete Häufigkeit in einer Zelle berechnet man so: Zeilensumme mal Spaltensumme, geteilt durch n.
 Dann rechnet man für jede Zelle: beobachtet minus erwartet, zum Quadrat, geteilt durch erwartet. Und am Ende addiert man alle Zellen.
 Wenn Chi-Quadrat ungefähr null ist, sind die Merkmale fast unabhängig. Wenn Chi-Quadrat groß ist, gibt es einen starken Zusammenhang. Chi-Quadrat ist nie negativ, weil wir quadrieren.
@@ -54,7 +54,7 @@ Nicht tödlich und kein Alkohol: sechshundertzwanzig mal siebenhundertzwanzig du
 Übrigens: Die erwarteten Zahlen haben die gleichen Zeilensummen und Spaltensummen wie die beobachteten. Das ist eine gute Kontrolle.
 Schritt zwei: vergleichen. Beobachtet waren einhundertsechzig, erwartet einhundertsechs Komma vier. Der Unterschied ist dreiundfünfzig Komma sechs. Bei einer Tabelle mit zwei mal zwei Feldern sind alle vier Unterschiede gleich groß, nur mal mit Plus und mal mit Minus. Also überall plus oder minus dreiundfünfzig Komma sechs.
 Schritt drei: summieren. Dreiundfünfzig Komma sechs zum Quadrat, geteilt durch einhundertsechs Komma vier, plus das Gleiche geteilt durch zweihundertdreiundsiebzig Komma sechs, plus geteilt durch einhundertdreiundsiebzig Komma sechs, plus geteilt durch vierhundertsechsundvierzig Komma vier. Das Ergebnis ist ungefähr sechzig Komma vier neun.
-Das ist ein großer Wert. Es gibt einen deutlichen Zusammenhang. Am Tag vier machen wir daraus einen richtigen Test, den Chi-Quadrat-Unabhängigkeitstest.
+<excited> Das ist ein großer Wert. Es gibt einen deutlichen Zusammenhang. Am Tag vier machen wir daraus einen richtigen Test, den Chi-Quadrat-Unabhängigkeitstest.
 
 Halte jetzt an und rechne das Klausurtraining eins F über Rauchen und Sport. Du bekommst einen Text über zweihundert Studierende und baust daraus die Tabelle. Dann berechnest du die bedingten Anteile, die erwarteten Häufigkeiten und Chi-Quadrat. Und in der letzten Teilaufgabe sollst du zu einer Zeitungsaussage Stellung nehmen: „Rauchen macht unsportlich.“ Denk dabei an das, was wir gleich im nächsten Abschnitt über Kausalität lernen. Oder, wenn du schon eine Idee hast, schreib sie auf. Nimm dir ungefähr fünfzehn Minuten.
 
@@ -65,10 +65,10 @@ Jetzt kommen zwei metrische Merkmale. Zum Beispiel Gewicht und Größe. Oder Ler
 Dafür zeichnen wir ein Streudiagramm. Jede Person ist ein Punkt. Auf der x-Achse steht das eine Merkmal, auf der y-Achse das andere. Das Bild nennt man auch Punktwolke.
 Am Streudiagramm sieht man sofort: Steigt die Wolke, fällt sie, oder hat sie keine Richtung? Und: Ist der Zusammenhang eine gerade Linie, oder eine Kurve?
 
-Die Kovarianz misst die Richtung mit einer Zahl. Die Idee ist schön einfach. Bitte stell dir das Bild vor.
+Die Kovarianz misst die Richtung mit einer Zahl. Die Idee ist schön einfach. <pause> Bitte stell dir das Bild vor.
 Wir zeichnen ein großes Kreuz durch den Mittelpunkt der Daten, also durch den Punkt x quer, y quer. Jetzt gibt es vier Bereiche: rechts oben, links unten, links oben und rechts unten.
 Ein Punkt rechts oben hat ein großes x und ein großes y. Beide Abstände zum Mittelwert sind positiv. Ihr Produkt ist positiv.
-Ein Punkt links unten hat ein kleines x und ein kleines y. Beide Abstände sind negativ. Minus mal minus ist plus. Das Produkt ist auch positiv.
+Ein Punkt links unten hat ein kleines x und ein kleines y. Beide Abstände sind negativ. <chuckle> Minus mal minus ist plus. Das Produkt ist auch positiv.
 Diese Punkte passen zu einem positiven Zusammenhang. Man nennt sie konkordant.
 Ein Punkt links oben oder rechts unten hat einen positiven und einen negativen Abstand. Das Produkt ist negativ. Diese Punkte passen zu einem negativen Zusammenhang. Man nennt sie diskordant.
 Die Kovarianz ist der Durchschnitt all dieser Produkte. Wenn die meisten Punkte rechts oben und links unten liegen, ist die Kovarianz positiv.
@@ -76,7 +76,7 @@ Die Kovarianz ist der Durchschnitt all dieser Produkte. Wenn die meisten Punkte 
 Die Formel: Die Kovarianz ist eins durch n mal die Summe von x i minus x quer, mal y i minus y quer.
 Und auch hier gibt es einen Verschiebungssatz, der viel Zeit spart: Die Kovarianz ist der Mittelwert der Produkte x mal y, minus x quer mal y quer.
 
-Die Kovarianz hat aber ein Problem. Ihr Wert hängt von den Einheiten ab. Im Tutorium haben Anne und Bobo die Kovarianz von Gewicht und Größe ausgerechnet. Anne hat die Größe in Zentimetern gemessen und bekam einhundertdreiundfünfzig Komma acht acht. Bobo hat die Größe in Metern gemessen und bekam eins Komma fünf drei acht acht. Beide haben richtig gerechnet! Nur die Einheit ist anders.
+Die Kovarianz hat aber ein Problem. Ihr Wert hängt von den Einheiten ab. Im Tutorium haben Anne und Bobo die Kovarianz von Gewicht und Größe ausgerechnet. Anne hat die Größe in Zentimetern gemessen und bekam einhundertdreiundfünfzig Komma acht acht. Bobo hat die Größe in Metern gemessen und bekam eins Komma fünf drei acht acht. <laugh> Beide haben richtig gerechnet! Nur die Einheit ist anders.
 Man kann den Wert der Kovarianz also nicht gut deuten. Nur das Vorzeichen sagt etwas: plus heißt positiver Zusammenhang, minus heißt negativer Zusammenhang.
 
 Deshalb gibt es den Korrelationskoeffizienten nach Bravais-Pearson. Man teilt die Kovarianz durch das Produkt der beiden Standardabweichungen. Also: r gleich Kovarianz geteilt durch s x mal s y. Oder anders geschrieben: Kovarianz geteilt durch die Wurzel aus Varianz x mal Varianz y.
@@ -87,18 +87,18 @@ Null heißt: kein linearer Zusammenhang.
 Für die Stärke gibt es eine Faustregel aus dem Tutorium. Der Betrag von r unter null Komma drei: schwach. Von null Komma drei bis unter null Komma sieben: mittel. Ab null Komma sieben: stark.
 
 Jetzt rechnen wir das Beispiel aus dem Tutorium komplett. Schau auf die Tabelle mit dem Gewicht und der Größe von fünf Männern. Die Gewichte sind dreiundneunzig, zweiundsiebzig, dreiundachtzig, einhundertvier und sechsundsiebzig Kilogramm. Die Größen sind einhundertachtundneunzig, einhundertsechzig, einhundertsiebenundsechzig, einhundertneunundneunzig und einhundertzweiundachtzig Zentimeter.
-Der Trick für die Klausur ist: Mach eine Tabelle mit fünf Spalten. x, y, x Quadrat, y Quadrat und x mal y. Dann addierst du jede Spalte. Die Summen stehen in der letzten Zeile im Lernbuch.
+<whisper> Der Trick für die Klausur ist: <pause> Mach eine Tabelle mit fünf Spalten. x, y, x Quadrat, y Quadrat und x mal y. Dann addierst du jede Spalte. Die Summen stehen in der letzten Zeile im Lernbuch.
 Die Summe der x ist vierhundertachtundzwanzig. Die Summe der y ist neunhundertsechs. Die Summe der x Quadrate ist siebenunddreißigtausenddreihundertvierzehn. Die Summe der y Quadrate ist einhundertfünfundsechzigtausendvierhundertachtzehn. Und die Summe der Produkte ist achtundsiebzigtausenddreihundertdreiundzwanzig.
 Schritt eins, die Mittelwerte: vierhundertachtundzwanzig durch fünf ist fünfundachtzig Komma sechs. Neunhundertsechs durch fünf ist einhunderteinundachtzig Komma zwei.
 Schritt zwei, die Varianzen mit dem Verschiebungssatz. Für x: siebenunddreißigtausenddreihundertvierzehn durch fünf ist siebentausendvierhundertzweiundsechzig Komma acht. Minus fünfundachtzig Komma sechs zum Quadrat, das ist siebentausenddreihundertsiebenundzwanzig Komma drei sechs. Ergebnis: einhundertfünfunddreißig Komma vier vier. Für y kommt auf die gleiche Weise zweihundertfünfzig Komma eins sechs heraus.
 Schritt drei, die Kovarianz: achtundsiebzigtausenddreihundertdreiundzwanzig durch fünf ist fünfzehntausendsechshundertvierundsechzig Komma sechs. Minus fünfundachtzig Komma sechs mal einhunderteinundachtzig Komma zwei, das ist fünfzehntausendfünfhundertzehn Komma sieben zwei. Ergebnis: einhundertdreiundfünfzig Komma acht acht.
-Schritt vier, die Korrelation: einhundertdreiundfünfzig Komma acht acht geteilt durch die Wurzel aus einhundertfünfunddreißig Komma vier vier mal zweihundertfünfzig Komma eins sechs. Die Wurzel ist ungefähr einhundertvierundachtzig Komma null sieben. Ergebnis: null Komma acht drei sechs.
+Schritt vier, die Korrelation: einhundertdreiundfünfzig Komma acht acht geteilt durch die Wurzel aus einhundertfünfunddreißig Komma vier vier mal zweihundertfünfzig Komma eins sechs. Die Wurzel ist ungefähr einhundertvierundachtzig Komma null sieben. <excited> Ergebnis: null Komma acht drei sechs.
 Schritt fünf, die Interpretation: Es gibt einen starken positiven linearen Zusammenhang. Schwerere Männer sind tendenziell größer.
 Schreib bei der Interpretation in der Klausur immer drei Dinge: die Richtung, also positiv oder negativ; die Stärke, also schwach, mittel oder stark; und das Wort „linear“.
 
 Jetzt vier wichtige Eigenschaften. Die stehen im gelben Kasten.
 Erstens: Die Kovarianz hängt von den Einheiten ab, die Korrelation nicht.
-Zweitens: Die Korrelation misst nur lineare Zusammenhänge. Schau auf das vierte kleine Bild mit der Parabel, also y gleich x Quadrat. Da gibt es einen ganz klaren Zusammenhang! Wenn ich x kenne, kenne ich y. Aber die Korrelation ist fast null, weil der Zusammenhang nicht linear ist. Links fällt die Kurve, rechts steigt sie, und das hebt sich auf.
+Zweitens: Die Korrelation misst nur lineare Zusammenhänge. Schau auf das vierte kleine Bild mit der Parabel, also y gleich x Quadrat. Da gibt es einen ganz klaren Zusammenhang! Wenn ich x kenne, kenne ich y. <gasp> Aber die Korrelation ist fast null, weil der Zusammenhang nicht linear ist. Links fällt die Kurve, rechts steigt sie, und das hebt sich auf.
 Drittens: Daraus folgt eine wichtige Regel. Wenn zwei Merkmale unabhängig sind, dann sind sie unkorreliert. Aber wenn sie unkorreliert sind, müssen sie nicht unabhängig sein. Die Parabel ist das Beispiel.
 Viertens: Die Kovarianz von X mit sich selbst ist die Varianz. Und wenn X gleich Y ist, dann ist die Korrelation genau eins.
 
@@ -106,15 +106,15 @@ Im Lernbuch gibt es noch ein Beispiel, wie man die Kovarianz aus einer Häufigke
 
 Jetzt die Aufgabe aus der Probeklausur. Das waren neun Punkte.
 Gegeben sind: Die Varianz von y ist zehn. Die Varianz von x ist eins Komma sechs. y quer ist zweiundzwanzig. x quer ist drei. n ist sechs. Und die Summe von x mal y ist dreihundertneunundneunzig.
-Kovarianz: dreihundertneunundneunzig durch sechs ist sechsundsechzig Komma fünf. Minus drei mal zweiundzwanzig, also minus sechsundsechzig. Ergebnis: null Komma fünf.
+Rechne die Kovarianz zuerst selbst. <pause> Kovarianz: dreihundertneunundneunzig durch sechs ist sechsundsechzig Komma fünf. Minus drei mal zweiundzwanzig, also minus sechsundsechzig. Ergebnis: null Komma fünf.
 Korrelation: null Komma fünf geteilt durch die Wurzel aus eins Komma sechs mal zehn. Eins Komma sechs mal zehn ist sechzehn. Die Wurzel aus sechzehn ist vier. Null Komma fünf durch vier ist null Komma eins zwei fünf.
 Interpretation: Der Korrelationskoeffizient misst die Stärke des linearen Zusammenhangs und liegt zwischen minus eins und eins. Null Komma eins zwei fünf ist positiv, aber klein. Es gibt also einen schwachen positiven linearen Zusammenhang zwischen Schießfehlern und Laufzeit.
-Die nächste Teilaufgabe war: Der Trainer sagt, die vielen Schießfehler führen zur schwachen Laufleistung. Stimmt das? Die Antwort ist: Nein. Statistische Analysen beweisen keine Kausalität. Der Zusammenhang könnte durch dritte Variablen entstehen, zum Beispiel Müdigkeit oder Wetter. Oder durch Zufall.
+Die nächste Teilaufgabe war: Der Trainer sagt, die vielen Schießfehler führen zur schwachen Laufleistung. Stimmt das? <pause> Die Antwort ist: Nein. Statistische Analysen beweisen keine Kausalität. Der Zusammenhang könnte durch dritte Variablen entstehen, zum Beispiel Müdigkeit oder Wetter. Oder durch Zufall.
 Und die letzte Teilaufgabe war: Skizzieren Sie ein Streudiagramm mit einer Korrelation von null. Da zeichnest du eine runde Punktwolke ohne Richtung. Und du beschriftest die Achsen.
 
 Jetzt die Rangkorrelation nach Spearman.
 Pearson braucht metrische Daten, weil man Abstände zum Mittelwert berechnet. Was macht man bei ordinalen Daten, zum Beispiel bei Bewertungen oder Plätzen? Man ersetzt die Werte durch ihre Ränge. Der kleinste Wert bekommt Rang eins, der zweitkleinste Rang zwei, und so weiter. Dann rechnet man die ganz normale Pearson-Korrelation, aber mit den Rängen.
-Was ist, wenn zwei Werte gleich sind? Das nennt man Bindung. Dann bekommen beide den Durchschnitt der Ränge.
+<curious> Was ist, wenn zwei Werte gleich sind? Das nennt man Bindung. Dann bekommen beide den Durchschnitt der Ränge.
 
 Wir machen das Beispiel im Lernbuch Schritt für Schritt. Fünf Studierende. Lernstunden: zwei, fünf, drei, acht, sechs. Punkte: vierzig, fünfundfünfzig, fünfundfünfzig, neunzig, sechzig.
 Ränge für die Stunden: Die Zwei ist am kleinsten, Rang eins. Die Drei ist Rang zwei. Die Fünf ist Rang drei. Die Sechs ist Rang vier. Die Acht ist Rang fünf. Also in der Reihenfolge der Personen: eins, drei, zwei, fünf, vier.
@@ -123,22 +123,22 @@ Der mittlere Rang ist bei fünf Personen immer n plus eins durch zwei, also drei
 Dann rechnet man wie bei Pearson. Die Summe der Rangprodukte ist vierundfünfzig Komma fünf. Die Summe der quadrierten Ränge von x ist fünfundfünfzig, von y vierundfünfzig Komma fünf. Und n mal drei zum Quadrat ist fünfundvierzig. Das ergibt: neun Komma fünf geteilt durch die Wurzel aus zehn mal neun Komma fünf. Ungefähr null Komma neun sieben fünf.
 Der Spearman-Koeffizient ist höher als Pearson. Warum? Weil der Zusammenhang fast perfekt monoton ist: Mehr Stunden gehen fast immer mit mehr Punkten einher. Aber er ist nicht perfekt linear.
 
-Zum Schluss dieses Abschnitts das große Thema: Korrelation ist keine Kausalität.
+Zum Schluss dieses Abschnitts das große Thema. <pause> Korrelation ist keine Kausalität.
 Kausalität heißt: Eine Änderung von X verursacht eine Änderung von Y. Um das zu beweisen, braucht man ein Experiment. Man muss X gezielt verändern und alle anderen Einflüsse kontrollieren, zum Beispiel durch Randomisierung.
 Die meisten statistischen Analysen zeigen nur einen Zusammenhang, keine Ursache.
-Ein berühmtes Beispiel aus dem Tutorium: Der Margarineverbrauch und die Scheidungsrate im US-Bundesstaat Maine haben eine Korrelation von null Komma neun neun. Fast perfekt! Die Gouverneurin verbietet daraufhin Margarine. Ist das sinnvoll? Natürlich nicht. Margarine verursacht keine Scheidungen. Das ist eine Scheinkorrelation. Vielleicht gibt es eine dritte Variable, zum Beispiel die wirtschaftliche Lage. In schlechten Zeiten kaufen Menschen mehr Margarine, weil sie billiger ist als Butter, und in schlechten Zeiten gibt es auch mehr Scheidungen. Oder es ist einfach Zufall.
+Ein berühmtes Beispiel aus dem Tutorium: Der Margarineverbrauch und die Scheidungsrate im US-Bundesstaat Maine haben eine Korrelation von null Komma neun neun. <gasp> Fast perfekt! Die Gouverneurin verbietet daraufhin Margarine. <laugh> Ist das sinnvoll? Natürlich nicht. Margarine verursacht keine Scheidungen. Das ist eine Scheinkorrelation. Vielleicht gibt es eine dritte Variable, zum Beispiel die wirtschaftliche Lage. In schlechten Zeiten kaufen Menschen mehr Margarine, weil sie billiger ist als Butter, und in schlechten Zeiten gibt es auch mehr Scheidungen. Oder es ist einfach Zufall.
 Ein zweites Beispiel aus der Vorlesung ist der ökologische Fehlschluss. Das ist, wenn man von Gruppen auf einzelne Personen schließt. Im Jahr zweitausendelf gab es in Hamburg viele EHEC-Erkrankungen. In Stadtteilen mit vielen Grünen-Wählern gab es mehr Kranke. Aber daraus folgt nicht, dass Grünen-Wähler krank werden. Die Ursache war verseuchtes Sprossengemüse aus ökologischem Anbau.
 
-Halte jetzt an und rechne das Klausurtraining eins G über Werbung und Umsatz. Sechs Filialen einer Bäckerei. Alle Summen sind als Hinweis gegeben. Du berechnest Kovarianz und Korrelation. Und bei Spearman gibt es einen Trick: Schau dir die Reihenfolge genau an. Welche Filiale hat die wenigste Werbung, und welche hat den wenigsten Umsatz? Und so weiter. Vielleicht musst du gar nicht rechnen. Nimm dir ungefähr zwanzig Minuten.
+Halte jetzt an und rechne das Klausurtraining eins G über Werbung und Umsatz. Sechs Filialen einer Bäckerei. Alle Summen sind als Hinweis gegeben. Du berechnest Kovarianz und Korrelation. <whisper> Und bei Spearman gibt es einen Trick: Schau dir die Reihenfolge genau an. Welche Filiale hat die wenigste Werbung, und welche hat den wenigsten Umsatz? Und so weiter. Vielleicht musst du gar nicht rechnen. Nimm dir ungefähr zwanzig Minuten.
 Danach mach eine Pause, bevor wir mit R anfangen.
 
 
 Abschnitt 1 Punkt 9. R-Kurs von null an.
 
-Willkommen zur zweiten Hälfte! Jetzt lernen wir R. Bitte öffne jetzt RStudio auf deinem Computer. Und kopiere die Übungsdatei Taverne Punkt csv aus dem Ordner uebungsdaten in deinen Ordner Dokumente.
+<excited> Willkommen zur zweiten Hälfte! Jetzt lernen wir R. Bitte öffne jetzt RStudio auf deinem Computer. Und kopiere die Übungsdatei Taverne Punkt csv aus dem Ordner uebungsdaten in deinen Ordner Dokumente.
 Ich erkläre dir jeden Befehl. Im Lernbuch siehst du immer zuerst den Code in einem dunklen Kasten, und dann die echte Ausgabe von R in einem hellen Kasten. Bitte tippe jeden Befehl selbst ab. Nicht kopieren! Nur so lernen deine Finger R. Und in der Klausur musst du alles selbst tippen.
 
-Keine Angst vor R. R ist eigentlich nur ein sehr guter Taschenrechner, der auch mit Tabellen und Grafiken umgehen kann.
+<chuckle> Keine Angst vor R. R ist eigentlich nur ein sehr guter Taschenrechner, der auch mit Tabellen und Grafiken umgehen kann.
 
 Teil eins: RStudio kennenlernen.
 RStudio hat vier Fenster. Oben links ist das Skript. Dort schreibst du deine Befehle, wie in einem Heft. Unten links ist die Konsole. Dort führt R die Befehle aus und zeigt das Ergebnis. Oben rechts ist das Environment. Dort siehst du alle Objekte, die du gespeichert hast. Unten rechts siehst du Grafiken, Dateien und die Hilfe.
@@ -147,7 +147,7 @@ Speichere dein Skript regelmäßig mit Steuerung und S.
 Alles, was hinter einem Rautezeichen steht, ist ein Kommentar. R ignoriert es. Kommentare sind für Menschen. Schreib in der Klausur kurze Kommentare, dann verstehen die Korrektoren deinen Weg.
 
 Teil zwei: R als Taschenrechner und Objekte.
-Tippe: drei plus vier mal zwei. R antwortet: elf. Denn Punktrechnung geht vor Strichrechnung. Mit Klammern, also drei plus vier in Klammern, mal zwei, kommt vierzehn heraus.
+Tippe: drei plus vier mal zwei. Was kommt heraus? <pause> R antwortet: elf. Denn Punktrechnung geht vor Strichrechnung. Mit Klammern, also drei plus vier in Klammern, mal zwei, kommt vierzehn heraus.
 Zwei Dach drei ist zwei hoch drei, also acht. sqrt von sechzehn ist die Wurzel, also vier. log von zehn ist der natürliche Logarithmus. exp von eins ist die Eulersche Zahl. Und choose, Klammer, zehn Komma zwei, ist der Binomialkoeffizient „zehn über zwei“, also fünfundvierzig. Den brauchen wir am Tag zwei.
 In der Ausgabe steht vor jedem Ergebnis eine eckige Klammer mit einer Eins. Das bedeutet nur: Hier beginnt das erste Element. Es gehört nicht zum Ergebnis.
 
@@ -155,7 +155,7 @@ Jetzt das Wichtigste: Objekte. In R speichert man Werte in Objekten. Man benutzt
 a bekommt fünf. Das heißt: Im Objekt a ist jetzt die Zahl fünf gespeichert.
 b bekommt a mal zwei. Jetzt ist in b die Zahl zehn.
 Bei einer Zuweisung zeigt R nichts an. Wenn du den Inhalt sehen willst, tippst du einfach den Namen, also b, und drückst Enter.
-Drei Regeln für Namen: Erstens, Groß- und Kleinschreibung ist wichtig. Klein d und groß D sind zwei verschiedene Objekte. Und der Befehl mean mit großem M funktioniert nicht, nur mit kleinem m. Zweitens, ein Name darf nicht mit einer Zahl beginnen. Drittens, benutze bei Dezimalzahlen immer einen Punkt. Zwei Punkt fünf ist richtig. Zwei Komma fünf ist in R falsch, denn das Komma trennt in R die Teile eines Befehls.
+<pause> Drei Regeln für Namen: Erstens, Groß- und Kleinschreibung ist wichtig. Klein d und groß D sind zwei verschiedene Objekte. Und der Befehl mean mit großem M funktioniert nicht, nur mit kleinem m. Zweitens, ein Name darf nicht mit einer Zahl beginnen. Drittens, benutze bei Dezimalzahlen immer einen Punkt. Zwei Punkt fünf ist richtig. <gasp> Zwei Komma fünf ist in R falsch, denn das Komma trennt in R die Teile eines Befehls.
 
 Teil drei: Vektoren. Das ist die wichtigste Datenstruktur in R.
 Ein Vektor ist eine Reihe von Werten. Zum Beispiel alle Beobachtungen eines Merkmals.
@@ -163,21 +163,21 @@ Man erstellt einen Vektor mit dem Buchstaben c und Klammern. c heißt combine, a
 Tippe: x bekommt c, Klammer auf, drei Komma zwei Komma fünf Komma eins Komma drei Komma vier, Klammer zu. Dann tippe x. R zeigt: drei, zwei, fünf, eins, drei, vier.
 length von x gibt die Anzahl der Werte, also sechs. Das ist unser n.
 
-Auf einzelne Werte greift man mit eckigen Klammern zu. x, eckige Klammer auf, eins, eckige Klammer zu, gibt den ersten Wert, also drei. In R fängt man bei eins an zu zählen, nicht bei null.
+Auf einzelne Werte greift man mit eckigen Klammern zu. x, eckige Klammer auf, eins, eckige Klammer zu, gibt den ersten Wert, also drei. <whisper> In R fängt man bei eins an zu zählen, nicht bei null.
 x, eckige Klammer, c von zwei Komma vier, gibt den zweiten und vierten Wert: zwei und eins.
 x, eckige Klammer, minus eins, gibt alle Werte außer dem ersten.
 
-Jetzt kommt etwas Praktisches: R rechnet automatisch mit jedem Element. x mal zwei gibt: sechs, vier, zehn, zwei, sechs, acht. Jeder Wert wird verdoppelt. x plus zehn addiert zu jedem Wert zehn. Man braucht keine Schleife.
+Jetzt kommt etwas Praktisches: R rechnet automatisch mit jedem Element. x mal zwei gibt: sechs, vier, zehn, zwei, sechs, acht. Jeder Wert wird verdoppelt. x plus zehn addiert zu jedem Wert zehn. <happy> Man braucht keine Schleife.
 sum von x gibt die Summe, achtzehn. sort von x sortiert die Werte: eins, zwei, drei, drei, vier, fünf.
 
 Jetzt die Bedingungen. Tippe: x größer als zwei. R antwortet mit einer Reihe von TRUE und FALSE. TRUE heißt wahr, FALSE heißt falsch. Für jeden Wert prüft R: Ist er größer als zwei? Drei ist größer, also TRUE. Zwei ist nicht größer, also FALSE. Und so weiter.
 Damit kann man filtern. x, eckige Klammer, x größer als zwei, gibt nur die Werte, bei denen die Bedingung wahr ist: drei, fünf, drei, vier.
-Und jetzt ein super Trick: In R zählt TRUE als eins und FALSE als null. Deshalb gibt sum von x größer als zwei die Anzahl der Werte, die größer als zwei sind. Das ist vier. Und mean von x größer als zwei gibt den Anteil. Das ist vier durch sechs, also null Komma sechs sechs sechs sieben. Diesen Trick brauchst du oft, zum Beispiel für die Frage: „Welcher Anteil hat mehr als fünfundzwanzig Münzen?“
-Die Vergleichszeichen sind: größer, größer gleich, kleiner, kleiner gleich. Und für „gleich“ schreibt man zwei Gleichheitszeichen hintereinander! Ein einzelnes Gleichheitszeichen ist eine Zuweisung, kein Vergleich. Für „ungleich“ schreibt man Ausrufezeichen und Gleichheitszeichen.
+<excited> Und jetzt ein super Trick: <pause> In R zählt TRUE als eins und FALSE als null. Deshalb gibt sum von x größer als zwei die Anzahl der Werte, die größer als zwei sind. Das ist vier. Und mean von x größer als zwei gibt den Anteil. Das ist vier durch sechs, also null Komma sechs sechs sechs sieben. Diesen Trick brauchst du oft, zum Beispiel für die Frage: „Welcher Anteil hat mehr als fünfundzwanzig Münzen?“
+Die Vergleichszeichen sind: größer, größer gleich, kleiner, kleiner gleich. <gasp> Und für „gleich“ schreibt man zwei Gleichheitszeichen hintereinander! Ein einzelnes Gleichheitszeichen ist eine Zuweisung, kein Vergleich. Für „ungleich“ schreibt man Ausrufezeichen und Gleichheitszeichen.
 
 Zum Schluss dieses Teils: Folgen erzeugen. Eins Doppelpunkt sechs gibt die Zahlen von eins bis sechs. seq, Klammer, null Komma zwanzig Komma by gleich fünf, gibt null, fünf, zehn, fünfzehn, zwanzig. seq heißt sequence, also Folge. Und rep, Klammer, eins durch sechs Komma drei, wiederholt den Wert ein Sechstel dreimal. rep heißt repeat.
 
-Teil vier: Datentypen. Das kam in beiden R-Probeklausuren, mit zwei bis vier Punkten!
+Teil vier: Datentypen. <excited> Das kam in beiden R-Probeklausuren, mit zwei bis vier Punkten!
 Jedes Objekt in R hat einen Typ. Den Typ findest du mit dem Befehl typeof.
 typeof von x gibt „double“. Double heißt: Kommazahl. Das ist die normale Zahl in R.
 typeof von eins Doppelpunkt sechs gibt „integer“. Integer heißt: ganze Zahl.
@@ -187,7 +187,7 @@ typeof von x größer als zwei gibt „logical“. Logical heißt: wahr oder fal
 Und dann gibt es noch den factor. Ein factor ist eine Variable mit Kategorien, zum Beispiel „Wolf“ und „Troll“. Den erkennst du mit dem Befehl class. levels zeigt die möglichen Kategorien. Einen factor bekommst du zum Beispiel, wenn du Werte mit dem Befehl cut in Klassen einteilst. Das kommt gleich.
 In der Musterlösung stand: typeof, alternativ class oder str. Alle drei Befehle sind richtig.
 
-Teil fünf: einen Datensatz einlesen. Das kommt in jeder R-Klausur vor, meistens gleich in den ersten beiden Teilaufgaben, mit zusammen sechs Punkten.
+Teil fünf: einen Datensatz einlesen. <pause> Das kommt in jeder R-Klausur vor, meistens gleich in den ersten beiden Teilaufgaben, mit zusammen sechs Punkten.
 Schau zuerst im Lernbuch, wie die Datei als Text aussieht. Die erste Zeile enthält die Spaltennamen: Taverne, Tal, Monster, Muenzen, Kampfzeit. Die Werte sind mit Semikolons getrennt. Und die Kommazahlen haben einen Punkt.
 Das sind genau die drei Informationen, die R braucht.
 
@@ -204,11 +204,11 @@ Und das Ergebnis speichern wir im Objekt d. d ist dann ein Data Frame, also eine
 
 Schritt drei: anschauen. head von d zeigt die ersten sechs Zeilen. Das wird in der Klausur fast immer verlangt: „Geben Sie die ersten sechs Zeilen wieder.“ Dann kopierst du den Befehl und die Ausgabe in das ILIAS-Kästchen.
 
-Schritt vier: die Struktur prüfen. Tippe str von d. Das ist der wichtigste Befehl nach dem Einlesen. R zeigt: data frame, zwölf observations, also zwölf Zeilen, und fünf Variablen, also fünf Spalten. Dann kommt jede Variable mit ihrem Typ. Bei Taverne, Tal und Monster steht chr, also character. Bei Muenzen steht int, also integer. Bei Kampfzeit steht num, also numeric.
+Schritt vier: die Struktur prüfen. Tippe str von d. <whisper> Das ist der wichtigste Befehl nach dem Einlesen. R zeigt: data frame, zwölf observations, also zwölf Zeilen, und fünf Variablen, also fünf Spalten. Dann kommt jede Variable mit ihrem Typ. Bei Taverne, Tal und Monster steht chr, also character. Bei Muenzen steht int, also integer. Bei Kampfzeit steht num, also numeric.
 Warum ist das so wichtig? Weil du hier siehst, ob das Einlesen geklappt hat. Wenn alles in einer einzigen Spalte steht, war das Trennzeichen sep falsch. Wenn Zahlen als chr erscheinen, war oft das Dezimalzeichen dec falsch. Dann änderst du die Einlese-Zeile und liest noch einmal ein.
 
 Weitere nützliche Befehle: names von d gibt die Spaltennamen. dim von d gibt die Anzahl der Zeilen und Spalten, hier zwölf und fünf.
-Eine einzelne Spalte bekommst du mit dem Dollarzeichen. d Dollar Muenzen gibt alle zwölf Münzwerte als Vektor. Merke: Dollar heißt „aus der Tabelle d die Spalte Muenzen“.
+Eine einzelne Spalte bekommst du mit dem Dollarzeichen. d Dollar Muenzen gibt alle zwölf Münzwerte als Vektor. <pause> Merke: Dollar heißt „aus der Tabelle d die Spalte Muenzen“.
 Mit eckigen Klammern kannst du Zeilen und Spalten auswählen. Die Regel ist: d, eckige Klammer, Zeile, Komma, Spalte. Vor dem Komma steht die Zeile, nach dem Komma die Spalte. Wenn du etwas leer lässt, bedeutet das „alle“. d, eckige Klammer, zwei Komma, und nichts, gibt die ganze zweite Zeile. d, eckige Klammer, eins Doppelpunkt drei, Komma, c von Tal und Muenzen, gibt die Zeilen eins bis drei und nur die zwei Spalten Tal und Muenzen.
 Und jetzt die Typen der Variablen, genau wie in der Klausur: typeof von d Dollar Tal gibt character. typeof von d Dollar Muenzen gibt integer. typeof von d Dollar Kampfzeit gibt double.
 
@@ -217,7 +217,7 @@ mean von d Dollar Muenzen gibt den Mittelwert: zweiundzwanzig Komma null acht dr
 median gibt den Median: dreiundzwanzig.
 var gibt die Varianz: dreiundfünfzig Komma eins sieben.
 sd gibt die Standardabweichung: sieben Komma zwei neun.
-Und jetzt die große Warnung, die du schon kennst: var und sd rechnen mit n minus eins! Das ist die unverzerrte Version. In der Probeklausur B war genau das gefragt: „der unverzerrte Schätzer für die Standardabweichung“. Dann ist sd genau richtig.
+<gasp> Und jetzt die große Warnung, die du schon kennst: var und sd rechnen mit n minus eins! Das ist die unverzerrte Version. In der Probeklausur B war genau das gefragt: „der unverzerrte Schätzer für die Standardabweichung“. Dann ist sd genau richtig.
 Wenn du die Varianz mit eins durch n brauchst, rechnest du um: var mal n minus eins, geteilt durch n. Im Lernbuch siehst du, wie das geht. Es kommt achtundvierzig Komma sieben vier heraus.
 
 In der Klausur musst du immer auf drei Nachkommastellen runden, und zwar mit einem R-Befehl. Der Befehl heißt round. round, Klammer, mean von d Dollar Muenzen, Komma drei, Klammer zu. Das Ergebnis ist zweiundzwanzig Komma null acht drei.
@@ -230,7 +230,7 @@ Und summary gibt alles auf einmal: Minimum, unteres Quartil, Median, Mittelwert,
 
 Für kategoriale Variablen gibt es table. table von d Dollar Monster zählt, wie oft jedes Monster vorkommt: Ghul dreimal, Greif zweimal, Troll viermal, Wolf dreimal.
 prop Punkt table von table von d Dollar Monster macht daraus Anteile.
-Den Modus bekommt man mit which: which, Klammer, table gleich gleich max von table. R antwortet: Troll, und darunter eine Drei. Achtung: Der Modus ist der Name, also Troll. Die Drei darunter ist nur die Position in der Tabelle, nicht die Anzahl!
+Den Modus bekommt man mit which: which, Klammer, table gleich gleich max von table. R antwortet: Troll, und darunter eine Drei. <gasp> Achtung: Der Modus ist der Name, also Troll. Die Drei darunter ist nur die Position in der Tabelle, nicht die Anzahl!
 
 Jetzt rechnen wir nach Gruppen. tapply, Klammer, d Dollar Muenzen, Komma, d Dollar Tal, Komma, mean. Das heißt: Berechne den Mittelwert der Münzen, und zwar für jedes Tal einzeln. R antwortet: Bergtal sechsundzwanzig, Flusstal sechzehn Komma sieben fünf, Waldtal dreiundzwanzig Komma fünf.
 
@@ -240,21 +240,21 @@ Und mean von d Dollar Muenzen größer als fünfundzwanzig gibt den Anteil: ein 
 
 Fehlende Werte: Manchmal fehlen in Daten Werte. In R heißen sie NA, not available. Wenn ein Vektor ein NA enthält, gibt mean einfach NA zurück. Dann schreibt man zusätzlich na Punkt rm gleich TRUE. Das heißt: NA remove, also die fehlenden Werte weglassen.
 
-Teil sieben: Grafiken als PDF speichern. Dafür gab es in den Probeklausuren sieben bis acht Punkte!
-Es geht immer in drei Schritten. Bitte merke dir diese drei Schritte wie ein Rezept.
+Teil sieben: Grafiken als PDF speichern. <excited> Dafür gab es in den Probeklausuren sieben bis acht Punkte!
+Es geht immer in drei Schritten. Bitte merke dir diese drei Schritte wie ein Rezept. <pause>
 Schritt eins: pdf, Klammer, Anführungszeichen Histogramm Punkt pdf. Damit öffnest du eine leere PDF-Datei.
 Schritt zwei: Du zeichnest die Grafik. Zum Beispiel mit hist.
-Schritt drei: dev Punkt off, Klammer auf, Klammer zu. Damit schließt du die Datei. Wenn du das vergisst, ist die PDF-Datei leer oder kaputt, und du bekommst keine Punkte!
+Schritt drei: dev Punkt off, Klammer auf, Klammer zu. Damit schließt du die Datei. <sigh> Wenn du das vergisst, ist die PDF-Datei leer oder kaputt, und du bekommst keine Punkte!
 
 Der Befehl hist hat viele Teile. Schau auf die Tabelle im Lernbuch.
 Zuerst kommen die Daten: d Dollar Muenzen.
 breaks gleich c von zehn, zwanzig, dreißig, vierzig. Das sind die Klassengrenzen.
 right gleich FALSE. Das heißt: Die Intervalle sind links geschlossen und rechts offen, also zehn bis unter zwanzig. Wenn du right gleich TRUE schreibst, oder gar nichts, dann sind die Intervalle links offen und rechts geschlossen. Das ist der Standard in R.
-freq gleich FALSE. Das ist sehr wichtig! Damit wird das Histogramm normiert. Auf der y-Achse steht dann die Dichte, und die Gesamtfläche ist eins. Genau wie wir es in Teil zwei gelernt haben. prob gleich TRUE macht übrigens das Gleiche.
-main ist der Titel. In der Klausur muss der Titel den Aufgabenteil, deine Matrikelnummer und deine Sitzplatznummer enthalten!
+freq gleich FALSE. <gasp> Das ist sehr wichtig! Damit wird das Histogramm normiert. Auf der y-Achse steht dann die Dichte, und die Gesamtfläche ist eins. Genau wie wir es in Teil zwei gelernt haben. prob gleich TRUE macht übrigens das Gleiche.
+main ist der Titel. <whisper> In der Klausur muss der Titel den Aufgabenteil, deine Matrikelnummer und deine Sitzplatznummer enthalten!
 xlab und ylab sind die Beschriftungen der x-Achse und der y-Achse. Schreib genau das, was die Aufgabe verlangt.
 
-Wenn du die Zahlen hinter dem Histogramm sehen willst, schreibst du plot gleich FALSE. Dann zeichnet R nichts, sondern rechnet nur. Mit h Dollar counts siehst du die Anzahlen: vier, sechs, zwei. Und mit h Dollar density die Höhen. Kontrolle: vier von zwölf Werten in der Klasse zehn bis zwanzig, das ist ein Drittel, geteilt durch die Breite zehn, gibt null Komma null drei drei. Genau wie die Formel aus Teil zwei!
+Wenn du die Zahlen hinter dem Histogramm sehen willst, schreibst du plot gleich FALSE. Dann zeichnet R nichts, sondern rechnet nur. Mit h Dollar counts siehst du die Anzahlen: vier, sechs, zwei. Und mit h Dollar density die Höhen. Kontrolle: vier von zwölf Werten in der Klasse zehn bis zwanzig, das ist ein Drittel, geteilt durch die Breite zehn, gibt null Komma null drei drei. <happy> Genau wie die Formel aus Teil zwei!
 
 Weitere Grafiken: plot, Klammer, x-Werte Komma y-Werte, zeichnet ein Streudiagramm. Zuerst kommt immer x, dann y. pch gleich sechzehn macht ausgefüllte Punkte.
 boxplot zeichnet einen Boxplot. Mit der Schreibweise Muenzen Tilde Tal, Komma, data gleich d, bekommst du einen Boxplot für jedes Tal nebeneinander. Die Tilde bedeutet hier: „Muenzen aufgeteilt nach Tal“.
@@ -267,13 +267,13 @@ Was passiert hier? Links vom Pfeil steht d Dollar Kampfzeit Punkt drei. Diese Sp
 Inf bedeutet unendlich. Die letzte Klasse geht also von sechzig bis unendlich.
 right gleich FALSE bedeutet: Die Klassen sind null bis unter fünf, fünf bis unter sechzig, und sechzig und mehr. Das passt zu Formulierungen wie „weniger als fünf Minuten“ und „fünf Minuten bis weniger als eine Stunde“.
 Wenn die Aufgabe dagegen sagt: „bis zu zehn Münzen“, „mehr als zehn, aber maximal zwanzig“, dann brauchst du right gleich TRUE, denn dann gehört die obere Grenze dazu.
-Lies die Wörter in der Aufgabe also ganz genau!
+<pause> Lies die Wörter in der Aufgabe also ganz genau!
 Das Ergebnis von cut ist ein factor. Mit table siehst du, wie viele Werte in jeder Klasse liegen.
 Mit labels kannst du den Klassen eigene Namen geben, zum Beispiel „wenig“, „mittel“ und „viel“.
 
 Eine Kontingenztafel machst du ganz einfach mit table und zwei Variablen: table von d Dollar Tal, Komma, d Dollar Kampfzeit Punkt drei. Die erste Variable kommt in die Zeilen, die zweite in die Spalten.
 Und jetzt ein etwas längerer Befehl aus dem Testat. Die Aufgabe war: Betrachte nur die Beobachtungen mit einer Kampfzeit von fünf bis unter sechzig Minuten, und gib die Anteile an. Der Befehl ist: round, prop Punkt table, table, d Dollar Tal, eckige Klammer, d Dollar Kampfzeit Punkt drei gleich gleich Anführungszeichen, eckige Klammer fünf Komma sechzig runde Klammer, Anführungszeichen, eckige Klammer zu, und am Ende Komma zwei.
-Den liest man von innen nach außen. Innen: Nimm die Täler, aber nur dort, wo die Kampfzeit in der mittleren Klasse liegt. Dann zähle mit table. Dann mache Anteile mit prop Punkt table. Dann runde auf zwei Stellen mit round. Es kommt heraus: Bergtal null Komma fünf null, Flusstal null Komma drei drei, Waldtal null Komma eins sieben.
+<pause> Den liest man von innen nach außen. Innen: Nimm die Täler, aber nur dort, wo die Kampfzeit in der mittleren Klasse liegt. Dann zähle mit table. Dann mache Anteile mit prop Punkt table. Dann runde auf zwei Stellen mit round. Es kommt heraus: Bergtal null Komma fünf null, Flusstal null Komma drei drei, Waldtal null Komma eins sieben.
 
 Die Korrelation berechnest du mit cor, Klammer, x-Werte Komma y-Werte. Das gibt die Pearson-Korrelation. Für Spearman schreibst du zusätzlich method gleich Anführungszeichen spearman. Bei unseren Daten kommt für Pearson null Komma neun zwei acht heraus, also ein starker positiver linearer Zusammenhang zwischen Münzen und Kampfzeit.
 
@@ -283,7 +283,7 @@ Die häufigsten Fehler stehen in der Tabelle im Lernbuch.
 „object d not found“ heißt: Das Objekt gibt es noch nicht. Meistens hast du die Einlese-Zeile noch nicht ausgeführt.
 „cannot open file“ heißt: Die Datei wurde nicht gefunden. Entweder ist der Arbeitsordner falsch, oder du hast dich beim Dateinamen vertippt. Mit list Punkt files siehst du alle Dateien im Ordner.
 „could not find function“ heißt: Du hast den Befehl falsch geschrieben, zum Beispiel mit großem Buchstaben.
-Wenn in der Konsole ein Pluszeichen steht und nichts passiert, fehlt eine Klammer oder ein Anführungszeichen. Drück die Escape-Taste und prüfe deine Klammern.
+<chuckle> Wenn in der Konsole ein Pluszeichen steht und nichts passiert, fehlt eine Klammer oder ein Anführungszeichen. Drück die Escape-Taste und prüfe deine Klammern.
 
 Im Lernbuch findest du am Ende des R-Kurses eine Tabelle mit allen wichtigen Befehlen von heute. Diese Tabelle schreibst du auf dein Formelblatt für Teil B.
 
@@ -293,7 +293,7 @@ Arbeite wie in der Klausur: Schreibe dein Skript, kopiere Code und Ausgabe, und 
 
 Abschnitt 1 Punkt 10. Antworten richtig formulieren.
 
-Zum Schluss noch ein ganz praktisches Thema. Viele Studierende wissen die Antwort, verlieren aber trotzdem Punkte, weil die Antwort unklar geschrieben ist. Im Lernbuch findest du eine Tabelle mit Mustersätzen. Die kannst du fast wörtlich benutzen.
+<pause> Zum Schluss noch ein ganz praktisches Thema. Viele Studierende wissen die Antwort, verlieren aber trotzdem Punkte, weil die Antwort unklar geschrieben ist. Im Lernbuch findest du eine Tabelle mit Mustersätzen. Die kannst du fast wörtlich benutzen.
 Ein paar davon lese ich dir vor.
 Für das Skalenniveau: „X ist ein stetiges, kardinal skaliertes Merkmal, weil die Abstände zwischen den Werten sinnvoll interpretierbar sind.“
 Wenn ein Parameter nicht sinnvoll ist: „Der Median ist für nominale Merkmale nicht sinnvoll, weil sich die Ausprägungen nicht der Größe nach ordnen lassen.“
@@ -302,7 +302,7 @@ Für die Kausalität: „Nein. Eine Korrelation belegt keine Kausalität. Der Zu
 Und für die R-Klausur: „Das arithmetische Mittel der Variable Muenzen beträgt zweiundzwanzig Komma null acht drei.“
 
 Noch vier Regeln für die Form.
-Erstens: In Teil A schreibst du nur das Endergebnis in das Lösungskästchen, außer ein Lösungsweg ist verlangt. Schreibe niemals zwei verschiedene Lösungen hin. Streiche falsche Versuche durch.
+Erstens: In Teil A schreibst du nur das Endergebnis in das Lösungskästchen, außer ein Lösungsweg ist verlangt. <gasp> Schreibe niemals zwei verschiedene Lösungen hin. Streiche falsche Versuche durch.
 Zweitens: In Teil B gibt es pro Teilaufgabe oft zwei Kästchen. In das erste kopierst du den R-Code und die R-Ausgabe. In das zweite schreibst du die inhaltliche Antwort als ganzen Satz, ohne Code, auf drei Nachkommastellen gerundet. Falschen Code, der nicht zur Antwort gehört, löschst du.
 Drittens: Folgefehler werden berücksichtigt. Wenn du eine Teilaufgabe nicht lösen kannst, rechne mit einem sinnvollen Wert weiter, und schreib dazu, dass du das gemacht hast.
 Viertens: Wenn du glaubst, eine Aufgabe ist nicht lösbar, schreibst du „nicht lösbar“ in das Kästchen und eine Begründung in das Feld am Ende der Klausur.
@@ -316,6 +316,6 @@ Dann kommt die Generalprobe: sechs gemischte Klausuraufgaben, zusammen achtunddr
 
 Und zum Schluss: Nimm dein Formelblatt. Am Ende der Lösungen steht, was du heute daraufschreiben sollst. Für Teil A: die Skalen, die Formeln für Häufigkeiten und Histogramm, Mittelwert und Median, die Quantil-Regel, den Verschiebungssatz, die Boxplot-Regel, Chi-Quadrat, Kovarianz und Korrelation. Und für Teil B ein eigenes Blatt mit den R-Befehlen.
 
-Du hast heute unglaublich viel geschafft. Wirklich. Du kennst jetzt die ganze deskriptive Statistik, und du hast die ersten Schritte in R gemacht. Das ist die Grundlage für alles, was kommt.
+<excited> Du hast heute unglaublich viel geschafft. <pause> Wirklich. Du kennst jetzt die ganze deskriptive Statistik, und du hast die ersten Schritte in R gemacht. Das ist die Grundlage für alles, was kommt.
 Morgen geht es weiter mit Wahrscheinlichkeiten.
-Schlaf gut, und bis morgen!
+<happy> Schlaf gut, und bis morgen!
