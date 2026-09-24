@@ -1,0 +1,299 @@
+<section class="t2">
+<div class="daycover" data-n="2">
+  <div class="kicker">Tag 2 · Vorlesungen V04–V06 · Tutorien 4–6 · Testate 3–4</div>
+  <h1>Wahrscheinlichkeit<br>und Zufallsvariablen</h1>
+  <p>Heute lernst du, wie man mit dem Zufall rechnet. Wir rechnen mit Mengen, bedingten Wahrscheinlichkeiten und dem Satz von Bayes (ca. 10–15 Punkte in Teil A!). Danach beschreiben wir den Zufall mit Zahlen: Zufallsvariablen, Dichte, Verteilungsfunktion, Erwartungswert und Varianz.</p>
+  <div class="chips"><span class="chip">Laplace</span><span class="chip">Kolmogorov</span><span class="chip">bedingte W.</span><span class="chip">Unabhängigkeit</span><span class="chip">totale W.</span><span class="chip">Bayes</span><span class="chip">Dichte</span><span class="chip">E(X), Var(X)</span></div>
+</div>
+<table class="plan">
+<tr><th>Zeit</th><th>Was du machst</th></tr>
+<tr><td>09:00–10:45</td><td>Wiederholung Tag 1 (10 Min. Formelblatt lesen) · Hörtext 2.1–2.3, Kontrollfragen</td></tr>
+<tr><td>11:00–12:30</td><td>Hörtext 2.4 (Bayes): jedes Beispiel mit Baumdiagramm selbst zeichnen</td></tr>
+<tr><td>13:30–15:30</td><td>Hörtext 2.5–2.7 (Zufallsvariablen, Integrale), Kontrollfragen</td></tr>
+<tr><td>15:45–16:30</td><td>Hörtext 2.8 (zwei Zufallsvariablen)</td></tr>
+<tr><td>16:45–18:15</td><td>Klausuraufgaben Tag 2, Formelblatt ergänzen</td></tr>
+</table>
+
+<!-- 2.1 -->
+<h2 class="lek"><span class="num">2.1</span> Zufallsexperiment, Ereignisse und Mengen <span class="ear">Hörtext 2.1</span></h2>
+<p>Ein <b>Zufallsexperiment</b> hat mehrere mögliche Ergebnisse; vorher weiß man nicht, welches kommt (Würfel, Münze, Umfrage).</p>
+<table class="tab wide">
+<tr><th class="l">Begriff</th><th class="l">Bedeutung</th><th class="l">Beispiel: ein Würfelwurf</th></tr>
+<tr><td class="l">Ergebnisraum \(\Omega\)</td><td class="l">Menge <b>aller</b> möglichen Ergebnisse</td><td class="l">\(\Omega=\{1,2,3,4,5,6\}\)</td></tr>
+<tr><td class="l">Elementarereignis \(\omega\)</td><td class="l">ein einzelnes Ergebnis</td><td class="l">\(\omega = 4\)</td></tr>
+<tr><td class="l">Ereignis \(A\subseteq\Omega\)</td><td class="l">eine Teilmenge von \(\Omega\)</td><td class="l">„gerade Zahl“: \(A=\{2,4,6\}\)</td></tr>
+<tr><td class="l">Gegenereignis \(\bar A = A^c\)</td><td class="l">\(A\) tritt <b>nicht</b> ein</td><td class="l">\(\bar A=\{1,3,5\}\)</td></tr>
+<tr><td class="l">Schnitt \(A\cap B\)</td><td class="l">\(A\) <b>und</b> \(B\)</td><td class="l">\(\{2,4,6\}\cap\{1,2,3\}=\{2\}\)</td></tr>
+<tr><td class="l">Vereinigung \(A\cup B\)</td><td class="l">\(A\) <b>oder</b> \(B\) (oder beide)</td><td class="l">\(\{2,4,6\}\cup\{1,2,3\}=\{1,2,3,4,6\}\)</td></tr>
+<tr><td class="l">Differenz \(A\setminus B=A\cap\bar B\)</td><td class="l">\(A\), aber nicht \(B\)</td><td class="l">\(\{2,4,6\}\setminus\{1,2,3\}=\{4,6\}\)</td></tr>
+<tr><td class="l">disjunkt</td><td class="l">\(A\cap B=\emptyset\): schließen sich aus</td><td class="l">„gerade“ und „ungerade“</td></tr>
+<tr><td class="l">Mächtigkeit \(|A|\)</td><td class="l">Anzahl der Elemente</td><td class="l">\(|\{2,4,6\}|=3\)</td></tr>
+<tr><td class="l">\(A\subseteq B\)</td><td class="l">\(A\) impliziert \(B\)</td><td class="l">\(\{2,4,6\}\subseteq\{2,3,4,5,6\}\)</td></tr>
+</table>
+<div class="box formel"><div class="t">Formel: Laplace-Experiment (alle Ergebnisse gleich wahrscheinlich)</div>
+\[P(A)=\frac{|A|}{|\Omega|}=\frac{\text{Anzahl günstige Ergebnisse}}{\text{Anzahl mögliche Ergebnisse}}\]</div>
+<div class="box bsp"><div class="t">Klausuraufgabe (Probeklausur A, Aufgabe 4, 6 Punkte)</div>
+<p>\(\Omega=\{1,\dots,9\}\), Laplace, \(A=\{1,3,6,7\}\), \(B=\{1,3,6,9\}\).</p>
+<p>\(\bar B=\{2,4,5,7,8\}\) ⇒ \(A\cap\bar B=\{7\}\) ⇒ \(|A\cap \bar B|=1\).<br>
+\(\bar A=\{2,4,5,8,9\}\) ⇒ \(\bar A\cup B=\{1,2,3,4,5,6,8,9\}\) ⇒ \(|\bar A\cup B|=8\).<br>
+„A tritt ein, wenn B <b>nicht</b> eingetreten ist“: \(P(A\mid\bar B)=\frac{|A\cap\bar B|}{|\bar B|}=\frac{1}{5}\).</p></div>
+<div class="box tipp"><div class="t">Klausur-Tipp</div>Schreibe bei Mengen-Aufgaben <b>immer</b> zuerst die Komplemente als Liste auf. Dann ist Zählen einfach und du machst keine Fehler.</div>
+
+<!-- 2.2 -->
+<h2 class="lek"><span class="num">2.2</span> Wahrscheinlichkeit und Rechenregeln <span class="ear">Hörtext 2.2</span></h2>
+<p>Drei Wege zum Begriff: <b>Laplace</b> (Abzählen), <b>frequentistisch</b> (relative Häufigkeit bei sehr vielen Wiederholungen), <b>subjektiv</b> (faire Wette). Alle erfüllen die <b>Axiome von Kolmogorov</b>:</p>
+<div class="box formel"><div class="t">Formel: Axiome und Rechenregeln</div>
+\[\text{(K1) } P(A)\ge 0\qquad \text{(K2) } P(\Omega)=1\qquad \text{(K3) } P(A\cup B)=P(A)+P(B)\ \text{ falls } A\cap B=\emptyset\]
+\[P(\bar A)=1-P(A)\qquad P(\emptyset)=0\qquad A\subseteq B\Rightarrow P(A)\le P(B)\]
+\[P(A\cup B)=P(A)+P(B)-P(A\cap B)\qquad P(A\setminus B)=P(A)-P(A\cap B)\]</div>
+<div class="box bsp"><div class="t">Beispiele (Tutorium 4, Aufgabe 1) – male ein Venn-Diagramm!</div>
+<ol>
+<li>\(P(B)=0.5,\ P(B\setminus A)=0.4,\ P(A\setminus B)=0.2\). Dann \(P(A\cap B)=0.5-0.4=0.1\) und \(P(A)=0.2+0.1=0.3\).</li>
+<li>\(P(A\cup B)=0.8,\ P(B)=0.5,\ P(A\cap B)=0.2\): \(P(A)=0.8-0.5+0.2=0.5\).</li>
+<li>\(P(A\cup B)=0.8,\ P(A\setminus B)=P(B\setminus A)=0.2\): \(P(A\cap B)=0.8-0.2-0.2=0.4\).</li>
+</ol></div>
+
+<!-- 2.3 -->
+<h2 class="lek neu"><span class="num">2.3</span> Bedingte Wahrscheinlichkeit und Unabhängigkeit <span class="ear">Hörtext 2.3</span></h2>
+<p>Frage: Wie ändert sich die Wahrscheinlichkeit von \(A\), wenn wir <b>wissen</b>, dass \(B\) passiert ist? Wir „schrumpfen“ den Ergebnisraum auf \(B\).</p>
+<div class="box formel"><div class="t">Formel: bedingte Wahrscheinlichkeit und Produktsatz</div>
+\[P(A\mid B)=\frac{P(A\cap B)}{P(B)}\qquad(P(B)&gt;0)\]
+\[P(A\cap B)=P(A\mid B)\cdot P(B)=P(B\mid A)\cdot P(A)\]
+\[P(A\mid B)+P(\bar A\mid B)=1\qquad\text{(aber } P(A\mid B)+P(A\mid\bar B) \text{ ist NICHT immer 1!)}\]</div>
+<div class="box bsp"><div class="t">Beispiel (V04): fairer Würfel</div>
+<p>\(A\) = „gerade“ = {2,4,6}, \(B\) = „höchstens 3“ = {1,2,3}. \(P(A)=\frac12\), aber \(P(A\mid B)=\frac{P(\{2\})}{P(\{1,2,3\})}=\frac{1/6}{3/6}=\frac13\). Das Wissen über \(B\) ändert die Wahrscheinlichkeit.</p></div>
+<div class="box formel"><div class="t">Formel: stochastische Unabhängigkeit</div>
+\[A,B \text{ unabhängig}\iff P(A\cap B)=P(A)\cdot P(B)\iff P(A\mid B)=P(A)\]</div>
+<ul>
+<li><b>Mit Zurücklegen</b> ziehen → die Züge sind unabhängig.</li>
+<li><b>Ohne Zurücklegen</b> ziehen → die Züge sind abhängig (die Urne verändert sich).</li>
+<li><b>Disjunkt ≠ unabhängig!</b> Wenn \(A\) und \(B\) disjunkt sind (und beide \(P&gt;0\)), dann sind sie sogar <b>abhängig</b>: Wenn \(A\) passiert, kann \(B\) nicht passieren.</li>
+</ul>
+<div class="box bsp"><div class="t">Testat 3, Aufgabe 1</div>
+<p>\(P(A)=0.2,\ P(B)=0.6,\ P(A\mid B)=0.3\). Gesucht \(P(A\cup B)\) und \(P(A\mid\bar B)\).</p>
+\[P(A\cap B)=0.3\cdot0.6=0.18\quad\Rightarrow\quad P(A\cup B)=0.2+0.6-0.18=0.62\]
+\[P(A\mid \bar B)=\frac{P(A\cap\bar B)}{P(\bar B)}=\frac{P(A)-P(A\cap B)}{1-P(B)}=\frac{0.02}{0.4}=0.05\]</div>
+<div class="box bsp"><div class="t">Testat 3, Aufgabe 4: Glücksrad mit 10 Feldern (Laplace)</div>
+<p>\(A=\{1,\dots,5\},\ B=\{2,4,6,8,10\},\ C=\{1,4,7,10\}\).<br>
+\(A\cup C=\{1,2,3,4,5,7,10\}\) ⇒ \(P(A\cup C)=0.7\). \(A\cap B=\{2,4\}\) ⇒ \(P(A\mid B)=\frac{2/10}{5/10}=0.4\).<br>
+\(P(A)=0.5\ne0.4=P(A\mid B)\) ⇒ \(A\) und \(B\) sind <b>abhängig</b>. (Oder: \(P(A\cap B)=0.2\ne0.25=P(A)P(B)\).)</p></div>
+<div class="box achtung"><div class="t">Achtung</div>\(P(A\mid B)\) und \(P(B\mid A)\) sind verschiedene Dinge! „Wahrscheinlichkeit, krank zu sein, wenn der Test positiv ist“ ist etwas anderes als „Wahrscheinlichkeit, dass der Test positiv ist, wenn man krank ist“. Lies die Aufgabe Wort für Wort: Was steht <b>hinter</b> dem Strich? Das ist das, was wir <b>wissen</b>.</div>
+<div class="box frage"><div class="t">Kontrollfragen 2.1 – 2.3</div>
+<ol class="fragen">
+<li>Zweimal würfeln. Wie groß ist die Wahrscheinlichkeit, dass die Augensumme 8 ist?</li>
+<li>\(P(A)=0.05\), \(P(A\mid B)=0.2\), \(P(A\cap B)=0.02\). Berechne \(P(B)\) und \(P(B\mid A)\).</li>
+<li>Münze dreimal werfen. \(P(\text{3-mal Kopf})\)? Und \(P(\text{3-mal Kopf}\mid\text{die ersten zwei sind Kopf})\)?</li>
+<li>Sind disjunkte Ereignisse (mit positiver Wahrscheinlichkeit) unabhängig? Begründe.</li>
+</ol></div>
+
+<!-- 2.4 -->
+<h2 class="lek neu"><span class="num">2.4</span> Satz der totalen Wahrscheinlichkeit und Satz von Bayes <span class="ear">Hörtext 2.4</span></h2>
+<p>Das ist <b>das</b> Klausurthema in der Wahrscheinlichkeitsrechnung. Die Aufgabe hat immer die gleiche Form: Es gibt eine Aufteilung in Gruppen \(A_1,\dots,A_k\) (disjunkt, zusammen ganz \(\Omega\)), und wir kennen \(P(A_i)\) und \(P(B\mid A_i)\).</p>
+<div class="box formel"><div class="t">Formel: totale Wahrscheinlichkeit und Bayes</div>
+\[P(B)=\sum_{i=1}^k P(B\mid A_i)\cdot P(A_i)\qquad\text{(alle Pfade zu } B \text{ addieren)}\]
+\[P(A_j\mid B)=\frac{P(B\mid A_j)\cdot P(A_j)}{P(B)}=\frac{P(B\mid A_j)\cdot P(A_j)}{\sum_i P(B\mid A_i)\,P(A_i)}\qquad\text{(Bedingung umdrehen)}\]</div>
+<div class="box bsp"><div class="t">Beispiel (V04): medizinischer Test</div>
+<p>Prävalenz \(P(K)=0.001\), Sensitivität \(P(+\mid K)=0.9\), Spezifität \(P(-\mid\bar K)=0.9\) ⇒ \(P(+\mid\bar K)=0.1\).</p>
+\[P(+)=0.9\cdot0.001+0.1\cdot0.999=0.1008\qquad P(K\mid +)=\frac{0.9\cdot0.001}{0.1008}=0.0089\]
+<p>Nur 0.9 % der positiv Getesteten sind wirklich krank – weil die Krankheit so selten ist!</p></div>
+<h3>Die große Klausuraufgabe (Probeklausur A, Aufgabe 3, 11 Punkte)</h3>
+<p>Bestehenswahrscheinlichkeit 70 %. Drei Lernstrategien: \(A_1\) regelmäßig lernen, \(A_2\) nur Videos, \(A_3\) gar nicht lernen. Bei den Bestehern (B): \(P(A_1\mid B)=0.8,\ P(A_2\mid B)=0.15\). Bei den Nicht-Bestehern: \(P(A_1\mid\bar B)=0.1,\ P(A_2\mid \bar B)=0.2\).</p>
+<figure><img src="fig/baum.svg" style="width:86%"><figcaption>Baumdiagramm: erst „bestehen oder nicht“, dann die Strategie. Pfadwahrscheinlichkeiten multiplizieren.</figcaption></figure>
+<div class="box bsp lang"><div class="t">Lösung Schritt für Schritt</div>
+<ol class="steps">
+<li><b>Gegeben aufschreiben</b> (1 Punkt nur fürs saubere Notieren!): \(P(B)=0.7\); \(P(A_1\mid B)=0.8,\ P(A_2\mid B)=0.15\); \(P(A_1\mid\bar B)=0.1,\ P(A_2\mid\bar B)=0.2\).</li>
+<li>\(P(\bar B)=1-0.7=0.3\).</li>
+<li>\(P(A_3\mid B)=1-0.8-0.15=0.05\) und \(P(A_3\mid\bar B)=1-0.1-0.2=0.7\) (die drei Strategien ergeben zusammen 1).</li>
+<li>Totale Wahrscheinlichkeit: \(P(A_3)=P(A_3\mid B)P(B)+P(A_3\mid\bar B)P(\bar B)=0.05\cdot0.7+0.7\cdot0.3=0.035+0.21=0.245\).</li>
+<li>(b) Franziska wählt Strategie 2. Gesucht ist \(P(B\mid A_2)\) – <b>Bayes</b>:
+\[P(A_2)=0.15\cdot0.7+0.2\cdot0.3=0.165\qquad P(B\mid A_2)=\frac{0.15\cdot0.7}{0.165}=\frac{0.105}{0.165}=0.636\]</li>
+<li>(c) Mindestens eine von 10 Personen ist durchgefallen. \(X\) = Anzahl Nicht-Besteher, \(X\sim B(10;\,0.3)\) (morgen mehr):
+\[P(X\ge1)=1-P(X=0)=1-0.7^{10}=0.972\]</li>
+</ol></div>
+<div class="box tipp"><div class="t">Klausur-Tipp: das Bayes-Rezept</div>
+<ol><li>Ereignisse benennen (B = bestehen, A₁, A₂, A₃ …) und <b>alle</b> gegebenen Zahlen als \(P(\dots)\) oder \(P(\dots\mid\dots)\) aufschreiben.</li>
+<li>Fehlende Zahlen über „Summe = 1“ ergänzen.</li>
+<li>Baumdiagramm zeichnen: erste Stufe = das, wovon wir \(P(\cdot)\) kennen; zweite Stufe = das, wovon wir \(P(\cdot\mid\cdot)\) kennen.</li>
+<li>Gefragt „insgesamt“ → totale Wahrscheinlichkeit (Pfade addieren). Gefragt „<i>gegeben</i> das Ergebnis der zweiten Stufe“ → Bayes (ein Pfad / alle Pfade).</li></ol></div>
+<div class="box bsp"><div class="t">Noch zwei Beispiele (Tutorium 4 und Testat 3)</div>
+<p><b>Blutgruppen:</b> \(P(A)=0.42,\ P(B)=0.10,\ P(AB)=0.04,\ P(0)=0.44\); \(P(R^+\mid A)=P(R^+\mid 0)=0.85,\ P(R^+\mid B)=0.8,\ P(R^+\mid AB)=0.75\).<br>
+\(P(R^+)=0.85\cdot0.42+0.8\cdot0.1+0.75\cdot0.04+0.85\cdot0.44=0.841\); \(P(AB\mid R^+)=\frac{0.75\cdot0.04}{0.841}=0.036\).</p>
+<p><b>Sonnenbrand (Testat 3):</b> \(P(A_2)=P(A_3)=0.2\) ⇒ \(P(A_1)=0.6\). Brennen: \(0.1, 0.6, 0.9\).<br>
+\(P(\text{Brennen})=0.1\cdot0.6+0.6\cdot0.2+0.9\cdot0.2=0.36\); \(P(A_3\mid\text{Brennen})=\frac{0.18}{0.36}=0.5\).</p></div>
+<div class="box frage"><div class="t">Kontrollfragen 2.4</div>
+<ol class="fragen">
+<li>Einkommen gering (E₁), mittel (E₂, \(P=0.7\)), hoch (E₃). \(P(\text{Bef}\mid E_1)=0.3,\ P(\text{Bef}\mid E_2)=0.1,\ P(\text{Bef}\mid E_3)=0.05\) und \(P(\text{Bef}\cap E_1)=0.06\). Berechne \(P(E_1), P(E_3), P(\text{Bef}), P(E_3\mid\text{Bef})\).</li>
+<li>Warum ist beim medizinischen Test \(P(K\mid +)\) so klein, obwohl der Test „90 % gut“ ist?</li>
+</ol></div>
+
+<!-- 2.5 -->
+<h2 class="lek neu"><span class="num">2.5</span> Zufallsvariablen – diskret <span class="ear">Hörtext 2.5</span></h2>
+<p>Eine <b>Zufallsvariable</b> \(X\) ordnet jedem Ergebnis \(\omega\) eine <b>Zahl</b> zu. Beispiel: zwei Würfel, \(X\) = Augensumme. Sie ist das theoretische Gegenstück zum Merkmal: statt Häufigkeiten haben wir Wahrscheinlichkeiten.</p>
+<table class="tab wide">
+<tr><th>Deskriptive Statistik (Daten)</th><th>Wahrscheinlichkeitsrechnung (Theorie)</th></tr>
+<tr><td>Merkmal</td><td>Zufallsvariable</td></tr>
+<tr><td>Merkmalsausprägungen</td><td>Träger (mögliche Werte)</td></tr>
+<tr><td>relative Häufigkeit \(f_j\)</td><td>Wahrscheinlichkeit \(P(X=x)\)</td></tr>
+<tr><td>arithmetisches Mittel \(\bar x\)</td><td>Erwartungswert \(E(X)\)</td></tr>
+<tr><td>empirische Varianz \(s^2\)</td><td>Varianz \(\text{Var}(X)\)</td></tr>
+</table>
+<div class="box formel"><div class="t">Formel: diskrete Zufallsvariable</div>
+\[p_i=P(X=x_i),\qquad 0\le p_i\le1,\qquad \sum_i p_i=1,\qquad P(a\le X\le b)=\sum_{a\le x_i\le b}p_i\]
+\[F(x)=P(X\le x)=\sum_{x_i\le x}p_i\qquad\text{(Treppenfunktion, wie die empirische Verteilungsfunktion)}\]</div>
+<div class="box bsp"><div class="t">Beispiel: Augensumme zweier Würfel</div>
+<table class="tab">
+<tr><th>x</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+<tr><th>P(X=x)</th><td>1/36</td><td>2/36</td><td>3/36</td><td>4/36</td><td>5/36</td><td>6/36</td><td>5/36</td><td>4/36</td><td>3/36</td><td>2/36</td><td>1/36</td></tr>
+</table>
+<p>\(P(X=8)=\frac{5}{36}=0.139\): (2,6), (3,5), (4,4), (5,3), (6,2).</p></div>
+<div class="box formel"><div class="t">Formel: Binomialkoeffizient („n über x“)</div>
+\[\binom{n}{x}=\frac{n!}{x!\,(n-x)!}\quad=\text{Anzahl Möglichkeiten, } x \text{ aus } n \text{ auszuwählen (ohne Reihenfolge)}\]
+<p class="small">Beispiel: \(\binom{10}{2}=\frac{10\cdot9}{2\cdot1}=45\). Taschenrechner: Taste nCr. R: <code>choose(10, 2)</code>.</p></div>
+<div class="box bsp"><div class="t">Tutorium 6, Aufgabe 1: \(P(X=x)=\frac{x}{c}\) für \(x\in\{1,2,3,4\}\)</div>
+<p>Summe muss 1 sein: \(\frac{1+2+3+4}{c}=\frac{10}{c}=1\Rightarrow c=10\). (Erwartungswert und Varianz: Abschnitt 2.7.)</p></div>
+
+<!-- 2.6 -->
+<h2 class="lek neu"><span class="num">2.6</span> Stetige Zufallsvariablen: Dichte und Verteilungsfunktion <span class="ear">Hörtext 2.6</span></h2>
+<p>Eine stetige Zufallsvariable kann jeden Wert in einem Intervall annehmen. Einzelne Werte haben Wahrscheinlichkeit <b>0</b>. Stattdessen gibt es eine <b>Dichte</b> \(f(x)\): <b>Wahrscheinlichkeit = Fläche unter der Dichte</b>.</p>
+<figure><img src="fig/dichte_vf.svg" style="width:94%"></figure>
+<div class="box formel"><div class="t">Formel: stetige Zufallsvariable</div>
+\[P(a\le X\le b)=\int_a^b f(x)\,dx=F(b)-F(a)\qquad F(x)=P(X\le x)=\int_{-\infty}^x f(t)\,dt\]
+<p><b>Eine gültige Dichte braucht genau zwei Dinge:</b> \(\ f(x)\ge0\) für alle \(x\) &nbsp;und&nbsp; \(\int_{-\infty}^{\infty}f(x)\,dx=1\).</p>
+\[P(X=x)=0\quad\Rightarrow\quad P(a&lt;X&lt;b)=P(a\le X\le b)\qquad P(X&gt;a)=1-F(a)\]</div>
+<div class="box achtung"><div class="t">Achtung – typische Fehler</div>
+<ul><li>\(f(x)&gt;1\) ist erlaubt! Eine Dichte ist keine Wahrscheinlichkeit. Nur die <b>Fläche</b> ist eine Wahrscheinlichkeit.</li>
+<li>\(P(X=x)\neq f(x)\). Bei stetigen Variablen ist \(P(X=x)=0\).</li>
+<li>Bei der Verteilungsfunktion: Integrationsvariable \(t\) nehmen und \(x\) als obere Grenze. Und nicht vergessen: \(F(x)=0\) links vom Träger, \(F(x)=1\) rechts davon.</li>
+<li>Bei <b>diskreten</b> Variablen ist \(&lt;\) nicht gleich \(\le\)! Bei stetigen ist es egal.</li></ul></div>
+<div class="box bsp lang"><div class="t">Beispiel (Tutorium 6, Aufgabe 2): \(f(x)=\tfrac12(x-4)\) für \(4\le x\le 6\), sonst 0</div>
+<p><b>Gültige Dichte?</b> \(f(x)\ge0\) auf [4,6] ✓. \(\int_4^6\tfrac12(x-4)\,dx=\left[\tfrac14(x-4)^2\right]_4^6=\tfrac14\cdot4-0=1\) ✓.</p>
+<p><b>Verteilungsfunktion:</b> \(F(x)=\int_4^x\tfrac12(t-4)\,dt=\tfrac14(x-4)^2=\tfrac14x^2-2x+4\) für \(4\le x\le6\); \(F(x)=0\) für \(x&lt;4\), \(F(x)=1\) für \(x&gt;6\).</p>
+<p><b>Wahrscheinlichkeiten:</b> \(P(X&gt;5.2)=1-F(5.2)=1-\tfrac14\cdot1.2^2=0.64\); \(P(X&lt;5.1)=\tfrac14\cdot1.1^2=0.303\); \(P(4.5&lt;X&lt;5.5)=F(5.5)-F(4.5)=0.5625-0.0625=0.5\).</p></div>
+<div class="box bsp"><div class="t">Testat 4, Aufgabe 5: \(f(x)=c(x-2)\) für \(2\le x\le 3\)</div>
+<p>\(\int_2^3 c(x-2)\,dx=c\left[\tfrac12(x-2)^2\right]_2^3=\tfrac c2\overset{!}{=}1\Rightarrow c=2\).</p></div>
+<h3>Quantile einer Zufallsvariable</h3>
+<p>Das \(\alpha\)-Quantil \(q_\alpha\) ist die Lösung von \(F(q_\alpha)=\alpha\). Beispiel Anrufdauer mit \(F(x)=1-e^{-0.006x}\): \(1-e^{-0.006q}=0.95\Rightarrow q_{0.95}=\frac{-\ln 0.05}{0.006}=499.3\approx 500\) Sekunden. Nur 5 % der Anrufe dauern länger.</p>
+
+<!-- 2.7 -->
+<h2 class="lek neu"><span class="num">2.7</span> Erwartungswert und Varianz <span class="ear">Hörtext 2.7</span></h2>
+<div class="box formel"><div class="t">Formel: Erwartungswert und Varianz</div>
+\[E(X)=\sum_x x\,P(X=x)\ \ \text{(diskret)}\qquad E(X)=\int x\,f(x)\,dx\ \ \text{(stetig)}\]
+\[E(g(X))=\sum_x g(x)P(X=x)\ \text{ bzw. }\int g(x)f(x)\,dx\qquad\text{z.B. } E(X^2),\ E(\log X)\]
+\[\text{Var}(X)=E\big[(X-E(X))^2\big]=E(X^2)-\big(E(X)\big)^2\qquad \text{sd}(X)=\sqrt{\text{Var}(X)}\]</div>
+<div class="box formel"><div class="t">Formel: Rechenregeln (sehr wichtig für Tag 4!)</div>
+\[E(aX+b)=a\,E(X)+b\qquad \text{Var}(aX+b)=a^2\,\text{Var}(X)\]
+\[E(X+Y)=E(X)+E(Y)\ \ \text{(immer!)}\qquad E\Big(\sum a_iX_i\Big)=\sum a_iE(X_i)\]
+\[\text{nur wenn } X,Y \text{ unabhängig: } E(XY)=E(X)E(Y),\quad \text{Var}(X+Y)=\text{Var}(X)+\text{Var}(Y)\]
+\[\text{allgemein: } \text{Var}(aX+bY)=a^2\text{Var}(X)+b^2\text{Var}(Y)+2ab\,\text{Cov}(X,Y)\]
+\[\text{Achtung: } E(g(X))\ne g(E(X)) \text{ im Allgemeinen, z.B. } E(X^2)\ne (E X)^2,\ E(1/X)\ne 1/E(X)\]</div>
+<div class="box bsp"><div class="t">Tutorium 6, Aufgabe 1 (Fortsetzung): \(P(X=x)=\frac{x}{10}\)</div>
+\[E(X)=1\cdot\tfrac{1}{10}+2\cdot\tfrac{2}{10}+3\cdot\tfrac{3}{10}+4\cdot\tfrac{4}{10}=\tfrac{30}{10}=3\]
+\[E(X^2)=1\cdot\tfrac1{10}+4\cdot\tfrac2{10}+9\cdot\tfrac3{10}+16\cdot\tfrac4{10}=10\quad\Rightarrow\quad\text{Var}(X)=10-9=1\]
+<p>\(Z=0.5X+Y\) mit \(E(Z)=8.5\), \(X,Y\) unabhängig, \(\text{Var}(Y)=1\): \(E(Y)=8.5-1.5=7\); \(\text{Var}(Z)=0.25\cdot1+1=1.25\).</p></div>
+<div class="box bsp"><div class="t">Stetig: \(f(x)=\tfrac12(x-4)\) auf [4,6]</div>
+\[E(X)=\int_4^6 x\cdot\tfrac12(x-4)\,dx=\left[\tfrac16x^3-x^2\right]_4^6=0-\left(-\tfrac{16}{3}\right)=5.333\]
+\[E(X^2)=\int_4^6 \tfrac12x^3-2x^2\,dx=\left[\tfrac18x^4-\tfrac23x^3\right]_4^6=18+\tfrac{32}{3}=28.667\quad\Rightarrow\quad \text{Var}(X)=28.667-5.333^2=0.222\]</div>
+<div class="box merke"><div class="t">Merke: Bedeutung</div>
+<p>\(E(X)\) ist der <b>Schwerpunkt</b> der Verteilung. <b>Gesetz der großen Zahlen:</b> Wenn man ein Experiment sehr oft unabhängig wiederholt, geht der Durchschnitt \(\bar X\) gegen \(E(X)\). Ist die Verteilung symmetrisch um \(a\), dann ist \(E(X)=a\). Die Varianz misst die Breite der Verteilung = das Risiko (Chuck-a-Luck: gleicher Erwartungswert, aber verschiedenes Risiko).</p></div>
+
+<!-- 2.8 -->
+<h2 class="lek neu"><span class="num">2.8</span> Zwei Zufallsvariablen <span class="ear">Hörtext 2.8</span></h2>
+<p>Die <b>gemeinsame</b> Wahrscheinlichkeitsfunktion \(P(X=x,Y=y)\) (oder gemeinsame Dichte \(f(x,y)\)) beschreibt \(X\) und \(Y\) zusammen – wie die Kontingenztafel von Tag 1, nur mit Wahrscheinlichkeiten.</p>
+<div class="box formel"><div class="t">Formel</div>
+\[\text{Rand: } P(X=x)=\sum_y P(X=x,Y=y)\qquad f_X(x)=\int f(x,y)\,dy\]
+\[\text{bedingt: } P(X=x\mid Y=y)=\frac{P(X=x,Y=y)}{P(Y=y)}\qquad f_{X|Y}(x\mid y)=\frac{f(x,y)}{f_Y(y)}\]
+\[\text{unabhängig}\iff P(X=x,Y=y)=P(X=x)P(Y=y)\ \forall x,y\iff f(x,y)=f_X(x)f_Y(y)\]
+\[\text{Cov}(X,Y)=E(XY)-E(X)E(Y)\qquad \rho(X,Y)=\frac{\text{Cov}(X,Y)}{\text{sd}(X)\,\text{sd}(Y)}\in[-1,1]\]</div>
+<div class="box bsp"><div class="t">Tutorium 5, Aufgabe 1: Gehalt X und Alter Y</div>
+<table class="tab">
+<tr><th>X \ Y</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Σ</th></tr>
+<tr><th>1</th><td>0.13</td><td>0.08</td><td>0.05</td><td>0.03</td><td>0.29</td></tr>
+<tr><th>2</th><td>0.07</td><td>0.21</td><td>0.07</td><td>0.09</td><td>0.44</td></tr>
+<tr><th>3</th><td>0.00</td><td>0.05</td><td>0.10</td><td>0.12</td><td>0.27</td></tr>
+<tr><th>Σ</th><td>0.20</td><td>0.34</td><td>0.22</td><td>0.24</td><td>1</td></tr>
+</table>
+<p>\(P(X=2\mid Y=1)=\frac{0.07}{0.20}=0.35\). \(P(Y=2\mid X=3)=\frac{0.05}{0.27}=0.185\). Unabhängig? \(P(X=3,Y=1)=0\neq0.27\cdot0.20\) ⇒ <b>nein</b>.</p></div>
+<div class="box bsp"><div class="t">Stetig (Tutorium 6, Aufgabe 3): \(f(x,y)=12x^3(1-y)^2\) auf \([0,1]^2\)</div>
+<p>Randdichten: \(f_X(x)=\int_0^1 12x^3(1-y)^2dy=4x^3\), \(f_Y(y)=\int_0^1 12x^3(1-y)^2dx=3(1-y)^2\). Produkt \(=f(x,y)\) ⇒ unabhängig ⇒ \(\rho=0\). \(E(X)=\int_0^1 x\cdot 4x^3dx=0.8\).</p></div>
+<div class="box frage"><div class="t">Kontrollfragen 2.5 – 2.8</div>
+<ol class="fragen">
+<li>\(X\) nimmt 1, 2, 3 an mit \(P=0.3,\ 0.5,\ 0.2\). Gib \(F(x)\) an. Berechne \(E(X)\) und \(E(\log X)\).</li>
+<li>Welche Eigenschaften muss eine Dichte haben? (a) \(\int f=1\) (b) \(f\ge0\) (c) \(f\le1\) (d) \(P(X=x)=f(x)\).</li>
+<li>\(\text{Var}(X)=4\). Wie groß ist \(\text{Var}(3X-7)\) und \(\text{sd}(3X-7)\)?</li>
+<li>\(X,Y\) unabhängig, \(\text{Var}(X)=2,\ \text{Var}(Y)=3\). \(\text{Var}(X-Y)=\,\)?</li>
+<li>\(f(y)=\frac{y}{6}\) für \(0\le y\le2\), \(f(y)=\frac{6-y}{12}\) für \(2&lt;y\le6\). Berechne \(E(Y)\).</li>
+</ol></div>
+
+<!-- Klausuraufgaben -->
+<h2 class="lek neu"><span class="num">K2</span> Klausuraufgaben Tag 2 – rechne selbst!</h2>
+<div class="box bsp lang"><div class="t">Aufgabe 2.A (11 Punkte) – Probeklausur A, Aufgabe 3</div>
+<p>Rechne die Franziska-Aufgabe aus 2.4 noch einmal komplett <b>ohne</b> hinzuschauen: \(P(\bar B)\), \(P(A_3\mid B)\), \(P(A_3\mid\bar B)\), \(P(A_3)\), \(P(B\mid A_2)\) mit Lösungsweg und \(P(\text{mind. 1 Nicht-Besteher unter 10})\).</p></div>
+<div class="box bsp lang"><div class="t">Aufgabe 2.B (6 Punkte) – Testat 3, Aufgabe 5: Wasserbomben</div>
+<table class="tab"><tr><th>Zielscheibe</th><th>P(Wurf dorthin)</th><th>P(abgefangen | Richtung)</th></tr>
+<tr><td>rechts</td><td>0.40</td><td>0.5</td></tr><tr><td>Mitte</td><td>0.25</td><td>0.2</td></tr><tr><td>links</td><td>0.35</td><td>0.2</td></tr></table>
+<p>(a) Wie groß ist die Wahrscheinlichkeit, dass die Wasserbombe eine Zielscheibe trifft (nicht abgefangen)? (b) Die Bombe hat getroffen. Mit welcher Wahrscheinlichkeit wurde auf die Mitte geworfen?</p></div>
+<div class="box bsp lang"><div class="t">Aufgabe 2.C (4 Punkte) – Testat 3, Aufgabe 6: Kugeln ohne Zurücklegen</div>
+<p>15 rote, 5 blaue, 5 gelbe Kugeln. Rot = verloren, blau = gewonnen, gelb = noch einmal ziehen. (a) P(verliert im ersten Zug)? (b) P(gewinnt im zweiten Zug)?</p></div>
+<div class="box bsp lang"><div class="t">Aufgabe 2.D (10 Punkte) – Testat 4, Aufgabe 5</div>
+<p>\(f(x)=c(x-2)\) für \(2\le x\le3\), sonst 0. (a) Bestimme \(c\). (b) \(E(X)\). (c) \(E(X^2)\) und \(\text{Var}(X)\). (d) \(F(x)\) und \(P(X\le 2.5)\). (e) Median von \(X\).</p></div>
+<div class="box bsp lang"><div class="t">Aufgabe 2.E (4 Punkte) – nach Tutorium 5, Aufgabe 2</div>
+<p>Würfelspiel: Einsatz 3 €, Auszahlung = Augenzahl in €. \(X\) = Gewinn. (a) Träger und Wahrscheinlichkeitsfunktion. (b) \(E(X)\) und \(\text{Var}(X)\). (c) \(Y\) = Gewinn des Spielleiters \(=-X\): \(E(Y)\), \(\text{Var}(Y)\)?</p></div>
+
+<!-- Lösungen -->
+<div class="loes">
+<h2>Lösungen Tag 2</h2>
+<h3>Kontrollfragen 2.1 – 2.3</h3>
+<ol>
+<li>\(5/36=0.139\).</li>
+<li>\(P(B)=\frac{P(A\cap B)}{P(A\mid B)}=\frac{0.02}{0.2}=0.1\); \(P(B\mid A)=\frac{0.02}{0.05}=0.4\).</li>
+<li>\((1/2)^3=0.125\); bedingt: nur noch der dritte Wurf zählt ⇒ \(0.5\).</li>
+<li>Nein. Wenn \(A\) passiert, kann \(B\) nicht passieren: \(P(A\cap B)=0\ne P(A)P(B)&gt;0\). Disjunkte Ereignisse sind abhängig.</li>
+</ol>
+<h3>Kontrollfragen 2.4</h3>
+<ol>
+<li>\(P(E_1)=\frac{0.06}{0.3}=0.2\), \(P(E_3)=1-0.2-0.7=0.1\). \(P(\text{Bef})=0.3\cdot0.2+0.1\cdot0.7+0.05\cdot0.1=0.135\). \(P(E_3\mid\text{Bef})=\frac{0.005}{0.135}=0.037\).</li>
+<li>Weil die Krankheit sehr selten ist (0.1 %). Die vielen Gesunden erzeugen viel mehr falsch-positive Tests (10 % von 99.9 %) als es Kranke gibt.</li>
+</ol>
+<h3>Kontrollfragen 2.5 – 2.8</h3>
+<ol>
+<li>\(F(x)=0\) für \(x&lt;1\); \(0.3\) für \(1\le x&lt;2\); \(0.8\) für \(2\le x&lt;3\); \(1\) für \(x\ge3\). \(E(X)=0.3+1+0.6=1.9\). \(E(\log X)=0.3\log1+0.5\log2+0.2\log3=0.5\cdot0.6931+0.2\cdot1.0986=0.566\).</li>
+<li>(a) und (b).</li>
+<li>\(\text{Var}=9\cdot4=36\), \(\text{sd}=6\).</li>
+<li>\(\text{Var}(X-Y)=\text{Var}(X)+(-1)^2\text{Var}(Y)=5\) (Varianzen addieren sich immer!).</li>
+<li>\(\int_0^2\frac{y^2}{6}dy=\frac{8}{18}=0.4444\); \(\int_2^6\frac{6y-y^2}{12}dy=\frac1{12}\left[3y^2-\frac{y^3}{3}\right]_2^6=\frac{1}{12}(36-9.3333)=2.2222\). \(E(Y)=2.667\) (= 8/3).</li>
+</ol>
+<h3>Aufgabe 2.A</h3><p>Siehe 2.4: \(0.3;\ 0.05;\ 0.7;\ 0.245;\ 0.636;\ 1-0.7^{10}=0.972\).</p>
+<h3>Aufgabe 2.B</h3>
+<p>(a) \(P(\text{abgefangen})=0.4\cdot0.5+0.25\cdot0.2+0.35\cdot0.2=0.32\) ⇒ \(P(\text{Treffer})=0.68\) (oder direkt: \(0.4\cdot0.5+0.25\cdot0.8+0.35\cdot0.8=0.68\)).<br>
+(b) \(P(\text{Mitte}\mid\text{Treffer})=\frac{0.25\cdot0.8}{0.68}=\frac{0.2}{0.68}=0.294\).</p>
+<h3>Aufgabe 2.C</h3><p>(a) \(\frac{15}{25}=0.6\). (b) erst gelb, dann blau: \(\frac{5}{25}\cdot\frac{5}{24}=\frac{1}{24}=0.042\).</p>
+<h3>Aufgabe 2.D</h3>
+<p>(a) \(c=2\). (b) \(E(X)=\int_2^3 2x(x-2)dx=\left[\tfrac23x^3-2x^2\right]_2^3=0-(-\tfrac83)=\tfrac83=2.667\).<br>
+(c) \(E(X^2)=\int_2^3 2x^2(x-2)dx=\left[\tfrac12x^4-\tfrac43x^3\right]_2^3=4.5-(-\tfrac83)=7.1667\); \(\text{Var}=7.1667-2.6667^2=0.056\) (genau \(\tfrac1{18}\)).<br>
+(d) \(F(x)=(x-2)^2\) für \(2\le x\le3\) (0 davor, 1 danach). \(P(X\le2.5)=0.25\).<br>
+(e) \((x-2)^2=0.5\Rightarrow x=2+\sqrt{0.5}=2.707\).</p>
+<h3>Aufgabe 2.E</h3>
+<p>(a) \(T=\{-2,-1,0,1,2,3\}\), jeweils \(P=\frac16\). (b) \(E(X)=\frac{-2-1+0+1+2+3}{6}=0.5\); \(E(X^2)=\frac{4+1+0+1+4+9}{6}=\frac{19}{6}\); \(\text{Var}=\frac{19}{6}-0.25=2.917\). (c) \(E(Y)=-0.5\), \(\text{Var}(Y)=(-1)^2\cdot2.917=2.917\).</p>
+
+<h3>Wörterliste Tag 2 (Deutsch – Türkçe)</h3>
+<table class="gloss">
+<tr><td>Wahrscheinlichkeit</td><td>olasılık</td><td>Zahl zwischen 0 und 1</td></tr>
+<tr><td>Zufallsexperiment</td><td>rastgele deney</td><td>Ergebnis vorher unbekannt</td></tr>
+<tr><td>Ergebnisraum</td><td>örnek uzay</td><td>alle möglichen Ergebnisse Ω</td></tr>
+<tr><td>Ereignis / Gegenereignis</td><td>olay / tümleyen olay</td><td>Teilmenge / nicht A</td></tr>
+<tr><td>Schnitt / Vereinigung</td><td>kesişim / birleşim</td><td>und / oder</td></tr>
+<tr><td>disjunkt</td><td>ayrık</td><td>schließen sich aus</td></tr>
+<tr><td>bedingte Wahrscheinlichkeit</td><td>koşullu olasılık</td><td>P(A | B)</td></tr>
+<tr><td>unabhängig</td><td>bağımsız</td><td>P(A∩B) = P(A)P(B)</td></tr>
+<tr><td>Satz der totalen W.</td><td>toplam olasılık teoremi</td><td>Pfade addieren</td></tr>
+<tr><td>Satz von Bayes</td><td>Bayes teoremi</td><td>Bedingung umdrehen</td></tr>
+<tr><td>mit/ohne Zurücklegen</td><td>iadeli / iadesiz çekiliş</td><td>unabhängig / abhängig</td></tr>
+<tr><td>Zufallsvariable</td><td>rastgele değişken</td><td>Zahl als Ergebnis</td></tr>
+<tr><td>Wahrscheinlichkeitsfunktion</td><td>olasılık fonksiyonu</td><td>P(X = x) (diskret)</td></tr>
+<tr><td>Dichte(funktion)</td><td>olasılık yoğunluk fonksiyonu</td><td>f(x) (stetig)</td></tr>
+<tr><td>Träger</td><td>destek (tanım kümesi)</td><td>mögliche Werte</td></tr>
+<tr><td>Erwartungswert</td><td>beklenen değer</td><td>E(X), Schwerpunkt</td></tr>
+<tr><td>Randverteilung</td><td>marjinal dağılım</td><td>Verteilung einer Variable allein</td></tr>
+</table>
+</div>
+</section>
