@@ -211,3 +211,8 @@ h2.fs{font-size:1.15rem;font-weight:900;color:#fff;background:var(--c-dark);bord
 .rz .dikkat{grid-column:1/-1;color:#b42323;font-size:.86rem;margin-top:-2px}
 .rz .dikkat::before{content:"⚠ ";font-weight:900}
 h2.rzh{font-size:1.1rem;font-weight:900;color:#fff;background:var(--c-dark);border-radius:7px;padding:3px 10px;margin:.9em 0 .4em;page-break-after:avoid;break-after:avoid}
+.rz>.q{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ol{flex:none;font-size:.78rem;font-weight:900;border-radius:99px;padding:1px 8px;background:#fff;white-space:nowrap}
+.ol.hi{color:#b42323}.ol.mid{color:#b8650a}.ol.lo{color:#4b5563}
+.legend{font-size:.85rem;border:1.5px dashed #c9d3e3;border-radius:8px;padding:5px 10px;margin:.4em 0}
+.legend .ol{border:1px solid #d5dbe5}
