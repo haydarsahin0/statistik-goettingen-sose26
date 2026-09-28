@@ -1,0 +1,102 @@
+<section class="t1">
+<div class="sp-head"><b>A4-Vorlage · Klausurteil A · Block Tag 1</b> – Das darfst du mitnehmen: <b>1 A4-Blatt, beidseitig, handgeschrieben, selbst angefertigt</b> (Kopien werden auf dem Deckblatt vermerkt). Dieser Block ist für die <b>obere Hälfte der Vorderseite</b> geplant; der Rest bleibt für Tag 2–4. Klein und sauber abschreiben – beim Abschreiben lernst du.</div>
+<div class="sp-half"><div class="sp">
+
+<div class="blk"><b>Skala · Maße</b>
+nominal: Modus · ordinal: + Median, Quantile · kardinal: + \(\bar x\), \(s^2\), r. 1–7-Skala = ordinal. <span class="w">0/1 = ordinal/binär</span>: mod, med, \(\bar x\)=Anteil, \(s^2=\bar x(1-\bar x)\) od. „nicht sinnvoll“. Anzahl → diskret; Zeit/Gewicht/Geld → stetig.</div>
+
+<div class="blk"><b>Stichprobe</b>
+einfach zufällig · geschichtet (aus jeder Gruppe) · Klumpen (ganze Gruppen, alle befragen) · Quote (bewusst). Störvariable → Randomisierung.</div>
+
+<div class="blk"><b>Häufigkeiten</b>
+\(f=h/n,\ H_j=\sum_{i\le j}h_i,\ F=H/n,\ h_j=H_j-H_{j-1}\).
+≤k: F(k) · &lt;k: F(k−1) · &gt;k: 1−F(k) · ≥k: 1−F(k−1).</div>
+
+<div class="blk"><b>Histogramm</b>
+Höhe \(=f_j/\text{Breite}\); Fläche = Anteil; Σ = 1. Teilintervall: Σ Breite·Höhe; Anzahl ×n. <span class="w">„Annahme: gleichverteilt in der Klasse“.</span> Modalklasse = größtes \(h_j\) (nicht höchste Säule!).</div>
+
+<div class="blk"><b>ECDF \(\hat F\)</b>
+0 für x&lt;a₁; \(F_1\) für a₁≤x&lt;a₂; …; 1 für x≥a_max. Skizze: ● links ○ rechts, Achsen beschriften.</div>
+
+<div class="blk"><b>Lage</b>
+Median sortiert! n unger.: \(x_{((n+1)/2)}\); ger.: \(\frac12(x_{(n/2)}+x_{(n/2+1)})\).
+Tabelle: \(\bar x=\sum a_jf_j\). Klassiert: \(\bar x_K=\sum f_jm_j,\ s_K^2=\sum f_jm_j^2-\bar x_K^2\).
+Gruppen: \(\frac{n_1\bar x_1+n_2\bar x_2}{n_1+n_2}\). Fehlender Wert: Summe \(=n\bar x\).
+rechtsschief: \(\bar x&gt;x_{med}&gt;x_{mod}\).</div>
+
+<div class="blk"><b>Quantil</b>
+\(n\alpha\) = <span class="w">Platz</span>! nicht ganz → aufrunden; ganz k → \(\frac12(x_{(k)}+x_{(k+1)})\). IQR \(=x_{.75}-x_{.25}\).</div>
+
+<div class="blk"><b>Streuung</b>
+\(s^2=\frac{\sum x^2}{n}-\bar x^2\) (empir., \(\tilde s^2\)) · \(s_*^2=\frac{n}{n-1}s^2\) <span class="w">(keine Wurzel!)</span> · \(s=\sqrt{s^2}\). R var/sd = \(s_*\). TR: σx = s, sx = \(s_*\).
+\(y=a+bx\): \(\bar y=a+b\bar x\), \(s_y^2=b^2s_x^2\), \(s_y,\text{IQR}_y\) ×|b|.</div>
+
+<div class="blk"><b>Boxplot</b>
+Zäune \(x_{.25}-1.5\,\text{IQR}\), \(x_{.75}+1.5\,\text{IQR}\). Außerhalb = Punkt. Whisker bis zum <span class="w">letzten echten Wert innerhalb</span>. Box = \(x_{.25}\)…\(x_{.75}\).</div>
+
+<div class="blk"><b>Kontingenztafel · χ²</b>
+„A unter B“ = h(A∩B)/h(B); „aller / und“ → /n. Bedingte Anteile verschieden → Zusammenhang.
+\(\tilde h=\frac{\text{Zeile}\cdot\text{Spalte}}{n}\), \(\chi^2=\sum\frac{(h-\tilde h)^2}{\tilde h}\) ≥ 0; 0 ⇔ unabh.</div>
+
+<div class="blk"><b>Kov · Korr</b>
+\(s_{xy}=\frac{\sum xy}{n}-\bar x\bar y\) · \(r=\frac{s_{xy}}{\sqrt{s_x^2s_y^2}}\) · \(s_{xy}=r s_xs_y\).
+|r|: &lt;.3 schwach, &lt;.7 mittel, ≥.7 stark. Satz: Stärke + Richtung + <b>linear</b> + Merkmale.
+Tafel: \(\overline{xy}=\sum a_jb_kf_{jk}\).
+\(u=a+bx,v=c+dy\): \(s_{uv}=bd\,s_{xy}\); r gleich (bd&lt;0: −r).</div>
+
+<div class="blk"><b>Spearman</b>
+Ränge (Bindung = Ø-Rang), dann Pearson mit Rängen; \(1-\frac{6\sum d^2}{n(n^2-1)}\). Ränge gleich → 1, umgekehrt → −1. Satz: „monoton“.</div>
+
+<div class="blk"><b>Kausalität (2 P)</b>
+Nein, nur Zusammenhang · Drittvariable (+ Bsp.) / umgekehrte Richtung · Kausal nur mit randomisiertem Experiment. r=0 bei Parabel möglich; unkorreliert ⇏ unabhängig.</div>
+</div></div>
+</section>
+
+<section class="t1" style="page-break-before:always">
+<div class="sp-head"><b>A4-Vorlage · Klausurteil B (R) · Block Tag 1</b> – Für das <b>zweite</b> A4-Blatt (Teil B hat ein eigenes Blatt!). Geplant für die <b>obere Hälfte der Vorderseite</b>; der Rest bleibt für Verteilungen, ML, KDE, Tests (Tag 3–5).</div>
+<div class="sp-half"><div class="sp">
+
+<div class="blk"><b>Einlesen</b>
+<pre>setwd(path.expand("~"))
+d &lt;- read.csv("X.csv", sep=";", dec=".", header=TRUE)
+head(d); str(d); nrow(d); names(d)</pre>
+str zeigt 1 Variable → sep falsch. chr=character · int/num=numeric · Factor.</div>
+
+<div class="blk"><b>Kennzahlen (3 Nachkommast.)</b>
+<pre>round(mean(d$X), 3); round(sd(d$X), 3)  # sd,var: n-1
+round(var(d$X)*(n-1)/n, 3)               # empirisch
+median(d$X); IQR(d$X); quantile(d$X, .9)
+summary(d$X); max(d$X); which.max(d$X)
+mean(d$X, na.rm=TRUE)                    # bei NA</pre></div>
+
+<div class="blk"><b>Häufigkeiten · Gruppen · Filter</b>
+<pre>table(d$X); prop.table(table(d$X))
+table(d$X, d$Y)
+round(prop.table(table(d$X, d$Y), 1), 3) # zeilenw.
+tapply(d$Zahl, d$Gruppe, mean)
+s &lt;- subset(d, A &gt;= 5 &amp; A &lt; 60)       # &amp; und, | oder
+sum(d$X &gt; 20); mean(d$X &gt; 20)          # Anzahl/Anteil
+d[d$X == max(d$X), ]</pre></div>
+
+<div class="blk"><b>Klassen</b>
+<pre>d$X.3 &lt;- cut(d$X, breaks=c(0,5,60,Inf), right=FALSE)</pre>
+right=FALSE → [a,b) „weniger als“ · TRUE → (a,b] „bis zu/maximal“. Grenzen in Einheit der Variable (1 h = 60 min).</div>
+
+<div class="blk"><b>Grafik als PDF (8 P)</b>
+<pre>pdf("Histogramm.pdf")
+hist(d$X, breaks=c(0,10,40,100), freq=FALSE,
+  right=FALSE, main="Sitz …, Matr.Nr. …, Aufgabenteil e)",
+  xlab="Name (Einheit)", ylab="Dichte")
+dev.off()
+plot(d$X, d$Y, pch=16, main=, xlab=, ylab=)
+boxplot(Zahl ~ Gruppe, data=d); barplot(table(d$X))</pre>
+freq=FALSE = normiert. breaks müssen min/max abdecken. PDF im Ordner prüfen + hochladen.</div>
+
+<div class="blk"><b>Zusammenhang</b>
+<pre>round(cor(d$X, d$Y), 3)
+cor(d$X, d$Y, method="spearman"); cov(d$X, d$Y)</pre></div>
+
+<div class="blk"><b>ILIAS-Antwort</b>
+Kästchen 1: Code + Output. Kästchen 2: ganzer Satz, gerundet: „Das arithmetische Mittel der Variable Muenzen beträgt 22.083.“ Falschen Code löschen.</div>
+</div></div>
+</section>
