@@ -160,3 +160,24 @@ table.rtab td:first-child{font-family:'JetBrains Mono',monospace;font-size:.82re
 .katalog-titel{margin-top:1.2em;padding:6px 12px;border-radius:8px;background:#1e2a44;color:#fff;font-weight:900;font-size:1.05rem;page-break-after:avoid}
 .zu{border:2px dashed var(--c);border-radius:10px;padding:8px 12px;margin:.9em 0;page-break-inside:avoid}
 .zu>.t{font-weight:900;color:var(--c-dark);margin-bottom:3px}
+
+/* ---------- Formelsammlung ---------- */
+.fs-kopf{background:var(--c);color:#fff;border-radius:12px;padding:9mm 10mm 7mm;margin-bottom:5mm}
+.fs-kopf h1{margin:0;font-size:1.9rem;font-weight:900;line-height:1.1}
+.fs-kopf p{margin:.3em 0 0;opacity:.95}
+h2.fs{font-size:1.15rem;font-weight:900;color:#fff;background:var(--c-dark);border-radius:7px;padding:3px 10px;margin:1em 0 .45em;page-break-after:avoid;break-after:avoid}
+.fk{border:1.5px solid #c9d3e3;border-radius:9px;margin:.5em 0;page-break-inside:avoid;break-inside:avoid;background:#fff}
+.fk>.h{background:var(--c-soft);color:var(--c-dark);font-weight:900;padding:3px 10px;border-radius:8px 8px 0 0;font-size:.95rem;display:flex;justify-content:space-between;gap:8px}
+.fk>.h .q{font-weight:700;font-size:.78rem;color:var(--muted)}
+.fk>.b{padding:3px 10px 4px;font-size:.93rem}
+.fk .f{background:var(--formel);border-left:3px solid var(--formel-b);border-radius:4px;padding:1px 8px;margin:4px 0}
+.fk .f .katex-display{margin:.25em 0}
+.fk ol,.fk ul{margin:.2em 0 .3em}
+.fk .x{color:#b42323;font-size:.88rem;margin:.25em 0}
+.fk .x::before{content:"⚠ Falle: ";font-weight:900}
+.fk .s{color:#1c6b3f;font-size:.88rem;margin:.25em 0;font-style:italic}
+.fk .s::before{content:"✎ Satz: ";font-weight:900;font-style:normal}
+.fk .tr{color:#a44a16;font-size:.86rem;margin:.25em 0}
+.fk .tr::before{content:"TR: ";font-weight:900}
+.fk table.tab{margin:.3em 0;font-size:.86rem}
+.fs2{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}

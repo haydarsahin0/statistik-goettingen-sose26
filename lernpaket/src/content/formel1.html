@@ -1,0 +1,276 @@
+<section class="t1">
+<div class="fs-kopf">
+<h1>Formelsammlung Tag 1 · Deskriptive Statistik + R</h1>
+<p>Jede Karte: <b>Formel</b> → <b>Rezept</b> (Schritt für Schritt) → <b>Falle</b> → <b>Satz</b> für die Antwort. Die Nummern „Typ …“ zeigen auf die Musterbeispiele im Lernbuch.</p>
+<p class="small">Tipp: In der Klausur darfst du pro Teil ein handgeschriebenes A4-Blatt benutzen. Schreibe die Karten, die du noch nicht sicher kannst, mit der Hand ab – das Abschreiben ist schon Lernen.</p>
+</div>
+
+<!-- ================= 1 ================= -->
+<h2 class="fs">1 · Grundbegriffe, Skalen, Stichproben</h2>
+
+<div class="fk"><div class="h">Grundbegriffe <span class="q">Typ 5</span></div><div class="b">
+<table class="tab wide"><tr><th class="l">Begriff</th><th class="l">Bedeutung</th><th class="l">Beispiel</th></tr>
+<tr><td class="l">statistische Einheit</td><td class="l">ein Objekt, an dem gemessen wird (Singular!)</td><td class="l">ein Mitglied, eine Filiale</td></tr>
+<tr><td class="l">Grundgesamtheit</td><td class="l">alle Einheiten, über die man etwas wissen will (mit Ort + Zeit)</td><td class="l">alle Mitglieder des Studios 2026</td></tr>
+<tr><td class="l">Stichprobe</td><td class="l">ausgewählter Teil der Grundgesamtheit</td><td class="l">200 befragte Mitglieder</td></tr>
+<tr><td class="l">Merkmal \(X\) / Ausprägung \(x\)</td><td class="l">die Eigenschaft / ihr konkreter Wert</td><td class="l">Alter / 23 Jahre</td></tr></table>
+</div></div>
+
+<div class="fk"><div class="h">Skalenniveau + diskret/stetig <span class="q">Typ 1, 2</span></div><div class="b">
+<p><b>Rezept – 3 Fragen:</b> (1) Kann man sinnvoll <b>ordnen</b>? Nein → <b>nominal</b>. (2) Sind <b>Abstände</b> sinnvoll interpretierbar? Nein → <b>ordinal</b>. Ja → <b>kardinal (metrisch)</b>. (3) Abzählbar viele Werte → <b>diskret</b>; jeder Wert in einem Intervall möglich → <b>stetig</b>.</p>
+<table class="tab wide"><tr><th class="l">Skala</th><th>Modus</th><th>Median/Quantile</th><th>Mittel/Varianz</th><th class="l">Beispiele</th></tr>
+<tr><td class="l">nominal</td><td>✓</td><td>✗</td><td>✗</td><td class="l">Geschlecht, Tal, Farbe, Hausnummer, PLZ</td></tr>
+<tr><td class="l">ordinal</td><td>✓</td><td>✓</td><td>✗</td><td class="l">Noten, Zufriedenheit (1–7-Skala), Tarif Basic/Premium</td></tr>
+<tr><td class="l">kardinal</td><td>✓</td><td>✓</td><td>✓</td><td class="l">Alter, Gewicht, Einkommen, Anzahl</td></tr></table>
+<p class="x">1–7-Zufriedenheitsskala ist <b>ordinal</b> (nicht kardinal). 0/1-Merkmal ist nominal, aber der Mittelwert = Anteil ist sinnvoll.</p>
+<p class="s">„X ist ein stetiges, kardinal skaliertes Merkmal, weil die Abstände zwischen den Werten sinnvoll interpretierbar sind.“ · „Der Median ist nicht sinnvoll, weil sich die Ausprägungen nicht ordnen lassen.“</p>
+</div></div>
+
+<div class="fk"><div class="h">Stichprobenverfahren + Störvariablen <span class="q">Typ 4, 6</span></div><div class="b">
+<table class="tab wide"><tr><th class="l">Verfahren</th><th class="l">Erkennungszeichen</th></tr>
+<tr><td class="l">einfache Zufallsstichprobe</td><td class="l">„zufällig aus der ganzen Liste/Register“</td></tr>
+<tr><td class="l">geschichtete Stichprobe</td><td class="l">aus <b>jeder</b> Gruppe (Schicht) wird zufällig gezogen</td></tr>
+<tr><td class="l">Klumpenstichprobe</td><td class="l">zufällig <b>ganze Gruppen</b> wählen, darin <b>alle</b> befragen</td></tr>
+<tr><td class="l">Quotenstichprobe</td><td class="l">bewusste Auswahl nach Quoten (nicht zufällig!)</td></tr></table>
+<p><b>Störvariable</b> = beeinflusst das Ergebnis, ist aber nicht die untersuchte Variable. Kontrolle durch <b>Randomisierung</b> (zufällige Zuteilung).</p>
+</div></div>
+
+<!-- ================= 2 ================= -->
+<h2 class="fs">2 · Häufigkeiten, Histogramm, Verteilungsfunktion</h2>
+
+<div class="fk"><div class="h">Häufigkeitstabelle vervollständigen <span class="q">Typ 7</span></div><div class="b">
+<div class="f">\[n=\sum h_j\qquad f_j=\frac{h_j}{n}\qquad H_j=h_1+\dots+h_j\qquad F_j=\frac{H_j}{n}\qquad h_j=H_j-H_{j-1}\]</div>
+<ol><li>Alles Bekannte eintragen. Fehlt \(n\)? → Summe der \(h_j\) oder \(n=h_j/f_j\).</li>
+<li>Rückwärts: \(h_j=H_j-H_{j-1}\), \(h_j=f_j\cdot n\), \(H_j=F_j\cdot n\).</li>
+<li>Kontrolle: \(\sum h_j=n\), \(\sum f_j=1\), letztes \(F=1\).</li></ol>
+<table class="tab wide"><tr><th class="l">Wort (diskret)</th><th class="l">Rechnung</th><th class="l">Wort</th><th class="l">Rechnung</th></tr>
+<tr><td class="l">höchstens \(k\) (\(\le k\))</td><td class="l">\(F(k)\)</td><td class="l">mehr als \(k\) (\(&gt;k\))</td><td class="l">\(1-F(k)\)</td></tr>
+<tr><td class="l">weniger als \(k\) (\(&lt;k\))</td><td class="l">\(F(k-1)\)</td><td class="l">mindestens \(k\) (\(\ge k\))</td><td class="l">\(1-F(k-1)\)</td></tr>
+<tr><td class="l">zwischen \(a\) und \(b\) (inkl.)</td><td class="l">\(F(b)-F(a-1)\)</td><td class="l">genau \(k\)</td><td class="l">\(f(k)\)</td></tr></table>
+</div></div>
+
+<div class="fk"><div class="h">Normiertes Histogramm: Höhen <span class="q">Typ 8, 14</span></div><div class="b">
+<div class="f">\[\text{Höhe}_j=\frac{f_j}{\text{Klassenbreite}_j}=\frac{h_j}{n\cdot(c_j-c_{j-1})}\qquad\text{Fläche}=\text{Breite}\cdot\text{Höhe}=f_j\qquad\sum\text{Flächen}=1\]</div>
+<ol><li>Tabelle: Klasse · \(h_j\) · \(f_j\) · Breite · Höhe.</li><li>Kontrolle: \(\sum\) Breite·Höhe \(=1\).</li></ol>
+<p class="x">Säulendiagramm mit absoluten Häufigkeiten bei <b>ungleich breiten</b> Klassen → breite Klassen wirken zu groß (verzerrt). In R: <code>freq = FALSE</code> (bzw. <code>prob = TRUE</code>) für normiert.</p>
+<p class="s">„Bei ungleichen Klassenbreiten würden breite Klassen zu groß wirken; im Histogramm entspricht die Fläche dem Anteil.“</p>
+</div></div>
+
+<div class="fk"><div class="h">Anteil / Anzahl aus dem Histogramm <span class="q">Typ 9, 10</span></div><div class="b">
+<ol><li>Intervall in Stücke zerlegen – jedes Stück in <b>einer</b> Klasse.</li>
+<li>Pro Stück: <b>Breite des Stücks × Höhe der Klasse</b>. Addieren.</li>
+<li>Anzahl gesucht? → Anteil \(\times n\). Umgekehrt: \(h_j=\text{Höhe}\cdot\text{Breite}\cdot n\).</li></ol>
+<p><b>Beispiel:</b> 25–45 min, Klassen [20,30) Höhe 0.024 und [30,60) Höhe 0.00667: \(5\cdot0.024+15\cdot0.00667=0.12+0.1=0.22\).</p>
+<p class="s">„Annahme: Die Werte sind innerhalb jeder Klasse gleichmäßig verteilt.“ (bringt 1 Punkt!)</p>
+</div></div>
+
+<div class="fk"><div class="h">Modalklasse <span class="q">Typ 13</span></div><div class="b">
+<p>Modalklasse = Klasse mit der <b>größten Anzahl \(h_j\)</b>. Bei ungleichen Breiten ist das <b>nicht immer</b> die höchste Säule!</p>
+</div></div>
+
+<div class="fk"><div class="h">Empirische Verteilungsfunktion \(\hat F(x)\) <span class="q">Typ 11, 12</span></div><div class="b">
+<div class="f">\[\hat F(x)=\frac{\text{Anzahl der Werte}\le x}{n}\qquad\text{Treppenfunktion von 0 bis 1}\]</div>
+<ol><li>Daten sortieren, verschiedene Werte \(a_1&lt;a_2&lt;\dots\) mit \(F_j\) (kumuliert) bestimmen.</li>
+<li>Fallunterscheidung: \(0\) für \(x&lt;a_1\); \(F_1\) für \(a_1\le x&lt;a_2\); … ; \(1\) für \(x\ge a_{\text{letzter}}\).</li>
+<li>Skizze: waagerechte Stufen, <b>● links (gehört dazu), ○ rechts</b>; Achsen beschriften.</li></ol>
+<p><b>Ablesen:</b> \(\hat F(2.5)\) = Wert der Stufe, auf der 2.5 liegt. Rückwärts: Sprunghöhe bei \(a_j\) = \(f_j\) → \(h_j=f_j\cdot n\).</p>
+<p class="x">Die erste Zeile „0 für \(x&lt;a_1\)“ und die letzte „1 für \(x\ge\dots\)“ nicht vergessen.</p>
+</div></div>
+
+<!-- ================= 3 ================= -->
+<h2 class="fs">3 · Lagemaße</h2>
+
+<div class="fk"><div class="h">Mittelwert, Median, Modus aus Rohdaten <span class="q">Typ 15</span></div><div class="b">
+<div class="f">\[\bar x=\frac1n\sum x_i\qquad x_{med}=\begin{cases}x_{((n+1)/2)} &amp; n\ \text{ungerade}\\ \tfrac12\big(x_{(n/2)}+x_{(n/2+1)}\big) &amp; n\ \text{gerade}\end{cases}\qquad x_{mod}=\text{häufigster Wert}\]</div>
+<ol><li><b>Sortieren!</b> \(n\) zählen.</li><li>\(\bar x\): Summe / \(n\).</li><li>Median: Platz(e) bestimmen, Wert(e) ablesen. Rechnung zeigen: \((4+5)/2\), nicht „9/2“.</li></ol>
+<p class="x">Median = Mitte der <b>Daten</b>, nicht Mitte der Liste der verschiedenen Werte (Kaffee: 0 1 1 2 2 2 3 3 4 6 → Median 2, nicht 2.5).</p>
+</div></div>
+
+<div class="fk"><div class="h">Lagemaße aus Häufigkeitstabelle <span class="q">Typ 16</span></div><div class="b">
+<div class="f">\[\bar x=\frac1n\sum_j a_j h_j=\sum_j a_j f_j\]</div>
+<p>Median: \(H_j\) bilden, Platz \(\frac{n+1}{2}\) (bzw. \(\frac n2\) und \(\frac n2+1\)) suchen: erster \(a_j\) mit \(H_j\ge\) Platz. Modus: \(a_j\) mit größtem \(h_j\).</p>
+</div></div>
+
+<div class="fk"><div class="h">Klassierte Daten <span class="q">Typ 17</span></div><div class="b">
+<div class="f">\[m_j=\frac{c_{j-1}+c_j}{2}\qquad \bar x_K=\sum_j f_j m_j\qquad s_K^2=\sum_j f_j m_j^2-\bar x_K^2\]</div>
+<ol><li>Tabelle: Klasse · \(h_j\) · \(f_j\) · \(m_j\) · \(f_jm_j\) · (\(f_jm_j^2\)).</li><li>Spalten summieren. Nur Näherung (alle Werte in der Klassenmitte gedacht).</li></ol>
+</div></div>
+
+<div class="fk"><div class="h">Gesamtmittel aus Gruppen · fehlender/falscher Wert <span class="q">Typ 18, 19</span></div><div class="b">
+<div class="f">\[\bar x_{ges}=\frac{n_1\bar x_1+n_2\bar x_2}{n_1+n_2}\qquad\qquad \sum x_i=n\cdot\bar x\]</div>
+<p><b>Rezept:</b> Immer über die <b>Summe</b>: Summe = \(n\cdot\bar x\) → korrigieren (alten Wert weg, neuen dazu) → neu durch \(n\) teilen.</p>
+<p><b>Beispiel:</b> 9 Personen Ø 4.844 und 6 Personen Ø 3.5: \((43.6+21)/15=4.307\).</p>
+<p class="x">Nie einfach die zwei Mittelwerte mitteln (außer beide Gruppen gleich groß).</p>
+</div></div>
+
+<div class="fk"><div class="h">Schiefe · Robustheit · 0/1-Daten <span class="q">Typ 21, 22, 23</span></div><div class="b">
+<table class="tab wide"><tr><th class="l">rechtsschief (linkssteil)</th><th class="l">symmetrisch</th><th class="l">linksschief (rechtssteil)</th></tr>
+<tr><td class="l">\(\bar x&gt;x_{med}&gt;x_{mod}\), langer Schwanz rechts</td><td class="l">\(\bar x\approx x_{med}\approx x_{mod}\)</td><td class="l">\(\bar x&lt;x_{med}&lt;x_{mod}\)</td></tr></table>
+<p>0/1-Daten: \(\bar x\) = <b>Anteil der Einsen</b>, \(s^2=\bar x(1-\bar x)\).</p>
+<p class="s">„Da \(\bar x=4.844&gt;x_{med}=3.6&gt;x_{mod}=3.1\), ist die Verteilung rechtsschief.“ · „Der Median ist robuster gegenüber Ausreißern als das arithmetische Mittel.“</p>
+</div></div>
+
+<!-- ================= 4 ================= -->
+<h2 class="fs">4 · Quantile, Streuung, Boxplot</h2>
+
+<div class="fk"><div class="h">α-Quantil (Definition der Vorlesung) <span class="q">Typ 24</span></div><div class="b">
+<div class="f">\[x_\alpha=\begin{cases}x_{(\lceil n\alpha\rceil)} &amp; n\alpha\ \text{keine ganze Zahl → aufrunden}\\ \tfrac12\big(x_{(n\alpha)}+x_{(n\alpha+1)}\big) &amp; n\alpha\ \text{ganze Zahl}\end{cases}\qquad \text{IQR}=x_{0.75}-x_{0.25}\]</div>
+<ol><li>Sortieren, Plätze nummerieren.</li><li>\(n\cdot\alpha\) rechnen = <b>Platznummer</b>, nicht der Wert!</li><li>Regel anwenden, <b>Wert</b> am Platz ablesen.</li></ol>
+<p><b>Beispiel</b> \(n=12\): 2 3 3 4 4 4 5 5 6 7 9 14 → \(12\cdot0.25=3\) → \((x_{(3)}+x_{(4)})/2=3.5\); \(12\cdot0.75=9\) → \((6+7)/2=6.5\); IQR = 3.</p>
+<p class="x">R (<code>quantile</code>) rechnet anders. Teil A: immer Vorlesungsdefinition.</p>
+<p class="s">„Mindestens 90 % der Werte sind kleiner oder gleich \(x_{0.9}\).“</p>
+</div></div>
+
+<div class="fk"><div class="h">Varianz und Standardabweichung <span class="q">Typ 25, 26</span></div><div class="b">
+<div class="f">\[s^2=\frac1n\sum(x_i-\bar x)^2=\frac{\sum x_i^2}{n}-\bar x^2\qquad s_*^2=\frac{1}{n-1}\sum(x_i-\bar x)^2=\frac{n}{n-1}\,s^2\qquad s=\sqrt{s^2}\]</div>
+<ol><li>\(\bar x=\sum x/n\).</li><li>\(s^2=\sum x^2/n-\bar x^2\) (Verschiebungssatz).</li><li>\(s_*^2=\frac{n}{n-1}s^2\) – <b>keine Wurzel!</b></li><li>\(s=\sqrt{s^2}\).</li></ol>
+<p>Aus Häufigkeitstabelle: \(s^2=\sum a_j^2 f_j-\bar x^2\). Aus R-Output (<code>var</code> = \(s_*^2\)): \(s^2=\frac{n-1}{n}\,s_*^2\).</p>
+<p class="x">„empirisch“ → \(\frac1n\); „unverzerrt / korrigiert / R: var, sd“ → \(\frac1{n-1}\). Varianz ist nie negativ – sonst Rechenfehler!</p>
+<p class="s">„Die Standardabweichung hat dieselbe Maßeinheit wie das Merkmal.“</p>
+</div></div>
+
+<div class="fk"><div class="h">Lineare Transformation \(y=a+b\,x\) <span class="q">Typ 20, 28</span></div><div class="b">
+<table class="tab wide"><tr><th class="l">Maß</th><th>neu</th><th class="l">Maß</th><th>neu</th></tr>
+<tr><td class="l">\(\bar x\), Median, Modus, Quantile</td><td>\(a+b\cdot\text{alt}\)</td><td class="l">Varianz</td><td>\(b^2\cdot s^2\)</td></tr>
+<tr><td class="l">Standardabweichung, IQR</td><td>\(|b|\cdot\text{alt}\)</td><td class="l">\(a\) (Verschiebung)</td><td>ändert Streuung nicht</td></tr></table>
+<p><b>Beispiele:</b> Tage → Stunden: \(b=24\) (Varianz \(\times576\)). +5 %: \(b=1.05\). °C → °F: \(a=32, b=1.8\).</p>
+<p class="x">Nicht neu rechnen – nur die Regel anwenden. Bei \(\log\): nur Median/Modus mittransformieren, Mittelwert nicht.</p>
+</div></div>
+
+<div class="fk"><div class="h">Wert kommt hinzu <span class="q">Typ 30</span></div><div class="b">
+<p>Summe \(=n\bar x\) und Quadratsumme der Abweichungen \(=n s^2\) bilden, neuen Wert einrechnen, durch \(n+1\) teilen. Ein neuer Wert genau bei \(\bar x\): \(\bar x\) bleibt, \(s^2\) wird kleiner (\(\frac{n s^2}{n+1}\)).</p>
+</div></div>
+
+<div class="fk"><div class="h">Boxplot mit Ausreißern <span class="q">Typ 27, 29</span></div><div class="b">
+<div class="f">\[\text{untere Grenze}=x_{0.25}-1.5\cdot\text{IQR}\qquad \text{obere Grenze}=x_{0.75}+1.5\cdot\text{IQR}\]</div>
+<ol><li>\(x_{0.25}\), Median, \(x_{0.75}\) (Vorlesungsdefinition), IQR.</li>
+<li>Grenzen (Zäune) berechnen.</li>
+<li>Werte außerhalb → <b>Ausreißer</b> (einzelne Punkte).</li>
+<li>Whisker bis zum <b>extremsten echten Wert innerhalb</b> der Grenzen (nicht bis zur Grenze!).</li>
+<li>Skizze: Achse mit Zahlen, Box von \(x_{0.25}\) bis \(x_{0.75}\), Strich beim Median, Whisker, Punkte.</li></ol>
+<p class="x">Keine Punkte eingezeichnet → keine Ausreißer. Box geht bis \(x_{0.75}\), nicht bis zum Whisker-Ende.</p>
+<p class="s">„Unterer Whisker bis 2, oberer Whisker bis 9. Der Wert 14 ist ein Ausreißer.“</p>
+</div></div>
+
+<!-- ================= 5 ================= -->
+<h2 class="fs">5 · Kontingenztafel und χ²</h2>
+
+<div class="fk"><div class="h">Tafel aus Text bauen <span class="q">Typ 31</span></div><div class="b">
+<ol><li>Leere Tafel mit Σ-Zeile und Σ-Spalte zeichnen, \(n\) unten rechts.</li>
+<li>Jede Zahl aus dem Text eintragen. Prozent „<b>der</b> Frauen“ → × Zeilensumme Frauen (nicht × \(n\)).</li>
+<li>Rest durch Differenzen. Kontrolle: alle Summen stimmen.</li></ol>
+</div></div>
+
+<div class="fk"><div class="h">Rand-, gemeinsame und bedingte Häufigkeiten <span class="q">Typ 32</span></div><div class="b">
+<div class="f">\[h_{j\bullet}=\text{Zeilensumme}\qquad h_{\bullet k}=\text{Spaltensumme}\qquad f_{jk}=\frac{h_{jk}}{n}\qquad f(Y{=}b_k\mid X{=}a_j)=\frac{h_{jk}}{h_{j\bullet}}\]</div>
+<table class="tab wide"><tr><th class="l">Formulierung</th><th class="l">Nenner</th></tr>
+<tr><td class="l">„Anteil … <b>aller</b> …“, „A <b>und</b> B“</td><td class="l">\(n\)</td></tr>
+<tr><td class="l">„Anteil A <b>unter</b> den B“, „<b>von den</b> B“, „gegeben B“, \(f(A\mid B)\)</td><td class="l">Summe der Gruppe B</td></tr></table>
+<p><b>Zusammenhang?</b> Bedingte Anteile der Gruppen vergleichen: verschieden → Zusammenhang; gleich (= Randverteilung) → unabhängig.</p>
+<p class="x">\(f(A\mid B)\ne f(B\mid A)\) – anderer Nenner!</p>
+<p class="s">„Unter den Rauchenden treiben 25 % Sport, unter den Nichtrauchenden 53.6 %. Die Anteile sind verschieden, also gibt es einen Zusammenhang.“</p>
+</div></div>
+
+<div class="fk"><div class="h">χ²-Koeffizient <span class="q">Typ 33, 34, 35</span></div><div class="b">
+<div class="f">\[\tilde h_{jk}=\frac{h_{j\bullet}\cdot h_{\bullet k}}{n}\qquad \chi^2=\sum_j\sum_k\frac{(h_{jk}-\tilde h_{jk})^2}{\tilde h_{jk}}\]</div>
+<ol><li>Erwartete Tafel: pro Zelle Zeilensumme × Spaltensumme / \(n\) (nicht runden).</li>
+<li>Kontrolle: erwartete Tafel hat dieselben Randsummen.</li>
+<li>Differenzen \(h-\tilde h\) (Kontrolle: pro Zeile/Spalte Summe 0; bei 2×2 alle gleich groß ±).</li>
+<li>Pro Zelle: Differenz² / <b>erwartet</b>. Alle Zellen addieren.</li></ol>
+<p>\(\chi^2=0\) ⇔ unabhängig; groß → starker Zusammenhang; nie negativ; alle Zahlen ×2 → χ² ×2. Unabhängige Tafel füllen: jede Zelle = Zeile·Spalte/\(n\).</p>
+<p class="x">Nenner aus der Tabelle abschreiben und prüfen (63, nicht 67!).</p>
+<p class="s">„χ² = 13.853 &gt; 0, es besteht ein Zusammenhang zwischen Rauchen und Sport.“</p>
+</div></div>
+
+<!-- ================= 6 ================= -->
+<h2 class="fs">6 · Kovarianz, Korrelation, Spearman, Kausalität</h2>
+
+<div class="fk"><div class="h">Kovarianz und Pearson-Korrelation <span class="q">Typ 36, 37</span></div><div class="b">
+<div class="f">\[s_{xy}=\frac1n\sum x_iy_i-\bar x\,\bar y\qquad r=\frac{s_{xy}}{s_x\,s_y}=\frac{s_{xy}}{\sqrt{s_x^2\,s_y^2}}\in[-1,1]\]</div>
+<ol><li>Arbeitstabelle: \(x,\ y,\ x^2,\ y^2,\ xy\) → 5 Summen (oft gegeben).</li>
+<li>\(\bar x,\ \bar y\).</li>
+<li>\(s_x^2=\frac{\sum x^2}{n}-\bar x^2\), \(s_y^2=\frac{\sum y^2}{n}-\bar y^2\).</li>
+<li>\(s_{xy}=\frac{\sum xy}{n}-\bar x\bar y\).</li>
+<li>\(r=s_{xy}/\sqrt{s_x^2 s_y^2}\). Rückwärts: \(s_{xy}=r\,s_x s_y\) (erst Wurzel aus Varianzen!).</li></ol>
+<table class="tab"><tr><th>\(|r|\)</th><td>0 – &lt;0.3</td><td>0.3 – &lt;0.7</td><td>0.7 – 1</td></tr><tr><th>Stärke</th><td>schwach</td><td>mittel</td><td>stark</td></tr></table>
+<p class="x">Nur das <b>Vorzeichen</b> der Kovarianz ist deutbar (einheitenabhängig). Stärke = \(|r|\): −0.9 ist stärker als 0.5.</p>
+<p class="s">„r = 0.990: sehr starker positiver <b>linearer</b> Zusammenhang zwischen Werbeausgaben und Umsatz.“</p>
+</div></div>
+
+<div class="fk"><div class="h">Kovarianz aus gemeinsamer Häufigkeitstabelle <span class="q">Typ 41</span></div><div class="b">
+<ol><li>Aus den <b>Rändern</b>: \(\bar x=\sum a_j f_{j\bullet}\), \(\bar y=\sum b_k f_{\bullet k}\), \(s_x^2=\sum a_j^2f_{j\bullet}-\bar x^2\), \(s_y^2\) analog.</li>
+<li>Aus dem <b>Inneren</b>: \(\overline{xy}=\sum_j\sum_k a_j b_k f_{jk}\) – Zeile/Spalte mit Wert 0 fällt weg.</li>
+<li>\(s_{xy}=\overline{xy}-\bar x\bar y\), dann \(r\).</li></ol>
+</div></div>
+
+<div class="fk"><div class="h">Einheiten ändern \(u=a+bx,\ v=c+dy\) <span class="q">Typ 39</span></div><div class="b">
+<div class="f">\[s_{uv}=b\cdot d\cdot s_{xy}\qquad r_{uv}=\begin{cases}r_{xy} &amp; b\,d&gt;0\\-r_{xy} &amp; b\,d&lt;0\end{cases}\qquad a,\ c\ \text{egal}\]</div>
+<p>cm→m: ×0.01 · kg→g: ×1000 · Tsd.€→€: ×1000 · °C→°F: ×1.8 (+32 egal).</p>
+<p class="s">„Die Kovarianz wird mit 1000 multipliziert, die Korrelation bleibt unverändert, da sie maßstabsunabhängig ist.“</p>
+</div></div>
+
+<div class="fk"><div class="h">Spearman-Rangkorrelation <span class="q">Typ 40</span></div><div class="b">
+<ol><li>\(x\) ranken (kleinster = 1), \(y\) ranken. Bindungen: Durchschnittsrang (2. und 3. Platz → beide 2.5). Kontrolle: Rangsumme \(=\frac{n(n+1)}{2}\).</li>
+<li><b>Pearson mit den Rängen</b> rechnen (gleiche Schritte wie oben; mittlerer Rang \(=\frac{n+1}{2}\)).</li>
+<li>Ohne Bindungen schneller: \(r_{Sp}=1-\dfrac{6\sum d_i^2}{n(n^2-1)}\), \(d_i=rk(x_i)-rk(y_i)\).</li></ol>
+<p><b>Ohne Rechnen:</b> Ränge von x und y identisch → \(r_{Sp}=1\); genau umgekehrt → \(-1\).</p>
+<p class="s">„r_Sp = 1, da die Ränge von X und Y exakt übereinstimmen (perfekt monotoner Zusammenhang).“</p>
+</div></div>
+
+<div class="fk"><div class="h">Richtig/Falsch-Klassiker <span class="q">Typ 43, 44</span></div><div class="b">
+<table class="tab wide"><tr><th class="l">Aussage</th><th>R/F</th></tr>
+<tr><td class="l">\(r\ne0\) ⇒ X und Y nicht unabhängig</td><td>R</td></tr>
+<tr><td class="l">\(Y=X^2\) (Parabel) ⇒ \(r\approx0\) möglich – \(r\) misst nur <b>lineare</b> Zusammenhänge</td><td>R</td></tr>
+<tr><td class="l">\(X=Y\) ⇒ \(r=1\)</td><td>R</td></tr>
+<tr><td class="l">unkorreliert ⇒ unabhängig</td><td>F</td></tr>
+<tr><td class="l">\(r\ne0\) ⇒ kausaler Zusammenhang</td><td>F</td></tr>
+<tr><td class="l">Cov ≥ 0.8 ⇒ starker Zusammenhang</td><td>F</td></tr></table>
+</div></div>
+
+<div class="fk"><div class="h">Kausalität beurteilen (2 Punkte) <span class="q">Typ 45</span></div><div class="b">
+<ol><li><b>Nein</b>, die Daten zeigen nur einen Zusammenhang, keine Kausalität.</li>
+<li><b>Drittvariable</b> nennen (beeinflusst beide Merkmale) oder umgekehrte Richtung / Zufall.</li>
+<li>Für Kausalität: <b>randomisiertes Experiment</b>.</li></ol>
+<p class="s">„Nein. Der Zusammenhang könnte durch die Lage der Filiale entstehen, die sowohl das Werbebudget als auch den Umsatz beeinflusst. Für einen Kausalnachweis bräuchte man ein randomisiertes Experiment.“</p>
+<p class="tr">Streudiagramm „beschriftet“ = Achsen mit Name + Einheit, Titel, Punkte richtig. Skizze \(r=0\): runde Wolke oder U-Form.</p>
+</div></div>
+
+<!-- ================= 7 ================= -->
+<h2 class="fs">7 · R für Teil B</h2>
+
+<div class="fk"><div class="h">Die Befehle <span class="q">Typ 46–54</span></div><div class="b">
+<pre>setwd(path.expand("~"))
+d &lt;- read.csv("Datei.csv", sep = ";", dec = ".", header = TRUE)
+head(d); str(d); nrow(d)                       # Typen: chr / int / num / Factor
+round(mean(d$X), 3); round(sd(d$X), 3)         # sd, var = unverzerrt (n-1)
+var(d$X) * (n - 1) / n                         # empirische Varianz (1/n)
+median(d$X); IQR(d$X); quantile(d$X, 0.9); summary(d$X)
+table(d$X); prop.table(table(d$X)); table(d$X, d$Y)
+round(prop.table(table(d$X, d$Y), 1), 3)       # bedingt, zeilenweise
+tapply(d$Zahl, d$Gruppe, mean)                 # pro Gruppe
+s &lt;- subset(d, Kampfzeit &gt;= 5 &amp; Kampfzeit &lt; 60)  # Teilgruppe
+sum(d$X &gt; 20); mean(d$X &gt; 20)                  # Anzahl / Anteil
+d$X.3 &lt;- cut(d$X, breaks = c(0, 5, 60, Inf), right = FALSE)  # [a,b)
+pdf("Histogramm.pdf")
+hist(d$X, breaks = c(0, 10, 40, 100), freq = FALSE, right = FALSE,
+     main = "Sitz …, Matr.Nr. …, Aufgabenteil e)", xlab = "…", ylab = "Dichte")
+dev.off()
+plot(d$X, d$Y, main = "…", xlab = "…", ylab = "…")
+cor(d$X, d$Y); cor(d$X, d$Y, method = "spearman"); cov(d$X, d$Y)</pre>
+<p class="x"><code>right = FALSE</code> → [a, b) („weniger als“); <code>right = TRUE</code> → (a, b] („bis zu / maximal“). <code>pdf()</code> vor, <code>dev.off()</code> nach der Grafik. Fehlende Werte: <code>na.rm = TRUE</code>.</p>
+<p class="s">Teil B: Kästchen 1 = R-Code + Output; Kästchen 2 = ganzer Satz, 3 Nachkommastellen: „Das arithmetische Mittel der Variable Muenzen beträgt 22.083.“</p>
+</div></div>
+
+<!-- ================= 8 ================= -->
+<h2 class="fs">8 · Punkte-Checkliste für jede Aufgabe</h2>
+<div class="fk"><div class="h">Bevor du abgibst</div><div class="b">
+<ul class="check">
+<li>Jeden Teil der Frage beantwortet? (Semikolons / „und“ zählen – jedes Stück = Punkte)</li>
+<li>„Begründen Sie“ → mit <b>Zahlen</b> vergleichen. „Welche Annahme?“ → Annahme hinschreiben.</li>
+<li>Lösungsweg sichtbar, keine falschen Gleichungsketten (\(13.165 \ne \sqrt{13.165}\)), jede Größe in eigener Zeile.</li>
+<li>Einheiten im Ergebnis (Minuten, Stunden², Tsd. €).</li>
+<li>Plausibilität: Anteile zwischen 0 und 1, Varianz ≥ 0, \(|r|\le1\), χ² ≥ 0.</li>
+<li>Nie ein Kästchen leer lassen – Formel hinschreiben bringt Teilpunkte; Folgefehler werden berücksichtigt.</li>
+</ul>
+</div></div>
+</section>
