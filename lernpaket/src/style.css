@@ -197,3 +197,17 @@ h2.fs{font-size:1.15rem;font-weight:900;color:#fff;background:var(--c-dark);bord
 .src{font-size:.72rem;font-weight:800;color:#5b6474;background:#eef1f5;border-radius:4px;padding:0 4px;margin-left:3px;white-space:nowrap}
 .fk ul.r{margin:.15em 0 .3em;padding-left:1.1em}
 .fk ul.r li{margin:.08em 0}
+
+/* ---------- Rezeptbuch ---------- */
+.rz{border:1.5px solid #c9d3e3;border-radius:9px;margin:.45em 0;page-break-inside:avoid;break-inside:avoid;background:#fff}
+.rz>.q{background:var(--c);color:#fff;font-weight:900;padding:3px 10px;border-radius:8px 8px 0 0;font-size:.95rem}
+.rz>.q i{font-weight:700;opacity:.85}
+.rz>.b{padding:4px 10px 5px;font-size:.93rem;display:grid;grid-template-columns:1.25fr 1fr;gap:10px}
+.rz .yap b.l,.rz .yaz b.l{display:block;color:var(--c-dark);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+.rz .yap ol{margin:.1em 0;padding-left:1.2em}
+.rz .yap li{margin:.05em 0}
+.rz .yaz{background:#effaf3;border-left:3px solid #2f9e5a;border-radius:5px;padding:3px 8px;font-style:italic;color:#14532d}
+.rz .yaz b.l{font-style:normal;color:#1c6b3f}
+.rz .dikkat{grid-column:1/-1;color:#b42323;font-size:.86rem;margin-top:-2px}
+.rz .dikkat::before{content:"⚠ ";font-weight:900}
+h2.rzh{font-size:1.1rem;font-weight:900;color:#fff;background:var(--c-dark);border-radius:7px;padding:3px 10px;margin:.9em 0 .4em;page-break-after:avoid;break-after:avoid}
