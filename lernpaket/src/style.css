@@ -216,3 +216,30 @@ h2.rzh{font-size:1.1rem;font-weight:900;color:#fff;background:var(--c-dark);bord
 .ol.hi{color:#b42323}.ol.mid{color:#b8650a}.ol.lo{color:#4b5563}
 .legend{font-size:.85rem;border:1.5px dashed #c9d3e3;border-radius:8px;padding:5px 10px;margin:.4em 0}
 .legend .ol{border:1px solid #d5dbe5}
+
+/* ---------- Probeklausur ---------- */
+.kl{font-family:'Nunito',Arial,sans-serif}
+.kl-deck{border:2px solid #1e2a44;border-radius:6px;padding:10mm 12mm;min-height:250mm;page-break-after:always}
+.kl-deck h1{font-size:1.7rem;margin:0 0 .2em;color:#1e2a44}
+.kl-deck .sub{font-size:1.05rem;color:#334155;margin-bottom:6mm}
+.kl-fields{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin:5mm 0}
+.kl-fields div{border-bottom:1.5px solid #1e2a44;padding:14px 0 2px;font-size:.9rem;color:#475569}
+.kl-pt{border-collapse:collapse;margin:4mm 0;font-size:.9rem}
+.kl-pt td,.kl-pt th{border:1.5px solid #1e2a44;padding:4px 9px;text-align:center;min-width:12mm}
+.kl-hin{font-size:.86rem;line-height:1.4}
+.kl-hin h3{font-size:1rem;margin:.6em 0 .2em;color:#1e2a44}
+.kl-auf{margin:0 0 6mm}
+.kl-auf h2{font-size:1.15rem;color:#1e2a44;border-bottom:2px solid #1e2a44;padding-bottom:2px;margin:0 0 .4em;display:flex;justify-content:space-between}
+.kl-auf .tl{list-style:none;padding-left:0}
+.kl-auf .tl>li{margin:.5em 0 .2em;position:relative;padding-left:1.7em}
+.kl-auf .tl>li>.lb{position:absolute;left:0;font-weight:900}
+.kl-auf .pt{float:right;font-weight:800;margin-left:8px}
+.lk{border:1.5px solid #1e2a44;border-radius:3px;margin:.3em 0 .5em;position:relative}
+.lk::before{content:"Lösung";position:absolute;top:1px;left:5px;font-size:.62rem;color:#64748b}
+.lk.s{height:16mm}.lk.m{height:30mm}.lk.l{height:48mm}.lk.xl{height:70mm}
+.kl-pb{page-break-before:always}
+.kl-foot{font-size:.75rem;color:#64748b;text-align:right;margin-top:-3mm}
+.kl table.dat{border-collapse:collapse;margin:.3em 0;font-size:.9rem}
+.kl table.dat td,.kl table.dat th{border:1px solid #64748b;padding:3px 8px;text-align:center}
+.kl table.dat th{background:#eef1f5}
+.kl-auf .tl>li{break-inside:avoid;page-break-inside:avoid}

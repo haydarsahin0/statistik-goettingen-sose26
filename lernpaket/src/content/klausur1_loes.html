@@ -1,0 +1,90 @@
+<section class="t1 loes">
+<h2>Musterlösung · Probeklausur Tag 1</h2>
+<p class="small">Punkteverteilung als Orientierung. Folgefehler werden berücksichtigt. Bewertungsschlüssel: 58–65 P ≈ 1,0–1,3 · 52–57 ≈ 1,7–2,0 · 45–51 ≈ 2,3–2,7 · 39–44 ≈ 3,0–3,3 · 33–38 ≈ 3,7–4,0 (grobe Orientierung, nicht offiziell).</p>
+
+<h3>Aufgabe 1 (8 P)</h3>
+<p>(a) je 1 P: (i) Leihdauer: kardinal, stetig · (ii) Anzahl Ausleihen: kardinal, diskret · (iii) Stadtteil: nominal, diskret · (iv) Zufriedenheit 1–5: ordinal, diskret.<br>
+(b) Geschichtete Stichprobe (aus jeder Schicht/jedem Stadtteil wird zufällig gezogen). <i>Nicht</i> Klumpen – dort würden ganze Stadtteile gezogen und alle befragt.<br>
+(c) Modus und Median (und Quantile), da das Merkmal ordinal ist: Die Werte lassen sich ordnen, die Abstände sind aber nicht sinnvoll interpretierbar – das arithmetische Mittel ist daher nicht sinnvoll.</p>
+
+<h3>Aufgabe 2 (12 P)</h3>
+<table class="tab"><tr><th>\(a_j\)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>5</td></tr>
+<tr><th>\(f_j\)</th><td>0.12</td><td>0.28</td><td>0.32</td><td>0.20</td><td>0.08</td></tr>
+<tr><th>\(H_j\)</th><td>3</td><td>10</td><td>18</td><td>23</td><td>25</td></tr>
+<tr><th>\(F_j\)</th><td>0.12</td><td>0.40</td><td>0.72</td><td>0.92</td><td>1</td></tr></table>
+<p>(b) \(\hat F(x)=0\) für \(x&lt;0\); 0.12 für \(0\le x&lt;1\); 0.40 für \(1\le x&lt;2\); 0.72 für \(2\le x&lt;3\); 0.92 für \(3\le x&lt;5\); 1 für \(x\ge5\). Skizze: Treppe, ● links, ○ rechts, keine senkrechten Linien, Achsen „Anzahl Ausleihen“ / „\(\hat F(x)\)“ (2 P Formel, 2 P Skizze).<br>
+(c) (i) mehr als 1: \(1-F(1)=1-0.40=0.6\) · (ii) mindestens 3: \(1-F(2)=1-0.72=0.28\).<br>
+(d) Modus = 2 · Median: \(n=25\) → \(x_{(13)}\); \(H_2=10&lt;13\le H_3=18\) → Median = 2 · \(\bar x=\frac{0\cdot3+1\cdot7+2\cdot8+3\cdot5+5\cdot2}{25}=\frac{48}{25}=1.92\).</p>
+
+<h3>Aufgabe 3 (11 P)</h3>
+<p>(a) \(f\) = 0.25, 0.35, 0.30, 0.10 → Höhen: \(0.25/15=0.017\) (1/60), \(0.35/15=0.023\) (7/300), \(0.30/30=0.01\), \(0.10/60=0.002\) (1/600). Kontrolle: Σ Fläche = 1.<br>
+(b) \([20,30)\): \(10\cdot\frac{7}{300}=0.2333\); \([30,45)\): \(15\cdot0.01=0.15\) → Anteil ≈ <b>0.383</b>. Annahme: Die Werte sind innerhalb der Klassen gleichmäßig verteilt.<br>
+(c) Mitten 7.5, 22.5, 45, 90: \(\bar x_K=0.25\cdot7.5+0.35\cdot22.5+0.30\cdot45+0.10\cdot90=1.875+7.875+13.5+9=32.25\) Minuten.<br>
+(d) Nein, im Allgemeinen falsch. Die Modalklasse ist die Klasse mit der größten <b>Häufigkeit</b> (hier [15, 30) mit 28). Die Säulenhöhe ist \(f_j/\)Breite; bei ungleich breiten Klassen kann eine breite Klasse mit vielen Werten eine niedrigere Säule haben. Hier stimmen beide zufällig überein.</p>
+
+<h3>Aufgabe 4 (12 P)</h3>
+<p>Sortiert: 2, 3, 3, 4, 4, 5, 5, 6, 8, 25.<br>
+(a) \(\bar x=65/10=6.5\) · Median \(=(x_{(5)}+x_{(6)})/2=(4+5)/2=4.5\).<br>
+(b) \(10\cdot0.25=2.5\) → Platz 3 → \(x_{0.25}=3\) · \(10\cdot0.75=7.5\) → Platz 8 → \(x_{0.75}=6\) · IQR = 3.<br>
+(c) \(s^2=\frac{829}{10}-6.5^2=82.9-42.25=40.65\) · \(s_*^2=\frac{10}{9}\cdot40.65=45.167\) · \(s=\sqrt{40.65}=6.376\).<br>
+(d) Grenzen: \(3-4.5=-1.5\) und \(6+4.5=10.5\). <b>25 ist ein Ausreißer.</b> Unterer Whisker bei 2, oberer Whisker bei 8.<br>
+(e) Faktor 60: \(\bar x=390\) Sekunden · \(s^2=60^2\cdot40.65=146340\) Sekunden² · \(s=60\cdot6.376=382.544\) Sekunden.</p>
+
+<h3>Aufgabe 5 (10 P)</h3>
+<table class="tab"><tr><th></th><th>Ü40</th><th>U40</th><th>Σ</th></tr>
+<tr><th>E-Bike</th><td>90</td><td>30</td><td>120</td></tr>
+<tr><th>Normal</th><td>60</td><td>120</td><td>180</td></tr>
+<tr><th>Σ</th><td>150</td><td>150</td><td>300</td></tr></table>
+<p>(b) Unter Ü40: \(90/150=0.6\) · unter U40: \(30/150=0.2\).<br>
+(c) Ja: 60 % der Über-40-Jährigen nutzen ein E-Bike, aber nur 20 % der Jüngeren. Die bedingten Anteile unterscheiden sich deutlich → Zusammenhang zwischen Alter und Fahrradtyp.<br>
+(d) Erwartet: \(\frac{120\cdot150}{300}=60\) (E, Ü40), 60 (E, U40), \(\frac{180\cdot150}{300}=90\) (N, Ü40), 90 (N, U40). Differenzen ±30.<br>
+\(\chi^2=\frac{30^2}{60}+\frac{30^2}{60}+\frac{30^2}{90}+\frac{30^2}{90}=15+15+10+10=50\) → deutlicher Zusammenhang.</p>
+
+<h3>Aufgabe 6 (12 P)</h3>
+<p>(a) x-Achse „Temperatur (°C)“, y-Achse „Eisverkauf (hundert Kugeln)“, Titel, 6 Punkte: steigende Punktwolke.<br>
+(b) \(\bar x=143/6=23.833\), \(\bar y=50/6=8.333\); \(s_{xy}=\frac{1255}{6}-23.833\cdot8.333=209.167-198.611=10.556\).<br>
+(c) \(s_x^2=\frac{3517}{6}-23.833^2=18.139\), \(s_y^2=\frac{456}{6}-8.333^2=6.556\); \(r=\frac{10.556}{\sqrt{18.139\cdot6.556}}=\frac{10.556}{10.905}=0.968\).<br>
+„Sehr starker positiver linearer Zusammenhang zwischen Temperatur und Eisverkauf: An wärmeren Tagen wird tendenziell mehr Eis verkauft.“<br>
+(d) Ränge x: 1, 3, 4, 2, 5, 6 · Ränge y: 1, 3, 4, 2, 6, 5 · \(d\) = 0, 0, 0, 0, −1, 1 → \(\sum d^2=2\) → \(r_{Sp}=1-\frac{6\cdot2}{6\cdot35}=1-\frac{12}{210}=0.943\). (Gleiches Ergebnis mit Pearson auf den Rängen.)<br>
+(e) \(b=1.8\) (die 32 spielt keine Rolle): Kovarianz \(1.8\cdot10.556=19.0\); Korrelation bleibt 0.968.<br>
+(f) Die Daten zeigen nur einen statistischen Zusammenhang; ein Kausalnachweis bräuchte ein Experiment mit Kontrolle weiterer Einflüsse. Mögliche Drittvariablen: Wochenende/Ferien, Sonnenschein, Anzahl Touristen. Zudem schließen sechs Tage nicht aus, dass auch an kalten Tagen Umsatz entsteht – die Schlussfolgerung „gar nicht öffnen“ ist aus den Daten nicht ableitbar.</p>
+
+<h3>Teil B (25 P) – R-Code und Output</h3>
+<pre>setwd(path.expand("~"))
+d &lt;- read.csv("Fahrrad.csv", sep = ";", dec = ",", header = TRUE)
+head(d)</pre>
+<pre class="out">  Ausleihe  Station    Typ Dauer   Km Preis
+1      A01 Altstadt Normal  12.6  2.4  2.01
+2      A02 Altstadt Normal  43.4  9.1  4.47
+3      A03 Altstadt E-Bike  33.7 11.0  6.06
+4      A04  Bahnhof E-Bike  42.3 11.3  7.34
+5      A05 Altstadt Normal  31.4  5.3  3.51
+6      A06  Bahnhof Normal   9.6  1.9  1.77</pre>
+<p>(a) Achtung: <code>sep = ";"</code> <b>und</b> <code>dec = ","</code> (deutsches CSV-Format). Mit <code>dec = "."</code> würden Dauer, Km, Preis als character eingelesen.</p>
+<pre>str(d)     # oder typeof(d$Station); typeof(d$Dauer)</pre>
+<pre class="out"> $ Station : chr  "Altstadt" "Altstadt" "Altstadt" "Bahnhof" ...
+ $ Dauer   : num  12.6 43.4 33.7 42.3 31.4 9.6 55.7 69.5 41 54.4 ...</pre>
+<p>(b) „Die Variable Station ist ein character-Objekt, die Variable Dauer ist numerisch (double).“</p>
+<pre>round(mean(d$Dauer), 3)
+round(sd(d$Dauer), 3)</pre>
+<pre class="out">[1] 35.86
+[1] 24.259</pre>
+<p>(c) „Das arithmetische Mittel der Leihdauer beträgt 35.86 Minuten, der unverzerrte Schätzer der Standardabweichung 24.259 Minuten.“</p>
+<pre>pdf("Histogramm.pdf")
+hist(d$Dauer, breaks = c(0, 15, 30, 60, 120), freq = FALSE, right = FALSE,
+     main = "Sitz …, Matr.Nr. …, Aufgabenteil d)",
+     xlab = "Leihdauer in Minuten", ylab = "Dichte")
+dev.off()</pre>
+<p>(d) Häufigkeiten 7, 6, 14, 3 → Dichten 0.0156, 0.0133, 0.0156, 0.0017. Punkte: pdf/dev.off, breaks, freq = FALSE, right = FALSE, Titel, Achsen, Upload.</p>
+<pre>median(d$Km); IQR(d$Km)</pre>
+<pre class="out">[1] 7.45
+[1] 8.35</pre>
+<p>(e) „Der Median der gefahrenen Kilometer beträgt 7.45 km, der Interquartilsabstand 8.35 km.“</p>
+<pre>round(tapply(d$Preis, d$Typ, mean), 3)</pre>
+<pre class="out">E-Bike Normal
+ 8.354  3.063 </pre>
+<p>(f) „E-Bikes sind im Durchschnitt teurer (8.354 € gegenüber 3.063 €).“</p>
+<pre>round(cor(d$Dauer, d$Preis), 3)</pre>
+<pre class="out">[1] 0.954</pre>
+<p>(g) „Der Korrelationskoeffizient nach Pearson beträgt 0.954; es besteht ein sehr starker positiver linearer Zusammenhang zwischen Leihdauer und Preis.“</p>
+</section>
