@@ -243,3 +243,14 @@ h2.rzh{font-size:1.1rem;font-weight:900;color:#fff;background:var(--c-dark);bord
 .kl table.dat td,.kl table.dat th{border:1px solid #64748b;padding:3px 8px;text-align:center}
 .kl table.dat th{background:#eef1f5}
 .kl-auf .tl>li{break-inside:avoid;page-break-inside:avoid}
+.rz .fig{grid-column:1/-1;text-align:center;margin:2px 0}
+.rz .fig img{max-width:100%}
+.rz .bsp{grid-column:1/-1;background:#f4f6f9;border-radius:5px;padding:3px 8px;font-size:.9rem}
+.rz .bsp::before{content:"Beispiel: ";font-weight:900;color:#334155}
+.rz .tr{grid-column:1/-1;color:#a44a16;font-size:.84rem}
+.rz .tr::before{content:"TR: ";font-weight:900}
+.rz pre{font-size:.74rem;margin:.2em 0}
+.rz .auf{grid-column:1/-1;border:1.5px solid #1e2a44;border-radius:5px;padding:4px 9px;background:#fff;font-size:.92rem}
+.rz .auf .pt{float:right;font-weight:800;color:#1e2a44;margin-left:6px}
+.rz .lk2{border:1.5px solid #1e2a44;border-radius:3px;padding:12px 8px 4px;position:relative;background:#fffef6;font-size:.9rem}
+.rz .lk2::before{content:"Lösungskästchen";position:absolute;top:1px;left:5px;font-size:.6rem;color:#64748b;font-style:normal}
