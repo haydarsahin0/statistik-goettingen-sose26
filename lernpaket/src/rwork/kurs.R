@@ -274,7 +274,7 @@ neglogL <- function(t_param, x) {
   beta <- param[2]
   return(-sum(log(dgamma(x, alpha, beta))))
 }
-model <- nlm(neglogL, log(c(1, 0.1)), x)
+model <- nlm(neglogL, c(0.01, 0.5), x)
 round(exp(model$estimate), 3)
 cat("@@CARD58@@\n")
 alpha.hat <- exp(model$estimate[1])

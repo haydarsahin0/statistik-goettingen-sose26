@@ -702,8 +702,8 @@ Lambda = 5 P = 0.14
 <div class="lk2" style="grid-column:1/-1"><b style="font-size:.7rem;color:#64748b">Kästchen 2 · Antwortsatz</b><br>Der ML-Schätzer für λ beträgt 22.083 (= Mittelwert der Münzen).</div>
 </div></div>
 <div class="rz"><div class="q"><span>ML mit nlm (zwei Parameter, Gamma-Verteilung)</span><span class="ol mid">~45 %</span></div><div class="b">
-<div class="auf"><b>Aufgabe.</b> Die Dauer (Datensatz f) sei Gamma(α, β)-verteilt. Warum müssen die Parameter für nlm transformiert werden? Schreiben Sie die Funktion neglogL und schätzen Sie α und β mit nlm (Startwerte 1 und 0.1). Geben Sie die rücktransformierten Schätzer an. <span class='pt'>(10 P)</span></div>
-<div class="yap" style="grid-column:1/-1"><b class="l">So löst du es</b><ol><li><code>nlm()</code> <b>minimiert</b> → negative Log-Likelihood benutzen.</li><li>α, β &gt; 0, aber nlm probiert alle reellen Zahlen → Transformation: param = <code>exp(t_param)</code>; Startwerte mit <code>log()</code> übergeben.</li><li>Funktion: param &lt;- exp(t) · alpha &lt;- param[1] · beta &lt;- param[2] · −sum(log(dgamma(x, alpha, beta))).</li><li><code>model &lt;- nlm(neglogL, log(c(1, 0.1)), x)</code>. Schätzer: <code>exp(model$estimate)</code>. Warnungen während der Iteration sind meist harmlos.</li></ol></div>
+<div class="auf"><b>Aufgabe.</b> Die Dauer (Datensatz f) sei Gamma(α, β)-verteilt. Warum müssen die Parameter für nlm transformiert werden? Schreiben Sie die Funktion neglogL und schätzen Sie α und β mit nlm. Nutzen Sie die Startwerte α<sub>t</sub> = 0.01 und β<sub>t</sub> = 0.5. Geben Sie die rücktransformierten Schätzer an. <span class='pt'>(10 P)</span></div>
+<div class="yap" style="grid-column:1/-1"><b class="l">So löst du es</b><ol><li><code>nlm()</code> <b>minimiert</b> → negative Log-Likelihood benutzen.</li><li>α, β &gt; 0, aber nlm probiert alle reellen Zahlen → Transformation: param = <code>exp(t_param)</code>. <b>Achtung Startwerte:</b> Steht in der Aufgabe α<sub>t</sub>, β<sub>t</sub> (transformiert, wie in der ML-Probeklausur) → direkt <code>c(0.01, 0.5)</code> übergeben. Steht dort α, β (Originalskala) → <code>log(c(…))</code> übergeben.</li><li>Funktion: param &lt;- exp(t) · alpha &lt;- param[1] · beta &lt;- param[2] · −sum(log(dgamma(x, alpha, beta))).</li><li><code>model &lt;- nlm(neglogL, c(0.01, 0.5), x)</code>. Schätzer: <code>exp(model$estimate)</code>. Warnungen während der Iteration sind meist harmlos.</li></ol></div>
 <div class="lk2" style="grid-column:1/-1"><b style="font-size:.7rem;color:#64748b">Kästchen 1 · R-Code und R-Output</b><pre class="out" style="margin:.2em 0">&gt; x &lt;- f$Dauer
 &gt; neglogL &lt;- function(t_param, x) {
 +   param &lt;- exp(t_param)
@@ -711,7 +711,7 @@ Lambda = 5 P = 0.14
 +   beta &lt;- param[2]
 +   return(-sum(log(dgamma(x, alpha, beta))))
 + }
-&gt; model &lt;- nlm(neglogL, log(c(1, 0.1)), x)
+&gt; model &lt;- nlm(neglogL, c(0.01, 0.5), x)
 &gt; round(exp(model$estimate), 3)
 [1] 2.453 0.068</pre></div>
 <div class="lk2" style="grid-column:1/-1"><b style="font-size:.7rem;color:#64748b">Kästchen 2 · Antwortsatz</b><br>Die Parameter der Gammaverteilung sind positiv, nlm optimiert aber über alle reellen Zahlen; daher werden sie mit exp() transformiert. Die rücktransformierten Schätzer betragen α̂ = 2.453 und β̂ = 0.068.</div>

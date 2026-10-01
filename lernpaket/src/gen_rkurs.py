@@ -378,11 +378,11 @@ card("ML-Schätzer mit optimise (ein Parameter)", 40,
  "Der ML-Schätzer für λ beträgt 22.083 (= Mittelwert der Münzen).")
 
 card("ML mit nlm (zwei Parameter, Gamma-Verteilung)", 45,
- "Die Dauer (Datensatz f) sei Gamma(α, β)-verteilt. Warum müssen die Parameter für nlm transformiert werden? Schreiben Sie die Funktion neglogL und schätzen Sie α und β mit nlm (Startwerte 1 und 0.1). Geben Sie die rücktransformierten Schätzer an. <span class='pt'>(10 P)</span>",
- ["<code>nlm()</code> <b>minimiert</b> → negative Log-Likelihood benutzen.", "α, β &gt; 0, aber nlm probiert alle reellen Zahlen → Transformation: param = <code>exp(t_param)</code>; Startwerte mit <code>log()</code> übergeben.",
+ "Die Dauer (Datensatz f) sei Gamma(α, β)-verteilt. Warum müssen die Parameter für nlm transformiert werden? Schreiben Sie die Funktion neglogL und schätzen Sie α und β mit nlm. Nutzen Sie die Startwerte α<sub>t</sub> = 0.01 und β<sub>t</sub> = 0.5. Geben Sie die rücktransformierten Schätzer an. <span class='pt'>(10 P)</span>",
+ ["<code>nlm()</code> <b>minimiert</b> → negative Log-Likelihood benutzen.", "α, β &gt; 0, aber nlm probiert alle reellen Zahlen → Transformation: param = <code>exp(t_param)</code>. <b>Achtung Startwerte:</b> Steht in der Aufgabe α<sub>t</sub>, β<sub>t</sub> (transformiert, wie in der ML-Probeklausur) → direkt <code>c(0.01, 0.5)</code> übergeben. Steht dort α, β (Originalskala) → <code>log(c(…))</code> übergeben.",
   "Funktion: param &lt;- exp(t) · alpha &lt;- param[1] · beta &lt;- param[2] · −sum(log(dgamma(x, alpha, beta))).",
-  "<code>model &lt;- nlm(neglogL, log(c(1, 0.1)), x)</code>. Schätzer: <code>exp(model$estimate)</code>. Warnungen während der Iteration sind meist harmlos."],
- "x <- f$Dauer\nneglogL <- function(t_param, x) {\n  param <- exp(t_param)\n  alpha <- param[1]\n  beta <- param[2]\n  return(-sum(log(dgamma(x, alpha, beta))))\n}\nmodel <- nlm(neglogL, log(c(1, 0.1)), x)\nround(exp(model$estimate), 3)",
+  "<code>model &lt;- nlm(neglogL, c(0.01, 0.5), x)</code>. Schätzer: <code>exp(model$estimate)</code>. Warnungen während der Iteration sind meist harmlos."],
+ "x <- f$Dauer\nneglogL <- function(t_param, x) {\n  param <- exp(t_param)\n  alpha <- param[1]\n  beta <- param[2]\n  return(-sum(log(dgamma(x, alpha, beta))))\n}\nmodel <- nlm(neglogL, c(0.01, 0.5), x)\nround(exp(model$estimate), 3)",
  "Die Parameter der Gammaverteilung sind positiv, nlm optimiert aber über alle reellen Zahlen; daher werden sie mit exp() transformiert. Die rücktransformierten Schätzer betragen α̂ = 2.453 und β̂ = 0.068.")
 
 card("Geschätzte Verteilung nutzen", 40,
