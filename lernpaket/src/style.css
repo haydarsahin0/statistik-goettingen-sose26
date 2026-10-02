@@ -254,3 +254,17 @@ h2.rzh{font-size:1.1rem;font-weight:900;color:#fff;background:var(--c-dark);bord
 .rz .auf .pt{float:right;font-weight:800;color:#1e2a44;margin-left:6px}
 .rz .lk2{border:1.5px solid #1e2a44;border-radius:3px;padding:12px 8px 4px;position:relative;background:#fffef6;font-size:.9rem}
 .rz .lk2::before{content:"Lösungskästchen";position:absolute;top:1px;left:5px;font-size:.6rem;color:#64748b;font-style:normal}
+
+/* ---------- Statistik-Komplettkurs (lila) ---------- */
+.t6{--c:#6d28d9;--c-soft:#f1ebff;--c-dark:#4c1d95}
+.t6 .rz{border-color:#d8ccf5}
+.t6 .lk2{background:#fdfcff}
+.wissen{border:2px solid var(--c);background:var(--c-soft);border-radius:10px;padding:5px 12px 6px;margin:.3em 0 .7em;font-size:.9rem;page-break-inside:avoid;break-inside:avoid}
+.wissen .wt{font-weight:900;color:var(--c-dark);text-transform:uppercase;letter-spacing:.05em;font-size:.8rem}
+.wissen ul{margin:.15em 0;padding-left:1.15em}
+.wissen li{margin:.12em 0}
+.wissen table.tab{width:100%}
+.t6 .rz .lk2{line-height:1.6}
+table.phi{font-size:.74rem;width:100%;border-collapse:collapse}
+table.phi td,table.phi th{padding:1px 3px;text-align:center;border-bottom:1px solid #ece7fb}
+table.phi tr:nth-child(5n+1) td{border-bottom:1.5px solid #c4b5fd}
