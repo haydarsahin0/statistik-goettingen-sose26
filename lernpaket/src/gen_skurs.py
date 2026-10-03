@@ -4,6 +4,7 @@ import os, re
 from scipy.stats import norm
 from skcommon import C, LOG
 from sk_erkl import LERN, VERST, CHECK
+from sk_tr import LERN_TR, VERST_TR
 import sk1, sk2, sk3  # noqa: F401  (füllen C)
 
 SRC = os.path.dirname(os.path.abspath(__file__))
@@ -39,6 +40,8 @@ for c in C:
         if cur in LERN:
             figs = "".join('<div class="lfig"><img src="fig/%s"></div>' % f for f in LFIG.get(cur, []))
             H.append('<div class="lern"><div class="wt">Erklärt von null</div>%s%s</div>' % (LERN[cur], figs))
+        if cur in LERN_TR:
+            H.append('<div class="tr"><div class="wt">Türkçe açıklama</div>%s</div>' % LERN_TR[cur])
         if c["wissen"]:
             H.append('<div class="wissen"><div class="wt">Das musst du wissen</div><ul>%s</ul></div>'
                      % "".join("<li>%s</li>" % w for w in c["wissen"]))
@@ -54,6 +57,8 @@ for c in C:
     s.append('<div class="lk2" style="grid-column:1/-1">%s</div>' % loes)
     if c["title"] in VERST:
         s.append('<div class="verst"><b>Verstehen:</b> %s</div>' % VERST[c["title"]])
+    if c["title"] in VERST_TR:
+        s.append('<div class="trk"><b>Türkçe:</b> %s</div>' % VERST_TR[c["title"]])
     if c["warn"]:
         s.append('<div class="dikkat">%s</div>' % c["warn"])
     if c["fig"]:

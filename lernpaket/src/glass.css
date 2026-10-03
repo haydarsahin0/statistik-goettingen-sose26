@@ -99,3 +99,9 @@ body.glass .kloes{padding:9px 15px;margin:.5em 0}
 body.glass .lern, body.glass .wissen, body.glass .kloes{box-decoration-break:clone;-webkit-box-decoration-break:clone}
 body.glass .fs-kopf .sub{font-size:1.15rem;font-weight:600;margin:-.15em 0 .9em;letter-spacing:-.01em}
 body.glass .fs-kopf p{opacity:1}
+body.glass .tr{background:#effaf8;border:1px solid #bfe8e0;border-radius:20px;padding:12px 16px;margin:.4em 0 .7em;font-size:.92rem;line-height:1.62;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+body.glass .tr .wt{display:inline-block;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:99px;padding:3px 11px;margin-bottom:6px;background:linear-gradient(90deg,#0f766e,#14b8a6)}
+body.glass .tr p{margin:.35em 0}
+body.glass .tr table.tab th{background:#dff5f0;color:#0f5f58;border-bottom:1px solid #bfe8e0}
+body.glass .trk{grid-column:1/-1;background:#effaf8;border:1px solid #bfe8e0;border-radius:14px;padding:9px 13px;line-height:1.6;font-size:.9rem}
+body.glass .trk>b:first-child{color:#0f766e}
