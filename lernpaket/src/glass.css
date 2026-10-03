@@ -105,3 +105,6 @@ body.glass .tr p{margin:.35em 0}
 body.glass .tr table.tab th{background:#dff5f0;color:#0f5f58;border-bottom:1px solid #bfe8e0}
 body.glass .trk{grid-column:1/-1;background:#effaf8;border:1px solid #bfe8e0;border-radius:14px;padding:9px 13px;line-height:1.6;font-size:.9rem}
 body.glass .trk>b:first-child{color:#0f766e}
+/* hohe Brüche: kein Überlappen mit Nachbarzeilen */
+body.glass .lk2 .katex, body.glass .verst .katex, body.glass .trk .katex, body.glass .auf .katex{display:inline-block;margin:.18em 0;line-height:1.2}
+body.glass .lk2{line-height:1.9}
