@@ -10,13 +10,11 @@ SRC = os.path.dirname(os.path.abspath(__file__))
 
 H = ['<section class="t6">',
      '<div class="fs-kopf"><h1>Statistik-Komplettkurs</h1><div class="sub">Teil A · alles nach Tag 1 – von null bis Klausurniveau</div>',
-     '<p>Wahrscheinlichkeit, Zufallsvariablen, Verteilungen, Schätzer, Maximum-Likelihood, Konfidenzintervalle, Tests und Regression – '
-     'von null bis Klausurniveau. Jede Karte: <b>Aufgabe</b> (wie in der Klausur) → <b>So löst du es</b> → <b>Lösungskästchen</b> (das schreibst du hin) → Warnung. '
-     'Vor jedem Abschnitt steht ein Kasten <b>„Das musst du wissen“</b> mit allen Formeln.</p></div>',
-     '<div class="legend"><b>Prozent</b> = geschätzte Wahrscheinlichkeit, dass dieser Aufgabentyp in Teil A vorkommt – nach Probeklausur A 2022, ML-Übungsklausur A, Testaten 3–6, Tutorien 4–13 und Vorlesungen V04–V13. '
-     '<span class="ol hi">≥ 70 %</span> fast sicher · <span class="ol mid">30–69 %</span> häufig · <span class="ol lo">&lt; 30 %</span> manchmal. '
-     '<br><b>So lernst du:</b> Aufgabe lesen → Lösungskästchen abdecken → selbst rechnen → vergleichen → Fehler in einem Satz notieren. '
-     'Zahlen in den Lösungen sind mit Python/R nachgerechnet.</div>']
+     '<p>In der Probeklausur 2022 kamen <b>40 der 75 Punkte</b> aus diesem Stoff: Bayes 11 · Mengen 6 · Maximum-Likelihood 10 · Schätzer 5 · Hypothesentest 8. '
+     'Jede Karte ist eine echte Klausuraufgabe: erst <b>Aufgabe</b>, dann <b>So löst du es</b>, dann das <b>Lösungskästchen</b> – genau das schreibst du in der Klausur hin.</p></div>',
+     '<div class="legend"><b>Prozent</b> = Wahrscheinlichkeit, dass der Aufgabentyp drankommt (aus Probeklausur, Testaten 3–6, Tutorien 4–13): '
+     '<span class="ol hi">≥ 70 %</span> fast sicher · <span class="ol mid">30–69 %</span> häufig · <span class="ol lo">&lt; 30 %</span> selten = Kür. '
+     '<b>Lernweg:</b> Lösungskästchen abdecken → selbst rechnen → vergleichen → den Fehler in einem Satz notieren. Alle Zahlen sind mit Python/R nachgerechnet.</div>']
 
 LFIG = {"1": ["sk_bedingt.svg"], "2": ["sk_diskstet.svg"], "3": ["sk_baum_vert.svg", "sk_norm2.svg", "sk_zgws.svg"], "4": ["sk_ziel.svg"],
         "5": ["sk_lik.svg"], "6": ["sk_kibau.svg"], "7": ["sk_pwert.svg"], "8": ["sk_baum_test.svg"]}

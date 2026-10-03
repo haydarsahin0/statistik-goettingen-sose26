@@ -6,9 +6,7 @@ from skcommon import sec, card, T, r3, r4, fr, log
 
 # ======================================================================
 sec("0 · So arbeitest du mit diesem Kurs",
-    "Teil A: 100 Minuten, 75 Punkte, Papier. Dieser Kurs beginnt dort, wo Tag 1 (deskriptive Statistik) aufhört: "
-    "Wahrscheinlichkeiten, Zufallsvariablen, Verteilungen, Schätzer, Maximum-Likelihood, Konfidenzintervalle, Tests und Regression. "
-    "Jede Karte ist eine Klausuraufgabe. Erst selbst versuchen (Lösungskästchen abdecken), dann vergleichen.",
+    "Diese Regeln stehen in den offiziellen Klausurhinweisen. Wer sie verletzt, verliert Punkte – auch bei richtiger Rechnung.",
     ["<b>Runden:</b> Endergebnis auf <b>3</b> Nachkommastellen, Zwischenergebnisse mit mindestens <b>4</b>. Voll gekürzte Brüche sind auch erlaubt (z. B. \\(\\tfrac{19}{49}\\)). Ganze Zahlen und Ausdrücke wie \\(\\log 4\\) oder \\(\\sqrt 2\\) darfst du so stehen lassen.",
      "<b>Dezimalpunkt:</b> 0.375, nicht 0,375.",
      "<b>Nur ins Kästchen</b> kommt, was bewertet wird. Wird ein Lösungsweg verlangt („Geben Sie Ihren Lösungsweg an“), gehört der Weg <b>ins Kästchen</b>.",
