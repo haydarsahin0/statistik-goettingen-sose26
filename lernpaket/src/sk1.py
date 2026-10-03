@@ -28,7 +28,7 @@ sec("1 · Wahrscheinlichkeitsrechnung (V04)", None,
     ["<b>Ω</b> = Ergebnisraum (alle möglichen Ergebnisse). <b>Ereignis</b> = Teilmenge von Ω.",
      "<b>Laplace</b> (alle Ergebnisse gleich wahrscheinlich): \\(P(A)=\\frac{|A|}{|\\Omega|}\\) = günstige / mögliche.",
      "<b>Kolmogorov:</b> \\(P(A)\\ge0\\), \\(P(\\Omega)=1\\), bei disjunkten Ereignissen \\(P(A\\cup B)=P(A)+P(B)\\).",
-     "<b>Regeln:</b> \\(P(\\bar A)=1-P(A)\\) · \\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\) · \\(P(A\\setminus B)=P(A\\cap\\bar B)=P(A)-P(A\\cap B)\\).",
+     "<b>Regeln:</b> \\(P(\\bar A)=1-P(A)\\) · \\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\)", "<b>Differenz:</b> \\(P(A\\setminus B)=P(A\\cap\\bar B)=P(A)-P(A\\cap B)\\)",
      "<b>Bedingt:</b> \\(P(A|B)=\\frac{P(A\\cap B)}{P(B)}\\) · <b>Produktsatz:</b> \\(P(A\\cap B)=P(A|B)\\,P(B)=P(B|A)\\,P(A)\\).",
      "<b>Unabhängig</b> \\(\\Leftrightarrow P(A\\cap B)=P(A)\\,P(B)\\Leftrightarrow P(A|B)=P(A)\\). Ziehen <i>mit</i> Zurücklegen → unabhängig, <i>ohne</i> → abhängig.",
      "<b>Totale Wahrscheinlichkeit:</b> \\(P(B)=\\sum_i P(B|A_i)\\,P(A_i)\\) · <b>Bayes:</b> \\(P(A_j|B)=\\frac{P(B|A_j)\\,P(A_j)}{\\sum_i P(B|A_i)\\,P(A_i)}\\)."])

@@ -9,7 +9,7 @@ import sk1, sk2, sk3  # noqa: F401  (füllen C)
 SRC = os.path.dirname(os.path.abspath(__file__))
 
 H = ['<section class="t6">',
-     '<div class="fs-kopf"><h1>Statistik-Komplettkurs für Teil A · ab Tag 2</h1>',
+     '<div class="fs-kopf"><h1>Statistik-Komplettkurs</h1><div class="sub">Teil A · alles nach Tag 1 – von null bis Klausurniveau</div>',
      '<p>Wahrscheinlichkeit, Zufallsvariablen, Verteilungen, Schätzer, Maximum-Likelihood, Konfidenzintervalle, Tests und Regression – '
      'von null bis Klausurniveau. Jede Karte: <b>Aufgabe</b> (wie in der Klausur) → <b>So löst du es</b> → <b>Lösungskästchen</b> (das schreibst du hin) → Warnung. '
      'Vor jedem Abschnitt steht ein Kasten <b>„Das musst du wissen“</b> mit allen Formeln.</p></div>',
@@ -52,7 +52,7 @@ for c in C:
     s.append('<div class="auf"><b>Aufgabe.</b> %s</div>' % c["auf"])
     s.append('<div class="yap" style="grid-column:1/-1"><b class="l">So löst du es</b><ol>%s</ol></div>'
              % "".join("<li>%s</li>" % x for x in c["steps"]))
-    loes = re.sub(r'(?<![td])\\frac', r'\\dfrac', c["loes"])
+    loes = re.sub(r'\\t?frac', r'\\dfrac', c["loes"])
     s.append('<div class="lk2" style="grid-column:1/-1">%s</div>' % loes)
     if c["title"] in VERST:
         s.append('<div class="verst"><b>Verstehen:</b> %s</div>' % VERST[c["title"]])

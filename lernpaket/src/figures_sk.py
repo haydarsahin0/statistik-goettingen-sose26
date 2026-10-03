@@ -6,13 +6,16 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, FancyBboxPatch
 from scipy import stats
+from matplotlib import font_manager as _fm
+for _f in os.listdir(os.path.join(os.path.dirname(__file__), "fonts", "ttf")):
+    _fm.fontManager.addfont(os.path.join(os.path.dirname(__file__), "fonts", "ttf", _f))
 
 OUT = os.path.join(os.path.dirname(__file__), "fig")
 INK = "#1f2937"; MUT = "#5b6474"; PUR = "#6d28d9"; PURL = "#c4b5fd"; RED = "#d64545"; ORA = "#d9601c"; GRY = "#9aa5b8"
 plt.rcParams.update({
-    "font.family": "DejaVu Sans", "font.size": 11, "axes.edgecolor": "#8a94a6", "axes.labelcolor": INK,
-    "xtick.color": MUT, "ytick.color": MUT, "axes.spines.top": False, "axes.spines.right": False,
-    "axes.titleweight": "bold", "axes.titlesize": 11.5, "axes.labelsize": 11, "lines.linewidth": 2.2, "svg.fonttype": "path",
+    "font.family": ["Inter", "DejaVu Sans"], "font.size": 11, "axes.edgecolor": "#8a94a6", "axes.labelcolor": INK,
+    "xtick.color": MUT, "ytick.color": MUT, "axes.spines.top": False, "axes.spines.right": False, "axes.grid": False, "axes.edgecolor": "#c7c7cc",
+    "axes.titleweight": "semibold", "axes.titlecolor": "#1d1d1f", "figure.facecolor": "white", "axes.titlesize": 11.5, "axes.labelsize": 11, "lines.linewidth": 2.2, "svg.fonttype": "path",
 })
 
 

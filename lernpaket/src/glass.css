@@ -1,0 +1,111 @@
+/* ================================================================
+   Glass-Theme (Apple-Stil) für den Statistik-Komplettkurs
+   aktiv mit THEME=glass in build.js
+   ================================================================ */
+body.glass{
+  font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  color:#1d1d1f;letter-spacing:-.006em;font-feature-settings:"cv11","ss01";
+  -webkit-font-smoothing:antialiased;background:#fff;
+  --violet:#7c3aed;--violet2:#a855f7;--pink:#ec4899;--ink2:#3a3a3c;--mute:#6e6e73;
+}
+body.glass .katex{font-size:1.04em}
+
+/* Seitenpanel mit weichen, unscharfen Farbflecken – wiederholt sich auf jeder Seite */
+body.glass .pagebg{position:fixed;inset:0;z-index:-1;border-radius:22px;
+  background:
+    radial-gradient(38% 26% at 8% 6%,  rgba(167,139,250,.55), rgba(167,139,250,0) 70%),
+    radial-gradient(30% 24% at 96% 22%, rgba(244,114,182,.32), rgba(244,114,182,0) 70%),
+    radial-gradient(40% 28% at 18% 78%, rgba(125,211,252,.38), rgba(125,211,252,0) 70%),
+    radial-gradient(34% 26% at 92% 92%, rgba(196,181,253,.45), rgba(196,181,253,0) 70%),
+    linear-gradient(180deg,#f7f5ff 0%,#f4f6ff 55%,#f8f4ff 100%);}
+
+body.glass section.t6{padding:9mm 9mm 8mm;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* ---------- Glas-Grundbaustein ---------- */
+body.glass .rz, body.glass .lern, body.glass .wissen, body.glass .legend, body.glass .kcheck, body.glass .kloes{
+  background:rgba(255,255,255,.60);
+  -webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 10px 30px rgba(76,29,149,.09), 0 1px 2px rgba(76,29,149,.06), inset 0 1px 0 rgba(255,255,255,.7);
+  border-radius:20px;
+}
+
+/* ---------- Titel (Hero) ---------- */
+body.glass .fs-kopf{position:relative;overflow:hidden;border-radius:26px;padding:12mm 11mm 10mm;margin-bottom:6mm;color:#fff;
+  background:
+    radial-gradient(60% 90% at 85% 10%, rgba(244,114,182,.75), rgba(244,114,182,0) 60%),
+    radial-gradient(50% 80% at 10% 100%, rgba(96,165,250,.55), rgba(96,165,250,0) 60%),
+    linear-gradient(135deg,#5b21b6 0%,#7c3aed 45%,#a855f7 100%);
+  box-shadow:0 18px 40px rgba(91,33,182,.28)}
+body.glass .fs-kopf::before{content:"SoSe 26 · Göttingen · Teil A";display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:3px 11px;margin-bottom:10px}
+body.glass .fs-kopf h1{font-size:2.35rem;font-weight:800;letter-spacing:-.035em;line-height:1.05;margin:0 0 .35em}
+body.glass .fs-kopf p{font-size:.98rem;line-height:1.55;opacity:.95;max-width:92%;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:9px 13px;margin:0}
+
+body.glass .legend{padding:10px 14px;font-size:.86rem;line-height:1.6;border-style:solid;color:var(--ink2)}
+body.glass .legend .ol{border:1px solid rgba(0,0,0,.06)}
+
+/* ---------- Abschnittsüberschrift ---------- */
+body.glass h2.rzh{background:none;color:#1d1d1f;font-size:1.65rem;font-weight:800;letter-spacing:-.03em;line-height:1.15;
+  padding:0;margin:1.1em 0 .45em;border-radius:0;position:relative}
+body.glass h2.rzh::after{content:"";display:block;width:64px;height:5px;border-radius:99px;margin-top:7px;
+  background:linear-gradient(90deg,var(--violet),var(--pink))}
+
+/* ---------- Lernteil / Wissen / Check ---------- */
+body.glass .lern{padding:12px 16px 12px;font-size:.93rem;line-height:1.62;color:#1d1d1f}
+body.glass .lern .wt, body.glass .kcheck .wt, body.glass .wissen .wt{display:inline-block;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;border-radius:99px;padding:3px 11px;margin-bottom:6px;background:linear-gradient(90deg,var(--violet),var(--violet2))}
+body.glass .wissen{background:rgba(245,240,255,.66);padding:12px 16px;font-size:.9rem;line-height:1.6}
+body.glass .wissen .wt{background:linear-gradient(90deg,#4c1d95,var(--violet))}
+body.glass .kcheck{border:1.5px dashed rgba(124,58,237,.45);background:rgba(255,255,255,.5);padding:11px 16px}
+body.glass .kcheck .wt{background:linear-gradient(90deg,var(--pink),var(--violet2))}
+body.glass .vorgemacht{background:rgba(237,233,254,.62);border:1px solid rgba(124,58,237,.16);border-left:none;border-radius:14px;padding:8px 13px;margin:.55em 0}
+body.glass .vorgemacht>b:first-child{color:#5b21b6}
+body.glass .lern .lfig img, body.glass .rz .fig img{background:#fff;border-radius:14px;padding:8px;
+  box-shadow:0 6px 18px rgba(76,29,149,.08);border:1px solid rgba(0,0,0,.04)}
+
+/* ---------- Karte ---------- */
+body.glass .rz{margin:.75em 0;overflow:hidden}
+body.glass .rz>.q{background:transparent;color:#1d1d1f;font-size:1.02rem;font-weight:700;letter-spacing:-.015em;
+  padding:12px 16px 4px;border-radius:20px 20px 0 0;display:flex;align-items:center;gap:10px}
+body.glass .rz>.q>span:first-child{display:flex;align-items:center;gap:9px}
+body.glass .rz>.q>span:first-child::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;
+  background:linear-gradient(135deg,var(--violet),var(--pink));box-shadow:0 0 0 4px rgba(124,58,237,.12)}
+body.glass .ol{background:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.06);font-weight:700;font-size:.72rem;padding:2px 9px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04)}
+body.glass .ol.hi{color:#d70015}body.glass .ol.mid{color:#c25e00}body.glass .ol.lo{color:#6e6e73}
+body.glass .kuer{background:rgba(142,142,147,.14);color:#636366;font-weight:600;font-size:.66rem;padding:2px 8px;border-radius:99px;letter-spacing:.02em}
+body.glass .rz>.b{padding:6px 16px 14px;gap:9px;font-size:.92rem}
+
+body.glass .rz .auf{background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.06);border-radius:14px;padding:9px 13px;
+  font-size:.92rem;line-height:1.58;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+body.glass .rz .auf>b:first-child{color:#5b21b6}
+body.glass .rz .auf .pt{color:#6e6e73;font-weight:600}
+body.glass .rz .yap b.l{color:var(--violet);font-size:.68rem;font-weight:700;letter-spacing:.12em;margin-bottom:2px}
+body.glass .rz .yap ol{padding-left:1.25em;line-height:1.58}
+body.glass .rz .yap li::marker{color:var(--violet);font-weight:700}
+
+body.glass .rz .lk2{background:rgba(250,248,255,.92);border:1px solid rgba(124,58,237,.28);border-radius:14px;padding:18px 13px 9px;line-height:1.75;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+body.glass .rz .lk2::before{content:"LÖSUNGSKÄSTCHEN";top:6px;left:13px;font-size:.6rem;font-weight:700;letter-spacing:.12em;color:var(--violet)}
+
+body.glass .verst{background:rgba(255,248,235,.86);border:1px solid rgba(245,158,11,.28);border-left:none;border-radius:14px;padding:9px 13px;line-height:1.6}
+body.glass .verst>b:first-child{color:#b45309;font-weight:700}
+body.glass .rz .dikkat{color:#c2410c;font-size:.85rem;font-weight:500;padding:0 2px}
+body.glass .rz .dikkat::before{content:"⚠︎  ";font-weight:700}
+
+/* ---------- Tabellen ---------- */
+body.glass table.tab{border-collapse:separate;border-spacing:0;border:1px solid rgba(0,0,0,.07);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.85)}
+body.glass table.tab th{background:rgba(124,58,237,.09);color:#4c1d95;font-weight:700;border:none;border-bottom:1px solid rgba(124,58,237,.15)}
+body.glass table.tab td{border:none;border-bottom:1px solid rgba(0,0,0,.05)}
+body.glass table.tab tr:last-child td{border-bottom:none}
+body.glass table.tab tr:nth-child(even) td{background:rgba(124,58,237,.03)}
+body.glass table.phi{font-size:.74rem;font-variant-numeric:tabular-nums}
+body.glass table.phi tr:nth-child(5n+1) td{border-bottom:1px solid rgba(124,58,237,.25)}
+
+body.glass pre.out{background:#1c1c1e;color:#f2f2f7;border-radius:12px;font-size:.68rem}
+body.glass .small{color:var(--mute)}
+body.glass .kloes{padding:9px 15px;margin:.5em 0}
+body.glass .lern, body.glass .wissen, body.glass .kloes{box-decoration-break:clone;-webkit-box-decoration-break:clone}
+body.glass .fs-kopf .sub{font-size:1.15rem;font-weight:600;opacity:.92;margin:-.15em 0 .9em;letter-spacing:-.01em}

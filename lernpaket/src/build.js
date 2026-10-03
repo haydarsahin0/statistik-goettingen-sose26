@@ -34,13 +34,14 @@ for (const p of parts) {
   }
 }
 
-const css = fs.readFileSync(path.join(SRC, 'style.css'), 'utf8');
+const css = fs.readFileSync(path.join(SRC, 'style.css'), 'utf8') + (process.env.THEME ? '\n' + fs.readFileSync(path.join(SRC, process.env.THEME + '.css'), 'utf8') : '');
+const bgdiv = process.env.THEME ? '<div class="pagebg"></div>' : '';
 const katexCss = 'node_modules/katex/dist/katex.min.css';
 const html = `<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
 <title>Statistik-Lernbuch</title>
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="${katexCss}">
-<style>${css}</style></head><body>${body}</body></html>`;
+<style>${css}</style></head><body class="${process.env.THEME || ''}">${bgdiv}${body}</body></html>`;
 fs.writeFileSync(path.join(SRC, 'buch.html'), html);
 
 (async () => {
@@ -55,9 +56,9 @@ fs.writeFileSync(path.join(SRC, 'buch.html'), html);
     printBackground: true,
     displayHeaderFooter: true,
     headerTemplate: '<div></div>',
-    footerTemplate: `<div style="width:100%;font-family:Nunito,Arial,sans-serif;font-size:8px;color:#8a94a6;padding:0 15mm;display:flex;justify-content:space-between;">
-      <span>Statistik-Lernbuch · SoSe 26 · Göttingen</span><span>Seite <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
-    margin: { top: '14mm', bottom: '16mm', left: '15mm', right: '15mm' }
+    footerTemplate: `<div style="width:100%;font-family:${process.env.THEME ? 'Inter,Helvetica,Arial' : 'Nunito,Arial'},sans-serif;font-size:7.5px;letter-spacing:.02em;color:#8e8e93;padding:0 15mm;display:flex;justify-content:space-between;">
+      <span>${process.env.FOOT || 'Statistik-Lernbuch · SoSe 26 · Göttingen'}</span><span>Seite <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
+    margin: process.env.THEME ? { top: '8mm', bottom: '11mm', left: '7mm', right: '7mm' } : { top: '14mm', bottom: '16mm', left: '15mm', right: '15mm' }
   });
   await browser.close();
   console.log('PDF fertig');
