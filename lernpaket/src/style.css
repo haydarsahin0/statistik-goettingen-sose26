@@ -284,3 +284,4 @@ table.phi tr:nth-child(5n+1) td{border-bottom:1.5px solid #c4b5fd}
 .t6 table.tab th{background:var(--c-soft);color:var(--c-dark)}
 .t6 table.tab td,.t6 table.tab th{border:1px solid #ddd3f7;padding:2px 6px}
 .t6 table.tab tr:nth-child(even) td{background:#fbf9ff}
+.lk .lkl{position:absolute;left:6px;top:13px;font-size:.92rem}

@@ -1,0 +1,143 @@
+<section class="t0 kl">
+<div class="kl-deck">
+<h1>Probeklausur Statistik (Teil A)</h1>
+<div class="sub">Statistik und Data Science I · Generalprobe für den Zweittermin (09.10.2026) · Stoff V01–V13<br><span class="small">Übungsklausur zur Vorbereitung – keine offizielle Klausur</span></div>
+<div class="kl-fields"><div>Name, Vorname</div><div>Matrikel-Nr.</div><div>Raum</div><div>Platz-Nr.</div></div>
+<p><b>Bearbeitungszeit:</b> 100 Minuten &nbsp;·&nbsp; <b>Anzahl der Aufgaben:</b> 9 &nbsp;·&nbsp; <b>Gesamtpunktzahl:</b> 75</p>
+<p><b>Zugelassene Hilfsmittel:</b> zugelassener, nicht programmierbarer Taschenrechner · Schreibutensilien (kein Bleistift, weder Grün noch Rot) · ein (auch beidseitig) handschriftlich beschriebenes DIN-A4-Blatt, das mit Matrikelnummer, Raum und Platznummer gekennzeichnet ist und mit der Klausur abgegeben werden muss.</p>
+<table class="kl-pt"><tr><th>Aufgabe</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><th>Σ</th></tr>
+<tr><th>Punkte</th><td>9</td><td>9</td><td>10</td><td>6</td><td>10</td><td>8</td><td>10</td><td>5</td><td>8</td><th>75</th></tr>
+<tr><th>erreicht</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th></th></tr></table>
+<div class="kl-hin">
+<h3>Hinweise</h3>
+<ul>
+<li>Es darf nur mit Kugelschreiber oder Tinte geschrieben und gezeichnet werden. Bleistift sowie Angaben in Grün oder Rot werden nicht gewertet.</li>
+<li>Lesen Sie genau, wonach gefragt wird und wie die Lösung anzugeben ist. Es gilt die <b>Dezimalpunkt-Notation</b>.</li>
+<li>Vereinfachen Sie alle Ergebnisse. Nicht ganzzahlige Endergebnisse sind als <b>vollständig gekürzte Brüche</b> oder auf <b>drei Nachkommastellen</b> kaufmännisch gerundet anzugeben; Zwischenergebnisse auf mindestens <b>vier</b> Nachkommastellen. Ausnahmen: ganze Zahlen und gängige Funktionen natürlicher Zahlen (z. B. \(\sqrt2\) oder \(\log(4)\)).</li>
+<li>Tragen Sie nur Ihr Endergebnis in die Lösungskästchen ein, es sei denn, Sie werden aufgefordert, Ihren Lösungsweg anzugeben.</li>
+<li>Lösungskästchen dürfen nur eine eindeutige Antwort enthalten. Geben Sie niemals mehrere Lösungsalternativen an; streichen Sie falsche Angaben.</li>
+<li>Alles außerhalb der Lösungskästchen wird nicht gewertet, es sei denn, Sie kennzeichnen es eindeutig. Nebenrechnungen werden nicht korrigiert.</li>
+<li>Ist eine Aufgabe Ihrer Meinung nach nicht lösbar, schreiben Sie „nicht lösbar“ in das Kästchen und begründen Sie dies in der Box am Ende der Klausur.</li>
+<li>Mit \(\log\) ist stets der natürliche Logarithmus gemeint.</li>
+</ul>
+<p><i>Zeitrichtwert: ca. 1.3 Minuten pro Punkt. Stoppuhr auf 100 Minuten stellen!</i></p>
+</div>
+</div>
+
+<!-- A1 -->
+<div class="kl-auf"><h2><span>Aufgabe 1</span><span>(9 Punkte)</span></h2>
+<p>Das Studentenwerk möchte die Auslastung seiner Mensen besser planen. Dazu werden 12 zufällig ausgewählte Studierende gefragt, wie oft sie in der letzten Woche in der Mensa gegessen haben (Variable <code>Besuche</code>) und welche Mensa sie am häufigsten besuchen (Variable <code>Mensa</code>).</p>
+<pre class="out">&gt; sort(Besuche)
+ [1] 0 1 1 2 2 2 3 3 4 5 5 8
+&gt; table(Mensa)
+Mensa
+  Nordmensa  Turmmensa Zentralmensa
+          4          2            6</pre>
+<p>Hinweis: \(\sum_{i=1}^{12} x_i=36\), \(\;\sum_{i=1}^{12} x_i^2=162\).</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Geben Sie für die Merkmale <i>Anzahl der Mensabesuche</i> und <i>bevorzugte Mensa</i> jeweils das Skalenniveau an und ob das Merkmal diskret oder stetig ist. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie für die Variable <code>Besuche</code> den Modus, den Median und das arithmetische Mittel. <span class="pt">(3 P)</span>
+<div class="lk s"><span class="lkl">\(x_{mod}=\)</span></div><div class="lk s"><span class="lkl">\(x_{med}=\)</span></div><div class="lk s"><span class="lkl">\(\bar x=\)</span></div></li>
+<li><span class="lb">(c)</span>Berechnen Sie die empirische Varianz \(s^2\) und die unverzerrte Varianz \(s_*^2\) der Variable <code>Besuche</code>. Geben Sie Ihren Lösungsweg an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Geben Sie für die Variable <code>Mensa</code> den Modus und den Median an. Falls Sie der Meinung sind, dass ein Parameter nicht sinnvoll angegeben werden kann, begründen Sie dies kurz in einem Satz. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A2 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 2</span><span>(9 Punkte)</span></h2>
+<p>Ein Pendler notiert an 10 Tagen seine Wartezeit \(X\) (in Minuten) an der Bushaltestelle:</p>
+<table class="dat"><tr><th>Tag</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+<tr><th>\(x_i\)</th><td>2</td><td>5</td><td>5</td><td>8</td><td>2</td><td>12</td><td>5</td><td>8</td><td>15</td><td>5</td></tr></table>
+<p>Hinweis: \(\sum_{i=1}^{10} x_i=67\).</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Stellen Sie die empirische Verteilungsfunktion \(\hat F(x)\) als Funktion mit Fallunterscheidung auf und skizzieren Sie sie. <span class="pt">(4 P)</span><div class="lk xl"></div></li>
+<li><span class="lb">(b)</span>Bestimmen Sie mithilfe von \(\hat F\) den Anteil der Tage mit (i) einer Wartezeit von mehr als 5 Minuten und (ii) einer Wartezeit von höchstens 8 Minuten. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(c)</span>Klassieren Sie die Wartezeiten in die Klassen \(K_1=[0,6)\) und \(K_2=[6,16]\). Berechnen Sie die Säulenhöhen eines normierten Histogramms und das arithmetische Mittel der klassierten Daten. <span class="pt">(3 P)</span><div class="lk m"></div></li>
+</ol></div>
+
+<!-- A3 -->
+<div class="kl-auf"><h2><span>Aufgabe 3</span><span>(10 Punkte)</span></h2>
+<p>Eine Tutorin vermutet einen Zusammenhang zwischen der Lernzeit \(X\) (in Stunden pro Woche) und der in einem Testat erreichten Punktzahl \(Y\). Sie befragt fünf Studierende:</p>
+<table class="dat"><tr><th>Person ν</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+<tr><th>\(x_\nu\)</th><td>2</td><td>4</td><td>5</td><td>7</td><td>7</td></tr>
+<tr><th>\(y_\nu\)</th><td>20</td><td>35</td><td>30</td><td>45</td><td>50</td></tr></table>
+<p>Hinweis: \(\sum x_\nu=25,\ \sum y_\nu=180,\ \sum x_\nu^2=143,\ \sum y_\nu^2=7050,\ \sum x_\nu y_\nu=995\).</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie die empirische Kovarianz \(s_{xy}\). Geben Sie Ihren Lösungsweg an. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie den Korrelationskoeffizienten nach Bravais-Pearson \(r_{xy}\) und interpretieren Sie den Wert. Wenn Sie den Wert nicht berechnen konnten, interpretieren Sie \(r_{xy}=0.5\). <span class="pt">(3 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(c)</span>Bestimmen Sie die Regressionsgerade \(\hat y=a+b\,x\) nach der Methode der kleinsten Quadrate. Geben Sie Ihren Lösungsweg an. <span class="pt">(3 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Welche Punktzahl prognostiziert das Modell für eine Lernzeit von 6 Stunden? Die Tutorin folgert: „Wer eine Stunde mehr lernt, bekommt dadurch garantiert gut 5 Punkte mehr.“ Beurteilen Sie diese Aussage in 1–2 Sätzen. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+</ol></div>
+
+<!-- A4 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 4</span><span>(6 Punkte)</span></h2>
+<p>Ihnen sei folgender Ergebnisraum \(\Omega=\{1,2,3,4,5,6,7,8,9,10\}\) eines Laplace-Experiments gegeben. Außerdem seien die Mengen \(A=\{1,2,5,8,9\}\) und \(B=\{2,3,5,7\}\) bekannt.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie die folgenden Mächtigkeiten (Anzahl an Elementen in einer Menge). <span class="pt">(2 P)</span>
+<div class="lk s"><span class="lkl">\(|A\cap\bar B|=\)</span></div><div class="lk s"><span class="lkl">\(|\bar A\cup B|=\)</span></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie die Wahrscheinlichkeit, dass \(A\) eintritt, wenn Sie wissen, dass \(B\) <i>nicht</i> eingetreten ist, und tragen Sie links die korrekte Notation für die gesuchte Wahrscheinlichkeit in die beiden Lücken ein. <span class="pt">(2 P)</span>
+<div class="lk s"><span class="lkl">\(P(\quad\ \ \mid\quad\ \ )=\)</span></div></li>
+<li><span class="lb">(c)</span>Sind die Ereignisse \(A\) und \(B\) stochastisch unabhängig? Begründen Sie Ihre Antwort rechnerisch. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+</ol></div>
+
+<!-- A5 -->
+<div class="kl-auf"><h2><span>Aufgabe 5</span><span>(10 Punkte)</span></h2>
+<p>Ein Göttinger Online-Buchhändler wertet seine Lieferungen aus. Er weiß, dass 80 % aller Bestellungen pünktlich ankommen. Verschickt wird mit drei Paketdiensten A, B und C (jede Bestellung mit genau einem Dienst).</p>
+<p>Zunächst betrachtet er die <b>pünktlichen</b> Lieferungen: Mit einer Wahrscheinlichkeit von 70 % wurde eine pünktliche Lieferung mit Dienst A verschickt, mit 25 % mit Dienst B. Anschließend betrachtet er die <b>verspäteten</b> Lieferungen: Mit einer Wahrscheinlichkeit von 30 % wurde eine verspätete Lieferung mit Dienst A verschickt, mit 40 % mit Dienst B.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie die folgenden Wahrscheinlichkeiten. <span class="pt">(3 P)</span>
+<div class="lk s"><span class="lkl">P(„verspätet“) =</span></div><div class="lk s"><span class="lkl">P(„Dienst C“ | „pünktlich“) =</span></div><div class="lk s"><span class="lkl">P(„Dienst C“ | „verspätet“) =</span></div></li>
+<li><span class="lb">(b)</span>Mit welcher Wahrscheinlichkeit wird eine zufällig ausgewählte Bestellung mit Dienst C verschickt? <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(c)</span>Eine Bestellung wurde mit Dienst C verschickt. Mit welcher Wahrscheinlichkeit kommt sie verspätet an? <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(d)</span>Mit welcher Wahrscheinlichkeit kommt eine mit Dienst A verschickte Bestellung pünktlich an? Geben Sie Ihren Lösungsweg an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(e)</span>Sind die Ereignisse „Dienst A“ und „pünktlich“ stochastisch unabhängig? Begründen Sie kurz. <span class="pt">(1 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A6 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 6</span><span>(8 Punkte)</span></h2>
+<p>Die Zeit \(X\) (in Stunden), die eine Studentin morgens für ihre E-Mails braucht, sei eine stetige Zufallsvariable mit der Dichte</p>
+<p style="text-align:center">\(f(x)=\begin{cases}c\cdot x, & 0\le x\le 2\\ 0, & \text{sonst.}\end{cases}\)</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Bestimmen Sie \(c\) derart, dass \(f(x)\) eine gültige Dichtefunktion ist. Geben Sie Ihren Lösungsweg an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie den Erwartungswert \(E(X)\). Nutzen Sie dazu den zuvor berechneten Wert für \(c\). <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(c)</span>Berechnen Sie \(P(X\le 1)\). <span class="pt">(1 P)</span><div class="lk s"></div></li>
+</ol>
+<p>Ein Multiple-Choice-Testat besteht aus 5 Fragen mit jeweils 4 Antwortmöglichkeiten, von denen genau eine richtig ist. Ein Student rät bei allen Fragen unabhängig voneinander. \(Y\) sei die Anzahl seiner richtigen Antworten.</p>
+<ol class="tl">
+<li><span class="lb">(d)</span>Wie lautet die Verteilung von \(Y\) (mit Parametern)? Berechnen Sie \(P(Y\ge 4)\). <span class="pt">(3 P)</span><div class="lk m"></div></li>
+</ol></div>
+
+<!-- A7 -->
+<div class="kl-auf"><h2><span>Aufgabe 7</span><span>(10 Punkte)</span></h2>
+<p>Der Anteil \(X\) einer Vorlesung, den eine zufällig ausgewählte Person tatsächlich mitschreibt, werde durch eine Zufallsvariable mit der Dichte</p>
+<p style="text-align:center">\(f(x;\theta)=\begin{cases}\theta\, x^{\theta-1}, & 0&lt;x&lt;1\\ 0, & \text{sonst}\end{cases}\qquad\text{mit }\theta&gt;0\)</p>
+<p>beschrieben. Bestimmen Sie den Maximum-Likelihood-Schätzer für \(\theta\) basierend auf einer Stichprobe von \(n\) Beobachtungen \(X_1,\dots,X_n\), die unabhängig und identisch verteilt sind.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Stellen Sie zunächst die Likelihood- und die Log-Likelihood-Funktion auf. Geben Sie Ihren vollständigen Lösungsweg an und vereinfachen Sie Ihr Endresultat so weit wie möglich. <span class="pt">(4 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(b)</span>Bestimmen Sie auf Grundlage Ihres Ergebnisses aus (a) den Maximum-Likelihood-Schätzer \(\hat\theta\). Geben Sie Ihren vollständigen Lösungsweg an. <span class="pt">(3 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(c)</span>Prüfen Sie die hinreichende Bedingung (Bedingung zweiter Ordnung). <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Berechnen Sie den Schätzwert für die Stichprobe \(x=(0.5,\ 0.8,\ 0.9,\ 0.6)\). <span class="pt">(1 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A8 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 8</span><span>(5 Punkte)</span></h2>
+<p>Sei \(X\) eine Zufallsvariable mit \(E(X)=\mu\) und \(Var(X)=\sigma^2\). Sie ziehen eine 3-fache, unabhängige Zufallsstichprobe \(\{X_1,X_2,X_3\}\) dieser Zufallsvariablen und betrachten die beiden Schätzer</p>
+<p style="text-align:center">\(\hat\mu_1=\dfrac{X_1+2X_2+X_3}{4}\qquad\text{und}\qquad \hat\mu_2=\dfrac{X_1+X_2+X_3}{2}.\)</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Prüfen Sie, ob \(\hat\mu_1\) und \(\hat\mu_2\) unverzerrte (erwartungstreue) Schätzer für \(\mu\) sind. Geben Sie gegebenenfalls den Bias an. <span class="pt">(3 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie \(Var(\hat\mu_1)\). Ist \(\hat\mu_1\) oder das arithmetische Mittel \(\bar X=\frac13(X_1+X_2+X_3)\) vorzuziehen? Begründen Sie. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+</ol></div>
+
+<!-- A9 -->
+<div class="kl-auf"><h2><span>Aufgabe 9</span><span>(8 Punkte)</span></h2>
+<p>Eine Abfüllanlage soll Müslipackungen mit durchschnittlich mindestens 500 g befüllen. Eine Verbraucherzentrale vermutet, dass im Mittel zu wenig abgefüllt wird. Sie wiegt \(n=16\) zufällig ausgewählte Packungen und erhält ein Stichprobenmittel von \(\bar x=497.5\) g. Gehen Sie davon aus, dass die Füllmenge normalverteilt ist mit bekannter Varianz \(\sigma^2=16\). Die Verbraucherzentrale möchte ihre Vermutung statistisch absichern (Signifikanzniveau \(\alpha=0.05\)).</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Stellen Sie das passende Hypothesenpaar auf. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie die Prüfgröße und geben Sie ihre Verteilung unter \(H_0\) an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(c)</span>Treffen Sie die Testentscheidung mithilfe des kritischen Wertes und formulieren Sie das Ergebnis im Sachzusammenhang. (Hinweis: \(z_{0.95}=1.645\)) <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Bestimmen Sie ein zweiseitiges 95 %-Konfidenzintervall für die mittlere Füllmenge \(\mu\). (Hinweis: \(z_{0.975}=1.96\)) <span class="pt">(2 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<div class="kl-auf"><h2><span>Begründung nicht lösbare Aufgabe(n)</span><span></span></h2>
+<p class="small">Nutzen Sie die folgende Box für jegliche Erläuterungen, wenn Aufgabenstellungen Ihrer Meinung nach nicht lösbar sind. Kennzeichnen Sie hierfür eindeutig, auf welche Aufgabe Sie sich beziehen.</p>
+<div class="lk l"></div></div>
+</section>
