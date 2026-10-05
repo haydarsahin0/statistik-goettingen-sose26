@@ -1,299 +1,245 @@
-<section class="t2">
-<div class="daycover" data-n="2">
-  <div class="kicker">Tag 2 · Vorlesungen V04–V06 · Tutorien 4–6 · Testate 3–4</div>
-  <h1>Wahrscheinlichkeit<br>und Zufallsvariablen</h1>
-  <p>Heute lernst du, wie man mit dem Zufall rechnet. Wir rechnen mit Mengen, bedingten Wahrscheinlichkeiten und dem Satz von Bayes (ca. 10–15 Punkte in Teil A!). Danach beschreiben wir den Zufall mit Zahlen: Zufallsvariablen, Dichte, Verteilungsfunktion, Erwartungswert und Varianz.</p>
-  <div class="chips"><span class="chip">Laplace</span><span class="chip">Kolmogorov</span><span class="chip">bedingte W.</span><span class="chip">Unabhängigkeit</span><span class="chip">totale W.</span><span class="chip">Bayes</span><span class="chip">Dichte</span><span class="chip">E(X), Var(X)</span></div>
+<section class="pg dark" id="p1"><div class="frame"></div><div class="hd"><span>Statistik · Klausurtraining</span><span>Tag 2 · Zufall &amp; Modelle</span><span class="pn">01 / 56</span></div><div class="ct">
+<div class="lab" style="margin-top:4mm">Statistik und Data Science I &nbsp;——&nbsp; Klausur Teil A + B · Fr 09.10.2026</div>
+<div style="margin-top:16mm;display:flex;align-items:flex-end;gap:6mm">
+  <div style="border:1px solid #8a6f3e;padding:2mm 6mm 0 4mm"><div class="lab" style="margin:1mm 0 0">Tag</div><div class="bignum">2</div></div>
 </div>
-<table class="plan">
-<tr><th>Zeit</th><th>Was du machst</th></tr>
-<tr><td>09:00–10:45</td><td>Wiederholung Tag 1 (10 Min. Formelblatt lesen) · Hörtext 2.1–2.3, Kontrollfragen</td></tr>
-<tr><td>11:00–12:30</td><td>Hörtext 2.4 (Bayes): jedes Beispiel mit Baumdiagramm selbst zeichnen</td></tr>
-<tr><td>13:30–15:30</td><td>Hörtext 2.5–2.7 (Zufallsvariablen, Integrale), Kontrollfragen</td></tr>
-<tr><td>15:45–16:30</td><td>Hörtext 2.8 (zwei Zufallsvariablen)</td></tr>
-<tr><td>16:45–18:15</td><td>Klausuraufgaben Tag 2, Formelblatt ergänzen</td></tr>
-</table>
-
-<!-- 2.1 -->
-<h2 class="lek"><span class="num">2.1</span> Zufallsexperiment, Ereignisse und Mengen <span class="ear">Hörtext 2.1</span></h2>
-<p>Ein <b>Zufallsexperiment</b> hat mehrere mögliche Ergebnisse; vorher weiß man nicht, welches kommt (Würfel, Münze, Umfrage).</p>
-<table class="tab wide">
-<tr><th class="l">Begriff</th><th class="l">Bedeutung</th><th class="l">Beispiel: ein Würfelwurf</th></tr>
-<tr><td class="l">Ergebnisraum \(\Omega\)</td><td class="l">Menge <b>aller</b> möglichen Ergebnisse</td><td class="l">\(\Omega=\{1,2,3,4,5,6\}\)</td></tr>
-<tr><td class="l">Elementarereignis \(\omega\)</td><td class="l">ein einzelnes Ergebnis</td><td class="l">\(\omega = 4\)</td></tr>
-<tr><td class="l">Ereignis \(A\subseteq\Omega\)</td><td class="l">eine Teilmenge von \(\Omega\)</td><td class="l">„gerade Zahl“: \(A=\{2,4,6\}\)</td></tr>
-<tr><td class="l">Gegenereignis \(\bar A = A^c\)</td><td class="l">\(A\) tritt <b>nicht</b> ein</td><td class="l">\(\bar A=\{1,3,5\}\)</td></tr>
-<tr><td class="l">Schnitt \(A\cap B\)</td><td class="l">\(A\) <b>und</b> \(B\)</td><td class="l">\(\{2,4,6\}\cap\{1,2,3\}=\{2\}\)</td></tr>
-<tr><td class="l">Vereinigung \(A\cup B\)</td><td class="l">\(A\) <b>oder</b> \(B\) (oder beide)</td><td class="l">\(\{2,4,6\}\cup\{1,2,3\}=\{1,2,3,4,6\}\)</td></tr>
-<tr><td class="l">Differenz \(A\setminus B=A\cap\bar B\)</td><td class="l">\(A\), aber nicht \(B\)</td><td class="l">\(\{2,4,6\}\setminus\{1,2,3\}=\{4,6\}\)</td></tr>
-<tr><td class="l">disjunkt</td><td class="l">\(A\cap B=\emptyset\): schließen sich aus</td><td class="l">„gerade“ und „ungerade“</td></tr>
-<tr><td class="l">Mächtigkeit \(|A|\)</td><td class="l">Anzahl der Elemente</td><td class="l">\(|\{2,4,6\}|=3\)</td></tr>
-<tr><td class="l">\(A\subseteq B\)</td><td class="l">\(A\) impliziert \(B\)</td><td class="l">\(\{2,4,6\}\subseteq\{2,3,4,5,6\}\)</td></tr>
-</table>
-<div class="box formel"><div class="t">Formel: Laplace-Experiment (alle Ergebnisse gleich wahrscheinlich)</div>
-\[P(A)=\frac{|A|}{|\Omega|}=\frac{\text{Anzahl günstige Ergebnisse}}{\text{Anzahl mögliche Ergebnisse}}\]</div>
-<div class="box bsp"><div class="t">Klausuraufgabe (Probeklausur A, Aufgabe 4, 6 Punkte)</div>
-<p>\(\Omega=\{1,\dots,9\}\), Laplace, \(A=\{1,3,6,7\}\), \(B=\{1,3,6,9\}\).</p>
-<p>\(\bar B=\{2,4,5,7,8\}\) ⇒ \(A\cap\bar B=\{7\}\) ⇒ \(|A\cap \bar B|=1\).<br>
-\(\bar A=\{2,4,5,8,9\}\) ⇒ \(\bar A\cup B=\{1,2,3,4,5,6,8,9\}\) ⇒ \(|\bar A\cup B|=8\).<br>
-„A tritt ein, wenn B <b>nicht</b> eingetreten ist“: \(P(A\mid\bar B)=\frac{|A\cap\bar B|}{|\bar B|}=\frac{1}{5}\).</p></div>
-<div class="box tipp"><div class="t">Klausur-Tipp</div>Schreibe bei Mengen-Aufgaben <b>immer</b> zuerst die Komplemente als Liste auf. Dann ist Zählen einfach und du machst keine Fehler.</div>
-
-<!-- 2.2 -->
-<h2 class="lek"><span class="num">2.2</span> Wahrscheinlichkeit und Rechenregeln <span class="ear">Hörtext 2.2</span></h2>
-<p>Drei Wege zum Begriff: <b>Laplace</b> (Abzählen), <b>frequentistisch</b> (relative Häufigkeit bei sehr vielen Wiederholungen), <b>subjektiv</b> (faire Wette). Alle erfüllen die <b>Axiome von Kolmogorov</b>:</p>
-<div class="box formel"><div class="t">Formel: Axiome und Rechenregeln</div>
-\[\text{(K1) } P(A)\ge 0\qquad \text{(K2) } P(\Omega)=1\qquad \text{(K3) } P(A\cup B)=P(A)+P(B)\ \text{ falls } A\cap B=\emptyset\]
-\[P(\bar A)=1-P(A)\qquad P(\emptyset)=0\qquad A\subseteq B\Rightarrow P(A)\le P(B)\]
-\[P(A\cup B)=P(A)+P(B)-P(A\cap B)\qquad P(A\setminus B)=P(A)-P(A\cap B)\]</div>
-<div class="box bsp"><div class="t">Beispiele (Tutorium 4, Aufgabe 1) – male ein Venn-Diagramm!</div>
-<ol>
-<li>\(P(B)=0.5,\ P(B\setminus A)=0.4,\ P(A\setminus B)=0.2\). Dann \(P(A\cap B)=0.5-0.4=0.1\) und \(P(A)=0.2+0.1=0.3\).</li>
-<li>\(P(A\cup B)=0.8,\ P(B)=0.5,\ P(A\cap B)=0.2\): \(P(A)=0.8-0.5+0.2=0.5\).</li>
-<li>\(P(A\cup B)=0.8,\ P(A\setminus B)=P(B\setminus A)=0.2\): \(P(A\cap B)=0.8-0.2-0.2=0.4\).</li>
-</ol></div>
-
-<!-- 2.3 -->
-<h2 class="lek neu"><span class="num">2.3</span> Bedingte Wahrscheinlichkeit und Unabhängigkeit <span class="ear">Hörtext 2.3</span></h2>
-<p>Frage: Wie ändert sich die Wahrscheinlichkeit von \(A\), wenn wir <b>wissen</b>, dass \(B\) passiert ist? Wir „schrumpfen“ den Ergebnisraum auf \(B\).</p>
-<div class="box formel"><div class="t">Formel: bedingte Wahrscheinlichkeit und Produktsatz</div>
-\[P(A\mid B)=\frac{P(A\cap B)}{P(B)}\qquad(P(B)&gt;0)\]
-\[P(A\cap B)=P(A\mid B)\cdot P(B)=P(B\mid A)\cdot P(A)\]
-\[P(A\mid B)+P(\bar A\mid B)=1\qquad\text{(aber } P(A\mid B)+P(A\mid\bar B) \text{ ist NICHT immer 1!)}\]</div>
-<div class="box bsp"><div class="t">Beispiel (V04): fairer Würfel</div>
-<p>\(A\) = „gerade“ = {2,4,6}, \(B\) = „höchstens 3“ = {1,2,3}. \(P(A)=\frac12\), aber \(P(A\mid B)=\frac{P(\{2\})}{P(\{1,2,3\})}=\frac{1/6}{3/6}=\frac13\). Das Wissen über \(B\) ändert die Wahrscheinlichkeit.</p></div>
-<div class="box formel"><div class="t">Formel: stochastische Unabhängigkeit</div>
-\[A,B \text{ unabhängig}\iff P(A\cap B)=P(A)\cdot P(B)\iff P(A\mid B)=P(A)\]</div>
-<ul>
-<li><b>Mit Zurücklegen</b> ziehen → die Züge sind unabhängig.</li>
-<li><b>Ohne Zurücklegen</b> ziehen → die Züge sind abhängig (die Urne verändert sich).</li>
-<li><b>Disjunkt ≠ unabhängig!</b> Wenn \(A\) und \(B\) disjunkt sind (und beide \(P&gt;0\)), dann sind sie sogar <b>abhängig</b>: Wenn \(A\) passiert, kann \(B\) nicht passieren.</li>
+<div class="big" style="margin-top:9mm">Zufall &amp; <em>Modelle.</em></div>
+<p class="lead" style="max-width:150mm">Heute lernst du alles, was nach der Wahrscheinlichkeitsrechnung kommt: stetige Zufallsvariablen, die sechs Verteilungen, Schätzer und Maximum-Likelihood. Am Abend löst du die Aufgaben 6–8 der Probeklausur – ohne Formelsammlung.</p>
+<div class="tr">Bugün olasılıktan sonraki her şeyi öğreniyorsun: sürekli rastgele değişkenler, altı dağılım, tahminciler ve Maximum-Likelihood. Akşam Probeklausur'un 6–8. sorularını formelsammlung'suz çözüyorsun.</div>
+<div class="grid4" style="margin-top:7mm">
+ <div class="stat"><div class="n">56</div><div class="t">Seiten</div></div>
+ <div class="stat"><div class="n">≈ 7</div><div class="t">Stunden</div></div>
+ <div class="stat"><div class="n">370</div><div class="t">XP möglich</div></div>
+ <div class="stat"><div class="n">3</div><div class="t">Claude-Missionen</div></div>
+</div>
+<div style="margin-top:8mm;border-top:1px solid #4a3f2d;border-bottom:1px solid #4a3f2d;padding:4mm 0">
+ <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17pt;line-height:1.25">„Eine Dichte ist nur eine Fläche. Wer die Fläche ausrechnen kann, kann die halbe Klausur.“</div>
+ <div class="lab" style="margin:2mm 0 0">Ziel bis Freitag · Note 1,x – schlechtestens 2,x</div>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:2mm"><div class="lab">Dein 5-Tage-Plan</div>
+<div class="grid3" style="grid-template-columns:repeat(6,1fr);gap:2mm;font-size:7.6pt;line-height:1.35">
+ <div><span class="chip f">✓</span><br><b>Fundament</b><br><span style="color:#a89c86">Tag 1 + Wahrscheinlichkeit · erledigt</span></div>
+ <div><span class="chip f">2</span><br><b>Zufall &amp; Modelle</b><br><span style="color:#a89c86">heute · ZV, Verteilungen, Schätzer, ML</span></div>
+ <div><span class="chip">3</span><br><b>Schätzen &amp; Testen</b><br><span style="color:#a89c86">morgen · KI, Tests, Regression</span></div>
+ <div><span class="chip">4</span><br><b>Generalprobe</b><br><span style="color:#a89c86">Mi · Probeklausur A + B auf Zeit</span></div>
+ <div><span class="chip">5</span><br><b>Feinschliff</b><br><span style="color:#a89c86">Do · A4-Blätter, Fehlerliste</span></div>
+ <div><span class="chip">★</span><br><b>Klausur</b><br><span style="color:#a89c86">Fr 09.10 · 8:30 Teil A, 12:00 Teil B</span></div>
+</div></div>
+</div><div class="ft"><span class="bar"><span class="track"><span class="fill" style="display:block;width:2%"></span></span><span class="pct">2 %</span></span><a href="#p2">Weiter: So funktioniert das Heft →</a></div></section>
+<section class="pg" id="p2"><div class="hd"><span>Statistik · Klausurtraining</span><span>Tag 2 · Zufall &amp; Modelle</span><span class="pn">02 / 56</span></div><div class="ct">
+<div class="kick"><span class="sec">✦</span><span class="rule"></span><span>Briefing · lies das zuerst</span></div>
+<h1>Dein Gehirn will <em>Punkte.</em> Gib sie ihm.</h1>
+<p class="lead">Dieses Heft ist wie ein Spiel gebaut: Jede Seite bringt XP, jedes Level endet mit einer Belohnung, und am Ende wartet ein Boss – eine echte Klausuraufgabe. Du sammelst Punkte, indem du rechnest, nicht indem du liest.</p>
+<div class="tr">Bu defter bir oyun gibi: her sayfa XP verir, her level bir ödülle biter, sonda bir Boss var – gerçek bir sınav sorusu. Puanı okuyarak değil, hesaplayarak toplarsın.</div>
+<div class="lab">So liest du dieses Heft</div>
+<div class="grid3">
+ <div class="card"><b>Check</b> <span class="chip">+5 XP</span><div class="small">Kurze Rechenfrage auf der Seite. Erst rechnen, dann hinten (Lösungsteil) vergleichen.</div></div>
+ <div class="card ink"><b>Claude-Mission</b> <span class="chip f">bis +40 XP</span><div class="small" style="color:#b9ae99">Ganze Klausuraufgabe auf Papier → Foto an Claude → Punkte wie in der Klausur + Fehleranalyse.</div></div>
+ <div class="card"><b>Klausur-Falle</b><div class="small">Hier verlieren die meisten Punkte – auch du bisher (siehe Fehlerprofil, Level 1).</div></div>
+ <div class="card"><b>Vorgemacht</b><div class="small">Eine Aufgabe komplett vorgerechnet, Zeile für Zeile so, wie sie ins Lösungskästchen gehört.</div></div>
+ <div class="card"><b>Türkçe</b><div class="small">Unter jedem Block eine kurze türkische Zusammenfassung – nachschlagen, nicht übersetzen.</div></div>
+ <div class="card"><b>Relevanz</b><div class="small"><span style="color:var(--gold)">●●●</span> kommt fast sicher · <span style="color:var(--gold)">●●○</span> häufig · <span style="color:var(--gold)">●○○</span> selten</div></div>
+</div>
+<div class="grid2" style="margin-top:4mm">
+ <div>
+  <div class="lab">4 Tricks für dein Gehirn</div>
+  <ol class="num">
+   <li><b>Abrufen statt lesen.</b> Formel zudecken, aus dem Kopf hinschreiben, dann vergleichen.</li>
+   <li><b>Laut erklären.</b> Jede Regel einmal in einem deutschen Satz sagen – so wie im Antwortsatz.</li>
+   <li><b>50 / 10.</b> 50 Minuten Fokus, Handy in einen anderen Raum, 10 Minuten Pause.</li>
+   <li><b>Belohnung erst nach dem Level.</b> Snack, kurzer Spaziergang – erst wenn das Level geschafft ist.</li>
+  </ol>
+ </div>
+ <div>
+  <div class="lab">Deine Ränge heute</div>
+  <table class="tb"><tr><td>Zufalls-Neuling</td><td style="text-align:right;color:var(--mute)">0–129 XP</td></tr>
+  <tr><td>Dichte-Scout</td><td style="text-align:right;color:var(--mute)">130–219 XP</td></tr>
+  <tr><td style="border:1px solid var(--gold)"><b>Likelihood-Profi</b></td><td style="text-align:right;border:1px solid var(--gold);color:var(--gold)">220–299 XP · Tagesziel</td></tr>
+  <tr><td style="background:var(--dark2);color:#efe8da">Klausur-Maschine</td><td style="text-align:right;background:var(--dark2);color:var(--gold2)">300–370 XP</td></tr></table>
+  <div class="lab" style="margin-top:4mm">Dein XP-Zähler</div>
+  <div style="display:flex;gap:2mm;flex-wrap:wrap"><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span><span class="box" style="width:6mm;height:6mm;margin:0"></span></div>
+  <div class="small" style="margin-top:1mm">Je Kästchen 20 XP – abhaken, sobald du sie hast.</div>
+ </div>
+</div>
+<div class="grid2" style="margin-top:5mm">
+ <div class="card gold"><div class="lab" style="margin-top:0">Mein Vertrag mit mir</div>
+  <div style="font-size:9.4pt"><b>Heute ziehe ich Level 1–4 und das Finale durch.</b> Formelsammlung nur zum Nachschlagen – erst nach dem eigenen Versuch, nie davor.</div>
+  <div style="border-bottom:1px solid #b8b0a0;height:9mm;margin-top:1mm"></div><div class="small">Unterschrift · Startzeit</div></div>
+ <div class="card"><div class="lab" style="margin-top:0">Dein Streak</div>
+  <div style="display:flex;gap:2.6mm;margin:1mm 0 2mm"><div style="text-align:center"><div style="width:8mm;height:8mm;border-radius:50%;border:1.4px solid var(--gold);background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:8pt">✓</div><div class="small" style="font-size:6.4pt">Tag 1</div></div><div style="text-align:center"><div style="width:8mm;height:8mm;border-radius:50%;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:8pt">2</div><div class="small" style="font-size:6.4pt">heute</div></div><div style="text-align:center"><div style="width:8mm;height:8mm;border-radius:50%;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:8pt">3</div><div class="small" style="font-size:6.4pt">Di</div></div><div style="text-align:center"><div style="width:8mm;height:8mm;border-radius:50%;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:8pt">4</div><div class="small" style="font-size:6.4pt">Mi</div></div><div style="text-align:center"><div style="width:8mm;height:8mm;border-radius:50%;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:8pt">5</div><div class="small" style="font-size:6.4pt">Do</div></div><div style="text-align:center"><div style="width:8mm;height:8mm;border-radius:50%;border:1.4px solid var(--gold);background:var(--dark2);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:8pt">★</div><div class="small" style="font-size:6.4pt">Fr</div></div></div>
+  <div style="font-size:8.8pt">Tag 1 ist geschafft. Lass die Kette heute nicht reißen.</div></div>
+</div>
+<div class="tr">Sözleşmen: bugün Level 1–4 ve Finale'yi bitiriyorsun. Formelsammlung'a sadece kendi denemenden sonra bak. Tag 1 tamam – zinciri bugün koparma.</div></div><div class="ft"><span class="bar"><span class="track"><span class="fill" style="display:block;width:4%"></span></span><span class="pct">4 %</span></span><a href="#p3">Weiter: Deine Route →</a></div></section>
+<section class="pg" id="p3"><div class="hd"><span>Statistik · Klausurtraining</span><span>Tag 2 · Zufall &amp; Modelle</span><span class="pn">03 / 56</span></div><div class="tabs"><a href="#lv1" class="on"><span>Level 1</span></a><a href="#lv2" class=""><span>Level 2</span></a><a href="#lv3" class=""><span>Level 3</span></a><a href="#lv4" class=""><span>Level 4</span></a><a href="#fin" class=""><span>Finale</span></a></div><div class="ct">
+<div class="kick"><span class="sec">✦</span><span class="rule"></span><span>Quest-Map</span></div>
+<h1>Deine <em>Route</em> für heute.</h1>
+<div class="grid4" style="margin:3mm 0 1mm">
+ <div class="card"><div class="stat" style="border:0;padding:0"><div class="n">≈ 7:00</div><div class="t">Std. Lernzeit</div></div></div>
+ <div class="card"><div class="stat" style="border:0;padding:0"><div class="n">5</div><div class="t">Pausen à 10 min</div></div></div>
+ <div class="card"><div class="stat" style="border:0;padding:0"><div class="n">370</div><div class="t">XP möglich</div></div></div>
+ <div class="card ink"><div class="stat" style="border:0;padding:0"><div class="n" style="color:#f3ead6">260</div><div class="t">XP Tagesziel</div></div></div>
+</div>
+<div class="tr">Bu bugünkü haritan. Her durağı bitirince dairenin içini kalemle doldur. Altın daireler = Claude görevleri: kendin yaz, fotoğrafını çek, bana gönder.</div><div style="margin:5.6mm 0"><div style="display:flex;justify-content:space-between" class="lab"><span>Level 1 · Fehler-Detox</span><span style="color:var(--mute)">45 min · 40 XP</span></div><div style="display:flex;align-items:flex-start;gap:1mm;position:relative;padding-top:1mm"><div style="position:absolute;left:12.5mm;width:52mm;top:5.6mm;border-top:1.4px dashed var(--gold2)"></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§1</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Dein Fehlerprofil</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§2</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">3 Retter-Regeln</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§3</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">10-Sekunden-Kontrolle</div></div></div></div><div style="margin:5.6mm 0"><div style="display:flex;justify-content:space-between" class="lab"><span>Level 2 · Stetige Zufallsvariablen</span><span style="color:var(--mute)">90 min · 70 XP</span></div><div style="display:flex;align-items:flex-start;gap:1mm;position:relative;padding-top:1mm"><div style="position:absolute;left:12.5mm;width:130mm;top:5.6mm;border-top:1.4px dashed var(--gold2)"></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§4</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Dichte = Fläche</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§5</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">c bestimmen</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§6</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">F(x), Median</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§7</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">E(X), Var per Integral</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§8</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Rechenregeln</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">M1</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Mission 1</div></div></div></div><div style="margin:5.6mm 0"><div style="display:flex;justify-content:space-between" class="lab"><span>Level 3 · Die Verteilungen</span><span style="color:var(--mute)">100 min · 80 XP</span></div><div style="display:flex;align-items:flex-start;gap:1mm;position:relative;padding-top:1mm"><div style="position:absolute;left:12.5mm;width:104mm;top:5.6mm;border-top:1.4px dashed var(--gold2)"></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§9</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Welche Verteilung?</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§10</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Binomial</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§11</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Poisson</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§12</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Exponential</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§13</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Normal + ZGWS</div></div></div></div><div style="margin:5.6mm 0"><div style="display:flex;justify-content:space-between" class="lab"><span>Level 4 · Schätzer &amp; Maximum-Likelihood</span><span style="color:var(--mute)">120 min · 100 XP</span></div><div style="display:flex;align-items:flex-start;gap:1mm;position:relative;padding-top:1mm"><div style="position:absolute;left:12.5mm;width:104mm;top:5.6mm;border-top:1.4px dashed var(--gold2)"></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§14</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Erwartungstreu?</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§15</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Varianz, MSE</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§16</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">ML-Rezept</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§17</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">ML-Klassiker</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">M2</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Mission 2</div></div></div></div><div style="margin:5.6mm 0"><div style="display:flex;justify-content:space-between" class="lab"><span>Finale · Training &amp; Boss</span><span style="color:var(--mute)">60 min · 80 XP</span></div><div style="display:flex;align-items:flex-start;gap:1mm;position:relative;padding-top:1mm"><div style="position:absolute;left:12.5mm;width:52mm;top:5.6mm;border-top:1.4px dashed var(--gold2)"></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:#fbf8f1;color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">§18</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Mini-Fälle</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">M3</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Mission 3</div></div><div style="text-align:center;width:25mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%;margin:0 auto;border:1.4px solid var(--gold);background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">★</div><div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">Boss: PK A6–A8</div></div></div></div>
+<div class="tip" style="margin-top:4mm"><b>Pausen</b>Nach jedem Level 10 Minuten Pause + 5 XP Level-Bonus. Erst abhaken, dann aufstehen.</div>
+</div><div class="ft"><span class="bar"><span class="track"><span class="fill" style="display:block;width:5%"></span></span><span class="pct">5 %</span></span><a href="#p4">Los geht's: Level 1 →</a></div></section>
+<a id="p4"></a><section class="pg dark" id="lv1"><div class="frame"></div><div class="hd"><span>Statistik · Klausurtraining</span><span>Tag 2 · Zufall &amp; Modelle</span><span class="pn">04 / 56</span></div><div class="ct">
+<div class="lab" style="margin-top:6mm">Level</div>
+<div class="lvbox"><div class="bignum">1</div></div>
+<div class="big">Fehler-<em>Detox</em></div>
+<p class="lead" style="max-width:150mm;color:#e2d9c6">Bevor du Neues lernst, räumst du auf. Ich habe alle deine Fragen und alle korrigierten Lösungen der letzten Tage ausgewertet. Es sind immer dieselben sieben Fehler – und drei davon kosten dich allein 10 Punkte.</p>
+<div class="tr">Yeni bir şey öğrenmeden önce temizlik. Son günlerdeki tüm sorularını ve düzeltilmiş çözümlerini inceledim. Hep aynı yedi hata – üçü tek başına 10 puan götürüyor.</div>
+<div style="margin:4mm 0"><span class="chip">3 Stationen</span><span class="chip">45 min</span><span class="chip f">40 XP</span></div>
+<div class="lab" style="margin-top:6mm">Du schaltest frei</div>
+<ul class="dia">
+ <li><b>Dein Fehlerprofil</b><span class="d">· 7 Muster aus Fragen, Übungen und Probeklausur 2</span><span class="r">§ 1</span></li>
+ <li><b>3 Retter-Regeln</b><span class="d">· Strich = ablesen · 1 − p · stetig = Fläche</span><span class="r">§ 2</span></li>
+ <li><b>10-Sekunden-Kontrolle</b><span class="d">· nach jedem Kästchen + Drill</span><span class="r">§ 3</span></li>
 </ul>
-<div class="box bsp"><div class="t">Testat 3, Aufgabe 1</div>
-<p>\(P(A)=0.2,\ P(B)=0.6,\ P(A\mid B)=0.3\). Gesucht \(P(A\cup B)\) und \(P(A\mid\bar B)\).</p>
-\[P(A\cap B)=0.3\cdot0.6=0.18\quad\Rightarrow\quad P(A\cup B)=0.2+0.6-0.18=0.62\]
-\[P(A\mid \bar B)=\frac{P(A\cap\bar B)}{P(\bar B)}=\frac{P(A)-P(A\cap B)}{1-P(B)}=\frac{0.02}{0.4}=0.05\]</div>
-<div class="box bsp"><div class="t">Testat 3, Aufgabe 4: Glücksrad mit 10 Feldern (Laplace)</div>
-<p>\(A=\{1,\dots,5\},\ B=\{2,4,6,8,10\},\ C=\{1,4,7,10\}\).<br>
-\(A\cup C=\{1,2,3,4,5,7,10\}\) ⇒ \(P(A\cup C)=0.7\). \(A\cap B=\{2,4\}\) ⇒ \(P(A\mid B)=\frac{2/10}{5/10}=0.4\).<br>
-\(P(A)=0.5\ne0.4=P(A\mid B)\) ⇒ \(A\) und \(B\) sind <b>abhängig</b>. (Oder: \(P(A\cap B)=0.2\ne0.25=P(A)P(B)\).)</p></div>
-<div class="box achtung"><div class="t">Achtung</div>\(P(A\mid B)\) und \(P(B\mid A)\) sind verschiedene Dinge! „Wahrscheinlichkeit, krank zu sein, wenn der Test positiv ist“ ist etwas anderes als „Wahrscheinlichkeit, dass der Test positiv ist, wenn man krank ist“. Lies die Aufgabe Wort für Wort: Was steht <b>hinter</b> dem Strich? Das ist das, was wir <b>wissen</b>.</div>
-<div class="box frage"><div class="t">Kontrollfragen 2.1 – 2.3</div>
-<ol class="fragen">
-<li>Zweimal würfeln. Wie groß ist die Wahrscheinlichkeit, dass die Augensumme 8 ist?</li>
-<li>\(P(A)=0.05\), \(P(A\mid B)=0.2\), \(P(A\cap B)=0.02\). Berechne \(P(B)\) und \(P(B\mid A)\).</li>
-<li>Münze dreimal werfen. \(P(\text{3-mal Kopf})\)? Und \(P(\text{3-mal Kopf}\mid\text{die ersten zwei sind Kopf})\)?</li>
-<li>Sind disjunkte Ereignisse (mit positiver Wahrscheinlichkeit) unabhängig? Begründe.</li>
-</ol></div>
-
-<!-- 2.4 -->
-<h2 class="lek neu"><span class="num">2.4</span> Satz der totalen Wahrscheinlichkeit und Satz von Bayes <span class="ear">Hörtext 2.4</span></h2>
-<p>Das ist <b>das</b> Klausurthema in der Wahrscheinlichkeitsrechnung. Die Aufgabe hat immer die gleiche Form: Es gibt eine Aufteilung in Gruppen \(A_1,\dots,A_k\) (disjunkt, zusammen ganz \(\Omega\)), und wir kennen \(P(A_i)\) und \(P(B\mid A_i)\).</p>
-<div class="box formel"><div class="t">Formel: totale Wahrscheinlichkeit und Bayes</div>
-\[P(B)=\sum_{i=1}^k P(B\mid A_i)\cdot P(A_i)\qquad\text{(alle Pfade zu } B \text{ addieren)}\]
-\[P(A_j\mid B)=\frac{P(B\mid A_j)\cdot P(A_j)}{P(B)}=\frac{P(B\mid A_j)\cdot P(A_j)}{\sum_i P(B\mid A_i)\,P(A_i)}\qquad\text{(Bedingung umdrehen)}\]</div>
-<div class="box bsp"><div class="t">Beispiel (V04): medizinischer Test</div>
-<p>Prävalenz \(P(K)=0.001\), Sensitivität \(P(+\mid K)=0.9\), Spezifität \(P(-\mid\bar K)=0.9\) ⇒ \(P(+\mid\bar K)=0.1\).</p>
-\[P(+)=0.9\cdot0.001+0.1\cdot0.999=0.1008\qquad P(K\mid +)=\frac{0.9\cdot0.001}{0.1008}=0.0089\]
-<p>Nur 0.9 % der positiv Getesteten sind wirklich krank – weil die Krankheit so selten ist!</p></div>
-<h3>Die große Klausuraufgabe (Probeklausur A, Aufgabe 3, 11 Punkte)</h3>
-<p>Bestehenswahrscheinlichkeit 70 %. Drei Lernstrategien: \(A_1\) regelmäßig lernen, \(A_2\) nur Videos, \(A_3\) gar nicht lernen. Bei den Bestehern (B): \(P(A_1\mid B)=0.8,\ P(A_2\mid B)=0.15\). Bei den Nicht-Bestehern: \(P(A_1\mid\bar B)=0.1,\ P(A_2\mid \bar B)=0.2\).</p>
-<figure><img src="fig/baum.svg" style="width:86%"><figcaption>Baumdiagramm: erst „bestehen oder nicht“, dann die Strategie. Pfadwahrscheinlichkeiten multiplizieren.</figcaption></figure>
-<div class="box bsp lang"><div class="t">Lösung Schritt für Schritt</div>
-<ol class="steps">
-<li><b>Gegeben aufschreiben</b> (1 Punkt nur fürs saubere Notieren!): \(P(B)=0.7\); \(P(A_1\mid B)=0.8,\ P(A_2\mid B)=0.15\); \(P(A_1\mid\bar B)=0.1,\ P(A_2\mid\bar B)=0.2\).</li>
-<li>\(P(\bar B)=1-0.7=0.3\).</li>
-<li>\(P(A_3\mid B)=1-0.8-0.15=0.05\) und \(P(A_3\mid\bar B)=1-0.1-0.2=0.7\) (die drei Strategien ergeben zusammen 1).</li>
-<li>Totale Wahrscheinlichkeit: \(P(A_3)=P(A_3\mid B)P(B)+P(A_3\mid\bar B)P(\bar B)=0.05\cdot0.7+0.7\cdot0.3=0.035+0.21=0.245\).</li>
-<li>(b) Franziska wählt Strategie 2. Gesucht ist \(P(B\mid A_2)\) – <b>Bayes</b>:
-\[P(A_2)=0.15\cdot0.7+0.2\cdot0.3=0.165\qquad P(B\mid A_2)=\frac{0.15\cdot0.7}{0.165}=\frac{0.105}{0.165}=0.636\]</li>
-<li>(c) Mindestens eine von 10 Personen ist durchgefallen. \(X\) = Anzahl Nicht-Besteher, \(X\sim B(10;\,0.3)\) (morgen mehr):
-\[P(X\ge1)=1-P(X=0)=1-0.7^{10}=0.972\]</li>
-</ol></div>
-<div class="box tipp"><div class="t">Klausur-Tipp: das Bayes-Rezept</div>
-<ol><li>Ereignisse benennen (B = bestehen, A₁, A₂, A₃ …) und <b>alle</b> gegebenen Zahlen als \(P(\dots)\) oder \(P(\dots\mid\dots)\) aufschreiben.</li>
-<li>Fehlende Zahlen über „Summe = 1“ ergänzen.</li>
-<li>Baumdiagramm zeichnen: erste Stufe = das, wovon wir \(P(\cdot)\) kennen; zweite Stufe = das, wovon wir \(P(\cdot\mid\cdot)\) kennen.</li>
-<li>Gefragt „insgesamt“ → totale Wahrscheinlichkeit (Pfade addieren). Gefragt „<i>gegeben</i> das Ergebnis der zweiten Stufe“ → Bayes (ein Pfad / alle Pfade).</li></ol></div>
-<div class="box bsp"><div class="t">Noch zwei Beispiele (Tutorium 4 und Testat 3)</div>
-<p><b>Blutgruppen:</b> \(P(A)=0.42,\ P(B)=0.10,\ P(AB)=0.04,\ P(0)=0.44\); \(P(R^+\mid A)=P(R^+\mid 0)=0.85,\ P(R^+\mid B)=0.8,\ P(R^+\mid AB)=0.75\).<br>
-\(P(R^+)=0.85\cdot0.42+0.8\cdot0.1+0.75\cdot0.04+0.85\cdot0.44=0.841\); \(P(AB\mid R^+)=\frac{0.75\cdot0.04}{0.841}=0.036\).</p>
-<p><b>Sonnenbrand (Testat 3):</b> \(P(A_2)=P(A_3)=0.2\) ⇒ \(P(A_1)=0.6\). Brennen: \(0.1, 0.6, 0.9\).<br>
-\(P(\text{Brennen})=0.1\cdot0.6+0.6\cdot0.2+0.9\cdot0.2=0.36\); \(P(A_3\mid\text{Brennen})=\frac{0.18}{0.36}=0.5\).</p></div>
-<div class="box frage"><div class="t">Kontrollfragen 2.4</div>
-<ol class="fragen">
-<li>Einkommen gering (E₁), mittel (E₂, \(P=0.7\)), hoch (E₃). \(P(\text{Bef}\mid E_1)=0.3,\ P(\text{Bef}\mid E_2)=0.1,\ P(\text{Bef}\mid E_3)=0.05\) und \(P(\text{Bef}\cap E_1)=0.06\). Berechne \(P(E_1), P(E_3), P(\text{Bef}), P(E_3\mid\text{Bef})\).</li>
-<li>Warum ist beim medizinischen Test \(P(K\mid +)\) so klein, obwohl der Test „90 % gut“ ist?</li>
-</ol></div>
-
-<!-- 2.5 -->
-<h2 class="lek neu"><span class="num">2.5</span> Zufallsvariablen – diskret <span class="ear">Hörtext 2.5</span></h2>
-<p>Eine <b>Zufallsvariable</b> \(X\) ordnet jedem Ergebnis \(\omega\) eine <b>Zahl</b> zu. Beispiel: zwei Würfel, \(X\) = Augensumme. Sie ist das theoretische Gegenstück zum Merkmal: statt Häufigkeiten haben wir Wahrscheinlichkeiten.</p>
-<table class="tab wide">
-<tr><th>Deskriptive Statistik (Daten)</th><th>Wahrscheinlichkeitsrechnung (Theorie)</th></tr>
-<tr><td>Merkmal</td><td>Zufallsvariable</td></tr>
-<tr><td>Merkmalsausprägungen</td><td>Träger (mögliche Werte)</td></tr>
-<tr><td>relative Häufigkeit \(f_j\)</td><td>Wahrscheinlichkeit \(P(X=x)\)</td></tr>
-<tr><td>arithmetisches Mittel \(\bar x\)</td><td>Erwartungswert \(E(X)\)</td></tr>
-<tr><td>empirische Varianz \(s^2\)</td><td>Varianz \(\text{Var}(X)\)</td></tr>
-</table>
-<div class="box formel"><div class="t">Formel: diskrete Zufallsvariable</div>
-\[p_i=P(X=x_i),\qquad 0\le p_i\le1,\qquad \sum_i p_i=1,\qquad P(a\le X\le b)=\sum_{a\le x_i\le b}p_i\]
-\[F(x)=P(X\le x)=\sum_{x_i\le x}p_i\qquad\text{(Treppenfunktion, wie die empirische Verteilungsfunktion)}\]</div>
-<div class="box bsp"><div class="t">Beispiel: Augensumme zweier Würfel</div>
-<table class="tab">
-<tr><th>x</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr>
-<tr><th>P(X=x)</th><td>1/36</td><td>2/36</td><td>3/36</td><td>4/36</td><td>5/36</td><td>6/36</td><td>5/36</td><td>4/36</td><td>3/36</td><td>2/36</td><td>1/36</td></tr>
-</table>
-<p>\(P(X=8)=\frac{5}{36}=0.139\): (2,6), (3,5), (4,4), (5,3), (6,2).</p></div>
-<div class="box formel"><div class="t">Formel: Binomialkoeffizient („n über x“)</div>
-\[\binom{n}{x}=\frac{n!}{x!\,(n-x)!}\quad=\text{Anzahl Möglichkeiten, } x \text{ aus } n \text{ auszuwählen (ohne Reihenfolge)}\]
-<p class="small">Beispiel: \(\binom{10}{2}=\frac{10\cdot9}{2\cdot1}=45\). Taschenrechner: Taste nCr. R: <code>choose(10, 2)</code>.</p></div>
-<div class="box bsp"><div class="t">Tutorium 6, Aufgabe 1: \(P(X=x)=\frac{x}{c}\) für \(x\in\{1,2,3,4\}\)</div>
-<p>Summe muss 1 sein: \(\frac{1+2+3+4}{c}=\frac{10}{c}=1\Rightarrow c=10\). (Erwartungswert und Varianz: Abschnitt 2.7.)</p></div>
-
-<!-- 2.6 -->
-<h2 class="lek neu"><span class="num">2.6</span> Stetige Zufallsvariablen: Dichte und Verteilungsfunktion <span class="ear">Hörtext 2.6</span></h2>
-<p>Eine stetige Zufallsvariable kann jeden Wert in einem Intervall annehmen. Einzelne Werte haben Wahrscheinlichkeit <b>0</b>. Stattdessen gibt es eine <b>Dichte</b> \(f(x)\): <b>Wahrscheinlichkeit = Fläche unter der Dichte</b>.</p>
-<figure><img src="fig/dichte_vf.svg" style="width:94%"></figure>
-<div class="box formel"><div class="t">Formel: stetige Zufallsvariable</div>
-\[P(a\le X\le b)=\int_a^b f(x)\,dx=F(b)-F(a)\qquad F(x)=P(X\le x)=\int_{-\infty}^x f(t)\,dt\]
-<p><b>Eine gültige Dichte braucht genau zwei Dinge:</b> \(\ f(x)\ge0\) für alle \(x\) &nbsp;und&nbsp; \(\int_{-\infty}^{\infty}f(x)\,dx=1\).</p>
-\[P(X=x)=0\quad\Rightarrow\quad P(a&lt;X&lt;b)=P(a\le X\le b)\qquad P(X&gt;a)=1-F(a)\]</div>
-<div class="box achtung"><div class="t">Achtung – typische Fehler</div>
-<ul><li>\(f(x)&gt;1\) ist erlaubt! Eine Dichte ist keine Wahrscheinlichkeit. Nur die <b>Fläche</b> ist eine Wahrscheinlichkeit.</li>
-<li>\(P(X=x)\neq f(x)\). Bei stetigen Variablen ist \(P(X=x)=0\).</li>
-<li>Bei der Verteilungsfunktion: Integrationsvariable \(t\) nehmen und \(x\) als obere Grenze. Und nicht vergessen: \(F(x)=0\) links vom Träger, \(F(x)=1\) rechts davon.</li>
-<li>Bei <b>diskreten</b> Variablen ist \(&lt;\) nicht gleich \(\le\)! Bei stetigen ist es egal.</li></ul></div>
-<div class="box bsp lang"><div class="t">Beispiel (Tutorium 6, Aufgabe 2): \(f(x)=\tfrac12(x-4)\) für \(4\le x\le 6\), sonst 0</div>
-<p><b>Gültige Dichte?</b> \(f(x)\ge0\) auf [4,6] ✓. \(\int_4^6\tfrac12(x-4)\,dx=\left[\tfrac14(x-4)^2\right]_4^6=\tfrac14\cdot4-0=1\) ✓.</p>
-<p><b>Verteilungsfunktion:</b> \(F(x)=\int_4^x\tfrac12(t-4)\,dt=\tfrac14(x-4)^2=\tfrac14x^2-2x+4\) für \(4\le x\le6\); \(F(x)=0\) für \(x&lt;4\), \(F(x)=1\) für \(x&gt;6\).</p>
-<p><b>Wahrscheinlichkeiten:</b> \(P(X&gt;5.2)=1-F(5.2)=1-\tfrac14\cdot1.2^2=0.64\); \(P(X&lt;5.1)=\tfrac14\cdot1.1^2=0.303\); \(P(4.5&lt;X&lt;5.5)=F(5.5)-F(4.5)=0.5625-0.0625=0.5\).</p></div>
-<div class="box bsp"><div class="t">Testat 4, Aufgabe 5: \(f(x)=c(x-2)\) für \(2\le x\le 3\)</div>
-<p>\(\int_2^3 c(x-2)\,dx=c\left[\tfrac12(x-2)^2\right]_2^3=\tfrac c2\overset{!}{=}1\Rightarrow c=2\).</p></div>
-<h3>Quantile einer Zufallsvariable</h3>
-<p>Das \(\alpha\)-Quantil \(q_\alpha\) ist die Lösung von \(F(q_\alpha)=\alpha\). Beispiel Anrufdauer mit \(F(x)=1-e^{-0.006x}\): \(1-e^{-0.006q}=0.95\Rightarrow q_{0.95}=\frac{-\ln 0.05}{0.006}=499.3\approx 500\) Sekunden. Nur 5 % der Anrufe dauern länger.</p>
-
-<!-- 2.7 -->
-<h2 class="lek neu"><span class="num">2.7</span> Erwartungswert und Varianz <span class="ear">Hörtext 2.7</span></h2>
-<div class="box formel"><div class="t">Formel: Erwartungswert und Varianz</div>
-\[E(X)=\sum_x x\,P(X=x)\ \ \text{(diskret)}\qquad E(X)=\int x\,f(x)\,dx\ \ \text{(stetig)}\]
-\[E(g(X))=\sum_x g(x)P(X=x)\ \text{ bzw. }\int g(x)f(x)\,dx\qquad\text{z.B. } E(X^2),\ E(\log X)\]
-\[\text{Var}(X)=E\big[(X-E(X))^2\big]=E(X^2)-\big(E(X)\big)^2\qquad \text{sd}(X)=\sqrt{\text{Var}(X)}\]</div>
-<div class="box formel"><div class="t">Formel: Rechenregeln (sehr wichtig für Tag 4!)</div>
-\[E(aX+b)=a\,E(X)+b\qquad \text{Var}(aX+b)=a^2\,\text{Var}(X)\]
-\[E(X+Y)=E(X)+E(Y)\ \ \text{(immer!)}\qquad E\Big(\sum a_iX_i\Big)=\sum a_iE(X_i)\]
-\[\text{nur wenn } X,Y \text{ unabhängig: } E(XY)=E(X)E(Y),\quad \text{Var}(X+Y)=\text{Var}(X)+\text{Var}(Y)\]
-\[\text{allgemein: } \text{Var}(aX+bY)=a^2\text{Var}(X)+b^2\text{Var}(Y)+2ab\,\text{Cov}(X,Y)\]
-\[\text{Achtung: } E(g(X))\ne g(E(X)) \text{ im Allgemeinen, z.B. } E(X^2)\ne (E X)^2,\ E(1/X)\ne 1/E(X)\]</div>
-<div class="box bsp"><div class="t">Tutorium 6, Aufgabe 1 (Fortsetzung): \(P(X=x)=\frac{x}{10}\)</div>
-\[E(X)=1\cdot\tfrac{1}{10}+2\cdot\tfrac{2}{10}+3\cdot\tfrac{3}{10}+4\cdot\tfrac{4}{10}=\tfrac{30}{10}=3\]
-\[E(X^2)=1\cdot\tfrac1{10}+4\cdot\tfrac2{10}+9\cdot\tfrac3{10}+16\cdot\tfrac4{10}=10\quad\Rightarrow\quad\text{Var}(X)=10-9=1\]
-<p>\(Z=0.5X+Y\) mit \(E(Z)=8.5\), \(X,Y\) unabhängig, \(\text{Var}(Y)=1\): \(E(Y)=8.5-1.5=7\); \(\text{Var}(Z)=0.25\cdot1+1=1.25\).</p></div>
-<div class="box bsp"><div class="t">Stetig: \(f(x)=\tfrac12(x-4)\) auf [4,6]</div>
-\[E(X)=\int_4^6 x\cdot\tfrac12(x-4)\,dx=\left[\tfrac16x^3-x^2\right]_4^6=0-\left(-\tfrac{16}{3}\right)=5.333\]
-\[E(X^2)=\int_4^6 \tfrac12x^3-2x^2\,dx=\left[\tfrac18x^4-\tfrac23x^3\right]_4^6=18+\tfrac{32}{3}=28.667\quad\Rightarrow\quad \text{Var}(X)=28.667-5.333^2=0.222\]</div>
-<div class="box merke"><div class="t">Merke: Bedeutung</div>
-<p>\(E(X)\) ist der <b>Schwerpunkt</b> der Verteilung. <b>Gesetz der großen Zahlen:</b> Wenn man ein Experiment sehr oft unabhängig wiederholt, geht der Durchschnitt \(\bar X\) gegen \(E(X)\). Ist die Verteilung symmetrisch um \(a\), dann ist \(E(X)=a\). Die Varianz misst die Breite der Verteilung = das Risiko (Chuck-a-Luck: gleicher Erwartungswert, aber verschiedenes Risiko).</p></div>
-
-<!-- 2.8 -->
-<h2 class="lek neu"><span class="num">2.8</span> Zwei Zufallsvariablen <span class="ear">Hörtext 2.8</span></h2>
-<p>Die <b>gemeinsame</b> Wahrscheinlichkeitsfunktion \(P(X=x,Y=y)\) (oder gemeinsame Dichte \(f(x,y)\)) beschreibt \(X\) und \(Y\) zusammen – wie die Kontingenztafel von Tag 1, nur mit Wahrscheinlichkeiten.</p>
-<div class="box formel"><div class="t">Formel</div>
-\[\text{Rand: } P(X=x)=\sum_y P(X=x,Y=y)\qquad f_X(x)=\int f(x,y)\,dy\]
-\[\text{bedingt: } P(X=x\mid Y=y)=\frac{P(X=x,Y=y)}{P(Y=y)}\qquad f_{X|Y}(x\mid y)=\frac{f(x,y)}{f_Y(y)}\]
-\[\text{unabhängig}\iff P(X=x,Y=y)=P(X=x)P(Y=y)\ \forall x,y\iff f(x,y)=f_X(x)f_Y(y)\]
-\[\text{Cov}(X,Y)=E(XY)-E(X)E(Y)\qquad \rho(X,Y)=\frac{\text{Cov}(X,Y)}{\text{sd}(X)\,\text{sd}(Y)}\in[-1,1]\]</div>
-<div class="box bsp"><div class="t">Tutorium 5, Aufgabe 1: Gehalt X und Alter Y</div>
-<table class="tab">
-<tr><th>X \ Y</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Σ</th></tr>
-<tr><th>1</th><td>0.13</td><td>0.08</td><td>0.05</td><td>0.03</td><td>0.29</td></tr>
-<tr><th>2</th><td>0.07</td><td>0.21</td><td>0.07</td><td>0.09</td><td>0.44</td></tr>
-<tr><th>3</th><td>0.00</td><td>0.05</td><td>0.10</td><td>0.12</td><td>0.27</td></tr>
-<tr><th>Σ</th><td>0.20</td><td>0.34</td><td>0.22</td><td>0.24</td><td>1</td></tr>
-</table>
-<p>\(P(X=2\mid Y=1)=\frac{0.07}{0.20}=0.35\). \(P(Y=2\mid X=3)=\frac{0.05}{0.27}=0.185\). Unabhängig? \(P(X=3,Y=1)=0\neq0.27\cdot0.20\) ⇒ <b>nein</b>.</p></div>
-<div class="box bsp"><div class="t">Stetig (Tutorium 6, Aufgabe 3): \(f(x,y)=12x^3(1-y)^2\) auf \([0,1]^2\)</div>
-<p>Randdichten: \(f_X(x)=\int_0^1 12x^3(1-y)^2dy=4x^3\), \(f_Y(y)=\int_0^1 12x^3(1-y)^2dx=3(1-y)^2\). Produkt \(=f(x,y)\) ⇒ unabhängig ⇒ \(\rho=0\). \(E(X)=\int_0^1 x\cdot 4x^3dx=0.8\).</p></div>
-<div class="box frage"><div class="t">Kontrollfragen 2.5 – 2.8</div>
-<ol class="fragen">
-<li>\(X\) nimmt 1, 2, 3 an mit \(P=0.3,\ 0.5,\ 0.2\). Gib \(F(x)\) an. Berechne \(E(X)\) und \(E(\log X)\).</li>
-<li>Welche Eigenschaften muss eine Dichte haben? (a) \(\int f=1\) (b) \(f\ge0\) (c) \(f\le1\) (d) \(P(X=x)=f(x)\).</li>
-<li>\(\text{Var}(X)=4\). Wie groß ist \(\text{Var}(3X-7)\) und \(\text{sd}(3X-7)\)?</li>
-<li>\(X,Y\) unabhängig, \(\text{Var}(X)=2,\ \text{Var}(Y)=3\). \(\text{Var}(X-Y)=\,\)?</li>
-<li>\(f(y)=\frac{y}{6}\) für \(0\le y\le2\), \(f(y)=\frac{6-y}{12}\) für \(2&lt;y\le6\). Berechne \(E(Y)\).</li>
-</ol></div>
-
-<!-- Klausuraufgaben -->
-<h2 class="lek neu"><span class="num">K2</span> Klausuraufgaben Tag 2 – rechne selbst!</h2>
-<div class="box bsp lang"><div class="t">Aufgabe 2.A (11 Punkte) – Probeklausur A, Aufgabe 3</div>
-<p>Rechne die Franziska-Aufgabe aus 2.4 noch einmal komplett <b>ohne</b> hinzuschauen: \(P(\bar B)\), \(P(A_3\mid B)\), \(P(A_3\mid\bar B)\), \(P(A_3)\), \(P(B\mid A_2)\) mit Lösungsweg und \(P(\text{mind. 1 Nicht-Besteher unter 10})\).</p></div>
-<div class="box bsp lang"><div class="t">Aufgabe 2.B (6 Punkte) – Testat 3, Aufgabe 5: Wasserbomben</div>
-<table class="tab"><tr><th>Zielscheibe</th><th>P(Wurf dorthin)</th><th>P(abgefangen | Richtung)</th></tr>
-<tr><td>rechts</td><td>0.40</td><td>0.5</td></tr><tr><td>Mitte</td><td>0.25</td><td>0.2</td></tr><tr><td>links</td><td>0.35</td><td>0.2</td></tr></table>
-<p>(a) Wie groß ist die Wahrscheinlichkeit, dass die Wasserbombe eine Zielscheibe trifft (nicht abgefangen)? (b) Die Bombe hat getroffen. Mit welcher Wahrscheinlichkeit wurde auf die Mitte geworfen?</p></div>
-<div class="box bsp lang"><div class="t">Aufgabe 2.C (4 Punkte) – Testat 3, Aufgabe 6: Kugeln ohne Zurücklegen</div>
-<p>15 rote, 5 blaue, 5 gelbe Kugeln. Rot = verloren, blau = gewonnen, gelb = noch einmal ziehen. (a) P(verliert im ersten Zug)? (b) P(gewinnt im zweiten Zug)?</p></div>
-<div class="box bsp lang"><div class="t">Aufgabe 2.D (10 Punkte) – Testat 4, Aufgabe 5</div>
-<p>\(f(x)=c(x-2)\) für \(2\le x\le3\), sonst 0. (a) Bestimme \(c\). (b) \(E(X)\). (c) \(E(X^2)\) und \(\text{Var}(X)\). (d) \(F(x)\) und \(P(X\le 2.5)\). (e) Median von \(X\).</p></div>
-<div class="box bsp lang"><div class="t">Aufgabe 2.E (4 Punkte) – nach Tutorium 5, Aufgabe 2</div>
-<p>Würfelspiel: Einsatz 3 €, Auszahlung = Augenzahl in €. \(X\) = Gewinn. (a) Träger und Wahrscheinlichkeitsfunktion. (b) \(E(X)\) und \(\text{Var}(X)\). (c) \(Y\) = Gewinn des Spielleiters \(=-X\): \(E(Y)\), \(\text{Var}(Y)\)?</p></div>
-
-<!-- Lösungen -->
-<div class="loes">
-<h2>Lösungen Tag 2</h2>
-<h3>Kontrollfragen 2.1 – 2.3</h3>
-<ol>
-<li>\(5/36=0.139\).</li>
-<li>\(P(B)=\frac{P(A\cap B)}{P(A\mid B)}=\frac{0.02}{0.2}=0.1\); \(P(B\mid A)=\frac{0.02}{0.05}=0.4\).</li>
-<li>\((1/2)^3=0.125\); bedingt: nur noch der dritte Wurf zählt ⇒ \(0.5\).</li>
-<li>Nein. Wenn \(A\) passiert, kann \(B\) nicht passieren: \(P(A\cap B)=0\ne P(A)P(B)&gt;0\). Disjunkte Ereignisse sind abhängig.</li>
-</ol>
-<h3>Kontrollfragen 2.4</h3>
-<ol>
-<li>\(P(E_1)=\frac{0.06}{0.3}=0.2\), \(P(E_3)=1-0.2-0.7=0.1\). \(P(\text{Bef})=0.3\cdot0.2+0.1\cdot0.7+0.05\cdot0.1=0.135\). \(P(E_3\mid\text{Bef})=\frac{0.005}{0.135}=0.037\).</li>
-<li>Weil die Krankheit sehr selten ist (0.1 %). Die vielen Gesunden erzeugen viel mehr falsch-positive Tests (10 % von 99.9 %) als es Kranke gibt.</li>
-</ol>
-<h3>Kontrollfragen 2.5 – 2.8</h3>
-<ol>
-<li>\(F(x)=0\) für \(x&lt;1\); \(0.3\) für \(1\le x&lt;2\); \(0.8\) für \(2\le x&lt;3\); \(1\) für \(x\ge3\). \(E(X)=0.3+1+0.6=1.9\). \(E(\log X)=0.3\log1+0.5\log2+0.2\log3=0.5\cdot0.6931+0.2\cdot1.0986=0.566\).</li>
-<li>(a) und (b).</li>
-<li>\(\text{Var}=9\cdot4=36\), \(\text{sd}=6\).</li>
-<li>\(\text{Var}(X-Y)=\text{Var}(X)+(-1)^2\text{Var}(Y)=5\) (Varianzen addieren sich immer!).</li>
-<li>\(\int_0^2\frac{y^2}{6}dy=\frac{8}{18}=0.4444\); \(\int_2^6\frac{6y-y^2}{12}dy=\frac1{12}\left[3y^2-\frac{y^3}{3}\right]_2^6=\frac{1}{12}(36-9.3333)=2.2222\). \(E(Y)=2.667\) (= 8/3).</li>
-</ol>
-<h3>Aufgabe 2.A</h3><p>Siehe 2.4: \(0.3;\ 0.05;\ 0.7;\ 0.245;\ 0.636;\ 1-0.7^{10}=0.972\).</p>
-<h3>Aufgabe 2.B</h3>
-<p>(a) \(P(\text{abgefangen})=0.4\cdot0.5+0.25\cdot0.2+0.35\cdot0.2=0.32\) ⇒ \(P(\text{Treffer})=0.68\) (oder direkt: \(0.4\cdot0.5+0.25\cdot0.8+0.35\cdot0.8=0.68\)).<br>
-(b) \(P(\text{Mitte}\mid\text{Treffer})=\frac{0.25\cdot0.8}{0.68}=\frac{0.2}{0.68}=0.294\).</p>
-<h3>Aufgabe 2.C</h3><p>(a) \(\frac{15}{25}=0.6\). (b) erst gelb, dann blau: \(\frac{5}{25}\cdot\frac{5}{24}=\frac{1}{24}=0.042\).</p>
-<h3>Aufgabe 2.D</h3>
-<p>(a) \(c=2\). (b) \(E(X)=\int_2^3 2x(x-2)dx=\left[\tfrac23x^3-2x^2\right]_2^3=0-(-\tfrac83)=\tfrac83=2.667\).<br>
-(c) \(E(X^2)=\int_2^3 2x^2(x-2)dx=\left[\tfrac12x^4-\tfrac43x^3\right]_2^3=4.5-(-\tfrac83)=7.1667\); \(\text{Var}=7.1667-2.6667^2=0.056\) (genau \(\tfrac1{18}\)).<br>
-(d) \(F(x)=(x-2)^2\) für \(2\le x\le3\) (0 davor, 1 danach). \(P(X\le2.5)=0.25\).<br>
-(e) \((x-2)^2=0.5\Rightarrow x=2+\sqrt{0.5}=2.707\).</p>
-<h3>Aufgabe 2.E</h3>
-<p>(a) \(T=\{-2,-1,0,1,2,3\}\), jeweils \(P=\frac16\). (b) \(E(X)=\frac{-2-1+0+1+2+3}{6}=0.5\); \(E(X^2)=\frac{4+1+0+1+4+9}{6}=\frac{19}{6}\); \(\text{Var}=\frac{19}{6}-0.25=2.917\). (c) \(E(Y)=-0.5\), \(\text{Var}(Y)=(-1)^2\cdot2.917=2.917\).</p>
-
-<h3>Wörterliste Tag 2 (Deutsch – Türkçe)</h3>
-<table class="gloss">
-<tr><td>Wahrscheinlichkeit</td><td>olasılık</td><td>Zahl zwischen 0 und 1</td></tr>
-<tr><td>Zufallsexperiment</td><td>rastgele deney</td><td>Ergebnis vorher unbekannt</td></tr>
-<tr><td>Ergebnisraum</td><td>örnek uzay</td><td>alle möglichen Ergebnisse Ω</td></tr>
-<tr><td>Ereignis / Gegenereignis</td><td>olay / tümleyen olay</td><td>Teilmenge / nicht A</td></tr>
-<tr><td>Schnitt / Vereinigung</td><td>kesişim / birleşim</td><td>und / oder</td></tr>
-<tr><td>disjunkt</td><td>ayrık</td><td>schließen sich aus</td></tr>
-<tr><td>bedingte Wahrscheinlichkeit</td><td>koşullu olasılık</td><td>P(A | B)</td></tr>
-<tr><td>unabhängig</td><td>bağımsız</td><td>P(A∩B) = P(A)P(B)</td></tr>
-<tr><td>Satz der totalen W.</td><td>toplam olasılık teoremi</td><td>Pfade addieren</td></tr>
-<tr><td>Satz von Bayes</td><td>Bayes teoremi</td><td>Bedingung umdrehen</td></tr>
-<tr><td>mit/ohne Zurücklegen</td><td>iadeli / iadesiz çekiliş</td><td>unabhängig / abhängig</td></tr>
-<tr><td>Zufallsvariable</td><td>rastgele değişken</td><td>Zahl als Ergebnis</td></tr>
-<tr><td>Wahrscheinlichkeitsfunktion</td><td>olasılık fonksiyonu</td><td>P(X = x) (diskret)</td></tr>
-<tr><td>Dichte(funktion)</td><td>olasılık yoğunluk fonksiyonu</td><td>f(x) (stetig)</td></tr>
-<tr><td>Träger</td><td>destek (tanım kümesi)</td><td>mögliche Werte</td></tr>
-<tr><td>Erwartungswert</td><td>beklenen değer</td><td>E(X), Schwerpunkt</td></tr>
-<tr><td>Randverteilung</td><td>marjinal dağılım</td><td>Verteilung einer Variable allein</td></tr>
-</table>
+<div style="position:absolute;left:0;right:0;bottom:2mm">
+ <div class="reward" style="position:static"><span style="font-size:15pt">☕</span><div><div class="lab">Belohnung</div>Nach Level 1: 10 Minuten Pause und +5 XP Level-Bonus.</div><span class="box" style="margin-left:auto;width:4.5mm;height:4.5mm"></span></div>
 </div>
-</section>
+</div><div class="ft"><span class="bar"><span class="track"><span class="fill" style="display:block;width:7%"></span></span><span class="pct">7 %</span></span><a href="#p5">Level 1 · Start →</a></div></section>
+<section class="pg" id="p5"><div class="hd"><span>Statistik · Klausurtraining</span><span>Tag 2 · Zufall &amp; Modelle</span><span class="pn">05 / 56</span></div><div class="tabs"><a href="#lv1" class="on"><span>Level 1</span></a><a href="#lv2" class=""><span>Level 2</span></a><a href="#lv3" class=""><span>Level 3</span></a><a href="#lv4" class=""><span>Level 4</span></a><a href="#fin" class=""><span>Finale</span></a></div><div class="ct"><div class="kick"><span class="sec">§ 1</span><span class="rule"></span><span>Dein Fehlerprofil · Teil 1/2</span><span class="rel">Relevanz <b>●●●</b></span></div>
+<h1>Wo deine <em>Punkte</em> hingehen.</h1>
+<p class="lead">Ausgewertet: 4 korrigierte Lösungen (Venn, Fitness, Glücksrad, Probeklausur 2) und über 25 Fragen, die du mir gestellt hast. Das Ergebnis ist eine gute Nachricht: Dir fehlt kaum Wissen – dir fehlen Routinen.</p>
+<div class="tr">4 düzeltilmiş çözüm ve bana sorduğun 25'ten fazla soru incelendi. İyi haber: bilgin eksik değil, rutinlerin eksik.</div>
+<div class="grid3" style="margin:3mm 0">
+ <div class="card"><div class="stat" style="border:0;padding:0"><div class="n">31,5<span style="font-size:13pt;color:var(--mute)"> / 52</span></div><div class="t">Probeklausur 2 · A1–A6</div></div></div>
+ <div class="card gold"><div class="stat" style="border:0;padding:0"><div class="n" style="color:var(--red)">20,5</div><div class="t">Punkte verloren</div></div></div>
+ <div class="card ink"><div class="stat" style="border:0;padding:0"><div class="n" style="color:var(--gold2)">≈ 13</div><div class="t">davon ohne neues Wissen rettbar</div></div></div>
+</div>
+<div class="lab">Verlorene Punkte nach Fehlerart · Probeklausur 2</div>
+<div style="display:grid;grid-template-columns:62mm 1fr 12mm;align-items:center;gap:2.4mm;margin:.5mm 0;font-size:8.4pt;line-height:1.3"><span>Formel verwechselt / nicht abrufbar<br><span class="small" style="font-size:7.4pt">A3c Regression, A6d Binomial</span></span><span style="height:4mm;background:#e3ded3;border-radius:1mm;position:relative;display:block"><span style="position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--red);border-radius:1mm;display:block"></span></span><span style="text-align:right;font-family:Cormorant Garamond,serif;font-size:13pt;color:var(--red)">−5,5</span></div><div style="display:grid;grid-template-columns:62mm 1fr 12mm;align-items:center;gap:2.4mm;margin:.5mm 0;font-size:8.4pt;line-height:1.3"><span>Teilaufgabe vergessen<br><span class="small" style="font-size:7.4pt">A2c Mittelwert, A3d Prognose, A5e</span></span><span style="height:4mm;background:#e3ded3;border-radius:1mm;position:relative;display:block"><span style="position:absolute;left:0;top:0;bottom:0;width:72%;background:var(--red);border-radius:1mm;display:block"></span></span><span style="text-align:right;font-family:Cormorant Garamond,serif;font-size:13pt;color:var(--red)">−4</span></div><div style="display:grid;grid-template-columns:62mm 1fr 12mm;align-items:center;gap:2.4mm;margin:.5mm 0;font-size:8.4pt;line-height:1.3"><span>Stetig wie diskret gerechnet<br><span class="small" style="font-size:7.4pt">A6a Integral, A6b E(X) als Summe</span></span><span style="height:4mm;background:#e3ded3;border-radius:1mm;position:relative;display:block"><span style="position:absolute;left:0;top:0;bottom:0;width:63%;background:var(--red);border-radius:1mm;display:block"></span></span><span style="text-align:right;font-family:Cormorant Garamond,serif;font-size:13pt;color:var(--red)">−3,5</span></div><div style="display:grid;grid-template-columns:62mm 1fr 12mm;align-items:center;gap:2.4mm;margin:.5mm 0;font-size:8.4pt;line-height:1.3"><span>Rechnen / Abschreiben<br><span class="small" style="font-size:7.4pt">114 → 119, Ā ∪ B, 0.5 · 0.4</span></span><span style="height:4mm;background:#e3ded3;border-radius:1mm;position:relative;display:block"><span style="position:absolute;left:0;top:0;bottom:0;width:63%;background:var(--red);border-radius:1mm;display:block"></span></span><span style="text-align:right;font-family:Cormorant Garamond,serif;font-size:13pt;color:var(--red)">−3,5</span></div><div style="display:grid;grid-template-columns:62mm 1fr 12mm;align-items:center;gap:2.4mm;margin:.5mm 0;font-size:8.4pt;line-height:1.3"><span>Bedingt mit Schnitt verwechselt<br><span class="small" style="font-size:7.4pt">A5a: 0.8 · 0.05 statt 0.05</span></span><span style="height:4mm;background:#e3ded3;border-radius:1mm;position:relative;display:block"><span style="position:absolute;left:0;top:0;bottom:0;width:36%;background:var(--gold);border-radius:1mm;display:block"></span></span><span style="text-align:right;font-family:Cormorant Garamond,serif;font-size:13pt;color:var(--red)">−2</span></div><div style="display:grid;grid-template-columns:62mm 1fr 12mm;align-items:center;gap:2.4mm;margin:.5mm 0;font-size:8.4pt;line-height:1.3"><span>Grenzen, Runden, Form<br><span class="small" style="font-size:7.4pt">x ≤ 2 statt x &lt; 2, 4.91, 13,5</span></span><span style="height:4mm;background:#e3ded3;border-radius:1mm;position:relative;display:block"><span style="position:absolute;left:0;top:0;bottom:0;width:36%;background:var(--gold);border-radius:1mm;display:block"></span></span><span style="text-align:right;font-family:Cormorant Garamond,serif;font-size:13pt;color:var(--red)">−2</span></div>
+<div class="card note" style="margin-top:2mm;padding:2mm 3mm;font-size:9.4pt"><b>Das heißt für dich:</b> Teilaufgaben vergessen, Abschreib- und Formfehler (zusammen <b>9,5 P</b>) kosten dich mehr als jede Wissenslücke. Die Formel-Verwechslungen (<b>5,5 P</b>) löst du mit Abruf-Training – genau das macht dieses Heft.</div>
+<div class="tr">Unutulan alt sorular, kopyalama ve biçim hataları (toplam 9,5 puan) herhangi bir bilgi eksiğinden daha pahalı. Formül karıştırmayı (5,5 puan) hatırlama alıştırmasıyla çözeceğiz.</div>
+<div class="lab" style="margin-top:3mm">Deine Fragen der letzten Tage – was sie verraten</div>
+<table class="tb"><tr><th>Thema</th><th>Deine Fragen (Auswahl)</th><th>Diagnose</th></tr>
+<tr><td><b>Bedingte W'keit</b> <span class="small">· 4×</span></td><td>„Wie finden wir P(B|A)?“ · „P(A|B̄) verstehe ich nicht“ · Bayes Teil 2 „schaffe ich nicht“</td><td style="color:var(--red)">Kernlücke → Regel 1</td></tr>
+<tr><td><b>Zufallsvariablen</b> <span class="small">· 4×</span></td><td>„Was ist Träger?“ · „Warum 0 sonst?“ · „E(X) verstehe ich nicht“ · „Woher kommt 18/7?“</td><td style="color:var(--red)">Begriffe neu → Level 2</td></tr>
+<tr><td><b>Gegenereignis</b> <span class="small">· 2×</span></td><td>„Woher kommt 0.98?“ · Bayes mit \(\bar V\)</td><td style="color:var(--gold)">Routine → Regel 2</td></tr>
+<tr><td><b>Rechnen</b> <span class="small">· 1×</span></td><td>„E(log X) ist falsch – ich bekomme 0.2455“ (log₁₀ statt ln)</td><td style="color:var(--gold)">Taschenrechner → § 3</td></tr>
+<tr><td><b>R-Grundlagen</b> <span class="small">· 6×</span></td><td>na.omit · read.csv/setwd · typeof vs. class · mean/sd/var · tapply · addmargins</td><td style="color:var(--green)">geklärt ✓</td></tr></table>
+<div class="tr">Soruların iki merkezi boşluğu gösteriyor: koşullu olasılık ve rastgele değişken kavramları. İkisi de bugün kapanıyor. R soruların tamamen çözüldü.</div></div><div class="ft"><span class="bar"><span class="track"><span class="fill" style="display:block;width:9%"></span></span><span class="pct">9 %</span></span><a href="#p6">Weiter: Die 7 Muster →</a></div></section>
+<section class="pg" id="p6"><div class="hd"><span>Statistik · Klausurtraining</span><span>Tag 2 · Zufall &amp; Modelle</span><span class="pn">06 / 56</span></div><div class="tabs"><a href="#lv1" class="on"><span>Level 1</span></a><a href="#lv2" class=""><span>Level 2</span></a><a href="#lv3" class=""><span>Level 3</span></a><a href="#lv4" class=""><span>Level 4</span></a><a href="#fin" class=""><span>Finale</span></a></div><div class="ct"><div class="kick"><span class="sec">§ 1</span><span class="rule"></span><span>Dein Fehlerprofil · Teil 2/2</span><span class="rel">Relevanz <b>●●●</b></span></div>
+<h1>Die sieben <em>Muster.</em></h1>
+<p class="lead">Jede Zeile ist ein Fehler, den du mindestens zweimal gemacht hast – mit Beleg und dem Gegenmittel in diesem Heft.</p>
+<div class="tr">Her satır en az iki kez yaptığın bir hata: nerede olduğu ve bu defterdeki çaresi.</div>
+<table class="tb" style="margin-top:2mm"><tr><th>#</th><th>Muster</th><th>Wo es passiert ist</th><th>Gegenmittel</th></tr><tr><td class="k">1</td><td style="width:30mm"><b>Gegenereignis vergessen</b></td><td>Venn: Außenbereich 0.4 fehlte · „0.98 – woher?“ · Glücksrad: die 7 außen · \(\bar A\cup B\): B-Elemente vergessen · Bayes Teil 2 mit \(\bar V\)</td><td style="width:24mm;color:var(--gold)">§ 2 Regel 2</td></tr><tr><td class="k">2</td><td style="width:30mm"><b>Bedingt ≠ Schnitt</b></td><td>Fragen „Wie finde ich P(B|A)?“, „P(A|B̄) verstehe ich nicht“ · PK2 A5a: \(P(C\mid\text{pünktl.})=0.8\cdot0.05\) statt 0.05</td><td style="width:24mm;color:var(--gold)">§ 2 Regel 1</td></tr><tr><td class="k">3</td><td style="width:30mm"><b>Stetig wie diskret</b></td><td>Fragen zu Träger, „0 sonst“, E(X), „18/7 woher?“ · PK2 A6b: E(X) als Summe 0·¼ + 1·¼ + 2·¼</td><td style="width:24mm;color:var(--gold)">Level 2</td></tr><tr><td class="k">4</td><td style="width:30mm"><b>Formel nicht abrufbar</b></td><td>PK2 A3c: Transformationsregel statt \(b=s_{xy}/s_x^2\) · A6d: \(1-(1-\pi)^n\) statt \(P(4)+P(5)\)</td><td style="width:24mm;color:var(--gold)">§ 3 + Abruf-Checks</td></tr><tr><td class="k">5</td><td style="width:30mm"><b>Flüchtigkeit</b></td><td>Fitness: 0.6 · 0.25 = 0.125 (richtig 0.15) · 114 → 119 · 0.5 · 0.4 = 0.25 · log₁₀ statt ln</td><td style="width:24mm;color:var(--gold)">§ 3 Kontrolle</td></tr><tr><td class="k">6</td><td style="width:30mm"><b>Teil/Satz vergessen</b></td><td>Fitness (e) ohne Entscheidungssatz · PK2 A2c, A3d, A5e leer</td><td style="width:24mm;color:var(--gold)">§ 3 Kontrolle</td></tr><tr><td class="k">7</td><td style="width:30mm"><b>Form</b></td><td>13,5 statt 13.5 · 4.91 statt 4.909 · Notation: erst Menge, dann P</td><td style="width:24mm;color:var(--gold)">§ 3 Kontrolle</td></tr></table>
+<div class="grid2" style="margin-top:4mm">
+ <div class="card"><div class="lab" style="margin-top:0;color:var(--green)">Das sitzt schon</div>
+  <div style="font-size:8.8pt">Lage- und Streuungsmaße (A1: 8,5/9) · Verteilungsfunktion zeichnen · totale Wahrscheinlichkeit und Bayes (A5b–d voll) · Kausalität begründen · Skalenniveaus · R-Grundlagen (tapply, addmargins, typeof)</div></div>
+ <div class="card ink"><div class="lab" style="margin-top:0">Deine Regel ab heute</div>
+  <div style="font-size:9pt">Nach jedem Kästchen 10 Sekunden: <b>Alles beantwortet? Zahl plausibel? Abgeschrieben richtig? Form?</b></div></div>
+</div>
+<div class="tr">Zaten oturmuş olanlar: konum ve dağılım ölçüleri, dağılım fonksiyonu çizimi, toplam olasılık ve Bayes, nedensellik, ölçek düzeyleri, R temelleri. Bugünden itibaren kuralın: her kutudan sonra 10 saniye kontrol.</div>
+<div class="lab" style="margin-top:3mm">Probeklausur 2 neu gerechnet – nur mit Routinen, ohne neues Wissen</div>
+<div style="display:grid;grid-template-columns:22mm 1fr 18mm;gap:2.4mm;align-items:center;font-size:8.8pt">
+ <span>vorher</span><span style="height:5mm;background:#e3ded3;border-radius:1mm;display:block;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:60.6%;background:var(--gold);border-radius:1mm;display:block"></span></span><span style="font-family:Cormorant Garamond,serif;font-size:14pt">31,5</span>
+ <span><b>nachher</b></span><span style="height:5mm;background:#e3ded3;border-radius:1mm;display:block;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:85.6%;background:var(--green);border-radius:1mm;display:block"></span></span><span style="font-family:Cormorant Garamond,serif;font-size:14pt;color:var(--green)">44,5</span>
+</div>
+<div class="small" style="margin-top:1.4mm">+4 Teilaufgaben nicht vergessen · +3,5 sauber rechnen/abschreiben · +2 Form · +2 Regel 1 · +1,5 Regel 3 (Integral) = <b>+13 Punkte</b> – das entspricht etwa einer ganzen Notenstufe.</div>
+<div class="tr">Sadece rutinlerle (yeni bilgi olmadan) Probeklausur 2'den 44,5/52 alırdın: +13 puan, yaklaşık bir tam not basamağı.</div></div><div class="ft"><span class="bar"><span class="track"><span class="fill" style="display:block;width:11%"></span></span><span class="pct">11 %</span></span><a href="#p7">Weiter: 3 Retter-Regeln →</a></div></section>
+<section class="pg" id="p7"><div class="hd"><span>Statistik · Klausurtraining</span><span>Tag 2 · Zufall &amp; Modelle</span><span class="pn">07 / 56</span></div><div class="tabs"><a href="#lv1" class="on"><span>Level 1</span></a><a href="#lv2" class=""><span>Level 2</span></a><a href="#lv3" class=""><span>Level 3</span></a><a href="#lv4" class=""><span>Level 4</span></a><a href="#fin" class=""><span>Finale</span></a></div><div class="ct"><div class="kick"><span class="sec">§ 2</span><span class="rule"></span><span>3 Retter-Regeln</span><span class="rel">Relevanz <b>●●●</b></span></div>
+<h1>Drei Regeln, die dir <em>10 Punkte</em> retten.</h1>
+<div class="grid2" style="grid-template-columns:1.05fr 1fr;align-items:start">
+ <div>
+  <h2><span style="color:var(--gold)">1</span> &nbsp;Strich heißt ablesen.</h2>
+  <p style="margin:0">Steht in der Aufgabe <b>„von den pünktlichen … 5 %“</b>, ist das schon \(P(C\mid P)=0.05\) – die Zahl am Ast. <b>Multipliziert</b> wird nur für den <b>Schnitt</b> (einen ganzen Pfad).</p>
+  <div class="fm">\(P(C\mid P)=0.05\qquad P(C\cap P)=0.8\cdot0.05=0.04\)</div>
+ </div>
+ <div class="card" style="padding:2mm 3mm"><svg viewBox="0 0 262 124" style="width:100%;height:auto">
+<g stroke="#a8803a" stroke-width="1.2" fill="none"><path d="M18 60 L110 25"/><path d="M18 60 L110 95"/><path d="M135 25 L225 10"/><path d="M135 25 L225 40"/><path d="M135 95 L225 80"/><path d="M135 95 L225 110"/></g>
+<g font-size="11" fill="#1d1b17"><text x="112" y="28">P</text><text x="112" y="98">V</text><text x="228" y="13">C</text><text x="228" y="43">A, B</text><text x="228" y="83">C</text><text x="228" y="113">A, B</text></g>
+<g font-size="10" fill="#6b665c"><text x="52" y="33">0.8</text><text x="52" y="92">0.2</text><text x="160" y="12">0.05</text><text x="160" y="84">0.3</text></g>
+<rect x="156" y="2" width="29" height="14" rx="2" fill="none" stroke="#a33a2a" stroke-width="1.2"/>
+<text x="150" y="58" font-size="9.5" fill="#a33a2a">0.05 = P(C | P) → ablesen</text></svg></div>
+</div>
+<div class="tr">„|“ işareti varsa: dalın üstündeki sayıyı oku, çarpma. Çarpma sadece kesişim (∩) için, yani bütün bir yol için.</div>
+<h2><span style="color:var(--gold)">2</span> &nbsp;Immer an 1 − p denken.</h2>
+<table class="tb"><tr><th>Gegeben</th><th>Mitgedacht werden muss</th><th>Wo du es vergessen hast</th></tr>
+<tr><td>Prävalenz 2 %</td><td>gesund: \(1-0.02=0.98\)</td><td>„0.98 – woher?“</td></tr>
+<tr><td>Verspätung 10 %</td><td>pünktlich: \(P(\bar V\mid A)=0.9\)</td><td>Bayes Teil 2</td></tr>
+<tr><td>Venn mit \(P(A\cup B)=0.6\)</td><td>außen: \(1-0.6=0.4\)</td><td>Venn-Übung</td></tr>
+<tr><td>\(A\), Ω = {1,…,10}</td><td>\(\bar A\) komplett ausschreiben, dann \(\cup B\)</td><td>PK2 A4a</td></tr></table>
+<div class="tr">Bir oran verildiyse tümleyenini (1 − p) hemen yanına yaz: hasta → sağlıklı, gecikme → zamanında, Venn içi → dışı.</div>
+<h2><span style="color:var(--gold)">3</span> &nbsp;Stetig heißt Fläche – also Integral.</h2>
+<div class="grid2" style="align-items:center">
+ <div class="fm" style="text-align:left">diskret: \(E(X)=\sum x\,P(X=x)\)<br>stetig: \(E(X)=\int x\,f(x)\,dx\)</div>
+ <div class="falle" style="margin:0"><b>Deine Falle (PK2 A6b)</b>\(0\cdot\tfrac14+1\cdot\tfrac14+2\cdot\tfrac14\) – bei einer Dichte gibt es keine Einzelwahrscheinlichkeiten.</div>
+</div>
+<div class="tr">Yoğunluk f(x) verildiyse toplam yok, integral var. „Dichte“ kelimesini görünce ∫ yaz.</div>
+<div class="card gold" style="margin-top:2mm"><div class="lab" style="margin-top:0">Vorgemacht · alle drei Regeln in einer Aufgabe</div>
+<div style="font-size:9.2pt">„10 % aller Kunden sind Neukunden (N). Von den Neukunden reklamieren 30 %, von den Stammkunden 5 %. Mit welcher Wahrscheinlichkeit ist ein reklamierender Kunde (R) ein Stammkunde?“</div>
+<div class="fm">\(\underbrace{P(R\mid N)=0.3,\ P(R\mid\bar N)=0.05}_{\text{Regel 1: ablesen}}\quad \underbrace{P(\bar N)=1-0.1=0.9}_{\text{Regel 2}}\quad P(\bar N\mid R)=\frac{0.05\cdot0.9}{0.3\cdot0.1+0.05\cdot0.9}=\frac{0.045}{0.075}=0.6\)</div></div>
+<div class="check"><div class="top"><span class="box"></span>Check §2<span class="xp">+5 XP</span></div><div class="q">Gleiche Situation: Mit welcher Wahrscheinlichkeit reklamiert ein Neukunde <b>nicht</b>? Und wie groß ist \(P(N\cap\bar R)\)?</div><div class="line"></div></div></div><div class="ft"><span class="bar"><span class="track"><span class="fill" style="display:block;width:12%"></span></span><span class="pct">12 %</span></span><a href="#p8">Weiter: 10-Sekunden-Kontrolle →</a></div></section>
+<section class="pg" id="p8"><div class="hd"><span>Statistik · Klausurtraining</span><span>Tag 2 · Zufall &amp; Modelle</span><span class="pn">08 / 56</span></div><div class="tabs"><a href="#lv1" class="on"><span>Level 1</span></a><a href="#lv2" class=""><span>Level 2</span></a><a href="#lv3" class=""><span>Level 3</span></a><a href="#lv4" class=""><span>Level 4</span></a><a href="#fin" class=""><span>Finale</span></a></div><div class="ct"><div class="kick"><span class="sec">§ 3</span><span class="rule"></span><span>10-Sekunden-Kontrolle · Drill</span><span class="xp">4 × 5 XP</span></div>
+<h1>Zehn Sekunden pro <em>Kästchen.</em></h1>
+<div class="grid4" style="margin:2mm 0 1mm">
+ <div class="card"><b style="color:var(--gold)">1 · Alles?</b><div class="small">Jede Teilfrage, jedes „Begründen“, jeder Antwortsatz.</div></div>
+ <div class="card"><b style="color:var(--gold)">2 · Plausibel?</b><div class="small">0 ≤ P ≤ 1 · Var ≥ 0 · |r| ≤ 1 · Summe = 1</div></div>
+ <div class="card"><b style="color:var(--gold)">3 · Abgeschrieben?</b><div class="small">Zahl im Kästchen = Zahl aus der Nebenrechnung?</div></div>
+ <div class="card"><b style="color:var(--gold)">4 · Form?</b><div class="small">Punkt statt Komma · 3 Stellen · ln statt log₁₀</div></div>
+</div>
+<div class="tr">Her kutudan sonra 4 soru: hepsi cevaplandı mı? sayı mantıklı mı? doğru kopyalandı mı? biçim doğru mu? Şimdi tam senin hata kalıplarına göre 4 kısa soru.</div>
+<div class="lab">Drill · jede Frage zielt auf eines deiner Muster</div>
+<div class="check"><div class="top"><span class="box"></span>Check 1<span class="xp">+5 XP</span></div><div class="q">Muster 2. Baum: \(P(K)=0.1\), \(P(T\mid K)=0.9\), \(P(T\mid\bar K)=0.2\). Geben Sie \(P(T\mid\bar K)\) und \(P(T\cap\bar K)\) an.</div><div class="line"></div></div><div class="check"><div class="top"><span class="box"></span>Check 2<span class="xp">+5 XP</span></div><div class="q">Muster 1 + 5. Ω = {1,…,6} (Laplace), A = {1, 2}, B = {2, 4, 6}. Bestimmen Sie \(|\bar A\cup B|\). Sind A und B unabhängig? Rechnerisch begründen.</div><div class="line"></div><div class="line"></div><div class="line"></div></div><div class="check"><div class="top"><span class="box"></span>Check 3<span class="xp">+5 XP</span></div><div class="q">Muster 3. \(f(x)=c\) für \(0\le x\le4\), 0 sonst. Bestimmen Sie c und \(P(X\le1)\).</div><div class="line"></div><div class="line"></div></div><div class="check"><div class="top"><span class="box"></span>Check 4<span class="xp">+5 XP</span></div><div class="q">Muster 4 – Abruf ohne Nachsehen. Regressionsgerade: \(b=\ ?\quad a=\ ?\) &nbsp;·&nbsp; Binomial: \(P(Y\ge4)\) bei \(n=5\) als Summe = ?</div><div class="line"></div><div class="line"></div></div>
+<div class="small" style="margin-top:1mm">Lösungen: Lösungsteil am Ende des Heftes. Alle vier richtig? Dann trag 20 XP ein und gönn dir die Level-Pause.</div>
+</div><div class="ft"><span class="bar"><span class="track"><span class="fill" style="display:block;width:14%"></span></span><span class="pct">14 %</span></span><a href="#p9">Level 1 geschafft · Pause! →</a></div></section>
+<a id="p9"></a><section class="pg dark" id="lv2"><div class="frame"></div><div class="hd"><span>Statistik · Klausurtraining</span><span>Tag 2 · Zufall &amp; Modelle</span><span class="pn">09 / 56</span></div><div class="ct">
+<div class="lab" style="margin-top:6mm">Level</div>
+<div class="lvbox"><div class="bignum">2</div></div>
+<div class="big">Stetige <em>Zufallsvariablen</em></div>
+<p class="lead" style="max-width:150mm;color:#e2d9c6">Bei Wartezeiten, Gewichten oder Anteilen gibt es keine Liste von Werten mehr, sondern eine Kurve. Die Wahrscheinlichkeit ist die Fläche unter dieser Kurve. Mehr Idee steckt nicht dahinter – der Rest ist Integrieren nach Rezept.</p>
+<div class="tr">Bekleme süresi, ağırlık veya oran gibi değişkenlerde değer listesi yok, bir eğri var. Olasılık = eğrinin altındaki alan. Fikir bu kadar; gerisi tarifle integral almak.</div>
+<div style="margin:4mm 0"><span class="chip">5 Stationen + Mission</span><span class="chip">90 min</span><span class="chip f">70 XP</span></div>
+<div class="lab" style="margin-top:5mm">Du schaltest frei</div>
+<ul class="dia">
+ <li><b>Dichte = Fläche</b><span class="d">· diskret vs. stetig, die 3 Eigenschaften</span><span class="r">§ 4</span></li>
+ <li><b>c bestimmen</b><span class="d">· Fläche = 1, auch stückweise</span><span class="r">§ 5</span></li>
+ <li><b>F(x), Median, Quantile</b><span class="d">· Fläche bis x</span><span class="r">§ 6</span></li>
+ <li><b>E(X) und Var(X) per Integral</b><span class="d">· Testat-4-Typ, PK2 A6</span><span class="r">§ 7</span></li>
+ <li><b>Rechenregeln</b><span class="d">· \(E(aX+b)\), Summen, Unabhängigkeit</span><span class="r">§ 8</span></li>
+ <li><b>Mission 1</b><span class="d">· Testat-4-Aufgabe auf Papier → Foto an Claude</span><span class="r">30 XP</span></li>
+</ul>
+<div style="position:absolute;left:0;right:0;bottom:2mm">
+ <div class="reward" style="position:static"><span style="font-size:15pt">☕</span><div><div class="lab">Belohnung</div>Nach Level 2: 10 Minuten Pause, etwas essen, +5 XP Level-Bonus.</div><span class="box" style="margin-left:auto;width:4.5mm;height:4.5mm"></span></div>
+</div>
+</div><div class="ft"><span class="bar"><span class="track"><span class="fill" style="display:block;width:16%"></span></span><span class="pct">16 %</span></span><a href="#p10">Level 2 · Start →</a></div></section>
+<section class="pg" id="p10"><div class="hd"><span>Statistik · Klausurtraining</span><span>Tag 2 · Zufall &amp; Modelle</span><span class="pn">10 / 56</span></div><div class="tabs"><a href="#lv1" class="done"><span>Level 1</span></a><a href="#lv2" class="on"><span>Level 2</span></a><a href="#lv3" class=""><span>Level 3</span></a><a href="#lv4" class=""><span>Level 4</span></a><a href="#fin" class=""><span>Finale</span></a></div><div class="ct"><div class="kick"><span class="sec">§ 4</span><span class="rule"></span><span>Dichte = Fläche · Teil 1/2</span><span class="rel">Relevanz <b>●●●</b></span></div>
+<h1>Die Fläche <em>ist</em> die Wahrscheinlichkeit.</h1>
+<p class="lead">Eine diskrete Zufallsvariable hat eine Liste: jeder Wert mit seiner Wahrscheinlichkeit. Eine stetige hat eine <b>Dichte</b> \(f(x)\) – eine Kurve. Die Wahrscheinlichkeit für ein Intervall ist die Fläche darunter.</p>
+<div class="tr">Kesikli değişkenin bir listesi var: her değer ve olasılığı. Süreklinin bir yoğunluk eğrisi f(x) var. Bir aralığın olasılığı = altındaki alan.</div>
+<div class="grid2" style="margin-top:2mm">
+ <div class="card"><div class="lab" style="margin-top:0">A · diskret</div><b>Wahrscheinlichkeitsfunktion</b>
+  <div class="fm">\(P(X=x)\) für jeden Wert im Träger</div>
+  <div style="font-size:9pt">Rechnen mit <b>Summen</b>: \(\sum P(X=x)=1\), \(E(X)=\sum x\,P(X=x)\)<br>Beispiel: Anzahl Kopf, Anzahl Fehler</div></div>
+ <div class="card gold"><div class="lab" style="margin-top:0">B · stetig</div><b>Dichtefunktion</b>
+  <div class="fm">\(P(a\le X\le b)=\int_a^b f(x)\,dx\)</div>
+  <div style="font-size:9pt">Rechnen mit <b>Integralen</b>: \(\int f=1\), \(E(X)=\int x\,f(x)\,dx\)<br>Beispiel: Wartezeit, Gewicht, Anteil</div></div>
+</div>
+<div class="grid2" style="grid-template-columns:1fr 1.05fr;margin-top:3mm;align-items:center">
+ <div class="card" style="padding:2mm"><svg viewBox="0 0 260 150" style="width:100%;height:auto">
+<line x1="30" y1="125" x2="245" y2="125" stroke="#1d1b17" stroke-width="1"/><line x1="30" y1="125" x2="30" y2="10" stroke="#1d1b17" stroke-width="1"/>
+<polygon points="30,125 115,125 115,72.5" fill="#f1dfb8" stroke="none"/>
+<line x1="30" y1="125" x2="200" y2="20" stroke="#a8803a" stroke-width="2"/>
+<line x1="200" y1="20" x2="200" y2="125" stroke="#a8803a" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="200" y1="125" x2="240" y2="125" stroke="#a8803a" stroke-width="2"/>
+<g font-size="11" fill="#1d1b17"><text x="26" y="137">0</text><text x="111" y="137">1</text><text x="196" y="137">2</text><text x="236" y="138">x</text>
+<text x="8" y="23">1</text><text x="2" y="76">0.5</text><text x="38" y="14">f(x)</text></g>
+<line x1="27" y1="20" x2="33" y2="20" stroke="#1d1b17"/><line x1="27" y1="72.5" x2="33" y2="72.5" stroke="#1d1b17"/>
+<text x="60" y="117" font-size="8.5" fill="#a33a2a">Fläche = ¼</text>
+<text x="128" y="66" font-size="8.5" fill="#a8803a">f(x) = x/2</text></svg></div>
+ <div>
+  <div class="lab" style="margin-top:0">Die 3 Eigenschaften jeder Dichte</div>
+  <ol class="num" style="font-size:9.2pt">
+   <li>\(f(x)\ge0\) überall.</li>
+   <li>Gesamtfläche \(\int_{-\infty}^{\infty}f(x)\,dx=1\).</li>
+   <li>\(P(X=x)=0\) für jeden einzelnen Wert – also \(P(X&lt;1)=P(X\le1)\).</li>
+  </ol>
+  <div class="small">Im Bild: \(P(X\le1)\) ist das Dreieck: \(\frac{1\cdot0.5}{2}=\frac14\). Das ist deine PK2-Aufgabe A6c.</div>
+ </div>
+</div>
+<div class="check"><div class="top"><span class="box"></span>Check §4<span class="xp">+5 XP</span></div><div class="q">Testat 4, Aufgabe 4: Welche Aussagen muss jede Dichte erfüllen? (a) \(\int f=1\) &nbsp;(b) \(f(x)\ge0\) &nbsp;(c) \(f(x)\le1\) &nbsp;(d) \(P(X=x)=f(x)\) &nbsp;(e) f stetig und monoton</div><div class="line"></div></div><div class="card gold" style="margin-top:2mm"><div class="lab" style="margin-top:0">Vorgemacht · Wahrscheinlichkeit als Fläche</div>
+<div style="font-size:9.2pt">„Berechnen Sie \(P(0.5\le X\le1.5)\) für \(f(x)=\frac x2\) auf [0, 2].“</div>
+<div class="fm">\(P(0.5\le X\le1.5)=\int_{0.5}^{1.5}\frac x2\,dx=\left[\frac{x^2}{4}\right]_{0.5}^{1.5}=\frac{2.25}{4}-\frac{0.25}{4}=\mathbf{0.5}\)</div>
+<div class="small">Kontrolle: Die Fläche liegt zwischen 0 und 1 ✓ · Antwortsatz: „Mit Wahrscheinlichkeit 0.5 dauert es zwischen 0.5 und 1.5 Stunden.“</div></div><div class="falle" style="margin-top:1mm"><b>Klausur-Falle</b>\(f(x)&gt;1\) ist erlaubt (z. B. \(f(x)=2\) auf [0; 0.5]). Nur die Fläche muss 1 sein.</div></div><div class="ft"><span class="bar"><span class="track"><span class="fill" style="display:block;width:18%"></span></span><span class="pct">18 %</span></span><a href="#p11">Weiter: c bestimmen →</a></div></section>
