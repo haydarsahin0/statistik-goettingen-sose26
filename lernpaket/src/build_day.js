@@ -9,7 +9,7 @@ body = body.replace(/\\\(([\s\S]+?)\\\)/g, (_, t) => katex.renderToString(dec(t)
 body = body.replace(/@@PRE(\d+)@@/g, (_, i) => pres[+i]);
 const css = fs.readFileSync(path.join(SRC, 'day.css'), 'utf8');
 const html = `<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><title>${process.env.TITLE || 'Klausurtraining'}</title>
-<link rel="stylesheet" href="fonts_day.css"><link rel="stylesheet" href="node_modules/katex/dist/katex.min.css">
+<link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="fonts_day.css"><link rel="stylesheet" href="node_modules/katex/dist/katex.min.css">
 <style>${css}</style></head><body>${body}</body></html>`;
 fs.writeFileSync(path.join(SRC, 'day.html'), html);
 (async () => {

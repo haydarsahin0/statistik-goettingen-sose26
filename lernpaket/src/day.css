@@ -99,3 +99,23 @@ table.tb td.k{font-family:'Cormorant Garamond',serif;font-size:13pt;color:var(--
 .fm{text-align:center;margin:2mm 0}
 svg text{font-family:'Lora',serif}
 .ct .katex .mfrac{font-size:.92em}
+/* Aufgaben im Probeklausur-Stil */
+.aufg{border:1.3px solid #2b2620;border-radius:1.4mm;background:#fff;padding:2.2mm 3mm 2.6mm;margin:2.4mm 0}
+.aufg .ah{display:flex;align-items:center;gap:2.2mm;border-bottom:1.3px solid #2b2620;padding-bottom:1.2mm;margin-bottom:1.6mm;font-size:9.4pt}
+.aufg .ah b{font-family:'Lora',serif;font-weight:700}
+.aufg .stf{font-size:6.4pt;letter-spacing:.14em;text-transform:uppercase;border-radius:9mm;padding:.3mm 2mm;border:1px solid}
+.aufg .stf.s1{color:var(--green);border-color:var(--green)}.aufg .stf.s2{color:var(--gold);border-color:var(--gold)}.aufg .stf.s3{color:var(--red);border-color:var(--red)}
+.aufg .pts{margin-left:auto;font-weight:700;font-size:9.4pt}
+.aufg .xp{background:var(--gold);color:#fff;border-radius:9mm;padding:.3mm 2.2mm;font-size:6.4pt;letter-spacing:.08em}
+.aufg .pts + .xp{margin-left:1.4mm}.aufg .stf + .xp{margin-left:auto}
+.aufg .q{font-size:9.6pt;line-height:1.5}
+.aufg .lk{border:1.2px solid #2b2620;border-radius:1mm;margin-top:1.8mm;position:relative}
+.aufg .lk span{position:absolute;top:.6mm;left:1.6mm;font-size:6pt;color:#8a857b;font-family:'Inter',sans-serif}
+.rbox{background:#16130f;color:#e8e1d2;border-radius:2mm;padding:2mm 3mm;margin:2.4mm 0;font-size:8.4pt}
+.rbox .lab{color:var(--gold2);margin:0 0 1mm}
+.rbox pre{margin:0;font-family:'JetBrains Mono',Menlo,monospace;font-size:7.8pt;line-height:1.45;white-space:pre-wrap}
+.rbox pre .o{color:#a9d7a0}
+.a4{border:1.6px solid var(--ink);border-radius:2mm;background:#fff;padding:3mm 3.6mm;position:relative}
+.a4:before{content:"A4";position:absolute;top:-2.6mm;right:3mm;background:var(--ink);color:#fff;font-size:6.4pt;letter-spacing:.14em;padding:.4mm 2mm;border-radius:1mm}
+.trbox{background:#e6efed;border:1px solid #c8ddd9;border-radius:2mm;padding:2.4mm 3.2mm;margin:2.4mm 0;font-size:8.8pt}
+.trbox .lab{color:var(--teal);margin:0 0 1mm}

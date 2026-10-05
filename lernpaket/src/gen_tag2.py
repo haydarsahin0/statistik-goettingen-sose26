@@ -45,12 +45,32 @@ def kick(sec, label, rel=3, xp=None):
 TR = lambda s: '<div class="tr">%s</div>' % s
 
 
-def chk(nr, q, lines=2, sol="", xp="+5 XP"):
+STMAP = {"§2": (2, 2), "1": (1, 2), "2": (2, 3), "3": (2, 2), "4": (3, 3), "§5": (1, 2), "§6": (1, None), "§7a": (2, 2), "§7b": (3, 3),
+         "§8a": (2, 3), "§8b": (2, 2), "§8c": (1, 1), "§9a": (2, 2), "§9b": (3, 3), "§10": (2, 3), "§12": (1, None), "§13a": (2, 4), "§13b": (3, 3),
+         "§14": (2, 3), "§15a": (1, 3), "§15b": (2, 3), "§16a": (1, 3), "§16b": (2, 2), "§17": (3, 4), "§18a": (2, 3), "§18b": (2, 2),
+         "§19a": (3, 3), "§19b": (1, 1), "§21a": (2, 4), "§21b": (1, 3), "§22": (3, 3)}
+STUFE = {1: ("●○○", "leicht"), 2: ("●●○", "mittel"), 3: ("●●●", "Klausur")}
+
+
+def chk(nr, q, lines=2, sol="", xp="+5 XP", st=2, pts=None):
+    """Aufgabe im Probeklausur-Stil: Kopf mit Nummer, Stufe, Punkten; darunter ein Lösungskästchen."""
     if sol:
         SOL.append((str(nr), sol))
-    return ('<div class="check"><div class="top"><span class="box"></span>Check %s<span class="xp">%s</span></div><div class="q">%s</div>%s</div>'
-            % (nr, xp, q, '<div class="line"></div>' * lines))
+    st, pts = STMAP.get(str(nr), (st, pts))
+    dots, name = STUFE[st]
+    return ('<div class="aufg"><div class="ah"><span class="box"></span><b>Aufgabe %s</b><span class="stf s%d">%s %s</span>'
+            '%s<span class="xp">%s</span></div><div class="q">%s</div><div class="lk" style="height:%.1fmm"><span>Lösung</span></div></div>'
+            % (nr, st, dots, name, '<span class="pts">(%s P)</span>' % pts if pts else "", xp, q, 7.5 * lines))
 
+
+def abschluss(nr, lvkey, a4, quiz, nxt, tr):
+    """Level-Abschluss: Inhalt fürs handgeschriebene A4-Blatt + Wiederholungs-Quiz aus früheren Leveln."""
+    body = kick("✓", "Level %s · Abschluss" % nr, xp="+5 XP Bonus") + \
+        '<h1>Level %s <em>gesichert.</em></h1><p class="lead">Bevor du weitergehst: Schreib das Wichtigste auf dein A4-Blatt (das darfst du in die Klausur mitnehmen) und hol drei alte Sachen aus dem Gedächtnis – das verhindert, dass Formeln durcheinandergeraten.</p>' % nr + \
+        '<div class="tr">%s</div>' % tr + \
+        '<div class="a4"><div class="lab" style="margin-top:0">Auf dein A4-Blatt · mit der Hand abschreiben</div><ul style="margin:0;padding-left:4.5mm;font-size:9.2pt;line-height:1.6">%s</ul></div>' % "".join("<li>%s</li>" % x for x in a4) + \
+        '<div class="lab" style="margin-top:3.4mm">Wiederholungs-Quiz · ohne Nachsehen</div>' + "".join(chk(*q[:2], lines=q[2], sol=q[3], st=q[4], pts=None, xp="+3 XP") for q in quiz)
+    page(body, level=lvkey, nxt=nxt)
 
 
 # ---------------------------------------------------------------- 1 Cover
@@ -60,12 +80,12 @@ page('''
   <div style="border:1px solid #8a6f3e;padding:2mm 6mm 0 4mm"><div class="lab" style="margin:1mm 0 0">Tag</div><div class="bignum">2</div></div>
 </div>
 <div class="big" style="margin-top:9mm">Zufall &amp; <em>Modelle.</em></div>
-<p class="lead" style="max-width:150mm">Heute lernst du alles, was nach der Wahrscheinlichkeitsrechnung kommt: stetige Zufallsvariablen, die sechs Verteilungen, Schätzer und Maximum-Likelihood. Am Abend löst du die Aufgaben 6–8 der Probeklausur – ohne Formelsammlung.</p>
-''' + TR("Bugün olasılıktan sonraki her şeyi öğreniyorsun: sürekli rastgele değişkenler, altı dağılım, tahminciler ve Maximum-Likelihood. Akşam Probeklausur'un 6–8. sorularını formelsammlung'suz çözüyorsun.") + '''
+<p class="lead" style="max-width:150mm">Heute lernst du alles, was nach der Wahrscheinlichkeitsrechnung kommt: stetige Zufallsvariablen, die sechs Verteilungen, Schätzer und Maximum-Likelihood. Am Abend wartet der Boss: eine Probeklausur mit drei Aufgaben – ohne Formelsammlung.</p>
+''' + TR("Bugün olasılıktan sonraki her şeyi öğreniyorsun: sürekli rastgele değişkenler, altı dağılım, tahminciler ve Maximum-Likelihood. Akşam Boss seni bekliyor: üç soruluk bir deneme sınavı – formelsammlung'suz.") + '''
 <div class="grid4" style="margin-top:7mm">
  <div class="stat"><div class="n">@@TOTAL@@</div><div class="t">Seiten</div></div>
- <div class="stat"><div class="n">≈ 7</div><div class="t">Stunden</div></div>
- <div class="stat"><div class="n">370</div><div class="t">XP möglich</div></div>
+ <div class="stat"><div class="n">≈ 8</div><div class="t">Stunden</div></div>
+ <div class="stat"><div class="n">420</div><div class="t">XP möglich</div></div>
  <div class="stat"><div class="n">3</div><div class="t">Claude-Missionen</div></div>
 </div>
 <div style="margin-top:8mm;border-top:1px solid #4a3f2d;border-bottom:1px solid #4a3f2d;padding:4mm 0">
@@ -110,10 +130,10 @@ page('''
  </div>
  <div>
   <div class="lab">Deine Ränge heute</div>
-  <table class="tb"><tr><td>Zufalls-Neuling</td><td style="text-align:right;color:var(--mute)">0–129 XP</td></tr>
-  <tr><td>Dichte-Scout</td><td style="text-align:right;color:var(--mute)">130–219 XP</td></tr>
-  <tr><td style="border:1px solid var(--gold)"><b>Likelihood-Profi</b></td><td style="text-align:right;border:1px solid var(--gold);color:var(--gold)">220–299 XP · Tagesziel</td></tr>
-  <tr><td style="background:var(--dark2);color:#efe8da">Klausur-Maschine</td><td style="text-align:right;background:var(--dark2);color:var(--gold2)">300–370 XP</td></tr></table>
+  <table class="tb"><tr><td>Zufalls-Neuling</td><td style="text-align:right;color:var(--mute)">0–149 XP</td></tr>
+  <tr><td>Dichte-Scout</td><td style="text-align:right;color:var(--mute)">150–249 XP</td></tr>
+  <tr><td style="border:1px solid var(--gold)"><b>Likelihood-Profi</b></td><td style="text-align:right;border:1px solid var(--gold);color:var(--gold)">250–339 XP · Tagesziel</td></tr>
+  <tr><td style="background:var(--dark2);color:#efe8da">Klausur-Maschine</td><td style="text-align:right;background:var(--dark2);color:var(--gold2)">340–420 XP</td></tr></table>
   <div class="lab" style="margin-top:4mm">Dein XP-Zähler</div>
   <div style="display:flex;gap:2mm;flex-wrap:wrap">''' + "".join('<span class="box" style="width:6mm;height:6mm;margin:0"></span>' for _ in range(16)) + '''</div>
   <div class="small" style="margin-top:1mm">Je Kästchen 20 XP – abhaken, sobald du sie hast.</div>
@@ -135,14 +155,14 @@ page('''
 
 # ---------------------------------------------------------------- 3 Quest-Map
 def node(t, s, gold=False):
-    return ('<div style="text-align:center;width:23.5mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%%;margin:0 auto;border:1.4px solid var(--gold);'
+    return ('<div style="text-align:center;width:18.6mm;position:relative;z-index:1"><div style="width:9mm;height:9mm;border-radius:50%%;margin:0 auto;border:1.4px solid var(--gold);'
             'background:%s;color:%s;display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond,serif;font-size:11pt">%s</div>'
-            '<div style="font-size:7pt;line-height:1.25;margin-top:1.2mm">%s</div></div>') % ("var(--gold)" if gold else "#fbf8f1", "#fff" if gold else "var(--gold)", t, s)
+            '<div style="font-size:6.6pt;line-height:1.2;margin-top:1.2mm">%s</div></div>') % ("var(--gold)" if gold else "#fbf8f1", "#fff" if gold else "var(--gold)", t, s)
 
 
 def route(lv, title, meta, nodes):
-    w = (len(nodes) - 1) * 24.5
-    return ('<div style="margin:5.6mm 0"><div style="display:flex;justify-content:space-between" class="lab"><span>%s · %s</span><span style="color:var(--mute)">%s</span></div>'
+    w = (len(nodes) - 1) * 19.6
+    return ('<div style="margin:4.6mm 0"><div style="display:flex;justify-content:space-between" class="lab"><span>%s · %s</span><span style="color:var(--mute)">%s</span></div>'
             '<div style="display:flex;align-items:flex-start;gap:1mm;position:relative;padding-top:1mm">'
             '<div style="position:absolute;left:12.5mm;width:%dmm;top:5.6mm;border-top:1.4px dashed var(--gold2)"></div>%s</div></div>') % (lv, title, meta, w, "".join(node(*n) for n in nodes))
 
@@ -151,17 +171,17 @@ page('''
 <div class="kick"><span class="sec">✦</span><span class="rule"></span><span>Quest-Map</span></div>
 <h1>Deine <em>Route</em> für heute.</h1>
 <div class="grid4" style="margin:3mm 0 1mm">
- <div class="card"><div class="stat" style="border:0;padding:0"><div class="n">≈ 7:00</div><div class="t">Std. Lernzeit</div></div></div>
+ <div class="card"><div class="stat" style="border:0;padding:0"><div class="n">≈ 8:00</div><div class="t">Std. Lernzeit</div></div></div>
  <div class="card"><div class="stat" style="border:0;padding:0"><div class="n">5</div><div class="t">Pausen à 10 min</div></div></div>
- <div class="card"><div class="stat" style="border:0;padding:0"><div class="n">370</div><div class="t">XP möglich</div></div></div>
- <div class="card ink"><div class="stat" style="border:0;padding:0"><div class="n" style="color:#f3ead6">260</div><div class="t">XP Tagesziel</div></div></div>
+ <div class="card"><div class="stat" style="border:0;padding:0"><div class="n">420</div><div class="t">XP möglich</div></div></div>
+ <div class="card ink"><div class="stat" style="border:0;padding:0"><div class="n" style="color:#f3ead6">300</div><div class="t">XP Tagesziel</div></div></div>
 </div>
 ''' + TR("Bu bugünkü haritan. Her durağı bitirince dairenin içini kalemle doldur. Altın daireler = Claude görevleri: kendin yaz, fotoğrafını çek, bana gönder.") +
 route("Level 1", "Fehler-Detox", "40 min · 40 XP", [("§1", "Dein Fehlerprofil"), ("§2", "3 Retter-Regeln"), ("§3", "10-Sekunden-Kontrolle")]) +
-route("Level 2", "Stetige Zufallsvariablen", "110 min · 80 XP", [("§4", "Dichte = Fläche"), ("§5", "Integral-Crashkurs"), ("§6", "c bestimmen"), ("§7", "F(x), Median"), ("§8", "E(X), Var"), ("§9", "Rechenregeln"), ("M1", "Mission 1", True)]) +
-route("Level 3", "Die Verteilungen", "100 min · 80 XP", [("§10", "Welche Verteilung?"), ("§11", "Binomial"), ("§12", "Poisson"), ("§13", "Gleich + Exponential"), ("§14", "Normal"), ("§15", "Summen + ZGWS")]) +
-route("Level 4", "Schätzer &amp; Maximum-Likelihood", "110 min · 100 XP", [("§16", "Erwartungstreu?"), ("§17", "Varianz, MSE"), ("§18", "ML-Rezept"), ("§19", "ML-Klassiker"), ("M2", "Mission 2", True)]) +
-route("Finale", "Training &amp; Boss", "60 min · 70 XP", [("§20", "Mini-Fälle"), ("★", "Boss: PK2 A6–A8", True), ("✓", "Tagesabschluss")]) + '''
+route("Level 2", "Zufallsvariablen", "130 min · 100 XP", [("§4", "diskret: Wiederholung"), ("§5", "Dichte = Fläche"), ("§6", "Integral"), ("§7", "c bestimmen"), ("§8", "F(x), Median"), ("§9", "E(X), Var"), ("§10", "Rechenregeln"), ("§11", "zwei ZV, Cov"), ("M1", "Mission 1", True)]) +
+route("Level 3", "Die Verteilungen", "100 min · 80 XP", [("§12", "Welche Verteilung?"), ("§13", "Binomial"), ("§14", "Poisson"), ("§15", "Gleich + Exponential"), ("§16", "Normal"), ("§17", "Summen + ZGWS")]) +
+route("Level 4", "Schätzer &amp; Maximum-Likelihood", "140 min · 120 XP", [("§18", "Erwartungstreu?"), ("§19", "Varianz, MSE"), ("§20", "KDE, Gütekriterien"), ("§21", "ML-Rezept"), ("§22", "ML-Klassiker"), ("§23", "ML-Spezial"), ("M2", "Mission 2", True)]) +
+route("Finale", "Training &amp; Boss", "70 min · 80 XP", [("§24", "Mini-Fälle"), ("★", "Boss-Probeklausur", True), ("✓", "Tagesabschluss")]) + '''
 <div class="tip" style="margin-top:4mm"><b>Pausen</b>Nach jedem Level 10 Minuten Pause + 5 XP Level-Bonus. Erst abhaken, dann aufstehen.</div>
 ''', level="lv1", nxt="Los geht's: Level 1")
 
@@ -303,7 +323,18 @@ page(kick("§ 3", "10-Sekunden-Kontrolle · Drill", xp="4 × 5 XP") + '''
      + chk(3, "Muster 3. \\(f(x)=c\\) für \\(0\\le x\\le4\\), 0 sonst. Bestimmen Sie c und \\(P(X\\le1)\\).", 2, sol="\\(\\int_0^4c\\,dx=4c=1\\Rightarrow c=\\frac14\\) · \\(P(X\\le1)=\\int_0^1\\frac14dx=\\frac14\\)")
      + chk(4, "Muster 4 – Abruf ohne Nachsehen. Regressionsgerade: \\(b=\\ ?\\quad a=\\ ?\\) &nbsp;·&nbsp; Binomial: \\(P(Y\\ge4)\\) bei \\(n=5\\) als Summe = ?", 2, sol="\\(b=\\frac{s_{xy}}{s_x^2}\\), \\(a=\\bar y-b\\,\\bar x\\) · \\(P(Y\\ge4)=P(Y=4)+P(Y=5)=\\binom54\\pi^4(1-\\pi)+\\pi^5\\)") + '''
 <div class="small" style="margin-top:1mm">Lösungen: Lösungsteil am Ende des Heftes. Alle vier richtig? Dann trag 20 XP ein und gönn dir die Level-Pause.</div>
-''', level="lv1", nxt="Level 1 geschafft · Pause!")
+''', level="lv1", nxt="Weiter: Level-1-Abschluss")
+
+abschluss("1", "lv1",
+    [r"Strich heißt ablesen: \(P(C\mid P)\) steht am Ast · multipliziert wird nur für den Schnitt \(P(C\cap P)=P(P)\,P(C\mid P)\)",
+     r"Immer \(1-p\) mitdenken: Prävalenz → gesund, Verspätung → pünktlich, Venn innen → außen",
+     r"Stetig = Fläche = Integral: \(E(X)=\int x f(x)\,dx\), nie \(\sum\) bei einer Dichte",
+     r"Bayes: \(P(A_j\mid B)=\frac{P(B\mid A_j)P(A_j)}{\sum_i P(B\mid A_i)P(A_i)}\) · unabhängig \(\iff P(A\cap B)=P(A)P(B)\)",
+     r"10-Sekunden-Kontrolle: alles beantwortet? plausibel? richtig abgeschrieben? Punkt, 3 Stellen, ln?"],
+    [("W1", r"Tag 1: Bestimmen Sie den Median der Daten 7, 2, 9, 4, 3.", 1, r"sortiert 2, 3, 4, 7, 9 → \(x_{med}=4\)", 1),
+     ("W2", r"\(P(A)=0.4,\ P(B)=0.5,\ P(A\cap B)=0.1\). Bestimmen Sie \(P(A\cup B)\) und \(P(A\mid B)\).", 1, r"\(0.4+0.5-0.1=0.8\) · \(\frac{0.1}{0.5}=0.2\)", 1),
+     ("W3", r"Tag 1: Empirische Varianz \(s^2\) von 1, 2, 3, 4, 5?", 1, r"\(\bar x=3\), \(s^2=\frac{4+1+0+1+4}{5}=2\)", 2)],
+    "Level 1 geschafft · Pause!", "A4 kâğıdına el yazınla geçir: sınava götürebileceğin tek yardımcı bu. Sonra üç eski soruyu bakmadan çöz – formüller karışmasın diye.")
 
 # ---------------------------------------------------------------- 9 Level 2 Start
 page('''
@@ -312,15 +343,17 @@ page('''
 <div class="big">Stetige <em>Zufallsvariablen</em></div>
 <p class="lead" style="max-width:150mm;color:#e2d9c6">Bei Wartezeiten, Gewichten oder Anteilen gibt es keine Liste von Werten mehr, sondern eine Kurve. Die Wahrscheinlichkeit ist die Fläche unter dieser Kurve. Mehr Idee steckt nicht dahinter – der Rest ist Integrieren nach Rezept.</p>
 ''' + TR("Bekleme süresi, ağırlık veya oran gibi değişkenlerde değer listesi yok, bir eğri var. Olasılık = eğrinin altındaki alan. Fikir bu kadar; gerisi tarifle integral almak.") + '''
-<div style="margin:4mm 0"><span class="chip">6 Stationen + Mission</span><span class="chip">110 min</span><span class="chip f">80 XP</span></div>
+<div style="margin:4mm 0"><span class="chip">8 Stationen + Mission</span><span class="chip">130 min</span><span class="chip f">100 XP</span></div>
 <div class="lab" style="margin-top:5mm">Du schaltest frei</div>
-<ul class="dia">
- <li><b>Dichte = Fläche</b><span class="d">· diskret vs. stetig, die 3 Eigenschaften</span><span class="r">§ 4</span></li>
- <li><b>Integral-Crashkurs</b><span class="d">· Potenzregel, Grenzen einsetzen, 6er-Drill</span><span class="r">§ 5</span></li>
- <li><b>c bestimmen</b><span class="d">· Fläche = 1, auch stückweise</span><span class="r">§ 6</span></li>
- <li><b>F(x), Median, Quantile</b><span class="d">· Fläche bis x</span><span class="r">§ 7</span></li>
- <li><b>E(X) und Var(X) per Integral</b><span class="d">· Testat-4-Typ, PK2 A6</span><span class="r">§ 8</span></li>
- <li><b>Rechenregeln</b><span class="d">· \\(E(aX+b)\\), Summen, Unabhängigkeit</span><span class="r">§ 9</span></li>
+<ul class="dia" style="font-size:9.4pt">
+ <li><b>Diskret: Wiederholung</b><span class="d">· Träger, Treppe, E und Var als Summe – der leichte Einstieg</span><span class="r">§ 4</span></li>
+ <li><b>Dichte = Fläche</b><span class="d">· diskret vs. stetig, die 3 Eigenschaften</span><span class="r">§ 5</span></li>
+ <li><b>Integral-Crashkurs</b><span class="d">· Potenzregel, Grenzen einsetzen, 6er-Drill</span><span class="r">§ 6</span></li>
+ <li><b>c bestimmen</b><span class="d">· Fläche = 1, auch stückweise</span><span class="r">§ 7</span></li>
+ <li><b>F(x), Median, Quantile</b><span class="d">· Fläche bis x</span><span class="r">§ 8</span></li>
+ <li><b>E(X) und Var(X) per Integral</b><span class="d">· Testat-4-Typ, PK2 A6</span><span class="r">§ 9</span></li>
+ <li><b>Rechenregeln</b><span class="d">· \\(E(aX+b)\\), Summen, Unabhängigkeit</span><span class="r">§ 10</span></li>
+ <li><b>Zwei Zufallsvariablen</b><span class="d">· gemeinsame Tabelle, Rand, bedingt, Kovarianz</span><span class="r">§ 11</span></li>
  <li><b>Mission 1</b><span class="d">· Testat-4-Aufgabe auf Papier → Foto an Claude</span><span class="r">30 XP</span></li>
 </ul>
 <div style="position:absolute;left:0;right:0;bottom:2mm">
@@ -328,7 +361,25 @@ page('''
 </div>
 ''', dark=True, pid="lv2", nxt="Level 2 · Start")
 
-# ---------------------------------------------------------------- 10 §4 Dichte = Fläche
+page(kick("§ 4", "Diskret: Wiederholung", rel=3) + r"""
+<h1>Erst die Liste, dann die <em>Kurve.</em></h1>
+<p class="lead">Bevor die Dichten kommen, holst du den diskreten Fall zurück – er ist der leichte Einstieg und kommt in Testat-Aufgaben genauso dran. Vier Begriffe: Träger, Wahrscheinlichkeitsfunktion, Verteilungsfunktion, Erwartungswert.</p>
+""" + TR("Yoğunluklardan önce kesikli durumu hatırla: kolay giriş ve Testat'ta aynen çıkıyor. Dört kavram: Träger, olasılık fonksiyonu, dağılım fonksiyonu, beklenen değer.") + r"""
+<table class="tb"><tr><th>Begriff</th><th>Was ist das?</th><th>Rechnung</th></tr>
+<tr><td><b>Träger</b> T</td><td>alle Werte, die X annehmen kann</td><td>Liste, z. B. \(\{0,1,2\}\)</td></tr>
+<tr><td><b>Wahrscheinlichkeitsfunktion</b></td><td>jeder Wert mit seiner Wahrscheinlichkeit, <b>„0 sonst“</b></td><td>\(\sum P(X=x)=1\)</td></tr>
+<tr><td><b>Verteilungsfunktion</b> F</td><td>Treppe: Wahrscheinlichkeiten von links aufsummiert</td><td>\(F(x)=P(X\le x)\), Sprunghöhe = \(P(X=x)\)</td></tr>
+<tr><td><b>Erwartungswert, Varianz</b></td><td>Wert × Wahrscheinlichkeit, aufsummiert</td><td>\(E(X)=\sum x\,P(X=x)\), \(Var=E(X^2)-E(X)^2\)</td></tr></table>
+""" + '<div class="card gold" style="margin-top:2mm"><div class="lab" style="margin-top:0">Vorgemacht · Konstante c, E und Var</div>' + r"""
+<div style="font-size:9.2pt">\(P(X=x)=c\,(x+1)\) für \(x\in\{0,1,2\}\), 0 sonst.</div>
+<div class="fm">\(c(1+2+3)=6c=1\Rightarrow c=\frac16\quad E(X)=0\cdot\frac16+1\cdot\frac26+2\cdot\frac36=\frac43\quad E(X^2)=\frac{0+2+12}6=\frac73\quad Var(X)=\frac73-\frac{16}9=\frac59=0.556\)</div></div>
+""" + chk("§4a", r"Eine faire Münze wird zweimal geworfen, X = Anzahl Kopf. Geben Sie Träger und Wahrscheinlichkeitsfunktion an und berechnen Sie \(E(X)\).", 2,
+          sol=r"\(T=\{0,1,2\}\); \(P(X=0)=\frac14,\ P(X=1)=\frac12,\ P(X=2)=\frac14\), 0 sonst · \(E(X)=0+\frac12+\frac24=1\)", st=1, pts=3)
+    + chk("§4b", r"\(P(X=1)=0.2,\ P(X=2)=0.5,\ P(X=4)=0.3\). Stellen Sie F(x) auf und bestimmen Sie \(P(X\le3)\), \(P(X&lt;2)\) und \(E(X)\).", 3,
+          sol=r"\(F=0\ (x<1);\ 0.2\ (1\le x<2);\ 0.7\ (2\le x<4);\ 1\ (x\ge4)\) · \(P(X\le3)=0.7\) · \(P(X<2)=0.2\) · \(E(X)=0.2+1+1.2=2.4\)", st=2, pts=4),
+    level="lv2", nxt="Weiter: Jetzt stetig – Dichte = Fläche")
+
+# ---------------------------------------------------------------- 10 §5 Dichte = Fläche
 dens = '''<svg viewBox="0 0 260 150" style="width:100%;height:auto">
 <line x1="30" y1="125" x2="245" y2="125" stroke="#1d1b17" stroke-width="1"/><line x1="30" y1="125" x2="30" y2="10" stroke="#1d1b17" stroke-width="1"/>
 <polygon points="30,125 115,125 115,72.5" fill="#f1dfb8" stroke="none"/>
@@ -340,7 +391,7 @@ dens = '''<svg viewBox="0 0 260 150" style="width:100%;height:auto">
 <line x1="27" y1="20" x2="33" y2="20" stroke="#1d1b17"/><line x1="27" y1="72.5" x2="33" y2="72.5" stroke="#1d1b17"/>
 <text x="60" y="117" font-size="8.5" fill="#a33a2a">Fläche = ¼</text>
 <text x="128" y="66" font-size="8.5" fill="#a8803a">f(x) = x/2</text></svg>'''
-page(kick("§ 4", "Dichte = Fläche · Teil 1/2", rel=3) + '''
+page(kick("§ 5", "Dichte = Fläche · Teil 1/2", rel=3) + '''
 <h1>Die Fläche <em>ist</em> die Wahrscheinlichkeit.</h1>
 <p class="lead">Eine diskrete Zufallsvariable hat eine Liste: jeder Wert mit seiner Wahrscheinlichkeit. Eine stetige hat eine <b>Dichte</b> \\(f(x)\\) – eine Kurve. Die Wahrscheinlichkeit für ein Intervall ist die Fläche darunter.</p>
 ''' + TR("Kesikli değişkenin bir listesi var: her değer ve olasılığı. Süreklinin bir yoğunluk eğrisi f(x) var. Bir aralığın olasılığı = altındaki alan.") + '''
@@ -364,7 +415,7 @@ page(kick("§ 4", "Dichte = Fläche · Teil 1/2", rel=3) + '''
   <div class="small">Im Bild: \\(P(X\\le1)\\) ist das Dreieck: \\(\\frac{1\\cdot0.5}{2}=\\frac14\\). Das ist deine PK2-Aufgabe A6c.</div>
  </div>
 </div>
-''' + chk("§4", "Testat 4, Aufgabe 4: Welche Aussagen muss jede Dichte erfüllen? (a) \\(\\int f=1\\) &nbsp;(b) \\(f(x)\\ge0\\) &nbsp;(c) \\(f(x)\\le1\\) &nbsp;(d) \\(P(X=x)=f(x)\\) &nbsp;(e) f stetig und monoton", 1, sol="Richtig: (a) und (b). Falsch: (c) – Dichten dürfen größer als 1 sein; (d) – \\(P(X=x)=0\\); (e) – keine Bedingung")
+''' + chk("§5", "Testat 4, Aufgabe 4: Welche Aussagen muss jede Dichte erfüllen? (a) \\(\\int f=1\\) &nbsp;(b) \\(f(x)\\ge0\\) &nbsp;(c) \\(f(x)\\le1\\) &nbsp;(d) \\(P(X=x)=f(x)\\) &nbsp;(e) f stetig und monoton", 1, sol="Richtig: (a) und (b). Falsch: (c) – Dichten dürfen größer als 1 sein; (d) – \\(P(X=x)=0\\); (e) – keine Bedingung")
      + '''<div class="card gold" style="margin-top:2mm"><div class="lab" style="margin-top:0">Vorgemacht · Wahrscheinlichkeit als Fläche</div>
 <div style="font-size:9.2pt">„Berechnen Sie \\(P(0.5\\le X\\le1.5)\\) für \\(f(x)=\\frac x2\\) auf [0, 2].“</div>
 <div class="fm">\\(P(0.5\\le X\\le1.5)=\\int_{0.5}^{1.5}\\frac x2\\,dx=\\left[\\frac{x^2}{4}\\right]_{0.5}^{1.5}=\\frac{2.25}{4}-\\frac{0.25}{4}=\\mathbf{0.5}\\)</div>
