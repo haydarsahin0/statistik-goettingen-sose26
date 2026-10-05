@@ -79,7 +79,7 @@ ol.num>li:before{content:counter(n);position:absolute;left:0;top:-.5mm;font-fami
 .check .top{display:flex;align-items:center;gap:2mm;font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2mm}
 .check .top .xp{margin-left:auto;background:var(--gold);color:#fff;border-radius:9mm;padding:.4mm 2.2mm;letter-spacing:.08em}
 .check .q{font-weight:500}
-.line{border-bottom:1px solid #b8b0a0;height:6.4mm}
+.line{border-bottom:1px solid #b8b0a0;height:8mm}
 .box{display:inline-block;width:3.2mm;height:3.2mm;border:1px solid var(--gold);border-radius:.6mm;vertical-align:-0.5mm;margin-right:1.6mm}
 .falle{border-left:3px solid var(--red);background:#f7ece8;padding:2mm 3mm;border-radius:0 2mm 2mm 0;margin:2.4mm 0;font-size:9.4pt}
 .falle b:first-child{color:var(--red);font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;display:block;margin-bottom:.6mm}
@@ -98,3 +98,4 @@ table.tb td.k{font-family:'Cormorant Garamond',serif;font-size:13pt;color:var(--
 .katex{font-size:1.04em}
 .fm{text-align:center;margin:2mm 0}
 svg text{font-family:'Lora',serif}
+.ct .katex .mfrac{font-size:.92em}

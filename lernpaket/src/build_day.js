@@ -18,6 +18,10 @@ fs.writeFileSync(path.join(SRC, 'day.html'), html);
   const pg = await b.newPage();
   await pg.goto('file://' + path.join(SRC, 'day.html'), { waitUntil: 'networkidle' });
   await pg.evaluate(async () => { await Promise.all([...document.fonts].map(f => f.load().catch(() => null))); await document.fonts.ready; });
+  await pg.emulateMedia({ media: 'print' });
+  const over = await pg.evaluate(() => [...document.querySelectorAll('.pg')].map((p, i) => {
+    const c = p.querySelector('.ct'); return c && c.scrollHeight > c.clientHeight + 2 ? (i + 1) + ':+' + (c.scrollHeight - c.clientHeight) + 'px' : null; }).filter(Boolean));
+  console.log('Überlauf:', over.length ? over.join(' ') : 'keiner');
   await pg.pdf({ path: path.join(SRC, '..', OUT), format: 'A4', printBackground: true, preferCSSPageSize: true, margin: {top: 0, bottom: 0, left: 0, right: 0} });
   await b.close(); console.log('PDF fertig');
 })();
