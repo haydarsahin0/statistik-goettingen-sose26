@@ -6,3 +6,5 @@
 - `src/` – Quellen (HTML-Inhalte, CSS, Abbildungen). Neu bauen:
   `PARTS=titel.html,tag1.html,tag1_r.html,tag1_loes.html OUTNAME=Lernbuch_Tag1.pdf src/make.sh`
 - `Probeklausur2_TeilA.pdf` / `Probeklausur2_TeilB.pdf` – Generalprobe für den Zweittermin im Klausurformat (Teil A: 100 min, 75 P, Stoff V01–V13; Teil B: R, 60 min, 45 P, Daten `uebungsdaten/Bibliothek.csv`); `Probeklausur2_Loesung.pdf` – Musterlösung mit Bewertungsschlüssel und R-Code. Neu bauen: `PARTS=pk2_a.html OUTNAME=Probeklausur2_TeilA.pdf src/make.sh` (analog `pk2_b.html`, `pk2_loes.html`); Daten: `src/rwork/pk2_data.R`, R-Lösung: `src/rwork/pk2_loes.R`
+- `Formelsammlung_Statistik.pdf` – Nachschlagewerk Teil A: 117 Rezepte (Formel, Schritte mit türkischer Erklärung, Beispiel, Falle, Klausursatz), Aufgaben-Finder und Inhaltsverzeichnis mit Seitenzahlen, Φ-/t-/χ²-Tabellen. Neu bauen: `python3 src/gen_fs_stat.py`
+- `Formelsammlung_R.pdf` – Nachschlagewerk Teil B: 67 Rezepte mit echtem R-Output (Datensatz `uebungsdaten/Taverne.csv`), Aufgaben-Finder, Fehlermeldungen. Neu bauen: `python3 src/gen_fs_r.py`

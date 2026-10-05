@@ -1,0 +1,1096 @@
+<section class="fs-r">
+<div class="fs-hero"><div class="chip">SoSe 26 · Göttingen · Teil B</div><h1>Formelsammlung R</h1><div class="sub">Teil B · alle R-Befehle nach Aufgabentyp · mit echtem Output</div><p>Alle R-Befehle aus Vorlesungsskripten, Tutorien, Testaten und Probeklausur B – sortiert nach <b>Aufgabentyp</b>. Jeder Code-Kasten wurde wirklich in R ausgeführt: weiße Zeilen = was du eintippst, grüne Zeilen = was R antwortet. Die Beispiele benutzen den Übungsdatensatz <code>Taverne.csv</code> (Ordner <i>uebungsdaten</i>) – du kannst alles selbst nachtippen.</p><p>Rezept-Aufbau: <b>Erkennen</b> (Wortlaut in der Aufgabe) → <b>TR</b> (kısa Türkçe açıklama) → <b>Schritte</b> → <b>R-Code mit Output</b> → <b>⚠ Falle</b> → <b>✎ Antwortsatz</b> für ILIAS.</p></div>
+<div class="howto"><b class='t'>Nasıl kullanılır?</b><ol><li>Soruyu oku → <b><a href="#finder" style="color:inherit">Aufgaben-Finder (Seite 3)</a></b>'da sorudaki ifadeyi bul → numaraya git.</li><li>Kodu kopyala, sadece <b>veri adını</b> (d$…) ve <b>sayıları</b> kendi sorununkilerle değiştir.</li><li>Çıktıyı ILIAS'a kodla birlikte yapıştır, sonucu <code>round(…, 3)</code> ile yuvarla ve <b>✎ Antwortsatz</b> kalıbıyla tam cümle yaz.</li><li>Hata mesajı alırsan → Bölüm 11 (Fehlermeldungen).</li></ol></div>
+<h2 class="toc-h">Inhaltsverzeichnis</h2><div class="toc">
+<div class="ts"><a href="#s-0"><div class="tsh"><span class="x">0 · Klausurablauf und Antwortform (ILIAS)</span><span class="p">5</span></div></a>
+<a href="#e-0-1"><div class="tl"><span class="n">0.1</span><span class="x">Ablauf in 60 Minuten</span><span class="dots"></span><span class="p">5</span></div></a>
+<a href="#e-0-2"><div class="tl"><span class="n">0.2</span><span class="x">Antwortform: Code, Output, Antwortsatz</span><span class="dots"></span><span class="p">5</span></div></a>
+<a href="#e-0-3"><div class="tl"><span class="n">0.3</span><span class="x">RStudio-Grundlagen</span><span class="dots"></span><span class="p">5</span></div></a>
+</div>
+<div class="ts"><a href="#s-1"><div class="tsh"><span class="x">1 · Grundlagen: Objekte, Vektoren, Datentypen</span><span class="p">6</span></div></a>
+<a href="#e-1-1"><div class="tl"><span class="n">1.1</span><span class="x">Rechnen und mathematische Funktionen</span><span class="dots"></span><span class="p">6</span></div></a>
+<a href="#e-1-2"><div class="tl"><span class="n">1.2</span><span class="x">Vektoren erstellen</span><span class="dots"></span><span class="p">6</span></div></a>
+<a href="#e-1-3"><div class="tl"><span class="n">1.3</span><span class="x">Rechnen mit Vektoren</span><span class="dots"></span><span class="p">6</span></div></a>
+<a href="#e-1-4"><div class="tl"><span class="n">1.4</span><span class="x">Elemente auswählen (Indizierung)</span><span class="dots"></span><span class="p">7</span></div></a>
+<a href="#e-1-5"><div class="tl"><span class="n">1.5</span><span class="x">Vergleiche und logische Werte</span><span class="dots"></span><span class="p">7</span></div></a>
+<a href="#e-1-6"><div class="tl"><span class="n">1.6</span><span class="x">Datentypen bestimmen</span><span class="dots"></span><span class="p">8</span></div></a>
+<a href="#e-1-7"><div class="tl"><span class="n">1.7</span><span class="x">Faktoren (kategoriale Variablen)</span><span class="dots"></span><span class="p">8</span></div></a>
+<a href="#e-1-8"><div class="tl"><span class="n">1.8</span><span class="x">Fehlende Werte (NA)</span><span class="dots"></span><span class="p">8</span></div></a>
+<a href="#e-1-9"><div class="tl"><span class="n">1.9</span><span class="x">Mengen in R (Testat 0)</span><span class="dots"></span><span class="p">9</span></div></a>
+<a href="#e-1-10"><div class="tl"><span class="n">1.10</span><span class="x">Text zusammenfügen und ausgeben</span><span class="dots"></span><span class="p">9</span></div></a>
+<a href="#e-1-11"><div class="tl"><span class="n">1.11</span><span class="x">Matrix, Data Frame und Liste von Hand</span><span class="dots"></span><span class="p">9</span></div></a>
+</div>
+<div class="ts"><a href="#s-2"><div class="tsh"><span class="x">2 · Datensatz einlesen, ansehen, auswählen</span><span class="p">10</span></div></a>
+<a href="#e-2-1"><div class="tl"><span class="n">2.1</span><span class="x">Working Directory setzen und Daten einlesen</span><span class="dots"></span><span class="p">10</span></div></a>
+<a href="#e-2-2"><div class="tl"><span class="n">2.2</span><span class="x">Einlesen prüfen: Ist der Datensatz richtig?</span><span class="dots"></span><span class="p">10</span></div></a>
+<a href="#e-2-3"><div class="tl"><span class="n">2.3</span><span class="x">Datensatz ansehen</span><span class="dots"></span><span class="p">11</span></div></a>
+<a href="#e-2-4"><div class="tl"><span class="n">2.4</span><span class="x">Spalten und Zeilen auswählen</span><span class="dots"></span><span class="p">11</span></div></a>
+<a href="#e-2-5"><div class="tl"><span class="n">2.5</span><span class="x">Teildatensatz mit subset</span><span class="dots"></span><span class="p">12</span></div></a>
+<a href="#e-2-6"><div class="tl"><span class="n">2.6</span><span class="x">Neue Variable hinzufügen</span><span class="dots"></span><span class="p">12</span></div></a>
+<a href="#e-2-7"><div class="tl"><span class="n">2.7</span><span class="x">Objekttypen der Variablen ermitteln (Probeklausur-Typ)</span><span class="dots"></span><span class="p">12</span></div></a>
+</div>
+<div class="ts"><a href="#s-3"><div class="tsh"><span class="x">3 · Kennzahlen und Tabellen</span><span class="p">13</span></div></a>
+<a href="#e-3-1"><div class="tl"><span class="n">3.1</span><span class="x">Mittelwert und Standardabweichung</span><span class="dots"></span><span class="p">13</span></div></a>
+<a href="#e-3-2"><div class="tl"><span class="n">3.2</span><span class="x">Varianz: unverzerrt und empirisch</span><span class="dots"></span><span class="p">13</span></div></a>
+<a href="#e-3-3"><div class="tl"><span class="n">3.3</span><span class="x">Median, Quantile, IQR, Spannweite</span><span class="dots"></span><span class="p">13</span></div></a>
+<a href="#e-3-4"><div class="tl"><span class="n">3.4</span><span class="x">Häufigkeiten und Modus</span><span class="dots"></span><span class="p">14</span></div></a>
+<a href="#e-3-5"><div class="tl"><span class="n">3.5</span><span class="x">Kennzahlen pro Gruppe (tapply, aggregate)</span><span class="dots"></span><span class="p">14</span></div></a>
+<a href="#e-3-6"><div class="tl"><span class="n">3.6</span><span class="x">Klassen bilden mit cut</span><span class="dots"></span><span class="p">14</span></div></a>
+<a href="#e-3-7"><div class="tl"><span class="n">3.7</span><span class="x">Kontingenztafel, Randsummen, bedingte Anteile</span><span class="dots"></span><span class="p">15</span></div></a>
+<a href="#e-3-8"><div class="tl"><span class="n">3.8</span><span class="x">Korrelation und Kovarianz</span><span class="dots"></span><span class="p">15</span></div></a>
+</div>
+<div class="ts"><a href="#s-4"><div class="tsh"><span class="x">4 · Grafiken erstellen und speichern</span><span class="p">16</span></div></a>
+<a href="#e-4-1"><div class="tl"><span class="n">4.1</span><span class="x">Grafik als PDF speichern (Pflicht in der Klausur)</span><span class="dots"></span><span class="p">16</span></div></a>
+<a href="#e-4-2"><div class="tl"><span class="n">4.2</span><span class="x">Histogramm mit vorgegebenen Klassen</span><span class="dots"></span><span class="p">16</span></div></a>
+<a href="#e-4-3"><div class="tl"><span class="n">4.3</span><span class="x">Boxplot (auch nach Gruppen)</span><span class="dots"></span><span class="p">17</span></div></a>
+<a href="#e-4-4"><div class="tl"><span class="n">4.4</span><span class="x">Streudiagramm mit Regressionsgerade</span><span class="dots"></span><span class="p">17</span></div></a>
+<a href="#e-4-5"><div class="tl"><span class="n">4.5</span><span class="x">Kerndichteschätzer (KDE)</span><span class="dots"></span><span class="p">17</span></div></a>
+<a href="#e-4-6"><div class="tl"><span class="n">4.6</span><span class="x">Säulendiagramm, empirische Verteilungsfunktion, mehrere Grafiken</span><span class="dots"></span><span class="p">18</span></div></a>
+<a href="#e-4-7"><div class="tl"><span class="n">4.7</span><span class="x">Wahrscheinlichkeitsfunktion und Dichte zeichnen</span><span class="dots"></span><span class="p">18</span></div></a>
+</div>
+<div class="ts"><a href="#s-5"><div class="tsh"><span class="x">5 · Verteilungen in R</span><span class="p">18</span></div></a>
+<a href="#e-5-1"><div class="tl"><span class="n">5.1</span><span class="x">Das d-p-q-r-Prinzip und alle Parameter</span><span class="dots"></span><span class="p">18</span></div></a>
+<a href="#e-5-2"><div class="tl"><span class="n">5.2</span><span class="x">Wörter in R-Befehle übersetzen</span><span class="dots"></span><span class="p">19</span></div></a>
+<a href="#e-5-3"><div class="tl"><span class="n">5.3</span><span class="x">Binomialverteilung</span><span class="dots"></span><span class="p">19</span></div></a>
+<a href="#e-5-4"><div class="tl"><span class="n">5.4</span><span class="x">Poissonverteilung</span><span class="dots"></span><span class="p">19</span></div></a>
+<a href="#e-5-5"><div class="tl"><span class="n">5.5</span><span class="x">Normalverteilung</span><span class="dots"></span><span class="p">20</span></div></a>
+<a href="#e-5-6"><div class="tl"><span class="n">5.6</span><span class="x">Exponential-, Gleich-, t-, χ²- und Gammaverteilung</span><span class="dots"></span><span class="p">20</span></div></a>
+</div>
+<div class="ts"><a href="#s-6"><div class="tsh"><span class="x">6 · Zufallszahlen und Simulation</span><span class="p">20</span></div></a>
+<a href="#e-6-1"><div class="tl"><span class="n">6.1</span><span class="x">Zufallszahlen mit set.seed</span><span class="dots"></span><span class="p">20</span></div></a>
+<a href="#e-6-2"><div class="tl"><span class="n">6.2</span><span class="x">Simulation: Verteilung des Mittelwerts (ZGWS)</span><span class="dots"></span><span class="p">21</span></div></a>
+<a href="#e-6-3"><div class="tl"><span class="n">6.3</span><span class="x">Ziehen aus einer Urne</span><span class="dots"></span><span class="p">21</span></div></a>
+</div>
+<div class="ts"><a href="#s-7"><div class="tsh"><span class="x">7 · Programmieren: Funktionen und Schleifen</span><span class="p">21</span></div></a>
+<a href="#e-7-1"><div class="tl"><span class="n">7.1</span><span class="x">Eine Funktion schreiben</span><span class="dots"></span><span class="p">21</span></div></a>
+<a href="#e-7-2"><div class="tl"><span class="n">7.2</span><span class="x">for-Schleife</span><span class="dots"></span><span class="p">22</span></div></a>
+<a href="#e-7-3"><div class="tl"><span class="n">7.3</span><span class="x">if / else und ifelse</span><span class="dots"></span><span class="p">22</span></div></a>
+<a href="#e-7-4"><div class="tl"><span class="n">7.4</span><span class="x">sapply und while</span><span class="dots"></span><span class="p">22</span></div></a>
+<a href="#e-7-5"><div class="tl"><span class="n">7.5</span><span class="x">Text-Funktion mit Schleife (Probeklausur-Typ „Yennefer-Zahl“)</span><span class="dots"></span><span class="p">22</span></div></a>
+</div>
+<div class="ts"><a href="#s-8"><div class="tsh"><span class="x">8 · Maximum-Likelihood in R</span><span class="p">23</span></div></a>
+<a href="#e-8-1"><div class="tl"><span class="n">8.1</span><span class="x">Individuelle Likelihoods und Gesamt-Likelihood</span><span class="dots"></span><span class="p">23</span></div></a>
+<a href="#e-8-2"><div class="tl"><span class="n">8.2</span><span class="x">Likelihood-Funktion und ML-Schätzer über einen Bereich</span><span class="dots"></span><span class="p">23</span></div></a>
+<a href="#e-8-3"><div class="tl"><span class="n">8.3</span><span class="x">Log-Likelihood (gegen numerical underflow)</span><span class="dots"></span><span class="p">24</span></div></a>
+<a href="#e-8-4"><div class="tl"><span class="n">8.4</span><span class="x">ML-Schätzer mit optimise (ein Parameter)</span><span class="dots"></span><span class="p">24</span></div></a>
+<a href="#e-8-5"><div class="tl"><span class="n">8.5</span><span class="x">ML mit nlm (zwei Parameter, Transformation)</span><span class="dots"></span><span class="p">24</span></div></a>
+<a href="#e-8-6"><div class="tl"><span class="n">8.6</span><span class="x">Likelihood grafisch darstellen</span><span class="dots"></span><span class="p">24</span></div></a>
+</div>
+<div class="ts"><a href="#s-9"><div class="tsh"><span class="x">9 · Konfidenzintervalle und Tests in R</span><span class="p">25</span></div></a>
+<a href="#e-9-1"><div class="tl"><span class="n">9.1</span><span class="x">Konfidenzintervall für μ (σ bekannt und unbekannt)</span><span class="dots"></span><span class="p">25</span></div></a>
+<a href="#e-9-2"><div class="tl"><span class="n">9.2</span><span class="x">Konfidenzintervall für Anteil und Varianz</span><span class="dots"></span><span class="p">25</span></div></a>
+<a href="#e-9-3"><div class="tl"><span class="n">9.3</span><span class="x">t-Test mit t.test und Output lesen</span><span class="dots"></span><span class="p">25</span></div></a>
+<a href="#e-9-4"><div class="tl"><span class="n">9.4</span><span class="x">Test von Hand: Teststatistik, kritischer Wert, p-Wert</span><span class="dots"></span><span class="p">26</span></div></a>
+<a href="#e-9-5"><div class="tl"><span class="n">9.5</span><span class="x">Binomialtest (exakt und über pbinom)</span><span class="dots"></span><span class="p">26</span></div></a>
+<a href="#e-9-6"><div class="tl"><span class="n">9.6</span><span class="x">χ²-Unabhängigkeitstest und χ²-Anpassungstest</span><span class="dots"></span><span class="p">26</span></div></a>
+<a href="#e-9-7"><div class="tl"><span class="n">9.7</span><span class="x">χ²-Varianztest von Hand</span><span class="dots"></span><span class="p">27</span></div></a>
+</div>
+<div class="ts"><a href="#s-10"><div class="tsh"><span class="x">10 · Lineare Regression in R</span><span class="p">27</span></div></a>
+<a href="#e-10-1"><div class="tl"><span class="n">10.1</span><span class="x">Modell schätzen und Output lesen</span><span class="dots"></span><span class="p">27</span></div></a>
+<a href="#e-10-2"><div class="tl"><span class="n">10.2</span><span class="x">Koeffizienten, Prognose, Residuen, R²</span><span class="dots"></span><span class="p">28</span></div></a>
+</div>
+<div class="ts"><a href="#s-11"><div class="tsh"><span class="x">11 · Fehlermeldungen und Kontrolle</span><span class="p">28</span></div></a>
+<a href="#e-11-1"><div class="tl"><span class="n">11.1</span><span class="x">Typische Fehlermeldungen und ihre Lösung</span><span class="dots"></span><span class="p">28</span></div></a>
+<a href="#e-11-2"><div class="tl"><span class="n">11.2</span><span class="x">Checkliste vor dem Abgeben</span><span class="dots"></span><span class="p">29</span></div></a>
+</div>
+</div>
+<h2 class="toc-h pb" id="finder">Aufgaben-Finder: Was steht in der Aufgabe? → Wo ist das Rezept?</h2><p class="small">Links steht der typische Wortlaut aus Klausur, Testat oder Tutorium, in der Mitte die türkische Bedeutung, rechts die Nummer des Rezepts (mit Seite). Nummer anklicken springt direkt hin.</p><table class="finder"><tr><th style="width:44%">In der Aufgabe steht …</th><th>Ne demek / ne isteniyor</th><th style="width:15%">Rezept</th></tr>
+<tr class="grp"><td colspan="3">Start und Einlesen</td></tr>
+<tr><td>„Setzen Sie mittels setwd(path.expand("~")) Ihr Working Directory“</td><td>çalışma klasörünü ayarla</td><td class="go"><a href="#e-2-1">2.1 <span style="color:#6b7280;font-weight:600">S.10</span></a></td></tr>
+<tr><td>„Speichern Sie die Daten als Data-Frame-Objekt d“</td><td>veriyi oku (sep, dec, header)</td><td class="go"><a href="#e-2-1">2.1 <span style="color:#6b7280;font-weight:600">S.10</span></a>, <a href="#e-2-2">2.2 <span style="color:#6b7280;font-weight:600">S.10</span></a></td></tr>
+<tr><td>„Geben Sie die ersten 6 Zeilen wieder“, „Wie viele Beobachtungen?“</td><td>head, dim, nrow</td><td class="go"><a href="#e-2-3">2.3 <span style="color:#6b7280;font-weight:600">S.11</span></a></td></tr>
+<tr><td>„Ermitteln Sie die Objekttypen der Variablen …“</td><td>değişken türü</td><td class="go"><a href="#e-2-7">2.7 <span style="color:#6b7280;font-weight:600">S.12</span></a>, <a href="#e-1-6">1.6 <span style="color:#6b7280;font-weight:600">S.8</span></a></td></tr>
+<tr><td>„nur die Beobachtungen aus …“, „Kämpfe mit mindestens …“</td><td>satır seç, alt veri</td><td class="go"><a href="#e-2-4">2.4 <span style="color:#6b7280;font-weight:600">S.11</span></a>, <a href="#e-2-5">2.5 <span style="color:#6b7280;font-weight:600">S.12</span></a></td></tr>
+<tr><td>„Ergänzen Sie den Data Frame um eine Spalte …“</td><td>yeni sütun</td><td class="go"><a href="#e-2-6">2.6 <span style="color:#6b7280;font-weight:600">S.12</span></a>, <a href="#e-8-1">8.1 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
+<tr><td>Vektor, Folge, Wiederholung erstellen</td><td>c, seq, rep</td><td class="go"><a href="#e-1-2">1.2 <span style="color:#6b7280;font-weight:600">S.6</span></a></td></tr>
+<tr><td>„Wie viele Werte …?“, „Anteil der Werte …“</td><td>TRUE/FALSE say</td><td class="go"><a href="#e-1-5">1.5 <span style="color:#6b7280;font-weight:600">S.7</span></a></td></tr>
+<tr><td>Vereinigung, Schnittmenge, Differenz (Testat 0)</td><td>küme işlemleri</td><td class="go"><a href="#e-1-9">1.9 <span style="color:#6b7280;font-weight:600">S.9</span></a></td></tr>
+<tr><td>Faktor, Levels, fehlende Werte NA</td><td>faktör, NA</td><td class="go"><a href="#e-1-7">1.7 <span style="color:#6b7280;font-weight:600">S.8</span></a>, <a href="#e-1-8">1.8 <span style="color:#6b7280;font-weight:600">S.8</span></a></td></tr>
+<tr><td>Matrix oder Tafel von Hand eingeben</td><td>matris, data frame</td><td class="go"><a href="#e-1-11">1.11 <span style="color:#6b7280;font-weight:600">S.9</span></a></td></tr>
+<tr class="grp"><td colspan="3">Kennzahlen</td></tr>
+<tr><td>„arithmetisches Mittel und unverzerrter Schätzer der Standardabweichung“</td><td>mean, sd</td><td class="go"><a href="#e-3-1">3.1 <span style="color:#6b7280;font-weight:600">S.13</span></a></td></tr>
+<tr><td>„empirische Varianz“ (Nenner n)</td><td>ampirik varyans</td><td class="go"><a href="#e-3-2">3.2 <span style="color:#6b7280;font-weight:600">S.13</span></a></td></tr>
+<tr><td>Median, Quartile, IQR, Spannweite</td><td>median, quantile, IQR</td><td class="go"><a href="#e-3-3">3.3 <span style="color:#6b7280;font-weight:600">S.13</span></a></td></tr>
+<tr><td>„Häufigkeiten“, „häufigste Ausprägung“</td><td>table, prop.table, mod</td><td class="go"><a href="#e-3-4">3.4 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
+<tr><td>„… für jedes Tal/Fach mit einem einzigen Befehl“</td><td>grup bazında hesap</td><td class="go"><a href="#e-3-5">3.5 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
+<tr><td>„Klassieren Sie … in die Klassen …“</td><td>cut ile sınıflandırma</td><td class="go"><a href="#e-3-6">3.6 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
+<tr><td>„Kontingenztafel“, „Randhäufigkeiten“, „Anteil … unter …“</td><td>çapraz tablo, addmargins</td><td class="go"><a href="#e-3-7">3.7 <span style="color:#6b7280;font-weight:600">S.15</span></a></td></tr>
+<tr><td>„Korrelation“, „linearer Zusammenhang“, „Spearman“</td><td>cor, cov</td><td class="go"><a href="#e-3-8">3.8 <span style="color:#6b7280;font-weight:600">S.15</span></a></td></tr>
+<tr class="grp"><td colspan="3">Grafiken</td></tr>
+<tr><td>„Speichern Sie Ihre Grafik als .pdf-Datei“</td><td>pdf() … dev.off()</td><td class="go"><a href="#e-4-1">4.1 <span style="color:#6b7280;font-weight:600">S.16</span></a></td></tr>
+<tr><td>„Histogramm“, „Intervallgrenzen [a, b)“, „Dichte“</td><td>hist: breaks, right, freq</td><td class="go"><a href="#e-4-2">4.2 <span style="color:#6b7280;font-weight:600">S.16</span></a></td></tr>
+<tr><td>„Boxplot“, „getrennt nach …“</td><td>boxplot</td><td class="go"><a href="#e-4-3">4.3 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
+<tr><td>„Streudiagramm“, „Regressionsgerade einzeichnen“</td><td>plot, abline</td><td class="go"><a href="#e-4-4">4.4 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
+<tr><td>„Kerndichteschätzer“, „Bandbreite“, „Epanechnikov“</td><td>density</td><td class="go"><a href="#e-4-5">4.5 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
+<tr><td>„Säulendiagramm“, „empirische Verteilungsfunktion“</td><td>barplot, ecdf</td><td class="go"><a href="#e-4-6">4.6 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
+<tr><td>„Zeichnen Sie die Wahrscheinlichkeitsfunktion / Dichte“</td><td>dbinom ile plot, curve</td><td class="go"><a href="#e-4-7">4.7 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
+<tr class="grp"><td colspan="3">Verteilungen und Simulation</td></tr>
+<tr><td>Welcher R-Befehl für welche Verteilung? Parameter?</td><td>d/p/q/r ve parametreler</td><td class="go"><a href="#e-5-1">5.1 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
+<tr><td>„höchstens“, „mindestens“, „mehr als“ in R</td><td>pbinom/pnorm'a çevir</td><td class="go"><a href="#e-5-2">5.2 <span style="color:#6b7280;font-weight:600">S.19</span></a></td></tr>
+<tr><td>Binomial / Poisson / Normal in R</td><td>dbinom, ppois, pnorm</td><td class="go"><a href="#e-5-3">5.3 <span style="color:#6b7280;font-weight:600">S.19</span></a>, <a href="#e-5-4">5.4 <span style="color:#6b7280;font-weight:600">S.19</span></a>, <a href="#e-5-5">5.5 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
+<tr><td>Exponential, Gleichverteilung, t- und χ²-Quantile</td><td>pexp, punif, qt, qchisq</td><td class="go"><a href="#e-5-6">5.6 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
+<tr><td>„Simulieren Sie …“, „set.seed“, Lückentext rbinom</td><td>rastgele sayı</td><td class="go"><a href="#e-6-1">6.1 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
+<tr><td>„Simulieren Sie 1 000 Stichproben … Mittelwert“</td><td>replicate, ZGWS</td><td class="go"><a href="#e-6-2">6.2 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
+<tr><td>Urne, mit/ohne Zurücklegen</td><td>sample, dhyper</td><td class="go"><a href="#e-6-3">6.3 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
+<tr class="grp"><td colspan="3">Programmieren</td></tr>
+<tr><td>„Schreiben Sie eine Funktion …“</td><td>function</td><td class="go"><a href="#e-7-1">7.1 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
+<tr><td>„für alle Werte von … bis …“, Schleife</td><td>for, sapply</td><td class="go"><a href="#e-7-2">7.2 <span style="color:#6b7280;font-weight:600">S.22</span></a>, <a href="#e-7-4">7.4 <span style="color:#6b7280;font-weight:600">S.22</span></a></td></tr>
+<tr><td>„Falls …, sonst …“</td><td>if, ifelse</td><td class="go"><a href="#e-7-3">7.3 <span style="color:#6b7280;font-weight:600">S.22</span></a></td></tr>
+<tr><td>Zahl/Text aus Ziffern zusammensetzen (Yennefer-Typ)</td><td>paste0 döngüsü</td><td class="go"><a href="#e-7-5">7.5 <span style="color:#6b7280;font-weight:600">S.22</span></a></td></tr>
+<tr class="grp"><td colspan="3">Maximum-Likelihood</td></tr>
+<tr><td>„Spalte iL20 mit individuellen Likelihoods“, „Likelihood aller Beobachtungen“</td><td>tekil ve toplam likelihood</td><td class="go"><a href="#e-8-1">8.1 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
+<tr><td>„in der Form X × 10^Y“</td><td>bilimsel gösterim</td><td class="go"><a href="#e-8-1">8.1 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
+<tr><td>„Funktion Likelihood.pois(lambda, x)“, „für alle Werte … ML-Schätzer“</td><td>ızgara araması</td><td class="go"><a href="#e-8-2">8.2 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
+<tr><td>Likelihood ist 0, „Log-Likelihood“</td><td>log-likelihood</td><td class="go"><a href="#e-8-3">8.3 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>„numerisch maximieren“, ein Parameter</td><td>optimise</td><td class="go"><a href="#e-8-4">8.4 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>„mit nlm“, zwei Parameter, „Startwerte“, „rücktransformiert“</td><td>nlm, exp dönüşümü</td><td class="go"><a href="#e-8-5">8.5 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>„Stellen Sie die Likelihood grafisch dar“</td><td>likelihood grafiği</td><td class="go"><a href="#e-8-6">8.6 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr class="grp"><td colspan="3">Konfidenzintervalle und Tests</td></tr>
+<tr><td>„95 %-Konfidenzintervall für den Erwartungswert“</td><td>ortalama için GA</td><td class="go"><a href="#e-9-1">9.1 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
+<tr><td>KI für Anteil oder Varianz</td><td>oran / varyans GA</td><td class="go"><a href="#e-9-2">9.2 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
+<tr><td>„Überprüfen Sie die Behauptung mit einem geeigneten Test“, t.test-Output</td><td>t.test</td><td class="go"><a href="#e-9-3">9.3 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
+<tr><td>Teststatistik, kritischer Wert, p-Wert „von Hand“ in R</td><td>qnorm, pnorm, pt</td><td class="go"><a href="#e-9-4">9.4 <span style="color:#6b7280;font-weight:600">S.26</span></a></td></tr>
+<tr><td>Binomialtest, „7 von 8“</td><td>binom.test, pbinom</td><td class="go"><a href="#e-9-5">9.5 <span style="color:#6b7280;font-weight:600">S.26</span></a></td></tr>
+<tr><td>„unabhängig?“, Kontingenztafel testen; „fair?“</td><td>chisq.test</td><td class="go"><a href="#e-9-6">9.6 <span style="color:#6b7280;font-weight:600">S.26</span></a></td></tr>
+<tr><td>Varianz testen</td><td>pchisq</td><td class="go"><a href="#e-9-7">9.7 <span style="color:#6b7280;font-weight:600">S.27</span></a></td></tr>
+<tr class="grp"><td colspan="3">Regression und Fehler</td></tr>
+<tr><td>„Schätzen Sie ein lineares Regressionsmodell“, summary lesen</td><td>lm, summary</td><td class="go"><a href="#e-10-1">10.1 <span style="color:#6b7280;font-weight:600">S.27</span></a></td></tr>
+<tr><td>Prognose, Residuen, R², KI für Koeffizienten</td><td>predict, residuals, confint</td><td class="go"><a href="#e-10-2">10.2 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
+<tr><td>Error in …</td><td>hata mesajları</td><td class="go"><a href="#e-11-1">11.1 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
+</table>
+<div class="sechead pb"><h2 class="sec" id="s-0"><span class="sn">0</span> Klausurablauf und Antwortform (ILIAS)</h2>
+<p class="secintro">Teil B'de puanın yarısı biçimden gelir: kod + çıktı + yuvarlanmış sonuç + tam cümle.</p>
+<div class="e" id="e-0-1"><div class="eh"><span class="no">0.1</span><span class="ti">Ablauf in 60 Minuten</span></div>
+<span class="sig"><b>Erkennen:</b> Hinweisblatt Teil B, Abschlusssitzung</span>
+<div class="ne">45 puan / 60 dakika → 1 puan ≈ 1.3 dakika. Her alt soruyu bitirince hemen ILIAS'a yapıştır ve scripti kaydet.</div>
+<ol class="st"><li>Neues R-Skript öffnen, sofort im Ordner <i>Dokumente</i> speichern (z. B. <code>Klausur.R</code>).</li><li>Erste Zeile: <code>setwd(path.expand("~"))</code> – genau so, wie es in der Aufgabe steht.</li><li>Datei kurz ansehen (Trennzeichen? Dezimalzeichen? Kopfzeile?) → einlesen (2.1) → <code>head(d)</code> und <code>str(d)</code> zur Kontrolle.</li><li>Pro Teilaufgabe: Code schreiben, mit Strg+Enter ausführen, Code <b>und</b> Output in die ILIAS-Box kopieren, Antwortsatz in die zweite Box.</li><li>Grafiken: <code>pdf("Name.pdf")</code> … <code>dev.off()</code>, Datei im Ordner prüfen und hochladen.</li><li>Folgefehler zählen: Wenn ein Teil nicht klappt, das benötigte Objekt anders erzeugen und weitermachen.</li></ol>
+<div class="fa">Fehlerhaften Code, der nicht Teil der Antwort ist, aus der ILIAS-Box löschen – widersprüchliche Mehrfachlösungen kosten Punkte.</div>
+</div></div>
+<div class="e" id="e-0-2"><div class="eh"><span class="no">0.2</span><span class="ti">Antwortform: Code, Output, Antwortsatz</span></div>
+<span class="sig"><b>Erkennen:</b> „Nutzen Sie für Ihre Antwort die Kästchen zu den Fragen 5 und 6 in ILIAS“</span>
+<div class="ne">Kutu 1: R kodu + R çıktısı. Kutu 2: kodsuz, tam Almanca cümle, sayılar 3 ondalık (R ile yuvarlanmış).</div>
+<ol class="st"><li>Numerische Ergebnisse auf <b>3 Nachkommastellen</b> mit einem R-Befehl runden: <code>round(x, 3)</code>.</li><li>Nicht-numerische Antworten in <b>vollen Sätzen</b>.</li><li>Grafiktitel über <code>main</code>: Aufgabenteil, Matrikelnummer, Sitzplatznummer; Achsen wie verlangt beschriften.</li><li>Dezimalpunkt benutzen (2.762, nicht 2,762).</li></ol>
+<div class="ks">„Das arithmetische Mittel der Variable Muenzen beträgt 22.083.“ · „Der unverzerrte Schätzer für die Standardabweichung beträgt 7.292.“</div>
+</div>
+<div class="e" id="e-0-3"><div class="eh"><span class="no">0.3</span><span class="ti">RStudio-Grundlagen</span></div>
+<span class="sig"><b>Erkennen:</b> Skript, Konsole, Kommentare, Hilfe</span>
+<div class="ne">Kodu scripte yaz, Strg+Enter ile satırı çalıştır. # sonrası yorumdur. ?komut yardım açar. R büyük/küçük harfe duyarlıdır.</div>
+<ol class="st"><li><code>&lt;-</code> speichert (auch <code>=</code> geht). Ohne Zuweisung wird nur angezeigt. <code>X</code> (groß) wäre ein anderes, nicht existierendes Objekt → Fehler „object 'X' not found“.</li><li>Hilfe: <code>?mean</code> oder <code>help(mean)</code>. Objekte anzeigen: <code>ls()</code>; löschen: <code>rm(x)</code>.</li><li>Strg+Enter = Zeile/Markierung ausführen · Strg+S = speichern · Pfeil hoch in der Konsole = letzter Befehl.</li></ol>
+<pre class="r">&gt; x &lt;- 5          <span class="c"># Zuweisung: x bekommt den Wert 5</span>
+&gt; x * 2           <span class="c"># Ergebnis wird angezeigt, x bleibt 5</span>
+<span class="o">[1] 10</span>
+&gt; x
+<span class="o">[1] 5</span></pre>
+</div>
+<div class="sechead"><h2 class="sec" id="s-1"><span class="sn">1</span> Grundlagen: Objekte, Vektoren, Datentypen</h2>
+<p class="secintro">Testat 0 ve her sınavın ilk soruları. Vektör = aynı türden değerler dizisi.</p>
+<div class="e" id="e-1-1"><div class="eh"><span class="no">1.1</span><span class="ti">Rechnen und mathematische Funktionen</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie mit R …“, Taschenrechner-Ersatz</span>
+<div class="ne">R hesap makinesi gibi çalışır. log = doğal logaritma (ln)!</div>
+<pre class="r">&gt; 2^3; sqrt(16); exp(1); log(10); log10(100); log(8, base = 2)
+<span class="o">[1] 8</span>
+<span class="o">[1] 4</span>
+<span class="o">[1] 2.718282</span>
+<span class="o">[1] 2.302585</span>
+<span class="o">[1] 2</span>
+<span class="o">[1] 3</span>
+&gt; abs(-3); factorial(5); choose(5, 2); round(3.14159, 3); 7 %/% 2; 7 %% 2
+<span class="o">[1] 3</span>
+<span class="o">[1] 120</span>
+<span class="o">[1] 10</span>
+<span class="o">[1] 3.142</span>
+<span class="o">[1] 3</span>
+<span class="o">[1] 1</span></pre>
+<div class="fa"><code>log()</code> ist der natürliche Logarithmus (ln). Für log₁₀: <code>log10()</code>.</div>
+</div></div>
+<div class="e" id="e-1-2"><div class="eh"><span class="no">1.2</span><span class="ti">Vektoren erstellen</span></div>
+<span class="sig"><b>Erkennen:</b> „Erstellen Sie einen Vektor …“, „die Zahlen von 1 bis 20“</span>
+<div class="ne">c() elle, : ardışık tam sayılar, seq() adımlı dizi, rep() tekrar.</div>
+<pre class="r">&gt; x &lt;- c(3, 1, 4, 1, 5)
+&gt; 1:6
+<span class="o">[1] 1 2 3 4 5 6</span>
+&gt; seq(0, 1, by = 0.25)
+<span class="o">[1] 0.00 0.25 0.50 0.75 1.00</span>
+&gt; seq(2, 20, length.out = 4)
+<span class="o">[1]  2  8 14 20</span>
+&gt; rep(c(&quot;a&quot;, &quot;b&quot;), times = 2); rep(0, 3)
+<span class="o">[1] &quot;a&quot; &quot;b&quot; &quot;a&quot; &quot;b&quot;</span>
+<span class="o">[1] 0 0 0</span>
+&gt; length(x)
+<span class="o">[1] 5</span></pre>
+</div>
+<div class="e" id="e-1-3"><div class="eh"><span class="no">1.3</span><span class="ti">Rechnen mit Vektoren</span></div>
+<span class="sig"><b>Erkennen:</b> „Multiplizieren Sie jeden Wert mit …“, Summe, Produkt, kumulierte Summe</span>
+<div class="ne">İşlemler her elemana tek tek uygulanır (vektörize). Döngüye gerek yok.</div>
+<pre class="r">&gt; x * 2; x + 10; x^2
+<span class="o">[1]  6  2  8  2 10</span>
+<span class="o">[1] 13 11 14 11 15</span>
+<span class="o">[1]  9  1 16  1 25</span>
+&gt; sum(x); prod(x); cumsum(x); sort(x); sort(x, decreasing = TRUE); rev(x)
+<span class="o">[1] 14</span>
+<span class="o">[1] 60</span>
+<span class="o">[1]  3  4  8  9 14</span>
+<span class="o">[1] 1 1 3 4 5</span>
+<span class="o">[1] 5 4 3 1 1</span>
+<span class="o">[1] 5 1 4 1 3</span>
+&gt; x - mean(x)
+<span class="o">[1]  0.2 -1.8  1.2 -1.8  2.2</span></pre>
+</div>
+<div class="e" id="e-1-4"><div class="eh"><span class="no">1.4</span><span class="ti">Elemente auswählen (Indizierung)</span></div>
+<span class="sig"><b>Erkennen:</b> „das dritte Element“, „alle Werte größer als …“, „Position des Maximums“</span>
+<div class="ne">Köşeli parantez: x[konum] veya x[koşul]. Eksi işareti = o elemanı çıkar.</div>
+<pre class="r">&gt; x[3]; x[c(1, 5)]; x[-1]; x[length(x)]
+<span class="o">[1] 4</span>
+<span class="o">[1] 3 5</span>
+<span class="o">[1] 1 4 1 5</span>
+<span class="o">[1] 5</span>
+&gt; x[x &gt; 2]
+<span class="o">[1] 3 4 5</span>
+&gt; which(x &gt; 2); which.max(x); which(x == max(x))
+<span class="o">[1] 1 3 5</span>
+<span class="o">[1] 5</span>
+<span class="o">[1] 5</span></pre>
+<div class="fa">Indizes beginnen in R bei 1 (nicht bei 0).</div>
+</div>
+<div class="e" id="e-1-5"><div class="eh"><span class="no">1.5</span><span class="ti">Vergleiche und logische Werte</span></div>
+<span class="sig"><b>Erkennen:</b> „Wie viele Werte sind größer als …?“, „Anteil der Werte …“</span>
+<div class="ne">Karşılaştırma TRUE/FALSE verir. sum() → kaç tane; mean() → oran. & = ve, | = veya, ! = değil.</div>
+<pre class="r">&gt; x &gt; 2
+<span class="o">[1]  TRUE FALSE  TRUE FALSE  TRUE</span>
+&gt; sum(x &gt; 2); mean(x &gt; 2)
+<span class="o">[1] 3</span>
+<span class="o">[1] 0.6</span>
+&gt; x &gt;= 3 &amp; x &lt;= 4
+<span class="o">[1]  TRUE FALSE  TRUE FALSE FALSE</span>
+&gt; x == 1 | x == 5
+<span class="o">[1] FALSE  TRUE FALSE  TRUE  TRUE</span>
+&gt; 4 %in% x; !(x &gt; 2)
+<span class="o">[1] TRUE</span>
+<span class="o">[1] FALSE  TRUE FALSE  TRUE FALSE</span></pre>
+<div class="ks">„Der Anteil der Werte größer als 2 beträgt 0.6.“</div>
+</div>
+<div class="e" id="e-1-6"><div class="eh"><span class="no">1.6</span><span class="ti">Datentypen bestimmen</span></div>
+<span class="sig"><b>Erkennen:</b> „Ermitteln Sie die Objekttypen der Variablen …“, „Welcher Datentyp?“</span>
+<div class="ne">typeof() iç türü verir (double/integer/character/logical), class() nesne sınıfını (numeric/factor/data.frame).</div>
+<ol class="st"><li><b>double</b> = Kommazahl (numeric) · <b>integer</b> = ganze Zahl (numeric) · <b>character</b> = Text · <b>logical</b> = TRUE/FALSE.</li><li><code>typeof()</code> und <code>class()</code> sind beide als „passender Befehl“ akzeptiert; <code>str(d)</code> zeigt alle Spalten auf einmal.</li></ol>
+<pre class="r">&gt; typeof(3.5); typeof(3L); typeof(&quot;Wolf&quot;); typeof(TRUE)
+<span class="o">[1] &quot;double&quot;</span>
+<span class="o">[1] &quot;integer&quot;</span>
+<span class="o">[1] &quot;character&quot;</span>
+<span class="o">[1] &quot;logical&quot;</span>
+&gt; class(3.5); class(factor(&quot;Wolf&quot;)); class(matrix(1:4, 2))
+<span class="o">[1] &quot;numeric&quot;</span>
+<span class="o">[1] &quot;factor&quot;</span>
+<span class="o">[1] &quot;matrix&quot; &quot;array&quot; </span>
+&gt; is.numeric(3.5); as.numeric(&quot;2.5&quot;); as.character(12); as.integer(3.9)
+<span class="o">[1] TRUE</span>
+<span class="o">[1] 2.5</span>
+<span class="o">[1] &quot;12&quot;</span>
+<span class="o">[1] 3</span></pre>
+<div class="fa">Zahlen mit Anführungszeichen ("2.5") sind Text – Rechnen geht erst nach <code>as.numeric()</code>.</div>
+</div>
+<div class="e" id="e-1-7"><div class="eh"><span class="no">1.7</span><span class="ti">Faktoren (kategoriale Variablen)</span></div>
+<span class="sig"><b>Erkennen:</b> „Wandeln Sie … in einen Faktor um“, „Ausprägungen / Levels“</span>
+<div class="ne">Faktör = kategorik değişken; levels = olası kategoriler. Sıra levels ile belirlenir.</div>
+<pre class="r">&gt; f &lt;- factor(c(&quot;mittel&quot;, &quot;gut&quot;, &quot;gut&quot;, &quot;schlecht&quot;), levels = c(&quot;schlecht&quot;, &quot;mittel&quot;, &quot;gut&quot;))
+&gt; f; levels(f); table(f); as.numeric(f)
+<span class="o">[1] mittel   gut      gut      schlecht</span>
+<span class="o">Levels: schlecht mittel gut</span>
+<span class="o">[1] &quot;schlecht&quot; &quot;mittel&quot;   &quot;gut&quot;     </span>
+<span class="o">f</span>
+<span class="o">schlecht   mittel      gut </span>
+<span class="o">       1        1        2 </span>
+<span class="o">[1] 2 3 3 1</span></pre>
+<div class="fa"><code>as.numeric(f)</code> liefert die Level-Nummern, nicht die Beschriftung.</div>
+</div>
+<div class="e" id="e-1-8"><div class="eh"><span class="no">1.8</span><span class="ti">Fehlende Werte (NA)</span></div>
+<span class="sig"><b>Erkennen:</b> „fehlende Werte“, Ergebnis ist NA</span>
+<div class="ne">NA varsa mean/sd/sum NA döner → na.rm = TRUE ekle veya na.omit() ile temizle.</div>
+<pre class="r">&gt; y &lt;- c(4, NA, 6, 8)
+&gt; mean(y); mean(y, na.rm = TRUE)
+<span class="o">[1] NA</span>
+<span class="o">[1] 6</span>
+&gt; is.na(y); sum(is.na(y)); na.omit(y)
+<span class="o">[1] FALSE  TRUE FALSE FALSE</span>
+<span class="o">[1] 1</span>
+<span class="o">[1] 4 6 8</span>
+<span class="o">attr(,&quot;na.action&quot;)</span>
+<span class="o">[1] 2</span>
+<span class="o">attr(,&quot;class&quot;)</span>
+<span class="o">[1] &quot;omit&quot;</span></pre>
+</div>
+<div class="e" id="e-1-9"><div class="eh"><span class="no">1.9</span><span class="ti">Mengen in R (Testat 0)</span></div>
+<span class="sig"><b>Erkennen:</b> „Vereinigung“, „Schnittmenge“, „Differenz“, „ist Element von“</span>
+<div class="ne">Küme işlemleri: union (∪), intersect (∩), setdiff (A ohne B).</div>
+<pre class="r">&gt; A &lt;- c(1, 2, 5, 8); B &lt;- c(2, 3, 5, 7)
+&gt; union(A, B); intersect(A, B); setdiff(A, B)
+<span class="o">[1] 1 2 5 8 3 7</span>
+<span class="o">[1] 2 5</span>
+<span class="o">[1] 1 8</span>
+&gt; is.element(3, A); length(intersect(A, B))
+<span class="o">[1] FALSE</span>
+<span class="o">[1] 2</span></pre>
+</div>
+<div class="e" id="e-1-10"><div class="eh"><span class="no">1.10</span><span class="ti">Text zusammenfügen und ausgeben</span></div>
+<span class="sig"><b>Erkennen:</b> paste, cat, „geben Sie … aus“</span>
+<div class="ne">paste() boşlukla, paste0() boşluksuz birleştirir. cat() düz metin yazdırır.</div>
+<pre class="r">&gt; paste(&quot;Sitz&quot;, 17, &quot;Matr.Nr.&quot;, 12345678)
+<span class="o">[1] &quot;Sitz 17 Matr.Nr. 12345678&quot;</span>
+&gt; paste0(&quot;T&quot;, 1:3)
+<span class="o">[1] &quot;T1&quot; &quot;T2&quot; &quot;T3&quot;</span>
+&gt; cat(&quot;Mittelwert:&quot;, round(mean(x), 3), &quot;\n&quot;)
+<span class="o">Mittelwert: 2.8 </span></pre>
+</div>
+<div class="e" id="e-1-11"><div class="eh"><span class="no">1.11</span><span class="ti">Matrix, Data Frame und Liste von Hand</span></div>
+<span class="sig"><b>Erkennen:</b> „Erstellen Sie eine Matrix / einen Data Frame“, Kontingenztafel eingeben</span>
+<div class="ne">matrix sütun sütun doldurur (byrow = TRUE → satır satır). data.frame = farklı türde sütunlar.</div>
+<pre class="r">&gt; m &lt;- matrix(c(20, 40, 60, 80), nrow = 2)
+&gt; m; dim(m); t(m)
+<span class="o">     [,1] [,2]</span>
+<span class="o">[1,]   20   60</span>
+<span class="o">[2,]   40   80</span>
+<span class="o">[1] 2 2</span>
+<span class="o">     [,1] [,2]</span>
+<span class="o">[1,]   20   40</span>
+<span class="o">[2,]   60   80</span>
+&gt; df &lt;- data.frame(Name = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), Punkte = c(12, 15, 9))
+&gt; df; df$Punkte; nrow(df)
+<span class="o">  Name Punkte</span>
+<span class="o">1    A     12</span>
+<span class="o">2    B     15</span>
+<span class="o">3    C      9</span>
+<span class="o">[1] 12 15  9</span>
+<span class="o">[1] 3</span>
+&gt; l &lt;- list(zahl = 1, text = &quot;a&quot;); l$text
+<span class="o">[1] &quot;a&quot;</span></pre>
+<div class="fa"><code>matrix(c(20, 40, 60, 80), nrow = 2)</code> füllt <b>spaltenweise</b>: erste Spalte 20, 40.</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-2"><span class="sn">2</span> Datensatz einlesen, ansehen, auswählen</h2>
+<p class="secintro">Her Teil B sınavının (a)–(c) kısmı: 10 puan. Okuma doğru değilse sonraki her şey yanlış olur.</p>
+<div class="e" id="e-2-1"><div class="eh"><span class="no">2.1</span><span class="ti">Working Directory setzen und Daten einlesen</span></div>
+<span class="sig"><b>Erkennen:</b> „Setzen Sie mittels setwd(path.expand("~")) Ihr Working Directory“, „Speichern Sie die Daten als Data-Frame-Objekt d“</span>
+<div class="ne">Önce dosyayı bir metin editöründe gör: ayraç (, veya ;), ondalık (. veya ,), ilk satır başlık mı? Buna göre sep, dec, header.</div>
+<ol class="st"><li>Datei ansehen: erste Zeile = Spaltennamen → <code>header = TRUE</code>.</li><li>Trennzeichen zwischen den Spalten: Komma → <code>sep = ","</code>; Semikolon → <code>sep = ";"</code>; Tab → <code>sep = "\t"</code>.</li><li>Dezimalzeichen in den Zahlen: Punkt → <code>dec = "."</code>; Komma → <code>dec = ","</code> (dann ist sep meist ";").</li><li>Einlesen, dann <b>sofort</b> <code>head(d)</code> und <code>str(d)</code> zur Kontrolle (2.2).</li></ol>
+<pre class="r">setwd(path.expand(&quot;~&quot;))     <span class="c"># in der Klausur genau so</span>
+getwd()                     <span class="c"># Kontrolle des Ordners</span>
+d &lt;- read.csv(&quot;Taverne.csv&quot;, sep = &quot;;&quot;, dec = &quot;.&quot;, header = TRUE)
+<span class="c"># Alternative: d &lt;- read.table(&quot;Taverne.csv&quot;, sep = &quot;;&quot;, dec = &quot;.&quot;, header = TRUE)</span>
+head(d)</pre>
+<div class="fa">Dateiname exakt mit Groß-/Kleinschreibung und Endung .csv. Datei muss im Working Directory liegen.</div>
+</div></div>
+<div class="e" id="e-2-2"><div class="eh"><span class="no">2.2</span><span class="ti">Einlesen prüfen: Ist der Datensatz richtig?</span></div>
+<span class="sig"><b>Erkennen:</b> str() zeigt nur 1 Variable oder Zahlen als chr</span>
+<div class="ne">Tek değişken görünüyorsa sep yanlış. Sayılar chr (metin) görünüyorsa dec yanlış.</div>
+<ol class="st"><li><b>1 variable</b> mit allen Spalten in einem Text → <code>sep</code> falsch.</li><li>Zahlenspalte als <code>chr</code> mit Kommas ("12,5") → <code>dec = ","</code> fehlt.</li><li>Erste Datenzeile als Spaltenname → <code>header</code> falsch.</li></ol>
+<pre class="r">&gt; falsch &lt;- read.csv(&quot;Taverne.csv&quot;)          <span class="c"># sep vergessen</span>
+&gt; str(falsch)
+<span class="o">&#x27;data.frame&#x27;:	12 obs. of  1 variable:</span>
+<span class="o"> $ Taverne.Tal.Monster.Muenzen.Kampfzeit: chr  &quot;T01;Flusstal;Ghul;18;12.5&quot; &quot;T02;Bergtal;Troll;25;45.0&quot; &quot;T03;Flusstal;Wolf;12;3.2&quot; &quot;T04;Waldtal;Greif;30;75.5&quot; ...</span>
+&gt; d &lt;- read.csv(&quot;Taverne.csv&quot;, sep = &quot;;&quot;, dec = &quot;.&quot;, header = TRUE)
+&gt; str(d)
+<span class="o">&#x27;data.frame&#x27;:	12 obs. of  5 variables:</span>
+<span class="o"> $ Taverne  : chr  &quot;T01&quot; &quot;T02&quot; &quot;T03&quot; &quot;T04&quot; ...</span>
+<span class="o"> $ Tal      : chr  &quot;Flusstal&quot; &quot;Bergtal&quot; &quot;Flusstal&quot; &quot;Waldtal&quot; ...</span>
+<span class="o"> $ Monster  : chr  &quot;Ghul&quot; &quot;Troll&quot; &quot;Wolf&quot; &quot;Greif&quot; ...</span>
+<span class="o"> $ Muenzen  : int  18 25 12 30 22 15 27 33 20 10 ...</span>
+<span class="o"> $ Kampfzeit: num  12.5 45 3.2 75.5 8 4.5 50 90 15 2.5 ...</span></pre>
+</div>
+<div class="e" id="e-2-3"><div class="eh"><span class="no">2.3</span><span class="ti">Datensatz ansehen</span></div>
+<span class="sig"><b>Erkennen:</b> „Geben Sie die ersten 6 Zeilen wieder“, „Wie viele Beobachtungen?“</span>
+<div class="ne">head → ilk 6 satır, dim → satır × sütun, names → sütun adları, summary → özet.</div>
+<pre class="r">&gt; head(d)
+<span class="o">  Taverne      Tal Monster Muenzen Kampfzeit</span>
+<span class="o">1     T01 Flusstal    Ghul      18      12.5</span>
+<span class="o">2     T02  Bergtal   Troll      25      45.0</span>
+<span class="o">3     T03 Flusstal    Wolf      12       3.2</span>
+<span class="o">4     T04  Waldtal   Greif      30      75.5</span>
+<span class="o">5     T05  Bergtal    Ghul      22       8.0</span>
+<span class="o">6     T06  Waldtal    Wolf      15       4.5</span>
+&gt; dim(d); nrow(d); ncol(d)
+<span class="o">[1] 12  5</span>
+<span class="o">[1] 12</span>
+<span class="o">[1] 5</span>
+&gt; names(d)
+<span class="o">[1] &quot;Taverne&quot;   &quot;Tal&quot;       &quot;Monster&quot;   &quot;Muenzen&quot;   &quot;Kampfzeit&quot;</span>
+&gt; summary(d$Muenzen)
+<span class="o">   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
+<span class="o">  10.00   17.25   23.00   22.08   27.50   33.00 </span></pre>
+<div class="ks">„Der Datensatz enthält 12 Beobachtungen und 5 Variablen.“</div>
+</div>
+<div class="e" id="e-2-4"><div class="eh"><span class="no">2.4</span><span class="ti">Spalten und Zeilen auswählen</span></div>
+<span class="sig"><b>Erkennen:</b> „die Variable …“, „nur die Beobachtungen aus …“, „die dritte Zeile“</span>
+<div class="ne">d$Sütun veya d[satır, sütun]. Boş bırakılan taraf = hepsi.</div>
+<pre class="r">&gt; d$Muenzen
+<span class="o"> [1] 18 25 12 30 22 15 27 33 20 10 24 29</span>
+&gt; d[3, ]
+<span class="o">  Taverne      Tal Monster Muenzen Kampfzeit</span>
+<span class="o">3     T03 Flusstal    Wolf      12       3.2</span>
+&gt; d[1:2, c(&quot;Tal&quot;, &quot;Muenzen&quot;)]
+<span class="o">       Tal Muenzen</span>
+<span class="o">1 Flusstal      18</span>
+<span class="o">2  Bergtal      25</span>
+&gt; d[d$Tal == &quot;Bergtal&quot;, ]
+<span class="o">   Taverne     Tal Monster Muenzen Kampfzeit</span>
+<span class="o">2      T02 Bergtal   Troll      25        45</span>
+<span class="o">5      T05 Bergtal    Ghul      22         8</span>
+<span class="o">8      T08 Bergtal   Greif      33        90</span>
+<span class="o">11     T11 Bergtal   Troll      24        38</span>
+&gt; d$Muenzen[d$Monster == &quot;Troll&quot;]
+<span class="o">[1] 25 27 24 29</span></pre>
+<div class="fa">Vergleich mit <code>==</code> (zwei Gleichheitszeichen). Text in Anführungszeichen, genaue Schreibweise.</div>
+</div>
+<div class="e" id="e-2-5"><div class="eh"><span class="no">2.5</span><span class="ti">Teildatensatz mit subset</span></div>
+<span class="sig"><b>Erkennen:</b> „Betrachten Sie nur Kämpfe mit mindestens 5 und weniger als 60 Minuten“</span>
+<div class="ne">subset(veri, koşul) koşula uyan satırları seçer; sütun adları doğrudan yazılır.</div>
+<pre class="r">&gt; kurz &lt;- subset(d, Kampfzeit &gt;= 5 &amp; Kampfzeit &lt; 60)
+&gt; nrow(kurz)
+<span class="o">[1] 6</span>
+&gt; mean(kurz$Muenzen)
+<span class="o">[1] 22.66667</span>
+&gt; subset(d, Tal == &quot;Waldtal&quot;, select = c(Monster, Muenzen))
+<span class="o">   Monster Muenzen</span>
+<span class="o">4    Greif      30</span>
+<span class="o">6     Wolf      15</span>
+<span class="o">9     Ghul      20</span>
+<span class="o">12   Troll      29</span></pre>
+</div>
+<div class="e" id="e-2-6"><div class="eh"><span class="no">2.6</span><span class="ti">Neue Variable hinzufügen</span></div>
+<span class="sig"><b>Erkennen:</b> „Ergänzen Sie den Data Frame um eine Spalte …“</span>
+<div class="ne">d$yeni <- hesap. ifelse ile koşullu değişken.</div>
+<pre class="r">&gt; d$Muenzen.pro.Min &lt;- round(d$Muenzen / d$Kampfzeit, 3)
+&gt; d$lang &lt;- ifelse(d$Kampfzeit &gt; 30, &quot;lang&quot;, &quot;kurz&quot;)
+&gt; head(d, 3)
+<span class="o">  Taverne      Tal Monster Muenzen Kampfzeit Muenzen.pro.Min lang</span>
+<span class="o">1     T01 Flusstal    Ghul      18      12.5           1.440 kurz</span>
+<span class="o">2     T02  Bergtal   Troll      25      45.0           0.556 lang</span>
+<span class="o">3     T03 Flusstal    Wolf      12       3.2           3.750 kurz</span></pre>
+</div>
+<div class="e" id="e-2-7"><div class="eh"><span class="no">2.7</span><span class="ti">Objekttypen der Variablen ermitteln (Probeklausur-Typ)</span></div>
+<span class="sig"><b>Erkennen:</b> „Ermitteln Sie unter Einbezug eines passenden R-Befehls die Objekttypen der Variablen Tal und Muenzen“</span>
+<div class="ne">typeof (veya class/str) ile her değişkenin türü; cevabı tam cümleyle yaz.</div>
+<pre class="r">&gt; typeof(d$Tal)
+<span class="o">[1] &quot;character&quot;</span>
+&gt; typeof(d$Muenzen)
+<span class="o">[1] &quot;integer&quot;</span>
+&gt; typeof(d$Kampfzeit)
+<span class="o">[1] &quot;double&quot;</span></pre>
+<div class="ks">„Die Variable Tal ist ein character-Objekt; die Variable Muenzen ist numerisch vom Typ integer (nur ganze Zahlen); Kampfzeit ist numerisch vom Typ double.“</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-3"><span class="sn">3</span> Kennzahlen und Tabellen</h2>
+<p class="secintro">Ortalama, standart sapma, kantil, sıklık tablosu, grup bazlı hesap, kontenjans tablosu, korelasyon.</p>
+<div class="e" id="e-3-1"><div class="eh"><span class="no">3.1</span><span class="ti">Mittelwert und Standardabweichung</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen und nennen Sie das arithmetische Mittel und den unverzerrten Schätzer für die Standardabweichung“</span>
+<div class="ne">mean ve sd; sd zaten yansız tahminci (n−1). Her zaman round(…, 3).</div>
+<pre class="r">&gt; round(mean(d$Muenzen), 3)
+<span class="o">[1] 22.083</span>
+&gt; round(sd(d$Muenzen), 3)
+<span class="o">[1] 7.292</span>
+&gt; round(sqrt(var(d$Muenzen)), 3)      <span class="c"># gleich wie sd</span>
+<span class="o">[1] 7.292</span></pre>
+<div class="ks">„Das arithmetische Mittel der Variable Muenzen beträgt 22.083; der unverzerrte Schätzer für die Standardabweichung beträgt 7.292.“</div>
+</div></div>
+<div class="e" id="e-3-2"><div class="eh"><span class="no">3.2</span><span class="ti">Varianz: unverzerrt und empirisch</span></div>
+<span class="sig"><b>Erkennen:</b> „unverzerrte Varianz“ vs. „empirische Varianz“</span>
+<div class="ne">var() = n−1 ile (yansız). Ampirik varyans (1/n) için (n−1)/n ile çarp.</div>
+<pre class="r">&gt; n &lt;- length(d$Muenzen)
+&gt; round(var(d$Muenzen), 3)                    <span class="c"># unverzerrt (n - 1)</span>
+<span class="o">[1] 53.174</span>
+&gt; round(var(d$Muenzen) * (n - 1) / n, 3)      <span class="c"># empirisch (1/n)</span>
+<span class="o">[1] 48.743</span>
+&gt; round(mean((d$Muenzen - mean(d$Muenzen))^2), 3)   <span class="c"># gleich, per Formel</span>
+<span class="o">[1] 48.743</span></pre>
+</div>
+<div class="e" id="e-3-3"><div class="eh"><span class="no">3.3</span><span class="ti">Median, Quantile, IQR, Spannweite</span></div>
+<span class="sig"><b>Erkennen:</b> „Median“, „Quartile“, „Interquartilsabstand“, „Wertebereich“</span>
+<div class="ne">quantile() R'nin kendi tanımını kullanır (Teil A'daki ders tanımından farklı olabilir).</div>
+<pre class="r">&gt; median(d$Muenzen)
+<span class="o">[1] 23</span>
+&gt; quantile(d$Muenzen, c(0.25, 0.75))
+<span class="o">  25%   75% </span>
+<span class="o">17.25 27.50 </span>
+&gt; IQR(d$Muenzen)
+<span class="o">[1] 10.25</span>
+&gt; range(d$Muenzen); max(d$Muenzen) - min(d$Muenzen)
+<span class="o">[1] 10 33</span>
+<span class="o">[1] 23</span>
+&gt; summary(d$Kampfzeit)
+<span class="o">   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
+<span class="o">  2.500   7.125  26.500  33.850  53.000  90.000 </span></pre>
+<div class="fa">In Teil B die R-Werte angeben; in Teil A (per Hand) gilt die Quantil-Definition der Vorlesung.</div>
+</div>
+<div class="e" id="e-3-4"><div class="eh"><span class="no">3.4</span><span class="ti">Häufigkeiten und Modus</span></div>
+<span class="sig"><b>Erkennen:</b> „absolute / relative Häufigkeiten“, „häufigste Ausprägung“</span>
+<div class="ne">table → mutlak, prop.table → oran. Mod: en büyük sıklığın adı.</div>
+<pre class="r">&gt; table(d$Monster)
+<span class="o"></span>
+<span class="o"> Ghul Greif Troll  Wolf </span>
+<span class="o">    3     2     4     3 </span>
+&gt; round(prop.table(table(d$Monster)), 3)
+<span class="o"></span>
+<span class="o"> Ghul Greif Troll  Wolf </span>
+<span class="o">0.250 0.167 0.333 0.250 </span>
+&gt; names(which.max(table(d$Monster)))
+<span class="o">[1] &quot;Troll&quot;</span>
+&gt; cumsum(table(d$Tal))
+<span class="o"> Bergtal Flusstal  Waldtal </span>
+<span class="o">       4        8       12 </span></pre>
+</div>
+<div class="e" id="e-3-5"><div class="eh"><span class="no">3.5</span><span class="ti">Kennzahlen pro Gruppe (tapply, aggregate)</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie den Mittelwert für jedes Tal mit einem einzigen Befehl“</span>
+<div class="ne">tapply(sayı, grup, fonksiyon): her grup için hesap. Sonra en büyük olanı söyle.</div>
+<pre class="r">&gt; round(tapply(d$Muenzen, d$Tal, mean), 3)
+<span class="o"> Bergtal Flusstal  Waldtal </span>
+<span class="o">   26.00    16.75    23.50 </span>
+&gt; tapply(d$Kampfzeit, d$Monster, max)
+<span class="o"> Ghul Greif Troll  Wolf </span>
+<span class="o"> 15.0  90.0  62.0   4.5 </span>
+&gt; aggregate(Muenzen ~ Tal, data = d, FUN = median)
+<span class="o">       Tal Muenzen</span>
+<span class="o">1  Bergtal    24.5</span>
+<span class="o">2 Flusstal    15.0</span>
+<span class="o">3  Waldtal    24.5</span></pre>
+<div class="ks">„Im Bergtal werden im Durchschnitt die meisten Münzen erzielt (26.000).“</div>
+</div>
+<div class="e" id="e-3-6"><div class="eh"><span class="no">3.6</span><span class="ti">Klassen bilden mit cut</span></div>
+<span class="sig"><b>Erkennen:</b> „Klassieren Sie … in die Klassen [0, 10), [10, 60), [60, ∞)“</span>
+<div class="ne">cut(x, breaks, right) → faktör. right = FALSE: [a, b) (sol dahil); right = TRUE: (a, b].</div>
+<pre class="r">&gt; d$Kampf.K &lt;- cut(d$Kampfzeit, breaks = c(0, 10, 60, Inf), right = FALSE)
+&gt; table(d$Kampf.K)
+<span class="o"></span>
+<span class="o">  [0,10)  [10,60) [60,Inf) </span>
+<span class="o">       4        5        3 </span>
+&gt; cut(c(10, 20), breaks = c(0, 10, 20), right = TRUE)
+<span class="o">[1] (0,10]  (10,20]</span>
+<span class="o">Levels: (0,10] (10,20]</span></pre>
+<div class="fa">„bis unter 10“ / „weniger als“ → <code>right = FALSE</code>; „bis einschließlich“ / „höchstens“ → <code>right = TRUE</code>.</div>
+</div>
+<div class="e" id="e-3-7"><div class="eh"><span class="no">3.7</span><span class="ti">Kontingenztafel, Randsummen, bedingte Anteile</span></div>
+<span class="sig"><b>Erkennen:</b> „Erstellen Sie eine Kontingenztafel“, „mit Randhäufigkeiten“, „Anteil … unter den …“</span>
+<div class="ne">table(x, y) çapraz tablo; addmargins toplamları ekler; prop.table(t, 1) satır içi oranlar, 2 sütun içi.</div>
+<pre class="r">&gt; tafel &lt;- table(d$Tal, d$Monster)
+&gt; tafel
+<span class="o">          </span>
+<span class="o">           Ghul Greif Troll Wolf</span>
+<span class="o">  Bergtal     1     1     2    0</span>
+<span class="o">  Flusstal    1     0     1    2</span>
+<span class="o">  Waldtal     1     1     1    1</span>
+&gt; addmargins(tafel)
+<span class="o">          </span>
+<span class="o">           Ghul Greif Troll Wolf Sum</span>
+<span class="o">  Bergtal     1     1     2    0   4</span>
+<span class="o">  Flusstal    1     0     1    2   4</span>
+<span class="o">  Waldtal     1     1     1    1   4</span>
+<span class="o">  Sum         3     2     4    3  12</span>
+&gt; round(prop.table(tafel, 1), 3)     <span class="c"># 1 = zeilenweise (je Tal)</span>
+<span class="o">          </span>
+<span class="o">           Ghul Greif Troll Wolf</span>
+<span class="o">  Bergtal  0.25  0.25  0.50 0.00</span>
+<span class="o">  Flusstal 0.25  0.00  0.25 0.50</span>
+<span class="o">  Waldtal  0.25  0.25  0.25 0.25</span></pre>
+<div class="fa"><code>prop.table(tafel)</code> ohne Zahl = Anteil an allen n; mit 1 zeilenweise, mit 2 spaltenweise.</div>
+</div>
+<div class="e" id="e-3-8"><div class="eh"><span class="no">3.8</span><span class="ti">Korrelation und Kovarianz</span></div>
+<span class="sig"><b>Erkennen:</b> „Wie stark ist der lineare Zusammenhang?“, „Spearman“</span>
+<div class="ne">cor → Pearson (varsayılan), method = "spearman" → sıra korelasyonu. cov n−1 ile böler.</div>
+<pre class="r">&gt; round(cor(d$Muenzen, d$Kampfzeit), 3)
+<span class="o">[1] 0.928</span>
+&gt; round(cor(d$Muenzen, d$Kampfzeit, method = &quot;spearman&quot;), 3)
+<span class="o">[1] 0.979</span>
+&gt; round(cov(d$Muenzen, d$Kampfzeit), 3)
+<span class="o">[1] 207.423</span></pre>
+<div class="ks">„Der Korrelationskoeffizient nach Bravais-Pearson beträgt 0.928; es liegt ein starker positiver linearer Zusammenhang zwischen Kampfzeit und Münzen vor.“</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-4"><span class="sn">4</span> Grafiken erstellen und speichern</h2>
+<p class="secintro">Grafik sorusu genelde 7–8 puan: doğru komut + breaks/right/freq + başlık + eksen adları + PDF olarak kaydetme.</p>
+<div class="e" id="e-4-1"><div class="eh"><span class="no">4.1</span><span class="ti">Grafik als PDF speichern (Pflicht in der Klausur)</span></div>
+<span class="sig"><b>Erkennen:</b> „Speichern Sie Ihre Grafik als .pdf-Datei unter Histogramm.pdf … und laden Sie diese Datei hoch“</span>
+<div class="ne">pdf("ad.pdf") → grafik komutları → dev.off(). Dosya çalışma klasörüne yazılır.</div>
+<ol class="st"><li><code>pdf("Name.pdf")</code> öffnet die Datei, alle folgenden Grafikbefehle landen darin.</li><li><code>dev.off()</code> schließt und speichert – ohne dev.off() ist die Datei leer/kaputt.</li><li>PNG: <code>png("Name.png", width = 2000, height = 2000, res = 400)</code> … <code>dev.off()</code>.</li><li>Titel <code>main</code>: Sitzplatz, Matrikelnummer, Aufgabenteil. Achsen: <code>xlab</code>, <code>ylab</code> genau wie verlangt.</li></ol>
+<pre class="r">&gt; pdf(&quot;Histogramm.pdf&quot;)
+&gt; hist(d$Muenzen, freq = FALSE, main = &quot;Sitz 17, Matr.Nr. 12345678, Aufgabenteil e)&quot;,
++      xlab = &quot;Muenzen&quot;, ylab = &quot;Dichte&quot;)
+&gt; dev.off()
+<span class="o">null device </span>
+<span class="o">          1 </span></pre>
+</div></div>
+<div class="e" id="e-4-2"><div class="eh"><span class="no">4.2</span><span class="ti">Histogramm mit vorgegebenen Klassen</span></div>
+<span class="sig"><b>Erkennen:</b> „Intervallgrenzen [5, 15), [15, 20), …“, „Dichte auf der y-Achse“</span>
+<div class="ne">breaks = sınıf sınırları, right = FALSE → [a, b), freq = FALSE → yoğunluk (normlu histogram).</div>
+<pre class="r">&gt; h &lt;- hist(d$Muenzen, breaks = c(5, 15, 20, 25, 35), right = FALSE, freq = FALSE,
++           main = &quot;Sitz 17, Matr.Nr. 12345678, Aufgabenteil e)&quot;,
++           xlab = &quot;Muenzen&quot;, ylab = &quot;Dichte&quot;)
+&gt; h$counts; round(h$density, 4)
+<span class="o">[1] 2 2 3 5</span>
+<span class="o">[1] 0.0167 0.0333 0.0500 0.0417</span>
+&gt; hist(d$Muenzen, breaks = c(5, 15, 20, 25, 35), right = FALSE, plot = FALSE)$counts
+<span class="o">[1] 2 2 3 5</span></pre>
+<div class="imgs"><img src="fig/fsr_hist.png"><img src="fig/fsr_box.png"></div>
+<div class="fa">Ohne <code>freq = FALSE</code> (bzw. <code>prob = TRUE</code>) zeigt R absolute Häufigkeiten. Standard ist <code>right = TRUE</code> = (a, b].</div>
+</div>
+<div class="e" id="e-4-3"><div class="eh"><span class="no">4.3</span><span class="ti">Boxplot (auch nach Gruppen)</span></div>
+<span class="sig"><b>Erkennen:</b> „Erstellen Sie einen Boxplot … getrennt nach …“</span>
+<div class="ne">boxplot(x) tek değişken; boxplot(sayı ~ grup, data = d) gruplara göre (resim yukarıda sağda).</div>
+<pre class="r">&gt; boxplot(Muenzen ~ Tal, data = d, main = &quot;Aufgabenteil f)&quot;, xlab = &quot;Tal&quot;, ylab = &quot;Muenzen&quot;)
+&gt; boxplot(d$Muenzen, plot = FALSE)$stats      <span class="c"># Whisker unten, Q1, Median, Q3, Whisker oben</span>
+<span class="o">     [,1]</span>
+<span class="o">[1,] 10.0</span>
+<span class="o">[2,] 16.5</span>
+<span class="o">[3,] 23.0</span>
+<span class="o">[4,] 28.0</span>
+<span class="o">[5,] 33.0</span></pre>
+</div>
+<div class="e" id="e-4-4"><div class="eh"><span class="no">4.4</span><span class="ti">Streudiagramm mit Regressionsgerade</span></div>
+<span class="sig"><b>Erkennen:</b> „Stellen Sie den Zusammenhang grafisch dar“, „Fügen Sie die Regressionsgerade hinzu“</span>
+<div class="ne">plot(x, y) dağılım grafiği; abline(lm(y ~ x)) doğruyu ekler. pch nokta şekli.</div>
+<pre class="r">&gt; plot(d$Kampfzeit, d$Muenzen, pch = 16, main = &quot;Aufgabenteil g)&quot;,
++      xlab = &quot;Kampfzeit in Minuten&quot;, ylab = &quot;Muenzen&quot;)
+&gt; abline(lm(Muenzen ~ Kampfzeit, data = d), col = &quot;red&quot;)
+&gt; points(50, 30, col = &quot;blue&quot;, pch = 4); lines(c(0, 90), c(20, 20), lty = 2)</pre>
+<div class="imgs"><img src="fig/fsr_scatter.png"><img src="fig/fsr_kde.png"></div>
+</div>
+<div class="e" id="e-4-5"><div class="eh"><span class="no">4.5</span><span class="ti">Kerndichteschätzer (KDE)</span></div>
+<span class="sig"><b>Erkennen:</b> „Visualisieren Sie einen Kerndichteschätzer“, „Bandbreite“, „Epanechnikov-Kern“</span>
+<div class="ne">density(x) KDE hesaplar, plot ile çiz. bw = bant genişliği, kernel = çekirdek. Histogram üstüne lines() ile (resim yukarıda sağda).</div>
+<pre class="r">&gt; kde &lt;- density(d$Kampfzeit)
+&gt; round(kde$bw, 3)
+<span class="o">[1] 16.791</span>
+&gt; plot(density(d$Kampfzeit, bw = 10, kernel = &quot;epanechnikov&quot;), main = &quot;Aufgabenteil c)&quot;,
++      xlab = &quot;Kampfzeit&quot;, ylab = &quot;Dichte&quot;)
+&gt; hist(d$Kampfzeit, freq = FALSE); lines(density(d$Kampfzeit))</pre>
+<div class="fa">Kleine Bandbreite → zackig, große → zu glatt. Standard-Kern ist "gaussian".</div>
+</div>
+<div class="e" id="e-4-6"><div class="eh"><span class="no">4.6</span><span class="ti">Säulendiagramm, empirische Verteilungsfunktion, mehrere Grafiken</span></div>
+<span class="sig"><b>Erkennen:</b> „Säulendiagramm der Häufigkeiten“, „empirische Verteilungsfunktion“, „nebeneinander“</span>
+<div class="ne">barplot(table(x)) kategoriler için; plot(ecdf(x)) ampirik dağılım fonksiyonu; par(mfrow = c(1, 2)) yan yana.</div>
+<pre class="r">&gt; par(mfrow = c(1, 2))
+&gt; barplot(table(d$Monster), main = &quot;Monster&quot;, ylab = &quot;Anzahl&quot;)
+&gt; plot(ecdf(d$Muenzen), main = &quot;ecdf&quot;, xlab = &quot;Muenzen&quot;, ylab = &quot;F(x)&quot;)
+&gt; par(mfrow = c(1, 1))
+&gt; F &lt;- ecdf(d$Muenzen); F(20)
+<span class="o">[1] 0.4166667</span></pre>
+</div>
+<div class="e" id="e-4-7"><div class="eh"><span class="no">4.7</span><span class="ti">Wahrscheinlichkeitsfunktion und Dichte zeichnen</span></div>
+<span class="sig"><b>Erkennen:</b> „Zeichnen Sie die Wahrscheinlichkeitsfunktion / Dichte von …“</span>
+<div class="ne">Kesikli: plot(değerler, dbinom(...), type = "h"). Sürekli: curve(dnorm(x, ...), from, to).</div>
+<pre class="r">&gt; plot(0:10, dbinom(0:10, size = 10, prob = 0.3), type = &quot;h&quot;, lwd = 3,
++      xlab = &quot;x&quot;, ylab = &quot;P(X = x)&quot;, main = &quot;B(10; 0.3)&quot;)
+&gt; curve(dnorm(x, mean = 100, sd = 15), from = 40, to = 160, ylab = &quot;Dichte&quot;)
+&gt; curve(dexp(x, rate = 0.25), from = 0, to = 20, add = FALSE)</pre>
+</div>
+<div class="sechead"><h2 class="sec" id="s-5"><span class="sn">5</span> Verteilungen in R</h2>
+<p class="secintro">Dört harf kuralı: d = olasılık/yoğunluk, p = P(X ≤ x), q = kantil, r = rastgele sayı.</p>
+<div class="e" id="e-5-1"><div class="eh"><span class="no">5.1</span><span class="ti">Das d-p-q-r-Prinzip und alle Parameter</span></div>
+<span class="sig"><b>Erkennen:</b> dbinom, pnorm, qt, rpois …</span>
+<div class="ne">Önek işlevi, ek dağılımı belirler. Parametre adlarına dikkat: normal → sd (varyans değil!), üstel → rate = λ.</div>
+<table class='t'><tr><th>Präfix</th><th>liefert</th><th>Beispiel</th></tr><tr><td><code>d…</code></td><td>\(P(X=x)\) (diskret) bzw. Dichte \(f(x)\)</td><td><code>dbinom(2, 10, 0.3)</code></td></tr><tr><td><code>p…</code></td><td>\(P(X\le x)=F(x)\)</td><td><code>pnorm(120, 100, 15)</code></td></tr><tr><td><code>q…</code></td><td>Quantil: x mit \(F(x)=p\)</td><td><code>qnorm(0.975)</code> = 1.96</td></tr><tr><td><code>r…</code></td><td>Zufallszahlen</td><td><code>rpois(5, 2)</code></td></tr></table><table class='t'><tr><th>Verteilung</th><th>R-Name und Parameter</th><th>Achtung</th></tr><tr><td>Binomial \(B(n,\pi)\)</td><td><code>binom(x, size = n, prob = π)</code></td><td>Bernoulli: size = 1</td></tr><tr><td>Poisson \(Po(\lambda)\)</td><td><code>pois(x, lambda = λ)</code></td><td></td></tr><tr><td>geometrisch \(p(1-p)^x\)</td><td><code>geom(x, prob = p)</code></td><td>zählt Misserfolge vor dem 1. Erfolg</td></tr><tr><td>hypergeometrisch</td><td><code>hyper(x, m, n, k)</code></td><td>m gesuchte, n andere, k gezogen</td></tr><tr><td>Gleich \(U(a,b)\)</td><td><code>unif(x, min = a, max = b)</code></td><td></td></tr><tr><td>Exponential \(Exp(\lambda)\)</td><td><code>exp(x, rate = λ)</code></td><td>rate = 1 / Mittelwert</td></tr><tr><td>Normal \(N(\mu,\sigma^2)\)</td><td><code>norm(x, mean = μ, sd = σ)</code></td><td><b>sd = Wurzel der Varianz</b></td></tr><tr><td>t</td><td><code>t(x, df)</code></td><td>df = n − 1</td></tr><tr><td>χ²</td><td><code>chisq(x, df)</code></td><td></td></tr><tr><td>Gamma</td><td><code>gamma(x, shape = α, rate = β)</code></td><td></td></tr></table>
+</div></div>
+<div class="e" id="e-5-2"><div class="eh"><span class="no">5.2</span><span class="ti">Wörter in R-Befehle übersetzen</span></div>
+<span class="sig"><b>Erkennen:</b> „höchstens“, „mindestens“, „mehr als“, „weniger als“, „zwischen“</span>
+<div class="ne">p… her zaman „≤“ demektir. Kesikli dağılımda „<“ ve „≥“ için k−1 kullan; süreklide < ile ≤ aynıdır.</div>
+<table class='t'><tr><th>Wortlaut</th><th>diskret (z. B. Binomial)</th><th>stetig (z. B. Normal)</th></tr><tr><td>genau k</td><td><code>dbinom(k, n, p)</code></td><td>= 0</td></tr><tr><td>höchstens k (≤)</td><td><code>pbinom(k, n, p)</code></td><td><code>pnorm(k, mu, sd)</code></td></tr><tr><td>weniger als k (&lt;)</td><td><code>pbinom(k - 1, n, p)</code></td><td><code>pnorm(k, mu, sd)</code></td></tr><tr><td>mehr als k (&gt;)</td><td><code>1 - pbinom(k, n, p)</code></td><td><code>1 - pnorm(k, mu, sd)</code></td></tr><tr><td>mindestens k (≥)</td><td><code>1 - pbinom(k - 1, n, p)</code></td><td><code>1 - pnorm(k, mu, sd)</code></td></tr><tr><td>zwischen a und b (inkl.)</td><td><code>pbinom(b, n, p) - pbinom(a - 1, n, p)</code></td><td><code>pnorm(b, …) - pnorm(a, …)</code></td></tr></table>
+<div class="fa">Testat 4: \(P(Y&gt;2)\) für \(Y\sim Po(2)\) = <code>1 - ppois(2, 2)</code> = <code>1 - dpois(0, 2) - dpois(1, 2) - dpois(2, 2)</code>; <b>nicht</b> <code>1 - ppois(3, 2)</code>.</div>
+</div>
+<div class="e" id="e-5-3"><div class="eh"><span class="no">5.3</span><span class="ti">Binomialverteilung</span></div>
+<span class="sig"><b>Erkennen:</b> „n unabhängige Versuche“, „mit Zurücklegen“</span>
+<div class="ne">dbinom tek değer, pbinom birikimli. size = deneme sayısı, prob = başarı olasılığı.</div>
+<pre class="r">&gt; round(dbinom(2, size = 10, prob = 0.3), 3)        <span class="c"># P(X = 2)</span>
+<span class="o">[1] 0.233</span>
+&gt; round(pbinom(2, size = 10, prob = 0.3), 3)        <span class="c"># P(X &lt;= 2)</span>
+<span class="o">[1] 0.383</span>
+&gt; round(1 - pbinom(4, size = 10, prob = 0.3), 3)    <span class="c"># P(X &gt;= 5)</span>
+<span class="o">[1] 0.15</span>
+&gt; round(sum(dbinom(2:4, size = 10, prob = 0.3)), 3) <span class="c"># P(2 &lt;= X &lt;= 4)</span>
+<span class="o">[1] 0.7</span>
+&gt; qbinom(0.5, size = 10, prob = 0.3)                <span class="c"># Median</span>
+<span class="o">[1] 3</span></pre>
+</div>
+<div class="e" id="e-5-4"><div class="eh"><span class="no">5.4</span><span class="ti">Poissonverteilung</span></div>
+<span class="sig"><b>Erkennen:</b> „im Durchschnitt λ pro …“</span>
+<div class="ne">lambda = ortalama (sorulan zaman aralığına göre!).</div>
+<pre class="r">&gt; round(dpois(0, lambda = 2), 3)          <span class="c"># P(X = 0)</span>
+<span class="o">[1] 0.135</span>
+&gt; round(1 - ppois(2, lambda = 2), 3)      <span class="c"># P(X &gt; 2)</span>
+<span class="o">[1] 0.323</span>
+&gt; round(ppois(4, lambda = 6), 3)          <span class="c"># 3 Stunden statt 1: lambda = 6</span>
+<span class="o">[1] 0.285</span></pre>
+</div>
+<div class="e" id="e-5-5"><div class="eh"><span class="no">5.5</span><span class="ti">Normalverteilung</span></div>
+<span class="sig"><b>Erkennen:</b> „\(X\sim N(\mu,\sigma^2)\)“, „Quantil“, „zwischen“</span>
+<div class="ne">pnorm(x, mean, sd), qnorm(p, mean, sd). Varyans verilmişse karekökünü al!</div>
+<pre class="r">&gt; round(pnorm(120, mean = 100, sd = 15), 3)              <span class="c"># P(X &lt;= 120)</span>
+<span class="o">[1] 0.909</span>
+&gt; round(1 - pnorm(85, mean = 100, sd = sqrt(225)), 3)    <span class="c"># P(X &gt; 85), Varianz 225</span>
+<span class="o">[1] 0.841</span>
+&gt; round(pnorm(115, 100, 15) - pnorm(85, 100, 15), 3)     <span class="c"># P(85 &lt; X &lt; 115)</span>
+<span class="o">[1] 0.683</span>
+&gt; round(qnorm(0.9, mean = 100, sd = 15), 3)              <span class="c"># 90 %-Quantil</span>
+<span class="o">[1] 119.223</span>
+&gt; round(qnorm(c(0.95, 0.975)), 3)                        <span class="c"># z-Quantile</span>
+<span class="o">[1] 1.645 1.960</span></pre>
+<div class="fa"><code>pnorm(x, 100, 225)</code> wäre falsch – das dritte Argument ist die Standardabweichung.</div>
+</div>
+<div class="e" id="e-5-6"><div class="eh"><span class="no">5.6</span><span class="ti">Exponential-, Gleich-, t-, χ²- und Gammaverteilung</span></div>
+<span class="sig"><b>Erkennen:</b> Wartezeit, „gleichverteilt“, Quantile für KI/Tests</span>
+<div class="ne">Üstel: rate = 1/ortalama. t ve χ² kantilleri güven aralığı ve testler için.</div>
+<pre class="r">&gt; round(1 - pexp(6, rate = 1/4), 3)        <span class="c"># Wartezeit &gt; 6, Mittel 4</span>
+<span class="o">[1] 0.223</span>
+&gt; round(punif(9, min = 4, max = 20), 3)     <span class="c"># P(X &lt;= 9) bei U(4, 20)</span>
+<span class="o">[1] 0.312</span>
+&gt; round(qt(0.975, df = 15), 3)
+<span class="o">[1] 2.131</span>
+&gt; round(qchisq(c(0.025, 0.975), df = 9), 3)
+<span class="o">[1]  2.700 19.023</span>
+&gt; round(pgamma(30, shape = 2, rate = 0.1), 3)
+<span class="o">[1] 0.801</span></pre>
+</div>
+<div class="sechead"><h2 class="sec" id="s-6"><span class="sn">6</span> Zufallszahlen und Simulation</h2>
+<p class="secintro">set.seed ile tekrarlanabilir rastgele sayılar; simülasyonla olasılık ve ortalamanın dağılımı.</p>
+<div class="e" id="e-6-1"><div class="eh"><span class="no">6.1</span><span class="ti">Zufallszahlen mit set.seed</span></div>
+<span class="sig"><b>Erkennen:</b> „Simulieren Sie …“, „Nutzen Sie set.seed(123)“</span>
+<div class="ne">set.seed aynı rastgele sayıları tekrar üretir; sınavda verilen seed'i mutlaka kullan.</div>
+<pre class="r">&gt; set.seed(123)
+&gt; x &lt;- rbinom(10000, size = 5, prob = 0.25)    <span class="c"># Testat 4: 20 gelbe von 80 Kugeln</span>
+&gt; round(mean(x == 2), 3); round(dbinom(2, 5, 0.25), 3)
+<span class="o">[1] 0.263</span>
+<span class="o">[1] 0.264</span>
+&gt; set.seed(1); round(rnorm(3, mean = 10, sd = 2), 3)
+<span class="o">[1]  8.747 10.367  8.329</span>
+&gt; set.seed(1); sample(1:6, 5, replace = TRUE)
+<span class="o">[1] 1 4 1 2 5</span></pre>
+<div class="fa">set.seed direkt vor dem Zufallsbefehl ausführen, sonst kommen andere Zahlen heraus.</div>
+</div></div>
+<div class="e" id="e-6-2"><div class="eh"><span class="no">6.2</span><span class="ti">Simulation: Verteilung des Mittelwerts (ZGWS)</span></div>
+<span class="sig"><b>Erkennen:</b> „Simulieren Sie 1 000 Stichproben vom Umfang n und berechnen Sie jeweils den Mittelwert“</span>
+<div class="ne">replicate(tekrar, ifade) her seferinde yeni örneklem çeker; ortalamalar yaklaşık normal dağılır.</div>
+<pre class="r">&gt; set.seed(42)
+&gt; mittel &lt;- replicate(1000, mean(rexp(36, rate = 1/50)))
+&gt; round(mean(mittel), 3); round(sd(mittel), 3)     <span class="c"># ≈ 50 und 50/sqrt(36) = 8.333</span>
+<span class="o">[1] 49.944</span>
+<span class="o">[1] 8.365</span>
+&gt; hist(mittel, freq = FALSE)</pre>
+</div>
+<div class="e" id="e-6-3"><div class="eh"><span class="no">6.3</span><span class="ti">Ziehen aus einer Urne</span></div>
+<span class="sig"><b>Erkennen:</b> „mit/ohne Zurücklegen“, „Wahrscheinlichkeiten prob = …“</span>
+<div class="ne">sample(x, size, replace, prob). replace = FALSE → geri koymadan.</div>
+<pre class="r">&gt; set.seed(7)
+&gt; sample(c(&quot;rot&quot;, &quot;weiss&quot;), 5, replace = TRUE, prob = c(0.4, 0.6))
+<span class="o">[1] &quot;rot&quot;   &quot;weiss&quot; &quot;weiss&quot; &quot;weiss&quot; &quot;weiss&quot;</span>
+&gt; sample(1:49, 6)                                  <span class="c"># Lotto, ohne Zurücklegen</span>
+<span class="o">[1]  2 15 26  8  3 24</span>
+&gt; round(dhyper(2, m = 4, n = 6, k = 3), 3)         <span class="c"># genau 2 rote aus 4 rot / 6 andere</span>
+<span class="o">[1] 0.3</span></pre>
+</div>
+<div class="sechead"><h2 class="sec" id="s-7"><span class="sn">7</span> Programmieren: Funktionen und Schleifen</h2>
+<p class="secintro">Kendi fonksiyonunu yaz, döngü kur, koşul kullan. Likelihood ve „Yennefer“ tipi soruların temeli.</p>
+<div class="e" id="e-7-1"><div class="eh"><span class="no">7.1</span><span class="ti">Eine Funktion schreiben</span></div>
+<span class="sig"><b>Erkennen:</b> „Schreiben Sie eine Funktion name(x), die …“</span>
+<div class="ne">isim <- function(argümanlar) { hesap; return(sonuç) }. Sonra isim(değer) ile çağır.</div>
+<pre class="r">&gt; var.emp &lt;- function(x) {
++   n &lt;- length(x)
++   return(sum((x - mean(x))^2) / n)
++ }
+&gt; round(var.emp(d$Muenzen), 3)
+<span class="o">[1] 48.743</span>
+&gt; quadrat &lt;- function(a, b = 2) a^b      <span class="c"># b hat einen Standardwert</span>
+&gt; quadrat(3); quadrat(3, 3)
+<span class="o">[1] 9</span>
+<span class="o">[1] 27</span></pre>
+</div></div>
+<div class="e" id="e-7-2"><div class="eh"><span class="no">7.2</span><span class="ti">for-Schleife</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie … für alle Werte von 1 bis 10“, „mithilfe einer Schleife“</span>
+<div class="ne">for (i in değerler) { ... }. Sonuçları önceden oluşturulan vektöre kaydet.</div>
+<pre class="r">&gt; erg &lt;- numeric(5)
+&gt; for (i in 1:5) {
++   erg[i] &lt;- i^2
++ }
+&gt; erg
+<span class="o">[1]  1  4  9 16 25</span>
+&gt; for (k in c(2, 4)) print(k * 10)
+<span class="o">[1] 20</span>
+<span class="o">[1] 40</span></pre>
+<div class="fa">Ergebnisvektor vor der Schleife anlegen (<code>numeric(n)</code>), sonst geht der Wert jeder Runde verloren.</div>
+</div>
+<div class="e" id="e-7-3"><div class="eh"><span class="no">7.3</span><span class="ti">if / else und ifelse</span></div>
+<span class="sig"><b>Erkennen:</b> „Falls … , dann …, sonst …“</span>
+<div class="ne">if tek değer için, ifelse vektörün her elemanı için.</div>
+<pre class="r">&gt; z &lt;- 7
+&gt; if (z &gt; 5) {
++   print(&quot;groß&quot;)
++ } else {
++   print(&quot;klein&quot;)
++ }
+<span class="o">[1] &quot;groß&quot;</span>
+&gt; ifelse(d$Muenzen &gt;= 25, &quot;viel&quot;, &quot;wenig&quot;)
+<span class="o"> [1] &quot;wenig&quot; &quot;viel&quot;  &quot;wenig&quot; &quot;viel&quot;  &quot;wenig&quot; &quot;wenig&quot; &quot;viel&quot;  &quot;viel&quot; </span>
+<span class="o"> [9] &quot;wenig&quot; &quot;wenig&quot; &quot;wenig&quot; &quot;viel&quot; </span></pre>
+</div>
+<div class="e" id="e-7-4"><div class="eh"><span class="no">7.4</span><span class="ti">sapply und while</span></div>
+<span class="sig"><b>Erkennen:</b> Funktion auf viele Werte anwenden, „solange …“</span>
+<div class="ne">sapply(değerler, fonksiyon) döngünün kısa yolu. while koşul sağlandıkça tekrarlar.</div>
+<pre class="r">&gt; sapply(1:5, function(i) i^2)
+<span class="o">[1]  1  4  9 16 25</span>
+&gt; i &lt;- 1
+&gt; while (2^i &lt; 100) i &lt;- i + 1
+&gt; i
+<span class="o">[1] 7</span></pre>
+</div>
+<div class="e" id="e-7-5"><div class="eh"><span class="no">7.5</span><span class="ti">Text-Funktion mit Schleife (Probeklausur-Typ „Yennefer-Zahl“)</span></div>
+<span class="sig"><b>Erkennen:</b> „Schreiben Sie eine Funktion, die … aneinanderreiht“</span>
+<div class="ne">paste0 ile döngüde metin büyüt. Sonuç için return.</div>
+<pre class="r">&gt; zahl.fun &lt;- function(n) {
++   z &lt;- &quot;0.&quot;
++   for (i in 1:n) z &lt;- paste0(z, i)
++   return(z)
++ }
+&gt; zahl.fun(12)
+<span class="o">[1] &quot;0.123456789101112&quot;</span>
+&gt; nchar(zahl.fun(12)) - 2      <span class="c"># Anzahl Nachkommastellen</span>
+<span class="o">[1] 15</span></pre>
+</div>
+<div class="sechead"><h2 class="sec" id="s-8"><span class="sn">8</span> Maximum-Likelihood in R</h2>
+<p class="secintro">Probeklausur B'de 15 puan: tekil likelihood'lar, toplam likelihood, likelihood fonksiyonu, ızgara araması, optimise/nlm.</p>
+<div class="e" id="e-8-1"><div class="eh"><span class="no">8.1</span><span class="ti">Individuelle Likelihoods und Gesamt-Likelihood</span></div>
+<span class="sig"><b>Erkennen:</b> „Ergänzen Sie d um eine Spalte iL20 mit den individuellen Likelihoods … Berechnen Sie die Likelihood aller Beobachtungen“</span>
+<div class="ne">Her gözlem için d…(x, parametre) = tekil likelihood. Hepsinin çarpımı (prod) = toplam likelihood.</div>
+<ol class="st"><li>Spalte mit <code>d$neu &lt;- d…(d$X, Parameter)</code> anlegen.</li><li><code>prod()</code> = Produkt aller Werte = Likelihood.</li><li>Form \(X\times10^{Y}\): <code>formatC(L, format = "e", digits = 3)</code> → „4.104e-20“ heißt \(4.104\times10^{-20}\).</li></ol>
+<pre class="r">&gt; d$iL20 &lt;- dpois(d$Muenzen, lambda = 20)
+&gt; head(d[, c(&quot;Muenzen&quot;, &quot;iL20&quot;)], 3)
+<span class="o">  Muenzen       iL20</span>
+<span class="o">1      18 0.08439355</span>
+<span class="o">2      25 0.04458765</span>
+<span class="o">3      12 0.01762517</span>
+&gt; (L20 &lt;- prod(d$iL20))
+<span class="o">[1] 4.104144e-20</span>
+&gt; formatC(L20, format = &quot;e&quot;, digits = 3)
+<span class="o">[1] &quot;4.104e-20&quot;</span></pre>
+<div class="ks">„Die Likelihood aller Beobachtungen unter λ = 20 beträgt L(λ = 20) = 4.104 × 10^(-20).“</div>
+</div></div>
+<div class="e" id="e-8-2"><div class="eh"><span class="no">8.2</span><span class="ti">Likelihood-Funktion und ML-Schätzer über einen Bereich</span></div>
+<span class="sig"><b>Erkennen:</b> „Schreiben Sie eine Funktion Likelihood.pois(lambda, x) … für alle Werte 17 ≤ λ ≤ 23 … bestimmen Sie den ML-Schätzer“</span>
+<div class="ne">Fonksiyon parametre ve veriyi alır, prod(d…) döndürür. Tüm değerler için hesapla, en büyüğü seç (which.max).</div>
+<pre class="r">&gt; Likelihood.pois &lt;- function(lambda, x) {
++   L &lt;- prod(dpois(x, lambda))
++   return(L)
++ }
+&gt; werte &lt;- 17:23
+&gt; L &lt;- sapply(werte, Likelihood.pois, x = d$Muenzen)
+&gt; cbind(werte, L)
+<span class="o">     werte            L</span>
+<span class="o">[1,]    17 3.498157e-23</span>
+<span class="o">[2,]    18 8.138703e-22</span>
+<span class="o">[3,]    19 8.346643e-21</span>
+<span class="o">[4,]    20 4.104144e-20</span>
+<span class="o">[5,]    21 1.039568e-19</span>
+<span class="o">[6,]    22 1.442835e-19</span>
+<span class="o">[7,]    23 1.157575e-19</span>
+&gt; werte[which.max(L)]
+<span class="o">[1] 22</span></pre>
+<div class="fa">Den λ-Wert mit der größten Likelihood angeben, nicht die Likelihood selbst. Mit einer for-Schleife und print() geht es genauso.</div>
+<div class="ks">„Die Likelihood ist bei λ = 22 maximal; der ML-Schätzer aus der gegebenen Menge ist λ̂ = 22.“</div>
+</div>
+<div class="e" id="e-8-3"><div class="eh"><span class="no">8.3</span><span class="ti">Log-Likelihood (gegen numerical underflow)</span></div>
+<span class="sig"><b>Erkennen:</b> „Log-Likelihood“, Likelihood ist 0 (zu klein)</span>
+<div class="ne">Çok gözlemde çarpım 0'a yuvarlanır → logaritma al: sum(log(d…)) veya log = TRUE.</div>
+<pre class="r">&gt; logL.pois &lt;- function(lambda, x) sum(dpois(x, lambda, log = TRUE))
+&gt; round(logL.pois(20, d$Muenzen), 3)
+<span class="o">[1] -44.64</span>
+&gt; round(sum(log(dpois(d$Muenzen, 20))), 3)      <span class="c"># gleich</span>
+<span class="o">[1] -44.64</span>
+&gt; prod(dpois(rep(d$Muenzen, 100), 20))          <span class="c"># 1200 Werte: Produkt wird 0</span>
+<span class="o">[1] 0</span></pre>
+</div>
+<div class="e" id="e-8-4"><div class="eh"><span class="no">8.4</span><span class="ti">ML-Schätzer mit optimise (ein Parameter)</span></div>
+<span class="sig"><b>Erkennen:</b> „Bestimmen Sie den ML-Schätzer numerisch“, ein Parameter</span>
+<div class="ne">optimise(fonksiyon, interval, veri, maximum = TRUE) aralıktaki maksimumu bulur.</div>
+<pre class="r">&gt; opt &lt;- optimise(logL.pois, interval = c(10, 40), x = d$Muenzen, maximum = TRUE)
+&gt; round(opt$maximum, 3)
+<span class="o">[1] 22.083</span>
+&gt; round(mean(d$Muenzen), 3)       <span class="c"># Kontrolle: Poisson-ML = Mittelwert</span>
+<span class="o">[1] 22.083</span></pre>
+</div>
+<div class="e" id="e-8-5"><div class="eh"><span class="no">8.5</span><span class="ti">ML mit nlm (zwei Parameter, Transformation)</span></div>
+<span class="sig"><b>Erkennen:</b> „Schätzen Sie α und β mit nlm … Startwerte … rücktransformiert“</span>
+<div class="ne">nlm <b>minimize</b> eder → negatif log-likelihood yaz. Parametreler pozitifse exp() dönüşümü; sonucu exp() ile geri çevir.</div>
+<ol class="st"><li>Funktion bekommt den <b>transformierten</b> Parametervektor, rechnet <code>exp()</code> und gibt <b>−</b>Log-Likelihood zurück.</li><li>Startwerte: so wie in der Aufgabe; stehen dort transformierte Werte (\(\alpha_t,\beta_t\)), direkt einsetzen.</li><li>Ergebnis <code>model$estimate</code> ist transformiert → <code>exp()</code>.</li></ol>
+<pre class="r">&gt; x &lt;- d$Kampfzeit
+&gt; neglogL &lt;- function(t_param, x) {
++   param &lt;- exp(t_param)              <span class="c"># garantiert positive Parameter</span>
++   -sum(dgamma(x, shape = param[1], rate = param[2], log = TRUE))
++ }
+&gt; model &lt;- suppressWarnings(nlm(neglogL, c(0.01, 0.5), x))
+&gt; round(exp(model$estimate), 3)        <span class="c"># alpha, beta zurücktransformiert</span>
+<span class="o">[1] 0.983 0.029</span></pre>
+<div class="fa">Warnungen („NaNs produced“) während der Iteration sind meist harmlos.</div>
+</div>
+<div class="e" id="e-8-6"><div class="eh"><span class="no">8.6</span><span class="ti">Likelihood grafisch darstellen</span></div>
+<span class="sig"><b>Erkennen:</b> „Stellen Sie die Log-Likelihood für λ zwischen … grafisch dar“</span>
+<div class="ne">Parametre ızgarası oluştur, her değer için log-likelihood hesapla, plot(type = "l").</div>
+<pre class="r">&gt; lam &lt;- seq(15, 30, by = 0.1)
+&gt; ll &lt;- sapply(lam, logL.pois, x = d$Muenzen)
+&gt; plot(lam, ll, type = &quot;l&quot;, xlab = &quot;lambda&quot;, ylab = &quot;Log-Likelihood&quot;)
+&gt; abline(v = lam[which.max(ll)], lty = 2)
+&gt; lam[which.max(ll)]
+<span class="o">[1] 22.1</span></pre>
+</div>
+<div class="sechead"><h2 class="sec" id="s-9"><span class="sn">9</span> Konfidenzintervalle und Tests in R</h2>
+<p class="secintro">Elle formül (qnorm/qt/qchisq) veya hazır fonksiyon (t.test, binom.test, chisq.test). Çıktıdan doğru sayıyı oku.</p>
+<div class="e" id="e-9-1"><div class="eh"><span class="no">9.1</span><span class="ti">Konfidenzintervall für μ (σ bekannt und unbekannt)</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie ein 95 %-Konfidenzintervall für den Erwartungswert“</span>
+<div class="ne">σ biliniyorsa qnorm, bilinmiyorsa qt(…, n−1) ve sd. t.test()$conf.int aynı sonucu verir.</div>
+<pre class="r">&gt; x &lt;- d$Kampfzeit; n &lt;- length(x)
+&gt; round(mean(x) + c(-1, 1) * qnorm(0.975) * 30 / sqrt(n), 3)        <span class="c"># sigma = 30 bekannt</span>
+<span class="o">[1] 16.876 50.824</span>
+&gt; round(mean(x) + c(-1, 1) * qt(0.975, n - 1) * sd(x) / sqrt(n), 3) <span class="c"># sigma unbekannt</span>
+<span class="o">[1] 14.365 53.335</span>
+&gt; round(t.test(x, conf.level = 0.95)$conf.int, 3)
+<span class="o">[1] 14.365 53.335</span>
+<span class="o">attr(,&quot;conf.level&quot;)</span>
+<span class="o">[1] 0.95</span></pre>
+<div class="ks">„Das 95 %-Konfidenzintervall für die mittlere Kampfzeit lautet [14.365; 53.335].“</div>
+</div></div>
+<div class="e" id="e-9-2"><div class="eh"><span class="no">9.2</span><span class="ti">Konfidenzintervall für Anteil und Varianz</span></div>
+<span class="sig"><b>Erkennen:</b> „KI für den Anteil“, „KI für die Varianz“</span>
+<div class="ne">Oran: p̂ ± z·√(p̂(1−p̂)/n). Varyans: (n−1)s²/χ² kantilleri (büyük kantil alt sınır).</div>
+<pre class="r">&gt; p &lt;- 60 / 200
+&gt; round(p + c(-1, 1) * qnorm(0.975) * sqrt(p * (1 - p) / 200), 3)
+<span class="o">[1] 0.236 0.364</span>
+&gt; s2 &lt;- var(d$Muenzen); n &lt;- 12
+&gt; round((n - 1) * s2 / qchisq(c(0.975, 0.025), df = n - 1), 3)
+<span class="o">[1]  26.684 153.290</span></pre>
+</div>
+<div class="e" id="e-9-3"><div class="eh"><span class="no">9.3</span><span class="ti">t-Test mit t.test und Output lesen</span></div>
+<span class="sig"><b>Erkennen:</b> „Überprüfen Sie die Behauptung mit einem geeigneten Test in R“, „Welcher Code ist richtig?“</span>
+<div class="ne">t.test(x, mu = μ₀, alternative = "greater"/"less"/"two.sided"). Çıktıdan t, df, p-value oku; p ≤ α → H₀ ret.</div>
+<ol class="st"><li>\(H_1:\mu&gt;\mu_0\) → <code>"greater"</code> · \(H_1:\mu&lt;\mu_0\) → <code>"less"</code> · \(H_1:\mu\ne\mu_0\) → Standard (zweiseitig).</li><li>Konfidenzniveau ändern: <code>conf.level = 0.9</code>.</li><li>Zahlen direkt holen: <code>t.test(…)$p.value</code>, <code>$statistic</code>, <code>$conf.int</code>.</li></ol>
+<pre class="r">&gt; t.test(d$Muenzen, mu = 20, alternative = &quot;greater&quot;)
+<span class="o"></span>
+<span class="o">	One Sample t-test</span>
+<span class="o"></span>
+<span class="o">data:  d$Muenzen</span>
+<span class="o">t = 0.98969, df = 11, p-value = 0.1718</span>
+<span class="o">alternative hypothesis: true mean is greater than 20</span>
+<span class="o">95 percent confidence interval:</span>
+<span class="o"> 18.30293      Inf</span>
+<span class="o">sample estimates:</span>
+<span class="o">mean of x </span>
+<span class="o"> 22.08333 </span></pre>
+<div class="ks">„H₀: μ ≤ 20 gegen H₁: μ > 20. Der p-Wert beträgt 0.172 > 0.05, daher wird H₀ nicht verworfen; eine mittlere Münzzahl über 20 kann zum Niveau 5 % nicht statistisch abgesichert werden.“</div>
+</div>
+<div class="e" id="e-9-4"><div class="eh"><span class="no">9.4</span><span class="ti">Test von Hand: Teststatistik, kritischer Wert, p-Wert</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie Teststatistik und p-Wert in R“ (Gauß-Test, t-Test)</span>
+<div class="ne">z veya t'yi formülle hesapla; kritik değer q…, p-değeri p… ile.</div>
+<pre class="r">&gt; x &lt;- d$Muenzen; n &lt;- length(x)
+&gt; z &lt;- (mean(x) - 20) / (6 / sqrt(n))          <span class="c"># Gauss-Test, sigma = 6 bekannt</span>
+&gt; round(z, 3); round(qnorm(0.95), 3); round(1 - pnorm(z), 3)
+<span class="o">[1] 1.203</span>
+<span class="o">[1] 1.645</span>
+<span class="o">[1] 0.115</span>
+&gt; t &lt;- (mean(x) - 20) / (sd(x) / sqrt(n))      <span class="c"># t-Test</span>
+&gt; round(t, 3); round(1 - pt(t, df = n - 1), 3)
+<span class="o">[1] 0.99</span>
+<span class="o">[1] 0.172</span>
+&gt; round(2 * (1 - pt(abs(t), df = n - 1)), 3)   <span class="c"># zweiseitig</span>
+<span class="o">[1] 0.344</span></pre>
+</div>
+<div class="e" id="e-9-5"><div class="eh"><span class="no">9.5</span><span class="ti">Binomialtest (exakt und über pbinom)</span></div>
+<span class="sig"><b>Erkennen:</b> „Anteil“, „7 von 8 Versuchen“, kleines n</span>
+<div class="ne">binom.test(başarı, n, p = π₀, alternative) veya p-değerini doğrudan pbinom ile.</div>
+<pre class="r">&gt; binom.test(7, 8, p = 0.5, alternative = &quot;greater&quot;)$p.value
+<span class="o">[1] 0.03515625</span>
+&gt; 1 - pbinom(6, 8, 0.5)                       <span class="c"># P(X &gt;= 7), gleich</span>
+<span class="o">[1] 0.03515625</span>
+&gt; z &lt;- (220 - 400 * 0.5) / sqrt(400 * 0.5 * 0.5); round(1 - pnorm(z), 4)   <span class="c"># approximativ</span>
+<span class="o">[1] 0.0228</span></pre>
+</div>
+<div class="e" id="e-9-6"><div class="eh"><span class="no">9.6</span><span class="ti">χ²-Unabhängigkeitstest und χ²-Anpassungstest</span></div>
+<span class="sig"><b>Erkennen:</b> „Testen Sie, ob … unabhängig sind“, „Ist der Würfel fair?“</span>
+<div class="ne">Tabloyu matrix olarak gir; chisq.test(tablo, correct = FALSE) — dersteki elle hesapla aynı. Uyum testi: chisq.test(sıklıklar, p = oranlar).</div>
+<pre class="r">&gt; tafel &lt;- matrix(c(20, 40, 60, 80), nrow = 2)     <span class="c"># spaltenweise!</span>
+&gt; test &lt;- chisq.test(tafel, correct = FALSE)
+&gt; test$expected
+<span class="o">     [,1] [,2]</span>
+<span class="o">[1,]   24   56</span>
+<span class="o">[2,]   36   84</span>
+&gt; round(test$statistic, 3); round(test$p.value, 3)
+<span class="o">X-squared </span>
+<span class="o">    1.587 </span>
+<span class="o">[1] 0.208</span>
+&gt; chisq.test(c(45, 35, 20), p = c(0.5, 0.3, 0.2))
+<span class="o"></span>
+<span class="o">	Chi-squared test for given probabilities</span>
+<span class="o"></span>
+<span class="o">data:  c(45, 35, 20)</span>
+<span class="o">X-squared = 1.3333, df = 2, p-value = 0.5134</span></pre>
+<div class="fa">Bei 2×2-Tafeln macht R ohne <code>correct = FALSE</code> eine Stetigkeitskorrektur – dann stimmt der Wert nicht mit der Rechnung per Hand überein.</div>
+</div>
+<div class="e" id="e-9-7"><div class="eh"><span class="no">9.7</span><span class="ti">χ²-Varianztest von Hand</span></div>
+<span class="sig"><b>Erkennen:</b> „Testen Sie, ob die Varianz größer als … ist“</span>
+<div class="ne">χ² = (n−1)·s²/σ₀²; kritik değer qchisq, p-değeri 1 − pchisq.</div>
+<pre class="r">&gt; x &lt;- d$Muenzen; n &lt;- length(x)
+&gt; chi &lt;- (n - 1) * var(x) / 25                  <span class="c"># H0: sigma^2 &lt;= 25</span>
+&gt; round(chi, 3); round(qchisq(0.95, n - 1), 3); round(1 - pchisq(chi, n - 1), 3)
+<span class="o">[1] 23.397</span>
+<span class="o">[1] 19.675</span>
+<span class="o">[1] 0.016</span></pre>
+</div>
+<div class="sechead"><h2 class="sec" id="s-10"><span class="sn">10</span> Lineare Regression in R</h2>
+<p class="secintro">lm ile model, summary ile katsayılar ve anlamlılık, predict ile tahmin.</p>
+<div class="e" id="e-10-1"><div class="eh"><span class="no">10.1</span><span class="ti">Modell schätzen und Output lesen</span></div>
+<span class="sig"><b>Erkennen:</b> „Schätzen Sie ein lineares Regressionsmodell von … auf …“, „Interpretieren Sie“</span>
+<div class="ne">lm(y ~ x, data = d). summary'de Estimate = katsayı, Pr(>|t|) = p-değeri (H₀: β = 0), R-squared.</div>
+<pre class="r">&gt; m &lt;- lm(Muenzen ~ Kampfzeit, data = d)
+&gt; summary(m)
+<span class="o"></span>
+<span class="o">Call:</span>
+<span class="o">lm(formula = Muenzen ~ Kampfzeit, data = d)</span>
+<span class="o"></span>
+<span class="o">Residuals:</span>
+<span class="o">    Min      1Q  Median      3Q     Max </span>
+<span class="o">-5.1692 -1.3186  0.5415  1.0897  5.6178 </span>
+<span class="o"></span>
+<span class="o">Coefficients:</span>
+<span class="o">            Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="o">(Intercept)  14.6178     1.2593  11.608 3.99e-07 ***</span>
+<span class="o">Kampfzeit     0.2205     0.0281   7.848 1.39e-05 ***</span>
+<span class="o">---</span>
+<span class="o">Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span class="o"></span>
+<span class="o">Residual standard error: 2.858 on 10 degrees of freedom</span>
+<span class="o">Multiple R-squared:  0.8603,	Adjusted R-squared:  0.8463 </span>
+<span class="o">F-statistic: 61.59 on 1 and 10 DF,  p-value: 1.392e-05</span></pre>
+<div class="ks">„Steigt die Kampfzeit um eine Minute, steigt die Münzzahl im Durchschnitt um 0.221 Münzen (ceteris paribus). Der Koeffizient ist signifikant (p < 0.001).“</div>
+</div></div>
+<div class="e" id="e-10-2"><div class="eh"><span class="no">10.2</span><span class="ti">Koeffizienten, Prognose, Residuen, R²</span></div>
+<span class="sig"><b>Erkennen:</b> „Welche Münzzahl wird für 30 Minuten prognostiziert?“, „Bestimmtheitsmaß“</span>
+<div class="ne">coef → katsayılar, predict(m, newdata = data.frame(...)) → tahmin, residuals → kalıntılar, summary(m)$r.squared → R².</div>
+<pre class="r">&gt; round(coef(m), 3)
+<span class="o">(Intercept)   Kampfzeit </span>
+<span class="o">     14.618       0.221 </span>
+&gt; round(predict(m, newdata = data.frame(Kampfzeit = 30)), 3)
+<span class="o">     1 </span>
+<span class="o">21.234 </span>
+&gt; round(head(residuals(m), 3), 3)
+<span class="o">     1      2      3 </span>
+<span class="o"> 0.625  0.458 -3.324 </span>
+&gt; round(summary(m)$r.squared, 3)
+<span class="o">[1] 0.86</span>
+&gt; round(confint(m, level = 0.95), 3)
+<span class="o">             2.5 % 97.5 %</span>
+<span class="o">(Intercept) 11.812 17.424</span>
+<span class="o">Kampfzeit    0.158  0.283</span></pre>
+<div class="fa">In <code>newdata</code> muss der Spaltenname exakt wie im Modell heißen (Kampfzeit).</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-11"><span class="sn">11</span> Fehlermeldungen und Kontrolle</h2>
+<p class="secintro">Hata mesajını okuyunca çoğu zaman sebep hemen belli olur.</p>
+<div class="e" id="e-11-1"><div class="eh"><span class="no">11.1</span><span class="ti">Typische Fehlermeldungen und ihre Lösung</span></div>
+<span class="sig"><b>Erkennen:</b> Error in …</span>
+<div class="ne">Mesajın son kısmı ne olduğunu söyler: nesne yok, fonksiyon yok, beklenmeyen sembol, sayısal olmayan argüman.</div>
+<table class='t'><tr><th>Meldung</th><th>Ursache</th><th>Lösung</th></tr><tr><td><code>object 'X' not found</code></td><td>Objekt nicht erstellt, Tippfehler, Groß/Klein</td><td>Zeile mit der Zuweisung ausführen; Schreibweise prüfen</td></tr><tr><td><code>could not find function "…"</code></td><td>Funktionsname falsch oder eigene Funktion noch nicht ausgeführt</td><td>Schreibweise; Funktionsdefinition zuerst ausführen</td></tr><tr><td><code>unexpected symbol / ')' / ','</code></td><td>Klammer, Komma oder Anführungszeichen fehlt bzw. zu viel</td><td>Klammern zählen</td></tr><tr><td><code>non-numeric argument to binary operator</code></td><td>mit Text gerechnet</td><td><code>str(d)</code>; Einlesen mit richtigem dec / as.numeric</td></tr><tr><td><code>argument is not numeric or logical: returning NA</code></td><td>mean() auf Text-Spalte</td><td>richtige Spalte, Einlesen prüfen</td></tr><tr><td><code>cannot open file 'X.csv': No such file</code></td><td>falscher Ordner oder Dateiname</td><td><code>getwd()</code>, <code>list.files()</code>, setwd</td></tr><tr><td><code>undefined columns selected</code></td><td>Spaltenname falsch in d[ , "…"]</td><td><code>names(d)</code></td></tr><tr><td><code>$ operator is invalid for atomic vectors</code></td><td>$ auf einen Vektor statt Data Frame</td><td>Objekt prüfen (<code>class()</code>)</td></tr><tr><td>Ergebnis <code>NA</code></td><td>fehlende Werte</td><td><code>na.rm = TRUE</code></td></tr><tr><td>Konsole zeigt <code>+</code></td><td>Befehl unvollständig (Klammer offen)</td><td>Esc drücken, Klammer ergänzen</td></tr></table>
+</div></div>
+<div class="e" id="e-11-2"><div class="eh"><span class="no">11.2</span><span class="ti">Checkliste vor dem Abgeben</span></div>
+<span class="sig"><b>Erkennen:</b> letzte 5 Minuten</span>
+<div class="ne">Her kutuyu bu listeyle kontrol et.</div>
+<ol class="st"><li>Jede Teilaufgabe: Code <b>und</b> Output in Box 1, Antwortsatz (ohne Code) in Box 2.</li><li>Alle Zahlen mit <code>round(…, 3)</code> gerundet, auch im Antwortsatz.</li><li>Grafiken: Titel mit Sitz, Matrikelnummer, Aufgabenteil; Achsenbeschriftung; als PDF gespeichert und hochgeladen.</li><li>Fehlerhaften Code aus der Antwort gelöscht; keine zwei widersprüchlichen Ergebnisse.</li><li>R-Skript gespeichert (Strg+S) im Ordner Dokumente.</li></ol>
+</div>
+
+</section>

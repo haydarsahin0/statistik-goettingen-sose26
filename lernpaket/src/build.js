@@ -49,7 +49,12 @@ fs.writeFileSync(path.join(SRC, 'buch.html'), html);
   const browser = await chromium.launch({ executablePath: process.env.CHROME || undefined });
   const page = await browser.newPage();
   await page.goto('file://' + path.join(SRC, 'buch.html'), { waitUntil: 'networkidle' });
-  await page.evaluate(() => document.fonts.ready);
+  // alle deklarierten Schriften (auch unicode-range-Teile) laden, sonst greift Chromium
+  // gelegentlich auf Ersatzschriften zurück und der Umbruch ändert sich von Lauf zu Lauf
+  await page.evaluate(async () => {
+    await Promise.all([...document.fonts].map(f => f.load().catch(() => null)));
+    await document.fonts.ready;
+  });
   await page.pdf({
     path: path.join(OUT, OUTNAME),
     format: 'A4',

@@ -1,0 +1,92 @@
+/* ================================================================
+   Formelsammlungen (Statistik lila, R grün) – druckfest, ohne Transparenz
+   aktiv mit THEME=fs in build.js
+   ================================================================ */
+body.fs{font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;color:#1d1d1f;background:#fff;
+  font-size:10.2pt;line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:-.003em}
+body.fs .pagebg{display:none}
+body.fs .katex{font-size:1.02em}
+body.fs section{padding:0 5mm}
+.fs-stat{--c:#6d28d9;--cd:#4c1d95;--cl:#f3eeff;--cm:#ddd0fb;--cx:#faf8ff}
+.fs-r{--c:#047857;--cd:#064e3b;--cl:#e7f6ef;--cm:#bfe5d3;--cx:#f6fbf8}
+
+/* Titel */
+body.fs .fs-hero{background:linear-gradient(135deg,var(--cd),var(--c));color:#fff;border-radius:18px;padding:11mm 10mm 9mm;margin:2mm 0 5mm}
+body.fs .fs-hero h1{font-size:2.2rem;font-weight:800;letter-spacing:-.03em;margin:0 0 .2em;line-height:1.05}
+body.fs .fs-hero .sub{font-size:1.05rem;font-weight:600;margin-bottom:.7em}
+body.fs .fs-hero p{margin:.35em 0;font-size:.92rem;line-height:1.5}
+body.fs .fs-hero .chip{display:inline-block;border:1px solid #fff;border-radius:99px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+body.fs .howto{border:1.5px solid var(--cm);background:var(--cx);border-radius:14px;padding:9px 14px;margin:0 0 5mm;font-size:.9rem}
+body.fs .howto b.t{color:var(--cd)}
+body.fs .howto ol{margin:.3em 0 0;padding-left:1.3em}
+
+/* Inhaltsverzeichnis */
+body.fs h2.toc-h{font-size:1.45rem;font-weight:800;letter-spacing:-.02em;color:var(--cd);margin:2mm 0 3mm;border-bottom:3px solid var(--c);padding-bottom:3px}
+body.fs .toc{columns:2;column-gap:8mm;font-size:.8rem;line-height:1.38}
+body.fs .toc .ts{break-inside:avoid;margin:0 0 2.2mm}
+body.fs .toc .tsh{display:flex;font-weight:800;color:#fff;background:var(--c);border-radius:6px;padding:2px 7px;margin-bottom:1mm}
+body.fs .toc a{color:inherit;text-decoration:none}
+body.fs .toc .tl{display:flex;align-items:baseline;padding:0 2px}
+body.fs .toc .tl .n{flex:none;width:2.6em;color:var(--c);font-weight:700}
+body.fs .toc .tl .x{flex:1 1 auto}
+body.fs .toc .tl .dots{flex:1 0 6px;border-bottom:1px dotted #9ca3af;margin:0 4px;transform:translateY(-3px)}
+body.fs .toc .tl .p,body.fs .toc .tsh .p{flex:none;font-weight:700;font-variant-numeric:tabular-nums}
+body.fs .toc .tsh .x{flex:1}
+
+/* Aufgaben-Finder */
+body.fs table.finder{width:100%;border-collapse:separate;border-spacing:0;font-size:.8rem;border:1px solid var(--cm);border-radius:10px;overflow:hidden;margin:2mm 0 4mm}
+body.fs table.finder th{background:var(--c);color:#fff;text-align:left;padding:4px 7px;font-weight:700}
+body.fs table.finder td{padding:3px 7px;border-bottom:1px solid #eceef2;vertical-align:top}
+body.fs table.finder tr:nth-child(even) td{background:var(--cx)}
+body.fs table.finder td.go{white-space:nowrap;font-weight:800;color:var(--c)}
+body.fs table.finder td.go a{color:inherit;text-decoration:none}
+body.fs table.finder tr.grp td{background:var(--cl);font-weight:800;color:var(--cd);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+
+/* Abschnitt */
+body.fs h2.sec{font-size:1.5rem;font-weight:800;letter-spacing:-.025em;color:#fff;background:linear-gradient(90deg,var(--cd),var(--c));
+  border-radius:12px;padding:6px 13px;margin:5mm 0 2.5mm;break-after:avoid;page-break-after:avoid}
+body.fs h2.sec .sn{display:inline-block;min-width:1.6em}
+body.fs p.secintro{margin:0 0 2.5mm;font-size:.9rem;color:#374151}
+
+/* Eintrag */
+body.fs .e{border:1px solid #e3e5ea;border-left:5px solid var(--c);border-radius:10px;background:#fff;margin:0 0 3mm;padding:7px 11px 8px;break-inside:avoid;page-break-inside:avoid}
+body.fs .e.long{break-inside:auto;page-break-inside:auto}
+body.fs .eh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:3px}
+body.fs .eh .no{flex:none;background:var(--c);color:#fff;font-weight:800;font-size:.78rem;border-radius:6px;padding:1px 7px}
+body.fs .eh .ti{font-weight:800;font-size:1.03rem;letter-spacing:-.01em;color:#111827}
+body.fs .sig{display:block;font-size:.8rem;color:#6b7280;margin:0 0 4px}
+body.fs .sig b{color:#374151;font-weight:600}
+body.fs .ne{background:#effaf8;border:1px solid #c8ece4;border-radius:8px;padding:4px 9px;margin:4px 0;font-size:.9rem}
+body.fs .ne:before{content:"TR  ";font-weight:800;color:#0f766e;font-size:.72rem;letter-spacing:.06em}
+body.fs .fm{background:var(--cx);border:1px solid var(--cm);border-radius:8px;padding:5px 10px;margin:5px 0;overflow-x:auto}
+body.fs .fm .katex-display{margin:.25em 0}
+body.fs ol.st{margin:4px 0;padding-left:1.35em}
+body.fs ol.st>li{margin:1px 0}
+body.fs ol.st>li::marker{color:var(--c);font-weight:800}
+body.fs .bsp{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:8px;padding:5px 10px;margin:5px 0;font-size:.92rem}
+body.fs .bsp>b:first-child{color:var(--cd)}
+body.fs .fa{color:#b42318;font-size:.88rem;margin:4px 0 0}
+body.fs .fa:before{content:"⚠ ";font-weight:800}
+body.fs .ks{background:#fff8eb;border:1px solid #f4dcae;border-radius:8px;padding:4px 9px;margin:5px 0 0;font-size:.9rem}
+body.fs .ks:before{content:"✎ Klausursatz: ";font-weight:800;color:#b45309}
+body.fs table.t{border-collapse:separate;border-spacing:0;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;margin:5px 0;font-size:.86rem;width:100%}
+body.fs table.t th{background:var(--cl);color:var(--cd);text-align:left;padding:3px 7px;font-weight:700}
+body.fs table.t td{padding:3px 7px;border-top:1px solid #eef0f3;vertical-align:top}
+body.fs table.t.c td, body.fs table.t.c th{text-align:center}
+body.fs code{font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:.86em;background:#f1f5f9;border-radius:4px;padding:0 3px}
+body.fs pre.r{font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:.76rem;line-height:1.42;background:#0f172a;color:#e2e8f0;border-radius:8px;padding:7px 10px;margin:5px 0;white-space:pre-wrap;word-break:break-word}
+body.fs pre.r .o{color:#a7f3d0}
+body.fs pre.r .c{color:#94a3b8}
+body.fs .two{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+body.fs .small{font-size:.82rem;color:#4b5563}
+body.fs table.phi{font-size:.7rem;font-variant-numeric:tabular-nums}
+body.fs table.phi td,body.fs table.phi th{padding:1px 4px;text-align:center}
+body.fs .pb{page-break-before:always}
+body.fs .sechead{break-inside:avoid;page-break-inside:avoid}
+body.fs .sechead h2.sec{margin-top:4mm}
+body.fs .bsp .katex, body.fs .ne .katex, body.fs ol.st .katex, body.fs .fa .katex, body.fs .ks .katex, body.fs table.t .katex{display:inline-block;margin:.12em 0;line-height:1.2}
+body.fs .toc .tsh .p{margin-left:6px}
+body.fs .imgs{display:flex;gap:3mm;margin:5px 0}
+body.fs .imgs img{flex:1 1 0;min-width:0;max-height:62mm;object-fit:contain;border:1px solid #e5e7eb;border-radius:8px;background:#fff}
+body.fs pre.r .p{color:#e2e8f0}
+body.fs .fs-r .ks:before{content:"✎ Antwortsatz (ILIAS): "}

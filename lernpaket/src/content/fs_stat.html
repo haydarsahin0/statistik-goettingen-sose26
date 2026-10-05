@@ -1,0 +1,1076 @@
+<section class="fs-stat">
+<div class="fs-hero"><div class="chip">SoSe 26 · Göttingen · Teil A</div><h1>Formelsammlung Statistik</h1><div class="sub">Teil A · alle Aufgabentypen von V01 bis V13 · Schritt für Schritt</div><p>Jede Formel, die in Vorlesung, Tutorien, Testaten und Probeklausuren vorkommt – sortiert nach <b>Aufgabentyp</b>. Jedes Rezept: <b>Erkennen</b> (Wortlaut in der Aufgabe) → <b>TR</b> (kısa Türkçe açıklama) → <b>Formel</b> → <b>Schritte</b> → <b>Beispiel</b> mit Zahlen → <b>⚠ Falle</b> → <b>✎ Klausursatz</b>.</p><p>Alle Beispielzahlen sind mit Python/R nachgerechnet. Diese Sammlung darfst du nicht in die Klausur mitnehmen – sie ist dein Nachschlagewerk zum Üben und die Vorlage für dein handgeschriebenes A4-Blatt.</p></div>
+<div class="howto"><b class='t'>Nasıl kullanılır?</b><ol><li>Soruyu oku → <b><a href="#finder" style="color:inherit">Aufgaben-Finder (Seite 4)</a></b>'da sorudaki ifadeyi bul → yanındaki numaraya git.</li><li>Rezeptte <b>Schritte</b>'yi sırayla uygula, <b>Beispiel</b> ile kendi sayılarını karşılaştır.</li><li><b>⚠ Falle</b>'yi oku – puan kaybettiren klasik hata orada. Cevabı <b>✎ Klausursatz</b> kalıbıyla yaz.</li><li>Konu tamamen yabancıysa İçindekiler'den bölümün ilk rezeptinden başla.</li></ol></div>
+<h2 class="toc-h">Inhaltsverzeichnis</h2><div class="toc">
+<div class="ts"><a href="#s-0"><div class="tsh"><span class="x">0 · Werkzeugkasten: Klausurregeln und Mathe</span><span class="p">7</span></div></a>
+<a href="#e-0-1"><div class="tl"><span class="n">0.1</span><span class="x">Klausurregeln Teil A (gelten für jede Aufgabe)</span><span class="dots"></span><span class="p">7</span></div></a>
+<a href="#e-0-2"><div class="tl"><span class="n">0.2</span><span class="x">Logarithmus und Potenzen</span><span class="dots"></span><span class="p">7</span></div></a>
+<a href="#e-0-3"><div class="tl"><span class="n">0.3</span><span class="x">Summen- und Produktzeichen</span><span class="dots"></span><span class="p">8</span></div></a>
+<a href="#e-0-4"><div class="tl"><span class="n">0.4</span><span class="x">Ableiten (für ML und Extremwerte)</span><span class="dots"></span><span class="p">8</span></div></a>
+<a href="#e-0-5"><div class="tl"><span class="n">0.5</span><span class="x">Integrieren (für Dichten)</span><span class="dots"></span><span class="p">8</span></div></a>
+<a href="#e-0-6"><div class="tl"><span class="n">0.6</span><span class="x">Fakultät, Binomialkoeffizient, Abzählen</span><span class="dots"></span><span class="p">9</span></div></a>
+<a href="#e-0-7"><div class="tl"><span class="n">0.7</span><span class="x">Taschenrechner als Kontrolle</span><span class="dots"></span><span class="p">9</span></div></a>
+</div>
+<div class="ts"><a href="#s-1"><div class="tsh"><span class="x">1 · Grundbegriffe, Merkmale, Stichproben (V01)</span><span class="p">9</span></div></a>
+<a href="#e-1-1"><div class="tl"><span class="n">1.1</span><span class="x">Grundgesamtheit, Stichprobe, Einheit, Merkmal</span><span class="dots"></span><span class="p">9</span></div></a>
+<a href="#e-1-2"><div class="tl"><span class="n">1.2</span><span class="x">Diskret oder stetig?</span><span class="dots"></span><span class="p">10</span></div></a>
+<a href="#e-1-3"><div class="tl"><span class="n">1.3</span><span class="x">Skalenniveau bestimmen</span><span class="dots"></span><span class="p">10</span></div></a>
+<a href="#e-1-4"><div class="tl"><span class="n">1.4</span><span class="x">Stichprobenverfahren</span><span class="dots"></span><span class="p">10</span></div></a>
+<a href="#e-1-5"><div class="tl"><span class="n">1.5</span><span class="x">Versuchsplanung, Störvariablen</span><span class="dots"></span><span class="p">11</span></div></a>
+</div>
+<div class="ts"><a href="#s-2"><div class="tsh"><span class="x">2 · Häufigkeiten, Verteilungsfunktion, Histogramm (V02)</span><span class="p">11</span></div></a>
+<a href="#e-2-1"><div class="tl"><span class="n">2.1</span><span class="x">Häufigkeitstabelle vervollständigen</span><span class="dots"></span><span class="p">11</span></div></a>
+<a href="#e-2-2"><div class="tl"><span class="n">2.2</span><span class="x">Wörter in Verteilungsfunktion übersetzen (diskret)</span><span class="dots"></span><span class="p">11</span></div></a>
+<a href="#e-2-3"><div class="tl"><span class="n">2.3</span><span class="x">Empirische Verteilungsfunktion aufstellen und zeichnen</span><span class="dots"></span><span class="p">12</span></div></a>
+<a href="#e-2-4"><div class="tl"><span class="n">2.4</span><span class="x">Histogramm: Säulenhöhen (Dichte)</span><span class="dots"></span><span class="p">12</span></div></a>
+<a href="#e-2-5"><div class="tl"><span class="n">2.5</span><span class="x">Anteil aus dem Histogramm ablesen</span><span class="dots"></span><span class="p">12</span></div></a>
+<a href="#e-2-6"><div class="tl"><span class="n">2.6</span><span class="x">Diagramm wählen, Modalklasse, Form</span><span class="dots"></span><span class="p">13</span></div></a>
+</div>
+<div class="ts"><a href="#s-3"><div class="tsh"><span class="x">3 · Lagemaße (V02)</span><span class="p">13</span></div></a>
+<a href="#e-3-1"><div class="tl"><span class="n">3.1</span><span class="x">Arithmetisches Mittel</span><span class="dots"></span><span class="p">13</span></div></a>
+<a href="#e-3-2"><div class="tl"><span class="n">3.2</span><span class="x">Median</span><span class="dots"></span><span class="p">13</span></div></a>
+<a href="#e-3-3"><div class="tl"><span class="n">3.3</span><span class="x">Modus</span><span class="dots"></span><span class="p">13</span></div></a>
+<a href="#e-3-4"><div class="tl"><span class="n">3.4</span><span class="x">Mittelwert klassierter Daten</span><span class="dots"></span><span class="p">14</span></div></a>
+<a href="#e-3-5"><div class="tl"><span class="n">3.5</span><span class="x">Gesamtmittel aus Gruppen, Wert korrigieren</span><span class="dots"></span><span class="p">14</span></div></a>
+<a href="#e-3-6"><div class="tl"><span class="n">3.6</span><span class="x">Lage und Schiefe, lineare Transformation</span><span class="dots"></span><span class="p">14</span></div></a>
+</div>
+<div class="ts"><a href="#s-4"><div class="tsh"><span class="x">4 · Streuung, Quantile, Boxplot (V02)</span><span class="p">15</span></div></a>
+<a href="#e-4-1"><div class="tl"><span class="n">4.1</span><span class="x">α-Quantil (Definition der Vorlesung)</span><span class="dots"></span><span class="p">15</span></div></a>
+<a href="#e-4-2"><div class="tl"><span class="n">4.2</span><span class="x">Varianz und Standardabweichung</span><span class="dots"></span><span class="p">15</span></div></a>
+<a href="#e-4-3"><div class="tl"><span class="n">4.3</span><span class="x">Varianz aus einer Häufigkeitstabelle</span><span class="dots"></span><span class="p">15</span></div></a>
+<a href="#e-4-4"><div class="tl"><span class="n">4.4</span><span class="x">Spannweite, IQR, Wirkung von Transformationen</span><span class="dots"></span><span class="p">16</span></div></a>
+<a href="#e-4-5"><div class="tl"><span class="n">4.5</span><span class="x">Boxplot und Ausreißer</span><span class="dots"></span><span class="p">16</span></div></a>
+</div>
+<div class="ts"><a href="#s-5"><div class="tsh"><span class="x">5 · Zwei Merkmale: Kontingenztafel und χ² (V03)</span><span class="p">16</span></div></a>
+<a href="#e-5-1"><div class="tl"><span class="n">5.1</span><span class="x">Kontingenztafel aus einem Text vervollständigen</span><span class="dots"></span><span class="p">16</span></div></a>
+<a href="#e-5-2"><div class="tl"><span class="n">5.2</span><span class="x">Bedingte Häufigkeiten und Unabhängigkeit</span><span class="dots"></span><span class="p">17</span></div></a>
+<a href="#e-5-3"><div class="tl"><span class="n">5.3</span><span class="x">Erwartete Häufigkeiten und χ²-Koeffizient</span><span class="dots"></span><span class="p">17</span></div></a>
+</div>
+<div class="ts"><a href="#s-6"><div class="tsh"><span class="x">6 · Kovarianz, Korrelation, Kausalität (V03)</span><span class="p">17</span></div></a>
+<a href="#e-6-1"><div class="tl"><span class="n">6.1</span><span class="x">Empirische Kovarianz</span><span class="dots"></span><span class="p">17</span></div></a>
+<a href="#e-6-2"><div class="tl"><span class="n">6.2</span><span class="x">Korrelationskoeffizient nach Bravais-Pearson</span><span class="dots"></span><span class="p">18</span></div></a>
+<a href="#e-6-3"><div class="tl"><span class="n">6.3</span><span class="x">Rangkorrelation nach Spearman</span><span class="dots"></span><span class="p">18</span></div></a>
+<a href="#e-6-4"><div class="tl"><span class="n">6.4</span><span class="x">Transformationen: was ändert sich?</span><span class="dots"></span><span class="p">18</span></div></a>
+<a href="#e-6-5"><div class="tl"><span class="n">6.5</span><span class="x">Kausalität, Scheinkorrelation, ökologischer Fehlschluss</span><span class="dots"></span><span class="p">19</span></div></a>
+</div>
+<div class="ts"><a href="#s-7"><div class="tsh"><span class="x">7 · Wahrscheinlichkeitsrechnung (V04)</span><span class="p">19</span></div></a>
+<a href="#e-7-1"><div class="tl"><span class="n">7.1</span><span class="x">Text in Mengen-Sprache übersetzen</span><span class="dots"></span><span class="p">19</span></div></a>
+<a href="#e-7-2"><div class="tl"><span class="n">7.2</span><span class="x">Mengen und Mächtigkeiten (Laplace-Experiment)</span><span class="dots"></span><span class="p">19</span></div></a>
+<a href="#e-7-3"><div class="tl"><span class="n">7.3</span><span class="x">Laplace-Wahrscheinlichkeit</span><span class="dots"></span><span class="p">20</span></div></a>
+<a href="#e-7-4"><div class="tl"><span class="n">7.4</span><span class="x">Rechenregeln (Kolmogorov)</span><span class="dots"></span><span class="p">20</span></div></a>
+<a href="#e-7-5"><div class="tl"><span class="n">7.5</span><span class="x">Vierfeldertafel (Wahrscheinlichkeiten)</span><span class="dots"></span><span class="p">20</span></div></a>
+<a href="#e-7-6"><div class="tl"><span class="n">7.6</span><span class="x">Bedingte Wahrscheinlichkeit</span><span class="dots"></span><span class="p">20</span></div></a>
+<a href="#e-7-7"><div class="tl"><span class="n">7.7</span><span class="x">Stochastische Unabhängigkeit prüfen</span><span class="dots"></span><span class="p">21</span></div></a>
+<a href="#e-7-8"><div class="tl"><span class="n">7.8</span><span class="x">Baumdiagramm und Pfadregeln</span><span class="dots"></span><span class="p">21</span></div></a>
+<a href="#e-7-9"><div class="tl"><span class="n">7.9</span><span class="x">Satz der totalen Wahrscheinlichkeit</span><span class="dots"></span><span class="p">21</span></div></a>
+<a href="#e-7-10"><div class="tl"><span class="n">7.10</span><span class="x">Satz von Bayes (Rückschluss auf die Ursache)</span><span class="dots"></span><span class="p">22</span></div></a>
+<a href="#e-7-11"><div class="tl"><span class="n">7.11</span><span class="x">Medizinischer Test: Sensitivität, Spezifität, Prävalenz</span><span class="dots"></span><span class="p">22</span></div></a>
+<a href="#e-7-12"><div class="tl"><span class="n">7.12</span><span class="x">Ziehen ohne Zurücklegen (hypergeometrisch, „Lotto“)</span><span class="dots"></span><span class="p">22</span></div></a>
+</div>
+<div class="ts"><a href="#s-8"><div class="tsh"><span class="x">8 · Zufallsvariablen: Verteilung, Erwartungswert, Varianz (V05–V06)</span><span class="p">23</span></div></a>
+<a href="#e-8-1"><div class="tl"><span class="n">8.1</span><span class="x">Träger und Wahrscheinlichkeitsfunktion (diskret)</span><span class="dots"></span><span class="p">23</span></div></a>
+<a href="#e-8-2"><div class="tl"><span class="n">8.2</span><span class="x">Konstante c bestimmen (diskret)</span><span class="dots"></span><span class="p">23</span></div></a>
+<a href="#e-8-3"><div class="tl"><span class="n">8.3</span><span class="x">Verteilungsfunktion F(x) (diskret)</span><span class="dots"></span><span class="p">23</span></div></a>
+<a href="#e-8-4"><div class="tl"><span class="n">8.4</span><span class="x">Dichte (stetig): Eigenschaften und c bestimmen</span><span class="dots"></span><span class="p">24</span></div></a>
+<a href="#e-8-5"><div class="tl"><span class="n">8.5</span><span class="x">Verteilungsfunktion, Wahrscheinlichkeiten und Quantile (stetig)</span><span class="dots"></span><span class="p">24</span></div></a>
+<a href="#e-8-6"><div class="tl"><span class="n">8.6</span><span class="x">Erwartungswert E(X)</span><span class="dots"></span><span class="p">24</span></div></a>
+<a href="#e-8-7"><div class="tl"><span class="n">8.7</span><span class="x">Erwartungswert einer Funktion E(g(X)), E(X²)</span><span class="dots"></span><span class="p">24</span></div></a>
+<a href="#e-8-8"><div class="tl"><span class="n">8.8</span><span class="x">Varianz und Standardabweichung einer Zufallsvariable</span><span class="dots"></span><span class="p">25</span></div></a>
+<a href="#e-8-9"><div class="tl"><span class="n">8.9</span><span class="x">Rechenregeln für E und Var</span><span class="dots"></span><span class="p">25</span></div></a>
+<a href="#e-8-10"><div class="tl"><span class="n">8.10</span><span class="x">Zwei diskrete Zufallsvariablen (gemeinsame Verteilung)</span><span class="dots"></span><span class="p">25</span></div></a>
+</div>
+<div class="ts"><a href="#s-9"><div class="tsh"><span class="x">9 · Spezielle Verteilungen (V07)</span><span class="p">26</span></div></a>
+<a href="#e-9-1"><div class="tl"><span class="n">9.1</span><span class="x">Übersicht: alle Verteilungen auf einen Blick</span><span class="dots"></span><span class="p">26</span></div></a>
+<a href="#e-9-2"><div class="tl"><span class="n">9.2</span><span class="x">Welche Verteilung passt? (Erkennungsschlüssel)</span><span class="dots"></span><span class="p">26</span></div></a>
+<a href="#e-9-3"><div class="tl"><span class="n">9.3</span><span class="x">Bernoulliverteilung</span><span class="dots"></span><span class="p">27</span></div></a>
+<a href="#e-9-4"><div class="tl"><span class="n">9.4</span><span class="x">Binomialverteilung</span><span class="dots"></span><span class="p">27</span></div></a>
+<a href="#e-9-5"><div class="tl"><span class="n">9.5</span><span class="x">Poissonverteilung</span><span class="dots"></span><span class="p">27</span></div></a>
+<a href="#e-9-6"><div class="tl"><span class="n">9.6</span><span class="x">Geometrische Verteilung (Testat-/ML-Form)</span><span class="dots"></span><span class="p">27</span></div></a>
+<a href="#e-9-7"><div class="tl"><span class="n">9.7</span><span class="x">Stetige Gleichverteilung U(a, b)</span><span class="dots"></span><span class="p">28</span></div></a>
+<a href="#e-9-8"><div class="tl"><span class="n">9.8</span><span class="x">Exponentialverteilung</span><span class="dots"></span><span class="p">28</span></div></a>
+<a href="#e-9-9"><div class="tl"><span class="n">9.9</span><span class="x">Normalverteilung: standardisieren und Φ ablesen</span><span class="dots"></span><span class="p">28</span></div></a>
+<a href="#e-9-10"><div class="tl"><span class="n">9.10</span><span class="x">Normalverteilung: Quantile und σ-Regeln</span><span class="dots"></span><span class="p">28</span></div></a>
+<a href="#e-9-11"><div class="tl"><span class="n">9.11</span><span class="x">Summen und lineare Transformation normalverteilter ZV</span><span class="dots"></span><span class="p">29</span></div></a>
+<a href="#e-9-12"><div class="tl"><span class="n">9.12</span><span class="x">Zentraler Grenzwertsatz (ZGWS)</span><span class="dots"></span><span class="p">29</span></div></a>
+<a href="#e-9-13"><div class="tl"><span class="n">9.13</span><span class="x">t- und χ²-Verteilung (wo sie vorkommen)</span><span class="dots"></span><span class="p">29</span></div></a>
+<a href="#e-9-14"><div class="tl"><span class="n">9.14</span><span class="x">Bivariate Normalverteilung (selten, Kür)</span><span class="dots"></span><span class="p">29</span></div></a>
+</div>
+<div class="ts"><a href="#s-10"><div class="tsh"><span class="x">10 · Schätzer und ihre Güte, Dichteschätzung (V09)</span><span class="p">30</span></div></a>
+<a href="#e-10-1"><div class="tl"><span class="n">10.1</span><span class="x">Begriffe: Schätzer, Bias, erwartungstreu</span><span class="dots"></span><span class="p">30</span></div></a>
+<a href="#e-10-2"><div class="tl"><span class="n">10.2</span><span class="x">Erwartungstreue prüfen (Rezept)</span><span class="dots"></span><span class="p">30</span></div></a>
+<a href="#e-10-3"><div class="tl"><span class="n">10.3</span><span class="x">Varianz eines Schätzers</span><span class="dots"></span><span class="p">30</span></div></a>
+<a href="#e-10-4"><div class="tl"><span class="n">10.4</span><span class="x">MSE, Effizienz, Konsistenz – Schätzer vergleichen</span><span class="dots"></span><span class="p">31</span></div></a>
+<a href="#e-10-5"><div class="tl"><span class="n">10.5</span><span class="x">Kerndichteschätzer an einer Stelle berechnen</span><span class="dots"></span><span class="p">31</span></div></a>
+<a href="#e-10-6"><div class="tl"><span class="n">10.6</span><span class="x">Bias-Varianz bei Histogramm/KDE, Eigenschaften von ML-Schätzern</span><span class="dots"></span><span class="p">31</span></div></a>
+</div>
+<div class="ts"><a href="#s-11"><div class="tsh"><span class="x">11 · Maximum-Likelihood-Schätzung per Hand (V08)</span><span class="p">32</span></div></a>
+<a href="#e-11-1"><div class="tl"><span class="n">11.1</span><span class="x">Grundrezept (6 Schritte)</span><span class="dots"></span><span class="p">32</span></div></a>
+<a href="#e-11-2"><div class="tl"><span class="n">11.2</span><span class="x">Likelihood für eine konkrete Stichprobe</span><span class="dots"></span><span class="p">32</span></div></a>
+<a href="#e-11-3"><div class="tl"><span class="n">11.3</span><span class="x">ML: Poissonverteilung</span><span class="dots"></span><span class="p">32</span></div></a>
+<a href="#e-11-4"><div class="tl"><span class="n">11.4</span><span class="x">ML: Bernoulli und Binomial (Anteil)</span><span class="dots"></span><span class="p">33</span></div></a>
+<a href="#e-11-5"><div class="tl"><span class="n">11.5</span><span class="x">ML: Exponentialverteilung (= Weibull mit r = 1)</span><span class="dots"></span><span class="p">33</span></div></a>
+<a href="#e-11-6"><div class="tl"><span class="n">11.6</span><span class="x">ML: geometrische Verteilung</span><span class="dots"></span><span class="p">33</span></div></a>
+<a href="#e-11-7"><div class="tl"><span class="n">11.7</span><span class="x">ML: Normalverteilung (μ bzw. σ²)</span><span class="dots"></span><span class="p">33</span></div></a>
+<a href="#e-11-8"><div class="tl"><span class="n">11.8</span><span class="x">ML: spezielle Dichten (Übungsklausur-Typen)</span><span class="dots"></span><span class="p">34</span></div></a>
+<a href="#e-11-9"><div class="tl"><span class="n">11.9</span><span class="x">ML aus einer Wahrscheinlichkeitstabelle</span><span class="dots"></span><span class="p">34</span></div></a>
+<a href="#e-11-10"><div class="tl"><span class="n">11.10</span><span class="x">Typische ML-Fehler</span><span class="dots"></span><span class="p">34</span></div></a>
+</div>
+<div class="ts"><a href="#s-12"><div class="tsh"><span class="x">12 · Konfidenzintervalle (V10)</span><span class="p">35</span></div></a>
+<a href="#e-12-1"><div class="tl"><span class="n">12.1</span><span class="x">Idee und richtige Interpretation</span><span class="dots"></span><span class="p">35</span></div></a>
+<a href="#e-12-2"><div class="tl"><span class="n">12.2</span><span class="x">KI für μ, σ bekannt (oder n groß)</span><span class="dots"></span><span class="p">35</span></div></a>
+<a href="#e-12-3"><div class="tl"><span class="n">12.3</span><span class="x">KI für μ, σ unbekannt (t-Verteilung)</span><span class="dots"></span><span class="p">35</span></div></a>
+<a href="#e-12-4"><div class="tl"><span class="n">12.4</span><span class="x">KI für einen Anteilswert π</span><span class="dots"></span><span class="p">35</span></div></a>
+<a href="#e-12-5"><div class="tl"><span class="n">12.5</span><span class="x">KI für die Varianz σ² (χ²-Verteilung)</span><span class="dots"></span><span class="p">36</span></div></a>
+<a href="#e-12-6"><div class="tl"><span class="n">12.6</span><span class="x">Länge, nötiger Stichprobenumfang, Rückwärtsrechnen</span><span class="dots"></span><span class="p">36</span></div></a>
+</div>
+<div class="ts"><a href="#s-13"><div class="tsh"><span class="x">13 · Statistische Tests (V11–V12)</span><span class="p">36</span></div></a>
+<a href="#e-13-1"><div class="tl"><span class="n">13.1</span><span class="x">Hypothesen aus dem Text aufstellen</span><span class="dots"></span><span class="p">36</span></div></a>
+<a href="#e-13-2"><div class="tl"><span class="n">13.2</span><span class="x">Fehler 1. und 2. Art</span><span class="dots"></span><span class="p">36</span></div></a>
+<a href="#e-13-3"><div class="tl"><span class="n">13.3</span><span class="x">Ablehnungsbereich bestimmen</span><span class="dots"></span><span class="p">37</span></div></a>
+<a href="#e-13-4"><div class="tl"><span class="n">13.4</span><span class="x">p-Wert berechnen und entscheiden</span><span class="dots"></span><span class="p">37</span></div></a>
+<a href="#e-13-5"><div class="tl"><span class="n">13.5</span><span class="x">Gauß-Test (μ, σ bekannt)</span><span class="dots"></span><span class="p">37</span></div></a>
+<a href="#e-13-6"><div class="tl"><span class="n">13.6</span><span class="x">t-Test (μ, σ unbekannt)</span><span class="dots"></span><span class="p">38</span></div></a>
+<a href="#e-13-7"><div class="tl"><span class="n">13.7</span><span class="x">Approximativer Binomialtest (Anteil, n groß)</span><span class="dots"></span><span class="p">38</span></div></a>
+<a href="#e-13-8"><div class="tl"><span class="n">13.8</span><span class="x">Exakter Binomialtest (n klein)</span><span class="dots"></span><span class="p">38</span></div></a>
+<a href="#e-13-9"><div class="tl"><span class="n">13.9</span><span class="x">χ²-Varianztest</span><span class="dots"></span><span class="p">38</span></div></a>
+<a href="#e-13-10"><div class="tl"><span class="n">13.10</span><span class="x">Vorzeichentest (Median, ohne Verteilungsannahme)</span><span class="dots"></span><span class="p">39</span></div></a>
+<a href="#e-13-11"><div class="tl"><span class="n">13.11</span><span class="x">χ²-Unabhängigkeitstest</span><span class="dots"></span><span class="p">39</span></div></a>
+<a href="#e-13-12"><div class="tl"><span class="n">13.12</span><span class="x">χ²-Anpassungstest</span><span class="dots"></span><span class="p">39</span></div></a>
+<a href="#e-13-13"><div class="tl"><span class="n">13.13</span><span class="x">Welcher Test passt? (Entscheidungstabelle)</span><span class="dots"></span><span class="p">40</span></div></a>
+<a href="#e-13-14"><div class="tl"><span class="n">13.14</span><span class="x">Antwortschema für jede Testaufgabe</span><span class="dots"></span><span class="p">40</span></div></a>
+</div>
+<div class="ts"><a href="#s-14"><div class="tsh"><span class="x">14 · Lineare Regression (V13)</span><span class="p">40</span></div></a>
+<a href="#e-14-1"><div class="tl"><span class="n">14.1</span><span class="x">KQ-Gerade per Hand</span><span class="dots"></span><span class="p">40</span></div></a>
+<a href="#e-14-2"><div class="tl"><span class="n">14.2</span><span class="x">Interpretation, Prognose, Residuen</span><span class="dots"></span><span class="p">41</span></div></a>
+<a href="#e-14-3"><div class="tl"><span class="n">14.3</span><span class="x">Bestimmtheitsmaß R²</span><span class="dots"></span><span class="p">41</span></div></a>
+<a href="#e-14-4"><div class="tl"><span class="n">14.4</span><span class="x">lm-Output lesen: Signifikanz und KI für β</span><span class="dots"></span><span class="p">41</span></div></a>
+</div>
+<div class="ts"><a href="#s-15"><div class="tsh"><span class="x">15 · Anhang: Tabellen und Checkliste</span><span class="p">41</span></div></a>
+<a href="#e-15-1"><div class="tl"><span class="n">15.1</span><span class="x">Verteilungsfunktion Φ(z) der Standardnormalverteilung</span><span class="dots"></span><span class="p">41</span></div></a>
+<a href="#e-15-2"><div class="tl"><span class="n">15.2</span><span class="x">Quantile \(t_{df;\,p}\) der t-Verteilung</span><span class="dots"></span><span class="p">42</span></div></a>
+<a href="#e-15-3"><div class="tl"><span class="n">15.3</span><span class="x">Quantile \(\chi^2_{df;\,p}\) der χ²-Verteilung</span><span class="dots"></span><span class="p">43</span></div></a>
+<a href="#e-15-4"><div class="tl"><span class="n">15.4</span><span class="x">Checkliste vor dem Abgeben</span><span class="dots"></span><span class="p">44</span></div></a>
+</div>
+</div>
+<h2 class="toc-h pb" id="finder">Aufgaben-Finder: Was steht in der Aufgabe? → Wo ist das Rezept?</h2><p class="small">Links steht der typische Wortlaut aus Klausur, Testat oder Tutorium, in der Mitte die türkische Bedeutung, rechts die Nummer des Rezepts (mit Seite). Nummer anklicken springt direkt hin.</p><table class="finder"><tr><th style="width:44%">In der Aufgabe steht …</th><th>Ne demek / ne isteniyor</th><th style="width:15%">Rezept</th></tr>
+<tr class="grp"><td colspan="3">Daten beschreiben (Tag 1)</td></tr>
+<tr><td>„Skalenniveau“, „diskret oder stetig“</td><td>ölçek türü, kesikli/sürekli</td><td class="go"><a href="#e-1-2">1.2 <span style="color:#6b7280;font-weight:600">S.10</span></a>, <a href="#e-1-3">1.3 <span style="color:#6b7280;font-weight:600">S.10</span></a></td></tr>
+<tr><td>„Grundgesamtheit“, „statistische Einheit“, „Merkmal“</td><td>evren, birim, değişken</td><td class="go"><a href="#e-1-1">1.1 <span style="color:#6b7280;font-weight:600">S.9</span></a></td></tr>
+<tr><td>„Wie heißt dieses Stichprobenverfahren?“</td><td>örnekleme yöntemi</td><td class="go"><a href="#e-1-4">1.4 <span style="color:#6b7280;font-weight:600">S.10</span></a></td></tr>
+<tr><td>Tabelle mit \(h_j, f_j, H_j, F_j\) vervollständigen</td><td>sıklık tablosu tamamla</td><td class="go"><a href="#e-2-1">2.1 <span style="color:#6b7280;font-weight:600">S.11</span></a></td></tr>
+<tr><td>„höchstens“, „mindestens“, „mehr als“, „weniger als“</td><td>≤, ≥, >, < → F'ye çevir</td><td class="go"><a href="#e-2-2">2.2 <span style="color:#6b7280;font-weight:600">S.11</span></a></td></tr>
+<tr><td>„Zeichnen Sie die empirische Verteilungsfunktion“</td><td>ampirik dağılım fonksiyonu</td><td class="go"><a href="#e-2-3">2.3 <span style="color:#6b7280;font-weight:600">S.12</span></a></td></tr>
+<tr><td>„normiertes Histogramm“, „Höhe der Säulen“</td><td>histogram yükseklikleri</td><td class="go"><a href="#e-2-4">2.4 <span style="color:#6b7280;font-weight:600">S.12</span></a></td></tr>
+<tr><td>„Schätzen Sie den Anteil zwischen … und …“</td><td>histogramdan oran oku</td><td class="go"><a href="#e-2-5">2.5 <span style="color:#6b7280;font-weight:600">S.12</span></a></td></tr>
+<tr><td>„Modalklasse“, „rechtsschief“, „Säulendiagramm oder Histogramm“</td><td>modal sınıf, çarpıklık</td><td class="go"><a href="#e-2-6">2.6 <span style="color:#6b7280;font-weight:600">S.13</span></a></td></tr>
+<tr><td>Modus, Median, arithmetisches Mittel</td><td>mod, medyan, ortalama</td><td class="go"><a href="#e-3-1">3.1 <span style="color:#6b7280;font-weight:600">S.13</span></a>, <a href="#e-3-2">3.2 <span style="color:#6b7280;font-weight:600">S.13</span></a>, <a href="#e-3-3">3.3 <span style="color:#6b7280;font-weight:600">S.13</span></a></td></tr>
+<tr><td>„Mittelwert für die klassierten Daten“</td><td>sınıflanmış veri ortalaması</td><td class="go"><a href="#e-3-4">3.4 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
+<tr><td>Mittelwert mehrerer Gruppen, falscher Wert korrigieren</td><td>ağırlıklı ortalama</td><td class="go"><a href="#e-3-5">3.5 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
+<tr><td>„Quartil“, „Quantil“, „Dezil“</td><td>kantil (sıra numarası n·α)</td><td class="go"><a href="#e-4-1">4.1 <span style="color:#6b7280;font-weight:600">S.15</span></a></td></tr>
+<tr><td>„empirische Varianz“, „unverzerrte Varianz“, „Standardabweichung“</td><td>varyans (1/n veya 1/(n−1))</td><td class="go"><a href="#e-4-2">4.2 <span style="color:#6b7280;font-weight:600">S.15</span></a>, <a href="#e-4-3">4.3 <span style="color:#6b7280;font-weight:600">S.15</span></a></td></tr>
+<tr><td>„Interquartilsabstand“, Daten in andere Einheit umrechnen</td><td>IQR, birim dönüşümü</td><td class="go"><a href="#e-4-4">4.4 <span style="color:#6b7280;font-weight:600">S.16</span></a>, <a href="#e-3-6">3.6 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
+<tr><td>„Boxplot“, „Ausreißer“, „Whisker“</td><td>kutu grafiği, aykırı değer</td><td class="go"><a href="#e-4-5">4.5 <span style="color:#6b7280;font-weight:600">S.16</span></a></td></tr>
+<tr><td>„Kontingenztafel“, „Randhäufigkeiten“</td><td>çapraz tablo</td><td class="go"><a href="#e-5-1">5.1 <span style="color:#6b7280;font-weight:600">S.16</span></a></td></tr>
+<tr><td>„Anteil … unter den …“, „Zusammenhang?“</td><td>koşullu oran, bağımlılık</td><td class="go"><a href="#e-5-2">5.2 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
+<tr><td>„erwartete Häufigkeiten“, „χ²-Koeffizient“</td><td>beklenen sıklık, χ²</td><td class="go"><a href="#e-5-3">5.3 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
+<tr><td>„Kovarianz“</td><td>kovaryans</td><td class="go"><a href="#e-6-1">6.1 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
+<tr><td>„Korrelationskoeffizient“, „interpretieren Sie ρ“</td><td>korelasyon ve yorumu</td><td class="go"><a href="#e-6-2">6.2 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
+<tr><td>„Rangkorrelation nach Spearman“</td><td>sıra korelasyonu</td><td class="go"><a href="#e-6-3">6.3 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
+<tr><td>„in °F angegeben“ – wie ändern sich Kovarianz/Korrelation?</td><td>birim değişince</td><td class="go"><a href="#e-6-4">6.4 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
+<tr><td>„… führt zu …“, „Stimmen Sie zu? Begründen Sie“</td><td>nedensellik değil korelasyon</td><td class="go"><a href="#e-6-5">6.5 <span style="color:#6b7280;font-weight:600">S.19</span></a></td></tr>
+<tr class="grp"><td colspan="3">Wahrscheinlichkeit</td></tr>
+<tr><td>„weder … noch“, „genau eines“, „aber nicht“</td><td>metni kümeye çevir</td><td class="go"><a href="#e-7-1">7.1 <span style="color:#6b7280;font-weight:600">S.19</span></a></td></tr>
+<tr><td>„Ergebnisraum Ω = {…}“, „Mächtigkeiten \(|A\cap\bar B|\)“</td><td>küme elemanı say</td><td class="go"><a href="#e-7-2">7.2 <span style="color:#6b7280;font-weight:600">S.19</span></a></td></tr>
+<tr><td>„fairer Würfel“, „Laplace“</td><td>eşit olasılıklı deney</td><td class="go"><a href="#e-7-3">7.3 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
+<tr><td>„Berechnen Sie \(P(A\cup B)\)“, „Gegenereignis“</td><td>olasılık kuralları</td><td class="go"><a href="#e-7-4">7.4 <span style="color:#6b7280;font-weight:600">S.20</span></a>, <a href="#e-7-5">7.5 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
+<tr><td>„wenn bekannt ist, dass …“, „unter der Bedingung“</td><td>koşullu olasılık</td><td class="go"><a href="#e-7-6">7.6 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
+<tr><td>„Sind A und B stochastisch unabhängig?“</td><td>bağımsızlık kontrolü</td><td class="go"><a href="#e-7-7">7.7 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
+<tr><td>„zuerst … dann …“, Anteile und bedingte Anteile</td><td>ağaç diyagramı</td><td class="go"><a href="#e-7-8">7.8 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
+<tr><td>„zufällig ausgewählt … defekt?“</td><td>toplam olasılık</td><td class="go"><a href="#e-7-9">7.9 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
+<tr><td>„… ist defekt. Von welcher Maschine stammt es?“</td><td>Bayes: sonuçtan nedene</td><td class="go"><a href="#e-7-10">7.10 <span style="color:#6b7280;font-weight:600">S.22</span></a></td></tr>
+<tr><td>„Prävalenz“, „Sensitivität“, „Spezifität“</td><td>tıbbi test (Bayes)</td><td class="go"><a href="#e-7-11">7.11 <span style="color:#6b7280;font-weight:600">S.22</span></a></td></tr>
+<tr><td>„ohne Zurücklegen“, „Urne“</td><td>geri koymadan çekme</td><td class="go"><a href="#e-7-12">7.12 <span style="color:#6b7280;font-weight:600">S.22</span></a>, <a href="#e-0-6">0.6 <span style="color:#6b7280;font-weight:600">S.9</span></a></td></tr>
+<tr class="grp"><td colspan="3">Zufallsvariablen</td></tr>
+<tr><td>„Träger“, „Wahrscheinlichkeitsfunktion“</td><td>değerler ve olasılıkları</td><td class="go"><a href="#e-8-1">8.1 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
+<tr><td>„\(P(X=x)=c\cdot\dots\) Bestimmen Sie c“</td><td>c'yi bul (toplam = 1)</td><td class="go"><a href="#e-8-2">8.2 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
+<tr><td>„Vervollständigen Sie F(x)“ (Treppe)</td><td>kesikli dağılım fonksiyonu</td><td class="go"><a href="#e-8-3">8.3 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
+<tr><td>„gültige Dichtefunktion“, „Bestimmen Sie c“ (stetig)</td><td>yoğunluk, integral = 1</td><td class="go"><a href="#e-8-4">8.4 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>„\(P(X\le1)\)“ bei Dichte, „Median der ZV“</td><td>sürekli F(x), medyan</td><td class="go"><a href="#e-8-5">8.5 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>„Erwartungswert“, „im Mittel“</td><td>beklenen değer</td><td class="go"><a href="#e-8-6">8.6 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>„E(Y) für Y = log(X)“, „\(E(X^2)\)“</td><td>fonksiyonun beklentisi</td><td class="go"><a href="#e-8-7">8.7 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>„Varianz von X“</td><td>varyans</td><td class="go"><a href="#e-8-8">8.8 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
+<tr><td>„\(Z=0.5X+Y\)“, „E(2X+4)“, „unabhängig“</td><td>E ve Var kuralları</td><td class="go"><a href="#e-8-9">8.9 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
+<tr><td>gemeinsame Tabelle \(P(X=x,Y=y)\), „Randverteilung“</td><td>iki rastgele değişken</td><td class="go"><a href="#e-8-10">8.10 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
+<tr class="grp"><td colspan="3">Verteilungen</td></tr>
+<tr><td>„Wie lautet die Verteilung von X?“, „geeignetste Verteilung“</td><td>dağılımı tanı</td><td class="go"><a href="#e-9-2">9.2 <span style="color:#6b7280;font-weight:600">S.26</span></a>, <a href="#e-9-1">9.1 <span style="color:#6b7280;font-weight:600">S.26</span></a></td></tr>
+<tr><td>„n-mal unabhängig“, „Anzahl der Erfolge“, „rät“</td><td>binom</td><td class="go"><a href="#e-9-4">9.4 <span style="color:#6b7280;font-weight:600">S.27</span></a></td></tr>
+<tr><td>„im Durchschnitt … pro Monat/Stunde“</td><td>Poisson</td><td class="go"><a href="#e-9-5">9.5 <span style="color:#6b7280;font-weight:600">S.27</span></a></td></tr>
+<tr><td>„Wartezeit“, „im Mittel 3 Stunden“, „bis zum Defekt“</td><td>üstel (exponential)</td><td class="go"><a href="#e-9-8">9.8 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
+<tr><td>„gleichverteilt zwischen a und b“</td><td>düzgün dağılım</td><td class="go"><a href="#e-9-7">9.7 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
+<tr><td>„\(X\sim N(\mu,\sigma^2)\)“, „Berechnen Sie \(P(X\le\dots)\)“</td><td>normal: standartlaştır</td><td class="go"><a href="#e-9-9">9.9 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
+<tr><td>„Welchen Wert überschreiten nur 5 %?“</td><td>normal kantil</td><td class="go"><a href="#e-9-10">9.10 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
+<tr><td>„Gesamtgewicht von 10 Packungen“</td><td>normal toplamları</td><td class="go"><a href="#e-9-11">9.11 <span style="color:#6b7280;font-weight:600">S.29</span></a></td></tr>
+<tr><td>„approximative Verteilung von \(\bar X\)“, n groß</td><td>merkezi limit teoremi</td><td class="go"><a href="#e-9-12">9.12 <span style="color:#6b7280;font-weight:600">S.29</span></a></td></tr>
+<tr class="grp"><td colspan="3">Schätzen</td></tr>
+<tr><td>„Testen Sie, ob der Schätzer unverzerrt ist“</td><td>yansızlık kontrolü</td><td class="go"><a href="#e-10-2">10.2 <span style="color:#6b7280;font-weight:600">S.30</span></a>, <a href="#e-10-1">10.1 <span style="color:#6b7280;font-weight:600">S.30</span></a></td></tr>
+<tr><td>„\(Var(\hat\vartheta)\)“, „MSE“, „konsistent“, „vorzuziehen“</td><td>tahminci karşılaştırma</td><td class="go"><a href="#e-10-3">10.3 <span style="color:#6b7280;font-weight:600">S.30</span></a>, <a href="#e-10-4">10.4 <span style="color:#6b7280;font-weight:600">S.31</span></a></td></tr>
+<tr><td>„Kerndichteschätzer an der Stelle x“</td><td>çekirdek yoğunluk tahmini</td><td class="go"><a href="#e-10-5">10.5 <span style="color:#6b7280;font-weight:600">S.31</span></a></td></tr>
+<tr><td>„Approximations-/Schätzfehler“, „asymptotisch“</td><td>bias-varyans</td><td class="go"><a href="#e-10-6">10.6 <span style="color:#6b7280;font-weight:600">S.31</span></a></td></tr>
+<tr><td>„Stellen Sie die (Log-)Likelihood auf“</td><td>ML reçetesi</td><td class="go"><a href="#e-11-1">11.1 <span style="color:#6b7280;font-weight:600">S.32</span></a></td></tr>
+<tr><td>„Beobachtet wurden … Likelihood?“</td><td>somut örneklemde L</td><td class="go"><a href="#e-11-2">11.2 <span style="color:#6b7280;font-weight:600">S.32</span></a></td></tr>
+<tr><td>ML für Poisson / Bernoulli / Exponential / geometrisch / normal</td><td>standart ML sonuçları</td><td class="go"><a href="#e-11-3">11.3 <span style="color:#6b7280;font-weight:600">S.32</span></a>, <a href="#e-11-4">11.4 <span style="color:#6b7280;font-weight:600">S.33</span></a>, <a href="#e-11-5">11.5 <span style="color:#6b7280;font-weight:600">S.33</span></a>, <a href="#e-11-6">11.6 <span style="color:#6b7280;font-weight:600">S.33</span></a>, <a href="#e-11-7">11.7 <span style="color:#6b7280;font-weight:600">S.33</span></a></td></tr>
+<tr><td>ML mit ungewöhnlicher Dichte, \(x^b\), \(2^{x\beta}\)</td><td>özel yoğunluklar</td><td class="go"><a href="#e-11-8">11.8 <span style="color:#6b7280;font-weight:600">S.34</span></a></td></tr>
+<tr><td>„\(P(X=1)=\alpha,\ P(X=2)=\alpha^2\)“</td><td>tablodan ML</td><td class="go"><a href="#e-11-9">11.9 <span style="color:#6b7280;font-weight:600">S.34</span></a></td></tr>
+<tr><td>„Bedingung zweiter Ordnung“</td><td>ikinci türev</td><td class="go"><a href="#e-11-1">11.1 <span style="color:#6b7280;font-weight:600">S.32</span></a>, <a href="#e-11-10">11.10 <span style="color:#6b7280;font-weight:600">S.34</span></a></td></tr>
+<tr class="grp"><td colspan="3">Konfidenzintervalle und Tests</td></tr>
+<tr><td>„Konfidenzintervall“ – Aussagen richtig/falsch</td><td>güven aralığı yorumu</td><td class="go"><a href="#e-12-1">12.1 <span style="color:#6b7280;font-weight:600">S.35</span></a></td></tr>
+<tr><td>KI für μ (σ bekannt / unbekannt)</td><td>ortalama için GA</td><td class="go"><a href="#e-12-2">12.2 <span style="color:#6b7280;font-weight:600">S.35</span></a>, <a href="#e-12-3">12.3 <span style="color:#6b7280;font-weight:600">S.35</span></a></td></tr>
+<tr><td>KI für Anteil / Varianz</td><td>oran / varyans için GA</td><td class="go"><a href="#e-12-4">12.4 <span style="color:#6b7280;font-weight:600">S.35</span></a>, <a href="#e-12-5">12.5 <span style="color:#6b7280;font-weight:600">S.36</span></a></td></tr>
+<tr><td>„Wie groß muss n sein?“, „Was steckt in diesem R-Befehl?“</td><td>örneklem büyüklüğü</td><td class="go"><a href="#e-12-6">12.6 <span style="color:#6b7280;font-weight:600">S.36</span></a></td></tr>
+<tr><td>„statistisch absichern“, „Hypothesenpaar“</td><td>H₀ ve H₁ kur</td><td class="go"><a href="#e-13-1">13.1 <span style="color:#6b7280;font-weight:600">S.36</span></a></td></tr>
+<tr><td>„Fehler 1./2. Art“</td><td>hata türleri</td><td class="go"><a href="#e-13-2">13.2 <span style="color:#6b7280;font-weight:600">S.36</span></a></td></tr>
+<tr><td>„Ablehnungsbereich“, „kritischer Wert“</td><td>ret bölgesi</td><td class="go"><a href="#e-13-3">13.3 <span style="color:#6b7280;font-weight:600">S.37</span></a></td></tr>
+<tr><td>„p-Wert“, „zu α = 1 %, 5 %, 10 %“</td><td>p-değeri ve karar</td><td class="go"><a href="#e-13-4">13.4 <span style="color:#6b7280;font-weight:600">S.37</span></a></td></tr>
+<tr><td>„Varianz bekannt“ + Mittelwert testen</td><td>Gauß testi</td><td class="go"><a href="#e-13-5">13.5 <span style="color:#6b7280;font-weight:600">S.37</span></a></td></tr>
+<tr><td>„Varianz unbekannt“, t.test-Output</td><td>t testi</td><td class="go"><a href="#e-13-6">13.6 <span style="color:#6b7280;font-weight:600">S.38</span></a></td></tr>
+<tr><td>„Anteil“ testen (n groß / klein)</td><td>binom testi</td><td class="go"><a href="#e-13-7">13.7 <span style="color:#6b7280;font-weight:600">S.38</span></a>, <a href="#e-13-8">13.8 <span style="color:#6b7280;font-weight:600">S.38</span></a></td></tr>
+<tr><td>„Streuung“, „Varianz größer als“ testen</td><td>varyans testi</td><td class="go"><a href="#e-13-9">13.9 <span style="color:#6b7280;font-weight:600">S.38</span></a></td></tr>
+<tr><td>„ohne Verteilungsannahme“, „Median“</td><td>işaret testi</td><td class="go"><a href="#e-13-10">13.10 <span style="color:#6b7280;font-weight:600">S.39</span></a></td></tr>
+<tr><td>„unabhängig?“ mit Kontingenztafel testen</td><td>χ² bağımsızlık testi</td><td class="go"><a href="#e-13-11">13.11 <span style="color:#6b7280;font-weight:600">S.39</span></a></td></tr>
+<tr><td>„Ist der Würfel fair?“</td><td>χ² uyum testi</td><td class="go"><a href="#e-13-12">13.12 <span style="color:#6b7280;font-weight:600">S.39</span></a></td></tr>
+<tr><td>„Welcher Test ist geeignet?“</td><td>test seçimi</td><td class="go"><a href="#e-13-13">13.13 <span style="color:#6b7280;font-weight:600">S.40</span></a></td></tr>
+<tr class="grp"><td colspan="3">Regression</td></tr>
+<tr><td>„Regressionsgerade nach der Methode der kleinsten Quadrate“</td><td>en küçük kareler doğrusu</td><td class="go"><a href="#e-14-1">14.1 <span style="color:#6b7280;font-weight:600">S.40</span></a></td></tr>
+<tr><td>„Interpretieren Sie \(\hat\beta_1\)“, „Prognose“, „Residuen“</td><td>yorum, tahmin, kalıntı</td><td class="go"><a href="#e-14-2">14.2 <span style="color:#6b7280;font-weight:600">S.41</span></a></td></tr>
+<tr><td>„Bestimmtheitsmaß R²“</td><td>açıklanan varyans</td><td class="go"><a href="#e-14-3">14.3 <span style="color:#6b7280;font-weight:600">S.41</span></a></td></tr>
+<tr><td>R-Output „Coefficients … Pr(&gt;|t|)“</td><td>lm çıktısı, anlamlılık</td><td class="go"><a href="#e-14-4">14.4 <span style="color:#6b7280;font-weight:600">S.41</span></a></td></tr>
+</table>
+<div class="sechead pb"><h2 class="sec" id="s-0"><span class="sn">0</span> Werkzeugkasten: Klausurregeln und Mathe</h2>
+<p class="secintro">Bu bölüm her soruda lazım: kurallar, logaritma, toplam/çarpım işareti, türev, integral. Takıldığın matematik adımı için buraya bak.</p>
+<div class="e" id="e-0-1"><div class="eh"><span class="no">0.1</span><span class="ti">Klausurregeln Teil A (gelten für jede Aufgabe)</span></div>
+<span class="sig"><b>Erkennen:</b> Deckblatt und Hinweise der Probeklausur, Abschlusssitzung</span>
+<div class="ne">Bu kurallara uymazsan doğru hesapta bile puan kaybedersin.</div>
+<ol class="st"><li><b>Endergebnis</b> auf <b>3 Nachkommastellen</b> (kaufmännisch: ab 5 aufrunden), <b>Zwischenergebnisse</b> mit mindestens <b>4</b>. Vollständig gekürzte Brüche sind erlaubt (\(\dfrac{19}{49}\)). Ganze Zahlen und Ausdrücke wie \(\sqrt2\) oder \(\log 4\) bleiben stehen.</li><li><b>Dezimalpunkt</b>: 0.375, nicht 0,375.</li><li>Gewertet wird nur, was im <b>Lösungskästchen</b> steht. „Geben Sie Ihren Lösungsweg an“ → der Weg gehört ins Kästchen.</li><li><b>Nur eine</b> Lösung pro Kästchen. Falsches sauber durchstreichen.</li><li>Aufgabe widersprüchlich? „<b>nicht lösbar</b>“ ins Kästchen und Begründung in die Box am Ende.</li><li>Kugelschreiber/Tinte, <b>kein Bleistift, nicht rot, nicht grün</b>. Taschenrechner von der Positivliste. 1 handgeschriebenes A4-Blatt (beidseitig).</li><li>Zeit: 100 Minuten für 75 Punkte → <b>1 Punkt ≈ 1.3 Minuten</b>. Länger als 5 Minuten fest? Weiter, später zurück.</li></ol>
+<div class="fa">Zwischenergebnisse nicht auf 3 Stellen runden und damit weiterrechnen – bei Varianz und Bayes verschiebt sich sonst das Ergebnis.</div>
+<div class="ks">Folgefehler werden berücksichtigt – nie ein Kästchen leer lassen; mit dem eigenen Zwischenergebnis weiterrechnen.</div>
+</div></div>
+<div class="e" id="e-0-2"><div class="eh"><span class="no">0.2</span><span class="ti">Logarithmus und Potenzen</span></div>
+<span class="sig"><b>Erkennen:</b> log, ln, exp, e<sup>x</sup> – vor allem bei Maximum-Likelihood</span>
+<div class="ne">Bu derste <b>log = ln</b> (doğal logaritma). Hesap makinesinde <b>ln</b> tuşu! Kontrol: ln 2 = 0.6931 (0.3010 çıkıyorsa yanlış tuş).</div>
+<div class="fm">\[\log(ab)=\log a+\log b\qquad \log\tfrac ab=\log a-\log b\qquad \log(a^b)=b\log a\qquad \log(e^x)=x\qquad e^{\log x}=x\qquad \log 1=0\]\[a^m\cdot a^n=a^{m+n}\qquad (a^m)^n=a^{m\cdot n}\qquad a^{-n}=\tfrac1{a^n}\qquad \sqrt a=a^{1/2}\qquad e^a\cdot e^b=e^{a+b}\qquad \log\tfrac1a=-\log a\]</div>
+<div class="bsp"><b>Beispiel.</b> \(\log\left(\theta^n e^{-\theta\sum x_i}\right)=n\log\theta-\theta\sum x_i\) · \(\log(2^{-\beta x})=-\beta x\log 2\)</div>
+<div class="fa">\(\log(a+b)\ne\log a+\log b\). Mit log₁₀ statt ln wird jedes Ergebnis um den Faktor 2.3026 zu klein.</div>
+</div>
+<div class="e" id="e-0-3"><div class="eh"><span class="no">0.3</span><span class="ti">Summen- und Produktzeichen</span></div>
+<span class="sig"><b>Erkennen:</b> \(\sum\), \(\prod\), „Hinweis: \(\sum x_i=\dots\)“</span>
+<div class="ne">Σ = topla, Π = çarp. İndeksi (i) olmayan sabit dışarı çıkar: Σ'de n·c, Π'de c<sup>n</sup> olur.</div>
+<div class="fm">\[\sum_{i=1}^n c=n\,c\qquad \sum c\,x_i=c\sum x_i\qquad \sum(x_i+y_i)=\sum x_i+\sum y_i\qquad \sum_{i=1}^n x_i=n\bar x\qquad \sum(x_i-\bar x)=0\]\[\prod_{i=1}^n c=c^n\qquad \prod c\,x_i=c^n\prod x_i\qquad \prod a^{x_i}=a^{\sum x_i}\qquad \prod e^{-\lambda x_i}=e^{-\lambda\sum x_i}\qquad \log\prod a_i=\sum\log a_i\]</div>
+<div class="bsp"><b>Beispiel.</b> \(\prod_{i=1}^n \lambda e^{-\lambda x_i}=\lambda^n e^{-\lambda\sum x_i}\) · \(\sum_{i=1}^{4}(2x_i+1)=2\sum x_i+4\)</div>
+<div class="fa">\(\sum x_i^2\ne\left(\sum x_i\right)^2\) · \(\prod c=c^n\), nicht \(n\cdot c\) · Terme mit Index (\(x_i\)) dürfen nicht vor das Zeichen.</div>
+</div>
+<div class="e" id="e-0-4"><div class="eh"><span class="no">0.4</span><span class="ti">Ableiten (für ML und Extremwerte)</span></div>
+<span class="sig"><b>Erkennen:</b> „Bestimmen Sie den ML-Schätzer“, „Bedingung zweiter Ordnung“</span>
+<div class="ne">ML'de türev her zaman <b>parametreye göre</b> (θ, λ, p, π) alınır. Veriler (x<sub>i</sub>, Σx<sub>i</sub>, n) sabit sayı gibi davranır.</div>
+<div class="fm">\[(x^n)'=n\,x^{n-1}\qquad(\log x)'=\tfrac1x\qquad(e^x)'=e^x\qquad(e^{cx})'=c\,e^{cx}\qquad(c\cdot f)'=c\cdot f'\qquad c'=0\]\[(\log(1-x))'=\tfrac{-1}{1-x}\qquad(\log(x+1))'=\tfrac1{x+1}\qquad\left(\tfrac n\theta\right)'=-\tfrac n{\theta^2}\qquad\left(\tfrac{1}{\theta^2}\right)'=-\tfrac2{\theta^3}\qquad (f(g(x)))'=f'(g(x))\cdot g'(x)\]</div>
+<div class="bsp"><b>Beispiel.</b> \(\ell(\lambda)=\sum x_i\log\lambda-n\lambda-\sum\log(x_i!)\ \Rightarrow\ \ell'(\lambda)=\dfrac{\sum x_i}{\lambda}-n\) (der letzte Term enthält kein λ → fällt weg) · \(\ell''(\lambda)=-\dfrac{\sum x_i}{\lambda^2}\)</div>
+<div class="fa">Konstanten ohne Parameter fallen beim Ableiten weg – beim Logarithmieren aber nicht einfach weglassen, sondern hinschreiben.</div>
+</div>
+<div class="e" id="e-0-5"><div class="eh"><span class="no">0.5</span><span class="ti">Integrieren (für Dichten)</span></div>
+<span class="sig"><b>Erkennen:</b> Dichte \(f(x)\), „gültige Dichtefunktion“, \(E(X)\) stetig, \(P(a\le X\le b)\)</span>
+<div class="ne">Yoğunlukta <b>integral = alan = olasılık</b>. Neredeyse her soruda kuvvet kuralı yeter: üssü 1 artır, yeni üsse böl.</div>
+<div class="fm">\[\int x^n\,dx=\frac{x^{n+1}}{n+1}\ (n\ne-1)\qquad\int c\,dx=c\,x\qquad\int e^{-\lambda x}dx=-\tfrac1\lambda e^{-\lambda x}\qquad\int_a^b f(x)\,dx=\big[F(x)\big]_a^b=F(b)-F(a)\]</div>
+<ol class="st"><li>Integral in Summanden zerlegen, Konstanten vor das Integral ziehen.</li><li>Stammfunktion bilden (Potenzregel).</li><li>Grenzen einsetzen: <b>obere minus untere</b>.</li><li>Stückweise definierte Dichte: jedes Stück über <b>sein</b> Intervall integrieren und addieren.</li></ol>
+<div class="bsp"><b>Beispiel.</b> \(\int_0^2\dfrac x2\,dx=\left[\dfrac{x^2}{4}\right]_0^2=\dfrac44-0=1\) · \(\int_1^3(x-1)\,dx=\left[\dfrac{x^2}2-x\right]_1^3=1.5-(-0.5)=2\)</div>
+<div class="fa">Untere Grenze vergessen (\(-F(a)\)) – nur bei a = 0 und \(F(0)=0\) ist sie wirklich 0.</div>
+</div>
+<div class="e" id="e-0-6"><div class="eh"><span class="no">0.6</span><span class="ti">Fakultät, Binomialkoeffizient, Abzählen</span></div>
+<span class="sig"><b>Erkennen:</b> „auf wie viele Arten“, \(\binom nk\), Ziehen mit/ohne Zurücklegen, Lotto</span>
+<div class="ne">\(\binom nk\) = n eleman içinden sırasız k tane seçme sayısı. Hesap makinesinde <b>nCr</b>.</div>
+<div class="fm">\[n!=1\cdot2\cdots n,\quad 0!=1\qquad\binom nk=\frac{n!}{k!\,(n-k)!}\qquad\binom n0=\binom nn=1\qquad\binom n1=n\qquad\binom nk=\binom n{n-k}\]</div>
+<table class='t'><tr><th>k aus n ziehen</th><th>mit Zurücklegen</th><th>ohne Zurücklegen</th></tr><tr><td>mit Reihenfolge</td><td>\(n^k\)</td><td>\(\dfrac{n!}{(n-k)!}\)</td></tr><tr><td>ohne Reihenfolge</td><td>\(\binom{n+k-1}{k}\)</td><td>\(\binom nk\)</td></tr></table>
+<div class="bsp"><b>Beispiel.</b> \(\binom52=\dfrac{5\cdot4}{2\cdot1}=10\) · 3 Ziffern aus 0–9 mit Zurücklegen: \(10^3=1000\) · 6 aus 49 (Lotto): \(\binom{49}6=13\,983\,816\)</div>
+<div class="fa">Ohne Zurücklegen ist nicht binomialverteilt – dafür 7.12 benutzen.</div>
+</div>
+<div class="e" id="e-0-7"><div class="eh"><span class="no">0.7</span><span class="ti">Taschenrechner als Kontrolle</span></div>
+<span class="sig"><b>Erkennen:</b> Mittelwert, Varianz, Korrelation, Regressionsgerade nachprüfen</span>
+<div class="ne">Hesap makinesi kontrol içindir; çözüm yolunu yine de kutuya yaz.</div>
+<ol class="st"><li>1 Variable: Menü → Statistik → <i>1-Variable</i> → Werte eingeben (ggf. Häufigkeitsspalte einschalten) → OPTN → <i>1-Variablen-Berechnung</i>: \(\bar x,\ \sum x,\ \sum x^2,\ \sigma x,\ sx\).</li><li>2 Variablen: Menü → Statistik → <i>y = a + bx</i> → x und y eingeben → OPTN → <i>Regressionsberechnung</i> (a, b, r) bzw. <i>2-Variablen-Berechnung</i> (\(\sum xy\)).</li><li>\(\sigma x\) = \(s\) (Nenner n) · \(sx\) = \(s_*\) (Nenner n − 1).</li></ol>
+<div class="fa">Tastenwege unterscheiden sich je Modell – vor der Klausur mit deinem Rechner üben.</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-1"><span class="sn">1</span> Grundbegriffe, Merkmale, Stichproben (V01)</h2>
+<p class="secintro">Puanı kolay, kelimeleri doğru seçmek yeter. Her cevapta gerekçe yaz.</p>
+<div class="e" id="e-1-1"><div class="eh"><span class="no">1.1</span><span class="ti">Grundgesamtheit, Stichprobe, Einheit, Merkmal</span></div>
+<span class="sig"><b>Erkennen:</b> „Was ist die Grundgesamtheit / statistische Einheit / das Merkmal?“</span>
+<div class="ne">Birim = verinin toplandığı nesne · Grundgesamtheit = soruyla ilgili <b>tüm</b> birimler · Stichprobe = incelenen alt küme · Merkmal = ölçülen özellik.</div>
+<ol class="st"><li><b>Statistische Einheit</b>: Objekt, an dem gemessen wird (im Singular nennen: „ein Kunde“). Kann abstrakt sein (ein Spiel, ein Tag).</li><li><b>Grundgesamtheit</b>: alle relevanten Einheiten, mit Ort und Zeit („alle Studierenden der Uni Göttingen im SoSe 26“). Kann hypothetisch sein.</li><li><b>Stichprobe</b>: tatsächlich untersuchte Teilmenge. <b>Merkmal</b> X (groß) = Eigenschaft; <b>Ausprägung</b> x (klein) = konkreter Wert.</li><li><b>Deskriptiv</b> = Daten beschreiben · <b>induktiv</b> = von der Stichprobe auf die Grundgesamtheit schließen, unter Berücksichtigung der Unsicherheit.</li></ol>
+<div class="fa">Nicht die Notation (Ω) wiedergeben, sondern die Eigenschaft im Sachkontext erklären.</div>
+</div></div>
+<div class="e" id="e-1-2"><div class="eh"><span class="no">1.2</span><span class="ti">Diskret oder stetig?</span></div>
+<span class="sig"><b>Erkennen:</b> „Geben Sie an, ob ein diskretes oder stetiges Merkmal vorliegt“</span>
+<div class="ne">Sayılabilir değerler (adet) → diskret. Bir aralıktaki her değer mümkün (süre, ağırlık, para) → stetig.</div>
+<ol class="st"><li><b>Diskret</b>: endlich oder abzählbar unendlich viele Ausprägungen (Anzahl, Note, Kategorie). Nominale/ordinale Merkmale sind immer diskret.</li><li><b>Stetig</b>: jeder Wert in einem Intervall möglich (Zeit, Gewicht, Länge, Einkommen).</li><li><b>Quasi-stetig</b>: gerundet gemessen, aber wie stetig behandelt (Größe in cm, Geldbeträge).</li></ol>
+<div class="bsp"><b>Beispiel.</b> Anzahl Mensabesuche → diskret · Wartezeit in Minuten → stetig · Lieblingsfarbe → diskret (nominal)</div>
+<div class="ks">„X ist ein stetiges Merkmal, da (in einem Intervall) jeder reelle Wert angenommen werden kann.“</div>
+</div>
+<div class="e" id="e-1-3"><div class="eh"><span class="no">1.3</span><span class="ti">Skalenniveau bestimmen</span></div>
+<span class="sig"><b>Erkennen:</b> „Welches Skalenniveau liegt zugrunde?“, „Ist der Median sinnvoll?“</span>
+<div class="ne">nominal = sadece isim · ordinal = sıralanır, farklar yorumlanmaz · kardinal (metrisch) = farklar anlamlı. Ölçek, hangi ölçünün anlamlı olduğunu belirler.</div>
+<ol class="st"><li>Frage: Kann ich ordnen? Nein → nominal.</li><li>Ja: Haben Abstände eine Bedeutung (2→3 so viel wie 7→8)? Nein → ordinal, ja → kardinal.</li><li>0/1-kodiert (binär): Mittelwert = Anteil (sinnvoll). In der Probeklausur-Lösung: „ordinal/binär“.</li></ol>
+<table class='t'><tr><th>Skala</th><th>Bedeutung</th><th>Beispiele</th><th>sinnvolle Maße</th></tr><tr><td>nominal</td><td>nur Namen, keine Ordnung</td><td>Fach, Partei, Farbe, Mensa</td><td>Modus</td></tr><tr><td>ordinal</td><td>ordnen ja, Abstände nicht interpretierbar</td><td>Schulnote, Zufriedenheit 1–5, Rang</td><td>Modus, Median, Quantile</td></tr><tr><td>kardinal (metrisch)</td><td>Abstände (oft auch Verhältnisse) sinnvoll</td><td>Alter, Zeit, Punkte 0–100, Einkommen</td><td>alle: Mittel, Varianz, Korrelation</td></tr></table>
+<div class="fa">Skala 1–5 ist ordinal (nicht kardinal, auch wenn es Zahlen sind). Punkte 0–100 sind kardinal.</div>
+<div class="ks">„Der Median ist für das Merkmal nicht sinnvoll, da es nominal skaliert ist und sich die Ausprägungen nicht ordnen lassen.“</div>
+</div>
+<div class="e" id="e-1-4"><div class="eh"><span class="no">1.4</span><span class="ti">Stichprobenverfahren</span></div>
+<span class="sig"><b>Erkennen:</b> „Wie heißt dieses Stichprobenverfahren?“, „repräsentativ“</span>
+<div class="ne">Basit rastgele · katmanlı (her gruptan rastgele) · küme (tüm grupları rastgele seç) · kota (rastgele değil).</div>
+<table class='t'><tr><th>Verfahren</th><th>Wie?</th><th>Merkmal</th></tr><tr><td>einfache Zufallsstichprobe</td><td>jede Einheit / jede Stichprobe gleich wahrscheinlich</td><td>nur zufällige Unterschiede</td></tr><tr><td>geschichtet</td><td>Gruppen (Schichten) bilden, aus <b>jeder</b> Schicht zufällig ziehen</td><td>jede Gruppe sicher vertreten</td></tr><tr><td>Klumpen</td><td>zufällig <b>ganze</b> Gruppen ziehen (Schulklassen, Orte), darin alle befragen</td><td>billig; Klumpen innen heterogen</td></tr><tr><td>Quote</td><td>vorgegebene Quoten bewusst erfüllen</td><td>nicht zufällig</td></tr></table>
+<div class="fa">„Aus jedem Stadtteil 30 zufällig“ = geschichtet. „3 Stadtteile zufällig, dort alle“ = Klumpen.</div>
+<div class="ks">„Repräsentativ heißt: keine systematischen Unterschiede zwischen Stichprobe und Grundgesamtheit.“</div>
+</div>
+<div class="e" id="e-1-5"><div class="eh"><span class="no">1.5</span><span class="ti">Versuchsplanung, Störvariablen</span></div>
+<span class="sig"><b>Erkennen:</b> „Störvariable“, „Wie kann man den Einfluss kontrollieren?“</span>
+<div class="ne">Störvariable: sonucu etkileyen ama incelenmeyen değişken (yaş, ön bilgi). Kontrol: Homogenisierung, Randomisierung, Modellierung.</div>
+<ol class="st"><li><b>Homogenisierung</b>: Gruppen bilden, in denen die Störvariable gleich ist.</li><li><b>Randomisierung</b>: Einheiten zufällig auf Gruppen (mit/ohne Maßnahme) verteilen.</li><li><b>Statistische Modellierung</b>: Störvariable in der Analyse berücksichtigen (z. B. als weitere Variable in der Regression).</li></ol>
+</div>
+<div class="sechead"><h2 class="sec" id="s-2"><span class="sn">2</span> Häufigkeiten, Verteilungsfunktion, Histogramm (V02)</h2>
+<p class="secintro">Tablo tamamlama, ampirik dağılım fonksiyonu ve histogram: Probeklausur 2022'de 10+ puan.</p>
+<div class="e" id="e-2-1"><div class="eh"><span class="no">2.1</span><span class="ti">Häufigkeitstabelle vervollständigen</span></div>
+<span class="sig"><b>Erkennen:</b> Tabelle mit \(h_j,\ f_j,\ H_j,\ F_j\) und Lücken</span>
+<div class="ne">h = mutlak sıklık · f = oran (h/n) · H = birikimli sıklık · F = birikimli oran. İleri toplama, geri çıkarma.</div>
+<div class="fm">\[f_j=\frac{h_j}{n}\qquad H_j=h_1+\dots+h_j\qquad F_j=\frac{H_j}{n}=f_1+\dots+f_j\qquad h_j=H_j-H_{j-1}\qquad n=\sum h_j\]</div>
+<ol class="st"><li>n bestimmen (\(\sum h_j\) oder letztes \(H_J\)).</li><li>Fehlende \(h\) aus \(f\cdot n\) oder aus \(H_j-H_{j-1}\).</li><li>Kontrolle: \(\sum f_j=1\), letztes \(F=1\), F nie fallend.</li></ol>
+<div class="bsp"><b>Beispiel.</b> \(h=3,7,8,5,2\) (n = 25) → \(f=0.12;\ 0.28;\ 0.32;\ 0.20;\ 0.08\) · \(F=0.12;\ 0.40;\ 0.72;\ 0.92;\ 1\)</div>
+</div></div>
+<div class="e" id="e-2-2"><div class="eh"><span class="no">2.2</span><span class="ti">Wörter in Verteilungsfunktion übersetzen (diskret)</span></div>
+<span class="sig"><b>Erkennen:</b> „höchstens“, „mindestens“, „mehr als“, „weniger als“, „zwischen“</span>
+<div class="ne">Her soruyu önce „≤“ biçimine çevir; F(x) her zaman „x dahil o noktaya kadar“ demektir.</div>
+<table class='t'><tr><th>Wortlaut (ganzzahlige Werte)</th><th>Rechnung</th><th>Wortlaut</th><th>Rechnung</th></tr><tr><td>höchstens k (≤ k)</td><td>\(F(k)\)</td><td>mehr als k (&gt; k)</td><td>\(1-F(k)\)</td></tr><tr><td>weniger als k (&lt; k)</td><td>\(F(k-1)\)</td><td>mindestens k (≥ k)</td><td>\(1-F(k-1)\)</td></tr><tr><td>zwischen a und b (beide inkl.)</td><td>\(F(b)-F(a-1)\)</td><td>genau k</td><td>\(f(k)\) bzw. \(P(X=k)\)</td></tr></table>
+<div class="bsp"><b>Beispiel.</b> Mit \(F=0.12;0.40;0.72;0.92;1\) für die Werte 0, 1, 2, 3, 5: mehr als 1 → \(1-0.40=0.6\) · mindestens 3 → \(1-F(2)=0.28\)</div>
+<div class="fa">Bei stetigen Merkmalen/Zufallsvariablen ist „<“ = „≤“ (eine einzelne Stelle hat Wahrscheinlichkeit 0). Bei diskreten nicht!</div>
+</div>
+<div class="e" id="e-2-3"><div class="eh"><span class="no">2.3</span><span class="ti">Empirische Verteilungsfunktion aufstellen und zeichnen</span></div>
+<span class="sig"><b>Erkennen:</b> „Stellen Sie \(\hat F(x)\) auf“, „Zeichnen Sie die empirische Verteilungsfunktion“</span>
+<div class="ne">\(\hat F(x)\) = x'e eşit veya küçük gözlemlerin oranı. Merdiven fonksiyonu: her farklı değerde zıplar.</div>
+<div class="fm">\[\hat F(x)=\frac{\#\{i:\ x_i\le x\}}{n}\]</div>
+<ol class="st"><li>Daten <b>sortieren</b>, verschiedene Werte \(a_1&lt;a_2&lt;\dots\) mit kumulierten Anteilen \(F_j\).</li><li>Fallunterscheidung: 0 für \(x&lt;a_1\); \(F_1\) für \(a_1\le x&lt;a_2\); …; 1 für \(x\ge a_J\).</li><li>Skizze: waagerechte Stufen, <b>● links</b> (Wert gehört dazu), <b>○ rechts</b>; keine senkrechten Linien; Achsen beschriften; links bei 0 und rechts bei 1 weiterlaufen lassen.</li></ol>
+<div class="bsp"><b>Beispiel.</b> Daten 1, 1, 2, 4, 4, 4 (n = 6): \(\hat F(x)=\begin{cases}0 & x<1\\ \dfrac13 & 1\le x<2\\ 0.5 & 2\le x<4\\ 1 & x\ge4\end{cases}\)</div>
+<div class="fa">Probeklausur: 6 Punkte für diese Aufgabe. Punkte (●/○) und die Fortsetzung nach links/rechts werden bewertet.</div>
+</div>
+<div class="e" id="e-2-4"><div class="eh"><span class="no">2.4</span><span class="ti">Histogramm: Säulenhöhen (Dichte)</span></div>
+<span class="sig"><b>Erkennen:</b> „normiertes Histogramm“, „Höhen der Säulen“, „Klassieren Sie“</span>
+<div class="ne">Histogramda <b>alan</b> = oran. Yükseklik = oran / sınıf genişliği. Toplam alan 1.</div>
+<div class="fm">\[\text{Höhe}_j=\frac{f_j}{\text{Breite}_j}=\frac{h_j}{n\cdot\text{Breite}_j}\qquad\sum_j \text{Höhe}_j\cdot\text{Breite}_j=1\]</div>
+<ol class="st"><li>Werte den Klassen zuordnen (Klammern beachten: [a, b) heißt a gehört dazu, b nicht).</li><li>\(f_j=h_j/n\).</li><li>Höhe = \(f_j\) / Breite.</li><li>Kontrolle: Summe aller Flächen = 1.</li></ol>
+<div class="bsp"><b>Beispiel.</b> n = 50: [0, 10): 10 · [10, 20): 25 · [20, 40]: 15 → \(f=0.2;\ 0.5;\ 0.3\) → Höhen \(0.02;\ 0.05;\ 0.015\)</div>
+<div class="fa">Bei ungleichen Klassenbreiten nicht die Häufigkeit als Höhe nehmen (= Säulendiagramm, verzerrt).</div>
+</div>
+<div class="e" id="e-2-5"><div class="eh"><span class="no">2.5</span><span class="ti">Anteil aus dem Histogramm ablesen</span></div>
+<span class="sig"><b>Erkennen:</b> „Schätzen Sie den Anteil zwischen … und …“, „Welche Annahme treffen Sie?“</span>
+<div class="ne">İstenen aralığı sınıflara böl, her parça için genişlik × yükseklik, topla. Varsayımı yaz: sınıf içinde düzgün dağılım.</div>
+<ol class="st"><li>Intervall an den Klassengrenzen zerschneiden.</li><li>Je Stück: <b>Stückbreite × Höhe</b>.</li><li>Addieren. Anzahl = Anteil × n.</li><li>Annahme hinschreiben: Werte innerhalb jeder Klasse gleichmäßig verteilt.</li></ol>
+<div class="bsp"><b>Beispiel.</b> Mit den Höhen aus 2.4, Anteil zwischen 15 und 30: \(5\cdot0.05+10\cdot0.015=0.25+0.15=0.4\)</div>
+<div class="ks">„Annahme: Die Beobachtungen sind innerhalb der Klassen gleichmäßig verteilt.“</div>
+</div>
+<div class="e" id="e-2-6"><div class="eh"><span class="no">2.6</span><span class="ti">Diagramm wählen, Modalklasse, Form</span></div>
+<span class="sig"><b>Erkennen:</b> „Säulendiagramm oder Histogramm?“, „Modalklasse“, „rechtsschief“</span>
+<div class="ne">Histogram = alan orantılı (sürekli veri). Sütun grafiği = yükseklik orantılı. Modal sınıf = en çok gözlemli sınıf (en yüksek sütun olmayabilir!).</div>
+<ol class="st"><li><b>Modalklasse</b> = Klasse mit größtem \(h_j\). Bei ungleichen Breiten nicht unbedingt die höchste Säule.</li><li><b>Rechtsschief = linkssteil</b>: langer Schwanz rechts, \(\bar x&gt;x_{med}&gt;x_{mod}\). <b>Linksschief = rechtssteil</b>: umgekehrt.</li><li>uni-/bi-/multimodal = ein/zwei/mehrere Gipfel.</li></ol>
+<div class="fa">„Die Modalklasse ist immer die höchste Säule“ → im Allgemeinen <b>falsch</b> (nur bei gleich breiten Klassen).</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-3"><span class="sn">3</span> Lagemaße (V02)</h2>
+<p class="secintro">Ortalama, medyan, mod: hangisi ne zaman anlamlı ve nasıl hesaplanır.</p>
+<div class="e" id="e-3-1"><div class="eh"><span class="no">3.1</span><span class="ti">Arithmetisches Mittel</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie das arithmetische Mittel \(\bar x\)“</span>
+<div class="ne">Hepsini topla, n'e böl. Tablodan: değer × oran, topla.</div>
+<div class="fm">\[\bar x=\frac1n\sum_{i=1}^n x_i\qquad\bar x=\sum_j a_j f_j=\frac1n\sum_j a_j h_j\]</div>
+<div class="bsp"><b>Beispiel.</b> 2, 5, 3, 8, 4, 3, 6, 25, 4, 5: \(\bar x=\dfrac{65}{10}=6.5\)</div>
+<div class="fa">Nur für kardinale (und 0/1-)Merkmale. Nicht robust: ein Ausreißer (25) zieht das Mittel hoch.</div>
+</div></div>
+<div class="e" id="e-3-2"><div class="eh"><span class="no">3.2</span><span class="ti">Median</span></div>
+<span class="sig"><b>Erkennen:</b> „Bestimmen Sie den Median \(x_{med}\)“</span>
+<div class="ne">Veriyi sırala, ortadaki değer. n çiftse ortadaki iki değerin ortalaması.</div>
+<div class="fm">\[x_{med}=\begin{cases}x_{\left(\frac{n+1}{2}\right)} & n\ \text{ungerade}\\[4pt] \dfrac{x_{(n/2)}+x_{(n/2+1)}}{2} & n\ \text{gerade}\end{cases}\]</div>
+<ol class="st"><li><b>Sortieren</b>; \(x_{(i)}\) = i-ter Wert der sortierten Liste.</li><li>Platz berechnen; bei Tabellen den Platz über die kumulierten \(H_j\) finden.</li></ol>
+<div class="bsp"><b>Beispiel.</b> Sortiert 2, 3, 3, 4, 4, 5, 5, 6, 8, 25 (n = 10): \(x_{med}=\dfrac{x_{(5)}+x_{(6)}}2=\dfrac{4+5}2=4.5\)</div>
+<div class="fa">Nicht aus der unsortierten Liste und nicht aus der Liste der <i>verschiedenen</i> Werte ablesen. Ab ordinal sinnvoll.</div>
+<div class="ks">„Der Median ist robuster gegenüber Ausreißern als das arithmetische Mittel.“</div>
+</div>
+<div class="e" id="e-3-3"><div class="eh"><span class="no">3.3</span><span class="ti">Modus</span></div>
+<span class="sig"><b>Erkennen:</b> „Modus \(x_{mod}\)“, „häufigste Ausprägung“</span>
+<div class="ne">En sık görülen değer. Her ölçekte (nominal dahil) anlamlı. Birden fazla olabilir.</div>
+<div class="bsp"><b>Beispiel.</b> 2, 3, 3, 4, 4, 5, 5, 6, 8, 25 → drei Modi: 3, 4, 5 (alle zweimal). Bei Kategorien: die Kategorie mit der größten Häufigkeit nennen (nicht die Häufigkeit).</div>
+</div>
+<div class="e" id="e-3-4"><div class="eh"><span class="no">3.4</span><span class="ti">Mittelwert klassierter Daten</span></div>
+<span class="sig"><b>Erkennen:</b> „Klassieren Sie … und bestimmen Sie den Mittelwert für die klassierten Daten“</span>
+<div class="ne">Her sınıfın gözlemleri sınıf ortasında kabul edilir. Sonuç gerçek ortalamaya yaklaşık eşittir.</div>
+<div class="fm">\[m_j=\frac{c_{j-1}+c_j}{2}\qquad\bar x_K=\sum_j f_j\,m_j\qquad s_K^2=\sum_j f_j m_j^2-\bar x_K^2\]</div>
+<ol class="st"><li>Werte zählen → \(h_j\), \(f_j\).</li><li>Klassenmitten \(m_j\).</li><li>\(\bar x_K=\sum f_jm_j\).</li></ol>
+<div class="bsp"><b>Beispiel.</b> \(f=0.2;0.5;0.3\) mit Mitten 5, 15, 30: \(\bar x_K=1+7.5+9=17.5\)</div>
+<div class="fa">Klassengrenzen genau beachten: [0, 10) enthält 10 nicht.</div>
+</div>
+<div class="e" id="e-3-5"><div class="eh"><span class="no">3.5</span><span class="ti">Gesamtmittel aus Gruppen, Wert korrigieren</span></div>
+<span class="sig"><b>Erkennen:</b> „Gruppe A … Gruppe B … Mittelwert insgesamt“, „ein Wert wurde falsch erfasst“</span>
+<div class="ne">Toplam ortalama = ağırlıklı ortalama. Değer düzeltirken toplam üzerinden git: \(\sum x_i=n\bar x\).</div>
+<div class="fm">\[\bar x=\frac{n_1\bar x_1+n_2\bar x_2+\dots}{n_1+n_2+\dots}\qquad\sum x_i=n\bar x\]</div>
+<div class="bsp"><b>Beispiel.</b> A: 20 Personen, \(\bar x=3\); B: 30 Personen, \(\bar x=5\) → \(\dfrac{60+150}{50}=4.2\) · Wert 14 statt 9 bei n = 5, \(\bar x=7\): neue Summe \(35+5=40\) → \(\bar x=8\)</div>
+<div class="fa">Nicht einfach \((3+5)/2=4\) rechnen – die Gruppengrößen gewichten.</div>
+</div>
+<div class="e" id="e-3-6"><div class="eh"><span class="no">3.6</span><span class="ti">Lage und Schiefe, lineare Transformation</span></div>
+<span class="sig"><b>Erkennen:</b> „Wie ändert sich der Mittelwert, wenn …“, „°C in °F“, „rechtsschief“</span>
+<div class="ne">y = a + b·x dönüşümünde ortalama, medyan, mod ve kantiller aynı şekilde dönüşür.</div>
+<div class="fm">\[y_i=a+b\,x_i\ \Rightarrow\ \bar y=a+b\,\bar x,\quad y_{med}=a+b\,x_{med}\qquad\text{rechtsschief: }\bar x>x_{med}>x_{mod}\]</div>
+<div class="bsp"><b>Beispiel.</b> Mittel 20 °C → \(32+1.8\cdot20=68\) °F · Minuten → Sekunden: Mittel × 60</div>
+<div class="fa">Für nichtlineare Funktionen (log, Quadrat) gilt das nur für den Median, nicht für den Mittelwert.</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-4"><span class="sn">4</span> Streuung, Quantile, Boxplot (V02)</h2>
+<p class="secintro">Varyans: hangi formül (1/n mi 1/(n−1) mi) sorulduğuna dikkat.</p>
+<div class="e" id="e-4-1"><div class="eh"><span class="no">4.1</span><span class="ti">α-Quantil (Definition der Vorlesung)</span></div>
+<span class="sig"><b>Erkennen:</b> „Quartil“, „unteres/oberes Quartil“, „90 %-Quantil“, „Dezil“</span>
+<div class="ne">n·α = sıra numarası. Tam sayı değilse <b>yukarı yuvarla</b>; tam sayıysa o sıradaki ile bir sonrakinin ortalaması.</div>
+<div class="fm">\[x_\alpha=\begin{cases}x_{(\lceil n\alpha\rceil)} & n\alpha\ \text{nicht ganzzahlig (aufrunden)}\\[3pt] \dfrac{x_{(n\alpha)}+x_{(n\alpha+1)}}{2} & n\alpha\ \text{ganzzahlig}\end{cases}\]</div>
+<ol class="st"><li>Sortieren.</li><li>\(n\alpha\) berechnen – das ist die <b>Platznummer</b>.</li><li>Regel anwenden.</li></ol>
+<div class="bsp"><b>Beispiel.</b> Sortiert 2, 3, 3, 4, 4, 5, 5, 6, 8, 25: \(x_{0.25}\): \(10\cdot0.25=2.5\) → Platz 3 → 3 · \(x_{0.75}\): \(7.5\) → Platz 8 → 6</div>
+<div class="fa">R (quantile) rechnet anders – in Teil A immer die Definition der Vorlesung benutzen.</div>
+</div></div>
+<div class="e" id="e-4-2"><div class="eh"><span class="no">4.2</span><span class="ti">Varianz und Standardabweichung</span></div>
+<span class="sig"><b>Erkennen:</b> „empirische Varianz \(s^2\)“, „unverzerrte / korrigierte Varianz \(s_*^2\)“, „Standardabweichung“</span>
+<div class="ne">Empirische Varianz: n'e böl. Unverzerrt (s*²): n−1'e böl. Standart sapma = karekök. R'deki var/sd = n−1.</div>
+<div class="fm">\[s^2=\frac1n\sum(x_i-\bar x)^2=\frac1n\sum x_i^2-\bar x^2\qquad s_*^2=\frac1{n-1}\sum(x_i-\bar x)^2=\frac{n}{n-1}\,s^2\qquad s=\sqrt{s^2}\]</div>
+<ol class="st"><li>\(\bar x\) und \(\sum x_i^2\) bestimmen (oft als Hinweis gegeben).</li><li>\(s^2=\dfrac{\sum x_i^2}{n}-\bar x^2\).</li><li>Falls verlangt: \(s_*^2=\dfrac n{n-1}s^2\), Wurzel für s.</li></ol>
+<div class="bsp"><b>Beispiel.</b> \(\sum x_i=65,\ \sum x_i^2=829,\ n=10\): \(s^2=82.9-6.5^2=40.65\) · \(s_*^2=\dfrac{10}{9}\cdot40.65=45.167\) · \(s=6.376\)</div>
+<div class="fa">„empirische Varianz“ = Nenner n. Nur bei „unverzerrt / korrigiert / \(s_*\)“ Nenner n − 1. Varianz ist nie negativ.</div>
+<div class="ks">„Die Standardabweichung hat dieselbe Maßeinheit wie das Merkmal und ist daher leichter zu interpretieren.“</div>
+</div>
+<div class="e" id="e-4-3"><div class="eh"><span class="no">4.3</span><span class="ti">Varianz aus einer Häufigkeitstabelle</span></div>
+<span class="sig"><b>Erkennen:</b> Tabelle mit Ausprägungen \(a_j\) und \(h_j\) bzw. \(f_j\)</span>
+<div class="ne">Önce ortalama, sonra kareler ortalaması; fark = varyans.</div>
+<div class="fm">\[\bar x=\sum a_jf_j\qquad s^2=\sum a_j^2f_j-\bar x^2\]</div>
+<div class="bsp"><b>Beispiel.</b> Werte 0, 1, 2 mit \(f=0.5;0.3;0.2\): \(\bar x=0.7\), \(\sum a_j^2f_j=0.3+0.8=1.1\) → \(s^2=1.1-0.49=0.61\)</div>
+</div>
+<div class="e" id="e-4-4"><div class="eh"><span class="no">4.4</span><span class="ti">Spannweite, IQR, Wirkung von Transformationen</span></div>
+<span class="sig"><b>Erkennen:</b> „Interquartilsabstand“, „Spannweite“, „Daten werden in … umgerechnet“</span>
+<div class="ne">IQR = x<sub>0.75</sub> − x<sub>0.25</sub>. y = a + bx: a (kaydırma) yayılımı değiştirmez; b ile çarpılır (varyansta b²).</div>
+<div class="fm">\[\text{IQR}=x_{0.75}-x_{0.25}\qquad\text{Spannweite}=x_{max}-x_{min}\qquad y=a+bx:\ s_y^2=b^2s_x^2,\ s_y=|b|\,s_x,\ \text{IQR}_y=|b|\,\text{IQR}_x\]</div>
+<div class="bsp"><b>Beispiel.</b> IQR = 6 − 3 = 3 (Daten aus 4.1) · Minuten → Sekunden: Varianz × 3600, Standardabweichung × 60</div>
+</div>
+<div class="e" id="e-4-5"><div class="eh"><span class="no">4.5</span><span class="ti">Boxplot und Ausreißer</span></div>
+<span class="sig"><b>Erkennen:</b> „Zeichnen Sie einen Boxplot“, „Gibt es Ausreißer?“, „Wo enden die Whisker?“</span>
+<div class="ne">Kutu = x<sub>0.25</sub>…x<sub>0.75</sub>, ortada medyan. Sınırlar: Q1 − 1.5·IQR ve Q3 + 1.5·IQR. Bıyık, sınırın içindeki en uç <b>gerçek veri</b> değerinde biter.</div>
+<div class="fm">\[\text{untere Grenze}=x_{0.25}-1.5\,\text{IQR}\qquad\text{obere Grenze}=x_{0.75}+1.5\,\text{IQR}\]</div>
+<ol class="st"><li>Quartile und Median (4.1, 3.2).</li><li>Grenzen berechnen.</li><li>Whisker = extremster Datenwert <b>innerhalb</b> der Grenzen.</li><li>Werte außerhalb = Ausreißer (einzelne Punkte).</li></ol>
+<div class="bsp"><b>Beispiel.</b> \(x_{0.25}=3,\ x_{0.75}=6\), IQR = 3: Grenzen \(-1.5\) und \(10.5\) → 25 ist Ausreißer; oberer Whisker endet bei 8, unterer bei 2.</div>
+<div class="fa">Whisker nicht bis zur Grenze (10.5) zeichnen, sondern bis zum letzten echten Wert (8).</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-5"><span class="sn">5</span> Zwei Merkmale: Kontingenztafel und χ² (V03)</h2>
+<p class="secintro">İki kategorik değişken: tabloyu tamamla, koşullu oranları karşılaştır, χ² hesapla.</p>
+<div class="e" id="e-5-1"><div class="eh"><span class="no">5.1</span><span class="ti">Kontingenztafel aus einem Text vervollständigen</span></div>
+<span class="sig"><b>Erkennen:</b> „Erstellen Sie die vollständige Kontingenztafel (inkl. Randhäufigkeiten)“</span>
+<div class="ne">Önce boş tabloyu çiz (satır/sütun toplamlarıyla), metindeki sayıları yerleştir, kalanları farkla bul.</div>
+<ol class="st"><li>Tafel mit Zeilen-/Spaltensummen und n zeichnen.</li><li>Zahlen aus dem Text eintragen (Prozent „der Frauen“ × Zeilensumme).</li><li>Rest per Differenz: Zeile/Spalte muss ihre Summe ergeben.</li><li>Kontrolle: Summe aller Zellen = n.</li></ol>
+<div class="bsp"><b>Beispiel.</b> 200 Studierende, 80 davon Frauen; 20 Frauen und 40 Männer rauchen:<table class='t c' style='width:auto'><tr><th></th><th>raucht</th><th>raucht nicht</th><th>Σ</th></tr><tr><th>Frau</th><td>20</td><td>60</td><td>80</td></tr><tr><th>Mann</th><td>40</td><td>80</td><td>120</td></tr><tr><th>Σ</th><td>60</td><td>140</td><td>200</td></tr></table></div>
+</div></div>
+<div class="e" id="e-5-2"><div class="eh"><span class="no">5.2</span><span class="ti">Bedingte Häufigkeiten und Unabhängigkeit</span></div>
+<span class="sig"><b>Erkennen:</b> „Anteil der Raucher unter den Frauen“, „Deutet das auf einen Zusammenhang hin?“</span>
+<div class="ne">„… arasında / … içinde“ diyen grup paydaya gelir. Koşullu oranlar farklıysa → ilişki var (bağımlı).</div>
+<div class="fm">\[f(b_k\mid a_j)=\frac{h_{jk}}{h_{j\bullet}}\qquad\text{unabhängig}\iff f(b_k\mid a_j)=f(b_k)=\frac{h_{\bullet k}}{n}\ \text{für alle }j,k\]</div>
+<div class="bsp"><b>Beispiel.</b> Raucher unter Frauen \(\dfrac{20}{80}=0.25\), unter Männern \(\dfrac{40}{120}=0.333\) → unterschiedlich → Hinweis auf einen Zusammenhang.</div>
+<div class="fa">„Anteil der Frauen unter den Rauchern“ (20/60) ≠ „Anteil der Raucher unter den Frauen“ (20/80).</div>
+<div class="ks">„Da sich die bedingten Anteile unterscheiden (0.25 vs. 0.333), deutet dies auf einen Zusammenhang zwischen Geschlecht und Rauchen hin.“</div>
+</div>
+<div class="e" id="e-5-3"><div class="eh"><span class="no">5.3</span><span class="ti">Erwartete Häufigkeiten und χ²-Koeffizient</span></div>
+<span class="sig"><b>Erkennen:</b> „bei Unabhängigkeit erwartete Häufigkeiten“, „χ²-Koeffizient“</span>
+<div class="ne">Beklenen = satır toplamı × sütun toplamı / n. χ² = her hücre için (gözlenen − beklenen)² / beklenen, hepsini topla.</div>
+<div class="fm">\[\tilde h_{jk}=\frac{h_{j\bullet}\,h_{\bullet k}}{n}\qquad\chi^2=\sum_j\sum_k\frac{(h_{jk}-\tilde h_{jk})^2}{\tilde h_{jk}}\]</div>
+<ol class="st"><li>Erwartete Tafel berechnen (nicht runden, Randsummen bleiben gleich).</li><li>Differenzen beobachtet − erwartet (je Zeile/Spalte Summe 0).</li><li>Quadrat durch <b>erwartet</b> teilen, alle Zellen addieren.</li></ol>
+<div class="bsp"><b>Beispiel.</b> Tafel aus 5.1: \(\tilde h=24;\ 56;\ 36;\ 84\) → \(\chi^2=\dfrac{16}{24}+\dfrac{16}{56}+\dfrac{16}{36}+\dfrac{16}{84}=1.587\)</div>
+<div class="fa">Durch den erwarteten Wert teilen, nicht durch den beobachteten. χ² ist nie negativ; = 0 bei perfekter Unabhängigkeit. Als Test: 13.11.</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-6"><span class="sn">6</span> Kovarianz, Korrelation, Kausalität (V03)</h2>
+<p class="secintro">İki sayısal değişken arasındaki doğrusal ilişki.</p>
+<div class="e" id="e-6-1"><div class="eh"><span class="no">6.1</span><span class="ti">Empirische Kovarianz</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie die empirische Kovarianz \(s_{xy}\)“</span>
+<div class="ne">Çarpımların ortalaması eksi ortalamaların çarpımı. Sadece <b>işaret</b> yorumlanır (birimlere bağlı).</div>
+<div class="fm">\[s_{xy}=\frac1n\sum(x_i-\bar x)(y_i-\bar y)=\frac1n\sum x_iy_i-\bar x\,\bar y\]</div>
+<div class="bsp"><b>Beispiel.</b> x = 1, 2, 3, 4, 5; y = 2, 4, 5, 4, 5: \(\bar x=3,\ \bar y=4,\ \sum x_iy_i=66\) → \(s_{xy}=13.2-12=1.2\)</div>
+<div class="fa">R (cov) teilt durch n − 1. In Teil A: empirisch = 1/n, passend zu \(s_x^2\) mit 1/n.</div>
+<div class="ks">„Die positive Kovarianz deutet auf einen positiven linearen Zusammenhang hin; ihre Höhe ist nicht interpretierbar, da sie von den Maßeinheiten abhängt.“</div>
+</div></div>
+<div class="e" id="e-6-2"><div class="eh"><span class="no">6.2</span><span class="ti">Korrelationskoeffizient nach Bravais-Pearson</span></div>
+<span class="sig"><b>Erkennen:</b> „Ermitteln Sie \(r_{xy}\) bzw. \(\rho_{xy}\) und interpretieren Sie“</span>
+<div class="ne">r = kovaryans / (sx·sy), −1 ile 1 arası. Yorum: <b>güç + yön + doğrusal + değişkenler</b>.</div>
+<div class="fm">\[r_{xy}=\frac{s_{xy}}{s_x\,s_y}=\frac{\sum x_iy_i-n\bar x\bar y}{\sqrt{\left(\sum x_i^2-n\bar x^2\right)\left(\sum y_i^2-n\bar y^2\right)}}\in[-1,1]\]</div>
+<ol class="st"><li>\(s_x^2,\ s_y^2,\ s_{xy}\) mit demselben Nenner (1/n).</li><li>\(r=s_{xy}/\sqrt{s_x^2s_y^2}\).</li><li>Interpretation als Satz. Gegebene gerundete Werte benutzen, wenn die Aufgabe sie vorgibt.</li></ol>
+<table class='t c' style='width:auto'><tr><th>|r|</th><td>&lt; 0.3</td><td>0.3 bis &lt; 0.7</td><td>≥ 0.7</td></tr><tr><th>Stärke</th><td>schwach</td><td>mittel</td><td>stark</td></tr></table>
+<div class="bsp"><b>Beispiel.</b> Fortsetzung 6.1: \(s_x^2=11-9=2\), \(s_y^2=17.2-16=1.2\) → \(r=\dfrac{1.2}{\sqrt{2\cdot1.2}}=0.775\)</div>
+<div class="fa">r misst nur <b>lineare</b> Zusammenhänge. r = 0 heißt nicht „unabhängig“ (z. B. \(y=x^2\)).</div>
+<div class="ks">„r = 0.775: starker positiver linearer Zusammenhang zwischen X und Y.“</div>
+</div>
+<div class="e" id="e-6-3"><div class="eh"><span class="no">6.3</span><span class="ti">Rangkorrelation nach Spearman</span></div>
+<span class="sig"><b>Erkennen:</b> „Rangkorrelationskoeffizient“, ordinale Merkmale, „monotoner Zusammenhang“</span>
+<div class="ne">Değerler yerine sıralarını (rank) kullan. En küçük = 1. Eşitlikte ortalama sıra.</div>
+<div class="fm">\[r_{Sp}=r\big(rk(x),\,rk(y)\big)\qquad\text{ohne Bindungen: }r_{Sp}=1-\frac{6\sum d_i^2}{n(n^2-1)},\quad d_i=rk(x_i)-rk(y_i)\]</div>
+<div class="bsp"><b>Beispiel.</b> Ränge x: 1, 2, 3, 4, 5; Ränge y: 2, 1, 4, 3, 5 → \(d=-1,1,-1,1,0\), \(\sum d^2=4\) → \(r_{Sp}=1-\dfrac{24}{120}=0.8\)</div>
+<div class="fa">Kurzformel nur ohne Bindungen; mit Bindungen Pearson auf die (Durchschnitts-)Ränge anwenden.</div>
+</div>
+<div class="e" id="e-6-4"><div class="eh"><span class="no">6.4</span><span class="ti">Transformationen: was ändert sich?</span></div>
+<span class="sig"><b>Erkennen:</b> „Die Temperatur wird in °F angegeben“, „cm statt m“</span>
+<div class="ne">Birim değişince kovaryans değişir, korelasyon değişmez (b·d < 0 ise sadece işareti döner).</div>
+<div class="fm">\[u=a+bx,\ v=c+dy:\qquad s_{uv}=b\,d\,s_{xy}\qquad r_{uv}=\operatorname{sign}(bd)\cdot r_{xy}\]</div>
+<div class="bsp"><b>Beispiel.</b> °C → °F (\(F=32+1.8C\)): Kovarianz × 1.8, Korrelation bleibt gleich.</div>
+</div>
+<div class="e" id="e-6-5"><div class="eh"><span class="no">6.5</span><span class="ti">Kausalität, Scheinkorrelation, ökologischer Fehlschluss</span></div>
+<span class="sig"><b>Erkennen:</b> „Der Trainer behauptet, … führt zu …“, „Stimmen Sie zu? Begründen Sie“</span>
+<div class="ne">Korelasyon nedensellik değildir. Üçüncü değişken veya tesadüf olabilir. Nedensellik için deney + kontrol gerekir.</div>
+<ol class="st"><li><b>Kausal</b> nachweisbar nur mit gezielter Manipulation von X und Kontrolle aller anderen Einflüsse (Randomisierung).</li><li><b>Scheinkorrelation</b>: Zusammenhang durch eine <b>Drittvariable</b> oder reinen Zufall.</li><li><b>Ökologischer Fehlschluss</b>: von Gruppendaten (Städte, Länder) auf Individuen schließen.</li></ol>
+<div class="ks">„Nein. Ein hoher Korrelationskoeffizient zeigt nur einen statistischen (linearen) Zusammenhang, keine Kausalität. Er könnte z. B. durch eine Drittvariable entstehen; für einen Kausalnachweis wäre ein kontrolliertes Experiment nötig.“</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-7"><span class="sn">7</span> Wahrscheinlichkeitsrechnung (V04)</h2>
+<p class="secintro">Probeklausur 2022: 17 Puan (Mengen 6 + Bayes 11). En önemli araç: metni doğru sembole çevirmek.</p>
+<div class="e" id="e-7-1"><div class="eh"><span class="no">7.1</span><span class="ti">Text in Mengen-Sprache übersetzen</span></div>
+<span class="sig"><b>Erkennen:</b> „und“, „oder“, „nicht“, „weder … noch“, „genau eines“, „mindestens eines“, „aber nicht“</span>
+<div class="ne">Önce kelimeleri sembole çevir, sonra hesapla. „Oder“ istatistikte her zaman „en az biri“ (ikisi de olabilir).</div>
+<table class='t'><tr><th>Wortlaut</th><th>Menge</th><th>Wahrscheinlichkeit</th></tr><tr><td>A und B</td><td>\(A\cap B\)</td><td>\(P(A\cap B)\)</td></tr><tr><td>A oder B (mindestens eines)</td><td>\(A\cup B\)</td><td>\(P(A)+P(B)-P(A\cap B)\)</td></tr><tr><td>nicht A</td><td>\(\bar A\)</td><td>\(1-P(A)\)</td></tr><tr><td>A, aber nicht B</td><td>\(A\cap\bar B=A\setminus B\)</td><td>\(P(A)-P(A\cap B)\)</td></tr><tr><td>weder A noch B</td><td>\(\bar A\cap\bar B=\overline{A\cup B}\)</td><td>\(1-P(A\cup B)\)</td></tr><tr><td>genau eines von beiden</td><td>\((A\cap\bar B)\cup(\bar A\cap B)\)</td><td>\(P(A)+P(B)-2P(A\cap B)\)</td></tr><tr><td>höchstens eines</td><td>\(\overline{A\cap B}\)</td><td>\(1-P(A\cap B)\)</td></tr></table>
+<div class="bsp"><b>Beispiel.</b> \(P(A)=0.5,\ P(B)=0.4,\ P(A\cap B)=0.15\): weder noch \(1-0.75=0.25\) · genau eines \(0.9-0.3=0.6\) · A aber nicht B \(0.35\)</div>
+<div class="fa">Venn-Diagramm skizzieren: Die vier Bereiche (nur A, nur B, beide, keines) ergeben zusammen 1.</div>
+</div></div>
+<div class="e" id="e-7-2"><div class="eh"><span class="no">7.2</span><span class="ti">Mengen und Mächtigkeiten (Laplace-Experiment)</span></div>
+<span class="sig"><b>Erkennen:</b> „Ergebnisraum Ω = {…}“, „Berechnen Sie die Mächtigkeiten \(|A\cap\bar B|\)“</span>
+<div class="ne">|·| = eleman <b>sayısı</b> (olasılık değil). Tümleyeni açıkça yaz: \(\bar B\) = Ω'da olup B'de olmayanlar.</div>
+<div class="fm">\[\bar A=\Omega\setminus A\qquad\overline{A\cup B}=\bar A\cap\bar B\qquad\overline{A\cap B}=\bar A\cup\bar B\quad\text{(De Morgan)}\qquad|A\cup B|=|A|+|B|-|A\cap B|\]</div>
+<ol class="st"><li>Alle Komplemente <b>ausschreiben</b> (Liste).</li><li>Schnitt = in beiden Listen; Vereinigung = in mindestens einer.</li><li>Elemente zählen. Kontrolle über De Morgan / Komplement: \(|\bar A\cup B|=|\Omega|-|A\cap\bar B|\).</li></ol>
+<div class="bsp"><b>Beispiel.</b> Ω = {1,…,8}, A = {1,2,3,4}, B = {3,4,5,6}: \(\bar B=\{1,2,7,8\}\), \(A\cap\bar B=\{1,2\}\Rightarrow|A\cap\bar B|=2\) · \(|\bar A\cup B|=8-2=6\)</div>
+<div class="fa">Probeklausur 2022 Aufgabe 4 (6 P) war genau das – sorgfältig auflisten, nicht im Kopf.</div>
+</div>
+<div class="e" id="e-7-3"><div class="eh"><span class="no">7.3</span><span class="ti">Laplace-Wahrscheinlichkeit</span></div>
+<span class="sig"><b>Erkennen:</b> „Laplace-Experiment“, „fairer Würfel“, „zufällig gezogen“</span>
+<div class="ne">Tüm sonuçlar eşit olasılıklıysa: istenen sayısı / tüm sonuçların sayısı.</div>
+<div class="fm">\[P(A)=\frac{|A|}{|\Omega|}=\frac{\text{günstige}}{\text{mögliche}}\]</div>
+<div class="bsp"><b>Beispiel.</b> Zwei Würfel, Augensumme 7: \(\dfrac{6}{36}=\dfrac16\) · Ω = {1,…,8}, A = {1,2,3,4}: \(P(A)=\dfrac48=0.5\)</div>
+</div>
+<div class="e" id="e-7-4"><div class="eh"><span class="no">7.4</span><span class="ti">Rechenregeln (Kolmogorov)</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie \(P(A\cup B)\)“, „Gegenereignis“</span>
+<div class="ne">Tümleyen: 1 − P. Birleşim: topla, kesişimi bir kez çıkar. Ayrık (disjunkt) olaylarda kesişim 0.</div>
+<div class="fm">\[0\le P(A)\le1\qquad P(\Omega)=1\qquad P(\bar A)=1-P(A)\qquad P(A\cup B)=P(A)+P(B)-P(A\cap B)\qquad P(A\setminus B)=P(A)-P(A\cap B)\]</div>
+<div class="bsp"><b>Beispiel.</b> \(P(A)=0.3,\ P(B)=0.5,\ P(A\cap B)=0.2\): \(P(A\cup B)=0.3+0.5-0.2=0.6\)</div>
+<div class="fa">Disjunkt (\(A\cap B=\emptyset\)) ist nicht dasselbe wie unabhängig! Disjunkte Ereignisse mit \(P&gt;0\) sind sogar abhängig.</div>
+</div>
+<div class="e" id="e-7-5"><div class="eh"><span class="no">7.5</span><span class="ti">Vierfeldertafel (Wahrscheinlichkeiten)</span></div>
+<span class="sig"><b>Erkennen:</b> zwei Ereignisse mit \(P(A)\), \(P(B)\), \(P(A\cap B)\); „Füllen Sie die Tafel“</span>
+<div class="ne">Kontenjans tablosu gibi, ama sayı yerine olasılık; toplam 1. Eksikleri farkla bul.</div>
+<table class='t c' style='width:auto'><tr><th></th><th>\(B\)</th><th>\(\bar B\)</th><th>Σ</th></tr><tr><th>\(A\)</th><td>\(P(A\cap B)\)</td><td>\(P(A\cap\bar B)\)</td><td>\(P(A)\)</td></tr><tr><th>\(\bar A\)</th><td>\(P(\bar A\cap B)\)</td><td>\(P(\bar A\cap\bar B)\)</td><td>\(P(\bar A)\)</td></tr><tr><th>Σ</th><td>\(P(B)\)</td><td>\(P(\bar B)\)</td><td>1</td></tr></table>
+<div class="bsp"><b>Beispiel.</b> \(P(A)=0.3,\ P(B)=0.6,\ P(A\cap B)=0.12\) → \(P(A\cap\bar B)=0.18\), \(P(\bar A\cap B)=0.48\), \(P(\bar A\cap\bar B)=0.22\)</div>
+</div>
+<div class="e" id="e-7-6"><div class="eh"><span class="no">7.6</span><span class="ti">Bedingte Wahrscheinlichkeit</span></div>
+<span class="sig"><b>Erkennen:</b> „unter der Bedingung“, „wenn bekannt ist, dass“, „gegeben“, „von den …“, „unter den …“</span>
+<div class="ne">P(A|B): B'nin olduğu <b>biliniyor</b>, A'yı arıyoruz. Bilinen her zaman çizginin <b>sağında</b>; paydaya o gelir.</div>
+<div class="fm">\[P(A\mid B)=\frac{P(A\cap B)}{P(B)}\qquad P(A\cap B)=P(A\mid B)\,P(B)=P(B\mid A)\,P(A)\qquad P(\bar A\mid B)=1-P(A\mid B)\]</div>
+<ol class="st"><li>Was ist bekannt (Bedingung)? → rechts vom Strich.</li><li>Schnitt durch die Wahrscheinlichkeit der Bedingung teilen.</li><li>Laplace: \(P(A\mid B)=\dfrac{|A\cap B|}{|B|}\) (Ω schrumpft auf B).</li></ol>
+<div class="bsp"><b>Beispiel.</b> Tafel aus 7.5: \(P(A\mid B)=\dfrac{0.12}{0.6}=0.2\) · \(P(B\mid A)=\dfrac{0.12}{0.3}=0.4\) · \(P(A\mid\bar B)=\dfrac{0.18}{0.4}=0.45\)</div>
+<div class="fa">\(P(A\mid B)\ne P(B\mid A)\). „A, wenn B nicht eingetreten ist“ = \(P(A\mid\bar B)\).</div>
+</div>
+<div class="e" id="e-7-7"><div class="eh"><span class="no">7.7</span><span class="ti">Stochastische Unabhängigkeit prüfen</span></div>
+<span class="sig"><b>Erkennen:</b> „Sind A und B stochastisch unabhängig? Begründen Sie rechnerisch“</span>
+<div class="ne">Kesişim = çarpım ise bağımsız. Ya da P(A|B) = P(A). Sayılarla göster.</div>
+<div class="fm">\[A,B\ \text{unabhängig}\iff P(A\cap B)=P(A)\cdot P(B)\iff P(A\mid B)=P(A)\]</div>
+<ol class="st"><li>\(P(A)\), \(P(B)\), \(P(A\cap B)\) bestimmen.</li><li>\(P(A)\cdot P(B)\) ausrechnen und mit \(P(A\cap B)\) vergleichen.</li><li>Gleich → unabhängig, sonst abhängig. Satz mit Zahlen.</li></ol>
+<div class="bsp"><b>Beispiel.</b> 7.5: \(0.3\cdot0.6=0.18\ne0.12=P(A\cap B)\) → abhängig · Laplace Ω = {1,…,10}, A = {1,2,3,4,5}, B = {2,4,6,8,10}: \(P(A\cap B)=0.2\ne0.25\) → abhängig</div>
+<div class="ks">„Da \(P(A\cap B)=0.12\ne0.18=P(A)\cdot P(B)\), sind A und B stochastisch abhängig.“</div>
+</div>
+<div class="e" id="e-7-8"><div class="eh"><span class="no">7.8</span><span class="ti">Baumdiagramm und Pfadregeln</span></div>
+<span class="sig"><b>Erkennen:</b> mehrstufiger Vorgang, „zuerst … dann …“, Anteile und bedingte Anteile</span>
+<div class="ne">Dal üzerindeki sayılar koşullu olasılıklar. Bir yol boyunca <b>çarp</b>, aynı sonuca giden yolları <b>topla</b>.</div>
+<ol class="st"><li>1. Stufe: die Ereignisse, deren Wahrscheinlichkeit <b>unbedingt</b> gegeben ist (z. B. Anteile der Maschinen).</li><li>2. Stufe: die bedingten Wahrscheinlichkeiten \(P(\cdot\mid\text{1. Stufe})\). Jeder Knoten: Summe der Äste = 1 (fehlende Äste als 1 − …).</li><li><b>Pfadregel</b>: entlang eines Pfades multiplizieren. <b>Summenregel</b>: Pfade zum gleichen Ergebnis addieren.</li></ol>
+<div class="fa">Welche Variable kommt zuerst? Die, auf die sich die Bedingung bezieht. Steht „von den Bestandenen gehören 80 % zu Strategie 1“, ist „Bestehen“ die 1. Stufe.</div>
+</div>
+<div class="e" id="e-7-9"><div class="eh"><span class="no">7.9</span><span class="ti">Satz der totalen Wahrscheinlichkeit</span></div>
+<span class="sig"><b>Erkennen:</b> „Mit welcher Wahrscheinlichkeit ist ein zufällig ausgewähltes Teil defekt?“</span>
+<div class="ne">Bir olayın toplam olasılığı = ona giden tüm yolların toplamı.</div>
+<div class="fm">\[P(B)=\sum_i P(B\mid A_i)\,P(A_i)=P(B\mid A_1)P(A_1)+P(B\mid A_2)P(A_2)+\dots\]</div>
+<div class="bsp"><b>Beispiel.</b> Maschine 1 (60 %, 2 % Ausschuss), Maschine 2 (40 %, 5 % Ausschuss): \(P(D)=0.02\cdot0.6+0.05\cdot0.4=0.012+0.02=0.032\)</div>
+<div class="fa">Die \(A_i\) müssen eine Zerlegung sein (disjunkt, zusammen Ω): Anteile summieren sich zu 1.</div>
+</div>
+<div class="e" id="e-7-10"><div class="eh"><span class="no">7.10</span><span class="ti">Satz von Bayes (Rückschluss auf die Ursache)</span></div>
+<span class="sig"><b>Erkennen:</b> „Ein Teil ist defekt. Mit welcher Wahrscheinlichkeit stammt es von Maschine 2?“</span>
+<div class="ne">Sonuç biliniyor, nedeni arıyoruz. <b>Benim yolum / o sonuca giden tüm yollar.</b></div>
+<div class="fm">\[P(A_j\mid B)=\frac{P(B\mid A_j)\,P(A_j)}{P(B)}=\frac{P(B\mid A_j)\,P(A_j)}{\sum_i P(B\mid A_i)\,P(A_i)}\]</div>
+<ol class="st"><li>Gesucht übersetzen: bekannt = B (rechts), gesucht = Ursache \(A_j\).</li><li>Nenner \(P(B)\) mit 7.9.</li><li>Zähler = Pfad über \(A_j\).</li><li>Teilen. Gegenereignis-Version: alles mit \(\bar B\) (\(P(\bar B\mid A_i)=1-P(B\mid A_i)\), \(P(\bar B)=1-P(B)\)).</li></ol>
+<div class="bsp"><b>Beispiel.</b> 7.9: \(P(M_2\mid D)=\dfrac{0.05\cdot0.4}{0.032}=\dfrac{0.02}{0.032}=0.625\) · \(P(M_1\mid\bar D)=\dfrac{0.98\cdot0.6}{0.968}=0.607\)</div>
+<div class="fa">Kontrolle: Alle \(P(A_i\mid B)\) zusammen ergeben 1.</div>
+<div class="ks">„Ein defektes Teil stammt mit einer Wahrscheinlichkeit von 0.625 von Maschine 2.“</div>
+</div>
+<div class="e" id="e-7-11"><div class="eh"><span class="no">7.11</span><span class="ti">Medizinischer Test: Sensitivität, Spezifität, Prävalenz</span></div>
+<span class="sig"><b>Erkennen:</b> „Prävalenz“, „Sensitivität“, „Spezifität“, „bei positivem Test krank“</span>
+<div class="ne">Prävalenz = P(K) · Sensitivität = P(T|K) · Spezifität = \(P(\bar T\mid\bar K)\). Bayes ile P(K|T).</div>
+<div class="fm">\[P(T)=P(T\mid K)P(K)+P(T\mid\bar K)P(\bar K)\qquad P(T\mid\bar K)=1-\text{Spez.}\qquad P(K\mid T)=\frac{\text{Sens.}\cdot P(K)}{P(T)}\]</div>
+<div class="bsp"><b>Beispiel.</b> Prävalenz 1 %, Sens. 0.9, Spez. 0.95: \(P(T)=0.9\cdot0.01+0.05\cdot0.99=0.0585\) · \(P(K\mid T)=\dfrac{0.009}{0.0585}=0.154\) · \(P(\bar K\mid\bar T)=\dfrac{0.95\cdot0.99}{0.9415}=0.999\)</div>
+<div class="fa">\(P(\bar K)=1-\text{Prävalenz}\) (z. B. 0.99) wird oft vergessen. Kontrolle mit 10 000 Personen: 100 krank → 90 positiv; 9 900 gesund → 495 positiv.</div>
+<div class="ks">„Obwohl der Test gut ist, ist eine positiv getestete Person nur mit Wahrscheinlichkeit 0.154 krank, da die Krankheit selten ist.“</div>
+</div>
+<div class="e" id="e-7-12"><div class="eh"><span class="no">7.12</span><span class="ti">Ziehen ohne Zurücklegen (hypergeometrisch, „Lotto“)</span></div>
+<span class="sig"><b>Erkennen:</b> „ohne Zurücklegen“, „Urne mit … roten und … weißen Kugeln“, „genau k“</span>
+<div class="ne">Geri koymadan çekmede olasılıklar değişir → binom değil. „Lotto formülü“ kullan.</div>
+<div class="fm">\[P(X=k)=\frac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}}\qquad N=\text{alle},\ M=\text{gesuchte Sorte},\ n=\text{gezogen}\]</div>
+<div class="bsp"><b>Beispiel.</b> 10 Kugeln, 4 rot, 3 gezogen: \(P(\text{genau 2 rot})=\dfrac{\binom42\binom61}{\binom{10}3}=\dfrac{6\cdot6}{120}=0.3\)</div>
+<div class="fa">Mit Zurücklegen → Binomialverteilung (9.4) und Unabhängigkeit; ohne Zurücklegen → abhängig.</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-8"><span class="sn">8</span> Zufallsvariablen: Verteilung, Erwartungswert, Varianz (V05–V06)</h2>
+<p class="secintro">Testat 4'ün konusu. Reçete hep aynı: Träger → olasılık fonksiyonu/yoğunluk → E(X) → Var(X).</p>
+<div class="e" id="e-8-1"><div class="eh"><span class="no">8.1</span><span class="ti">Träger und Wahrscheinlichkeitsfunktion (diskret)</span></div>
+<span class="sig"><b>Erkennen:</b> „Geben Sie den Träger und die Wahrscheinlichkeitsfunktion von X an“</span>
+<div class="ne">Träger = X'in alabileceği değerler. Olasılık fonksiyonu = her değerin olasılığı + „0 sonst“.</div>
+<div class="fm">\[f(x)=P(X=x)=\begin{cases}p_1 & x=x_1\\ p_2 & x=x_2\\ \ \vdots\\ 0 & \text{sonst}\end{cases}\qquad p_j\ge0,\quad\sum_j p_j=1\]</div>
+<ol class="st"><li>X genau definieren (z. B. Gewinn = Auszahlung − Einsatz).</li><li>Träger T = alle möglichen Werte von X (nicht die des Würfels!).</li><li>Jedem Wert seine Wahrscheinlichkeit zuordnen; gleiche Werte zusammenfassen.</li><li>„0 sonst“ hinschreiben. Kontrolle: Summe = 1.</li></ol>
+<div class="bsp"><b>Beispiel.</b> Zwei Münzwürfe, X = Anzahl Kopf: \(T=\{0,1,2\}\), \(P(X=0)=\dfrac14,\ P(X=1)=\dfrac12,\ P(X=2)=\dfrac14\), 0 sonst</div>
+<div class="fa">„0 sonst“ fehlt → Punktabzug (Tutorium-Lösungen).</div>
+</div></div>
+<div class="e" id="e-8-2"><div class="eh"><span class="no">8.2</span><span class="ti">Konstante c bestimmen (diskret)</span></div>
+<span class="sig"><b>Erkennen:</b> „\(P(X=x)=c\cdot\dots\) für \(x\in\{\dots\}\). Bestimmen Sie c“</span>
+<div class="ne">Tüm olasılıkların toplamı 1 olmalı → denklem kur, c'yi çöz.</div>
+<div class="fm">\[\sum_{x\in T}P(X=x)=1\ \Rightarrow\ c\]</div>
+<div class="bsp"><b>Beispiel.</b> \(P(X=x)=c(x+1)\) für \(x\in\{0,1,2\}\): \(c(1+2+3)=6c=1\Rightarrow c=\dfrac16\)</div>
+<div class="fa">Danach prüfen, ob alle Wahrscheinlichkeiten zwischen 0 und 1 liegen; sonst „nicht lösbar“.</div>
+</div>
+<div class="e" id="e-8-3"><div class="eh"><span class="no">8.3</span><span class="ti">Verteilungsfunktion F(x) (diskret)</span></div>
+<span class="sig"><b>Erkennen:</b> „Vervollständigen Sie F(x)“, „Bestimmen Sie \(P(X\le3)\) mit F“, Treppenfunktion</span>
+<div class="ne">F(x) = P(X ≤ x): olasılıkları soldan sağa biriktir. Merdivenin basamak yüksekliği = o değerin olasılığı.</div>
+<div class="fm">\[F(x)=P(X\le x)=\sum_{x_j\le x}P(X=x_j)\qquad P(a<X\le b)=F(b)-F(a)\qquad P(X>a)=1-F(a)\qquad P(X=x_j)=\text{Sprunghöhe}\]</div>
+<div class="bsp"><b>Beispiel.</b> \(P(X=1)=0.2,\ P(X=2)=0.5,\ P(X=4)=0.3\): \(F=0\ (x<1);\ 0.2\ (1\le x<2);\ 0.7\ (2\le x<4);\ 1\ (x\ge4)\) · \(P(X\le3)=0.7\) · \(P(X<2)=0.2\) · \(P(X=3)=0\)</div>
+<div class="fa">Bei diskreten ZV ist \(P(X&lt;2)=F(1)\ne F(2)\). Werte außerhalb des Trägers haben Wahrscheinlichkeit 0. Wörter → 2.2.</div>
+</div>
+<div class="e" id="e-8-4"><div class="eh"><span class="no">8.4</span><span class="ti">Dichte (stetig): Eigenschaften und c bestimmen</span></div>
+<span class="sig"><b>Erkennen:</b> „Bestimmen Sie c derart, dass f eine gültige Dichtefunktion ist“, „Welche Eigenschaften muss eine Dichte erfüllen?“</span>
+<div class="ne">Yoğunluk: f(x) ≥ 0 ve toplam alan (integral) = 1. f(x) > 1 olabilir! P(X = x) = 0.</div>
+<div class="fm">\[f(x)\ge0\ \text{für alle }x\qquad\int_{-\infty}^{\infty}f(x)\,dx=1\qquad P(a\le X\le b)=\int_a^b f(x)\,dx\qquad P(X=x)=0\]</div>
+<ol class="st"><li>Integral über den Träger aufstellen und = 1 setzen.</li><li>Integrieren (0.5), nach c auflösen.</li><li>Prüfen: \(f(x)\ge0\) auf dem Träger.</li></ol>
+<div class="bsp"><b>Beispiel.</b> \(f(x)=c\,x^2\) für \(0\le x\le3\): \(c\left[\dfrac{x^3}3\right]_0^3=9c=1\Rightarrow c=\dfrac19\)</div>
+<div class="fa">„f(x) ≤ 1“ und „f(x) = P(X = x)“ sind <b>keine</b> Eigenschaften einer Dichte (Testat-Multiple-Choice).</div>
+</div>
+<div class="e" id="e-8-5"><div class="eh"><span class="no">8.5</span><span class="ti">Verteilungsfunktion, Wahrscheinlichkeiten und Quantile (stetig)</span></div>
+<span class="sig"><b>Erkennen:</b> „Bestimmen Sie F(x)“, „\(P(X\le1)\)“, „Median der Zufallsvariable“</span>
+<div class="ne">F(x) = soldan x'e kadar alan = integral. Medyan: F(x) = 0.5 denklemini çöz.</div>
+<div class="fm">\[F(x)=\int_{-\infty}^{x}f(t)\,dt\qquad P(a<X\le b)=F(b)-F(a)\qquad x_{med}:\ F(x_{med})=0.5\qquad x_\alpha:\ F(x_\alpha)=\alpha\]</div>
+<div class="bsp"><b>Beispiel.</b> \(f(x)=\dfrac{x^2}9\) auf [0, 3]: \(F(x)=\dfrac{x^3}{27}\) (0 für x < 0, 1 für x > 3) · \(P(X\le1.5)=\dfrac{3.375}{27}=0.125\) · Median: \(x^3=13.5\Rightarrow x_{med}=2.381\)</div>
+<div class="fa">F vollständig angeben: 0 links vom Träger, 1 rechts davon.</div>
+</div>
+<div class="e" id="e-8-6"><div class="eh"><span class="no">8.6</span><span class="ti">Erwartungswert E(X)</span></div>
+<span class="sig"><b>Erkennen:</b> „Bestimmen Sie den Erwartungswert“, „im Mittel“, „durchschnittlicher Gewinn“</span>
+<div class="ne">Uzun vadede ortalama değer = <b>değer × olasılık, topla</b> (stetig: integral). Ağırlıklı ortalamadır.</div>
+<div class="fm">\[E(X)=\sum_{x\in T}x\cdot P(X=x)\qquad E(X)=\int_{-\infty}^{\infty}x\,f(x)\,dx\]</div>
+<div class="bsp"><b>Beispiel.</b> 8.2: \(E(X)=0\cdot\dfrac16+1\cdot\dfrac26+2\cdot\dfrac36=\dfrac86=\dfrac43=1.333\) · 8.4: \(E(X)=\int_0^3 x\cdot\dfrac{x^2}9dx=\left[\dfrac{x^4}{36}\right]_0^3=2.25\)</div>
+<div class="fa">E(X) muss nicht im Träger liegen (Würfel: 3.5). Tabellenform: Spalten x | P | x·P | x²·P anlegen.</div>
+</div>
+<div class="e" id="e-8-7"><div class="eh"><span class="no">8.7</span><span class="ti">Erwartungswert einer Funktion E(g(X)), E(X²)</span></div>
+<span class="sig"><b>Erkennen:</b> „Bestimmen Sie E(Y) für Y = log(X)“, „\(E(X^2)\)“, „\(Y=X^2\)“</span>
+<div class="ne">g(X)'in beklentisi: her değer için g(x)·P(X=x), topla. Önce E(X) bulup g'ye koymak <b>yanlış</b>.</div>
+<div class="fm">\[E(g(X))=\sum g(x)\,P(X=x)\qquad E(g(X))=\int g(x)\,f(x)\,dx\qquad E(g(X))\ne g(E(X))\ \text{(außer g linear)}\]</div>
+<div class="bsp"><b>Beispiel.</b> X ∈ {0, 1, 2} mit 0.5, 0.3, 0.2: \(E(X^2)=0+0.3+0.8=1.1\), aber \((E(X))^2=0.49\) · 8.4: \(E(X^2)=\int_0^3\dfrac{x^4}9dx=\dfrac{243}{45}=5.4\)</div>
+<div class="fa">log ist in diesem Kurs ln; \(\log 1=0\).</div>
+</div>
+<div class="e" id="e-8-8"><div class="eh"><span class="no">8.8</span><span class="ti">Varianz und Standardabweichung einer Zufallsvariable</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie Var(X)“</span>
+<div class="ne">Var = E(X²) − (E(X))². Önce iki beklentiyi bul, sonra çıkar. Kesirlerle git, sonda ondalığa çevir.</div>
+<div class="fm">\[Var(X)=E(X^2)-\big(E(X)\big)^2=E\big[(X-E(X))^2\big]\qquad sd(X)=\sqrt{Var(X)}\]</div>
+<div class="bsp"><b>Beispiel.</b> 8.2: \(E(X^2)=\dfrac{0+2+12}6=\dfrac73\) → \(Var(X)=\dfrac73-\dfrac{16}9=\dfrac59=0.556\) · 8.4: \(Var(X)=5.4-2.25^2=0.3375\to0.338\)</div>
+<div class="fa">Mit gerundetem E(X) quadrieren verfälscht das Ergebnis. Var ≥ 0 – sonst Rechenfehler.</div>
+</div>
+<div class="e" id="e-8-9"><div class="eh"><span class="no">8.9</span><span class="ti">Rechenregeln für E und Var</span></div>
+<span class="sig"><b>Erkennen:</b> „\(Z=0.5X+Y\)“, „\(E(2X+4)\)“, „X und Y unabhängig“, „Bestimmen Sie E(Y) rückwärts“</span>
+<div class="ne">Toplamın beklentisi her zaman toplanır. Varyans: sabit kaydırma etkisiz, çarpan karesiyle; toplamda bağımsızsa varyanslar toplanır (fark için de!).</div>
+<div class="fm">\[E(aX+b)=aE(X)+b\qquad Var(aX+b)=a^2Var(X)\qquad E(X\pm Y)=E(X)\pm E(Y)\]\[Var(aX+bY)=a^2Var(X)+b^2Var(Y)+2ab\,Cov(X,Y)\qquad\text{unabhängig: }Cov=0,\ E(XY)=E(X)E(Y)\]</div>
+<div class="bsp"><b>Beispiel.</b> \(E(X)=3,\ Var(X)=1,\ Var(Y)=1\), unabhängig: \(Var(X-Y)=1+1=2\) · \(E(2X+4)=10\), \(Var(2X+4)=4\) · \(Var(0.5X+Y)=0.25+1=1.25\)</div>
+<div class="fa">\(Var(X-Y)=Var(X)+Var(Y)\) (nicht minus!) bei Unabhängigkeit. \(Var(2X)=4Var(X)\), aber \(Var(X_1+X_2)=2Var(X)\) bei iid.</div>
+</div>
+<div class="e" id="e-8-10"><div class="eh"><span class="no">8.10</span><span class="ti">Zwei diskrete Zufallsvariablen (gemeinsame Verteilung)</span></div>
+<span class="sig"><b>Erkennen:</b> Tabelle \(P(X=x,Y=y)\), „Randverteilung“, „bedingte Verteilung“, „Kovarianz“</span>
+<div class="ne">Marjinal = satır/sütun toplamı. Koşullu = hücre / marjinal. Cov = E(XY) − E(X)E(Y).</div>
+<div class="fm">\[P(X=x)=\sum_y P(X=x,Y=y)\qquad P(Y=y\mid X=x)=\frac{P(X=x,Y=y)}{P(X=x)}\qquad Cov(X,Y)=E(XY)-E(X)E(Y)\qquad\rho=\frac{Cov}{sd(X)\,sd(Y)}\]</div>
+<div class="bsp"><b>Beispiel.</b> \(P(0,0)=0.3,\ P(0,1)=0.2,\ P(1,0)=0.1,\ P(1,1)=0.4\): \(E(X)=0.5,\ E(Y)=0.6,\ E(XY)=0.4\) → \(Cov=0.4-0.3=0.1\ne0\) → abhängig · \(P(Y=1\mid X=1)=\dfrac{0.4}{0.5}=0.8\)</div>
+<div class="fa">Unabhängig ⇒ Cov = 0, aber Cov = 0 ⇏ unabhängig. Unabhängigkeit: jede Zelle = Produkt der Ränder.</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-9"><span class="sn">9</span> Spezielle Verteilungen (V07)</h2>
+<p class="secintro">Önce hangi dağılım olduğunu tanı (9.2), sonra formülü uygula. Tablo 9.1 tüm E ve Var değerlerini içerir.</p>
+<div class="e" id="e-9-1"><div class="eh"><span class="no">9.1</span><span class="ti">Übersicht: alle Verteilungen auf einen Blick</span></div>
+<span class="sig"><b>Erkennen:</b> „Wie lautet die Verteilung von X (mit Parametern)?“, „Erwartungswert und Varianz“</span>
+<div class="ne">Formül, beklenen değer, varyans ve R komutu tek tabloda.</div>
+<table class='t'><tr><th>Verteilung</th><th>\(P(X=x)\) bzw. \(f(x)\)</th><th>Träger</th><th>\(E(X)\)</th><th>\(Var(X)\)</th><th>R</th></tr><tr><td>Bernoulli \(Be(\pi)\)</td><td>\(\pi^x(1-\pi)^{1-x}\)</td><td>{0, 1}</td><td>\(\pi\)</td><td>\(\pi(1-\pi)\)</td><td>binom, size=1</td></tr><tr><td>Binomial \(B(n,\pi)\)</td><td>\(\binom nx\pi^x(1-\pi)^{n-x}\)</td><td>{0, …, n}</td><td>\(n\pi\)</td><td>\(n\pi(1-\pi)\)</td><td>binom</td></tr><tr><td>Poisson \(Po(\lambda)\)</td><td>\(\dfrac{\lambda^x}{x!}e^{-\lambda}\)</td><td>{0, 1, 2, …}</td><td>\(\lambda\)</td><td>\(\lambda\)</td><td>pois</td></tr><tr><td>Geometrisch (Testat-Form)</td><td>\(p(1-p)^x\)</td><td>{0, 1, 2, …}</td><td>\(\dfrac{1-p}{p}\)</td><td>\(\dfrac{1-p}{p^2}\)</td><td>geom</td></tr><tr><td>Gleich \(U(a,b)\)</td><td>\(\dfrac1{b-a}\)</td><td>[a, b]</td><td>\(\dfrac{a+b}2\)</td><td>\(\dfrac{(b-a)^2}{12}\)</td><td>unif</td></tr><tr><td>Exponential \(Exp(\lambda)\)</td><td>\(\lambda e^{-\lambda x}\)</td><td>[0, ∞)</td><td>\(\dfrac1\lambda\)</td><td>\(\dfrac1{\lambda^2}\)</td><td>exp</td></tr><tr><td>Normal \(N(\mu,\sigma^2)\)</td><td>\(\dfrac1{\sqrt{2\pi\sigma^2}}e^{-\dfrac{(x-\mu)^2}{2\sigma^2}}\)</td><td>ℝ</td><td>\(\mu\)</td><td>\(\sigma^2\)</td><td>norm</td></tr></table>
+<div class="fa">In \(N(\mu,\sigma^2)\) steht die <b>Varianz</b>; R (pnorm, qnorm) will die <b>Standardabweichung</b> σ.</div>
+</div></div>
+<div class="e" id="e-9-2"><div class="eh"><span class="no">9.2</span><span class="ti">Welche Verteilung passt? (Erkennungsschlüssel)</span></div>
+<span class="sig"><b>Erkennen:</b> „Durch welche Verteilung kann Y am geeignetsten modelliert werden?“</span>
+<div class="ne">Metindeki ipucu kelimeden dağılımı seç, parametreyi metinden al.</div>
+<table class='t'><tr><th>Signal im Text</th><th>Verteilung</th><th>Parameter aus dem Text</th></tr><tr><td>ein Versuch, Erfolg ja/nein</td><td>Bernoulli</td><td>π = Erfolgswahrscheinlichkeit</td></tr><tr><td>Anzahl Erfolge in n unabhängigen gleichen Versuchen, „mit Zurücklegen“</td><td>Binomial</td><td>n, π</td></tr><tr><td>Anzahl Ereignisse pro Zeitraum/Fläche, „im Durchschnitt … pro Monat“, ohne feste Obergrenze</td><td>Poisson</td><td>λ = Durchschnitt im <b>gefragten</b> Zeitraum</td></tr><tr><td>„ohne Zurücklegen“ aus kleiner Urne</td><td>hypergeometrisch (7.12)</td><td>N, M, n</td></tr><tr><td>Anzahl Misserfolge bis zum ersten Erfolg</td><td>geometrisch</td><td>p</td></tr><tr><td>„jeder Wert zwischen a und b gleich wahrscheinlich“</td><td>Gleichverteilung</td><td>a, b</td></tr><tr><td>Wartezeit / Dauer bis zum Ereignis, „im Mittel 3 Stunden“</td><td>Exponential</td><td>λ = 1 / Mittelwert</td></tr><tr><td>Messwerte (Gewicht, Größe, Füllmenge), Summen und Mittelwerte vieler ZV</td><td>Normal</td><td>μ, σ²</td></tr></table>
+</div>
+<div class="e" id="e-9-3"><div class="eh"><span class="no">9.3</span><span class="ti">Bernoulliverteilung</span></div>
+<span class="sig"><b>Erkennen:</b> „Erfolg/Misserfolg“, „0/1“, ein einzelner Versuch</span>
+<div class="ne">Tek deneme: başarı 1 (olasılık π), başarısızlık 0.</div>
+<div class="fm">\[P(X=1)=\pi,\quad P(X=0)=1-\pi\qquad E(X)=\pi\qquad Var(X)=\pi(1-\pi)\]</div>
+<div class="bsp"><b>Beispiel.</b> Münzwurf mit \(\pi=0.5\): \(E=0.5\), \(Var=0.25\)</div>
+</div>
+<div class="e" id="e-9-4"><div class="eh"><span class="no">9.4</span><span class="ti">Binomialverteilung</span></div>
+<span class="sig"><b>Erkennen:</b> „n-mal unabhängig“, „Anzahl der …“, „mit Zurücklegen“, „rät bei allen Fragen“</span>
+<div class="ne">n bağımsız denemede başarı sayısı. „En az / en fazla“ → toplamla veya tümleyenle.</div>
+<div class="fm">\[P(X=x)=\binom nx\pi^x(1-\pi)^{n-x}\qquad E(X)=n\pi\qquad Var(X)=n\pi(1-\pi)\qquad P(X\ge1)=1-(1-\pi)^n\]</div>
+<ol class="st"><li>n, π aus dem Text; Verteilung hinschreiben: \(X\sim B(n,\pi)\).</li><li>Wortlaut in Werte übersetzen (2.2): „mindestens 2“ = \(1-P(0)-P(1)\).</li><li>Einzelwahrscheinlichkeiten ausrechnen, addieren.</li></ol>
+<div class="bsp"><b>Beispiel.</b> \(X\sim B(10;\,0.3)\): \(P(X=2)=\binom{10}2\,0.3^2\,0.7^8=45\cdot0.09\cdot0.0576=0.233\) · \(P(X\ge1)=1-0.7^{10}=0.972\) · \(E=3,\ Var=2.1\)</div>
+<div class="fa">Gegenwahrscheinlichkeit spart Zeit: „mindestens 1“ = 1 − „keiner“.</div>
+</div>
+<div class="e" id="e-9-5"><div class="eh"><span class="no">9.5</span><span class="ti">Poissonverteilung</span></div>
+<span class="sig"><b>Erkennen:</b> „im Durchschnitt λ pro Stunde/Monat“, „Anzahl der Anrufe/Tore/Gewittertage“</span>
+<div class="ne">Belirli zamanda olay sayısı. λ = o zaman aralığındaki ortalama. Zaman aralığı değişirse λ da orantılı değişir.</div>
+<div class="fm">\[P(X=x)=\frac{\lambda^x}{x!}e^{-\lambda}\qquad E(X)=Var(X)=\lambda\qquad P(X=0)=e^{-\lambda}\qquad\text{Zeitraum}\times k\Rightarrow\lambda\times k\]</div>
+<div class="bsp"><b>Beispiel.</b> 2 Anrufe pro Stunde: \(P(X=0)=e^{-2}=0.135\) · \(P(X\le1)=e^{-2}(1+2)=0.406\) · \(P(X>2)=1-e^{-2}(1+2+2)=0.323\) · in 3 Stunden: \(\lambda=6\)</div>
+<div class="fa">\(Z=2X+4\) ist nicht mehr poissonverteilt (E = 10 ≠ Var = 12).</div>
+</div>
+<div class="e" id="e-9-6"><div class="eh"><span class="no">9.6</span><span class="ti">Geometrische Verteilung (Testat-/ML-Form)</span></div>
+<span class="sig"><b>Erkennen:</b> \(P(X=x)=p(1-p)^x\) für x = 0, 1, 2, …</span>
+<div class="ne">İlk başarıya kadar başarısızlık sayısı. Sınavda genelde ML sorusu olarak çıkar (11.6).</div>
+<div class="fm">\[P(X=x)=p\,(1-p)^x\qquad E(X)=\frac{1-p}{p}\qquad Var(X)=\frac{1-p}{p^2}\qquad P(X\ge k)=(1-p)^k\]</div>
+<div class="bsp"><b>Beispiel.</b> \(p=0.25\): \(P(X=2)=0.25\cdot0.75^2=0.141\) · \(E(X)=3\)</div>
+<div class="fa">Andere Bücher zählen die Versuche (x = 1, 2, …) – immer die Formel aus der Aufgabe nehmen.</div>
+</div>
+<div class="e" id="e-9-7"><div class="eh"><span class="no">9.7</span><span class="ti">Stetige Gleichverteilung U(a, b)</span></div>
+<span class="sig"><b>Erkennen:</b> „gleichverteilt zwischen a und b“, „jeder Zeitpunkt gleich wahrscheinlich“</span>
+<div class="ne">Yoğunluk sabit bir dikdörtgen: olasılık = genişlik × yükseklik.</div>
+<div class="fm">\[f(x)=\frac1{b-a}\ (a\le x\le b)\qquad F(x)=\frac{x-a}{b-a}\qquad E(X)=\frac{a+b}2\qquad Var(X)=\frac{(b-a)^2}{12}\qquad x_\alpha=a+\alpha(b-a)\]</div>
+<div class="bsp"><b>Beispiel.</b> \(U(0,20)\): \(P(X>15)=\dfrac5{20}=0.25\) · \(P(4\le X\le9)=\dfrac5{20}=0.25\) · \(E=10\), \(Var=\dfrac{400}{12}=33.333\)</div>
+</div>
+<div class="e" id="e-9-8"><div class="eh"><span class="no">9.8</span><span class="ti">Exponentialverteilung</span></div>
+<span class="sig"><b>Erkennen:</b> „Wartezeit“, „Zeit bis zum Defekt“, „im Mittel 3 Stunden“, Weibull mit r = 1</span>
+<div class="ne">Bekleme süresi. λ = 1 / ortalama. P(X > x) = e<sup>−λx</sup> (en çok kullanılan formül).</div>
+<div class="fm">\[f(x)=\lambda e^{-\lambda x}\ (x\ge0)\qquad F(x)=1-e^{-\lambda x}\qquad P(X>x)=e^{-\lambda x}\qquad E(X)=\frac1\lambda\qquad Var(X)=\frac1{\lambda^2}\qquad x_{med}=\frac{\log 2}{\lambda}\]</div>
+<div class="bsp"><b>Beispiel.</b> Mittel 4 Minuten → \(\lambda=0.25\): \(P(X>6)=e^{-1.5}=0.223\) · \(P(X\le2)=1-e^{-0.5}=0.393\) · Median \(=\dfrac{0.6931}{0.25}=2.773\)</div>
+<div class="fa">λ ist nicht der Mittelwert, sondern sein Kehrwert. Im Fuchs-Beispiel (im Mittel 3 h): λ = 1/3.</div>
+</div>
+<div class="e" id="e-9-9"><div class="eh"><span class="no">9.9</span><span class="ti">Normalverteilung: standardisieren und Φ ablesen</span></div>
+<span class="sig"><b>Erkennen:</b> „\(X\sim N(\mu,\sigma^2)\)“, „Berechnen Sie \(P(X\le\dots)\)“</span>
+<div class="ne">Önce z = (x − μ)/σ ile standart normale çevir, sonra Φ tablosundan oku (Ek 15.1). Negatif z: Φ(−z) = 1 − Φ(z).</div>
+<div class="fm">\[Z=\frac{X-\mu}{\sigma}\sim N(0,1)\qquad P(X\le x)=\Phi\!\left(\frac{x-\mu}{\sigma}\right)\qquad\Phi(-z)=1-\Phi(z)\qquad P(a<X<b)=\Phi(z_b)-\Phi(z_a)\]</div>
+<ol class="st"><li>σ = Wurzel der Varianz!</li><li>z berechnen (auf 2 Stellen für die Tabelle).</li><li>„≤“ → Φ(z); „>“ → 1 − Φ(z); „zwischen“ → Differenz.</li></ol>
+<div class="bsp"><b>Beispiel.</b> \(X\sim N(100,\,225)\) (σ = 15): \(P(X\le120)=\Phi(1.33)=0.908\) · \(P(X>85)=1-\Phi(-1)=\Phi(1)=0.841\) · \(P(85<X<115)=2\Phi(1)-1=0.683\)</div>
+<div class="fa">Bei \(N(100, 225)\) ist 225 die Varianz – durch σ = 15 teilen, nicht durch 225.</div>
+</div>
+<div class="e" id="e-9-10"><div class="eh"><span class="no">9.10</span><span class="ti">Normalverteilung: Quantile und σ-Regeln</span></div>
+<span class="sig"><b>Erkennen:</b> „Welchen Wert überschreiten nur 10 %?“, „um mehr als 2σ vom Mittel“</span>
+<div class="ne">Kantil: x<sub>α</sub> = μ + σ·z<sub>α</sub>. Önemli z değerlerini ezberle.</div>
+<div class="fm">\[x_\alpha=\mu+\sigma\,z_\alpha\qquad z_{1-\alpha}=-z_\alpha\qquad P(|X-\mu|\le\sigma)\approx0.683,\ \ 2\sigma:\ 0.954,\ \ 3\sigma:\ 0.997\]</div>
+<table class='t c' style='width:auto'><tr><th>α</th><td>0.90</td><td>0.95</td><td>0.975</td><td>0.99</td><td>0.995</td></tr><tr><th>\(z_\alpha\)</th><td>1.282</td><td>1.645</td><td>1.960</td><td>2.326</td><td>2.576</td></tr></table>
+<div class="bsp"><b>Beispiel.</b> \(N(100,225)\): 90 %-Quantil \(=100+15\cdot1.282=119.23\) · 5 %-Quantil \(=100-15\cdot1.645=75.33\)</div>
+</div>
+<div class="e" id="e-9-11"><div class="eh"><span class="no">9.11</span><span class="ti">Summen und lineare Transformation normalverteilter ZV</span></div>
+<span class="sig"><b>Erkennen:</b> „10 unabhängige Packungen“, „Gesamtgewicht“, „\(Y=2X+3\)“</span>
+<div class="ne">Normal dağılımlıların doğrusal kombinasyonu yine normal: beklentiler toplanır, (bağımsızsa) varyanslar toplanır.</div>
+<div class="fm">\[aX+b\sim N(a\mu+b,\ a^2\sigma^2)\qquad X\pm Y\sim N(\mu_X\pm\mu_Y,\ \sigma_X^2+\sigma_Y^2)\ \text{(unabh.)}\qquad \sum_{i=1}^n X_i\sim N(n\mu,\ n\sigma^2)\qquad\bar X\sim N\!\left(\mu,\tfrac{\sigma^2}n\right)\]</div>
+<div class="bsp"><b>Beispiel.</b> \(X\sim N(10,4),\ Y\sim N(20,9)\) unabhängig: \(X+Y\sim N(30,13)\), \(X-Y\sim N(-10,13)\), \(3X+1\sim N(31,36)\)</div>
+<div class="fa">Summe von n gleichen ZV (Varianz \(n\sigma^2\)) ≠ n-faches einer ZV (Varianz \(n^2\sigma^2\)).</div>
+</div>
+<div class="e" id="e-9-12"><div class="eh"><span class="no">9.12</span><span class="ti">Zentraler Grenzwertsatz (ZGWS)</span></div>
+<span class="sig"><b>Erkennen:</b> „Geben Sie die approximative Verteilung von \(\bar X\) an“, n groß (n ≥ 30)</span>
+<div class="ne">n büyükse \(\bar X\) yaklaşık normal: ortalama μ, varyans σ²/n — X'in kendi dağılımı ne olursa olsun.</div>
+<div class="fm">\[\bar X\overset{a}{\sim}N\!\left(\mu,\ \frac{\sigma^2}{n}\right)\qquad\sum X_i\overset{a}{\sim}N(n\mu,\ n\sigma^2)\qquad P(\bar X\le c)\approx\Phi\!\left(\frac{c-\mu}{\sigma/\sqrt n}\right)\]</div>
+<div class="bsp"><b>Beispiel.</b> n = 36, μ = 50, σ = 12: \(\bar X\overset a\sim N(50,\,4)\) · \(P(\bar X>53)\approx1-\Phi(1.5)=0.067\) · Testat-Typ: \(E(X)=4\) → \(P(\bar X<4)\approx\Phi(0)=0.5\)</div>
+<div class="fa">Standardabweichung von \(\bar X\) ist \(\sigma/\sqrt n\), nicht σ.</div>
+</div>
+<div class="e" id="e-9-13"><div class="eh"><span class="no">9.13</span><span class="ti">t- und χ²-Verteilung (wo sie vorkommen)</span></div>
+<span class="sig"><b>Erkennen:</b> „t-Quantil“, „\(\chi^2_{n-1;0.95}\)“, „df“, R-Output mit qt / qchisq</span>
+<div class="ne">t: σ bilinmiyorsa ortalama için (KI 12.3, t-Test 13.6). χ²: varyans için (12.5, 13.9) ve χ²-testleri. Kantiller sınavda verilir.</div>
+<ol class="st"><li><b>t(df)</b>: symmetrisch um 0, breiter als N(0, 1); für großes df ≈ N(0, 1). \(t_{df;\alpha}=-t_{df;1-\alpha}\).</li><li><b>χ²(df)</b>: nur positive Werte, rechtsschief, nicht symmetrisch → untere und obere Quantile getrennt nachschlagen.</li><li>Freiheitsgrade: t-Test/KI für μ: n − 1 · Varianz: n − 1 · χ²-Unabhängigkeit: (J − 1)(K − 1) · χ²-Anpassung: J − 1.</li></ol>
+<p class='small'>Tabellen mit Quantilen: Anhang 15.2 und 15.3.</p>
+</div>
+<div class="e" id="e-9-14"><div class="eh"><span class="no">9.14</span><span class="ti">Bivariate Normalverteilung (selten, Kür)</span></div>
+<span class="sig"><b>Erkennen:</b> „bivariat normalverteilt mit ρ“, „bedingte Verteilung von Y gegeben X = x“</span>
+<div class="ne">Marjinaller normal. Koşullu dağılım da normal; varyans küçülür.</div>
+<div class="fm">\[Y\mid X=x\ \sim\ N\!\left(\mu_y+\rho\frac{\sigma_y}{\sigma_x}(x-\mu_x),\ \ \sigma_y^2(1-\rho^2)\right)\]</div>
+<div class="bsp"><b>Beispiel.</b> \(\mu_x=170,\ \mu_y=70,\ \sigma_x=10,\ \sigma_y=12,\ \rho=0.6\), \(x=180\): \(E=77.2\), \(Var=92.16\) → \(P(Y>80\mid X=180)=1-\Phi\left(\dfrac{80-77.2}{9.6}\right)=1-\Phi(0.2917)=0.385\)</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-10"><span class="sn">10</span> Schätzer und ihre Güte, Dichteschätzung (V09)</h2>
+<p class="secintro">Probeklausur 2022'de 5 puan: „Schätzer unverzerrt mi?“ Beklenen değer kurallarıyla (8.9) çözülür.</p>
+<div class="e" id="e-10-1"><div class="eh"><span class="no">10.1</span><span class="ti">Begriffe: Schätzer, Bias, erwartungstreu</span></div>
+<span class="sig"><b>Erkennen:</b> „Schätzer“, „unverzerrt“, „erwartungstreu“, „Bias“, „verzerrt“</span>
+<div class="ne">Tahminci = örneklemin bir fonksiyonu, kendisi de rastgele değişken. Bias = E(tahminci) − gerçek parametre. Bias = 0 → erwartungstreu.</div>
+<div class="fm">\[Bias(\hat\vartheta)=E(\hat\vartheta)-\vartheta\qquad\text{erwartungstreu (unverzerrt)}\iff E(\hat\vartheta)=\vartheta\qquad\text{asymptotisch erwartungstreu: }Bias\to0\ (n\to\infty)\]</div>
+</div></div>
+<div class="e" id="e-10-2"><div class="eh"><span class="no">10.2</span><span class="ti">Erwartungstreue prüfen (Rezept)</span></div>
+<span class="sig"><b>Erkennen:</b> „Testen Sie, ob der Schätzer … ein unverzerrter Schätzer für α ist“</span>
+<div class="ne">Tahmincinin beklentisini hesapla: E'yi toplamların içine dağıt, sabitleri dışarı al, E(X<sub>i</sub>) yerine ver. Sonuç parametreye eşit mi?</div>
+<div class="fm">\[E\Big(\sum a_iX_i+b\Big)=\sum a_iE(X_i)+b\qquad E(\bar X)=\mu\qquad E(X_iX_j)=E(X_i)E(X_j)\ (i\ne j,\ \text{unabh.})\qquad E(X_i^2)=Var(X_i)+E(X_i)^2\]</div>
+<ol class="st"><li>Schätzer erst vereinfachen (Brüche kürzen, Produkte kürzen: \(\dfrac{\prod_{i=2}^{n-1}X_i}{\prod_{i=1}^{n-1}X_i}=\dfrac1{X_1}\)).</li><li>E auf jeden Summanden anwenden, Konstanten herausziehen.</li><li>\(E(X_i)\) aus der Aufgabe einsetzen (z. B. \(\dfrac\alpha4\)).</li><li>Vergleichen: = Parameter → erwartungstreu; sonst Bias angeben.</li></ol>
+<div class="bsp"><b>Beispiel.</b> \(E(X)=\dfrac\theta2\): \(\hat\theta_1=2\bar X\) → \(E=2\cdot\dfrac\theta2=\theta\) erwartungstreu · \(\hat\theta_2=\bar X+1\) → \(E=\dfrac\theta2+1\), \(Bias=1-\dfrac\theta2\) · \(\hat\mu=\dfrac{X_1+3X_2}{4}\) → \(E=\dfrac{\mu+3\mu}4=\mu\)</div>
+<div class="fa">\(E\left(\dfrac1X\right)\ne\dfrac1{E(X)}\) und \(E(X^2)\ne E(X)^2\) im Allgemeinen (die Probeklausur-Lösung 2022 benutzt in A7 trotzdem \(\dfrac1{E(X)}\)).</div>
+<div class="ks">„Da \(E(\hat\theta)=\theta\) für alle θ gilt, ist \(\hat\theta\) ein unverzerrter Schätzer für θ.“</div>
+</div>
+<div class="e" id="e-10-3"><div class="eh"><span class="no">10.3</span><span class="ti">Varianz eines Schätzers</span></div>
+<span class="sig"><b>Erkennen:</b> „Bestimmen Sie \(Var(\hat\vartheta)\)“</span>
+<div class="ne">Bağımsız X<sub>i</sub>'ler için: katsayıların karesi × varyans, topla. Sabitler varyansa katkı vermez.</div>
+<div class="fm">\[Var\Big(\sum a_iX_i+b\Big)=\sum a_i^2\,Var(X_i)\ \text{(unabh.)}\qquad Var(\bar X)=\frac{\sigma^2}{n}\qquad Var(c\bar X)=c^2\frac{\sigma^2}n\]</div>
+<div class="bsp"><b>Beispiel.</b> \(Var(2\bar X)=\dfrac{4\sigma^2}n\) · \(Var\left(\dfrac{X_1+3X_2}4\right)=\dfrac{1+9}{16}\sigma^2=0.625\,\sigma^2\)</div>
+<div class="fa">Falls nur \(E(X_i^2)\) gegeben ist: zuerst \(Var(X_i)=E(X_i^2)-E(X_i)^2\).</div>
+</div>
+<div class="e" id="e-10-4"><div class="eh"><span class="no">10.4</span><span class="ti">MSE, Effizienz, Konsistenz – Schätzer vergleichen</span></div>
+<span class="sig"><b>Erkennen:</b> „Welcher Schätzer ist vorzuziehen?“, „konsistent“, „MSE“, „effizienter“</span>
+<div class="ne">MSE = Bias² + Varyans (küçük olan iyi). İkisi de yansızsa varyansı küçük olan daha etkin. Tutarlı: n→∞ iken MSE→0.</div>
+<div class="fm">\[MSE(\hat\vartheta)=E\big[(\hat\vartheta-\vartheta)^2\big]=Bias^2+Var(\hat\vartheta)\qquad\text{konsistent: }MSE\to0\ \text{für }n\to\infty\]</div>
+<div class="bsp"><b>Beispiel.</b> A: Bias 0, Var 4 → MSE 4; B: Bias 1, Var 2 → MSE 3 → B besser (obwohl verzerrt) · \(\bar X\): MSE \(=\dfrac{\sigma^2}n\to0\) konsistent; \(\dfrac{X_1+X_2}2\): MSE \(=\dfrac{\sigma^2}2\) hängt nicht von n ab → nicht konsistent</div>
+<div class="fa">„Ein erwartungstreuer Schätzer hat immer den kleineren MSE“ ist falsch.</div>
+</div>
+<div class="e" id="e-10-5"><div class="eh"><span class="no">10.5</span><span class="ti">Kerndichteschätzer an einer Stelle berechnen</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie den Kerndichteschätzer an der Stelle x mit Rechteckkern/Epanechnikov-Kern und Bandweite b“</span>
+<div class="ne">Her gözlem için u = (x − x<sub>i</sub>)/b; −1 ≤ u < 1 ise çekirdek değeri, değilse 0. Topla, n·b'ye böl.</div>
+<div class="fm">\[\hat f(x)=\frac1{n\,b}\sum_{i=1}^n K\!\left(\frac{x-x_i}{b}\right)\qquad\text{Rechteck: }K(u)=\tfrac12\qquad\text{Epanechnikov: }K(u)=\tfrac34(1-u^2)\qquad(-1\le u<1,\ \text{sonst }0)\]</div>
+<ol class="st"><li>Für jedes \(x_i\): \(u_i=(x-x_i)/b\).</li><li>Nur \(-1\le u_i&lt;1\) zählt; Kern einsetzen.</li><li>Summe durch \(n\cdot b\).</li></ol>
+<div class="bsp"><b>Beispiel.</b> Daten 1, 2, 2.5, 4; x = 2; b = 1: \(u=1,\ 0,\ -0.5,\ -2\) · Rechteck: \(\dfrac{0.5+0.5}{4}=0.25\) (u = 1 zählt nicht) · Epanechnikov: \(\dfrac{0.75+0.5625}{4}=0.328\)</div>
+<div class="fa">Größere Bandweite → glattere Schätzung (Details verschwinden); kleinere → zackig. Der Kern aus der Aufgabe (Grenzen!) gilt.</div>
+</div>
+<div class="e" id="e-10-6"><div class="eh"><span class="no">10.6</span><span class="ti">Bias-Varianz bei Histogramm/KDE, Eigenschaften von ML-Schätzern</span></div>
+<span class="sig"><b>Erkennen:</b> „Approximationsfehler“, „Schätzfehler“, „asymptotisch …“, „wie viele Parameter hat ein Histogramm?“</span>
+<div class="ne">Daha çok parametre (sınıf / küçük bant genişliği): yaklaşım hatası ↓, tahmin hatası ↑. Daha çok veri: tahmin hatası ↓.</div>
+<ol class="st"><li>Histogramm mit J Klassen: J − 1 freie Parameter (Fläche muss 1 sein).</li><li>Mehr Klassen / kleinere Bandweite: Approximationsfehler ↓, Schätzfehler ↑. Größeres n: Schätzfehler ↓.</li><li>ML-Schätzer sind (unter Annahmen) <b>asymptotisch erwartungstreu</b>, <b>konsistent</b> und <b>asymptotisch normalverteilt</b> – aber nicht immer erwartungstreu.</li></ol>
+</div>
+<div class="sechead"><h2 class="sec" id="s-11"><span class="sn">11</span> Maximum-Likelihood-Schätzung per Hand (V08)</h2>
+<p class="secintro">Her sınavda ~10 puan, reçete hep aynı. Takıldığında 0.2 (log kuralları) ve 0.4 (türev) bölümlerine bak.</p>
+<div class="e" id="e-11-1"><div class="eh"><span class="no">11.1</span><span class="ti">Grundrezept (6 Schritte)</span></div>
+<span class="sig"><b>Erkennen:</b> „Stellen Sie die (Log-)Likelihood auf“, „Bestimmen Sie den ML-Schätzer“, „Bedingung zweiter Ordnung“</span>
+<div class="ne">Gözlenen verinin en olası olduğu parametreyi bul: L → log L → türev → 0'a eşitle → çöz → (ikinci türev < 0).</div>
+<div class="fm">\[L(\vartheta)=\prod_{i=1}^n f(x_i;\vartheta)\ \text{bzw.}\ \prod P(X=x_i)\qquad\ell(\vartheta)=\log L(\vartheta)=\sum_{i=1}^n\log f(x_i;\vartheta)\qquad\ell'(\hat\vartheta)\overset!=0\qquad\ell''(\hat\vartheta)<0\]</div>
+<ol class="st"><li><b>Likelihood</b>: Dichte/Wahrscheinlichkeitsfunktion mit \(x_i\) aufschreiben und das Produkt bilden; vereinfachen (0.3: \(\prod c=c^n\), \(\prod a^{x_i}=a^{\sum x_i}\)).</li><li><b>Log-Likelihood</b>: log anwenden → Produkt wird Summe (0.2). So weit wie möglich vereinfachen.</li><li><b>Ableiten</b> nach dem Parameter (0.4); Terme ohne Parameter fallen weg.</li><li><b>Null setzen</b> und nach dem Parameter auflösen → \(\hat\vartheta\) (mit Dach!). Möglichst mit \(\bar x\) schreiben.</li><li><b>2. Ableitung</b> bilden; < 0 → Maximum.</li><li>Falls Zahlen gegeben: einsetzen (ln!).</li></ol>
+<div class="fa">Reihenfolge (Testat 5): Modell wählen → Likelihood → Log-Likelihood → ableiten und null setzen → auflösen → Maximum prüfen.</div>
+</div></div>
+<div class="e" id="e-11-2"><div class="eh"><span class="no">11.2</span><span class="ti">Likelihood für eine konkrete Stichprobe</span></div>
+<span class="sig"><b>Erkennen:</b> „Beobachtet wurden 2, 0, 3, 1. Stellen Sie die Likelihood auf“</span>
+<div class="ne">Her gözlem için olasılığı yaz, çarp, aynı tabanlı kuvvetleri topla.</div>
+<div class="bsp"><b>Beispiel.</b> Poisson, Daten 2, 0, 3, 1: \(L(\lambda)=\dfrac{\lambda^2e^{-\lambda}}{2!}\cdot\dfrac{\lambda^0e^{-\lambda}}{0!}\cdot\dfrac{\lambda^3e^{-\lambda}}{3!}\cdot\dfrac{\lambda^1e^{-\lambda}}{1!}=\dfrac{\lambda^6e^{-4\lambda}}{12}\) · \(\ell=6\log\lambda-4\lambda-\log12\) · \(\ell'=\dfrac6\lambda-4=0\Rightarrow\hat\lambda=1.5\)</div>
+<div class="fa">Geometrisch mit 3, 0, 5, 2: \(L(p)=p^4(1-p)^{10}\) – Exponent von \((1-p)\) ist die Summe der Daten.</div>
+</div>
+<div class="e" id="e-11-3"><div class="eh"><span class="no">11.3</span><span class="ti">ML: Poissonverteilung</span></div>
+<span class="sig"><b>Erkennen:</b> \(X_i\sim Po(\lambda)\), Anzahlen</span>
+<div class="ne">Sonuç: \(\hat\lambda=\bar x\).</div>
+<div class="fm">\[L(\lambda)=\prod\frac{\lambda^{x_i}e^{-\lambda}}{x_i!}=\frac{\lambda^{\sum x_i}e^{-n\lambda}}{\prod x_i!}\qquad\ell(\lambda)=\sum x_i\log\lambda-n\lambda-\sum\log(x_i!)\]\[\ell'(\lambda)=\frac{\sum x_i}{\lambda}-n\overset!=0\ \Rightarrow\ \hat\lambda=\frac{\sum x_i}{n}=\bar x\qquad\ell''(\lambda)=-\frac{\sum x_i}{\lambda^2}<0\]</div>
+</div>
+<div class="e" id="e-11-4"><div class="eh"><span class="no">11.4</span><span class="ti">ML: Bernoulli und Binomial (Anteil)</span></div>
+<span class="sig"><b>Erkennen:</b> „6 von 20 Würfen“, Anteilswert π, \(X_i\sim Be(\pi)\)</span>
+<div class="ne">Sonuç: \(\hat\pi\) = başarı sayısı / deneme sayısı = \(\bar x\).</div>
+<div class="fm">\[L(\pi)=\pi^{k}(1-\pi)^{n-k}\ (k=\textstyle\sum x_i)\qquad\ell'(\pi)=\frac k\pi-\frac{n-k}{1-\pi}\overset!=0\Rightarrow\hat\pi=\frac kn=\bar x\qquad\ell''=-\frac k{\pi^2}-\frac{n-k}{(1-\pi)^2}<0\]</div>
+<div class="bsp"><b>Beispiel.</b> 6 von 20: \(\hat\pi=0.3\) · Binomial \(B(m,\pi)\) mit bekanntem m, n Beobachtungen: \(\hat\pi=\dfrac{\sum x_i}{n\,m}=\dfrac{\bar x}{m}\)</div>
+<div class="fa">Beim Auflösen über Kreuz multiplizieren: \(k(1-\hat\pi)=(n-k)\hat\pi\).</div>
+</div>
+<div class="e" id="e-11-5"><div class="eh"><span class="no">11.5</span><span class="ti">ML: Exponentialverteilung (= Weibull mit r = 1)</span></div>
+<span class="sig"><b>Erkennen:</b> \(f(x)=\lambda e^{-\lambda x}\), Wartezeiten, „Weibull … r = 1“</span>
+<div class="ne">Sonuç: \(\hat\lambda=1/\bar x\).</div>
+<div class="fm">\[L(\lambda)=\lambda^n e^{-\lambda\sum x_i}\qquad\ell(\lambda)=n\log\lambda-\lambda\sum x_i\qquad\ell'=\frac n\lambda-\sum x_i\overset!=0\Rightarrow\hat\lambda=\frac{n}{\sum x_i}=\frac1{\bar x}\qquad\ell''=-\frac n{\lambda^2}<0\]</div>
+<div class="fa">Weibull mit r = 1: \(f=1\cdot\lambda(\lambda x)^0e^{-\lambda x}=\lambda e^{-\lambda x}\) – erst r einsetzen, dann rechnen.</div>
+</div>
+<div class="e" id="e-11-6"><div class="eh"><span class="no">11.6</span><span class="ti">ML: geometrische Verteilung</span></div>
+<span class="sig"><b>Erkennen:</b> \(P(X=x)=\theta(1-\theta)^x\), x = 0, 1, 2, …</span>
+<div class="ne">Sonuç: \(\hat\theta=1/(1+\bar x)\).</div>
+<div class="fm">\[L(\theta)=\theta^n(1-\theta)^{\sum x_i}\qquad\ell=n\log\theta+\sum x_i\log(1-\theta)\qquad\ell'=\frac n\theta-\frac{\sum x_i}{1-\theta}\overset!=0\Rightarrow\hat\theta=\frac n{n+\sum x_i}=\frac1{1+\bar x}\]</div>
+<div class="bsp"><b>Beispiel.</b> Daten 3, 0, 5, 2 (\(\bar x=2.5\)): \(\hat\theta=\dfrac1{3.5}=\dfrac27=0.286\)</div>
+</div>
+<div class="e" id="e-11-7"><div class="eh"><span class="no">11.7</span><span class="ti">ML: Normalverteilung (μ bzw. σ²)</span></div>
+<span class="sig"><b>Erkennen:</b> \(N(\mu,\sigma^2)\) mit bekanntem σ bzw. bekanntem μ, Log-Normal</span>
+<div class="ne">\(\hat\mu=\bar x\) · σ² için (μ biliniyorsa): \(\hat\sigma^2=\dfrac1n\sum(x_i-\mu)^2\). Log-normalde x yerine log x.</div>
+<div class="fm">\[\ell(\mu)=-n\log(\sqrt{2\pi}\sigma)-\frac1{2\sigma^2}\sum(x_i-\mu)^2\qquad\ell'(\mu)=\frac1{\sigma^2}\sum(x_i-\mu)\overset!=0\Rightarrow\hat\mu=\bar x\]\[\text{μ bekannt, }v=\sigma^2:\ \ \ell'(v)=-\frac n{2v}+\frac{\sum(x_i-\mu)^2}{2v^2}\overset!=0\Rightarrow\hat\sigma^2=\frac1n\sum(x_i-\mu)^2\qquad\text{Log-Normal: }\hat\mu=\frac1n\sum\log x_i\]</div>
+<div class="bsp"><b>Beispiel.</b> Log-Normal mit Daten 1, e, e²: \(\hat\mu=\dfrac{0+1+2}3=1\)</div>
+</div>
+<div class="e" id="e-11-8"><div class="eh"><span class="no">11.8</span><span class="ti">ML: spezielle Dichten (Übungsklausur-Typen)</span></div>
+<span class="sig"><b>Erkennen:</b> ungewöhnliche Dichte mit Parameter, z. B. \((b+1)x^b\), \(\theta^2xe^{-\theta x}\), \(\frac{\beta\log2}{2^{x\beta}}\)</span>
+<div class="ne">Reçete aynı (11.1). Parametre üsteyse log onu öne indirir: log(x<sup>b</sup>) = b·log x.</div>
+<table class='t'><tr><th>Dichte</th><th>Log-Likelihood</th><th>ML-Schätzer</th></tr><tr><td>\((b+1)x^b,\ 0&lt;x&lt;1\)</td><td>\(n\log(b+1)+b\sum\log x_i\)</td><td>\(\hat b=-1-\dfrac{n}{\sum\log x_i}\)</td></tr><tr><td>\(\theta^2x\,e^{-\theta x},\ x&gt;0\)</td><td>\(2n\log\theta+\sum\log x_i-\theta\sum x_i\)</td><td>\(\hat\theta=\dfrac{2n}{\sum x_i}=\dfrac2{\bar x}\)</td></tr><tr><td>\(\dfrac{\beta\log2}{2^{x\beta}},\ x\ge0\)</td><td>\(n\log(\log2)+n\log\beta-\beta\log2\sum x_i\)</td><td>\(\hat\beta=\dfrac1{\log(2)\,\bar x}\)</td></tr></table>
+<div class="bsp"><b>Beispiel.</b> \((b+1)x^b\) mit Daten 0.5, 0.8, 0.9, 0.6: \(\sum\log x_i=-0.6931-0.2231-0.1054-0.5108=-1.5325\) → \(\hat b=-1+\dfrac4{1.5325}=1.610\)</div>
+<div class="fa">Terme ohne Parameter (\(\sum\log x_i\) bei \(\theta^2xe^{-\theta x}\)) beim Ableiten weglassen, aber in der Log-Likelihood hinschreiben.</div>
+</div>
+<div class="e" id="e-11-9"><div class="eh"><span class="no">11.9</span><span class="ti">ML aus einer Wahrscheinlichkeitstabelle</span></div>
+<span class="sig"><b>Erkennen:</b> „\(P(X=1)=\alpha,\ P(X=2)=\alpha^2,\dots\)“ und konkrete Beobachtungen</span>
+<div class="ne">Her gözlem için tablodaki olasılığı yaz, çarp, log al, türev → çoğu zaman ikinci derece denklem.</div>
+<div class="bsp"><b>Beispiel.</b> \(P(1)=\alpha,\ P(2)=\alpha^2,\ P(3)=1-\alpha-\alpha^2\); Daten 1, 3, 2, 1: \(L=\alpha^4(1-\alpha-\alpha^2)\) → \(\dfrac4\alpha=\dfrac{1+2\alpha}{1-\alpha-\alpha^2}\) → \(6\alpha^2+5\alpha-4=0\) → \(\alpha=\dfrac{-5\pm11}{12}\) → \(\hat\alpha=0.5\)</div>
+<div class="fa">Lösungen außerhalb des erlaubten Bereichs (negative Wahrscheinlichkeit) verwerfen und das begründen.</div>
+</div>
+<div class="e" id="e-11-10"><div class="eh"><span class="no">11.10</span><span class="ti">Typische ML-Fehler</span></div>
+<span class="sig"><b>Erkennen:</b> Kontrolle vor dem Abgeben</span>
+<div class="ne">En sık puan kaybettiren hatalar.</div>
+<ol class="st"><li>\(\prod\lambda=\lambda^n\) (nicht \(n\lambda\)); \(\log(\lambda^n)=n\log\lambda\).</li><li>Nach dem <b>Parameter</b> ableiten, nicht nach x.</li><li>Dach \(\hat{\ }\) beim Ergebnis nicht vergessen; Ergebnis mit \(\bar x\) vereinfachen.</li><li>2. Ableitung: Vorzeichen begründen („da n > 0 und θ² > 0“).</li><li>Zahlen: ln benutzen, nicht log₁₀.</li></ol>
+</div>
+<div class="sechead"><h2 class="sec" id="s-12"><span class="sn">12</span> Konfidenzintervalle (V10)</h2>
+<p class="secintro">Formül tablodan seçilir: ortalama mı (σ biliniyor mu?), oran mı, varyans mı?</p>
+<div class="e" id="e-12-1"><div class="eh"><span class="no">12.1</span><span class="ti">Idee und richtige Interpretation</span></div>
+<span class="sig"><b>Erkennen:</b> „Welche Aussagen sind richtig?“, „Interpretieren Sie das Konfidenzintervall“</span>
+<div class="ne">Aralığın sınırları rastgele, parametre sabit. Doğru yorum: çok tekrarda aralıkların %95'i gerçek değeri kapsar.</div>
+<ol class="st"><li>Richtig: „Bei vielen Wiederholungen überdecken etwa 95 % der so konstruierten Intervalle den wahren Parameter.“</li><li>Falsch: „μ liegt mit 95 % Wahrscheinlichkeit in [176.6; 184.4]“ (nach der Berechnung ist μ drin oder nicht).</li><li>Größeres n → schmaler · höheres Niveau (99 %) → breiter · größeres σ → breiter. Doppelte Genauigkeit braucht vierfaches n.</li><li>Zusammenhang mit Tests: Wert außerhalb des (1 − α)-KI → zweiseitiger Test zum Niveau α verwirft \(H_0\).</li></ol>
+</div></div>
+<div class="e" id="e-12-2"><div class="eh"><span class="no">12.2</span><span class="ti">KI für μ, σ bekannt (oder n groß)</span></div>
+<span class="sig"><b>Erkennen:</b> „Varianz bekannt“, „σ = …“, Normalverteilung</span>
+<div class="ne">\(\bar x\pm z\cdot\sigma/\sqrt n\), z = z<sub>1−α/2</sub> (95 % → 1.96).</div>
+<div class="fm">\[\left[\bar x-z_{1-\alpha/2}\frac{\sigma}{\sqrt n};\ \ \bar x+z_{1-\alpha/2}\frac{\sigma}{\sqrt n}\right]\]</div>
+<div class="bsp"><b>Beispiel.</b> n = 25, \(\bar x=50\), σ = 10, 95 %: \(50\pm1.96\cdot\dfrac{10}{5}=50\pm3.92\) → \([46.08;\ 53.92]\)</div>
+<div class="fa">Quantil zweiseitig: \(1-\alpha/2\) (95 % → 0.975 → 1.96), nicht 1.645.</div>
+</div>
+<div class="e" id="e-12-3"><div class="eh"><span class="no">12.3</span><span class="ti">KI für μ, σ unbekannt (t-Verteilung)</span></div>
+<span class="sig"><b>Erkennen:</b> „Varianz unbekannt“, nur \(s\) bzw. \(s_*\) aus der Stichprobe, qt(…) im R-Output</span>
+<div class="ne">σ yerine s*, z yerine t<sub>n−1; 1−α/2</sub>.</div>
+<div class="fm">\[\left[\bar x\pm t_{n-1;\,1-\alpha/2}\,\frac{s_*}{\sqrt n}\right]\qquad s_*=\sqrt{\frac1{n-1}\sum(x_i-\bar x)^2}\]</div>
+<div class="bsp"><b>Beispiel.</b> n = 16, \(\bar x=20\), \(s_*=4\), 95 %: \(t_{15;0.975}=2.131\) → \(20\pm2.131\cdot1\) → \([17.869;\ 22.131]\)</div>
+<div class="fa">Ist nur die empirische Varianz \(s^2\) (Nenner n) gegeben: \(s_*^2=\dfrac n{n-1}s^2\).</div>
+</div>
+<div class="e" id="e-12-4"><div class="eh"><span class="no">12.4</span><span class="ti">KI für einen Anteilswert π</span></div>
+<span class="sig"><b>Erkennen:</b> „Von 200 Befragten …“, „Anteil“, „Prozent“</span>
+<div class="ne">\(\hat\pi\pm z\sqrt{\hat\pi(1-\hat\pi)/n}\).</div>
+<div class="fm">\[\left[\hat\pi\pm z_{1-\alpha/2}\sqrt{\frac{\hat\pi(1-\hat\pi)}{n}}\right]\qquad\hat\pi=\frac{\text{Anzahl}}{n}\]</div>
+<div class="bsp"><b>Beispiel.</b> 60 von 200: \(\hat\pi=0.3\), \(\sqrt{0.3\cdot0.7/200}=0.0324\) → \(0.3\pm1.96\cdot0.0324\) → \([0.236;\ 0.364]\)</div>
+</div>
+<div class="e" id="e-12-5"><div class="eh"><span class="no">12.5</span><span class="ti">KI für die Varianz σ² (χ²-Verteilung)</span></div>
+<span class="sig"><b>Erkennen:</b> „Konfidenzintervall für die Varianz“, qchisq(…) im Output</span>
+<div class="ne">Pay (n−1)s*², paydada χ² kantilleri — <b>büyük kantil alt sınıra</b> gider.</div>
+<div class="fm">\[\left[\frac{(n-1)s_*^2}{\chi^2_{n-1;\,1-\alpha/2}};\ \ \frac{(n-1)s_*^2}{\chi^2_{n-1;\,\alpha/2}}\right]\qquad(n-1)s_*^2=n\,s^2\]</div>
+<div class="bsp"><b>Beispiel.</b> n = 10, \(s_*^2=4\), 95 %: \(\chi^2_{9;0.975}=19.023\), \(\chi^2_{9;0.025}=2.700\) → \(\left[\dfrac{36}{19.023};\ \dfrac{36}{2.700}\right]=[1.892;\ 13.331]\)</div>
+<div class="fa">Nicht symmetrisch um \(s_*^2\). Für die Standardabweichung: Wurzel aus beiden Grenzen.</div>
+</div>
+<div class="e" id="e-12-6"><div class="eh"><span class="no">12.6</span><span class="ti">Länge, nötiger Stichprobenumfang, Rückwärtsrechnen</span></div>
+<span class="sig"><b>Erkennen:</b> „Wie groß muss n sein, damit das KI höchstens … breit ist?“, „Was steckt in diesem R-Befehl?“</span>
+<div class="ne">Uzunluk L = 2·z·σ/√n → n'i çöz, <b>yukarı</b> yuvarla.</div>
+<div class="fm">\[L=2\,z_{1-\alpha/2}\frac{\sigma}{\sqrt n}\qquad n\ge\left(\frac{2\,z_{1-\alpha/2}\,\sigma}{L}\right)^2\]</div>
+<div class="bsp"><b>Beispiel.</b> σ = 10, 95 %, Länge höchstens 2: \(n\ge(19.6)^2=384.16\) → n = 385 · R-Befehl c(3 - 2*qnorm(0.995)/sqrt(100), …): \(\bar x=3\), Niveau 99 %, σ = 2, n = 100</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-13"><span class="sn">13</span> Statistische Tests (V11–V12)</h2>
+<p class="secintro">Her test sorusunda aynı 5 adım (13.14). Önce doğru testi seç (13.13), sonra hipotezleri metinden kur (13.1).</p>
+<div class="e" id="e-13-1"><div class="eh"><span class="no">13.1</span><span class="ti">Hypothesen aus dem Text aufstellen</span></div>
+<span class="sig"><b>Erkennen:</b> „statistisch absichern“, „nachweisen“, „Vermutung“, „Behauptung überprüfen“</span>
+<div class="ne">Kanıtlamak istediğin şey <b>H₁</b>'e gider. H₀ tersidir ve eşitliği içerir (=, ≤, ≥).</div>
+<table class='t'><tr><th>Text</th><th>\(H_0\)</th><th>\(H_1\)</th><th>Art</th></tr><tr><td>„… ist größer als 500“ absichern</td><td>\(\mu\le500\)</td><td>\(\mu&gt;500\)</td><td>rechtsseitig</td></tr><tr><td>„zu wenig abgefüllt“ / „kleiner als“</td><td>\(\mu\ge500\)</td><td>\(\mu&lt;500\)</td><td>linksseitig</td></tr><tr><td>„weicht ab“, „ungleich“, „verändert“</td><td>\(\mu=500\)</td><td>\(\mu\ne500\)</td><td>zweiseitig</td></tr><tr><td>„springt nicht weiter als 133.5“ absichern</td><td>\(\mu\ge133.5\)</td><td>\(\mu&lt;133.5\)</td><td>linksseitig</td></tr></table>
+<div class="fa">Behauptung des Herstellers („mindestens 500 g“) ist meist \(H_0\); die Vermutung des Prüfers („zu wenig“) ist \(H_1\).</div>
+</div></div>
+<div class="e" id="e-13-2"><div class="eh"><span class="no">13.2</span><span class="ti">Fehler 1. und 2. Art</span></div>
+<span class="sig"><b>Erkennen:</b> „Beschreiben Sie den Fehler 1./2. Art im Sachzusammenhang“</span>
+<div class="ne">1. tür hata: H₀ doğruyken reddetmek (olasılığı ≤ α). 2. tür: H₁ doğruyken H₀'ı reddetmemek (kontrol edilmez).</div>
+<table class='t c' style='width:auto'><tr><th></th><th>\(H_0\) wahr</th><th>\(H_1\) wahr</th></tr><tr><th>\(H_0\) verworfen</th><td>Fehler 1. Art (α)</td><td>richtig</td></tr><tr><th>\(H_0\) nicht verworfen</th><td>richtig</td><td>Fehler 2. Art (β)</td></tr></table>
+<div class="bsp"><b>Beispiel.</b> Rauchmelder, H₀: „es brennt nicht“: Fehler 1. Art = Fehlalarm; Fehler 2. Art = kein Alarm, obwohl es brennt. Kleineres α → mehr Fehler 2. Art.</div>
+</div>
+<div class="e" id="e-13-3"><div class="eh"><span class="no">13.3</span><span class="ti">Ablehnungsbereich bestimmen</span></div>
+<span class="sig"><b>Erkennen:</b> „Bestimmen Sie den Ablehnungsbereich“, „kritischer Wert“</span>
+<div class="ne">H₁ hangi yöndeyse ret bölgesi o kuyrukta. Çift yönlü: α/2 her iki tarafa.</div>
+<table class='t'><tr><th>unter \(H_0\)</th><th>linksseitig (\(H_1\): &lt;)</th><th>rechtsseitig (\(H_1\): &gt;)</th><th>zweiseitig (≠)</th></tr><tr><td>N(0, 1)</td><td>\((-\infty;\,-z_{1-\alpha}]\)</td><td>\([z_{1-\alpha};\,\infty)\)</td><td>\(|z|\ge z_{1-\alpha/2}\)</td></tr><tr><td>t(df)</td><td>\((-\infty;\,-t_{df;1-\alpha}]\)</td><td>\([t_{df;1-\alpha};\,\infty)\)</td><td>\(|t|\ge t_{df;1-\alpha/2}\)</td></tr><tr><td>χ²(df)</td><td>\([0;\,\chi^2_{df;\alpha}]\)</td><td>\([\chi^2_{df;1-\alpha};\,\infty)\)</td><td>\([0;\chi^2_{df;\alpha/2}]\cup[\chi^2_{df;1-\alpha/2};\infty)\)</td></tr></table>
+<div class="bsp"><b>Beispiel.</b> α = 5 %, Gauß-Test: linksseitig \((-\infty;-1.645]\), rechtsseitig \([1.645;\infty)\), zweiseitig \(|z|\ge1.96\)</div>
+</div>
+<div class="e" id="e-13-4"><div class="eh"><span class="no">13.4</span><span class="ti">p-Wert berechnen und entscheiden</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie den p-Wert“, „Entscheiden Sie zu α = 1 %, 5 %, 10 %“</span>
+<div class="ne">p-değeri = H₀ altında gözlenen kadar veya daha uç sonuç alma olasılığı. <b>p ≤ α → H₀ reddedilir.</b></div>
+<div class="fm">\[\text{links: }p=P(T\le t)\qquad\text{rechts: }p=P(T\ge t)=1-P(T\le t)\qquad\text{zweiseitig (symm.): }p=2\,P(T\ge|t|)\]</div>
+<div class="bsp"><b>Beispiel.</b> z = −1.629, linksseitig: \(p=\Phi(-1.629)=0.052\) → verwerfen nur für α = 10 % · p = 0.014: verwerfen für 5 % und 10 %, nicht für 1 %</div>
+<div class="ks">„Da der p-Wert 0.014 kleiner als α = 0.05 ist, wird H₀ verworfen; H₁ ist zum Niveau 5 % statistisch abgesichert.“</div>
+</div>
+<div class="e" id="e-13-5"><div class="eh"><span class="no">13.5</span><span class="ti">Gauß-Test (μ, σ bekannt)</span></div>
+<span class="sig"><b>Erkennen:</b> „Varianz bekannt“, „σ² = 16“, normalverteilte Messwerte</span>
+<div class="ne">\(z=\dfrac{\bar x-\mu_0}{\sigma/\sqrt n}\), H₀ altında N(0,1).</div>
+<div class="fm">\[Z=\frac{\bar X-\mu_0}{\sigma/\sqrt n}=\frac{\bar X-\mu_0}{\sigma}\sqrt n\ \overset{H_0}{\sim}\ N(0,1)\]</div>
+<div class="bsp"><b>Beispiel.</b> \(H_0:\mu\le100\), \(H_1:\mu>100\), n = 36, \(\bar x=103\), σ = 9: \(z=\dfrac{3}{1.5}=2>1.645\) → \(H_0\) verwerfen · \(p=1-\Phi(2)=0.023\)</div>
+<div class="fa">σ = Wurzel aus der Varianz (σ² = 16 → σ = 4).</div>
+</div>
+<div class="e" id="e-13-6"><div class="eh"><span class="no">13.6</span><span class="ti">t-Test (μ, σ unbekannt)</span></div>
+<span class="sig"><b>Erkennen:</b> „Varianz unbekannt“, t.test-Output, „df = n − 1“</span>
+<div class="ne">Gauß testi gibi ama s* ve t<sub>n−1</sub> ile. R çıktısında: t, df, p-value.</div>
+<div class="fm">\[T=\frac{\bar X-\mu_0}{S_*/\sqrt n}\ \overset{H_0}{\sim}\ t(n-1)\]</div>
+<p class='small'><b>R-Output lesen:</b> <code>t.test(x, mu = 30, alternative = "greater")</code> → richtig bei \(H_1:\mu&gt;30\); "less" bei \(H_1:\mu&lt;\dots\); ohne alternative = zweiseitig. Der Code mit der zu \(H_1\) passenden alternative und den richtigen Daten ist der richtige; dann p ≤ α prüfen.</p>
+<div class="bsp"><b>Beispiel.</b> \(H_0:\mu=50\), \(H_1:\mu\ne50\), n = 9, \(\bar x=52\), \(s_*=3\): \(t=\dfrac{2}{1}=2<t_{8;0.975}=2.306\) → \(H_0\) nicht verwerfen (p = 0.081)</div>
+</div>
+<div class="e" id="e-13-7"><div class="eh"><span class="no">13.7</span><span class="ti">Approximativer Binomialtest (Anteil, n groß)</span></div>
+<span class="sig"><b>Erkennen:</b> „Anteil“, „Prozent“, „Normalapproximation“, n groß</span>
+<div class="ne">X = başarı <b>sayısı</b> (oran değil!). z = (X − nπ₀)/√(nπ₀(1−π₀)).</div>
+<div class="fm">\[Z=\frac{X-n\pi_0}{\sqrt{n\pi_0(1-\pi_0)}}\ \overset{a}{\sim}\ N(0,1)\qquad\text{gleich: }\frac{\hat\pi-\pi_0}{\sqrt{\pi_0(1-\pi_0)/n}}\]</div>
+<div class="bsp"><b>Beispiel.</b> \(H_0:\pi\le0.5\), \(H_1:\pi>0.5\), n = 400, X = 220: \(z=\dfrac{220-200}{\sqrt{100}}=2>1.645\) → \(H_0\) verwerfen</div>
+<div class="fa">Im Nenner steht \(\pi_0\) (aus \(H_0\)), nicht \(\hat\pi\) – anders als beim KI.</div>
+</div>
+<div class="e" id="e-13-8"><div class="eh"><span class="no">13.8</span><span class="ti">Exakter Binomialtest (n klein)</span></div>
+<span class="sig"><b>Erkennen:</b> kleines n, „Gegeben: \(P(Z\le4)=0.9672\) für \(Z\sim B(10;0.2)\)“</span>
+<div class="ne">Test istatistiği = başarı sayısı, H₀ altında B(n, π₀). p-değerini doğrudan binom olasılıklarıyla hesapla.</div>
+<div class="fm">\[Z=\text{Anzahl}\ \overset{H_0}{\sim}\ B(n,\pi_0)\qquad\text{rechtsseitig: }p=P(Z\ge z)=1-P(Z\le z-1)\]</div>
+<div class="bsp"><b>Beispiel.</b> \(H_0:\pi\le0.5\), \(H_1:\pi>0.5\), n = 8, z = 7: \(p=P(Z\ge7)=\dfrac{8+1}{256}=0.035\le0.05\) → \(H_0\) verwerfen</div>
+<div class="fa">„≥ 7“ = 1 − P(Z ≤ 6), nicht 1 − P(Z ≤ 7).</div>
+</div>
+<div class="e" id="e-13-9"><div class="eh"><span class="no">13.9</span><span class="ti">χ²-Varianztest</span></div>
+<span class="sig"><b>Erkennen:</b> „Streuung zu groß“, „Varianz größer als …“, Normalverteilung</span>
+<div class="ne">χ² = (n−1)s*²/σ₀², H₀ altında χ²(n−1).</div>
+<div class="fm">\[\chi^2=\frac{(n-1)S_*^2}{\sigma_0^2}=\frac{n\,S^2}{\sigma_0^2}\ \overset{H_0}{\sim}\ \chi^2(n-1)\]</div>
+<div class="bsp"><b>Beispiel.</b> \(H_0:\sigma^2\le4\), \(H_1:\sigma^2>4\), n = 11, \(s_*^2=6\): \(\chi^2=\dfrac{10\cdot6}{4}=15<\chi^2_{10;0.95}=18.307\) → nicht verwerfen</div>
+<div class="fa">Linksseitig: Ablehnung bei kleinen Werten \([0;\chi^2_{df;\alpha}]\).</div>
+</div>
+<div class="e" id="e-13-10"><div class="eh"><span class="no">13.10</span><span class="ti">Vorzeichentest (Median, ohne Verteilungsannahme)</span></div>
+<span class="sig"><b>Erkennen:</b> „ohne Verteilungsannahme“, „Median“, „\(P(Z\le3)\) für \(Z\sim B(10;0.5)\)“</span>
+<div class="ne">Z = θ₀'dan küçük-eşit gözlem sayısı, H₀ altında B(n; 0.5). Çift yönlüde p-değeri iki taraftan.</div>
+<div class="fm">\[Z=\#\{x_i\le\vartheta_0\}\ \overset{H_0}{\sim}\ B(n;\,0.5)\qquad\text{zweiseitig: }p=2\cdot\min\{P(Z\le z),\,P(Z\ge z)\}\]</div>
+<div class="bsp"><b>Beispiel.</b> n = 10, \(H_1:x_{med}\ne\vartheta_0\), z = 2: \(p=2\cdot P(Z\le2)=2\cdot\dfrac{1+10+45}{1024}=0.109>0.05\) → nicht verwerfen</div>
+</div>
+<div class="e" id="e-13-11"><div class="eh"><span class="no">13.11</span><span class="ti">χ²-Unabhängigkeitstest</span></div>
+<span class="sig"><b>Erkennen:</b> „Testen Sie, ob die Merkmale unabhängig sind“, Kontingenztafel</span>
+<div class="ne">5.3'teki χ² ile aynı hesap; df = (J−1)(K−1); her zaman sağ kuyruk.</div>
+<div class="fm">\[\chi^2=\sum_j\sum_k\frac{(h_{jk}-\tilde h_{jk})^2}{\tilde h_{jk}}\ \overset{H_0}{\sim}\ \chi^2\big((J-1)(K-1)\big),\qquad A=[\chi^2_{df;1-\alpha};\infty)\]</div>
+<div class="bsp"><b>Beispiel.</b> Tafel aus 5.1: \(\chi^2=1.587<\chi^2_{1;0.95}=3.841\) → \(H_0\) (Unabhängigkeit) nicht verwerfen</div>
+<div class="ks">„H₀: Geschlecht und Rauchen sind unabhängig. Da 1.587 < 3.841, wird H₀ nicht verworfen; ein Zusammenhang kann zum Niveau 5 % nicht nachgewiesen werden.“</div>
+</div>
+<div class="e" id="e-13-12"><div class="eh"><span class="no">13.12</span><span class="ti">χ²-Anpassungstest</span></div>
+<span class="sig"><b>Erkennen:</b> „Ist der Würfel fair?“, „passt die vorgegebene Verteilung?“</span>
+<div class="ne">Beklenen = n·π<sub>j</sub> (H₀'daki oranlarla). df = J − 1 (tahmin edilen parametre varsa onları da çıkar).</div>
+<div class="fm">\[\chi^2=\sum_{j=1}^J\frac{(h_j-n\pi_j)^2}{n\pi_j}\ \overset{H_0}{\sim}\ \chi^2(J-1)\]</div>
+<div class="bsp"><b>Beispiel.</b> \(H_0\): Anteile 50/30/20 %, n = 100, beobachtet 45, 35, 20: \(\chi^2=\dfrac{25}{50}+\dfrac{25}{30}+0=1.333<\chi^2_{2;0.95}=5.991\) → nicht verwerfen</div>
+</div>
+<div class="e" id="e-13-13"><div class="eh"><span class="no">13.13</span><span class="ti">Welcher Test passt? (Entscheidungstabelle)</span></div>
+<span class="sig"><b>Erkennen:</b> „Welcher Test ist geeignet?“, Zuordnungsaufgaben</span>
+<div class="ne">Ne test ediliyor? Ortalama → Gauß/t · oran → binom · varyans → χ² · iki kategorik → bağımsızlık · verilen dağılım → uyum · varsayımsız medyan → işaret testi.</div>
+<table class='t'><tr><th>Worum geht es?</th><th>Bedingung</th><th>Test</th><th>Rezept</th></tr><tr><td>Mittelwert μ</td><td>σ bekannt</td><td>Gauß-Test</td><td>13.5</td></tr><tr><td>Mittelwert μ</td><td>σ unbekannt</td><td>t-Test</td><td>13.6</td></tr><tr><td>Anteil π</td><td>n groß</td><td>approx. Binomialtest</td><td>13.7</td></tr><tr><td>Anteil π</td><td>n klein</td><td>exakter Binomialtest</td><td>13.8</td></tr><tr><td>Varianz σ²</td><td>Normalverteilung</td><td>χ²-Varianztest</td><td>13.9</td></tr><tr><td>Median</td><td>keine Verteilungsannahme</td><td>Vorzeichentest</td><td>13.10</td></tr><tr><td>2 kategoriale Merkmale</td><td>Kontingenztafel</td><td>χ²-Unabhängigkeitstest</td><td>13.11</td></tr><tr><td>vorgegebene Verteilung</td><td>Häufigkeiten je Kategorie</td><td>χ²-Anpassungstest</td><td>13.12</td></tr><tr><td>Regressionskoeffizient β</td><td>lm-Output</td><td>t-Test (\(H_0:\beta=0\))</td><td>14.4</td></tr></table>
+</div>
+<div class="e" id="e-13-14"><div class="eh"><span class="no">13.14</span><span class="ti">Antwortschema für jede Testaufgabe</span></div>
+<span class="sig"><b>Erkennen:</b> jede Aufgabe mit „Testen Sie …“</span>
+<div class="ne">Bu 5 adımı her zaman yaz; her biri puan getirir.</div>
+<ol class="st"><li>\(H_0\) und \(H_1\) (13.1).</li><li>Teststatistik: Formel + Zahlen + Ergebnis.</li><li>Verteilung unter \(H_0\) mit Freiheitsgraden.</li><li>Ablehnungsbereich (13.3) oder p-Wert (13.4).</li><li>Entscheidung als Satz im Sachzusammenhang.</li></ol>
+<div class="ks">„H₀ wird verworfen. Zum Signifikanzniveau 5 % ist statistisch abgesichert, dass … .“ bzw. „H₀ kann nicht verworfen werden; … kann nicht statistisch abgesichert werden.“ Nie: „H₀ ist bewiesen.“</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-14"><span class="sn">14</span> Lineare Regression (V13)</h2>
+<p class="secintro">KQ doğrusu, yorum, tahmin, R² ve lm çıktısı.</p>
+<div class="e" id="e-14-1"><div class="eh"><span class="no">14.1</span><span class="ti">KQ-Gerade per Hand</span></div>
+<span class="sig"><b>Erkennen:</b> „Bestimmen Sie die Regressionsgerade nach der Methode der kleinsten Quadrate“</span>
+<div class="ne">Eğim b = s<sub>xy</sub>/s<sub>x</sub>², kesişim \(a=\bar y-b\,\bar x\).</div>
+<div class="fm">\[\hat\beta_1=b=\frac{s_{xy}}{s_x^2}=\frac{\sum x_iy_i-n\bar x\bar y}{\sum x_i^2-n\bar x^2}\qquad\hat\beta_0=a=\bar y-b\,\bar x\qquad\hat y=a+b\,x\]</div>
+<div class="bsp"><b>Beispiel.</b> x = 1, …, 5; y = 2, 4, 5, 4, 5: \(s_{xy}=1.2,\ s_x^2=2\) → \(b=0.6\), \(a=4-0.6\cdot3=2.2\) → \(\hat y=2.2+0.6x\)</div>
+<div class="fa">Zuerst b, dann a. \(s_{xy}\) und \(s_x^2\) mit demselben Nenner.</div>
+</div></div>
+<div class="e" id="e-14-2"><div class="eh"><span class="no">14.2</span><span class="ti">Interpretation, Prognose, Residuen</span></div>
+<span class="sig"><b>Erkennen:</b> „Interpretieren Sie \(\hat\beta_1\)“, „Welcher Wert wird für x = … prognostiziert?“, „Residuum“</span>
+<div class="ne">Eğim: x bir birim artınca y ortalama b birim değişir. Tahmin: x'i doğruya koy. Kalıntı = gözlenen − tahmin.</div>
+<div class="fm">\[\hat y_i=a+bx_i\qquad\hat\varepsilon_i=y_i-\hat y_i\qquad\sum\hat\varepsilon_i=0\]</div>
+<div class="bsp"><b>Beispiel.</b> \(\hat y(6)=2.2+0.6\cdot6=5.8\) · Residuen: \(\hat y=2.8;3.4;4.0;4.6;5.2\) → \(\hat\varepsilon=-0.8;\ 0.6;\ 1.0;\ -0.6;\ -0.2\)</div>
+<div class="ks">„Steigt x um eine Einheit, steigt y im Durchschnitt um 0.6 Einheiten (ceteris paribus).“ Prognosen weit außerhalb der Daten sind unsicher.</div>
+</div>
+<div class="e" id="e-14-3"><div class="eh"><span class="no">14.3</span><span class="ti">Bestimmtheitsmaß R²</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen und interpretieren Sie R²“</span>
+<div class="ne">R² = açıklanan varyans oranı (0–1). Basit regresyonda R² = r².</div>
+<div class="fm">\[R^2=\frac{\sum(\hat y_i-\bar y)^2}{\sum(y_i-\bar y)^2}=1-\frac{\sum\hat\varepsilon_i^2}{\sum(y_i-\bar y)^2}=r_{xy}^2\]</div>
+<div class="bsp"><b>Beispiel.</b> \(\sum\hat\varepsilon^2=2.4\), \(\sum(y_i-\bar y)^2=6\) → \(R^2=1-0.4=0.6\) (= 0.775²)</div>
+<div class="ks">„60 % der Streuung von y werden durch das Modell (durch x) erklärt.“</div>
+</div>
+<div class="e" id="e-14-4"><div class="eh"><span class="no">14.4</span><span class="ti">lm-Output lesen: Signifikanz und KI für β</span></div>
+<span class="sig"><b>Erkennen:</b> R-Output „Coefficients: Estimate, Std. Error, t value, Pr(&gt;|t|)“</span>
+<div class="ne">Estimate = \(\hat\beta\), Std. Error = \(\hat\sigma_{\hat\beta}\), t value = Estimate/Std. Error, Pr(>|t|) = çift yönlü p-değeri (H₀: β = 0).</div>
+<div class="fm">\[T=\frac{\hat\beta_j}{\hat\sigma_{\hat\beta_j}}\ \overset{H_0}{\sim}\ t(n-p-1)\qquad\text{KI: }\hat\beta_j\pm t_{n-p-1;\,1-\alpha/2}\,\hat\sigma_{\hat\beta_j}\qquad n=df+p+1\]</div>
+<div class="bsp"><b>Beispiel.</b> Lernstunden: Estimate 2.031, Std. Error 0.173, df = 37 → \(t=11.73\), p < 0.001 → signifikant · 95 %-KI \(2.031\pm2.026\cdot0.173=[1.680;\ 2.382]\) · Dummy Vorkurs 8.743: Teilnehmer haben im Mittel 8.743 Punkte mehr (c. p.)</div>
+<div class="fa">p ist zweiseitig. Freiheitsgrade stehen bei „Residual standard error: … on 37 degrees of freedom“.</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-15"><span class="sn">15</span> Anhang: Tabellen und Checkliste</h2>
+<p class="secintro">Sınavda kantiller genelde verilir; bu tablolar alıştırma ve kontrol için.</p></div>
+<div class="e long" id="e-15-1"><div class="eh"><span class="no">15.1</span><span class="ti">Verteilungsfunktion Φ(z) der Standardnormalverteilung</span></div>
+<span class="sig"><b>Erkennen:</b> Zeile = z bis zur 1. Nachkommastelle, Spalte = 2. Nachkommastelle</span>
+<div class="ne">Örnek: Φ(1.64) → satır 1.6, sütun 0.04 = 0.9495. Negatif z: Φ(−z) = 1 − Φ(z).</div>
+<table class="t phi"><tr><th>z</th><th>0.00</th><th>0.01</th><th>0.02</th><th>0.03</th><th>0.04</th><th>0.05</th><th>0.06</th><th>0.07</th><th>0.08</th><th>0.09</th></tr><tr><th>0.0</th><td>0.5000</td><td>0.5040</td><td>0.5080</td><td>0.5120</td><td>0.5160</td><td>0.5199</td><td>0.5239</td><td>0.5279</td><td>0.5319</td><td>0.5359</td></tr><tr><th>0.1</th><td>0.5398</td><td>0.5438</td><td>0.5478</td><td>0.5517</td><td>0.5557</td><td>0.5596</td><td>0.5636</td><td>0.5675</td><td>0.5714</td><td>0.5753</td></tr><tr><th>0.2</th><td>0.5793</td><td>0.5832</td><td>0.5871</td><td>0.5910</td><td>0.5948</td><td>0.5987</td><td>0.6026</td><td>0.6064</td><td>0.6103</td><td>0.6141</td></tr><tr><th>0.3</th><td>0.6179</td><td>0.6217</td><td>0.6255</td><td>0.6293</td><td>0.6331</td><td>0.6368</td><td>0.6406</td><td>0.6443</td><td>0.6480</td><td>0.6517</td></tr><tr><th>0.4</th><td>0.6554</td><td>0.6591</td><td>0.6628</td><td>0.6664</td><td>0.6700</td><td>0.6736</td><td>0.6772</td><td>0.6808</td><td>0.6844</td><td>0.6879</td></tr><tr><th>0.5</th><td>0.6915</td><td>0.6950</td><td>0.6985</td><td>0.7019</td><td>0.7054</td><td>0.7088</td><td>0.7123</td><td>0.7157</td><td>0.7190</td><td>0.7224</td></tr><tr><th>0.6</th><td>0.7257</td><td>0.7291</td><td>0.7324</td><td>0.7357</td><td>0.7389</td><td>0.7422</td><td>0.7454</td><td>0.7486</td><td>0.7517</td><td>0.7549</td></tr><tr><th>0.7</th><td>0.7580</td><td>0.7611</td><td>0.7642</td><td>0.7673</td><td>0.7704</td><td>0.7734</td><td>0.7764</td><td>0.7794</td><td>0.7823</td><td>0.7852</td></tr><tr><th>0.8</th><td>0.7881</td><td>0.7910</td><td>0.7939</td><td>0.7967</td><td>0.7995</td><td>0.8023</td><td>0.8051</td><td>0.8078</td><td>0.8106</td><td>0.8133</td></tr><tr><th>0.9</th><td>0.8159</td><td>0.8186</td><td>0.8212</td><td>0.8238</td><td>0.8264</td><td>0.8289</td><td>0.8315</td><td>0.8340</td><td>0.8365</td><td>0.8389</td></tr><tr><th>1.0</th><td>0.8413</td><td>0.8438</td><td>0.8461</td><td>0.8485</td><td>0.8508</td><td>0.8531</td><td>0.8554</td><td>0.8577</td><td>0.8599</td><td>0.8621</td></tr><tr><th>1.1</th><td>0.8643</td><td>0.8665</td><td>0.8686</td><td>0.8708</td><td>0.8729</td><td>0.8749</td><td>0.8770</td><td>0.8790</td><td>0.8810</td><td>0.8830</td></tr><tr><th>1.2</th><td>0.8849</td><td>0.8869</td><td>0.8888</td><td>0.8907</td><td>0.8925</td><td>0.8944</td><td>0.8962</td><td>0.8980</td><td>0.8997</td><td>0.9015</td></tr><tr><th>1.3</th><td>0.9032</td><td>0.9049</td><td>0.9066</td><td>0.9082</td><td>0.9099</td><td>0.9115</td><td>0.9131</td><td>0.9147</td><td>0.9162</td><td>0.9177</td></tr><tr><th>1.4</th><td>0.9192</td><td>0.9207</td><td>0.9222</td><td>0.9236</td><td>0.9251</td><td>0.9265</td><td>0.9279</td><td>0.9292</td><td>0.9306</td><td>0.9319</td></tr><tr><th>1.5</th><td>0.9332</td><td>0.9345</td><td>0.9357</td><td>0.9370</td><td>0.9382</td><td>0.9394</td><td>0.9406</td><td>0.9418</td><td>0.9429</td><td>0.9441</td></tr><tr><th>1.6</th><td>0.9452</td><td>0.9463</td><td>0.9474</td><td>0.9484</td><td>0.9495</td><td>0.9505</td><td>0.9515</td><td>0.9525</td><td>0.9535</td><td>0.9545</td></tr><tr><th>1.7</th><td>0.9554</td><td>0.9564</td><td>0.9573</td><td>0.9582</td><td>0.9591</td><td>0.9599</td><td>0.9608</td><td>0.9616</td><td>0.9625</td><td>0.9633</td></tr><tr><th>1.8</th><td>0.9641</td><td>0.9649</td><td>0.9656</td><td>0.9664</td><td>0.9671</td><td>0.9678</td><td>0.9686</td><td>0.9693</td><td>0.9699</td><td>0.9706</td></tr><tr><th>1.9</th><td>0.9713</td><td>0.9719</td><td>0.9726</td><td>0.9732</td><td>0.9738</td><td>0.9744</td><td>0.9750</td><td>0.9756</td><td>0.9761</td><td>0.9767</td></tr><tr><th>2.0</th><td>0.9772</td><td>0.9778</td><td>0.9783</td><td>0.9788</td><td>0.9793</td><td>0.9798</td><td>0.9803</td><td>0.9808</td><td>0.9812</td><td>0.9817</td></tr><tr><th>2.1</th><td>0.9821</td><td>0.9826</td><td>0.9830</td><td>0.9834</td><td>0.9838</td><td>0.9842</td><td>0.9846</td><td>0.9850</td><td>0.9854</td><td>0.9857</td></tr><tr><th>2.2</th><td>0.9861</td><td>0.9864</td><td>0.9868</td><td>0.9871</td><td>0.9875</td><td>0.9878</td><td>0.9881</td><td>0.9884</td><td>0.9887</td><td>0.9890</td></tr><tr><th>2.3</th><td>0.9893</td><td>0.9896</td><td>0.9898</td><td>0.9901</td><td>0.9904</td><td>0.9906</td><td>0.9909</td><td>0.9911</td><td>0.9913</td><td>0.9916</td></tr><tr><th>2.4</th><td>0.9918</td><td>0.9920</td><td>0.9922</td><td>0.9925</td><td>0.9927</td><td>0.9929</td><td>0.9931</td><td>0.9932</td><td>0.9934</td><td>0.9936</td></tr><tr><th>2.5</th><td>0.9938</td><td>0.9940</td><td>0.9941</td><td>0.9943</td><td>0.9945</td><td>0.9946</td><td>0.9948</td><td>0.9949</td><td>0.9951</td><td>0.9952</td></tr><tr><th>2.6</th><td>0.9953</td><td>0.9955</td><td>0.9956</td><td>0.9957</td><td>0.9959</td><td>0.9960</td><td>0.9961</td><td>0.9962</td><td>0.9963</td><td>0.9964</td></tr><tr><th>2.7</th><td>0.9965</td><td>0.9966</td><td>0.9967</td><td>0.9968</td><td>0.9969</td><td>0.9970</td><td>0.9971</td><td>0.9972</td><td>0.9973</td><td>0.9974</td></tr><tr><th>2.8</th><td>0.9974</td><td>0.9975</td><td>0.9976</td><td>0.9977</td><td>0.9977</td><td>0.9978</td><td>0.9979</td><td>0.9979</td><td>0.9980</td><td>0.9981</td></tr><tr><th>2.9</th><td>0.9981</td><td>0.9982</td><td>0.9982</td><td>0.9983</td><td>0.9984</td><td>0.9984</td><td>0.9985</td><td>0.9985</td><td>0.9986</td><td>0.9986</td></tr><tr><th>3.0</th><td>0.9987</td><td>0.9987</td><td>0.9987</td><td>0.9988</td><td>0.9988</td><td>0.9989</td><td>0.9989</td><td>0.9989</td><td>0.9990</td><td>0.9990</td></tr></table>
+</div>
+<div class="e long" id="e-15-2"><div class="eh"><span class="no">15.2</span><span class="ti">Quantile \(t_{df;\,p}\) der t-Verteilung</span></div>
+<span class="sig"><b>Erkennen:</b> KI für μ mit σ unbekannt, t-Test</span>
+<div class="ne">Örnek: t<sub>15; 0.975</sub> = 2.131. df büyüdükçe z değerlerine yaklaşır (son satır).</div>
+<table class="t phi"><tr><th>df</th><th>0.9</th><th>0.95</th><th>0.975</th><th>0.99</th><th>0.995</th></tr><tr><th>1</th><td>3.078</td><td>6.314</td><td>12.706</td><td>31.821</td><td>63.657</td></tr><tr><th>2</th><td>1.886</td><td>2.920</td><td>4.303</td><td>6.965</td><td>9.925</td></tr><tr><th>3</th><td>1.638</td><td>2.353</td><td>3.182</td><td>4.541</td><td>5.841</td></tr><tr><th>4</th><td>1.533</td><td>2.132</td><td>2.776</td><td>3.747</td><td>4.604</td></tr><tr><th>5</th><td>1.476</td><td>2.015</td><td>2.571</td><td>3.365</td><td>4.032</td></tr><tr><th>6</th><td>1.440</td><td>1.943</td><td>2.447</td><td>3.143</td><td>3.707</td></tr><tr><th>7</th><td>1.415</td><td>1.895</td><td>2.365</td><td>2.998</td><td>3.499</td></tr><tr><th>8</th><td>1.397</td><td>1.860</td><td>2.306</td><td>2.896</td><td>3.355</td></tr><tr><th>9</th><td>1.383</td><td>1.833</td><td>2.262</td><td>2.821</td><td>3.250</td></tr><tr><th>10</th><td>1.372</td><td>1.812</td><td>2.228</td><td>2.764</td><td>3.169</td></tr><tr><th>11</th><td>1.363</td><td>1.796</td><td>2.201</td><td>2.718</td><td>3.106</td></tr><tr><th>12</th><td>1.356</td><td>1.782</td><td>2.179</td><td>2.681</td><td>3.055</td></tr><tr><th>13</th><td>1.350</td><td>1.771</td><td>2.160</td><td>2.650</td><td>3.012</td></tr><tr><th>14</th><td>1.345</td><td>1.761</td><td>2.145</td><td>2.624</td><td>2.977</td></tr><tr><th>15</th><td>1.341</td><td>1.753</td><td>2.131</td><td>2.602</td><td>2.947</td></tr><tr><th>16</th><td>1.337</td><td>1.746</td><td>2.120</td><td>2.583</td><td>2.921</td></tr><tr><th>17</th><td>1.333</td><td>1.740</td><td>2.110</td><td>2.567</td><td>2.898</td></tr><tr><th>18</th><td>1.330</td><td>1.734</td><td>2.101</td><td>2.552</td><td>2.878</td></tr><tr><th>19</th><td>1.328</td><td>1.729</td><td>2.093</td><td>2.539</td><td>2.861</td></tr><tr><th>20</th><td>1.325</td><td>1.725</td><td>2.086</td><td>2.528</td><td>2.845</td></tr><tr><th>21</th><td>1.323</td><td>1.721</td><td>2.080</td><td>2.518</td><td>2.831</td></tr><tr><th>22</th><td>1.321</td><td>1.717</td><td>2.074</td><td>2.508</td><td>2.819</td></tr><tr><th>23</th><td>1.319</td><td>1.714</td><td>2.069</td><td>2.500</td><td>2.807</td></tr><tr><th>24</th><td>1.318</td><td>1.711</td><td>2.064</td><td>2.492</td><td>2.797</td></tr><tr><th>25</th><td>1.316</td><td>1.708</td><td>2.060</td><td>2.485</td><td>2.787</td></tr><tr><th>26</th><td>1.315</td><td>1.706</td><td>2.056</td><td>2.479</td><td>2.779</td></tr><tr><th>27</th><td>1.314</td><td>1.703</td><td>2.052</td><td>2.473</td><td>2.771</td></tr><tr><th>28</th><td>1.313</td><td>1.701</td><td>2.048</td><td>2.467</td><td>2.763</td></tr><tr><th>29</th><td>1.311</td><td>1.699</td><td>2.045</td><td>2.462</td><td>2.756</td></tr><tr><th>30</th><td>1.310</td><td>1.697</td><td>2.042</td><td>2.457</td><td>2.750</td></tr><tr><th>40</th><td>1.303</td><td>1.684</td><td>2.021</td><td>2.423</td><td>2.704</td></tr><tr><th>60</th><td>1.296</td><td>1.671</td><td>2.000</td><td>2.390</td><td>2.660</td></tr><tr><th>100</th><td>1.290</td><td>1.660</td><td>1.984</td><td>2.364</td><td>2.626</td></tr><tr><th>∞</th><td>1.282</td><td>1.645</td><td>1.960</td><td>2.326</td><td>2.576</td></tr></table>
+</div>
+<div class="e long" id="e-15-3"><div class="eh"><span class="no">15.3</span><span class="ti">Quantile \(\chi^2_{df;\,p}\) der χ²-Verteilung</span></div>
+<span class="sig"><b>Erkennen:</b> KI für σ², Varianztest, χ²-Unabhängigkeits- und Anpassungstest</span>
+<div class="ne">Örnek: χ²<sub>9; 0.975</sub> = 19.023, χ²<sub>9; 0.025</sub> = 2.700.</div>
+<table class="t phi"><tr><th>df</th><th>0.01</th><th>0.025</th><th>0.05</th><th>0.1</th><th>0.9</th><th>0.95</th><th>0.975</th><th>0.99</th></tr><tr><th>1</th><td>0.000</td><td>0.001</td><td>0.004</td><td>0.016</td><td>2.706</td><td>3.841</td><td>5.024</td><td>6.635</td></tr><tr><th>2</th><td>0.020</td><td>0.051</td><td>0.103</td><td>0.211</td><td>4.605</td><td>5.991</td><td>7.378</td><td>9.210</td></tr><tr><th>3</th><td>0.115</td><td>0.216</td><td>0.352</td><td>0.584</td><td>6.251</td><td>7.815</td><td>9.348</td><td>11.345</td></tr><tr><th>4</th><td>0.297</td><td>0.484</td><td>0.711</td><td>1.064</td><td>7.779</td><td>9.488</td><td>11.143</td><td>13.277</td></tr><tr><th>5</th><td>0.554</td><td>0.831</td><td>1.145</td><td>1.610</td><td>9.236</td><td>11.070</td><td>12.833</td><td>15.086</td></tr><tr><th>6</th><td>0.872</td><td>1.237</td><td>1.635</td><td>2.204</td><td>10.645</td><td>12.592</td><td>14.449</td><td>16.812</td></tr><tr><th>7</th><td>1.239</td><td>1.690</td><td>2.167</td><td>2.833</td><td>12.017</td><td>14.067</td><td>16.013</td><td>18.475</td></tr><tr><th>8</th><td>1.646</td><td>2.180</td><td>2.733</td><td>3.490</td><td>13.362</td><td>15.507</td><td>17.535</td><td>20.090</td></tr><tr><th>9</th><td>2.088</td><td>2.700</td><td>3.325</td><td>4.168</td><td>14.684</td><td>16.919</td><td>19.023</td><td>21.666</td></tr><tr><th>10</th><td>2.558</td><td>3.247</td><td>3.940</td><td>4.865</td><td>15.987</td><td>18.307</td><td>20.483</td><td>23.209</td></tr><tr><th>11</th><td>3.053</td><td>3.816</td><td>4.575</td><td>5.578</td><td>17.275</td><td>19.675</td><td>21.920</td><td>24.725</td></tr><tr><th>12</th><td>3.571</td><td>4.404</td><td>5.226</td><td>6.304</td><td>18.549</td><td>21.026</td><td>23.337</td><td>26.217</td></tr><tr><th>13</th><td>4.107</td><td>5.009</td><td>5.892</td><td>7.042</td><td>19.812</td><td>22.362</td><td>24.736</td><td>27.688</td></tr><tr><th>14</th><td>4.660</td><td>5.629</td><td>6.571</td><td>7.790</td><td>21.064</td><td>23.685</td><td>26.119</td><td>29.141</td></tr><tr><th>15</th><td>5.229</td><td>6.262</td><td>7.261</td><td>8.547</td><td>22.307</td><td>24.996</td><td>27.488</td><td>30.578</td></tr><tr><th>16</th><td>5.812</td><td>6.908</td><td>7.962</td><td>9.312</td><td>23.542</td><td>26.296</td><td>28.845</td><td>32.000</td></tr><tr><th>17</th><td>6.408</td><td>7.564</td><td>8.672</td><td>10.085</td><td>24.769</td><td>27.587</td><td>30.191</td><td>33.409</td></tr><tr><th>18</th><td>7.015</td><td>8.231</td><td>9.390</td><td>10.865</td><td>25.989</td><td>28.869</td><td>31.526</td><td>34.805</td></tr><tr><th>19</th><td>7.633</td><td>8.907</td><td>10.117</td><td>11.651</td><td>27.204</td><td>30.144</td><td>32.852</td><td>36.191</td></tr><tr><th>20</th><td>8.260</td><td>9.591</td><td>10.851</td><td>12.443</td><td>28.412</td><td>31.410</td><td>34.170</td><td>37.566</td></tr><tr><th>21</th><td>8.897</td><td>10.283</td><td>11.591</td><td>13.240</td><td>29.615</td><td>32.671</td><td>35.479</td><td>38.932</td></tr><tr><th>22</th><td>9.542</td><td>10.982</td><td>12.338</td><td>14.041</td><td>30.813</td><td>33.924</td><td>36.781</td><td>40.289</td></tr><tr><th>23</th><td>10.196</td><td>11.689</td><td>13.091</td><td>14.848</td><td>32.007</td><td>35.172</td><td>38.076</td><td>41.638</td></tr><tr><th>24</th><td>10.856</td><td>12.401</td><td>13.848</td><td>15.659</td><td>33.196</td><td>36.415</td><td>39.364</td><td>42.980</td></tr><tr><th>25</th><td>11.524</td><td>13.120</td><td>14.611</td><td>16.473</td><td>34.382</td><td>37.652</td><td>40.646</td><td>44.314</td></tr><tr><th>26</th><td>12.198</td><td>13.844</td><td>15.379</td><td>17.292</td><td>35.563</td><td>38.885</td><td>41.923</td><td>45.642</td></tr><tr><th>27</th><td>12.879</td><td>14.573</td><td>16.151</td><td>18.114</td><td>36.741</td><td>40.113</td><td>43.195</td><td>46.963</td></tr><tr><th>28</th><td>13.565</td><td>15.308</td><td>16.928</td><td>18.939</td><td>37.916</td><td>41.337</td><td>44.461</td><td>48.278</td></tr><tr><th>29</th><td>14.256</td><td>16.047</td><td>17.708</td><td>19.768</td><td>39.087</td><td>42.557</td><td>45.722</td><td>49.588</td></tr><tr><th>30</th><td>14.953</td><td>16.791</td><td>18.493</td><td>20.599</td><td>40.256</td><td>43.773</td><td>46.979</td><td>50.892</td></tr></table>
+</div>
+<div class="e" id="e-15-4"><div class="eh"><span class="no">15.4</span><span class="ti">Checkliste vor dem Abgeben</span></div>
+<span class="sig"><b>Erkennen:</b> letzte 5 Minuten</span>
+<div class="ne">Teslim etmeden önce her kutuyu bu listeyle kontrol et.</div>
+<ol class="st"><li>Jede Teilfrage beantwortet (auch „Begründen Sie“, „Interpretieren Sie“, „Welche Annahme?“)?</li><li>Wahrscheinlichkeiten zwischen 0 und 1? Varianz ≥ 0? |r| ≤ 1? χ² ≥ 0? Summe der Wahrscheinlichkeiten = 1?</li><li>Richtige Varianz (1/n oder 1/(n − 1))? Richtiger Nenner bei bedingten Anteilen?</li><li>3 Nachkommastellen bzw. gekürzter Bruch; Dezimalpunkt; nur eine Lösung im Kästchen.</li><li>Tests: H₀/H₁, Teststatistik, Verteilung, Ablehnungsbereich/p-Wert, Satz im Sachkontext.</li><li>ML: Dach auf dem Schätzer, 2. Ableitung, ln statt log₁₀.</li><li>Kein Kästchen leer: Formel und Ansatz bringen Teilpunkte.</li></ol>
+</div>
+
+</section>
