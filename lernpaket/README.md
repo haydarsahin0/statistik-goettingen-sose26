@@ -14,3 +14,4 @@
 - `ML_Schritt_fuer_Schritt.pdf` – Lernheft Maximum-Likelihood (Idee, 6-Schritte-Rezept, Werkzeugkasten, 3 Beispiele, 3 Übungen mit Lösungen); Quelle `src/content/extra/ml_lernheft.html`
 - `ML_Training.pdf` – ML-Trainingsheft: Kurzlehre + 19 Klausuraufgaben in 3 Stufen + Fehlersuche + Lösungen (`src/gen_ml_drill.py`)
 - `ML_Klausurtraining.pdf` / `ML_Klausurtraining_Loesung.pdf` – 13 ML-Aufgaben im Original-Klausurlayout mit Teilaufgaben (a)–(e), Musterlösung mit Bewertungsschlüssel (`src/gen_ml_klausur.py`, Bau: `PARTS=mlk_a.html OUTNAME=ML_Klausurtraining.pdf src/make.sh`)
+- `ML_Kurs_mit_Klausuraufgaben.pdf` – ML-Kurs: 6 Lerneinheiten (je Schritt erklärt + direkt passende Übung im Klausurlayout), danach 13 komplette Klausuraufgaben, Lösungen hinten (`src/gen_ml_kurs.py`, Bau: `PARTS=mlkurs.html OUTNAME=ML_Kurs_mit_Klausuraufgaben.pdf src/make.sh`)
