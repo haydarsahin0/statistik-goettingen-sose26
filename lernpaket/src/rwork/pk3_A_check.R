@@ -1,0 +1,10 @@
+x <- c(0,1,1,2,2,3,3,3,4,5,6,14); cat("A1 sum",sum(x),"sumsq",sum(x^2),"mean",mean(x),"s2",mean(x^2)-mean(x)^2,"s*2",var(x),"\n")
+f<-c(.2,.4,.3,.1); w<-c(10,10,20,20); cat("A2 h", f/w, " mean", sum(f*c(5,15,30,50)),"\n")
+X<-c(15,18,20,24,28); Y<-c(40,52,55,70,83)
+cat("A3 sums",sum(X),sum(Y),sum(X^2),sum(Y^2),sum(X*Y),"\n")
+sxy<-mean(X*Y)-mean(X)*mean(Y); sx2<-mean(X^2)-mean(X)^2; sy2<-mean(Y^2)-mean(Y)^2
+b<-sxy/sx2; a<-mean(Y)-b*mean(X); cat("sxy",sxy,"sx2",sx2,"sy2",sy2,"r",sxy/sqrt(sx2*sy2),"b",b,"a",a,"yhat22",a+b*22,"spear",cor(X,Y,method="s"),"\n")
+cat("A5", 0.08*0.2+0.92*0.15, 0.016/0.154, 1-0.92^10, "\n")
+cat("A6 E", integrate(function(x) x^3/9,0,3)$value, "P", 7/27, "N", 1-pnorm(1.5), "\n")
+xs<-c(1,3,2,0.5,3.5); cat("A7 lam", 2/mean(xs),"\n")
+cat("A9 T",(196-200)/(6/3)," t", qt(.95,8), qt(.975,8), " KI", 196+c(-1,1)*qt(.975,8)*2, " p", pt(-2,8),"\n")

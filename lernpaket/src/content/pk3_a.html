@@ -1,0 +1,141 @@
+<section class="t0 kl">
+<div class="kl-deck">
+<h1>Probeklausur 3 Statistik (Teil A)</h1>
+<div class="sub">Statistik und Data Science I · Probeklausur 3 für den Zweittermin (09.10.2026) · Stoff V01–V13<br><span class="small">Übungsklausur zur Vorbereitung – keine offizielle Klausur</span></div>
+<div class="kl-fields"><div>Name, Vorname</div><div>Matrikel-Nr.</div><div>Raum</div><div>Platz-Nr.</div></div>
+<p><b>Bearbeitungszeit:</b> 100 Minuten &nbsp;·&nbsp; <b>Anzahl der Aufgaben:</b> 9 &nbsp;·&nbsp; <b>Gesamtpunktzahl:</b> 75</p>
+<p><b>Zugelassene Hilfsmittel:</b> zugelassener, nicht programmierbarer Taschenrechner · Schreibutensilien (kein Bleistift, weder Grün noch Rot) · ein (auch beidseitig) handschriftlich beschriebenes DIN-A4-Blatt, das mit Matrikelnummer, Raum und Platznummer gekennzeichnet ist und mit der Klausur abgegeben werden muss.</p>
+<table class="kl-pt"><tr><th>Aufgabe</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><th>Σ</th></tr>
+<tr><th>Punkte</th><td>9</td><td>8</td><td>10</td><td>6</td><td>9</td><td>9</td><td>10</td><td>6</td><td>8</td><th>75</th></tr>
+<tr><th>erreicht</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th></th></tr></table>
+<div class="kl-hin">
+<h3>Hinweise</h3>
+<ul>
+<li>Es darf nur mit Kugelschreiber oder Tinte geschrieben und gezeichnet werden. Bleistift sowie Angaben in Grün oder Rot werden nicht gewertet.</li>
+<li>Lesen Sie genau, wonach gefragt wird und wie die Lösung anzugeben ist. Es gilt die <b>Dezimalpunkt-Notation</b>.</li>
+<li>Vereinfachen Sie alle Ergebnisse. Nicht ganzzahlige Endergebnisse sind als <b>vollständig gekürzte Brüche</b> oder auf <b>drei Nachkommastellen</b> kaufmännisch gerundet anzugeben; Zwischenergebnisse auf mindestens <b>vier</b> Nachkommastellen. Ausnahmen: ganze Zahlen und gängige Funktionen natürlicher Zahlen (z. B. \(\sqrt2\) oder \(\log(4)\)).</li>
+<li>Tragen Sie nur Ihr Endergebnis in die Lösungskästchen ein, es sei denn, Sie werden aufgefordert, Ihren Lösungsweg anzugeben.</li>
+<li>Lösungskästchen dürfen nur eine eindeutige Antwort enthalten. Geben Sie niemals mehrere Lösungsalternativen an; streichen Sie falsche Angaben.</li>
+<li>Alles außerhalb der Lösungskästchen wird nicht gewertet, es sei denn, Sie kennzeichnen es eindeutig. Nebenrechnungen werden nicht korrigiert.</li>
+<li>Ist eine Aufgabe Ihrer Meinung nach nicht lösbar, schreiben Sie „nicht lösbar“ in das Kästchen und begründen Sie dies in der Box am Ende der Klausur.</li>
+<li>Mit \(\log\) ist stets der natürliche Logarithmus gemeint.</li>
+</ul>
+<p><i>Zeitrichtwert: ca. 1.3 Minuten pro Punkt. Stoppuhr auf 100 Minuten stellen!</i></p>
+</div>
+</div>
+
+<!-- A1 -->
+<div class="kl-auf"><h2><span>Aufgabe 1</span><span>(9 Punkte)</span></h2>
+<p>In einer Göttinger Wohngemeinschaft wird untersucht, wie oft die 12 Bewohner*innen im letzten Monat Pizza bestellt haben (Variable <code>Pizza</code>). Außerdem wurde die Lieblingssorte erfragt (Variable <code>Sorte</code>).</p>
+<pre class="out">&gt; sort(Pizza)
+ [1]  0  1  1  2  2  3  3  3  4  5  6 14
+&gt; table(Sorte)
+Sorte
+  Funghi Margherita    Salami     Tonno
+       2          5         4         1</pre>
+<p>Hinweis: \(\sum_{i=1}^{12} x_i=44\), \(\;\sum_{i=1}^{12} x_i^2=310\).</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Geben Sie für die Merkmale <i>Anzahl der Bestellungen</i> und <i>Lieblingssorte</i> jeweils das Skalenniveau an und ob das Merkmal diskret oder stetig ist. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie für die Variable <code>Pizza</code> das arithmetische Mittel, die empirische Varianz \(s^2\) und die unverzerrte Varianz \(s_*^2\). Geben Sie Ihren Lösungsweg an. <span class="pt">(3 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(c)</span>Bestimmen Sie das untere Quartil \(x_{0.25}\), den Median und das obere Quartil \(x_{0.75}\) der Variable <code>Pizza</code> sowie den Interquartilsabstand. <span class="pt">(2 P)</span>
+<div class="lk s"><span class="lkl">\(x_{0.25}=\)</span></div><div class="lk s"><span class="lkl">\(x_{med}=\)</span></div><div class="lk s"><span class="lkl">\(x_{0.75}=\)</span></div><div class="lk s"><span class="lkl">\(d_Q=\)</span></div></li>
+<li><span class="lb">(d)</span>Ist der Wert 14 nach der üblichen Ausreißerregel ein Ausreißer? Welches Lagemaß aus (b) und (c) beschreibt das „typische“ Bestellverhalten besser? Begründen Sie kurz. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+</ol></div>
+
+<!-- A2 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 2</span><span>(8 Punkte)</span></h2>
+<p>Für 50 Studierende wurde die tägliche Pendelzeit (in Minuten) erhoben. Es liegen nur die klassierten Daten vor:</p>
+<table class="dat"><tr><th>Klasse \(K_j\)</th><td>\([0,10)\)</td><td>\([10,20)\)</td><td>\([20,40)\)</td><td>\([40,60]\)</td></tr>
+<tr><th>absolute Häufigkeit \(h_j\)</th><td>10</td><td>20</td><td>15</td><td>5</td></tr></table>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie die relativen Häufigkeiten und die Säulenhöhen eines (auf Fläche 1) normierten Histogramms. Skizzieren Sie das Histogramm. <span class="pt">(3 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie das arithmetische Mittel der klassierten Daten. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(c)</span>Geben Sie die Modalklasse an. <span class="pt">(1 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(d)</span>Bestimmen Sie anhand des Histogramms näherungsweise den Anteil der Studierenden mit einer Pendelzeit von mindestens 30 Minuten. Treffen Sie dazu eine geeignete Annahme über die Verteilung innerhalb der Klassen. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+</ol></div>
+
+<!-- A3 -->
+<div class="kl-auf"><h2><span>Aufgabe 3</span><span>(10 Punkte)</span></h2>
+<p>Eine Eisdiele am Gänseliesel notiert an fünf Tagen die Tageshöchsttemperatur \(X\) (in °C) und die Anzahl verkaufter Eiskugeln \(Y\) (in Hundert):</p>
+<table class="dat"><tr><th>Tag ν</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+<tr><th>\(x_\nu\)</th><td>15</td><td>18</td><td>20</td><td>24</td><td>28</td></tr>
+<tr><th>\(y_\nu\)</th><td>40</td><td>52</td><td>55</td><td>70</td><td>83</td></tr></table>
+<p>Hinweis: \(\sum x_\nu=105,\ \sum y_\nu=300,\ \sum x_\nu^2=2309,\ \sum y_\nu^2=19118,\ \sum x_\nu y_\nu=6640\).</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie die empirische Kovarianz \(s_{xy}\) und den Korrelationskoeffizienten nach Bravais-Pearson \(r_{xy}\). Geben Sie Ihren Lösungsweg an und interpretieren Sie \(r_{xy}\). Wenn Sie \(r_{xy}\) nicht berechnen konnten, interpretieren Sie \(r_{xy}=-0.3\). <span class="pt">(4 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(b)</span>Bestimmen Sie die Regressionsgerade \(\hat y=a+b\,x\) nach der Methode der kleinsten Quadrate. Geben Sie Ihren Lösungsweg an. <span class="pt">(3 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(c)</span>Welche Verkaufszahl prognostiziert das Modell für einen Tag mit 22 °C? Interpretieren Sie die Steigung \(b\) im Sachzusammenhang. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Geben Sie ohne Rechnung den Rangkorrelationskoeffizienten nach Spearman an und begründen Sie kurz. <span class="pt">(1 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A4 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 4</span><span>(6 Punkte)</span></h2>
+<p>Ihnen sei folgender Ergebnisraum \(\Omega=\{1,2,\dots,12\}\) eines Laplace-Experiments gegeben. Außerdem seien die Ereignisse \(A=\{2,4,6,8,10,12\}\) und \(B=\{1,2,3,4,5\}\) bekannt.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie die folgenden Mächtigkeiten. <span class="pt">(2 P)</span>
+<div class="lk s"><span class="lkl">\(|A\cap B|=\)</span></div><div class="lk s"><span class="lkl">\(|\bar A\cap\bar B|=\)</span></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie \(P(A\cup B)\). Geben Sie Ihren Lösungsweg an. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(c)</span>Sind die Ereignisse \(A\) und \(B\) stochastisch unabhängig? Begründen Sie Ihre Antwort rechnerisch. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+</ol></div>
+
+<!-- A5 -->
+<div class="kl-auf"><h2><span>Aufgabe 5</span><span>(9 Punkte)</span></h2>
+<p>Ein Göttinger Fahrradverleih bietet drei (sich gegenseitig ausschließende) Radtypen an: E-Bikes, Lastenräder und Stadträder. Aus Erfahrung weiß der Betreiber, dass 8 % aller Ausleihen mit einer Panne enden.</p>
+<p>Zunächst betrachtet er die Ausleihen <b>mit Panne</b>: Mit einer Wahrscheinlichkeit von 50 % handelte es sich um ein E-Bike, mit 30 % um ein Lastenrad. Anschließend betrachtet er die Ausleihen <b>ohne Panne</b>: Mit einer Wahrscheinlichkeit von 40 % handelte es sich um ein E-Bike, mit 45 % um ein Lastenrad.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie die folgenden Wahrscheinlichkeiten. <span class="pt">(3 P)</span>
+<div class="lk s"><span class="lkl">P(„keine Panne“) =</span></div><div class="lk s"><span class="lkl">P(„Stadtrad“ | „Panne“) =</span></div><div class="lk s"><span class="lkl">P(„Stadtrad“ | „keine Panne“) =</span></div></li>
+<li><span class="lb">(b)</span>Mit welcher Wahrscheinlichkeit wird bei einer zufälligen Ausleihe ein Stadtrad ausgeliehen? <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(c)</span>Ein Stadtrad wurde ausgeliehen. Mit welcher Wahrscheinlichkeit endet diese Ausleihe mit einer Panne? Geben Sie Ihren Lösungsweg an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Wie groß ist die Wahrscheinlichkeit, dass unter 10 zufällig und unabhängig ausgewählten Ausleihen mindestens eine mit einer Panne endet? <span class="pt">(2 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A6 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 6</span><span>(9 Punkte)</span></h2>
+<p>Die Dauer \(X\) (in Stunden) eines Stromausfalls in einem Studierendenwohnheim sei eine stetige Zufallsvariable mit der Dichte</p>
+<p style="text-align:center">\(f(x)=\begin{cases}c\cdot x^2, & 0\le x\le 3\\ 0, & \text{sonst.}\end{cases}\)</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Bestimmen Sie \(c\) derart, dass \(f(x)\) eine gültige Dichtefunktion ist. Geben Sie Ihren Lösungsweg an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie den Erwartungswert \(E(X)\). <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(c)</span>Bestimmen Sie die Verteilungsfunktion \(F(x)\) (mit Fallunterscheidung) und berechnen Sie damit \(P(1\le X\le 2)\). <span class="pt">(3 P)</span><div class="lk l"></div></li>
+</ol>
+<p>Die Reparaturzeit \(Y\) (in Minuten) des Hausmeisters sei normalverteilt mit \(Y\sim N(30,\,16)\).</p>
+<ol class="tl">
+<li><span class="lb">(d)</span>Berechnen Sie \(P(Y&gt;36)\). (Hinweis: \(\Phi(1.5)=0.9332\)) <span class="pt">(2 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A7 -->
+<div class="kl-auf"><h2><span>Aufgabe 7</span><span>(10 Punkte)</span></h2>
+<p>Die Zeit \(X\) (in Minuten) bis zum Eintreffen einer Antwort im Uni-Support-Chat werde durch eine Zufallsvariable mit der Dichte</p>
+<p style="text-align:center">\(f(x;\lambda)=\begin{cases}\lambda^2\,x\,e^{-\lambda x}, & x&gt;0\\ 0, & \text{sonst}\end{cases}\qquad\text{mit }\lambda&gt;0\)</p>
+<p>beschrieben. Bestimmen Sie den Maximum-Likelihood-Schätzer für \(\lambda\) basierend auf einer Stichprobe von \(n\) Beobachtungen \(X_1,\dots,X_n\), die unabhängig und identisch verteilt sind.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Stellen Sie zunächst die Likelihood- und die Log-Likelihood-Funktion auf. Geben Sie Ihren vollständigen Lösungsweg an und vereinfachen Sie so weit wie möglich. <span class="pt">(4 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(b)</span>Bestimmen Sie auf Grundlage Ihres Ergebnisses aus (a) den Maximum-Likelihood-Schätzer \(\hat\lambda\). Geben Sie Ihren vollständigen Lösungsweg an. <span class="pt">(3 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(c)</span>Prüfen Sie die hinreichende Bedingung (Bedingung zweiter Ordnung). <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Berechnen Sie den Schätzwert für die Stichprobe \(x=(1,\ 3,\ 2,\ 0.5,\ 3.5)\). <span class="pt">(1 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A8 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 8</span><span>(6 Punkte)</span></h2>
+<p>Sei \(X\) eine Zufallsvariable mit \(E(X)=\mu\) und \(Var(X)=\sigma^2\). Sie ziehen eine 2-fache, unabhängige Zufallsstichprobe \(\{X_1,X_2\}\) und betrachten die drei Schätzer</p>
+<p style="text-align:center">\(T_1=\dfrac{X_1+X_2}{2},\qquad T_2=\dfrac{3X_1+X_2}{4},\qquad T_3=X_1+X_2.\)</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Prüfen Sie für alle drei Schätzer, ob sie erwartungstreu für \(\mu\) sind, und geben Sie gegebenenfalls den Bias an. <span class="pt">(3 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie \(Var(T_1)\) und \(Var(T_2)\). Welchen der beiden Schätzer ziehen Sie vor? Begründen Sie mithilfe des mittleren quadratischen Fehlers (MSE). <span class="pt">(3 P)</span><div class="lk l"></div></li>
+</ol></div>
+
+<!-- A9 -->
+<div class="kl-auf"><h2><span>Aufgabe 9</span><span>(8 Punkte)</span></h2>
+<p>Ein Kaffeeautomat in der Mensa soll im Mittel <b>mindestens 200 ml</b> pro Becher ausgeben. Der AStA vermutet, dass der Automat im Mittel zu wenig ausgibt. Er misst \(n=9\) zufällig ausgewählte Becher und erhält \(\bar x=196\) ml und \(s^*=6\) ml. Gehen Sie davon aus, dass die Füllmenge normalverteilt ist mit <b>unbekannter</b> Varianz. Der AStA möchte seine Vermutung statistisch absichern (Signifikanzniveau \(\alpha=0.05\)).</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Stellen Sie das passende Hypothesenpaar auf. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie die Prüfgröße und geben Sie ihre Verteilung unter \(H_0\) an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(c)</span>Treffen Sie die Testentscheidung mithilfe des kritischen Wertes und formulieren Sie das Ergebnis im Sachzusammenhang. (Hinweis: \(t_{8;\,0.95}=1.860\)) <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Bestimmen Sie ein zweiseitiges 95 %-Konfidenzintervall für die mittlere Füllmenge \(\mu\). (Hinweis: \(t_{8;\,0.975}=2.306\)) <span class="pt">(2 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<div class="kl-auf"><h2><span>Begründung nicht lösbare Aufgabe(n)</span><span></span></h2>
+<p class="small">Nutzen Sie die folgende Box für jegliche Erläuterungen, wenn Aufgabenstellungen Ihrer Meinung nach nicht lösbar sind. Kennzeichnen Sie hierfür eindeutig, auf welche Aufgabe Sie sich beziehen.</p>
+<div class="lk l"></div></div>
+</section>
