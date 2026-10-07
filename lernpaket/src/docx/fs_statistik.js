@@ -1,6 +1,6 @@
 // Formelsammlung Statistik (Teil A) als Word-Datei
 const fs = require('fs'), path = require('path');
-const { Book } = require('./fslib');
+const { Book } = require(process.env.FMT === 'pdf' ? './htmllib' : './fslib');
 const B = new Book('Formelsammlung Statistik (Teil A)');
 const csv = f => fs.readFileSync(path.join(__dirname, '../rwork', f), 'utf8').trim().split('\n').slice(1).map(l => l.split(','));
 
@@ -41,7 +41,7 @@ B.table(['Begriff', 'Bedeutung', 'Beispiel'], [['Statistische Einheit', 'Objekt,
   ['Stichprobe', 'tatsächlich untersuchte Teilmenge (Umfang n)', '50 befragte Studierende'], ['Merkmal (Variable)', 'interessierende Eigenschaft', 'Alter, Studienfach'], ['Merkmalsausprägung', 'konkreter Wert', '23 Jahre, „Jura“']], [2, 3, 3]);
 B.h2('Skalenniveaus');
 B.table(['Skala', 'Was ist erlaubt?', 'Sinnvolle Lagemaße', 'Beispiele'], [
-  ['Nominal', 'nur = / ≠ (Kategorien ohne Ordnung)', 'nur Modus', 'Geschlecht, Studienfach, Farbe, Lieblingssorte'],
+  ['Nominal', 'nur = / ≠ (Kategorien ohne Ordnung)', 'nur Modus', 'Geschlecht, Studienfach, Farbe, Wohnort'],
   ['Ordinal', 'zusätzlich Ordnung < >; Abstände nicht interpretierbar', 'Modus, Median, Quantile', 'Schulnoten, Zufriedenheit (gut/mittel/schlecht), Rang'],
   ['Metrisch – Intervallskala', 'Abstände interpretierbar, kein natürlicher Nullpunkt', 'Modus, Median, Mittelwert', 'Temperatur in °C, Jahreszahl'],
   ['Metrisch – Verhältnisskala', 'natürlicher Nullpunkt, Quotienten sinnvoll', 'alle (auch geometr. Mittel)', 'Gewicht, Einkommen, Dauer, Anzahl']], [2.2, 3.2, 2.4, 3.2]);
@@ -49,8 +49,8 @@ B.h2('Diskret vs. stetig');
 B.ul(['**Diskret:** endlich oder abzählbar viele Ausprägungen (meist Anzahlen: 0, 1, 2, …). Beispiel: Anzahl Besuche, Anzahl Kinder.',
   '**Stetig:** jeder Wert in einem Intervall möglich (Messungen). Beispiel: Zeit, Gewicht, Länge, Temperatur.',
   '**Quasi-stetig:** eigentlich diskret, aber sehr fein (Einkommen in Cent) → wie stetig behandeln.', 'Nominale/ordinale Merkmale sind immer diskret.']);
-B.box('satz', '„Das Merkmal Anzahl der Bestellungen ist metrisch (verhältnisskaliert) und diskret, da nur ganze Zahlen 0, 1, 2, … möglich sind und ein natürlicher Nullpunkt existiert.“',
-  '„Das Merkmal Lieblingssorte ist nominalskaliert und diskret, da die Kategorien keine natürliche Ordnung besitzen.“');
+B.box('satz', '„Das Merkmal Anzahl der Kinder ist metrisch (verhältnisskaliert) und diskret, da nur ganze Zahlen 0, 1, 2, … möglich sind und ein natürlicher Nullpunkt existiert.“',
+  '„Das Merkmal Studienfach ist nominalskaliert und diskret, da die Kategorien keine natürliche Ordnung besitzen.“');
 B.box('falle', 'Kodierte Kategorien (1 = Jura, 2 = Wiwi) bleiben nominal – Zahlen machen ein Merkmal nicht metrisch! Mittelwert/Median dann „nicht sinnvoll“ + Begründung.');
 B.box('retter', 'Bei „Skalenniveau + diskret/stetig“ immer BEIDES nennen und mit einem Halbsatz begründen. Fehlt die Begründung, gibt es oft nur halbe Punkte.');
 
@@ -63,12 +63,22 @@ B.f('F̂(x) = (Anzahl der Beobachtungen ≤ x) / n  =  Σ_{aⱼ ≤ x} fⱼ');
 B.box('tipp', '1) Daten sortieren, verschiedene Werte a₁ < a₂ < … notieren.  2) Für jeden Wert fⱼ bestimmen.  3) Kumulieren.  4) Fallunterscheidung aufschreiben:',
   'F̂(x) = 0 für x < a₁;  = f₁ für a₁ ≤ x < a₂;  = f₁+f₂ für a₂ ≤ x < a₃;  …;  = 1 für x ≥ a_k',
   '5) Skizze: Treppe, an jedem Wert Sprung um fⱼ nach oben, ● links geschlossen (Wert gehört dazu), ○ rechts offen.');
+B.ex('Empirische Verteilungsfunktion', 'Daten: 1, 3, 3, 4, 7 (n = 5). Stellen Sie F̂(x) auf und bestimmen Sie den Anteil der Werte größer als 3.', [
+  'Verschiedene Werte sortiert: 1, 3, 4, 7 → relative Häufigkeiten 1/5 = 0.2, 2/5 = 0.4, 0.2, 0.2.',
+  'Kumulieren: 0.2 → 0.6 → 0.8 → 1.',
+  'Fallunterscheidung: F̂(x) = 0 für x < 1; 0.2 für 1 ≤ x < 3; 0.6 für 3 ≤ x < 4; 0.8 für 4 ≤ x < 7; 1 für x ≥ 7.',
+  'Anteil > 3 = 1 − F̂(3) = 1 − 0.6.'], 'Anteil der Werte größer als 3: 0.4');
 B.h2('Anteile aus F̂ ablesen');
 B.table(['Gesucht', 'Formel'], [['Anteil ≤ x', 'F̂(x)'], ['Anteil > x', '1 − F̂(x)'], ['Anteil < x', 'F̂(x) − f(x) = F̂ an der Stufe direkt links von x'], ['Anteil ≥ x', '1 − F̂(Stufe links von x)'], ['Anteil a < X ≤ b', 'F̂(b) − F̂(a)']], [3, 6]);
 B.h2('Klassierte Daten & Histogramm');
 B.f('Klassenbreite: dⱼ = obere Grenze − untere Grenze', 'Säulenhöhe (normiertes Histogramm, Fläche = 1):  ĥⱼ = fⱼ / dⱼ', 'Klassenmitte: mⱼ = (untere + obere Grenze) / 2', 'Mittelwert klassierter Daten: x̄ ≈ Σ fⱼ · mⱼ = (1/n) Σ hⱼ · mⱼ');
 B.ul(['**Modalklasse** = Klasse mit der **größten Säulenhöhe** (nicht unbedingt größte Häufigkeit, wenn Breiten verschieden!).', '**Fläche einer Säule = Anteil** der Daten in der Klasse.',
   '**Anteil in einem Teil einer Klasse** (Annahme Gleichverteilung in der Klasse): Anteil = Säulenhöhe × Breite des Teilstücks.']);
+B.ex('Histogramm & klassiertes Mittel', 'Klassen [0,5): 6, [5,15): 10, [15,25]: 4 Beobachtungen (n = 20).', [
+  'Relative Häufigkeiten: 6/20 = 0.3, 10/20 = 0.5, 4/20 = 0.2.',
+  'Breiten: 5, 10, 10 → Säulenhöhen 0.3/5 = 0.06, 0.5/10 = 0.05, 0.2/10 = 0.02.',
+  'Modalklasse = höchste Säule = [0,5) (obwohl [5,15) mehr Beobachtungen hat!).',
+  'Klassenmitten 2.5, 10, 20 → x̄ ≈ 0.3·2.5 + 0.5·10 + 0.2·20 = 0.75 + 5 + 4.'], 'x̄ ≈ 9.75; Modalklasse [0, 5)');
 B.box('retter', 'Histogramm-Skizze: Achsen beschriften (x: Merkmal mit Einheit, y: „Dichte“ bzw. fⱼ/dⱼ), Klassengrenzen eintragen, Höhen eintragen. Auch eine grobe Skizze gibt Punkte.');
 B.box('falle', 'Bei ungleich breiten Klassen ist die Höhe NICHT fⱼ, sondern fⱼ / dⱼ.  ·  Klassen: [a, b) heißt a gehört dazu, b nicht.');
 B.box('tr', 'Histogramda sütun yüksekliği = oran / genişlik. Alan = oran. Sınıf ortası ile ortalama: her sınıfın ortasını oranıyla çarp, topla.');
@@ -84,7 +94,7 @@ B.f('x̄ = (1/n) · Σ xᵢ', 'aus Häufigkeitstabelle: x̄ = Σ aⱼ · fⱼ', 
 B.h2('Eigenschaften');
 B.table(['Lagemaß', 'Skala', 'Robust gegen Ausreißer?'], [['Modus', 'ab nominal', 'ja'], ['Median / Quantile', 'ab ordinal', 'ja'], ['arithm. Mittel', 'metrisch', 'nein – wird von Extremwerten gezogen']], [3, 3, 4]);
 B.ul(['Rechtsschief (langer rechter Rand): x_mod < x_med < x̄ · Linksschief: x̄ < x_med < x_mod · Symmetrisch: alle ≈ gleich.', 'Σ (xᵢ − x̄) = 0 (Schwerpunkteigenschaft).']);
-B.box('satz', '„Da der Wert 14 ein Ausreißer ist, beschreibt der Median (3) das typische Verhalten besser als das arithmetische Mittel (3.667), weil der Median robust gegenüber Extremwerten ist.“');
+B.box('satz', '„Da der Wert 10 ein Ausreißer ist, beschreibt der Median (4) das typische Verhalten besser als das arithmetische Mittel (5), weil der Median robust gegenüber Extremwerten ist.“');
 B.box('falle', 'Median nur nach dem SORTIEREN.  ·  Bei nominalen Daten: Median „nicht sinnvoll“ + Begründung („keine Ordnung“).');
 
 // ───────────────── 4
@@ -93,6 +103,13 @@ B.f('Spannweite: R = x_max − x_min', 'Interquartilsabstand: d_Q = x₀.₇₅ 
   'empirische Varianz: s² = (1/n) Σ (xᵢ − x̄)²', 'Verschiebungssatz: s² = (1/n) Σ xᵢ² − x̄²   ← schnellster Weg mit Σxᵢ²',
   'unverzerrte (korrigierte) Varianz: s*² = (1/(n−1)) Σ (xᵢ − x̄)² = n/(n−1) · s²', 'Standardabweichung: s = √s²,  s* = √s*²', 'lineare Transformation y = a + b·x ⇒ s²_y = b²·s²_x,  s_y = |b|·s_x');
 B.box('tipp', '1) x̄ = Σxᵢ / n   2) Σxᵢ²/n berechnen   3) s² = Σxᵢ²/n − x̄²   4) s*² = s² · n/(n−1)   5) beide mit Bezeichnung hinschreiben.');
+B.ex('Lage, Streuung, Quartile, Ausreißer', 'Daten (sortiert): 2, 4, 4, 5, 10 (n = 5).', [
+  'x̄ = (2 + 4 + 4 + 5 + 10)/5 = 25/5 = 5.',
+  'Σxᵢ² = 4 + 16 + 16 + 25 + 100 = 161 → s² = 161/5 − 5² = 32.2 − 25 = 7.2.',
+  's*² = 7.2 · 5/4 = 9 → s* = 3.',
+  'Median: n ungerade → x₍₃₎ = 4.',
+  'x₀.₂₅: 5·0.25 = 1.25 → aufrunden auf 2 → x₍₂₎ = 4.  x₀.₇₅: 5·0.75 = 3.75 → 4 → x₍₄₎ = 5.  d_Q = 1.',
+  'Ausreißergrenze oben: 5 + 1.5·1 = 6.5 < 10 → 10 ist ein Ausreißer.'], 'x̄ = 5, s² = 7.2, s*² = 9, x_med = 4, d_Q = 1, Ausreißer: 10');
 B.h2('Boxplot');
 B.ul(['Box von x₀.₂₅ bis x₀.₇₅, Strich beim Median.', 'Whisker bis zum kleinsten/größten Wert, der **kein Ausreißer** ist.',
   '**Ausreißerregel:** Ausreißer, wenn Wert < x₀.₂₅ − 1.5·d_Q oder > x₀.₇₅ + 1.5·d_Q. Ausreißer als einzelne Punkte zeichnen.', 'Lange rechte Box-/Whiskerhälfte → rechtsschief.']);
@@ -116,10 +133,16 @@ B.f('Ränge bilden: rg(xᵢ), rg(yᵢ) (kleinster Wert Rang 1; bei Bindungen Dur
 B.ul(['Misst **monotone** Zusammenhänge, robust gegen Ausreißer, ab ordinal.', 'Steigen x und y in derselben Reihenfolge → r_SP = 1 (auch wenn nicht linear).']);
 B.h2('Lineare Regression (Kleinste Quadrate)');
 B.f('ŷ = a + b·x', 'b = s_xy / s²_x', 'a = ȳ − b·x̄', 'Prognose: ŷ(x₀) = a + b·x₀', 'Residuum: eᵢ = yᵢ − ŷᵢ;  Σ eᵢ = 0;  Gerade geht durch (x̄, ȳ)', 'Bestimmtheitsmaß: R² = r²_xy (Anteil erklärter Streuung, 0 ≤ R² ≤ 1)');
+B.ex('Korrelation & Regressionsgerade', 'x: 1, 2, 3, 4   y: 2, 4, 5, 7 (n = 4)', [
+  'x̄ = 2.5, ȳ = 4.5.',
+  'Σxy = 2 + 8 + 15 + 28 = 53 → s_xy = 53/4 − 2.5·4.5 = 13.25 − 11.25 = 2.',
+  'Σx² = 30 → s²_x = 30/4 − 2.5² = 1.25.   Σy² = 94 → s²_y = 94/4 − 4.5² = 3.25.',
+  'r = 2 / √(1.25·3.25) = 2 / 2.0156 = 0.992 → sehr starker positiver linearer Zusammenhang.',
+  'b = s_xy / s²_x = 2 / 1.25 = 1.6;  a = ȳ − b·x̄ = 4.5 − 1.6·2.5 = 0.5.'], 'ŷ = 0.5 + 1.6·x;  Prognose für x = 5: ŷ = 8.5');
 B.box('tipp', '1) x̄, ȳ  2) s_xy = Σxy/n − x̄ȳ  3) s²_x = Σx²/n − x̄²  4) b = s_xy/s²_x  5) a = ȳ − b·x̄  6) Gerade hinschreiben: ŷ = a + b·x.');
 B.box('satz', 'Steigung: „Steigt X um eine Einheit (z. B. 1 °C), so steigt Y im Mittel um b Einheiten (laut Modell).“',
   'Achsenabschnitt: „Für x = 0 sagt das Modell ŷ = a voraus (oft nur rechnerisch, nicht sinnvoll interpretierbar).“',
-  'Korrelation: „r = 0.997: sehr starker positiver linearer Zusammenhang – je höher die Temperatur, desto mehr Eis wird verkauft.“',
+  'Korrelation: „r = 0.992: sehr starker positiver linearer Zusammenhang – je größer x, desto größer ist im Mittel y.“',
   'Kausalität: „Korrelation bedeutet keine Kausalität. Der Zusammenhang kann durch eine Drittvariable (Scheinkorrelation) oder umgekehrte Wirkungsrichtung entstehen.“');
 B.box('falle', 'Prognosen weit außerhalb des Datenbereichs (Extrapolation) sind unzuverlässig – erwähnen, wenn gefragt „Beurteilen Sie“.  ·  b und r haben immer dasselbe Vorzeichen.');
 B.box('retter', 'Auch ohne Ergebnis: „b = s_xy / s²_x“ und „a = ȳ − b·x̄“ hinschreiben + Gerade „ŷ = a + b·x“. Interpretation darf mit dem Ersatzwert erfolgen.');
@@ -138,6 +161,11 @@ B.f('bedingt: P(A | B) = P(A ∩ B) / P(B)', 'Multiplikationssatz (Pfadregel): P
   'Unabhängigkeit: P(A ∩ B) = P(A) · P(B)  ⇔  P(A | B) = P(A)', 'Gegenwahrscheinlichkeit bedingt: P(Ā | B) = 1 − P(A | B)');
 B.box('tipp', 'Baumdiagramm: 1. Stufe = das Ereignis, nach dem in der Aufgabe ZUERST unterschieden wird („Zunächst betrachtet er die pünktlichen …“). 2. Stufe = bedingte Wahrscheinlichkeiten.',
   'Fehlende Äste: Summe der Äste an einem Knoten = 1 (z. B. Dienst C = 1 − 0.70 − 0.25).');
+B.ex('Baum, totale Wahrscheinlichkeit, Bayes', '30 % der Personen rauchen (R). Von den Rauchern erkranken 20 %, von den Nichtrauchern 5 % (K). Wie groß ist P(K) und P(R | K)?', [
+  'Baum: 1. Stufe R (0.3) / R̄ (0.7); 2. Stufe K | R = 0.2, K | R̄ = 0.05 (abgelesen!).',
+  'Pfade zu K multiplizieren: P(R ∩ K) = 0.3·0.2 = 0.06;  P(R̄ ∩ K) = 0.7·0.05 = 0.035.',
+  'Totale Wahrscheinlichkeit: P(K) = 0.06 + 0.035 = 0.095.',
+  'Bayes (Richtung umgedreht): P(R | K) = P(R ∩ K)/P(K) = 0.06/0.095.'], 'P(K) = 0.095,  P(R | K) = 0.632');
 B.h2('Die drei Retter-Regeln im Baum');
 B.table(['Gefragt', 'Was tun?', 'Beispiel'], [['P(A | B), B steht am Ast vorher', 'ABLESEN (Zahl am Ast)', '„von den Pünktlichen 5 %“ → P(C | P) = 0.05'],
   ['P(A ∩ B)', 'Pfad MULTIPLIZIEREN', 'P(P ∩ C) = 0.8 · 0.05'], ['P(A) (am Ende des Baums)', 'alle Pfade zu A ADDIEREN', 'P(C) = 0.8·0.05 + 0.2·0.3'], ['P(B | A), Richtung umgedreht', 'BAYES: Pfad / Summe', 'P(V | C) = 0.06 / 0.1']], [3, 2.5, 3.5]);
@@ -159,11 +187,17 @@ B.table(['', 'Diskret', 'Stetig'], [
   ['P(X = a)', 'kann > 0 sein', 'immer 0 → ≤ und < egal'],
   ['Verteilungsfunktion', 'F(x) = Σ_{xᵢ ≤ x} P(X = xᵢ) (Treppe)', 'F(x) = ∫_{−∞}^{x} f(t) dt (stetige Kurve), f = F′']], [2, 4, 4]);
 B.h2('Rezept: Konstante c bestimmen');
-B.f('stetig: ∫_{Träger} f(x) dx = 1  →  nach c auflösen', 'diskret: Σ P(X = xᵢ) = 1  →  nach c auflösen', 'Beispiel: f(x) = c·x² auf [0, 3]:  c·[x³/3]₀³ = 9c = 1  ⇒  c = 1/9');
+B.f('stetig: ∫_{Träger} f(x) dx = 1  →  nach c auflösen', 'diskret: Σ P(X = xᵢ) = 1  →  nach c auflösen', 'Beispiel: f(x) = c·x³ auf [0, 2]:  c·[x⁴/4]₀² = 4c = 1  ⇒  c = 1/4');
 B.h2('Verteilungsfunktion F(x) aufstellen (stetig)');
-B.f('F(x) = 0 für x < untere Grenze', 'F(x) = ∫_{untere}^{x} f(t) dt für x im Träger', 'F(x) = 1 für x > obere Grenze', 'Beispiel: f(x) = x²/9 auf [0,3]:  F(x) = x³/27 für 0 ≤ x ≤ 3');
+B.f('F(x) = 0 für x < untere Grenze', 'F(x) = ∫_{untere}^{x} f(t) dt für x im Träger', 'F(x) = 1 für x > obere Grenze', 'Beispiel: f(x) = x³/4 auf [0, 2]:  F(x) = x⁴/16 für 0 ≤ x ≤ 2');
+B.ex('Dichte komplett', 'f(x) = c·x für 0 ≤ x ≤ 4, 0 sonst. Bestimmen Sie c, F(x), P(X ≤ 2), den Median und E(X).', [
+  '∫₀⁴ c·x dx = c·[x²/2]₀⁴ = c·8 = 1 → c = 1/8.',
+  'F(x) = ∫₀ˣ t/8 dt = x²/16 für 0 ≤ x ≤ 4; F(x) = 0 für x < 0; F(x) = 1 für x > 4.',
+  'P(X ≤ 2) = F(2) = 4/16 = 0.25.',
+  'Median: x²/16 = 0.5 → x² = 8 → x_med = √8 = 2.828.',
+  'E(X) = ∫₀⁴ x · x/8 dx = [x³/24]₀⁴ = 64/24 = 8/3.'], 'c = 1/8, P(X ≤ 2) = 0.25, x_med = 2.828, E(X) = 8/3 = 2.667');
 B.h2('Quantile & Median einer Zufallsvariable');
-B.f('x_α löst F(x_α) = α;  Median: F(x_med) = 0.5', 'Beispiel: x³/27 = 0.5 ⇒ x_med = ∛13.5 = 2.381');
+B.f('x_α löst F(x_α) = α;  Median: F(x_med) = 0.5', 'Beispiel: x⁴/16 = 0.5 ⇒ x⁴ = 8 ⇒ x_med = 8^{1/4} = 1.682');
 B.h2('Unabhängigkeit von Zufallsvariablen');
 B.f('P(X = x, Y = y) = P(X = x)·P(Y = y) für alle x, y  (stetig: f(x, y) = f_X(x)·f_Y(y))', 'iid = unabhängig und identisch verteilt (Standardannahme für Stichproben)');
 B.box('retter', 'Dichte-Aufgabe: Immer zuerst „∫ f(x) dx = 1“ hinschreiben mit den Grenzen des Trägers. F(x) immer mit DREI Fällen (0 / Formel / 1).');
@@ -173,6 +207,11 @@ B.box('falle', '„0 sonst“ nie vergessen.  ·  Wahrscheinlichkeitsfunktion = 
 B.h1('8  Erwartungswert, Varianz, zwei Zufallsvariablen (V06)');
 B.table(['', 'Diskret', 'Stetig'], [['E(X)', 'Σ xᵢ · P(X = xᵢ)', '∫ x · f(x) dx'], ['E(X²)', 'Σ xᵢ² · P(X = xᵢ)', '∫ x² · f(x) dx'], ['E(g(X))', 'Σ g(xᵢ) · P(X = xᵢ)', '∫ g(x) · f(x) dx'], ['Var(X)', 'E(X²) − E(X)²', 'E(X²) − E(X)²']], [2, 4, 4]);
 B.box('tipp', 'Varianz in 3 Zeilen: ① E(X) ② E(X²) ③ Var(X) = E(X²) − E(X)².  Kontrolle: Var ≥ 0.  KEINE Division durch n (das gibt es nur bei Daten)!');
+B.ex('Erwartungswert & Varianz (diskret)', 'P(X = 0) = 0.5, P(X = 1) = 0.3, P(X = 2) = 0.2.', [
+  'Kontrolle: 0.5 + 0.3 + 0.2 = 1 ✓',
+  'E(X) = 0·0.5 + 1·0.3 + 2·0.2 = 0.7.',
+  'E(X²) = 0²·0.5 + 1²·0.3 + 2²·0.2 = 0.3 + 0.8 = 1.1.',
+  'Var(X) = E(X²) − E(X)² = 1.1 − 0.49.'], 'E(X) = 0.7,  Var(X) = 0.61');
 B.h2('Rechenregeln');
 B.f('E(a + bX) = a + b·E(X)', 'Var(a + bX) = b²·Var(X)   (Konstante a fällt weg!)', 'E(X + Y) = E(X) + E(Y)   (immer)', 'Var(X + Y) = Var(X) + Var(Y) + 2·Cov(X, Y);  bei Unabhängigkeit: Var(X) + Var(Y)',
   'Var(X − Y) = Var(X) + Var(Y) − 2·Cov(X, Y)', 'E(g(X)) ≠ g(E(X)) im Allgemeinen (z. B. E(X²) ≠ E(X)², E(log X) ≠ log E(X))', 'Standardisierung: Z = (X − E(X)) / √Var(X) hat E(Z) = 0, Var(Z) = 1');
@@ -209,7 +248,12 @@ B.ul(['**Binomial:** Anzahl Erfolge bei n unabhängigen Versuchen mit gleicher E
 B.h2('Normalverteilung rechnen');
 B.f('Standardisieren: Z = (X − μ) / σ ~ N(0, 1)', 'P(X ≤ x) = Φ((x − μ)/σ)', 'P(X > x) = 1 − Φ((x − μ)/σ)', 'P(a ≤ X ≤ b) = Φ((b − μ)/σ) − Φ((a − μ)/σ)', 'Symmetrie: Φ(−z) = 1 − Φ(z)', 'Quantil: x_α = μ + z_α·σ');
 B.table(['α', '0.90', '0.95', '0.975', '0.99', '0.995'], [['z_α', '1.282', '1.645', '1.960', '2.326', '2.576']], [1, 1, 1, 1, 1, 1]);
-B.box('falle', 'N(30, 16) heißt Varianz 16 → σ = 4 (Wurzel ziehen!).  ·  P(X > x) = 1 − Φ(…), nicht Φ(…).');
+B.box('falle', 'N(50, 9) heißt Varianz 9 → σ = 3 (Wurzel ziehen!).  ·  P(X > x) = 1 − Φ(…), nicht Φ(…).');
+B.ex('Normalverteilung & Binomial', 'X ~ N(100, 225). Berechnen Sie P(X ≤ 115) und P(X > 85). Y ~ B(4; 0.5): P(Y ≥ 3)?', [
+  'σ = √225 = 15 (225 ist die Varianz!).',
+  'P(X ≤ 115) = Φ((115 − 100)/15) = Φ(1) = 0.8413.',
+  'P(X > 85) = 1 − Φ((85 − 100)/15) = 1 − Φ(−1) = 1 − (1 − Φ(1)) = 0.8413.',
+  'P(Y ≥ 3) = P(Y = 3) + P(Y = 4) = (4 über 3)·0.5³·0.5 + 0.5⁴ = 4/16 + 1/16.'], 'P(X ≤ 115) = 0.841,  P(X > 85) = 0.841,  P(Y ≥ 3) = 5/16 = 0.3125');
 B.h2('Summen, Mittelwerte, Zentraler Grenzwertsatz');
 B.f('X ~ N(μ₁, σ₁²), Y ~ N(μ₂, σ₂²) unabhängig ⇒ X + Y ~ N(μ₁ + μ₂, σ₁² + σ₂²)', 'a + bX ~ N(a + bμ, b²σ²)', 'X₁,…,Xₙ iid N(μ, σ²) ⇒ X̄ ~ N(μ, σ²/n)',
   'ZGWS: X₁,…,Xₙ iid mit E = μ, Var = σ² ⇒ X̄ ≈ N(μ, σ²/n) bzw. Σ Xᵢ ≈ N(nμ, nσ²) für großes n (Faustregel n ≥ 30)', 'Binomial-Approximation: B(n, π) ≈ N(nπ, nπ(1−π)) für großes n');
@@ -224,7 +268,12 @@ B.h2('Gütekriterien');
 B.f('Bias: Bias(θ̂) = E(θ̂) − θ', 'erwartungstreu (unverzerrt): E(θ̂) = θ  ⇔  Bias = 0', 'Varianz: Var(θ̂) = E[(θ̂ − E(θ̂))²]', 'MSE: MSE(θ̂) = E[(θ̂ − θ)²] = Var(θ̂) + Bias(θ̂)²',
   'konsistent: MSE(θ̂) → 0 für n → ∞', 'effizienter: bei zwei erwartungstreuen Schätzern der mit kleinerer Varianz');
 B.box('tipp', 'Erwartungstreue prüfen: 1) E(θ̂) mit Linearität ausrechnen (E(Xᵢ) = μ einsetzen)  2) mit θ vergleichen  3) Satz: „Da E(θ̂) = μ, ist θ̂ erwartungstreu.“ bzw. „Bias = …“.',
-  'Varianz: Var(Σ aᵢXᵢ) = Σ aᵢ² σ² (bei Unabhängigkeit).  Beispiel: Var((3X₁ + X₂)/4) = (9 + 1)/16 · σ² = 5/8 σ².');
+  'Varianz: Var(Σ aᵢXᵢ) = Σ aᵢ² σ² (bei Unabhängigkeit).  Beispiel: Var((2X₁ + X₂)/3) = (4 + 1)/9 · σ² = 5/9 σ².');
+B.ex('Erwartungstreue, Varianz, MSE', 'X₁, X₂, X₃ iid mit E = μ, Var = σ². Schätzer T = (X₁ + X₂ + X₃)/2.', [
+  'E(T) = (μ + μ + μ)/2 = 1.5μ ≠ μ → nicht erwartungstreu.',
+  'Bias(T) = E(T) − μ = 0.5μ.',
+  'Var(T) = (1/2)²·(σ² + σ² + σ²) = 3σ²/4.',
+  'MSE(T) = Var + Bias² = 0.75σ² + 0.25μ².'], 'T ist verzerrt (Bias 0.5μ); X̄ mit MSE = σ²/3 ist vorzuziehen');
 B.f('E(X̄) = μ    Var(X̄) = σ²/n    E(S²) = (n−1)/n · σ² (verzerrt)    E(S*²) = σ²');
 B.box('falle', 'Bei Produkten: E(X₁·X₂) = E(X₁)·E(X₂) nur bei Unabhängigkeit.  ·  E(1/X) ≠ 1/E(X).');
 B.h2('Nichtparametrische Dichteschätzung');
@@ -238,10 +287,16 @@ B.box('tipp', 'f̂(x₀) von Hand: für jede Beobachtung uᵢ = (x₀ − xᵢ)/
 B.h1('12  Maximum-Likelihood (V08)');
 B.box('tipp', '1) Likelihood: L(θ) = ∏ f(xᵢ; θ)', '2) Log-Likelihood: l(θ) = log L(θ) = Σ log f(xᵢ; θ) – vereinfachen (Log-Regeln!)', '3) Ableiten: l′(θ) = …',
   '4) Nullsetzen: l′(θ̂) = 0 → nach θ̂ auflösen', '5) Hinreichende Bedingung: l″(θ̂) < 0 ⇒ Maximum', '6) Schätzwert: Daten einsetzen');
-B.h2('Musterbeispiel (Klausurtyp): f(x; λ) = λ²·x·e^{−λx}, x > 0');
-B.f('L(λ) = ∏ λ² xᵢ e^{−λxᵢ} = λ²ⁿ · (∏ xᵢ) · e^{−λ Σ xᵢ}', 'l(λ) = 2n·log λ + Σ log xᵢ − λ Σ xᵢ', 'l′(λ) = 2n/λ − Σ xᵢ = 0  ⇒  λ̂ = 2n / Σ xᵢ = 2 / x̄', 'l″(λ) = −2n/λ² < 0  ⇒  Maximum ✓');
+B.h2('Musterbeispiel (Klausurtyp): f(x; θ) = (x/θ)·e^{−x²/(2θ)}, x > 0');
+B.f('L(θ) = ∏ (xᵢ/θ)·e^{−xᵢ²/(2θ)} = θ⁻ⁿ · (∏ xᵢ) · e^{−Σxᵢ²/(2θ)}', 'l(θ) = −n·log θ + Σ log xᵢ − Σxᵢ² / (2θ)', 'l′(θ) = −n/θ + Σxᵢ² / (2θ²) = 0  ⇒  θ̂ = Σxᵢ² / (2n)', 'l″(θ) = n/θ² − Σxᵢ²/θ³;  an der Stelle θ̂: n/θ̂² − 2n/θ̂² = −n/θ̂² < 0  ⇒  Maximum ✓');
 B.h2('Musterbeispiel: f(x; θ) = θ·x^{θ−1}, 0 < x < 1');
 B.f('l(θ) = n·log θ + (θ − 1)·Σ log xᵢ', 'l′(θ) = n/θ + Σ log xᵢ = 0  ⇒  θ̂ = −n / Σ log xᵢ', 'l″(θ) = −n/θ² < 0 ✓');
+B.ex('ML-Schätzer Exponentialverteilung mit Zahlen', 'f(x; λ) = λe^{−λx}, x > 0. Stichprobe: 2, 4, 3, 1.', [
+  'L(λ) = ∏ λe^{−λxᵢ} = λⁿ · e^{−λΣxᵢ}.',
+  'l(λ) = n·log λ − λ·Σxᵢ.',
+  'l′(λ) = n/λ − Σxᵢ = 0 → λ̂ = n/Σxᵢ = 1/x̄.',
+  'l″(λ) = −n/λ² < 0 → Maximum ✓.',
+  'Daten: Σxᵢ = 10, n = 4 → λ̂ = 4/10.'], 'λ̂ = 0.4');
 B.h2('Standard-Ergebnisse (zum Kontrollieren)');
 B.table(['Modell', 'Log-Likelihood l(θ)', 'ML-Schätzer'], [['Bernoulli(π)', 'Σxᵢ·log π + (n − Σxᵢ)·log(1−π)', 'π̂ = x̄ (Anteil)'], ['Binomial B(m, π), n Beob.', 'Σxᵢ log π + (nm − Σxᵢ) log(1−π) + const', 'π̂ = x̄ / m'],
   ['Poisson(λ)', 'Σxᵢ·log λ − nλ − Σ log(xᵢ!)', 'λ̂ = x̄'], ['Exponential(λ)', 'n·log λ − λΣxᵢ', 'λ̂ = 1/x̄'], ['Normal, μ (σ² bekannt)', '−Σ(xᵢ − μ)²/(2σ²) + const', 'μ̂ = x̄'],
@@ -260,7 +315,12 @@ B.table(['Situation', 'Konfidenzintervall zum Niveau 1 − α'], [
   ['Anteil π (n groß)', 'π̂ ± z_{1−α/2} · √(π̂(1 − π̂)/n)'],
   ['Varianz σ², Normalverteilung', '[ (n−1)s*² / χ²_{n−1; 1−α/2} ;  (n−1)s*² / χ²_{n−1; α/2} ]']], [4, 6]);
 B.ul(['Einseitige KI: nur eine Grenze, Quantil z_{1−α} bzw. t_{n−1; 1−α}.', 'KI wird **breiter**, wenn: Niveau 1 − α größer, σ größer, n kleiner.', 'Halbe Breite (Genauigkeit): e = z·σ/√n → benötigtes n = (z·σ/e)².']);
-B.box('satz', '„Das 95 %-Konfidenzintervall für die mittlere Füllmenge ist [191.388; 200.612]. Bei wiederholter Stichprobenziehung überdeckt ein so konstruiertes Intervall den wahren Erwartungswert μ in 95 % der Fälle.“');
+B.ex('Konfidenzintervall (σ bekannt)', 'n = 25, x̄ = 50, σ = 10, Niveau 95 %.', [
+  'Quantil: z₀.₉₇₅ = 1.96.',
+  'Standardfehler: σ/√n = 10/5 = 2.',
+  'Halbe Breite: 1.96 · 2 = 3.92.',
+  'Intervall: [50 − 3.92; 50 + 3.92].'], '95 %-KI = [46.08; 53.92]');
+B.box('satz', '„Das 95 %-Konfidenzintervall für die mittlere Lebensdauer ist [46.08; 53.92]. Bei wiederholter Stichprobenziehung überdeckt ein so konstruiertes Intervall den wahren Erwartungswert μ in 95 % der Fälle.“');
 B.box('falle', 'NICHT: „μ liegt mit 95 % Wahrscheinlichkeit im Intervall“ (μ ist fest, das Intervall ist zufällig).  ·  σ² bekannt → z; σ² unbekannt → t mit n−1 Freiheitsgraden.  ·  √n nicht vergessen!');
 B.box('retter', 'Formel allgemein + eingesetzte Zahlen + Intervall in eckigen Klammern [L; U]. Quantile aus der Aufgabe (Hinweis) übernehmen.');
 
@@ -272,6 +332,12 @@ B.h2('Hypothesen richtig wählen');
 B.table(['Behauptung / Vermutung im Text', 'H₀', 'H₁', 'Ablehnbereich (Gauß-Test)'], [
   ['„weniger als / zu wenig“', 'μ ≥ μ₀', 'μ < μ₀', 'Z < −z_{1−α}'], ['„mehr als / größer“', 'μ ≤ μ₀', 'μ > μ₀', 'Z > z_{1−α}'], ['„unterscheidet sich / ungleich“', 'μ = μ₀', 'μ ≠ μ₀', '|Z| > z_{1−α/2}']], [3.5, 1.5, 1.5, 3]);
 B.ul(['Das, was **statistisch abgesichert / nachgewiesen** werden soll, kommt in **H₁**.', 'Gleichheitszeichen (=, ≤, ≥) steht immer in H₀.']);
+B.ex('Gauß-Test komplett', 'Ein Hersteller behauptet, die mittlere Lebensdauer sei größer als 100 h. n = 16, x̄ = 104, σ = 8 bekannt, α = 0.05.', [
+  'Hypothesen (Behauptung in H₁): H₀: μ ≤ 100 vs. H₁: μ > 100.',
+  'Teststatistik: Z = (x̄ − μ₀)/(σ/√n) = (104 − 100)/(8/4) = 2;  unter H₀: Z ~ N(0, 1).',
+  'Kritischer Wert (rechtsseitig): z₀.₉₅ = 1.645.',
+  'Vergleich: 2 > 1.645 → H₀ ablehnen.',
+  'Antwortsatz im Sachzusammenhang formulieren.'], '„Es kann zum Niveau 5 % statistisch abgesichert werden, dass die mittlere Lebensdauer größer als 100 h ist.“');
 B.h2('Fehlerarten');
 B.table(['', 'H₀ wahr', 'H₁ wahr'], [['H₀ ablehnen', 'Fehler 1. Art (α)', 'richtig'], ['H₀ nicht ablehnen', 'richtig', 'Fehler 2. Art (β)']], [3, 3, 3]);
 B.ul(['α = maximale Wahrscheinlichkeit für den Fehler 1. Art (wird kontrolliert).', '**p-Wert:** Wahrscheinlichkeit, unter H₀ einen mindestens so extremen Wert der Teststatistik zu beobachten wie den beobachteten. p < α ⇒ H₀ ablehnen.',
@@ -289,25 +355,25 @@ B.table(['Test', 'Voraussetzung', 'Teststatistik', 'Verteilung unter H₀'], [
 B.ul(['χ²-Tests: H₀ ablehnen, wenn Teststatistik > χ²_{1−α}(df) (immer rechtsseitig).', 'Zweiseitiger Test und KI: H₀: μ = μ₀ wird zum Niveau α abgelehnt ⇔ μ₀ liegt NICHT im (1 − α)-KI.']);
 B.h2('R-Output lesen (kommt auch in Teil A vor!)');
 B.ul(['`alternative = "less"` ⇔ H₁: μ < μ₀ · `"greater"` ⇔ H₁: μ > μ₀ · `"two.sided"` ⇔ H₁: μ ≠ μ₀.', 'Den Code wählen, dessen `alternative` zu deinem H₁ passt und der die richtigen Daten (`x`) verwendet.', 'Entscheidung über den p-Wert: p-value < α ⇒ H₀ ablehnen.']);
-B.box('satz', 'Ablehnen: „Da T = −2 < −1.860 = −t_{8;0.95} (bzw. p = 0.040 < 0.05), wird H₀ zum Niveau 5 % abgelehnt. Es kann statistisch abgesichert werden, dass der Automat im Mittel weniger als 200 ml ausgibt.“',
-  'Nicht ablehnen: „Da p = 0.134 > 0.05, kann H₀ nicht abgelehnt werden. Es kann nicht statistisch abgesichert werden, dass die mittlere Trainingsdauer unter 70 Minuten liegt.“');
+B.box('satz', 'Ablehnen: „Da Z = 2 > 1.645 = z_{0.95} (bzw. p = 0.023 < 0.05), wird H₀ zum Niveau 5 % abgelehnt. Es kann statistisch abgesichert werden, dass die mittlere Lebensdauer größer als 100 h ist.“',
+  'Nicht ablehnen: „Da p = 0.210 > 0.05, kann H₀ nicht abgelehnt werden. Es kann nicht statistisch abgesichert werden, dass die mittlere Wartezeit unter 5 Minuten liegt.“');
 B.box('falle', 'Vorzeichen beim linksseitigen Test: Vergleich mit −t bzw. −z.  ·  σ vs. σ²: Wurzel ziehen!  ·  t-Test: s* (mit n−1) und Freiheitsgrade n−1.  ·  „H₀ annehmen“ vermeiden → „H₀ kann nicht abgelehnt werden“.');
 B.box('retter', 'Hypothesenpaar allein = 2 Punkte. Teststatistik-Formel allgemein + Verteilung (z. B. „T ~ t(8) unter H₀“) = Punkte, auch wenn die Zahl falsch ist. Entscheidung immer mit Vergleich (Zahl vs. kritischer Wert oder p vs. α) begründen.');
 
 // ───────────────── 15
 B.h1('15  Interpretations- & Antwortsätze (Sammlung)');
 B.table(['Situation', 'Fertiger Satz (Zahlen ersetzen)'], [
-  ['Mittelwert', 'Im Durchschnitt bestellen die Befragten 3.667 Pizzen pro Monat.'],
-  ['Median', '50 % der Befragten bestellen höchstens 3 Pizzen, 50 % mindestens 3.'],
-  ['Quartil', '25 % der Befragten bestellen höchstens 1.5 Pizzen.'],
-  ['Varianz/Standardabw.', 'Die Bestellanzahl streut im Mittel um ca. 3.5 Pizzen um den Mittelwert.'],
-  ['Korrelation', 'r = 0.997: sehr starker positiver linearer Zusammenhang zwischen Temperatur und Eisverkauf.'],
-  ['Regression b', 'Steigt die Temperatur um 1 °C, werden laut Modell im Mittel 3.269 (Hundert) Kugeln mehr verkauft.'],
+  ['Mittelwert', 'Im Durchschnitt gehen die Befragten 5 Mal pro Woche in die Mensa.'],
+  ['Median', '50 % der Befragten gehen höchstens 4 Mal in die Mensa, 50 % mindestens 4 Mal.'],
+  ['Quartil', '25 % der Befragten gehen höchstens 4 Mal in die Mensa (unteres Quartil).'],
+  ['Varianz/Standardabw.', 'Die Anzahl der Mensabesuche streut im Mittel um ca. 2.7 Besuche um den Mittelwert (s = 2.683).'],
+  ['Korrelation', 'r = 0.992: sehr starker positiver linearer Zusammenhang zwischen Lernzeit und Punktzahl.'],
+  ['Regression b', 'Steigt die Lernzeit um eine Stunde, steigt die Punktzahl laut Modell im Mittel um 1.6 Punkte.'],
   ['Kausalität', 'Eine hohe Korrelation belegt keinen kausalen Zusammenhang; es kann eine Drittvariable vorliegen.'],
-  ['bedingte W.', 'Mit einer Wahrscheinlichkeit von 10.4 % endet die Ausleihe eines Stadtrads mit einer Panne.'],
+  ['bedingte W.', 'Mit einer Wahrscheinlichkeit von 63.2 % raucht eine erkrankte Person.'],
   ['Unabhängigkeit', 'Da P(A ∩ B) ≠ P(A)·P(B), sind A und B stochastisch abhängig.'],
-  ['Erwartungswert', 'Im Mittel dauert ein Stromausfall 2.25 Stunden.'],
-  ['Schätzer', 'Da E(T₂) = μ, ist T₂ erwartungstreu; T₁ ist wegen kleinerer Varianz effizienter.'],
+  ['Erwartungswert', 'Im Mittel beträgt die Wartezeit 2.667 Minuten.'],
+  ['Schätzer', 'Da E(μ̂₁) = μ, ist μ̂₁ erwartungstreu; von zwei erwartungstreuen Schätzern ist der mit der kleineren Varianz effizienter.'],
   ['KI', 'Ein so konstruiertes Intervall überdeckt den wahren Parameter in 95 % der Fälle.'],
   ['Test', 'H₀ wird abgelehnt / kann nicht abgelehnt werden; es kann (nicht) statistisch abgesichert werden, dass …'],
   ['nicht sinnvoll', 'Der Median ist für das nominalskalierte Merkmal nicht sinnvoll, da die Ausprägungen keine Ordnung besitzen.']], [2.4, 7.6]);

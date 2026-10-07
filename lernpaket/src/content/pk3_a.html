@@ -1,6 +1,6 @@
 <section class="t0 kl">
 <div class="kl-deck">
-<h1>Probeklausur 3 Statistik (Teil A)</h1>
+<h1>Probeklausur 3 Statistik (Teil A)</h1><div class="lh">Diese Übungsversion enthält bei den Themen, die du noch nicht (fertig) gelernt hast, gelbe Lernhilfe-Kästen mit dem Lösungsweg – ohne die Ergebnisse. Erst ohne Kasten versuchen, dann nachsehen!<span class="tr">Sarı kutular sadece çözüm yolunu gösterir, sonucu değil. Önce kutuya bakmadan dene.</span></div>
 <div class="sub">Statistik und Data Science I · Probeklausur 3 für den Zweittermin (09.10.2026) · Stoff V01–V13<br><span class="small">Übungsklausur zur Vorbereitung – keine offizielle Klausur</span></div>
 <div class="kl-fields"><div>Name, Vorname</div><div>Matrikel-Nr.</div><div>Raum</div><div>Platz-Nr.</div></div>
 <p><b>Bearbeitungszeit:</b> 100 Minuten &nbsp;·&nbsp; <b>Anzahl der Aufgaben:</b> 9 &nbsp;·&nbsp; <b>Gesamtpunktzahl:</b> 75</p>
@@ -37,7 +37,7 @@ Sorte
 <ol class="tl">
 <li><span class="lb">(a)</span>Geben Sie für die Merkmale <i>Anzahl der Bestellungen</i> und <i>Lieblingssorte</i> jeweils das Skalenniveau an und ob das Merkmal diskret oder stetig ist. <span class="pt">(2 P)</span><div class="lk s"></div></li>
 <li><span class="lb">(b)</span>Berechnen Sie für die Variable <code>Pizza</code> das arithmetische Mittel, die empirische Varianz \(s^2\) und die unverzerrte Varianz \(s_*^2\). Geben Sie Ihren Lösungsweg an. <span class="pt">(3 P)</span><div class="lk m"></div></li>
-<li><span class="lb">(c)</span>Bestimmen Sie das untere Quartil \(x_{0.25}\), den Median und das obere Quartil \(x_{0.75}\) der Variable <code>Pizza</code> sowie den Interquartilsabstand. <span class="pt">(2 P)</span>
+<div class="lh"><b>Quartil:</b> \(n\cdot\alpha\) berechnen. Ganze Zahl → Mittelwert aus \(x_{(n\alpha)}\) und \(x_{(n\alpha+1)}\); keine ganze Zahl → aufrunden. Hier: \(12\cdot0.25=3\) → \((x_{(3)}+x_{(4)})/2\). <b>Interquartilsabstand</b> \(d_Q=x_{0.75}-x_{0.25}\). <b>Ausreißer</b>, wenn Wert \(&gt; x_{0.75}+1.5\,d_Q\). <b>Varianz:</b> \(s^2=\frac1n\sum x_i^2-\bar x^2\), \(s_*^2=\frac{n}{n-1}s^2\).<span class="tr">Önce n·α hesapla; tam sayıysa iki değerin ortalaması.</span></div><li><span class="lb">(c)</span>Bestimmen Sie das untere Quartil \(x_{0.25}\), den Median und das obere Quartil \(x_{0.75}\) der Variable <code>Pizza</code> sowie den Interquartilsabstand. <span class="pt">(2 P)</span>
 <div class="lk s"><span class="lkl">\(x_{0.25}=\)</span></div><div class="lk s"><span class="lkl">\(x_{med}=\)</span></div><div class="lk s"><span class="lkl">\(x_{0.75}=\)</span></div><div class="lk s"><span class="lkl">\(d_Q=\)</span></div></li>
 <li><span class="lb">(d)</span>Ist der Wert 14 nach der üblichen Ausreißerregel ein Ausreißer? Welches Lagemaß aus (b) und (c) beschreibt das „typische“ Bestellverhalten besser? Begründen Sie kurz. <span class="pt">(2 P)</span><div class="lk m"></div></li>
 </ol></div>
@@ -47,7 +47,7 @@ Sorte
 <p>Für 50 Studierende wurde die tägliche Pendelzeit (in Minuten) erhoben. Es liegen nur die klassierten Daten vor:</p>
 <table class="dat"><tr><th>Klasse \(K_j\)</th><td>\([0,10)\)</td><td>\([10,20)\)</td><td>\([20,40)\)</td><td>\([40,60]\)</td></tr>
 <tr><th>absolute Häufigkeit \(h_j\)</th><td>10</td><td>20</td><td>15</td><td>5</td></tr></table>
-<ol class="tl">
+<div class="lh"><b>Relative Häufigkeit</b> \(f_j=h_j/n\). <b>Säulenhöhe</b> \(=f_j/\text{Klassenbreite}\) (Fläche = Anteil!). <b>Klassiertes Mittel</b> \(\bar x\approx\sum f_j\cdot m_j\) mit Klassenmitte \(m_j\). <b>Modalklasse</b> = höchste Säule. <b>Anteil ab 30:</b> Gleichverteilung in der Klasse annehmen → Säulenhöhe × Breite des Stücks \([30,40)\) + ganze Klasse \([40,60]\).<span class="tr">Sütun yüksekliği = oran / genişlik. Alan = oran.</span></div><ol class="tl">
 <li><span class="lb">(a)</span>Berechnen Sie die relativen Häufigkeiten und die Säulenhöhen eines (auf Fläche 1) normierten Histogramms. Skizzieren Sie das Histogramm. <span class="pt">(3 P)</span><div class="lk l"></div></li>
 <li><span class="lb">(b)</span>Berechnen Sie das arithmetische Mittel der klassierten Daten. <span class="pt">(2 P)</span><div class="lk s"></div></li>
 <li><span class="lb">(c)</span>Geben Sie die Modalklasse an. <span class="pt">(1 P)</span><div class="lk s"></div></li>
@@ -61,7 +61,7 @@ Sorte
 <tr><th>\(x_\nu\)</th><td>15</td><td>18</td><td>20</td><td>24</td><td>28</td></tr>
 <tr><th>\(y_\nu\)</th><td>40</td><td>52</td><td>55</td><td>70</td><td>83</td></tr></table>
 <p>Hinweis: \(\sum x_\nu=105,\ \sum y_\nu=300,\ \sum x_\nu^2=2309,\ \sum y_\nu^2=19118,\ \sum x_\nu y_\nu=6640\).</p>
-<ol class="tl">
+<div class="lh"><b>Kovarianz:</b> \(s_{xy}=\frac1n\sum x_\nu y_\nu-\bar x\bar y\). <b>Korrelation:</b> \(r_{xy}=\dfrac{s_{xy}}{\sqrt{s_x^2\,s_y^2}}\) mit \(s_x^2=\frac1n\sum x_\nu^2-\bar x^2\). Interpretation: Vorzeichen (positiv/negativ) + Stärke (schwach/mittel/stark) + „linear“. <b>Regression:</b> \(b=s_{xy}/s_x^2\), \(a=\bar y-b\bar x\), Prognose \(\hat y=a+b\cdot22\). <b>Spearman:</b> Ränge von x und y vergleichen – steigen beide in derselben Reihenfolge, ist \(r_{SP}=1\).<span class="tr">Önce ortalamalar, sonra s_xy ve s_x², sonra b, en son a.</span></div><ol class="tl">
 <li><span class="lb">(a)</span>Berechnen Sie die empirische Kovarianz \(s_{xy}\) und den Korrelationskoeffizienten nach Bravais-Pearson \(r_{xy}\). Geben Sie Ihren Lösungsweg an und interpretieren Sie \(r_{xy}\). Wenn Sie \(r_{xy}\) nicht berechnen konnten, interpretieren Sie \(r_{xy}=-0.3\). <span class="pt">(4 P)</span><div class="lk l"></div></li>
 <li><span class="lb">(b)</span>Bestimmen Sie die Regressionsgerade \(\hat y=a+b\,x\) nach der Methode der kleinsten Quadrate. Geben Sie Ihren Lösungsweg an. <span class="pt">(3 P)</span><div class="lk m"></div></li>
 <li><span class="lb">(c)</span>Welche Verkaufszahl prognostiziert das Modell für einen Tag mit 22 °C? Interpretieren Sie die Steigung \(b\) im Sachzusammenhang. <span class="pt">(2 P)</span><div class="lk m"></div></li>
@@ -82,7 +82,7 @@ Sorte
 <div class="kl-auf"><h2><span>Aufgabe 5</span><span>(9 Punkte)</span></h2>
 <p>Ein Göttinger Fahrradverleih bietet drei (sich gegenseitig ausschließende) Radtypen an: E-Bikes, Lastenräder und Stadträder. Aus Erfahrung weiß der Betreiber, dass 8 % aller Ausleihen mit einer Panne enden.</p>
 <p>Zunächst betrachtet er die Ausleihen <b>mit Panne</b>: Mit einer Wahrscheinlichkeit von 50 % handelte es sich um ein E-Bike, mit 30 % um ein Lastenrad. Anschließend betrachtet er die Ausleihen <b>ohne Panne</b>: Mit einer Wahrscheinlichkeit von 40 % handelte es sich um ein E-Bike, mit 45 % um ein Lastenrad.</p>
-<ol class="tl">
+<div class="lh">Baum: 1. Stufe Panne / keine Panne (danach wird „zunächst“ unterschieden), 2. Stufe Radtyp. Fehlender Ast: Stadtrad \(=1-\text{E-Bike}-\text{Lastenrad}\). <b>(b)</b> totale Wahrscheinlichkeit: Pfade addieren. <b>(c)</b> Bayes: Pfad „Panne ∩ Stadtrad“ / Ergebnis aus (b). <b>(d)</b> „mindestens eine“ \(=1-P(\text{keine})^{10}\).</div><ol class="tl">
 <li><span class="lb">(a)</span>Berechnen Sie die folgenden Wahrscheinlichkeiten. <span class="pt">(3 P)</span>
 <div class="lk s"><span class="lkl">P(„keine Panne“) =</span></div><div class="lk s"><span class="lkl">P(„Stadtrad“ | „Panne“) =</span></div><div class="lk s"><span class="lkl">P(„Stadtrad“ | „keine Panne“) =</span></div></li>
 <li><span class="lb">(b)</span>Mit welcher Wahrscheinlichkeit wird bei einer zufälligen Ausleihe ein Stadtrad ausgeliehen? <span class="pt">(2 P)</span><div class="lk s"></div></li>
@@ -94,7 +94,7 @@ Sorte
 <div class="kl-auf kl-pb"><h2><span>Aufgabe 6</span><span>(9 Punkte)</span></h2>
 <p>Die Dauer \(X\) (in Stunden) eines Stromausfalls in einem Studierendenwohnheim sei eine stetige Zufallsvariable mit der Dichte</p>
 <p style="text-align:center">\(f(x)=\begin{cases}c\cdot x^2, & 0\le x\le 3\\ 0, & \text{sonst.}\end{cases}\)</p>
-<ol class="tl">
+<div class="lh"><b>(a)</b> Gesamtfläche = 1: \(\int_0^3 c\,x^2\,dx=c\big[\tfrac{x^3}{3}\big]_0^3=1\) → nach \(c\) auflösen. <b>(b)</b> \(E(X)=\int_0^3 x\cdot f(x)\,dx\) (Potenzregel: Exponent +1, durch neuen Exponenten). <b>(c)</b> \(F(x)=\int_0^x f(t)\,dt\) mit drei Fällen: \(0\) für \(x&lt;0\), Formel für \(0\le x\le3\), \(1\) für \(x&gt;3\); dann \(P(1\le X\le2)=F(2)-F(1)\). <b>(d)</b> \(N(30,16)\): 16 ist die <i>Varianz</i> → \(\sigma=4\). Standardisieren \(z=(36-30)/4\), dann \(P(Y&gt;36)=1-\Phi(z)\).<span class="tr">Dichte görünce: toplam yok, integral var. F(x) her zaman üç satır.</span></div><ol class="tl">
 <li><span class="lb">(a)</span>Bestimmen Sie \(c\) derart, dass \(f(x)\) eine gültige Dichtefunktion ist. Geben Sie Ihren Lösungsweg an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
 <li><span class="lb">(b)</span>Berechnen Sie den Erwartungswert \(E(X)\). <span class="pt">(2 P)</span><div class="lk m"></div></li>
 <li><span class="lb">(c)</span>Bestimmen Sie die Verteilungsfunktion \(F(x)\) (mit Fallunterscheidung) und berechnen Sie damit \(P(1\le X\le 2)\). <span class="pt">(3 P)</span><div class="lk l"></div></li>
@@ -109,7 +109,7 @@ Sorte
 <p>Die Zeit \(X\) (in Minuten) bis zum Eintreffen einer Antwort im Uni-Support-Chat werde durch eine Zufallsvariable mit der Dichte</p>
 <p style="text-align:center">\(f(x;\lambda)=\begin{cases}\lambda^2\,x\,e^{-\lambda x}, & x&gt;0\\ 0, & \text{sonst}\end{cases}\qquad\text{mit }\lambda&gt;0\)</p>
 <p>beschrieben. Bestimmen Sie den Maximum-Likelihood-Schätzer für \(\lambda\) basierend auf einer Stichprobe von \(n\) Beobachtungen \(X_1,\dots,X_n\), die unabhängig und identisch verteilt sind.</p>
-<ol class="tl">
+<div class="lh"><b>Rezept:</b> ① \(L(\lambda)=\prod_{i=1}^n f(x_i;\lambda)\) ② \(l(\lambda)=\log L(\lambda)\) mit Log-Regeln vereinfachen ③ Ableitung \(l^{\prime}(\lambda)\) ④ \(=0\) setzen, nach \(\hat\lambda\) auflösen ⑤ \(l^{\prime\prime}(\lambda)&lt;0\)? ⑥ Daten einsetzen. <b>Helfer:</b> \(\prod\lambda^2=\lambda^{2n}\), \(\prod e^{-\lambda x_i}=e^{-\lambda\sum x_i}\), \(\log(\lambda^{2n})=2n\log\lambda\), \(\frac{d}{d\lambda}\,2n\log\lambda=\frac{2n}{\lambda}\), Terme ohne \(\lambda\) (z. B. \(\sum\log x_i\)) haben Ableitung 0.<span class="tr">① ve ② her zaman yapılabilir: çarpımı yaz, log al. Bu bile 3–4 puan.</span></div><ol class="tl">
 <li><span class="lb">(a)</span>Stellen Sie zunächst die Likelihood- und die Log-Likelihood-Funktion auf. Geben Sie Ihren vollständigen Lösungsweg an und vereinfachen Sie so weit wie möglich. <span class="pt">(4 P)</span><div class="lk l"></div></li>
 <li><span class="lb">(b)</span>Bestimmen Sie auf Grundlage Ihres Ergebnisses aus (a) den Maximum-Likelihood-Schätzer \(\hat\lambda\). Geben Sie Ihren vollständigen Lösungsweg an. <span class="pt">(3 P)</span><div class="lk l"></div></li>
 <li><span class="lb">(c)</span>Prüfen Sie die hinreichende Bedingung (Bedingung zweiter Ordnung). <span class="pt">(2 P)</span><div class="lk m"></div></li>
@@ -120,7 +120,7 @@ Sorte
 <div class="kl-auf kl-pb"><h2><span>Aufgabe 8</span><span>(6 Punkte)</span></h2>
 <p>Sei \(X\) eine Zufallsvariable mit \(E(X)=\mu\) und \(Var(X)=\sigma^2\). Sie ziehen eine 2-fache, unabhängige Zufallsstichprobe \(\{X_1,X_2\}\) und betrachten die drei Schätzer</p>
 <p style="text-align:center">\(T_1=\dfrac{X_1+X_2}{2},\qquad T_2=\dfrac{3X_1+X_2}{4},\qquad T_3=X_1+X_2.\)</p>
-<ol class="tl">
+<div class="lh"><b>Erwartungstreu</b> heißt \(E(T)=\mu\). Rechenregel: \(E(aX_1+bX_2)=a\mu+b\mu\). <b>Bias</b> \(=E(T)-\mu\). <b>Varianz</b> (unabhängig): \(Var(aX_1+bX_2)=a^2\sigma^2+b^2\sigma^2\). <b>MSE</b> \(=Var+\text{Bias}^2\); der Schätzer mit kleinerem MSE ist besser.<span class="tr">Sabit dışarı: beklenen değerde a, varyansta a².</span></div><ol class="tl">
 <li><span class="lb">(a)</span>Prüfen Sie für alle drei Schätzer, ob sie erwartungstreu für \(\mu\) sind, und geben Sie gegebenenfalls den Bias an. <span class="pt">(3 P)</span><div class="lk l"></div></li>
 <li><span class="lb">(b)</span>Berechnen Sie \(Var(T_1)\) und \(Var(T_2)\). Welchen der beiden Schätzer ziehen Sie vor? Begründen Sie mithilfe des mittleren quadratischen Fehlers (MSE). <span class="pt">(3 P)</span><div class="lk l"></div></li>
 </ol></div>
@@ -128,7 +128,7 @@ Sorte
 <!-- A9 -->
 <div class="kl-auf"><h2><span>Aufgabe 9</span><span>(8 Punkte)</span></h2>
 <p>Ein Kaffeeautomat in der Mensa soll im Mittel <b>mindestens 200 ml</b> pro Becher ausgeben. Der AStA vermutet, dass der Automat im Mittel zu wenig ausgibt. Er misst \(n=9\) zufällig ausgewählte Becher und erhält \(\bar x=196\) ml und \(s^*=6\) ml. Gehen Sie davon aus, dass die Füllmenge normalverteilt ist mit <b>unbekannter</b> Varianz. Der AStA möchte seine Vermutung statistisch absichern (Signifikanzniveau \(\alpha=0.05\)).</p>
-<ol class="tl">
+<div class="lh"><b>Hypothesen:</b> Was abgesichert werden soll („zu wenig“) kommt in \(H_1\): \(H_0:\mu\ge\mu_0\) vs. \(H_1:\mu&lt;\mu_0\). <b>Varianz unbekannt → t-Test:</b> \(T=\dfrac{\bar x-\mu_0}{s^*/\sqrt n}\sim t(n-1)\) unter \(H_0\). <b>Linksseitig:</b> \(H_0\) ablehnen, wenn \(T&lt;-t_{n-1;\,1-\alpha}\). <b>KI:</b> \(\bar x\pm t_{n-1;\,0.975}\cdot s^*/\sqrt n\). <b>Satz:</b> „\(H_0\) wird (nicht) abgelehnt; es kann (nicht) statistisch abgesichert werden, dass …“<span class="tr">İspatlamak istediğin şey H₁ tarafına gider. Eşitlik işareti hep H₀ tarafında.</span></div><ol class="tl">
 <li><span class="lb">(a)</span>Stellen Sie das passende Hypothesenpaar auf. <span class="pt">(2 P)</span><div class="lk s"></div></li>
 <li><span class="lb">(b)</span>Berechnen Sie die Prüfgröße und geben Sie ihre Verteilung unter \(H_0\) an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
 <li><span class="lb">(c)</span>Treffen Sie die Testentscheidung mithilfe des kritischen Wertes und formulieren Sie das Ergebnis im Sachzusammenhang. (Hinweis: \(t_{8;\,0.95}=1.860\)) <span class="pt">(2 P)</span><div class="lk m"></div></li>

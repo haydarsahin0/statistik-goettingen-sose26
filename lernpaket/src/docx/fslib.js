@@ -72,6 +72,14 @@ class Book {
       spacing: { before: i ? 0 : 80, after: i === lines.length - 1 ? 100 : 0 },
       children: [...(i === 0 ? [new TextRun({ text: b.label, bold: true, color: b.line })] : []), ...runs(l, type === 'tr' ? { italics: true } : {})] })));
   }
+  ex(title, task, steps, result) {
+    const lines = ['BEISPIEL: ' + title, ...(task ? [task] : []), ...steps.map((x, i) => (i + 1) + ') ' + x), ...(result ? ['⇒ ' + result] : [])];
+    lines.forEach((l, i) => this.kids.push(new Paragraph({ keepNext: i < lines.length - 1, keepLines: true,
+      shading: { type: ShadingType.CLEAR, fill: 'F1EBFF', color: 'auto' }, indent: { left: 120, right: 120 },
+      border: { left: { style: BorderStyle.SINGLE, size: 24, color: '7C5CD6', space: 6 } },
+      spacing: { before: i ? 0 : 80, after: i === lines.length - 1 ? 100 : 0 },
+      children: runs(l, i === 0 ? { bold: true, color: '3B2A7A' } : {}) })));
+  }
   code(lines) {
     lines.forEach((l, i) => this.kids.push(new Paragraph({ keepLines: true, keepNext: i < lines.length - 1,
       shading: { type: ShadingType.CLEAR, fill: '1E293B', color: 'auto' }, indent: { left: 120, right: 120 },

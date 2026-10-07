@@ -1,0 +1,13 @@
+# Beispieldatensatz für die R-Formelsammlung (bewusst NICHT der Probeklausur-Datensatz)
+set.seed(4711); n <- 80
+Mensa <- sample(c("Nord","Turm","Zentral"), n, TRUE, prob=c(.35,.25,.4))
+Typ <- ifelse(runif(n) < c(Nord=.25, Turm=.45, Zentral=.3)[Mensa], "Mitarbeiter", "Student")
+Dauer <- round(rnorm(n, 32, 9)); Gerichte <- rpois(n, 1.6); Wartezeit <- pmax(round(rexp(n, 0.25), 2), 0.05)
+d <- data.frame(Person=sprintf("P%02d",1:n), Mensa, Typ, Dauer, Gerichte, Wartezeit)
+write.csv(d, "../../uebungsdaten/Beispiel_Mensa.csv", row.names=FALSE)
+cat("mean", round(mean(d$Dauer),3), "sd", round(sd(d$Dauer),3), "median", median(d$Dauer), "IQR", IQR(d$Dauer), "\n")
+print(round(prop.table(table(d$Mensa, d$Typ), 1), 3))
+L <- prod(dexp(d$Wartezeit, 0.2)); print(L)
+lam <- seq(0.15,0.35,by=0.05); Ls <- sapply(lam, function(l) prod(dexp(d$Wartezeit,l))); print(cbind(lam,Ls)); print(lam[which.max(Ls)]); print(1/mean(d$Wartezeit))
+print(t.test(d$Dauer, mu=30, alternative="greater"))
+print(tapply(d$Dauer, d$Mensa, median))

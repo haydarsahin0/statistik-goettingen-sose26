@@ -1,0 +1,79 @@
+@font-face{font-family:'KMain';src:url('node_modules/katex/dist/fonts/KaTeX_Main-Regular.woff2') format('woff2')}
+@font-face{font-family:'KMain';font-weight:700;src:url('node_modules/katex/dist/fonts/KaTeX_Main-Bold.woff2') format('woff2')}
+@page{size:A4}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:9.6pt;line-height:1.48;color:#1c2230;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+b{font-weight:700;color:#0f172a}
+code{font-family:'JetBrains Mono',monospace;font-size:.86em;background:#eef2f7;border-radius:3px;padding:0 3px;color:#0b3d2e}
+sup,sub{font-size:.72em;line-height:0}
+
+/* Cover */
+.cover{height:269mm;display:flex;flex-direction:column;justify-content:space-between;break-after:page;
+  background:linear-gradient(150deg,#0f2a4a 0%,#1F4E79 45%,#2f6fa7 100%);color:#fff;border-radius:6mm;padding:18mm 15mm 14mm;margin:0;position:relative;overflow:hidden}
+.cover::after{content:"Σ ∫ μ σ² λ̂ H₀";position:absolute;right:-6mm;bottom:38mm;font-family:'Cormorant Garamond',serif;font-size:58pt;color:rgba(255,255,255,.08);letter-spacing:4mm;white-space:nowrap}
+.chip{display:inline-block;border:1px solid rgba(255,255,255,.6);border-radius:99px;padding:2px 11px;font-size:7.8pt;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12mm}
+.cover h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:46pt;line-height:1;margin:0 0 4mm;letter-spacing:-.01em}
+.cover .sub{font-size:12pt;opacity:.9;max-width:150mm}
+.cv-legend{display:flex;flex-wrap:wrap;gap:2.2mm;margin:10mm 0 6mm}
+.cv-legend .lg{border-radius:5px;padding:3px 9px;font-size:8.4pt;font-weight:700;color:#1c2230}
+.lg.retter{background:#fff4cc}.lg.tipp{background:#e3f2fd}.lg.ex2{background:#efe7ff}.lg.satz{background:#e8f5e9}.lg.falle{background:#fdecea}.lg.tr{background:#e0f2f1}
+.cv-lines{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:4mm;padding:5mm 7mm}
+.cv-lines p{margin:.35em 0;font-size:9.6pt}.cv-lines b{color:#fff}
+
+/* TOC */
+.tocp{break-after:page;padding-top:4mm}
+.toch{font-family:'Cormorant Garamond',serif;font-size:30pt;font-weight:600;color:#1F4E79;margin:0 0 5mm;border:0}
+.toc a{display:flex;align-items:baseline;text-decoration:none;color:#1c2230;padding:2.3mm 0;border-bottom:1px solid #edf0f4}
+.toc .tn{flex:none;width:11mm;height:7mm;border-radius:2mm;background:var(--c);color:#fff;font-weight:800;font-size:10pt;display:inline-flex;align-items:center;justify-content:center;margin-right:4mm}
+.toc .tt{font-weight:600;font-size:11pt}
+.toc .dots{flex:1;border-bottom:1.5px dotted #b8c0cc;margin:0 3mm;transform:translateY(-3px)}
+.toc .tp{font-weight:800;color:var(--c);font-size:11pt}
+
+/* Kapitel */
+section.chap{break-before:page}
+h1{display:flex;align-items:stretch;margin:0 0 4mm;border-radius:3mm;overflow:hidden;background:var(--c);color:#fff;break-after:avoid}
+h1 .num{flex:none;min-width:15mm;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:26pt;font-weight:700;background:rgba(0,0,0,.18)}
+h1 .t{padding:3.5mm 5mm;font-size:17pt;font-weight:800;letter-spacing:-.01em}
+h2{color:var(--c);font-size:12.2pt;font-weight:800;margin:5mm 0 2mm;padding-bottom:1mm;border-bottom:2px solid var(--c);break-after:avoid}
+h3{color:var(--c);font-size:10.5pt;margin:3mm 0 1mm;break-after:avoid}
+p{margin:1.2mm 0}
+ul,ol{margin:1.2mm 0 2mm;padding-left:5.5mm}
+li{margin:.6mm 0}
+ul li::marker{color:var(--c)}
+
+/* Formelblock */
+.fm{border-left:4px solid var(--c);background:#f4f6fa;border-radius:0 2.5mm 2.5mm 0;padding:2mm 4mm;margin:2mm 0 3mm;font-family:'KMain','DejaVu Serif',serif;font-size:11pt;line-height:1.6;break-inside:avoid}
+.fm b{color:inherit}
+
+/* Kästen */
+.box{border-radius:2.5mm;padding:2mm 3.5mm 2.4mm;margin:2.2mm 0 3mm;break-inside:avoid;border-left:4.5px solid}
+.box .bl{font-size:7.4pt;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6mm}
+.box div+div{margin-top:.6mm}
+.retter{background:#fff7d6;border-color:#e0a800}.retter .bl{color:#9a6a00}
+.tipp{background:#e8f3fd;border-color:#1565c0}.tipp .bl{color:#1565c0}
+.satz{background:#eaf6ec;border-color:#2e7d32}.satz .bl{color:#2e7d32}
+.falle{background:#fdeeec;border-color:#c62828}.falle .bl{color:#c62828}
+.tr{background:#e3f4f2;border-color:#00796b;font-style:italic}.tr .bl{color:#00796b;font-style:normal}
+
+/* Beispiel */
+.ex{border:1.5px solid #8b6fd6;border-radius:3mm;margin:3mm 0 3.5mm;overflow:hidden;break-inside:avoid}
+.exh{background:#efe7ff;padding:1.6mm 3.5mm;font-weight:800;color:#3b2a7a}
+.exh span{display:block;font-size:7.2pt;letter-spacing:.14em;text-transform:uppercase;color:#7c5cd6}
+.ext{padding:2mm 3.5mm 0;font-style:italic;color:#374151}
+.steps{counter-reset:s;list-style:none;padding:1.5mm 3.5mm 1mm;margin:0}
+.steps li{counter-increment:s;position:relative;padding-left:8mm;margin:1.2mm 0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.2mm;width:5.2mm;height:5.2mm;border-radius:50%;background:#7c5cd6;color:#fff;font-size:7.5pt;font-weight:800;display:flex;align-items:center;justify-content:center}
+.exr{margin:0 3.5mm 2.5mm;padding:1.5mm 3mm;background:#f6f2ff;border-radius:2mm;font-weight:700;color:#3b2a7a}
+
+/* Tabellen */
+table.t{width:100%;border-collapse:separate;border-spacing:0;border:1px solid #d6dbe3;border-radius:2.5mm;overflow:hidden;margin:2mm 0 3.5mm;font-size:8.9pt;break-inside:auto}
+table.t th{background:var(--c);color:#fff;text-align:left;padding:1.5mm 2.2mm;font-weight:700}
+table.t td{padding:1.3mm 2.2mm;border-top:1px solid #e8ecf1;vertical-align:top}
+table.t tr:nth-child(even) td{background:#f7f9fc}
+table.t tr{break-inside:avoid}
+
+/* Code */
+pre.code{background:#0f172a;color:#e2e8f0;border-radius:2.5mm;padding:2.5mm 3.5mm;margin:2mm 0 3mm;font-family:'JetBrains Mono',monospace;font-size:7.9pt;line-height:1.5;white-space:pre-wrap;word-break:break-word;break-inside:avoid;border-left:4px solid var(--c)}
+pre.code .c{color:#94a3b8}pre.code .o{color:#a7f3d0}
+.pb{break-after:page}
+code,pre,.code{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
