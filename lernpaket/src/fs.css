@@ -8,7 +8,8 @@ body.fs .pagebg{display:none}
 body.fs .katex{font-size:1.02em}
 body.fs section{padding:0 5mm}
 .fs-stat{--c:#6d28d9;--cd:#4c1d95;--cl:#f3eeff;--cm:#ddd0fb;--cx:#faf8ff}
-.fs-r{--c:#047857;--cd:#064e3b;--cl:#e7f6ef;--cm:#bfe5d3;--cx:#f6fbf8}
+.fs-r{--c:#1e3a8a;--cd:#0f1f4d;--cl:#e6ecf8;--cm:#c3cfeb;--cx:#f5f7fc}
+body.fs .fs-r pre.r .o{color:#bfdbfe}
 
 /* Titel */
 body.fs .fs-hero{background:linear-gradient(135deg,var(--cd),var(--c));color:#fff;border-radius:18px;padding:11mm 10mm 9mm;margin:2mm 0 5mm}

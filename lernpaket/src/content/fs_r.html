@@ -1,162 +1,207 @@
 <section class="fs-r">
-<div class="fs-hero"><div class="chip">SoSe 26 · Göttingen · Teil B</div><h1>Formelsammlung R</h1><div class="sub">Teil B · alle R-Befehle nach Aufgabentyp · mit echtem Output</div><p>Alle R-Befehle aus Vorlesungsskripten, Tutorien, Testaten und Probeklausur B – sortiert nach <b>Aufgabentyp</b>. Jeder Code-Kasten wurde wirklich in R ausgeführt: weiße Zeilen = was du eintippst, grüne Zeilen = was R antwortet. Die Beispiele benutzen den Übungsdatensatz <code>Taverne.csv</code> (Ordner <i>uebungsdaten</i>) – du kannst alles selbst nachtippen.</p><p>Rezept-Aufbau: <b>Erkennen</b> (Wortlaut in der Aufgabe) → <b>TR</b> (kısa Türkçe açıklama) → <b>Schritte</b> → <b>R-Code mit Output</b> → <b>⚠ Falle</b> → <b>✎ Antwortsatz</b> für ILIAS.</p></div>
-<div class="howto"><b class='t'>Nasıl kullanılır?</b><ol><li>Soruyu oku → <b><a href="#finder" style="color:inherit">Aufgaben-Finder (Seite 3)</a></b>'da sorudaki ifadeyi bul → numaraya git.</li><li>Kodu kopyala, sadece <b>veri adını</b> (d$…) ve <b>sayıları</b> kendi sorununkilerle değiştir.</li><li>Çıktıyı ILIAS'a kodla birlikte yapıştır, sonucu <code>round(…, 3)</code> ile yuvarla ve <b>✎ Antwortsatz</b> kalıbıyla tam cümle yaz.</li><li>Hata mesajı alırsan → Bölüm 11 (Fehlermeldungen).</li></ol></div>
+<div class="fs-hero"><div class="chip">SoSe 26 · Göttingen · Teil B</div><h1>Formelsammlung R</h1><div class="sub">Teil B · alle R-Befehle nach Aufgabentyp · mit echtem Output</div><p>Alle R-Befehle aus Vorlesungsskripten, Tutorien, Testaten und Probeklausur B – sortiert nach <b>Aufgabentyp</b>. Jeder Code-Kasten wurde wirklich in R ausgeführt: weiße Zeilen = was du eintippst, hellblaue Zeilen = was R antwortet. Die Beispiele benutzen den Übungsdatensatz <code>Taverne.csv</code> (Ordner <i>uebungsdaten</i>) – du kannst alles selbst nachtippen.</p><p>Rezept-Aufbau: <b>Erkennen</b> (Wortlaut in der Aufgabe) → <b>TR</b> (kısa Türkçe açıklama) → <b>Schritte</b> → <b>R-Code mit Output</b> → <b>⚠ Falle</b> → <b>✎ Antwortsatz</b> für ILIAS.</p></div>
+<div class="howto"><b class='t'>Nasıl kullanılır?</b><ol><li>Soruyu oku → <b><a href="#finder" style="color:inherit">Aufgaben-Finder (Seite 3)</a></b>'da sorudaki ifadeyi bul → numaraya git.</li><li>Kodu kopyala, sadece <b>veri adını</b> (d$…) ve <b>sayıları</b> kendi sorununkilerle değiştir.</li><li>Çıktıyı ILIAS'a kodla birlikte yapıştır, sonucu <code>round(…, 3)</code> ile yuvarla ve <b>✎ Antwortsatz</b> kalıbıyla tam cümle yaz.</li><li>Hata mesajı alırsan → Bölüm 13 (Fehlermeldungen).</li></ol></div>
 <h2 class="toc-h">Inhaltsverzeichnis</h2><div class="toc">
-<div class="ts"><a href="#s-0"><div class="tsh"><span class="x">0 · Klausurablauf und Antwortform (ILIAS)</span><span class="p">5</span></div></a>
-<a href="#e-0-1"><div class="tl"><span class="n">0.1</span><span class="x">Ablauf in 60 Minuten</span><span class="dots"></span><span class="p">5</span></div></a>
-<a href="#e-0-2"><div class="tl"><span class="n">0.2</span><span class="x">Antwortform: Code, Output, Antwortsatz</span><span class="dots"></span><span class="p">5</span></div></a>
-<a href="#e-0-3"><div class="tl"><span class="n">0.3</span><span class="x">RStudio-Grundlagen</span><span class="dots"></span><span class="p">5</span></div></a>
+<div class="ts"><a href="#s-0"><div class="tsh"><span class="x">0 · Klausurablauf und Antwortform (ILIAS)</span><span class="p">6</span></div></a>
+<a href="#e-0-1"><div class="tl"><span class="n">0.1</span><span class="x">Ablauf in 60 Minuten</span><span class="dots"></span><span class="p">6</span></div></a>
+<a href="#e-0-2"><div class="tl"><span class="n">0.2</span><span class="x">Antwortform: Code, Output, Antwortsatz</span><span class="dots"></span><span class="p">6</span></div></a>
+<a href="#e-0-3"><div class="tl"><span class="n">0.3</span><span class="x">RStudio-Grundlagen</span><span class="dots"></span><span class="p">6</span></div></a>
 </div>
-<div class="ts"><a href="#s-1"><div class="tsh"><span class="x">1 · Grundlagen: Objekte, Vektoren, Datentypen</span><span class="p">6</span></div></a>
-<a href="#e-1-1"><div class="tl"><span class="n">1.1</span><span class="x">Rechnen und mathematische Funktionen</span><span class="dots"></span><span class="p">6</span></div></a>
-<a href="#e-1-2"><div class="tl"><span class="n">1.2</span><span class="x">Vektoren erstellen</span><span class="dots"></span><span class="p">6</span></div></a>
-<a href="#e-1-3"><div class="tl"><span class="n">1.3</span><span class="x">Rechnen mit Vektoren</span><span class="dots"></span><span class="p">6</span></div></a>
-<a href="#e-1-4"><div class="tl"><span class="n">1.4</span><span class="x">Elemente auswählen (Indizierung)</span><span class="dots"></span><span class="p">7</span></div></a>
-<a href="#e-1-5"><div class="tl"><span class="n">1.5</span><span class="x">Vergleiche und logische Werte</span><span class="dots"></span><span class="p">7</span></div></a>
-<a href="#e-1-6"><div class="tl"><span class="n">1.6</span><span class="x">Datentypen bestimmen</span><span class="dots"></span><span class="p">8</span></div></a>
-<a href="#e-1-7"><div class="tl"><span class="n">1.7</span><span class="x">Faktoren (kategoriale Variablen)</span><span class="dots"></span><span class="p">8</span></div></a>
-<a href="#e-1-8"><div class="tl"><span class="n">1.8</span><span class="x">Fehlende Werte (NA)</span><span class="dots"></span><span class="p">8</span></div></a>
-<a href="#e-1-9"><div class="tl"><span class="n">1.9</span><span class="x">Mengen in R (Testat 0)</span><span class="dots"></span><span class="p">9</span></div></a>
-<a href="#e-1-10"><div class="tl"><span class="n">1.10</span><span class="x">Text zusammenfügen und ausgeben</span><span class="dots"></span><span class="p">9</span></div></a>
-<a href="#e-1-11"><div class="tl"><span class="n">1.11</span><span class="x">Matrix, Data Frame und Liste von Hand</span><span class="dots"></span><span class="p">9</span></div></a>
+<div class="ts"><a href="#s-1"><div class="tsh"><span class="x">1 · Grundlagen: Objekte, Vektoren, Datentypen</span><span class="p">7</span></div></a>
+<a href="#e-1-1"><div class="tl"><span class="n">1.1</span><span class="x">Rechnen und mathematische Funktionen</span><span class="dots"></span><span class="p">7</span></div></a>
+<a href="#e-1-2"><div class="tl"><span class="n">1.2</span><span class="x">Vektoren erstellen</span><span class="dots"></span><span class="p">7</span></div></a>
+<a href="#e-1-3"><div class="tl"><span class="n">1.3</span><span class="x">Rechnen mit Vektoren</span><span class="dots"></span><span class="p">7</span></div></a>
+<a href="#e-1-4"><div class="tl"><span class="n">1.4</span><span class="x">Elemente auswählen (Indizierung)</span><span class="dots"></span><span class="p">8</span></div></a>
+<a href="#e-1-5"><div class="tl"><span class="n">1.5</span><span class="x">Vergleiche und logische Werte</span><span class="dots"></span><span class="p">8</span></div></a>
+<a href="#e-1-6"><div class="tl"><span class="n">1.6</span><span class="x">Datentypen bestimmen</span><span class="dots"></span><span class="p">9</span></div></a>
+<a href="#e-1-7"><div class="tl"><span class="n">1.7</span><span class="x">Faktoren (kategoriale Variablen)</span><span class="dots"></span><span class="p">9</span></div></a>
+<a href="#e-1-8"><div class="tl"><span class="n">1.8</span><span class="x">Fehlende Werte (NA)</span><span class="dots"></span><span class="p">9</span></div></a>
+<a href="#e-1-9"><div class="tl"><span class="n">1.9</span><span class="x">Mengen in R (Testat 0)</span><span class="dots"></span><span class="p">10</span></div></a>
+<a href="#e-1-10"><div class="tl"><span class="n">1.10</span><span class="x">Text zusammenfügen und ausgeben</span><span class="dots"></span><span class="p">10</span></div></a>
+<a href="#e-1-11"><div class="tl"><span class="n">1.11</span><span class="x">Matrix, Data Frame und Liste von Hand</span><span class="dots"></span><span class="p">10</span></div></a>
+<a href="#e-1-12"><div class="tl"><span class="n">1.12</span><span class="x">Runden und Zahlen formatieren</span><span class="dots"></span><span class="p">11</span></div></a>
 </div>
-<div class="ts"><a href="#s-2"><div class="tsh"><span class="x">2 · Datensatz einlesen, ansehen, auswählen</span><span class="p">10</span></div></a>
-<a href="#e-2-1"><div class="tl"><span class="n">2.1</span><span class="x">Working Directory setzen und Daten einlesen</span><span class="dots"></span><span class="p">10</span></div></a>
-<a href="#e-2-2"><div class="tl"><span class="n">2.2</span><span class="x">Einlesen prüfen: Ist der Datensatz richtig?</span><span class="dots"></span><span class="p">10</span></div></a>
-<a href="#e-2-3"><div class="tl"><span class="n">2.3</span><span class="x">Datensatz ansehen</span><span class="dots"></span><span class="p">11</span></div></a>
-<a href="#e-2-4"><div class="tl"><span class="n">2.4</span><span class="x">Spalten und Zeilen auswählen</span><span class="dots"></span><span class="p">11</span></div></a>
-<a href="#e-2-5"><div class="tl"><span class="n">2.5</span><span class="x">Teildatensatz mit subset</span><span class="dots"></span><span class="p">12</span></div></a>
-<a href="#e-2-6"><div class="tl"><span class="n">2.6</span><span class="x">Neue Variable hinzufügen</span><span class="dots"></span><span class="p">12</span></div></a>
-<a href="#e-2-7"><div class="tl"><span class="n">2.7</span><span class="x">Objekttypen der Variablen ermitteln (Probeklausur-Typ)</span><span class="dots"></span><span class="p">12</span></div></a>
+<div class="ts"><a href="#s-2"><div class="tsh"><span class="x">2 · Datensatz einlesen, ansehen, auswählen</span><span class="p">11</span></div></a>
+<a href="#e-2-1"><div class="tl"><span class="n">2.1</span><span class="x">Working Directory setzen und Daten einlesen</span><span class="dots"></span><span class="p">11</span></div></a>
+<a href="#e-2-2"><div class="tl"><span class="n">2.2</span><span class="x">Einlesen prüfen: Ist der Datensatz richtig?</span><span class="dots"></span><span class="p">12</span></div></a>
+<a href="#e-2-3"><div class="tl"><span class="n">2.3</span><span class="x">Datensatz ansehen</span><span class="dots"></span><span class="p">12</span></div></a>
+<a href="#e-2-4"><div class="tl"><span class="n">2.4</span><span class="x">Spalten und Zeilen auswählen</span><span class="dots"></span><span class="p">13</span></div></a>
+<a href="#e-2-5"><div class="tl"><span class="n">2.5</span><span class="x">Teildatensatz mit subset</span><span class="dots"></span><span class="p">13</span></div></a>
+<a href="#e-2-6"><div class="tl"><span class="n">2.6</span><span class="x">Neue Variable hinzufügen</span><span class="dots"></span><span class="p">13</span></div></a>
+<a href="#e-2-7"><div class="tl"><span class="n">2.7</span><span class="x">Objekttypen der Variablen ermitteln (Probeklausur-Typ)</span><span class="dots"></span><span class="p">14</span></div></a>
+<a href="#e-2-8"><div class="tl"><span class="n">2.8</span><span class="x">Sortieren, Extremwerte und eindeutige Werte</span><span class="dots"></span><span class="p">14</span></div></a>
+<a href="#e-2-9"><div class="tl"><span class="n">2.9</span><span class="x">Data Frame selbst erstellen und speichern</span><span class="dots"></span><span class="p">14</span></div></a>
 </div>
-<div class="ts"><a href="#s-3"><div class="tsh"><span class="x">3 · Kennzahlen und Tabellen</span><span class="p">13</span></div></a>
-<a href="#e-3-1"><div class="tl"><span class="n">3.1</span><span class="x">Mittelwert und Standardabweichung</span><span class="dots"></span><span class="p">13</span></div></a>
-<a href="#e-3-2"><div class="tl"><span class="n">3.2</span><span class="x">Varianz: unverzerrt und empirisch</span><span class="dots"></span><span class="p">13</span></div></a>
-<a href="#e-3-3"><div class="tl"><span class="n">3.3</span><span class="x">Median, Quantile, IQR, Spannweite</span><span class="dots"></span><span class="p">13</span></div></a>
-<a href="#e-3-4"><div class="tl"><span class="n">3.4</span><span class="x">Häufigkeiten und Modus</span><span class="dots"></span><span class="p">14</span></div></a>
-<a href="#e-3-5"><div class="tl"><span class="n">3.5</span><span class="x">Kennzahlen pro Gruppe (tapply, aggregate)</span><span class="dots"></span><span class="p">14</span></div></a>
-<a href="#e-3-6"><div class="tl"><span class="n">3.6</span><span class="x">Klassen bilden mit cut</span><span class="dots"></span><span class="p">14</span></div></a>
-<a href="#e-3-7"><div class="tl"><span class="n">3.7</span><span class="x">Kontingenztafel, Randsummen, bedingte Anteile</span><span class="dots"></span><span class="p">15</span></div></a>
-<a href="#e-3-8"><div class="tl"><span class="n">3.8</span><span class="x">Korrelation und Kovarianz</span><span class="dots"></span><span class="p">15</span></div></a>
+<div class="ts"><a href="#s-3"><div class="tsh"><span class="x">3 · Kennzahlen und Tabellen</span><span class="p">15</span></div></a>
+<a href="#e-3-1"><div class="tl"><span class="n">3.1</span><span class="x">Mittelwert und Standardabweichung</span><span class="dots"></span><span class="p">15</span></div></a>
+<a href="#e-3-2"><div class="tl"><span class="n">3.2</span><span class="x">Varianz: unverzerrt und empirisch</span><span class="dots"></span><span class="p">15</span></div></a>
+<a href="#e-3-3"><div class="tl"><span class="n">3.3</span><span class="x">Median, Quantile, IQR, Spannweite</span><span class="dots"></span><span class="p">15</span></div></a>
+<a href="#e-3-4"><div class="tl"><span class="n">3.4</span><span class="x">Häufigkeiten und Modus</span><span class="dots"></span><span class="p">16</span></div></a>
+<a href="#e-3-5"><div class="tl"><span class="n">3.5</span><span class="x">Kennzahlen pro Gruppe (tapply, aggregate)</span><span class="dots"></span><span class="p">16</span></div></a>
+<a href="#e-3-6"><div class="tl"><span class="n">3.6</span><span class="x">Klassen bilden mit cut</span><span class="dots"></span><span class="p">16</span></div></a>
+<a href="#e-3-7"><div class="tl"><span class="n">3.7</span><span class="x">Kontingenztafel, Randsummen, bedingte Anteile</span><span class="dots"></span><span class="p">17</span></div></a>
+<a href="#e-3-8"><div class="tl"><span class="n">3.8</span><span class="x">Korrelation und Kovarianz</span><span class="dots"></span><span class="p">17</span></div></a>
+<a href="#e-3-9"><div class="tl"><span class="n">3.9</span><span class="x">Empirische Verteilungsfunktion als Zahl, Quantil nach Vorlesung</span><span class="dots"></span><span class="p">18</span></div></a>
+<a href="#e-3-10"><div class="tl"><span class="n">3.10</span><span class="x">Standardisieren (z-Werte)</span><span class="dots"></span><span class="p">18</span></div></a>
 </div>
-<div class="ts"><a href="#s-4"><div class="tsh"><span class="x">4 · Grafiken erstellen und speichern</span><span class="p">16</span></div></a>
-<a href="#e-4-1"><div class="tl"><span class="n">4.1</span><span class="x">Grafik als PDF speichern (Pflicht in der Klausur)</span><span class="dots"></span><span class="p">16</span></div></a>
-<a href="#e-4-2"><div class="tl"><span class="n">4.2</span><span class="x">Histogramm mit vorgegebenen Klassen</span><span class="dots"></span><span class="p">16</span></div></a>
-<a href="#e-4-3"><div class="tl"><span class="n">4.3</span><span class="x">Boxplot (auch nach Gruppen)</span><span class="dots"></span><span class="p">17</span></div></a>
-<a href="#e-4-4"><div class="tl"><span class="n">4.4</span><span class="x">Streudiagramm mit Regressionsgerade</span><span class="dots"></span><span class="p">17</span></div></a>
-<a href="#e-4-5"><div class="tl"><span class="n">4.5</span><span class="x">Kerndichteschätzer (KDE)</span><span class="dots"></span><span class="p">17</span></div></a>
-<a href="#e-4-6"><div class="tl"><span class="n">4.6</span><span class="x">Säulendiagramm, empirische Verteilungsfunktion, mehrere Grafiken</span><span class="dots"></span><span class="p">18</span></div></a>
-<a href="#e-4-7"><div class="tl"><span class="n">4.7</span><span class="x">Wahrscheinlichkeitsfunktion und Dichte zeichnen</span><span class="dots"></span><span class="p">18</span></div></a>
+<div class="ts"><a href="#s-4"><div class="tsh"><span class="x">4 · Grafiken erstellen und speichern</span><span class="p">18</span></div></a>
+<a href="#e-4-1"><div class="tl"><span class="n">4.1</span><span class="x">Grafik als PDF speichern (Pflicht in der Klausur)</span><span class="dots"></span><span class="p">18</span></div></a>
+<a href="#e-4-2"><div class="tl"><span class="n">4.2</span><span class="x">Histogramm mit vorgegebenen Klassen</span><span class="dots"></span><span class="p">19</span></div></a>
+<a href="#e-4-3"><div class="tl"><span class="n">4.3</span><span class="x">Boxplot (auch nach Gruppen)</span><span class="dots"></span><span class="p">19</span></div></a>
+<a href="#e-4-4"><div class="tl"><span class="n">4.4</span><span class="x">Streudiagramm mit Regressionsgerade</span><span class="dots"></span><span class="p">20</span></div></a>
+<a href="#e-4-5"><div class="tl"><span class="n">4.5</span><span class="x">Kerndichteschätzer (KDE)</span><span class="dots"></span><span class="p">20</span></div></a>
+<a href="#e-4-6"><div class="tl"><span class="n">4.6</span><span class="x">Säulendiagramm, empirische Verteilungsfunktion, mehrere Grafiken</span><span class="dots"></span><span class="p">20</span></div></a>
+<a href="#e-4-7"><div class="tl"><span class="n">4.7</span><span class="x">Wahrscheinlichkeitsfunktion und Dichte zeichnen</span><span class="dots"></span><span class="p">21</span></div></a>
+<a href="#e-4-8"><div class="tl"><span class="n">4.8</span><span class="x">Grafik-Feinschliff: Achsen, Farben, Linien, Legende</span><span class="dots"></span><span class="p">21</span></div></a>
+<a href="#e-4-9"><div class="tl"><span class="n">4.9</span><span class="x">QQ-Plot: Normalverteilung prüfen</span><span class="dots"></span><span class="p">21</span></div></a>
 </div>
-<div class="ts"><a href="#s-5"><div class="tsh"><span class="x">5 · Verteilungen in R</span><span class="p">18</span></div></a>
-<a href="#e-5-1"><div class="tl"><span class="n">5.1</span><span class="x">Das d-p-q-r-Prinzip und alle Parameter</span><span class="dots"></span><span class="p">18</span></div></a>
-<a href="#e-5-2"><div class="tl"><span class="n">5.2</span><span class="x">Wörter in R-Befehle übersetzen</span><span class="dots"></span><span class="p">19</span></div></a>
-<a href="#e-5-3"><div class="tl"><span class="n">5.3</span><span class="x">Binomialverteilung</span><span class="dots"></span><span class="p">19</span></div></a>
-<a href="#e-5-4"><div class="tl"><span class="n">5.4</span><span class="x">Poissonverteilung</span><span class="dots"></span><span class="p">19</span></div></a>
-<a href="#e-5-5"><div class="tl"><span class="n">5.5</span><span class="x">Normalverteilung</span><span class="dots"></span><span class="p">20</span></div></a>
-<a href="#e-5-6"><div class="tl"><span class="n">5.6</span><span class="x">Exponential-, Gleich-, t-, χ²- und Gammaverteilung</span><span class="dots"></span><span class="p">20</span></div></a>
+<div class="ts"><a href="#s-5"><div class="tsh"><span class="x">5 · Verteilungen in R</span><span class="p">22</span></div></a>
+<a href="#e-5-1"><div class="tl"><span class="n">5.1</span><span class="x">Das d-p-q-r-Prinzip und alle Parameter</span><span class="dots"></span><span class="p">22</span></div></a>
+<a href="#e-5-2"><div class="tl"><span class="n">5.2</span><span class="x">Wörter in R-Befehle übersetzen</span><span class="dots"></span><span class="p">22</span></div></a>
+<a href="#e-5-3"><div class="tl"><span class="n">5.3</span><span class="x">Binomialverteilung</span><span class="dots"></span><span class="p">23</span></div></a>
+<a href="#e-5-4"><div class="tl"><span class="n">5.4</span><span class="x">Poissonverteilung</span><span class="dots"></span><span class="p">23</span></div></a>
+<a href="#e-5-5"><div class="tl"><span class="n">5.5</span><span class="x">Normalverteilung</span><span class="dots"></span><span class="p">23</span></div></a>
+<a href="#e-5-6"><div class="tl"><span class="n">5.6</span><span class="x">Exponential-, Gleich-, t-, χ²- und Gammaverteilung</span><span class="dots"></span><span class="p">23</span></div></a>
+<a href="#e-5-7"><div class="tl"><span class="n">5.7</span><span class="x">Kombinatorik, Laplace und Bayes in R</span><span class="dots"></span><span class="p">24</span></div></a>
 </div>
-<div class="ts"><a href="#s-6"><div class="tsh"><span class="x">6 · Zufallszahlen und Simulation</span><span class="p">20</span></div></a>
-<a href="#e-6-1"><div class="tl"><span class="n">6.1</span><span class="x">Zufallszahlen mit set.seed</span><span class="dots"></span><span class="p">20</span></div></a>
-<a href="#e-6-2"><div class="tl"><span class="n">6.2</span><span class="x">Simulation: Verteilung des Mittelwerts (ZGWS)</span><span class="dots"></span><span class="p">21</span></div></a>
-<a href="#e-6-3"><div class="tl"><span class="n">6.3</span><span class="x">Ziehen aus einer Urne</span><span class="dots"></span><span class="p">21</span></div></a>
+<div class="ts"><a href="#s-6"><div class="tsh"><span class="x">6 · Zufallszahlen und Simulation</span><span class="p">24</span></div></a>
+<a href="#e-6-1"><div class="tl"><span class="n">6.1</span><span class="x">Zufallszahlen mit set.seed</span><span class="dots"></span><span class="p">24</span></div></a>
+<a href="#e-6-2"><div class="tl"><span class="n">6.2</span><span class="x">Simulation: Verteilung des Mittelwerts (ZGWS)</span><span class="dots"></span><span class="p">24</span></div></a>
+<a href="#e-6-3"><div class="tl"><span class="n">6.3</span><span class="x">Ziehen aus einer Urne</span><span class="dots"></span><span class="p">25</span></div></a>
 </div>
-<div class="ts"><a href="#s-7"><div class="tsh"><span class="x">7 · Programmieren: Funktionen und Schleifen</span><span class="p">21</span></div></a>
-<a href="#e-7-1"><div class="tl"><span class="n">7.1</span><span class="x">Eine Funktion schreiben</span><span class="dots"></span><span class="p">21</span></div></a>
-<a href="#e-7-2"><div class="tl"><span class="n">7.2</span><span class="x">for-Schleife</span><span class="dots"></span><span class="p">22</span></div></a>
-<a href="#e-7-3"><div class="tl"><span class="n">7.3</span><span class="x">if / else und ifelse</span><span class="dots"></span><span class="p">22</span></div></a>
-<a href="#e-7-4"><div class="tl"><span class="n">7.4</span><span class="x">sapply und while</span><span class="dots"></span><span class="p">22</span></div></a>
-<a href="#e-7-5"><div class="tl"><span class="n">7.5</span><span class="x">Text-Funktion mit Schleife (Probeklausur-Typ „Yennefer-Zahl“)</span><span class="dots"></span><span class="p">22</span></div></a>
+<div class="ts"><a href="#s-7"><div class="tsh"><span class="x">7 · Programmieren: Funktionen und Schleifen</span><span class="p">25</span></div></a>
+<a href="#e-7-1"><div class="tl"><span class="n">7.1</span><span class="x">Eine Funktion schreiben</span><span class="dots"></span><span class="p">25</span></div></a>
+<a href="#e-7-2"><div class="tl"><span class="n">7.2</span><span class="x">for-Schleife</span><span class="dots"></span><span class="p">25</span></div></a>
+<a href="#e-7-3"><div class="tl"><span class="n">7.3</span><span class="x">if / else und ifelse</span><span class="dots"></span><span class="p">26</span></div></a>
+<a href="#e-7-4"><div class="tl"><span class="n">7.4</span><span class="x">sapply und while</span><span class="dots"></span><span class="p">26</span></div></a>
+<a href="#e-7-5"><div class="tl"><span class="n">7.5</span><span class="x">Text-Funktion mit Schleife (Probeklausur-Typ „Yennefer-Zahl“)</span><span class="dots"></span><span class="p">26</span></div></a>
 </div>
-<div class="ts"><a href="#s-8"><div class="tsh"><span class="x">8 · Maximum-Likelihood in R</span><span class="p">23</span></div></a>
-<a href="#e-8-1"><div class="tl"><span class="n">8.1</span><span class="x">Individuelle Likelihoods und Gesamt-Likelihood</span><span class="dots"></span><span class="p">23</span></div></a>
-<a href="#e-8-2"><div class="tl"><span class="n">8.2</span><span class="x">Likelihood-Funktion und ML-Schätzer über einen Bereich</span><span class="dots"></span><span class="p">23</span></div></a>
-<a href="#e-8-3"><div class="tl"><span class="n">8.3</span><span class="x">Log-Likelihood (gegen numerical underflow)</span><span class="dots"></span><span class="p">24</span></div></a>
-<a href="#e-8-4"><div class="tl"><span class="n">8.4</span><span class="x">ML-Schätzer mit optimise (ein Parameter)</span><span class="dots"></span><span class="p">24</span></div></a>
-<a href="#e-8-5"><div class="tl"><span class="n">8.5</span><span class="x">ML mit nlm (zwei Parameter, Transformation)</span><span class="dots"></span><span class="p">24</span></div></a>
-<a href="#e-8-6"><div class="tl"><span class="n">8.6</span><span class="x">Likelihood grafisch darstellen</span><span class="dots"></span><span class="p">24</span></div></a>
+<div class="ts"><a href="#s-8"><div class="tsh"><span class="x">8 · Maximum-Likelihood in R</span><span class="p">27</span></div></a>
+<a href="#e-8-1"><div class="tl"><span class="n">8.1</span><span class="x">Individuelle Likelihoods und Gesamt-Likelihood</span><span class="dots"></span><span class="p">27</span></div></a>
+<a href="#e-8-2"><div class="tl"><span class="n">8.2</span><span class="x">Likelihood-Funktion und ML-Schätzer über einen Bereich</span><span class="dots"></span><span class="p">27</span></div></a>
+<a href="#e-8-3"><div class="tl"><span class="n">8.3</span><span class="x">Log-Likelihood (gegen numerical underflow)</span><span class="dots"></span><span class="p">28</span></div></a>
+<a href="#e-8-4"><div class="tl"><span class="n">8.4</span><span class="x">ML-Schätzer mit optimise (ein Parameter)</span><span class="dots"></span><span class="p">28</span></div></a>
+<a href="#e-8-5"><div class="tl"><span class="n">8.5</span><span class="x">ML mit nlm (zwei Parameter, Transformation)</span><span class="dots"></span><span class="p">28</span></div></a>
+<a href="#e-8-6"><div class="tl"><span class="n">8.6</span><span class="x">Likelihood grafisch darstellen</span><span class="dots"></span><span class="p">28</span></div></a>
+<a href="#e-8-7"><div class="tl"><span class="n">8.7</span><span class="x">ML für eine selbst definierte Dichte (Teil-A-Typ in R)</span><span class="dots"></span><span class="p">29</span></div></a>
+<a href="#e-8-8"><div class="tl"><span class="n">8.8</span><span class="x">ML-Schätzer der Standardverteilungen direkt</span><span class="dots"></span><span class="p">29</span></div></a>
 </div>
-<div class="ts"><a href="#s-9"><div class="tsh"><span class="x">9 · Konfidenzintervalle und Tests in R</span><span class="p">25</span></div></a>
-<a href="#e-9-1"><div class="tl"><span class="n">9.1</span><span class="x">Konfidenzintervall für μ (σ bekannt und unbekannt)</span><span class="dots"></span><span class="p">25</span></div></a>
-<a href="#e-9-2"><div class="tl"><span class="n">9.2</span><span class="x">Konfidenzintervall für Anteil und Varianz</span><span class="dots"></span><span class="p">25</span></div></a>
-<a href="#e-9-3"><div class="tl"><span class="n">9.3</span><span class="x">t-Test mit t.test und Output lesen</span><span class="dots"></span><span class="p">25</span></div></a>
-<a href="#e-9-4"><div class="tl"><span class="n">9.4</span><span class="x">Test von Hand: Teststatistik, kritischer Wert, p-Wert</span><span class="dots"></span><span class="p">26</span></div></a>
-<a href="#e-9-5"><div class="tl"><span class="n">9.5</span><span class="x">Binomialtest (exakt und über pbinom)</span><span class="dots"></span><span class="p">26</span></div></a>
-<a href="#e-9-6"><div class="tl"><span class="n">9.6</span><span class="x">χ²-Unabhängigkeitstest und χ²-Anpassungstest</span><span class="dots"></span><span class="p">26</span></div></a>
-<a href="#e-9-7"><div class="tl"><span class="n">9.7</span><span class="x">χ²-Varianztest von Hand</span><span class="dots"></span><span class="p">27</span></div></a>
+<div class="ts"><a href="#s-9"><div class="tsh"><span class="x">9 · Konfidenzintervalle und Tests in R</span><span class="p">29</span></div></a>
+<a href="#e-9-1"><div class="tl"><span class="n">9.1</span><span class="x">Konfidenzintervall für μ (σ bekannt und unbekannt)</span><span class="dots"></span><span class="p">29</span></div></a>
+<a href="#e-9-2"><div class="tl"><span class="n">9.2</span><span class="x">Konfidenzintervall für Anteil und Varianz</span><span class="dots"></span><span class="p">30</span></div></a>
+<a href="#e-9-3"><div class="tl"><span class="n">9.3</span><span class="x">t-Test mit t.test und Output lesen</span><span class="dots"></span><span class="p">30</span></div></a>
+<a href="#e-9-4"><div class="tl"><span class="n">9.4</span><span class="x">Test von Hand: Teststatistik, kritischer Wert, p-Wert</span><span class="dots"></span><span class="p">30</span></div></a>
+<a href="#e-9-5"><div class="tl"><span class="n">9.5</span><span class="x">Binomialtest (exakt und über pbinom)</span><span class="dots"></span><span class="p">31</span></div></a>
+<a href="#e-9-6"><div class="tl"><span class="n">9.6</span><span class="x">χ²-Unabhängigkeitstest und χ²-Anpassungstest</span><span class="dots"></span><span class="p">31</span></div></a>
+<a href="#e-9-7"><div class="tl"><span class="n">9.7</span><span class="x">χ²-Varianztest von Hand</span><span class="dots"></span><span class="p">31</span></div></a>
+<a href="#e-9-8"><div class="tl"><span class="n">9.8</span><span class="x">Zwei Gruppen vergleichen (Zwei-Stichproben-t-Test)</span><span class="dots"></span><span class="p">32</span></div></a>
+<a href="#e-9-9"><div class="tl"><span class="n">9.9</span><span class="x">Anteil testen und KI für einen Anteil (prop.test, binom.test)</span><span class="dots"></span><span class="p">32</span></div></a>
 </div>
-<div class="ts"><a href="#s-10"><div class="tsh"><span class="x">10 · Lineare Regression in R</span><span class="p">27</span></div></a>
-<a href="#e-10-1"><div class="tl"><span class="n">10.1</span><span class="x">Modell schätzen und Output lesen</span><span class="dots"></span><span class="p">27</span></div></a>
-<a href="#e-10-2"><div class="tl"><span class="n">10.2</span><span class="x">Koeffizienten, Prognose, Residuen, R²</span><span class="dots"></span><span class="p">28</span></div></a>
+<div class="ts"><a href="#s-10"><div class="tsh"><span class="x">10 · Lineare Regression in R</span><span class="p">33</span></div></a>
+<a href="#e-10-1"><div class="tl"><span class="n">10.1</span><span class="x">Modell schätzen und Output lesen</span><span class="dots"></span><span class="p">33</span></div></a>
+<a href="#e-10-2"><div class="tl"><span class="n">10.2</span><span class="x">Koeffizienten, Prognose, Residuen, R²</span><span class="dots"></span><span class="p">33</span></div></a>
 </div>
-<div class="ts"><a href="#s-11"><div class="tsh"><span class="x">11 · Fehlermeldungen und Kontrolle</span><span class="p">28</span></div></a>
-<a href="#e-11-1"><div class="tl"><span class="n">11.1</span><span class="x">Typische Fehlermeldungen und ihre Lösung</span><span class="dots"></span><span class="p">28</span></div></a>
-<a href="#e-11-2"><div class="tl"><span class="n">11.2</span><span class="x">Checkliste vor dem Abgeben</span><span class="dots"></span><span class="p">29</span></div></a>
+<div class="ts"><a href="#s-11"><div class="tsh"><span class="x">11 · Komplette Teil-B-Klausur Schritt für Schritt (Altklausur-Typ)</span><span class="p">34</span></div></a>
+<a href="#e-11-1"><div class="tl"><span class="n">11.1</span><span class="x">a) Working Directory setzen</span><span class="dots"></span><span class="p">34</span></div></a>
+<a href="#e-11-2"><div class="tl"><span class="n">11.2</span><span class="x">b) Daten einlesen und die ersten 6 Zeilen wiedergeben (4 P)</span><span class="dots"></span><span class="p">34</span></div></a>
+<a href="#e-11-3"><div class="tl"><span class="n">11.3</span><span class="x">c) Objekttypen ermitteln (4 P)</span><span class="dots"></span><span class="p">34</span></div></a>
+<a href="#e-11-4"><div class="tl"><span class="n">11.4</span><span class="x">d) Mittelwert und unverzerrte Standardabweichung (4 P)</span><span class="dots"></span><span class="p">34</span></div></a>
+<a href="#e-11-5"><div class="tl"><span class="n">11.5</span><span class="x">e) Histogramm mit vorgegebenen Klassen speichern (8 P)</span><span class="dots"></span><span class="p">35</span></div></a>
+<a href="#e-11-6"><div class="tl"><span class="n">11.6</span><span class="x">f) Individuelle Likelihoods und Gesamt-Likelihood (6 P)</span><span class="dots"></span><span class="p">35</span></div></a>
+<a href="#e-11-7"><div class="tl"><span class="n">11.7</span><span class="x">g) Likelihood-Funktion und ML-Schätzer auf einem Gitter (9 P)</span><span class="dots"></span><span class="p">35</span></div></a>
+<a href="#e-11-8"><div class="tl"><span class="n">11.8</span><span class="x">h) Funktion mit Schleife: Zahl aus Ziffern zusammensetzen (8 P)</span><span class="dots"></span><span class="p">36</span></div></a>
+</div>
+<div class="ts"><a href="#s-12"><div class="tsh"><span class="x">12 · Antwortsätze für ILIAS – Katalog</span><span class="p">36</span></div></a>
+<a href="#e-12-1"><div class="tl"><span class="n">12.1</span><span class="x">Datentypen, Kennzahlen, Häufigkeiten</span><span class="dots"></span><span class="p">36</span></div></a>
+<a href="#e-12-2"><div class="tl"><span class="n">12.2</span><span class="x">Gruppen, Tabellen, Grafiken</span><span class="dots"></span><span class="p">36</span></div></a>
+<a href="#e-12-3"><div class="tl"><span class="n">12.3</span><span class="x">Korrelation und Regression</span><span class="dots"></span><span class="p">36</span></div></a>
+<a href="#e-12-4"><div class="tl"><span class="n">12.4</span><span class="x">Likelihood und ML</span><span class="dots"></span><span class="p">36</span></div></a>
+<a href="#e-12-5"><div class="tl"><span class="n">12.5</span><span class="x">Konfidenzintervalle und Tests</span><span class="dots"></span><span class="p">37</span></div></a>
+</div>
+<div class="ts"><a href="#s-13"><div class="tsh"><span class="x">13 · Fehlermeldungen und Kontrolle</span><span class="p">37</span></div></a>
+<a href="#e-13-1"><div class="tl"><span class="n">13.1</span><span class="x">Typische Fehlermeldungen und ihre Lösung</span><span class="dots"></span><span class="p">37</span></div></a>
+<a href="#e-13-2"><div class="tl"><span class="n">13.2</span><span class="x">Checkliste vor dem Abgeben</span><span class="dots"></span><span class="p">37</span></div></a>
 </div>
 </div>
 <h2 class="toc-h pb" id="finder">Aufgaben-Finder: Was steht in der Aufgabe? → Wo ist das Rezept?</h2><p class="small">Links steht der typische Wortlaut aus Klausur, Testat oder Tutorium, in der Mitte die türkische Bedeutung, rechts die Nummer des Rezepts (mit Seite). Nummer anklicken springt direkt hin.</p><table class="finder"><tr><th style="width:44%">In der Aufgabe steht …</th><th>Ne demek / ne isteniyor</th><th style="width:15%">Rezept</th></tr>
 <tr class="grp"><td colspan="3">Start und Einlesen</td></tr>
-<tr><td>„Setzen Sie mittels setwd(path.expand("~")) Ihr Working Directory“</td><td>çalışma klasörünü ayarla</td><td class="go"><a href="#e-2-1">2.1 <span style="color:#6b7280;font-weight:600">S.10</span></a></td></tr>
-<tr><td>„Speichern Sie die Daten als Data-Frame-Objekt d“</td><td>veriyi oku (sep, dec, header)</td><td class="go"><a href="#e-2-1">2.1 <span style="color:#6b7280;font-weight:600">S.10</span></a>, <a href="#e-2-2">2.2 <span style="color:#6b7280;font-weight:600">S.10</span></a></td></tr>
-<tr><td>„Geben Sie die ersten 6 Zeilen wieder“, „Wie viele Beobachtungen?“</td><td>head, dim, nrow</td><td class="go"><a href="#e-2-3">2.3 <span style="color:#6b7280;font-weight:600">S.11</span></a></td></tr>
-<tr><td>„Ermitteln Sie die Objekttypen der Variablen …“</td><td>değişken türü</td><td class="go"><a href="#e-2-7">2.7 <span style="color:#6b7280;font-weight:600">S.12</span></a>, <a href="#e-1-6">1.6 <span style="color:#6b7280;font-weight:600">S.8</span></a></td></tr>
-<tr><td>„nur die Beobachtungen aus …“, „Kämpfe mit mindestens …“</td><td>satır seç, alt veri</td><td class="go"><a href="#e-2-4">2.4 <span style="color:#6b7280;font-weight:600">S.11</span></a>, <a href="#e-2-5">2.5 <span style="color:#6b7280;font-weight:600">S.12</span></a></td></tr>
-<tr><td>„Ergänzen Sie den Data Frame um eine Spalte …“</td><td>yeni sütun</td><td class="go"><a href="#e-2-6">2.6 <span style="color:#6b7280;font-weight:600">S.12</span></a>, <a href="#e-8-1">8.1 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
-<tr><td>Vektor, Folge, Wiederholung erstellen</td><td>c, seq, rep</td><td class="go"><a href="#e-1-2">1.2 <span style="color:#6b7280;font-weight:600">S.6</span></a></td></tr>
-<tr><td>„Wie viele Werte …?“, „Anteil der Werte …“</td><td>TRUE/FALSE say</td><td class="go"><a href="#e-1-5">1.5 <span style="color:#6b7280;font-weight:600">S.7</span></a></td></tr>
-<tr><td>Vereinigung, Schnittmenge, Differenz (Testat 0)</td><td>küme işlemleri</td><td class="go"><a href="#e-1-9">1.9 <span style="color:#6b7280;font-weight:600">S.9</span></a></td></tr>
-<tr><td>Faktor, Levels, fehlende Werte NA</td><td>faktör, NA</td><td class="go"><a href="#e-1-7">1.7 <span style="color:#6b7280;font-weight:600">S.8</span></a>, <a href="#e-1-8">1.8 <span style="color:#6b7280;font-weight:600">S.8</span></a></td></tr>
-<tr><td>Matrix oder Tafel von Hand eingeben</td><td>matris, data frame</td><td class="go"><a href="#e-1-11">1.11 <span style="color:#6b7280;font-weight:600">S.9</span></a></td></tr>
+<tr><td>„Setzen Sie mittels setwd(path.expand("~")) Ihr Working Directory“</td><td>çalışma klasörünü ayarla</td><td class="go"><a href="#e-2-1">2.1 <span style="color:#6b7280;font-weight:600">S.11</span></a></td></tr>
+<tr><td>„Speichern Sie die Daten als Data-Frame-Objekt d“</td><td>veriyi oku (sep, dec, header)</td><td class="go"><a href="#e-2-1">2.1 <span style="color:#6b7280;font-weight:600">S.11</span></a>, <a href="#e-2-2">2.2 <span style="color:#6b7280;font-weight:600">S.12</span></a></td></tr>
+<tr><td>„Geben Sie die ersten 6 Zeilen wieder“, „Wie viele Beobachtungen?“</td><td>head, dim, nrow</td><td class="go"><a href="#e-2-3">2.3 <span style="color:#6b7280;font-weight:600">S.12</span></a></td></tr>
+<tr><td>„Ermitteln Sie die Objekttypen der Variablen …“</td><td>değişken türü</td><td class="go"><a href="#e-2-7">2.7 <span style="color:#6b7280;font-weight:600">S.14</span></a>, <a href="#e-1-6">1.6 <span style="color:#6b7280;font-weight:600">S.9</span></a></td></tr>
+<tr><td>„nur die Beobachtungen aus …“, „Kämpfe mit mindestens …“</td><td>satır seç, alt veri</td><td class="go"><a href="#e-2-4">2.4 <span style="color:#6b7280;font-weight:600">S.13</span></a>, <a href="#e-2-5">2.5 <span style="color:#6b7280;font-weight:600">S.13</span></a></td></tr>
+<tr><td>„Ergänzen Sie den Data Frame um eine Spalte …“</td><td>yeni sütun</td><td class="go"><a href="#e-2-6">2.6 <span style="color:#6b7280;font-weight:600">S.13</span></a>, <a href="#e-8-1">8.1 <span style="color:#6b7280;font-weight:600">S.27</span></a></td></tr>
+<tr><td>Vektor, Folge, Wiederholung erstellen</td><td>c, seq, rep</td><td class="go"><a href="#e-1-2">1.2 <span style="color:#6b7280;font-weight:600">S.7</span></a></td></tr>
+<tr><td>„Wie viele Werte …?“, „Anteil der Werte …“</td><td>TRUE/FALSE say</td><td class="go"><a href="#e-1-5">1.5 <span style="color:#6b7280;font-weight:600">S.8</span></a></td></tr>
+<tr><td>Vereinigung, Schnittmenge, Differenz (Testat 0)</td><td>küme işlemleri</td><td class="go"><a href="#e-1-9">1.9 <span style="color:#6b7280;font-weight:600">S.10</span></a></td></tr>
+<tr><td>Faktor, Levels, fehlende Werte NA</td><td>faktör, NA</td><td class="go"><a href="#e-1-7">1.7 <span style="color:#6b7280;font-weight:600">S.9</span></a>, <a href="#e-1-8">1.8 <span style="color:#6b7280;font-weight:600">S.9</span></a></td></tr>
+<tr><td>Matrix oder Tafel von Hand eingeben</td><td>matris, data frame</td><td class="go"><a href="#e-1-11">1.11 <span style="color:#6b7280;font-weight:600">S.10</span></a></td></tr>
 <tr class="grp"><td colspan="3">Kennzahlen</td></tr>
-<tr><td>„arithmetisches Mittel und unverzerrter Schätzer der Standardabweichung“</td><td>mean, sd</td><td class="go"><a href="#e-3-1">3.1 <span style="color:#6b7280;font-weight:600">S.13</span></a></td></tr>
-<tr><td>„empirische Varianz“ (Nenner n)</td><td>ampirik varyans</td><td class="go"><a href="#e-3-2">3.2 <span style="color:#6b7280;font-weight:600">S.13</span></a></td></tr>
-<tr><td>Median, Quartile, IQR, Spannweite</td><td>median, quantile, IQR</td><td class="go"><a href="#e-3-3">3.3 <span style="color:#6b7280;font-weight:600">S.13</span></a></td></tr>
-<tr><td>„Häufigkeiten“, „häufigste Ausprägung“</td><td>table, prop.table, mod</td><td class="go"><a href="#e-3-4">3.4 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
-<tr><td>„… für jedes Tal/Fach mit einem einzigen Befehl“</td><td>grup bazında hesap</td><td class="go"><a href="#e-3-5">3.5 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
-<tr><td>„Klassieren Sie … in die Klassen …“</td><td>cut ile sınıflandırma</td><td class="go"><a href="#e-3-6">3.6 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
-<tr><td>„Kontingenztafel“, „Randhäufigkeiten“, „Anteil … unter …“</td><td>çapraz tablo, addmargins</td><td class="go"><a href="#e-3-7">3.7 <span style="color:#6b7280;font-weight:600">S.15</span></a></td></tr>
-<tr><td>„Korrelation“, „linearer Zusammenhang“, „Spearman“</td><td>cor, cov</td><td class="go"><a href="#e-3-8">3.8 <span style="color:#6b7280;font-weight:600">S.15</span></a></td></tr>
+<tr><td>„arithmetisches Mittel und unverzerrter Schätzer der Standardabweichung“</td><td>mean, sd</td><td class="go"><a href="#e-3-1">3.1 <span style="color:#6b7280;font-weight:600">S.15</span></a></td></tr>
+<tr><td>„empirische Varianz“ (Nenner n)</td><td>ampirik varyans</td><td class="go"><a href="#e-3-2">3.2 <span style="color:#6b7280;font-weight:600">S.15</span></a></td></tr>
+<tr><td>Median, Quartile, IQR, Spannweite</td><td>median, quantile, IQR</td><td class="go"><a href="#e-3-3">3.3 <span style="color:#6b7280;font-weight:600">S.15</span></a></td></tr>
+<tr><td>„Häufigkeiten“, „häufigste Ausprägung“</td><td>table, prop.table, mod</td><td class="go"><a href="#e-3-4">3.4 <span style="color:#6b7280;font-weight:600">S.16</span></a></td></tr>
+<tr><td>„… für jedes Tal/Fach mit einem einzigen Befehl“</td><td>grup bazında hesap</td><td class="go"><a href="#e-3-5">3.5 <span style="color:#6b7280;font-weight:600">S.16</span></a></td></tr>
+<tr><td>„Klassieren Sie … in die Klassen …“</td><td>cut ile sınıflandırma</td><td class="go"><a href="#e-3-6">3.6 <span style="color:#6b7280;font-weight:600">S.16</span></a></td></tr>
+<tr><td>„Kontingenztafel“, „Randhäufigkeiten“, „Anteil … unter …“</td><td>çapraz tablo, addmargins</td><td class="go"><a href="#e-3-7">3.7 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
+<tr><td>„Korrelation“, „linearer Zusammenhang“, „Spearman“</td><td>cor, cov</td><td class="go"><a href="#e-3-8">3.8 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
 <tr class="grp"><td colspan="3">Grafiken</td></tr>
-<tr><td>„Speichern Sie Ihre Grafik als .pdf-Datei“</td><td>pdf() … dev.off()</td><td class="go"><a href="#e-4-1">4.1 <span style="color:#6b7280;font-weight:600">S.16</span></a></td></tr>
-<tr><td>„Histogramm“, „Intervallgrenzen [a, b)“, „Dichte“</td><td>hist: breaks, right, freq</td><td class="go"><a href="#e-4-2">4.2 <span style="color:#6b7280;font-weight:600">S.16</span></a></td></tr>
-<tr><td>„Boxplot“, „getrennt nach …“</td><td>boxplot</td><td class="go"><a href="#e-4-3">4.3 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
-<tr><td>„Streudiagramm“, „Regressionsgerade einzeichnen“</td><td>plot, abline</td><td class="go"><a href="#e-4-4">4.4 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
-<tr><td>„Kerndichteschätzer“, „Bandbreite“, „Epanechnikov“</td><td>density</td><td class="go"><a href="#e-4-5">4.5 <span style="color:#6b7280;font-weight:600">S.17</span></a></td></tr>
-<tr><td>„Säulendiagramm“, „empirische Verteilungsfunktion“</td><td>barplot, ecdf</td><td class="go"><a href="#e-4-6">4.6 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
-<tr><td>„Zeichnen Sie die Wahrscheinlichkeitsfunktion / Dichte“</td><td>dbinom ile plot, curve</td><td class="go"><a href="#e-4-7">4.7 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
+<tr><td>„Speichern Sie Ihre Grafik als .pdf-Datei“</td><td>pdf() … dev.off()</td><td class="go"><a href="#e-4-1">4.1 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
+<tr><td>„Histogramm“, „Intervallgrenzen [a, b)“, „Dichte“</td><td>hist: breaks, right, freq</td><td class="go"><a href="#e-4-2">4.2 <span style="color:#6b7280;font-weight:600">S.19</span></a></td></tr>
+<tr><td>„Boxplot“, „getrennt nach …“</td><td>boxplot</td><td class="go"><a href="#e-4-3">4.3 <span style="color:#6b7280;font-weight:600">S.19</span></a></td></tr>
+<tr><td>„Streudiagramm“, „Regressionsgerade einzeichnen“</td><td>plot, abline</td><td class="go"><a href="#e-4-4">4.4 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
+<tr><td>„Kerndichteschätzer“, „Bandbreite“, „Epanechnikov“</td><td>density</td><td class="go"><a href="#e-4-5">4.5 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
+<tr><td>„Säulendiagramm“, „empirische Verteilungsfunktion“</td><td>barplot, ecdf</td><td class="go"><a href="#e-4-6">4.6 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
+<tr><td>„Zeichnen Sie die Wahrscheinlichkeitsfunktion / Dichte“</td><td>dbinom ile plot, curve</td><td class="go"><a href="#e-4-7">4.7 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
 <tr class="grp"><td colspan="3">Verteilungen und Simulation</td></tr>
-<tr><td>Welcher R-Befehl für welche Verteilung? Parameter?</td><td>d/p/q/r ve parametreler</td><td class="go"><a href="#e-5-1">5.1 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
-<tr><td>„höchstens“, „mindestens“, „mehr als“ in R</td><td>pbinom/pnorm'a çevir</td><td class="go"><a href="#e-5-2">5.2 <span style="color:#6b7280;font-weight:600">S.19</span></a></td></tr>
-<tr><td>Binomial / Poisson / Normal in R</td><td>dbinom, ppois, pnorm</td><td class="go"><a href="#e-5-3">5.3 <span style="color:#6b7280;font-weight:600">S.19</span></a>, <a href="#e-5-4">5.4 <span style="color:#6b7280;font-weight:600">S.19</span></a>, <a href="#e-5-5">5.5 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
-<tr><td>Exponential, Gleichverteilung, t- und χ²-Quantile</td><td>pexp, punif, qt, qchisq</td><td class="go"><a href="#e-5-6">5.6 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
-<tr><td>„Simulieren Sie …“, „set.seed“, Lückentext rbinom</td><td>rastgele sayı</td><td class="go"><a href="#e-6-1">6.1 <span style="color:#6b7280;font-weight:600">S.20</span></a></td></tr>
-<tr><td>„Simulieren Sie 1 000 Stichproben … Mittelwert“</td><td>replicate, ZGWS</td><td class="go"><a href="#e-6-2">6.2 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
-<tr><td>Urne, mit/ohne Zurücklegen</td><td>sample, dhyper</td><td class="go"><a href="#e-6-3">6.3 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
+<tr><td>Welcher R-Befehl für welche Verteilung? Parameter?</td><td>d/p/q/r ve parametreler</td><td class="go"><a href="#e-5-1">5.1 <span style="color:#6b7280;font-weight:600">S.22</span></a></td></tr>
+<tr><td>„höchstens“, „mindestens“, „mehr als“ in R</td><td>pbinom/pnorm'a çevir</td><td class="go"><a href="#e-5-2">5.2 <span style="color:#6b7280;font-weight:600">S.22</span></a></td></tr>
+<tr><td>Binomial / Poisson / Normal in R</td><td>dbinom, ppois, pnorm</td><td class="go"><a href="#e-5-3">5.3 <span style="color:#6b7280;font-weight:600">S.23</span></a>, <a href="#e-5-4">5.4 <span style="color:#6b7280;font-weight:600">S.23</span></a>, <a href="#e-5-5">5.5 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
+<tr><td>Exponential, Gleichverteilung, t- und χ²-Quantile</td><td>pexp, punif, qt, qchisq</td><td class="go"><a href="#e-5-6">5.6 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
+<tr><td>„Simulieren Sie …“, „set.seed“, Lückentext rbinom</td><td>rastgele sayı</td><td class="go"><a href="#e-6-1">6.1 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>„Simulieren Sie 1 000 Stichproben … Mittelwert“</td><td>replicate, ZGWS</td><td class="go"><a href="#e-6-2">6.2 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>Urne, mit/ohne Zurücklegen</td><td>sample, dhyper</td><td class="go"><a href="#e-6-3">6.3 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
 <tr class="grp"><td colspan="3">Programmieren</td></tr>
-<tr><td>„Schreiben Sie eine Funktion …“</td><td>function</td><td class="go"><a href="#e-7-1">7.1 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
-<tr><td>„für alle Werte von … bis …“, Schleife</td><td>for, sapply</td><td class="go"><a href="#e-7-2">7.2 <span style="color:#6b7280;font-weight:600">S.22</span></a>, <a href="#e-7-4">7.4 <span style="color:#6b7280;font-weight:600">S.22</span></a></td></tr>
-<tr><td>„Falls …, sonst …“</td><td>if, ifelse</td><td class="go"><a href="#e-7-3">7.3 <span style="color:#6b7280;font-weight:600">S.22</span></a></td></tr>
-<tr><td>Zahl/Text aus Ziffern zusammensetzen (Yennefer-Typ)</td><td>paste0 döngüsü</td><td class="go"><a href="#e-7-5">7.5 <span style="color:#6b7280;font-weight:600">S.22</span></a></td></tr>
+<tr><td>„Schreiben Sie eine Funktion …“</td><td>function</td><td class="go"><a href="#e-7-1">7.1 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
+<tr><td>„für alle Werte von … bis …“, Schleife</td><td>for, sapply</td><td class="go"><a href="#e-7-2">7.2 <span style="color:#6b7280;font-weight:600">S.25</span></a>, <a href="#e-7-4">7.4 <span style="color:#6b7280;font-weight:600">S.26</span></a></td></tr>
+<tr><td>„Falls …, sonst …“</td><td>if, ifelse</td><td class="go"><a href="#e-7-3">7.3 <span style="color:#6b7280;font-weight:600">S.26</span></a></td></tr>
+<tr><td>Zahl/Text aus Ziffern zusammensetzen (Yennefer-Typ)</td><td>paste0 döngüsü</td><td class="go"><a href="#e-7-5">7.5 <span style="color:#6b7280;font-weight:600">S.26</span></a></td></tr>
 <tr class="grp"><td colspan="3">Maximum-Likelihood</td></tr>
-<tr><td>„Spalte iL20 mit individuellen Likelihoods“, „Likelihood aller Beobachtungen“</td><td>tekil ve toplam likelihood</td><td class="go"><a href="#e-8-1">8.1 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
-<tr><td>„in der Form X × 10^Y“</td><td>bilimsel gösterim</td><td class="go"><a href="#e-8-1">8.1 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
-<tr><td>„Funktion Likelihood.pois(lambda, x)“, „für alle Werte … ML-Schätzer“</td><td>ızgara araması</td><td class="go"><a href="#e-8-2">8.2 <span style="color:#6b7280;font-weight:600">S.23</span></a></td></tr>
-<tr><td>Likelihood ist 0, „Log-Likelihood“</td><td>log-likelihood</td><td class="go"><a href="#e-8-3">8.3 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
-<tr><td>„numerisch maximieren“, ein Parameter</td><td>optimise</td><td class="go"><a href="#e-8-4">8.4 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
-<tr><td>„mit nlm“, zwei Parameter, „Startwerte“, „rücktransformiert“</td><td>nlm, exp dönüşümü</td><td class="go"><a href="#e-8-5">8.5 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
-<tr><td>„Stellen Sie die Likelihood grafisch dar“</td><td>likelihood grafiği</td><td class="go"><a href="#e-8-6">8.6 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>„Spalte iL20 mit individuellen Likelihoods“, „Likelihood aller Beobachtungen“</td><td>tekil ve toplam likelihood</td><td class="go"><a href="#e-8-1">8.1 <span style="color:#6b7280;font-weight:600">S.27</span></a></td></tr>
+<tr><td>„in der Form X × 10^Y“</td><td>bilimsel gösterim</td><td class="go"><a href="#e-8-1">8.1 <span style="color:#6b7280;font-weight:600">S.27</span></a></td></tr>
+<tr><td>„Funktion Likelihood.pois(lambda, x)“, „für alle Werte … ML-Schätzer“</td><td>ızgara araması</td><td class="go"><a href="#e-8-2">8.2 <span style="color:#6b7280;font-weight:600">S.27</span></a></td></tr>
+<tr><td>Likelihood ist 0, „Log-Likelihood“</td><td>log-likelihood</td><td class="go"><a href="#e-8-3">8.3 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
+<tr><td>„numerisch maximieren“, ein Parameter</td><td>optimise</td><td class="go"><a href="#e-8-4">8.4 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
+<tr><td>„mit nlm“, zwei Parameter, „Startwerte“, „rücktransformiert“</td><td>nlm, exp dönüşümü</td><td class="go"><a href="#e-8-5">8.5 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
+<tr><td>„Stellen Sie die Likelihood grafisch dar“</td><td>likelihood grafiği</td><td class="go"><a href="#e-8-6">8.6 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
 <tr class="grp"><td colspan="3">Konfidenzintervalle und Tests</td></tr>
-<tr><td>„95 %-Konfidenzintervall für den Erwartungswert“</td><td>ortalama için GA</td><td class="go"><a href="#e-9-1">9.1 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
-<tr><td>KI für Anteil oder Varianz</td><td>oran / varyans GA</td><td class="go"><a href="#e-9-2">9.2 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
-<tr><td>„Überprüfen Sie die Behauptung mit einem geeigneten Test“, t.test-Output</td><td>t.test</td><td class="go"><a href="#e-9-3">9.3 <span style="color:#6b7280;font-weight:600">S.25</span></a></td></tr>
-<tr><td>Teststatistik, kritischer Wert, p-Wert „von Hand“ in R</td><td>qnorm, pnorm, pt</td><td class="go"><a href="#e-9-4">9.4 <span style="color:#6b7280;font-weight:600">S.26</span></a></td></tr>
-<tr><td>Binomialtest, „7 von 8“</td><td>binom.test, pbinom</td><td class="go"><a href="#e-9-5">9.5 <span style="color:#6b7280;font-weight:600">S.26</span></a></td></tr>
-<tr><td>„unabhängig?“, Kontingenztafel testen; „fair?“</td><td>chisq.test</td><td class="go"><a href="#e-9-6">9.6 <span style="color:#6b7280;font-weight:600">S.26</span></a></td></tr>
-<tr><td>Varianz testen</td><td>pchisq</td><td class="go"><a href="#e-9-7">9.7 <span style="color:#6b7280;font-weight:600">S.27</span></a></td></tr>
+<tr><td>„95 %-Konfidenzintervall für den Erwartungswert“</td><td>ortalama için GA</td><td class="go"><a href="#e-9-1">9.1 <span style="color:#6b7280;font-weight:600">S.29</span></a></td></tr>
+<tr><td>KI für Anteil oder Varianz</td><td>oran / varyans GA</td><td class="go"><a href="#e-9-2">9.2 <span style="color:#6b7280;font-weight:600">S.30</span></a></td></tr>
+<tr><td>„Überprüfen Sie die Behauptung mit einem geeigneten Test“, t.test-Output</td><td>t.test</td><td class="go"><a href="#e-9-3">9.3 <span style="color:#6b7280;font-weight:600">S.30</span></a></td></tr>
+<tr><td>Teststatistik, kritischer Wert, p-Wert „von Hand“ in R</td><td>qnorm, pnorm, pt</td><td class="go"><a href="#e-9-4">9.4 <span style="color:#6b7280;font-weight:600">S.30</span></a></td></tr>
+<tr><td>Binomialtest, „7 von 8“</td><td>binom.test, pbinom</td><td class="go"><a href="#e-9-5">9.5 <span style="color:#6b7280;font-weight:600">S.31</span></a></td></tr>
+<tr><td>„unabhängig?“, Kontingenztafel testen; „fair?“</td><td>chisq.test</td><td class="go"><a href="#e-9-6">9.6 <span style="color:#6b7280;font-weight:600">S.31</span></a></td></tr>
+<tr><td>Varianz testen</td><td>pchisq</td><td class="go"><a href="#e-9-7">9.7 <span style="color:#6b7280;font-weight:600">S.31</span></a></td></tr>
 <tr class="grp"><td colspan="3">Regression und Fehler</td></tr>
-<tr><td>„Schätzen Sie ein lineares Regressionsmodell“, summary lesen</td><td>lm, summary</td><td class="go"><a href="#e-10-1">10.1 <span style="color:#6b7280;font-weight:600">S.27</span></a></td></tr>
-<tr><td>Prognose, Residuen, R², KI für Koeffizienten</td><td>predict, residuals, confint</td><td class="go"><a href="#e-10-2">10.2 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
-<tr><td>Error in …</td><td>hata mesajları</td><td class="go"><a href="#e-11-1">11.1 <span style="color:#6b7280;font-weight:600">S.28</span></a></td></tr>
+<tr><td>„Schätzen Sie ein lineares Regressionsmodell“, summary lesen</td><td>lm, summary</td><td class="go"><a href="#e-10-1">10.1 <span style="color:#6b7280;font-weight:600">S.33</span></a></td></tr>
+<tr><td>Prognose, Residuen, R², KI für Koeffizienten</td><td>predict, residuals, confint</td><td class="go"><a href="#e-10-2">10.2 <span style="color:#6b7280;font-weight:600">S.33</span></a></td></tr>
+<tr><td>Runden, X × 10^Y, sprintf</td><td>yuvarlama, bilimsel gösterim</td><td class="go"><a href="#e-1-12">1.12 <span style="color:#6b7280;font-weight:600">S.11</span></a></td></tr>
+<tr><td>„die drei größten …“, „Welche … am meisten?“, „wie viele verschiedene …“</td><td>sırala, en büyük, unique</td><td class="go"><a href="#e-2-8">2.8 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
+<tr><td>Data Frame selbst erstellen / speichern</td><td>data.frame, write.csv</td><td class="go"><a href="#e-2-9">2.9 <span style="color:#6b7280;font-weight:600">S.14</span></a></td></tr>
+<tr><td>„Anteil der Beobachtungen mit höchstens …“, F̂(x), Quantil nach Vorlesung</td><td>ecdf, quantile type=2</td><td class="go"><a href="#e-3-9">3.9 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
+<tr><td>„Standardisieren Sie …“</td><td>z-değerleri</td><td class="go"><a href="#e-3-10">3.10 <span style="color:#6b7280;font-weight:600">S.18</span></a></td></tr>
+<tr><td>Zusatzlinien, Legende, Achsenbereich, Farben</td><td>lines, curve, legend, xlim</td><td class="go"><a href="#e-4-8">4.8 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
+<tr><td>„grafisch prüfen, ob normalverteilt“</td><td>qqnorm</td><td class="go"><a href="#e-4-9">4.9 <span style="color:#6b7280;font-weight:600">S.21</span></a></td></tr>
+<tr><td>Möglichkeiten zählen, Laplace, Bayes nachrechnen</td><td>choose, expand.grid</td><td class="go"><a href="#e-5-7">5.7 <span style="color:#6b7280;font-weight:600">S.24</span></a></td></tr>
+<tr><td>Dichte als Funktion schreiben, ML numerisch</td><td>kendi dichte + optimise</td><td class="go"><a href="#e-8-7">8.7 <span style="color:#6b7280;font-weight:600">S.29</span></a></td></tr>
+<tr><td>ML-Schätzer Bernoulli/Poisson/Exponential/Normal direkt</td><td>hazır formüller</td><td class="go"><a href="#e-8-8">8.8 <span style="color:#6b7280;font-weight:600">S.29</span></a></td></tr>
+<tr><td>„Unterscheiden sich die Mittelwerte zweier Gruppen?“</td><td>iki örneklem t-testi</td><td class="go"><a href="#e-9-8">9.8 <span style="color:#6b7280;font-weight:600">S.32</span></a></td></tr>
+<tr><td>„80 von 100 …“, Anteil testen, KI für Anteil</td><td>prop.test, binom.test</td><td class="go"><a href="#e-9-9">9.9 <span style="color:#6b7280;font-weight:600">S.32</span></a></td></tr>
+<tr class="grp"><td colspan="3">Komplette Klausur</td></tr>
+<tr><td>Ganze Teil-B-Klausur (a–h) Schritt für Schritt</td><td>tam sınav çözümü</td><td class="go"><a href="#e-11-1">11.1 <span style="color:#6b7280;font-weight:600">S.34</span></a>, <a href="#e-11-2">11.2 <span style="color:#6b7280;font-weight:600">S.34</span></a>, <a href="#e-11-3">11.3 <span style="color:#6b7280;font-weight:600">S.34</span></a>, <a href="#e-11-4">11.4 <span style="color:#6b7280;font-weight:600">S.34</span></a></td></tr>
+<tr><td>Histogramm, Likelihood, Gitter, Yennefer-Funktion am Klausurbeispiel</td><td>sınavın e–h kısımları</td><td class="go"><a href="#e-11-5">11.5 <span style="color:#6b7280;font-weight:600">S.35</span></a>, <a href="#e-11-6">11.6 <span style="color:#6b7280;font-weight:600">S.35</span></a>, <a href="#e-11-7">11.7 <span style="color:#6b7280;font-weight:600">S.35</span></a>, <a href="#e-11-8">11.8 <span style="color:#6b7280;font-weight:600">S.36</span></a></td></tr>
+<tr><td>Antwortsätze für alle Aufgabentypen</td><td>hazır cümleler</td><td class="go"><a href="#e-12-1">12.1 <span style="color:#6b7280;font-weight:600">S.36</span></a>, <a href="#e-12-2">12.2 <span style="color:#6b7280;font-weight:600">S.36</span></a>, <a href="#e-12-3">12.3 <span style="color:#6b7280;font-weight:600">S.36</span></a>, <a href="#e-12-4">12.4 <span style="color:#6b7280;font-weight:600">S.36</span></a>, <a href="#e-12-5">12.5 <span style="color:#6b7280;font-weight:600">S.37</span></a></td></tr>
+<tr><td>Error in …</td><td>hata mesajları</td><td class="go"><a href="#e-13-1">13.1 <span style="color:#6b7280;font-weight:600">S.37</span></a></td></tr>
 </table>
 <div class="sechead pb"><h2 class="sec" id="s-0"><span class="sn">0</span> Klausurablauf und Antwortform (ILIAS)</h2>
 <p class="secintro">Teil B'de puanın yarısı biçimden gelir: kod + çıktı + yuvarlanmış sonuç + tam cümle.</p>
@@ -365,6 +410,21 @@
 <span class="o">[1] &quot;a&quot;</span></pre>
 <div class="fa"><code>matrix(c(20, 40, 60, 80), nrow = 2)</code> füllt <b>spaltenweise</b>: erste Spalte 20, 40.</div>
 </div>
+<div class="e" id="e-1-12"><div class="eh"><span class="no">1.12</span><span class="ti">Runden und Zahlen formatieren</span></div>
+<span class="sig"><b>Erkennen:</b> „auf drei Nachkommastellen runden“, „in der Form X × 10^Y“</span>
+<div class="ne">Sınavda her sayı R komutu ile yuvarlanmalı: round(x, 3). Çok küçük sayılar için signif/format.</div>
+<ol class="st"><li><code>round(x, 3)</code>: 3 Nachkommastellen – Standard für alle Antworten.</li><li><code>signif(x, 4)</code>: 4 gültige Ziffern – gut für sehr kleine Zahlen.</li><li><code>format(x, scientific = TRUE, digits = 4)</code>: wissenschaftliche Schreibweise → als \(X\times10^{Y}\) abschreiben.</li><li><code>sprintf('%.3f', x)</code>: zeigt auch Nullen am Ende (7.290 statt 7.29).</li></ol>
+<pre class="r">&gt; round(22.08333, 3)
+<span class="o">[1] 22.083</span>
+&gt; signif(0.000006938384, 4)
+<span class="o">[1] 6.938e-06</span>
+&gt; format(6.938384e-131, scientific = TRUE, digits = 4)
+<span class="o">[1] &quot;6.938e-131&quot;</span>
+&gt; sprintf(&quot;%.3f&quot;, 7.29231)
+<span class="o">[1] &quot;7.292&quot;</span></pre>
+<div class="fa">round() ändert die Darstellung im Output; rechne mit dem ungerundeten Objekt weiter und runde nur das Endergebnis.</div>
+<div class="ks">„Die Likelihood beträgt 6.938 × 10^(−131).“</div>
+</div>
 <div class="sechead"><h2 class="sec" id="s-2"><span class="sn">2</span> Datensatz einlesen, ansehen, auswählen</h2>
 <p class="secintro">Her Teil B sınavının (a)–(c) kısmı: 10 puan. Okuma doğru değilse sonraki her şey yanlış olur.</p>
 <div class="e" id="e-2-1"><div class="eh"><span class="no">2.1</span><span class="ti">Working Directory setzen und Daten einlesen</span></div>
@@ -475,6 +535,45 @@ head(d)</pre>
 &gt; typeof(d$Kampfzeit)
 <span class="o">[1] &quot;double&quot;</span></pre>
 <div class="ks">„Die Variable Tal ist ein character-Objekt; die Variable Muenzen ist numerisch vom Typ integer (nur ganze Zahlen); Kampfzeit ist numerisch vom Typ double.“</div>
+</div>
+<div class="e" id="e-2-8"><div class="eh"><span class="no">2.8</span><span class="ti">Sortieren, Extremwerte und eindeutige Werte</span></div>
+<span class="sig"><b>Erkennen:</b> „Welche Taverne …am meisten?“, „die drei größten …“, „Wie viele verschiedene …?“</span>
+<div class="ne">order ile sırala, which.max ile en büyüğün satırını bul, unique ile farklı değerleri say.</div>
+<ol class="st"><li><code>order()</code> liefert die Reihenfolge der Zeilen; <code>decreasing = TRUE</code> für absteigend.</li><li><code>which.max()</code>/<code>which.min()</code> geben die <b>Zeilennummer</b> des Extremwerts.</li><li><code>sum(Bedingung)</code> = Anzahl, <code>mean(Bedingung)</code> = Anteil (TRUE zählt als 1).</li></ol>
+<pre class="r">&gt; d[order(d$Muenzen, decreasing = TRUE), ][1:3, ]
+<span class="o">   Taverne     Tal Monster Muenzen Kampfzeit Muenzen.pro.Min lang</span>
+<span class="o">8      T08 Bergtal   Greif      33      90.0           0.367 lang</span>
+<span class="o">4      T04 Waldtal   Greif      30      75.5           0.397 lang</span>
+<span class="o">12     T12 Waldtal   Troll      29      62.0           0.468 lang</span>
+&gt; d[which.max(d$Muenzen), ]
+<span class="o">  Taverne     Tal Monster Muenzen Kampfzeit Muenzen.pro.Min lang</span>
+<span class="o">8     T08 Bergtal   Greif      33        90           0.367 lang</span>
+&gt; unique(d$Tal)
+<span class="o">[1] &quot;Flusstal&quot; &quot;Bergtal&quot;  &quot;Waldtal&quot; </span>
+&gt; length(unique(d$Monster))
+<span class="o">[1] 4</span>
+&gt; sum(d$Muenzen &gt; 20)
+<span class="o">[1] 7</span>
+&gt; mean(d$Muenzen &gt; 20)
+<span class="o">[1] 0.5833333</span></pre>
+<div class="ks">„Die meisten Münzen (33) erhielt der Barde in Taverne T08 im Bergtal.“</div>
+</div>
+<div class="e" id="e-2-9"><div class="eh"><span class="no">2.9</span><span class="ti">Data Frame selbst erstellen und speichern</span></div>
+<span class="sig"><b>Erkennen:</b> „Erstellen Sie einen Data Frame mit …“, „speichern Sie … als CSV“</span>
+<div class="ne">Vektörlerden data.frame kur; write.csv ile kaydet.</div>
+<pre class="r">&gt; neu &lt;- data.frame(x = c(1, 2, 3), Gruppe = c(&quot;A&quot;, &quot;B&quot;, &quot;A&quot;))
+&gt; neu
+<span class="o">  x Gruppe</span>
+<span class="o">1 1      A</span>
+<span class="o">2 2      B</span>
+<span class="o">3 3      A</span>
+&gt; write.csv(neu, &quot;neu.csv&quot;, row.names = FALSE)
+&gt; read.csv(&quot;neu.csv&quot;)
+<span class="o">  x Gruppe</span>
+<span class="o">1 1      A</span>
+<span class="o">2 2      B</span>
+<span class="o">3 3      A</span></pre>
+<div class="fa">Ohne <code>row.names = FALSE</code> schreibt R eine zusätzliche Spalte mit Zeilennummern.</div>
 </div>
 <div class="sechead"><h2 class="sec" id="s-3"><span class="sn">3</span> Kennzahlen und Tabellen</h2>
 <p class="secintro">Ortalama, standart sapma, kantil, sıklık tablosu, grup bazlı hesap, kontenjans tablosu, korelasyon.</p>
@@ -600,6 +699,31 @@ head(d)</pre>
 <span class="o">[1] 207.423</span></pre>
 <div class="ks">„Der Korrelationskoeffizient nach Bravais-Pearson beträgt 0.928; es liegt ein starker positiver linearer Zusammenhang zwischen Kampfzeit und Münzen vor.“</div>
 </div>
+<div class="e" id="e-3-9"><div class="eh"><span class="no">3.9</span><span class="ti">Empirische Verteilungsfunktion als Zahl, Quantil nach Vorlesung</span></div>
+<span class="sig"><b>Erkennen:</b> „Anteil der Beobachtungen mit höchstens …“, „F̂(20)“, „Quantil gemäß Vorlesungsdefinition“</span>
+<div class="ne">ecdf(x) bir fonksiyon döndürür: Fn(20) = ≤ 20 olanların oranı. Ders tanımındaki kantil için type = 2.</div>
+<ol class="st"><li><code>Fn(a)</code> = Anteil ≤ a; <code>1 - Fn(a)</code> = Anteil > a.</li><li><code>type = 2</code> entspricht der Definition aus V02 (aufrunden bzw. Mittelwert bei ganzzahligem nα); der R-Standard ist <code>type = 7</code>.</li><li>Steht in der Aufgabe „mit den Standardeinstellungen von R“, <b>kein</b> type angeben.</li></ol>
+<pre class="r">&gt; Fn &lt;- ecdf(d$Muenzen)
+&gt; Fn(20)
+<span class="o">[1] 0.4166667</span>
+&gt; 1 - Fn(20)
+<span class="o">[1] 0.5833333</span>
+&gt; quantile(d$Muenzen, c(0.25, 0.5, 0.75), type = 2)
+<span class="o"> 25%  50%  75% </span>
+<span class="o">16.5 23.0 28.0 </span>
+&gt; quantile(d$Muenzen, c(0.25, 0.5, 0.75))
+<span class="o">  25%   50%   75% </span>
+<span class="o">17.25 23.00 27.50 </span></pre>
+</div>
+<div class="e" id="e-3-10"><div class="eh"><span class="no">3.10</span><span class="ti">Standardisieren (z-Werte)</span></div>
+<span class="sig"><b>Erkennen:</b> „Standardisieren Sie die Variable …“</span>
+<div class="ne">z = (x − ortalama) / sd → ortalama 0, sd 1.</div>
+<pre class="r">&gt; z &lt;- (d$Muenzen - mean(d$Muenzen)) / sd(d$Muenzen)
+&gt; round(head(z), 3)
+<span class="o">[1] -0.560  0.400 -1.383  1.086 -0.011 -0.971</span>
+&gt; round(c(mean(z), sd(z)), 3)
+<span class="o">[1] 0 1</span></pre>
+</div>
 <div class="sechead"><h2 class="sec" id="s-4"><span class="sn">4</span> Grafiken erstellen und speichern</h2>
 <p class="secintro">Grafik sorusu genelde 7–8 puan: doğru komut + breaks/right/freq + başlık + eksen adları + PDF olarak kaydetme.</p>
 <div class="e" id="e-4-1"><div class="eh"><span class="no">4.1</span><span class="ti">Grafik als PDF speichern (Pflicht in der Klausur)</span></div>
@@ -677,6 +801,30 @@ head(d)</pre>
 &gt; curve(dnorm(x, mean = 100, sd = 15), from = 40, to = 160, ylab = &quot;Dichte&quot;)
 &gt; curve(dexp(x, rate = 0.25), from = 0, to = 20, add = FALSE)</pre>
 </div>
+<div class="e" id="e-4-8"><div class="eh"><span class="no">4.8</span><span class="ti">Grafik-Feinschliff: Achsen, Farben, Linien, Legende</span></div>
+<span class="sig"><b>Erkennen:</b> „Zeichnen Sie zusätzlich …ein“, „in derselben Grafik“, „mit Legende“</span>
+<div class="ne">xlim/ylim eksen aralığı; lines/curve/abline var olan grafiğe ekler; legend açıklama kutusu.</div>
+<ol class="st"><li><code>lines()</code>, <code>points()</code>, <code>abline()</code>, <code>curve(…, add = TRUE)</code> zeichnen <b>in</b> die bestehende Grafik.</li><li><code>abline(h = …)</code> waagerecht, <code>abline(v = …)</code> senkrecht, <code>abline(a, b)</code> Gerade.</li><li><code>lty</code> Linientyp (1 durchgezogen, 2 gestrichelt), <code>lwd</code> Linienbreite, <code>col</code> Farbe.</li></ol>
+<pre class="r">&gt; pdf(&quot;Feinschliff.pdf&quot;)
+&gt; hist(d$Muenzen, freq = FALSE, xlim = c(0, 40), ylim = c(0, 0.08), col = &quot;lightblue&quot;,
++      main = &quot;Sitz 12, Matr.Nr. 12345678, Aufgabenteil f)&quot;, xlab = &quot;Muenzen&quot;, ylab = &quot;Dichte&quot;)
+&gt; lines(density(d$Muenzen), col = &quot;red&quot;, lwd = 2)
+&gt; curve(dnorm(x, mean(d$Muenzen), sd(d$Muenzen)), add = TRUE, col = &quot;blue&quot;, lty = 2)
+&gt; abline(v = mean(d$Muenzen), col = &quot;darkgreen&quot;)
+&gt; legend(&quot;topright&quot;, legend = c(&quot;KDE&quot;, &quot;Normal&quot;, &quot;Mittelwert&quot;),
++        col = c(&quot;red&quot;, &quot;blue&quot;, &quot;darkgreen&quot;), lty = c(1, 2, 1))
+&gt; dev.off()
+<span class="o">pdf </span>
+<span class="o">  2 </span></pre>
+<div class="fa">Zusatzlinien vor <code>dev.off()</code> zeichnen, sonst fehlen sie im PDF.</div>
+</div>
+<div class="e" id="e-4-9"><div class="eh"><span class="no">4.9</span><span class="ti">QQ-Plot: Normalverteilung prüfen</span></div>
+<span class="sig"><b>Erkennen:</b> „Prüfen Sie grafisch, ob … normalverteilt ist“</span>
+<div class="ne">Noktalar doğruya yakınsa normal dağılım varsayımı makul.</div>
+<pre class="r">&gt; qqnorm(d$Kampfzeit, main = &quot;QQ-Plot Kampfzeit&quot;)
+&gt; qqline(d$Kampfzeit, col = &quot;red&quot;)</pre>
+<div class="ks">„Die Punkte weichen deutlich von der Geraden ab; die Normalverteilungsannahme ist für Kampfzeit fraglich.“</div>
+</div>
 <div class="sechead"><h2 class="sec" id="s-5"><span class="sn">5</span> Verteilungen in R</h2>
 <p class="secintro">Dört harf kuralı: d = olasılık/yoğunluk, p = P(X ≤ x), q = kantil, r = rastgele sayı.</p>
 <div class="e" id="e-5-1"><div class="eh"><span class="no">5.1</span><span class="ti">Das d-p-q-r-Prinzip und alle Parameter</span></div>
@@ -742,6 +890,24 @@ head(d)</pre>
 <span class="o">[1]  2.700 19.023</span>
 &gt; round(pgamma(30, shape = 2, rate = 0.1), 3)
 <span class="o">[1] 0.801</span></pre>
+</div>
+<div class="e" id="e-5-7"><div class="eh"><span class="no">5.7</span><span class="ti">Kombinatorik, Laplace und Bayes in R</span></div>
+<span class="sig"><b>Erkennen:</b> „Wie viele Möglichkeiten …?“, „Wahrscheinlichkeit, dass die Augensumme …“, Baumdiagramm nachrechnen</span>
+<div class="ne">choose = binom katsayısı, factorial = faktöriyel. Laplace: tüm sonuçları expand.grid ile listele. Bayes'i değişkenlerle hesapla.</div>
+<pre class="r">&gt; choose(5, 2)
+<span class="o">[1] 10</span>
+&gt; factorial(4)
+<span class="o">[1] 24</span>
+&gt; w &lt;- expand.grid(a = 1:6, b = 1:6)
+&gt; mean(w$a + w$b == 7)
+<span class="o">[1] 0.1666667</span>
+&gt; pA &lt;- 0.3; pB_A &lt;- 0.2; pB_nA &lt;- 0.05
+&gt; pB &lt;- pA * pB_A + (1 - pA) * pB_nA
+&gt; pB
+<span class="o">[1] 0.095</span>
+&gt; pA * pB_A / pB
+<span class="o">[1] 0.6315789</span></pre>
+<div class="ks">„Die Wahrscheinlichkeit, dass eine erkrankte Person raucht, beträgt 0.632.“</div>
 </div>
 <div class="sechead"><h2 class="sec" id="s-6"><span class="sn">6</span> Zufallszahlen und Simulation</h2>
 <p class="secintro">set.seed ile tekrarlanabilir rastgele sayılar; simülasyonla olasılık ve ortalamanın dağılımı.</p>
@@ -932,6 +1098,32 @@ head(d)</pre>
 &gt; lam[which.max(ll)]
 <span class="o">[1] 22.1</span></pre>
 </div>
+<div class="e" id="e-8-7"><div class="eh"><span class="no">8.7</span><span class="ti">ML für eine selbst definierte Dichte (Teil-A-Typ in R)</span></div>
+<span class="sig"><b>Erkennen:</b> „Schreiben Sie die Dichte als Funktion …“, „bestimmen Sie den ML-Schätzer numerisch“</span>
+<div class="ne">Dichte'yi function olarak yaz, log-likelihood = sum(log(f)). optimise ile maksimize et, analitik sonuçla karşılaştır.</div>
+<ol class="st"><li>Dichte genau wie in der Aufgabe abschreiben (<code>^</code> für Potenzen, <code>exp()</code> für e).</li><li>Intervall bei <code>optimise</code> groß genug, aber nur zulässige Werte (z. B. λ > 0).</li><li><code>$maximum</code> = Schätzer, <code>$objective</code> = maximale Log-Likelihood.</li></ol>
+<pre class="r">&gt; f &lt;- function(x, lambda) lambda^2 * x * exp(-lambda * x)
+&gt; x &lt;- c(1, 3, 2, 0.5, 3.5)
+&gt; logL &lt;- function(lambda) sum(log(f(x, lambda)))
+&gt; optimise(logL, interval = c(0.01, 10), maximum = TRUE)$maximum
+<span class="o">[1] 1.000011</span>
+&gt; 2 / mean(x)
+<span class="o">[1] 1</span></pre>
+<div class="ks">„Der numerisch bestimmte ML-Schätzer beträgt λ̂ = 1.000 und stimmt mit dem analytischen Ergebnis 2/x̄ überein.“</div>
+</div>
+<div class="e" id="e-8-8"><div class="eh"><span class="no">8.8</span><span class="ti">ML-Schätzer der Standardverteilungen direkt</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen Sie den ML-Schätzer für … (Bernoulli/Poisson/Exponential/Normal)“</span>
+<div class="ne">Bilinen modellerde ML tahmini doğrudan bir ortalama formülü.</div>
+<ol class="st"><li>Bernoulli: \(\hat\pi=\bar x\) · Poisson: \(\hat\lambda=\bar x\) · Exponential: \(\hat\lambda=1/\bar x\)</li><li>Normal: \(\hat\mu=\bar x\), \(\hat\sigma^2=\dfrac1n\sum(x_i-\bar x)^2\) – Nenner \(n\), also <b>nicht</b> <code>var()</code>!</li></ol>
+<pre class="r">&gt; y &lt;- c(1, 0, 1, 1, 0)
+&gt; mean(y)
+<span class="o">[1] 0.6</span>
+&gt; w &lt;- c(2.1, 0.7, 1.5, 3.2)
+&gt; 1 / mean(w)
+<span class="o">[1] 0.5333333</span>
+&gt; c(mean(w), mean((w - mean(w))^2))
+<span class="o">[1] 1.875000 0.831875</span></pre>
+</div>
 <div class="sechead"><h2 class="sec" id="s-9"><span class="sn">9</span> Konfidenzintervalle und Tests in R</h2>
 <p class="secintro">Elle formül (qnorm/qt/qchisq) veya hazır fonksiyon (t.test, binom.test, chisq.test). Çıktıdan doğru sayıyı oku.</p>
 <div class="e" id="e-9-1"><div class="eh"><span class="no">9.1</span><span class="ti">Konfidenzintervall für μ (σ bekannt und unbekannt)</span></div>
@@ -1033,6 +1225,38 @@ head(d)</pre>
 <span class="o">[1] 19.675</span>
 <span class="o">[1] 0.016</span></pre>
 </div>
+<div class="e" id="e-9-8"><div class="eh"><span class="no">9.8</span><span class="ti">Zwei Gruppen vergleichen (Zwei-Stichproben-t-Test)</span></div>
+<span class="sig"><b>Erkennen:</b> „Unterscheiden sich die mittleren … in Flusstal und Bergtal?“</span>
+<div class="ne">İki grubun ortalamasını karşılaştır: t.test(x1, x2). Tek yönlüyse alternative ekle.</div>
+<ol class="st"><li>H₀: μ₁ = μ₂ vs. H₁: μ₁ ≠ μ₂ (bzw. < / > mit alternative).</li><li>Bei verbundenen Stichproben (vorher/nachher, gleiche Personen): <code>paired = TRUE</code>.</li><li>Gleiche Varianzen angenommen: <code>var.equal = TRUE</code>.</li></ol>
+<pre class="r">&gt; x1 &lt;- d$Muenzen[d$Tal == &quot;Flusstal&quot;]
+&gt; x2 &lt;- d$Muenzen[d$Tal == &quot;Bergtal&quot;]
+&gt; t.test(x1, x2, alternative = &quot;two.sided&quot;)
+<span class="o"></span>
+<span class="o">	Welch Two Sample t-test</span>
+<span class="o"></span>
+<span class="o">data:  x1 and x2</span>
+<span class="o">t = -2.0482, df = 5.0711, p-value = 0.09507</span>
+<span class="o">alternative hypothesis: true difference in means is not equal to 0</span>
+<span class="o">95 percent confidence interval:</span>
+<span class="o"> -20.810405   2.310405</span>
+<span class="o">sample estimates:</span>
+<span class="o">mean of x mean of y </span>
+<span class="o">    16.75     26.00 </span></pre>
+<div class="ks">„Da der p-Wert 0.095 > 0.05 ist, kann H₀ nicht abgelehnt werden; ein Unterschied der mittleren Münzanzahl ist nicht statistisch abgesichert.“</div>
+</div>
+<div class="e" id="e-9-9"><div class="eh"><span class="no">9.9</span><span class="ti">Anteil testen und KI für einen Anteil (prop.test, binom.test)</span></div>
+<span class="sig"><b>Erkennen:</b> „80 von 100 …“, „Anteil größer als 75 %?“</span>
+<div class="ne">prop.test normal yaklaşımı, binom.test tam test. İkisi de GA verir.</div>
+<pre class="r">&gt; prop.test(x = 80, n = 100, p = 0.75, alternative = &quot;greater&quot;, correct = FALSE)$p.value
+<span class="o">[1] 0.1241065</span>
+&gt; binom.test(80, 100, p = 0.75, alternative = &quot;greater&quot;)$p.value
+<span class="o">[1] 0.1488311</span>
+&gt; p &lt;- 0.8; n &lt;- 100
+&gt; p + c(-1, 1) * qnorm(0.975) * sqrt(p * (1 - p) / n)
+<span class="o">[1] 0.7216014 0.8783986</span></pre>
+<div class="fa">Das KI aus der Vorlesung ist das Wald-Intervall (letzte Zeile); prop.test ohne/ mit correct liefert ein etwas anderes Intervall.</div>
+</div>
 <div class="sechead"><h2 class="sec" id="s-10"><span class="sn">10</span> Lineare Regression in R</h2>
 <p class="secintro">lm ile model, summary ile katsayılar ve anlamlılık, predict ile tahmin.</p>
 <div class="e" id="e-10-1"><div class="eh"><span class="no">10.1</span><span class="ti">Modell schätzen und Output lesen</span></div>
@@ -1080,14 +1304,134 @@ head(d)</pre>
 <span class="o">Kampfzeit    0.158  0.283</span></pre>
 <div class="fa">In <code>newdata</code> muss der Spaltenname exakt wie im Modell heißen (Kampfzeit).</div>
 </div>
-<div class="sechead"><h2 class="sec" id="s-11"><span class="sn">11</span> Fehlermeldungen und Kontrolle</h2>
+<div class="sechead"><h2 class="sec" id="s-11"><span class="sn">11</span> Komplette Teil-B-Klausur Schritt für Schritt (Altklausur-Typ)</h2>
+<p class="secintro">Gerçek sınavın (Altklausur Witcher) tüm alt soruları sırayla: kod, çıktı, Antwortsatz. Kendi sınavında sadece dosya ve değişken adlarını değiştir.</p>
+<div class="e" id="e-11-1"><div class="eh"><span class="no">11.1</span><span class="ti">a) Working Directory setzen</span></div>
+<span class="sig"><b>Erkennen:</b> „Setzen Sie mittels setwd(path.expand("~")) Ihr Working Directory …“ (2 P)</span>
+<div class="ne">Komutu aynen yaz. Kontrol için getwd().</div>
+<pre class="r">setwd(path.expand(&quot;~&quot;))
+getwd()</pre>
+</div></div>
+<div class="e" id="e-11-2"><div class="eh"><span class="no">11.2</span><span class="ti">b) Daten einlesen und die ersten 6 Zeilen wiedergeben (4 P)</span></div>
+<span class="sig"><b>Erkennen:</b> „Speichern Sie die … Daten als Data-Frame-Objekt d … und geben Sie die ersten 6 Zeilen wieder“</span>
+<div class="ne">Ayırıcıyı kontrol et (burada ;). head(d) çıktısını da kopyala.</div>
+<pre class="r">&gt; d &lt;- read.csv(&quot;Taverne.csv&quot;, sep = &quot;;&quot;, dec = &quot;.&quot;, header = TRUE)
+&gt; head(d)
+<span class="o">  Taverne      Tal Monster Muenzen Kampfzeit</span>
+<span class="o">1     T01 Flusstal    Ghul      18      12.5</span>
+<span class="o">2     T02  Bergtal   Troll      25      45.0</span>
+<span class="o">3     T03 Flusstal    Wolf      12       3.2</span>
+<span class="o">4     T04  Waldtal   Greif      30      75.5</span>
+<span class="o">5     T05  Bergtal    Ghul      22       8.0</span>
+<span class="o">6     T06  Waldtal    Wolf      15       4.5</span></pre>
+</div>
+<div class="e" id="e-11-3"><div class="eh"><span class="no">11.3</span><span class="ti">c) Objekttypen ermitteln (4 P)</span></div>
+<span class="sig"><b>Erkennen:</b> „Ermitteln Sie unter Einbezug eines passenden R-Befehls die Objekttypen der Variablen Tal und Muenzen“</span>
+<pre class="r">&gt; typeof(d$Tal)
+<span class="o">[1] &quot;character&quot;</span>
+&gt; typeof(d$Muenzen)
+<span class="o">[1] &quot;integer&quot;</span>
+&gt; class(d$Muenzen)
+<span class="o">[1] &quot;integer&quot;</span></pre>
+<div class="ks">„Die Variable Tal ist vom Typ character (Text). Die Variable Muenzen ist ein numerisches Objekt vom Typ integer, d. h. sie enthält nur ganze Zahlen.“</div>
+</div>
+<div class="e" id="e-11-4"><div class="eh"><span class="no">11.4</span><span class="ti">d) Mittelwert und unverzerrte Standardabweichung (4 P)</span></div>
+<span class="sig"><b>Erkennen:</b> „Berechnen und nennen Sie das arithmetische Mittel und den unverzerrten Schätzer für die Standardabweichung … auf 3 Nachkommastellen“</span>
+<pre class="r">&gt; round(mean(d$Muenzen), 3)
+<span class="o">[1] 22.083</span>
+&gt; round(sd(d$Muenzen), 3)
+<span class="o">[1] 7.292</span></pre>
+<div class="ks">„Das arithmetische Mittel der Variable Muenzen beträgt 22.083. Der unverzerrte Schätzer für die Standardabweichung beträgt 7.292.“</div>
+</div>
+<div class="e" id="e-11-5"><div class="eh"><span class="no">11.5</span><span class="ti">e) Histogramm mit vorgegebenen Klassen speichern (8 P)</span></div>
+<span class="sig"><b>Erkennen:</b> „Histogramm … Intervallgrenzen [5,15), [15,20), [20,25), [25,35) … Titel … Dichte … als Histogramm.pdf speichern“</span>
+<ol class="st"><li>breaks = genau die Grenzen aus der Aufgabe · [a, b) → <code>right = FALSE</code> · Dichte → <code>freq = FALSE</code>.</li><li>Titel, x- und y-Achse exakt wie verlangt; Datei im Ordner prüfen und in ILIAS hochladen.</li></ol>
+<pre class="r">&gt; pdf(&quot;Histogramm.pdf&quot;)
+&gt; hist(d$Muenzen, breaks = c(5, 15, 20, 25, 35), right = FALSE, freq = FALSE,
++      main = &quot;Sitz 12, Matr.Nr. 12345678, Aufgabenteil e)&quot;,
++      xlab = &quot;Muenzen&quot;, ylab = &quot;Dichte&quot;)
+&gt; dev.off()
+<span class="o">pdf </span>
+<span class="o">  2 </span></pre>
+</div>
+<div class="e" id="e-11-6"><div class="eh"><span class="no">11.6</span><span class="ti">f) Individuelle Likelihoods und Gesamt-Likelihood (6 P)</span></div>
+<span class="sig"><b>Erkennen:</b> „… Poissonverteilung … λ = 20 … Spalte iL20 … Likelihood aller Beobachtungen … in der Form X × 10^Y“</span>
+<pre class="r">&gt; d$iL20 &lt;- dpois(d$Muenzen, lambda = 20)
+&gt; head(d)
+<span class="o">  Taverne      Tal Monster Muenzen Kampfzeit        iL20</span>
+<span class="o">1     T01 Flusstal    Ghul      18      12.5 0.084393552</span>
+<span class="o">2     T02  Bergtal   Troll      25      45.0 0.044587649</span>
+<span class="o">3     T03 Flusstal    Wolf      12       3.2 0.017625171</span>
+<span class="o">4     T04  Waldtal   Greif      30      75.5 0.008343536</span>
+<span class="o">5     T05  Bergtal    Ghul      22       8.0 0.076913695</span>
+<span class="o">6     T06  Waldtal    Wolf      15       4.5 0.051648854</span>
+&gt; L20 &lt;- prod(d$iL20)
+&gt; L20
+<span class="o">[1] 4.104144e-20</span></pre>
+<div class="ks">„Unter der Annahme λ = 20 beträgt die Likelihood aller Beobachtungen L(20) = X × 10^(Y)“ – X und Y aus dem Output ablesen (3 Nachkommastellen).</div>
+</div>
+<div class="e" id="e-11-7"><div class="eh"><span class="no">11.7</span><span class="ti">g) Likelihood-Funktion und ML-Schätzer auf einem Gitter (9 P)</span></div>
+<span class="sig"><b>Erkennen:</b> „Schreiben Sie eine Funktion Likelihood.pois(lambda, x) … für alle λ ∈ {17, …, 23} … ML-Schätzer“</span>
+<pre class="r">&gt; Likelihood.pois &lt;- function(lambda, x) {
++   return(prod(dpois(x, lambda)))
++ }
+&gt; werte &lt;- 17:23
+&gt; L &lt;- sapply(werte, Likelihood.pois, x = d$Muenzen)
+&gt; cbind(werte, L)
+<span class="o">     werte            L</span>
+<span class="o">[1,]    17 3.498157e-23</span>
+<span class="o">[2,]    18 8.138703e-22</span>
+<span class="o">[3,]    19 8.346643e-21</span>
+<span class="o">[4,]    20 4.104144e-20</span>
+<span class="o">[5,]    21 1.039568e-19</span>
+<span class="o">[6,]    22 1.442835e-19</span>
+<span class="o">[7,]    23 1.157575e-19</span>
+&gt; werte[which.max(L)]
+<span class="o">[1] 22</span>
+&gt; mean(d$Muenzen)
+<span class="o">[1] 22.08333</span></pre>
+<div class="ks">„Aus der gegebenen Menge maximiert λ = 22 die Likelihood; der ML-Schätzer ist λ̂ = 22 (analytisch wäre x̄ = 22.083).“</div>
+</div>
+<div class="e" id="e-11-8"><div class="eh"><span class="no">11.8</span><span class="ti">h) Funktion mit Schleife: Zahl aus Ziffern zusammensetzen (8 P)</span></div>
+<span class="sig"><b>Erkennen:</b> „Schreiben Sie eine R-Funktion YenneferZahl.fun, welche für n … die Zahl 0.123456789101112… bestimmt“</span>
+<ol class="st"><li>Leeren Text anlegen, in der Schleife jede Zahl anhängen (<code>paste0</code> ohne Leerzeichen).</li><li>„bis auf die 99. Nachkommastelle“: genügend Zahlen anhängen, dann mit <code>substr(…, 1, 101)</code> abschneiden ("0." + 99 Ziffern).</li></ol>
+<pre class="r">&gt; YenneferZahl.fun &lt;- function(n) {
++   s &lt;- &quot;&quot;
++   for (i in 1:n) {
++     s &lt;- paste0(s, i)
++   }
++   return(paste0(&quot;0.&quot;, s))
++ }
+&gt; YenneferZahl.fun(17)
+<span class="o">[1] &quot;0.1234567891011121314151617&quot;</span>
+&gt; substr(YenneferZahl.fun(60), 1, 101)
+<span class="o">[1] &quot;0.123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&quot;</span></pre>
+</div>
+<div class="sechead"><h2 class="sec" id="s-12"><span class="sn">12</span> Antwortsätze für ILIAS – Katalog</h2>
+<p class="secintro">Kutu 2 için hazır cümleler. Sayıları kendi çıktından al, 3 ondalık.</p>
+<div class="e" id="e-12-1"><div class="eh"><span class="no">12.1</span><span class="ti">Datentypen, Kennzahlen, Häufigkeiten</span></div>
+<div class="ks">„Die Variable … ist vom Typ character/integer/numeric.“ · „Das arithmetische Mittel der Variable … beträgt ….“ · „Der unverzerrte Schätzer für die Standardabweichung beträgt ….“ · „Der Median beträgt …, der Interquartilsabstand ….“ · „Die häufigste Ausprägung (Modus) ist ….“ · „Der Anteil der Beobachtungen mit … beträgt ….“</div>
+</div></div>
+<div class="e" id="e-12-2"><div class="eh"><span class="no">12.2</span><span class="ti">Gruppen, Tabellen, Grafiken</span></div>
+<div class="ks">„Im Tal … ist die durchschnittliche Münzanzahl mit … am höchsten.“ · „In der Gruppe … ist der Anteil … mit … am größten.“ · „Der Boxplot zeigt, dass … den höchsten Median hat und die Werte dort am stärksten streuen.“ · „Das Histogramm ist rechtsschief.“</div>
+</div>
+<div class="e" id="e-12-3"><div class="eh"><span class="no">12.3</span><span class="ti">Korrelation und Regression</span></div>
+<div class="ks">„Der Korrelationskoeffizient nach Bravais-Pearson beträgt …; es liegt ein (schwacher/mittlerer/starker) (positiver/negativer) linearer Zusammenhang vor.“ · „Die geschätzte Regressionsgerade lautet ŷ = a + b·x. Steigt x um eine Einheit, steigt/sinkt y im Mittel um b.“ · „Das Bestimmtheitsmaß R² = … bedeutet, dass …% der Streuung von y durch x erklärt werden.“</div>
+</div>
+<div class="e" id="e-12-4"><div class="eh"><span class="no">12.4</span><span class="ti">Likelihood und ML</span></div>
+<div class="ks">„Unter der Annahme λ = … beträgt die Likelihood aller Beobachtungen … × 10^(…).“ · „Aus der gegebenen Menge maximiert λ = … die Likelihood; der ML-Schätzer ist λ̂ = ….“ · „Der numerisch bestimmte ML-Schätzer beträgt …“</div>
+</div>
+<div class="e" id="e-12-5"><div class="eh"><span class="no">12.5</span><span class="ti">Konfidenzintervalle und Tests</span></div>
+<div class="ks">„Hypothesen: H₀: μ ≤ μ₀ vs. H₁: μ > μ₀.“ · „Da der p-Wert … kleiner als α = 0.05 ist, wird H₀ abgelehnt. Es kann statistisch abgesichert werden, dass ….“ · „Da der p-Wert … größer als α ist, kann H₀ nicht abgelehnt werden. Es kann nicht statistisch abgesichert werden, dass ….“ · „Das 95 %-Konfidenzintervall für … lautet [… ; …].“</div>
+</div>
+<div class="sechead"><h2 class="sec" id="s-13"><span class="sn">13</span> Fehlermeldungen und Kontrolle</h2>
 <p class="secintro">Hata mesajını okuyunca çoğu zaman sebep hemen belli olur.</p>
-<div class="e" id="e-11-1"><div class="eh"><span class="no">11.1</span><span class="ti">Typische Fehlermeldungen und ihre Lösung</span></div>
+<div class="e" id="e-13-1"><div class="eh"><span class="no">13.1</span><span class="ti">Typische Fehlermeldungen und ihre Lösung</span></div>
 <span class="sig"><b>Erkennen:</b> Error in …</span>
 <div class="ne">Mesajın son kısmı ne olduğunu söyler: nesne yok, fonksiyon yok, beklenmeyen sembol, sayısal olmayan argüman.</div>
 <table class='t'><tr><th>Meldung</th><th>Ursache</th><th>Lösung</th></tr><tr><td><code>object 'X' not found</code></td><td>Objekt nicht erstellt, Tippfehler, Groß/Klein</td><td>Zeile mit der Zuweisung ausführen; Schreibweise prüfen</td></tr><tr><td><code>could not find function "…"</code></td><td>Funktionsname falsch oder eigene Funktion noch nicht ausgeführt</td><td>Schreibweise; Funktionsdefinition zuerst ausführen</td></tr><tr><td><code>unexpected symbol / ')' / ','</code></td><td>Klammer, Komma oder Anführungszeichen fehlt bzw. zu viel</td><td>Klammern zählen</td></tr><tr><td><code>non-numeric argument to binary operator</code></td><td>mit Text gerechnet</td><td><code>str(d)</code>; Einlesen mit richtigem dec / as.numeric</td></tr><tr><td><code>argument is not numeric or logical: returning NA</code></td><td>mean() auf Text-Spalte</td><td>richtige Spalte, Einlesen prüfen</td></tr><tr><td><code>cannot open file 'X.csv': No such file</code></td><td>falscher Ordner oder Dateiname</td><td><code>getwd()</code>, <code>list.files()</code>, setwd</td></tr><tr><td><code>undefined columns selected</code></td><td>Spaltenname falsch in d[ , "…"]</td><td><code>names(d)</code></td></tr><tr><td><code>$ operator is invalid for atomic vectors</code></td><td>$ auf einen Vektor statt Data Frame</td><td>Objekt prüfen (<code>class()</code>)</td></tr><tr><td>Ergebnis <code>NA</code></td><td>fehlende Werte</td><td><code>na.rm = TRUE</code></td></tr><tr><td>Konsole zeigt <code>+</code></td><td>Befehl unvollständig (Klammer offen)</td><td>Esc drücken, Klammer ergänzen</td></tr></table>
 </div></div>
-<div class="e" id="e-11-2"><div class="eh"><span class="no">11.2</span><span class="ti">Checkliste vor dem Abgeben</span></div>
+<div class="e" id="e-13-2"><div class="eh"><span class="no">13.2</span><span class="ti">Checkliste vor dem Abgeben</span></div>
 <span class="sig"><b>Erkennen:</b> letzte 5 Minuten</span>
 <div class="ne">Her kutuyu bu listeyle kontrol et.</div>
 <ol class="st"><li>Jede Teilaufgabe: Code <b>und</b> Output in Box 1, Antwortsatz (ohne Code) in Box 2.</li><li>Alle Zahlen mit <code>round(…, 3)</code> gerundet, auch im Antwortsatz.</li><li>Grafiken: Titel mit Sitz, Matrikelnummer, Aufgabenteil; Achsenbeschriftung; als PDF gespeichert und hochgeladen.</li><li>Fehlerhaften Code aus der Antwort gelöscht; keine zwei widersprüchlichen Ergebnisse.</li><li>R-Skript gespeichert (Strg+S) im Ordner Dokumente.</li></ol>
