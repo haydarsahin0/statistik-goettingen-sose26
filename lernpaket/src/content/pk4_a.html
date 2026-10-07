@@ -1,0 +1,140 @@
+<section class="t0 kl">
+<div class="kl-deck">
+<h1>Probeklausur 4 Statistik (Teil A)</h1>
+<div class="sub">Statistik und Data Science I · Probeklausur 4 für den Zweittermin (09.10.2026) · Stoff V01–V13<br><span class="small">Übungsklausur zur Vorbereitung – keine offizielle Klausur</span></div>
+<div class="kl-fields"><div>Name, Vorname</div><div>Matrikel-Nr.</div><div>Raum</div><div>Platz-Nr.</div></div>
+<p><b>Bearbeitungszeit:</b> 100 Minuten &nbsp;·&nbsp; <b>Anzahl der Aufgaben:</b> 9 &nbsp;·&nbsp; <b>Gesamtpunktzahl:</b> 75</p>
+<p><b>Zugelassene Hilfsmittel:</b> zugelassener, nicht programmierbarer Taschenrechner · Schreibutensilien (kein Bleistift, weder Grün noch Rot) · ein (auch beidseitig) handschriftlich beschriebenes DIN-A4-Blatt, das mit Matrikelnummer, Raum und Platznummer gekennzeichnet ist und mit der Klausur abgegeben werden muss.</p>
+<table class="kl-pt"><tr><th>Aufgabe</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><th>Σ</th></tr>
+<tr><th>Punkte</th><td>9</td><td>8</td><td>10</td><td>6</td><td>10</td><td>9</td><td>10</td><td>5</td><td>8</td><th>75</th></tr>
+<tr><th>erreicht</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th></th></tr></table>
+<div class="kl-hin">
+<h3>Hinweise</h3>
+<ul>
+<li>Es darf nur mit Kugelschreiber oder Tinte geschrieben und gezeichnet werden. Bleistift sowie Angaben in Grün oder Rot werden nicht gewertet.</li>
+<li>Lesen Sie genau, wonach gefragt wird und wie die Lösung anzugeben ist. Es gilt die <b>Dezimalpunkt-Notation</b>.</li>
+<li>Vereinfachen Sie alle Ergebnisse. Nicht ganzzahlige Endergebnisse sind als <b>vollständig gekürzte Brüche</b> oder auf <b>drei Nachkommastellen</b> kaufmännisch gerundet anzugeben; Zwischenergebnisse auf mindestens <b>vier</b> Nachkommastellen. Ausnahmen: ganze Zahlen und gängige Funktionen natürlicher Zahlen (z. B. \(\sqrt2\) oder \(\log(4)\)).</li>
+<li>Tragen Sie nur Ihr Endergebnis in die Lösungskästchen ein, es sei denn, Sie werden aufgefordert, Ihren Lösungsweg anzugeben.</li>
+<li>Lösungskästchen dürfen nur eine eindeutige Antwort enthalten. Geben Sie niemals mehrere Lösungsalternativen an; streichen Sie falsche Angaben.</li>
+<li>Alles außerhalb der Lösungskästchen wird nicht gewertet, es sei denn, Sie kennzeichnen es eindeutig. Nebenrechnungen werden nicht korrigiert.</li>
+<li>Ist eine Aufgabe Ihrer Meinung nach nicht lösbar, schreiben Sie „nicht lösbar“ in das Kästchen und begründen Sie dies in der Box am Ende der Klausur.</li>
+<li>Mit \(\log\) ist stets der natürliche Logarithmus gemeint.</li>
+</ul>
+<p><i>Zeitrichtwert: ca. 1.3 Minuten pro Punkt. Stoppuhr auf 100 Minuten stellen!</i></p>
+</div>
+</div>
+
+<!-- A1 -->
+<div class="kl-auf"><h2><span>Aufgabe 1</span><span>(9 Punkte)</span></h2>
+<p>Ein Göttinger Bürgerbüro erfasst bei 10 zufällig ausgewählten Besucher*innen die Wartezeit in Minuten (Variable <code>Wartezeit</code>) und die Zufriedenheit mit dem Service (Variable <code>Zufriedenheit</code>, Ausprägungen „sehr unzufrieden“ &lt; „unzufrieden“ &lt; „neutral“ &lt; „zufrieden“ &lt; „sehr zufrieden“).</p>
+<pre class="out">&gt; sort(Wartezeit)
+ [1]  3  4  4  5  6  7  7  7  9 18
+&gt; table(Zufriedenheit)
+Zufriedenheit
+sehr unzufrieden      unzufrieden          neutral        zufrieden   sehr zufrieden
+               1                2                3                3                1</pre>
+<p>Hinweis: \(\sum_{i=1}^{10} x_i=70\), \(\;\sum_{i=1}^{10} x_i^2=654\).</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Geben Sie für beide Merkmale das Skalenniveau an und ob das Merkmal diskret oder stetig ist. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(b)</span>Bestimmen Sie für die Variable <code>Zufriedenheit</code> den Modus und den Median. Falls ein Wert nicht eindeutig ist, begründen Sie kurz. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(c)</span>Berechnen Sie für die Variable <code>Wartezeit</code> das arithmetische Mittel, die empirische Varianz \(s^2\) und die unverzerrte Varianz \(s_*^2\). Geben Sie Ihren Lösungsweg an. <span class="pt">(3 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Die Wartezeiten werden in Sekunden umgerechnet. Wie ändern sich das arithmetische Mittel und die Standardabweichung \(s\)? Geben Sie die neuen Werte an. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A2 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 2</span><span>(8 Punkte)</span></h2>
+<p>20 Studierende wurden nach ihrer Anzahl an Geschwistern \(X\) gefragt:</p>
+<table class="dat"><tr><th>Anzahl Geschwister \(a_j\)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><th>absolute Häufigkeit \(h_j\)</th><td>4</td><td>8</td><td>5</td><td>2</td><td>1</td></tr></table>
+<ol class="tl">
+<li><span class="lb">(a)</span>Stellen Sie die empirische Verteilungsfunktion \(\hat F(x)\) als Funktion mit Fallunterscheidung auf und skizzieren Sie sie. <span class="pt">(4 P)</span><div class="lk xl"></div></li>
+<li><span class="lb">(b)</span>Bestimmen Sie mithilfe von \(\hat F\) den Anteil der Studierenden mit (i) höchstens einem und (ii) mindestens zwei Geschwistern. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(c)</span>Bestimmen Sie den Median und das obere Quartil \(x_{0.75}\). <span class="pt">(2 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A3 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 3</span><span>(10 Punkte)</span></h2>
+<p>Ein Start-up untersucht den Zusammenhang zwischen den monatlichen Werbeausgaben \(X\) (in Tausend Euro) und dem Umsatz \(Y\) (in Zehntausend Euro):</p>
+<table class="dat"><tr><th>Monat ν</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+<tr><th>\(x_\nu\)</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+<tr><th>\(y_\nu\)</th><td>3</td><td>5</td><td>4</td><td>7</td><td>8</td><td>9</td></tr></table>
+<p>Hinweis: \(\sum x_\nu=21,\ \sum y_\nu=36,\ \sum x_\nu^2=91,\ \sum y_\nu^2=244,\ \sum x_\nu y_\nu=147\).</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie die empirische Kovarianz und den Korrelationskoeffizienten nach Bravais-Pearson. Geben Sie Ihren Lösungsweg an und interpretieren Sie \(r_{xy}\). Wenn Sie \(r_{xy}\) nicht berechnen konnten, interpretieren Sie \(r_{xy}=0.4\). <span class="pt">(4 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(b)</span>Bestimmen Sie die Regressionsgerade \(\hat y=a+b\,x\) nach der Methode der kleinsten Quadrate. <span class="pt">(3 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(c)</span>Prognostizieren Sie den Umsatz bei Werbeausgaben von 7 Tausend Euro. Beurteilen Sie die Verlässlichkeit dieser Prognose in einem Satz. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(d)</span>Berechnen und interpretieren Sie das Bestimmtheitsmaß \(R^2\). <span class="pt">(1 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A4 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 4</span><span>(6 Punkte)</span></h2>
+<p>Ihnen sei folgender Ergebnisraum \(\Omega=\{1,2,\dots,8\}\) eines Laplace-Experiments gegeben. Außerdem seien die Ereignisse \(A=\{1,2,3,4\}\), \(B=\{2,4,6,8\}\) und \(C=\{1,8\}\) bekannt.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie die folgenden Mächtigkeiten. <span class="pt">(2 P)</span>
+<div class="lk s"><span class="lkl">\(|A\cup\bar B|=\)</span></div><div class="lk s"><span class="lkl">\(|\overline{A\cap B}|=\)</span></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie die Wahrscheinlichkeit, dass \(A\) eintritt, wenn bekannt ist, dass \(B\) eingetreten ist. Tragen Sie die korrekte Notation in die Lücken ein. <span class="pt">(2 P)</span>
+<div class="lk s"><span class="lkl">\(P(\quad\ \ \mid\quad\ \ )=\)</span></div></li>
+<li><span class="lb">(c)</span>Sind \(A\) und \(B\) stochastisch unabhängig? Sind \(A\) und \(C\) disjunkt? Begründen Sie jeweils kurz. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+</ol></div>
+
+<!-- A5 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 5</span><span>(10 Punkte)</span></h2>
+<p>Das Uni-Mailsystem setzt einen Spamfilter ein. 30 % aller eingehenden E-Mails sind Spam (\(S\)). Betrachtet man die <b>Spam-Mails</b>, so markiert der Filter 95 % davon als Spam (\(M\)). Betrachtet man die <b>Nicht-Spam-Mails</b>, so werden 2 % fälschlicherweise markiert.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Berechnen Sie die folgenden Wahrscheinlichkeiten. <span class="pt">(3 P)</span>
+<div class="lk s"><span class="lkl">P(„kein Spam“) =</span></div><div class="lk s"><span class="lkl">P(„markiert“ | „Spam“) =</span></div><div class="lk s"><span class="lkl">P(„nicht markiert“ | „kein Spam“) =</span></div></li>
+<li><span class="lb">(b)</span>Mit welcher Wahrscheinlichkeit wird eine zufällige E-Mail markiert? <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(c)</span>Eine E-Mail wurde markiert. Mit welcher Wahrscheinlichkeit ist sie tatsächlich Spam? Geben Sie Ihren Lösungsweg an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Eine E-Mail wurde <i>nicht</i> markiert. Mit welcher Wahrscheinlichkeit ist sie trotzdem Spam? <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(e)</span>Es kommen 20 E-Mails unabhängig voneinander an. Wie groß ist die Wahrscheinlichkeit, dass keine davon Spam ist? <span class="pt">(1 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A6 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 6</span><span>(9 Punkte)</span></h2>
+<p>Die Ladezeit \(X\) (in Sekunden) einer Webseite sei eine stetige Zufallsvariable mit der Dichte</p>
+<p style="text-align:center">\(f(x)=\begin{cases}c\cdot(4-x), & 0\le x\le 4\\ 0, & \text{sonst.}\end{cases}\)</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Bestimmen Sie \(c\) derart, dass \(f(x)\) eine gültige Dichtefunktion ist. Geben Sie Ihren Lösungsweg an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie den Erwartungswert \(E(X)\). <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(c)</span>Bestimmen Sie die Verteilungsfunktion \(F(x)\) (mit Fallunterscheidung) und berechnen Sie damit \(P(X&gt;2)\). <span class="pt">(3 P)</span><div class="lk l"></div></li>
+</ol>
+<p>Die Zeit \(T\) (in Minuten) bis zum nächsten Seitenaufruf sei exponentialverteilt mit \(\lambda=0.5\), d. h. \(F(t)=1-e^{-0.5t}\) für \(t\ge0\).</p>
+<ol class="tl">
+<li><span class="lb">(d)</span>Berechnen Sie \(E(T)\) und \(P(T&gt;3)\). <span class="pt">(2 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A7 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 7</span><span>(10 Punkte)</span></h2>
+<p>Der Anteil \(X\) der Akkukapazität, die nach einem Tag noch vorhanden ist, werde durch eine Zufallsvariable mit der Dichte</p>
+<p style="text-align:center">\(f(x;a)=\begin{cases}(a+2)\,x^{a+1}, & 0&lt;x&lt;1\\ 0, & \text{sonst}\end{cases}\qquad\text{mit }a&gt;-2\)</p>
+<p>beschrieben. Bestimmen Sie den Maximum-Likelihood-Schätzer für \(a\) basierend auf einer Stichprobe von \(n\) Beobachtungen \(X_1,\dots,X_n\), die unabhängig und identisch verteilt sind.</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Stellen Sie die Likelihood- und die Log-Likelihood-Funktion auf. Geben Sie Ihren vollständigen Lösungsweg an und vereinfachen Sie so weit wie möglich. <span class="pt">(4 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(b)</span>Bestimmen Sie auf Grundlage Ihres Ergebnisses aus (a) den Maximum-Likelihood-Schätzer \(\hat a\). Geben Sie Ihren vollständigen Lösungsweg an. <span class="pt">(3 P)</span><div class="lk l"></div></li>
+<li><span class="lb">(c)</span>Prüfen Sie die hinreichende Bedingung (Bedingung zweiter Ordnung). <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Berechnen Sie den Schätzwert für die Stichprobe \(x=(0.5,\ 0.25,\ 0.5)\). <span class="pt">(1 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<!-- A8 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 8</span><span>(5 Punkte)</span></h2>
+<p>Sei \(X\) eine Zufallsvariable mit \(E(X)=\mu\) und \(Var(X)=\sigma^2\). Sie ziehen eine 3-fache, unabhängige Zufallsstichprobe \(\{X_1,X_2,X_3\}\) und betrachten die Schätzer</p>
+<p style="text-align:center">\(T_1=0.5X_1+0.3X_2+0.2X_3\qquad\text{und}\qquad T_2=X_1-X_2+X_3.\)</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Zeigen Sie, dass beide Schätzer erwartungstreu für \(\mu\) sind. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie \(Var(T_1)\) und \(Var(T_2)\). Welcher der beiden Schätzer ist vorzuziehen? Ist das arithmetische Mittel \(\bar X\) noch besser? Begründen Sie. <span class="pt">(3 P)</span><div class="lk l"></div></li>
+</ol></div>
+
+<!-- A9 -->
+<div class="kl-auf kl-pb"><h2><span>Aufgabe 9</span><span>(8 Punkte)</span></h2>
+<p>Ein Hersteller gibt an, dass ein Akku im Mittel <b>genau 10 Stunden</b> hält. Ein Testmagazin bezweifelt diese Angabe (in beide Richtungen) und misst \(n=25\) zufällig ausgewählte Akkus. Es ergibt sich \(\bar x=9.4\) Stunden. Die Laufzeit sei normalverteilt mit <b>bekannter</b> Standardabweichung \(\sigma=1.5\) Stunden. Signifikanzniveau \(\alpha=0.05\).</p>
+<ol class="tl">
+<li><span class="lb">(a)</span>Stellen Sie das passende Hypothesenpaar auf. <span class="pt">(2 P)</span><div class="lk s"></div></li>
+<li><span class="lb">(b)</span>Berechnen Sie die Prüfgröße und geben Sie ihre Verteilung unter \(H_0\) an. <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(c)</span>Treffen Sie die Testentscheidung mithilfe des kritischen Wertes und formulieren Sie das Ergebnis im Sachzusammenhang. (Hinweis: \(z_{0.975}=1.96\)) <span class="pt">(2 P)</span><div class="lk m"></div></li>
+<li><span class="lb">(d)</span>Berechnen Sie den p-Wert des Tests. (Hinweis: \(\Phi(2)=0.9772\)) <span class="pt">(2 P)</span><div class="lk s"></div></li>
+</ol></div>
+
+<div class="kl-auf"><h2><span>Begründung nicht lösbare Aufgabe(n)</span><span></span></h2>
+<p class="small">Nutzen Sie die folgende Box für jegliche Erläuterungen, wenn Aufgabenstellungen Ihrer Meinung nach nicht lösbar sind. Kennzeichnen Sie hierfür eindeutig, auf welche Aufgabe Sie sich beziehen.</p>
+<div class="lk l"></div></div>
+</section>

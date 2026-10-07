@@ -1,0 +1,45 @@
+<section class="t0 kl">
+<div class="kl-deck">
+<h1>Probeklausur 4 Statistik (Teil B)</h1>
+<div class="sub">Statistik und Data Science I · Probeklausur 4 für den Zweittermin (09.10.2026) · R am Computer<br><span class="small">Übungsklausur zur Vorbereitung – keine offizielle Klausur</span></div>
+<div class="kl-fields"><div>Name, Vorname</div><div>Matrikel-Nr.</div><div>Raum</div><div>Platz-Nr.</div></div>
+<p><b>Bearbeitungszeit:</b> 60 Minuten &nbsp;·&nbsp; <b>Anzahl der Aufgaben:</b> 1 &nbsp;·&nbsp; <b>Gesamtpunktzahl:</b> 45</p>
+<p><b>Zugelassene Hilfsmittel:</b> zugelassener Taschenrechner · Schreibutensilien · ein (auch beidseitig) handschriftlich beschriebenes DIN-A4-Blatt, das mit Matrikelnummer, Raum und Platznummer gekennzeichnet ist.</p>
+<table class="kl-pt"><tr><th>Teilaufgabe</th><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><th>Σ</th></tr>
+<tr><th>Punkte</th><td>2</td><td>4</td><td>4</td><td>4</td><td>7</td><td>4</td><td>6</td><td>8</td><td>6</td><th>45</th></tr>
+<tr><th>erreicht</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><th></th></tr></table>
+<div class="kl-hin">
+<h3>Hinweise</h3>
+<ul>
+<li>Bei der Bewertung werden ausschließlich die auf ILIAS eingereichten Lösungen berücksichtigt. Speichern Sie Ihre Antworten und insbesondere Ihr R-Skript regelmäßig. Arbeiten Sie ausschließlich im Ordner <i>Dokumente</i>.</li>
+<li>Geben Sie pro Teilaufgabe (1) den <b>R-Code und R-Output</b> und (2) – falls gefragt – eine <b>inhaltliche Antwort in vollen Sätzen</b> (ohne R-Code) an. Bei allen Antworten wird erwartet, dass Sie Ihren gesamten Lösungsweg aufzeigen.</li>
+<li>Numerische Ergebnisse (auch jene in Antwortsätzen) sind – sofern nicht anders angegeben – auf <b>drei Nachkommastellen</b> zu runden. Nutzen Sie zum Runden stets einen geeigneten R-Befehl. Es gilt die Dezimalpunkt-Notation.</li>
+<li>Grafiken: Im Titel (Option <code>main</code>) müssen der Aufgabenteil, Ihre Matrikelnummer und Ihre Sitzplatznummer stehen. Die Achsen sind der Aufgabenstellung entsprechend zu beschriften.</li>
+<li>Folgefehler werden berücksichtigt. Fehlende Objekte aus vorherigen Teilaufgaben sind bei Bedarf mit nachvollziehbarem R-Code anderweitig zu erstellen. Fehlerhaften R-Code, der nicht Teil der Antwort ist, löschen Sie aus der Antwort.</li>
+</ul>
+<p class="small"><b>Zu Hause:</b> Schreiben Sie statt in ILIAS alles in ein R-Skript <code>Probeklausur4_B.R</code>: unter jede Teilaufgabe den Code, den Output als Kommentar (<code>#</code>) und den Antwortsatz als Kommentar. Die Datei <code>Kaffee.csv</code> liegt im Lernpaket im Ordner <i>uebungsdaten</i> – kopieren Sie sie in Ihren Arbeitsordner.</p>
+</div>
+</div>
+
+<div class="kl-auf"><h2><span>Aufgabe 1</span><span>(45 Punkte)</span></h2>
+<p>Ein Netzwerk Göttinger Cafés wertet 90 zufällig ausgewählte Bestellungen aus. Die Daten sind in der Datei <code>Kaffee.csv</code> abgespeichert. Diese Datei ist auf Ihrem lokalen Laufwerk in dem Ordner <i>Dokumente</i> hinterlegt. In diesem Ordner sollten Sie auch mit R arbeiten und jegliche Dateien (Skripte, Abbildungsdateien etc.), welche Sie abspeichern, hinterlegen. <b>Hinweis:</b> In der Datei sind die Spalten durch Semikolons getrennt und als Dezimaltrennzeichen wird ein Komma verwendet.</p>
+<p>Der Datensatz enthält folgende Variablen:</p>
+<table class="dat" style="text-align:left"><tr><th>Variablenbezeichnung</th><th>Erläuterung</th></tr>
+<tr><td><code>Bestellung</code></td><td>Kennung der Bestellung</td></tr>
+<tr><td><code>Stadtteil</code></td><td>Standort des Cafés (Innenstadt, Weende, Grone)</td></tr>
+<tr><td><code>Getraenk</code></td><td>bestelltes Getränk (Espresso, Cappuccino, Latte)</td></tr>
+<tr><td><code>Preis</code></td><td>Preis des Getränks in Euro</td></tr>
+<tr><td><code>Wartezeit</code></td><td>Wartezeit bis zur Ausgabe in Minuten</td></tr>
+<tr><td><code>Bewertung</code></td><td>Bewertung der Bestellung durch die Kundin bzw. den Kunden (1 bis 5 Sterne)</td></tr></table>
+<ol class="tl" style="margin-top:.6em">
+<li><span class="lb">(a)</span>Setzen Sie mittels <code>setwd(path.expand("~"))</code> Ihr Working Directory, um in dem lokalen Ordner <i>Dokumente</i> zu arbeiten.<br><span class="small">Nutzen Sie für Ihre Antwort das Kästchen zu Frage 1 in ILIAS.</span> <span class="pt">(2 P)</span></li>
+<li><span class="lb">(b)</span>Speichern Sie die in der Datei hinterlegten Daten als Data-Frame-Objekt <code>d</code> in R ab und geben Sie die ersten 6 Zeilen des Data-Frame-Objektes wieder. Achten Sie darauf, dass die Variable <code>Preis</code> als numerische Variable eingelesen wird.<br><span class="small">Nutzen Sie für Ihre Antwort das Kästchen zu Frage 2 in ILIAS.</span> <span class="pt">(4 P)</span></li>
+<li><span class="lb">(c)</span>Ermitteln Sie unter Einbezug eines passenden R-Befehls die Objekttypen der Variablen <code>Getraenk</code> und <code>Bewertung</code>. Welches Skalenniveau hat die Variable <code>Bewertung</code>?<br><span class="small">Nutzen Sie für Ihre Antwort die Kästchen zu den Fragen 3 und 4 in ILIAS.</span> <span class="pt">(4 P)</span></li>
+<li><span class="lb">(d)</span>Berechnen und nennen Sie das arithmetische Mittel und die <b>empirische</b> Varianz (mit Nenner \(n\)) der Variable <code>Preis</code>. Runden Sie Ihr Ergebnis auf drei Nachkommastellen.<br><span class="small">Nutzen Sie für Ihre Antwort die Kästchen zu den Fragen 5 und 6 in ILIAS.</span> <span class="pt">(4 P)</span></li>
+<li><span class="lb">(e)</span>Erstellen Sie ein Histogramm (mit Dichte auf der y-Achse) für die Variable <code>Wartezeit</code> mit den Intervallgrenzen \([0,2),\ [2,4),\ [4,8),\ [8,16)\). Zeichnen Sie zusätzlich einen Kerndichteschätzer (Standardeinstellungen) als Linie in dieselbe Grafik ein. Die Grafik soll den Titel <code>Sitz ..., Matr.Nr. ..., Aufgabenteil e)</code> tragen, die x-Achse soll mit <code>Wartezeit in Minuten</code> und die y-Achse mit <code>Dichte</code> beschriftet werden. Speichern Sie die Grafik als <code>Wartezeit.pdf</code> im Working Directory und laden Sie die Datei hoch.<br><span class="small">Nutzen Sie für Ihre Antwort die Kästchen zu den Fragen 7 und 8 in ILIAS.</span> <span class="pt">(7 P)</span></li>
+<li><span class="lb">(f)</span>Berechnen Sie mit einem einzigen geeigneten R-Befehl die durchschnittliche Bewertung je Stadtteil. In welchem Stadtteil wird im Mittel am besten bewertet?<br><span class="small">Nutzen Sie für Ihre Antwort die Kästchen zu den Fragen 9 und 10 in ILIAS.</span> <span class="pt">(4 P)</span></li>
+<li><span class="lb">(g)</span>Erstellen Sie eine Kontingenztabelle der absoluten Häufigkeiten von <code>Getraenk</code> und <code>Stadtteil</code>. Überprüfen Sie anschließend mit einem geeigneten Test zum Niveau \(\alpha=0.05\), ob die Wahl des Getränks vom Stadtteil abhängt. Nennen Sie das Hypothesenpaar, den p-Wert und Ihre Entscheidung.<br><span class="small">Nutzen Sie für Ihre Antwort die Kästchen zu den Fragen 11 und 12 in ILIAS.</span> <span class="pt">(6 P)</span></li>
+<li><span class="lb">(h)</span>Gehen Sie davon aus, dass die Wartezeit exponentialverteilt ist, \(X\sim Exp(\lambda)\). Schreiben Sie eine Funktion <code>logLik.exp(lambda, x)</code>, welche die <b>Log-Likelihood</b> für einen Parameter \(\lambda\) und Beobachtungen <code>x</code> berechnet. Werten Sie die Funktion für alle \(\lambda\in\{0.10,\ 0.15,\ \dots,\ 0.50\}\) aus und bestimmen Sie daraus den ML-Schätzer. Bestimmen Sie den ML-Schätzer zusätzlich numerisch mit <code>optimise</code> und vergleichen Sie mit \(1/\bar x\).<br><span class="small">Nutzen Sie für Ihre Antwort die Kästchen zu den Fragen 13 und 14 in ILIAS.</span> <span class="pt">(8 P)</span></li>
+<li><span class="lb">(i)</span>Die Café-Leitung behauptet, dass ein Cappuccino im Mittel <b>mehr als 3.20 Euro</b> kostet. Überprüfen Sie diese Behauptung mit einem geeigneten Test (Normalverteilung, unbekannte Varianz) zum Niveau \(\alpha=0.05\). Nennen Sie das Hypothesenpaar, den p-Wert und Ihre Testentscheidung im Sachzusammenhang.<br><span class="small">Nutzen Sie für Ihre Antwort die Kästchen zu den Fragen 15 und 16 in ILIAS.</span> <span class="pt">(6 P)</span></li>
+</ol></div>
+</section>
