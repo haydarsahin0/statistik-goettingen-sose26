@@ -1,0 +1,466 @@
+<style>
+@page{size:A4;margin:9mm 9mm 11mm}
+.w{width:auto!important;padding:0!important}
+body{background:#fff!important;font-size:10.6px!important;line-height:1.38!important}
+h1{font-size:23px!important;color:#1e3a8a;margin:0 0 1mm!important}
+.sub{color:#334155;margin-bottom:2mm}
+.sec{background:#1e3a8a;color:#fff;font:800 13px Inter;padding:1.4mm 3mm;border-radius:6px 6px 0 0;margin-top:3mm;break-after:avoid}
+.si{background:#e6ecf8;color:#0f1f4d;padding:1mm 3mm;font-size:10.3px;border:1px solid #c3cfeb;border-top:0;break-after:avoid}
+table.cmd{width:100%;border-collapse:collapse;margin-bottom:1mm}
+table.cmd td{border:1px solid #c3cfeb;padding:1mm 1.6mm;vertical-align:top}
+table.cmd td.c{width:60%}
+table.cmd td.t{background:#fbfcfe;color:#1d1d1f;font-family:Inter,Arial,sans-serif;font-size:10.4px}
+table.cmd tr{break-inside:avoid}
+pre.rb{margin:0;font:10px/1.32 "JetBrains Mono",monospace;white-space:pre-wrap;word-break:break-word;font-variant-ligatures:none;background:#0f1f4d;color:#fff;padding:1.2mm 2mm;border-radius:4px}
+pre.rb .o{color:#bfdbfe}
+pre.rb .c{color:#9ca3af}
+code{font-family:"JetBrains Mono",monospace;font-size:.95em;background:#eef2fb;padding:0 2px;border-radius:2px;font-variant-ligatures:none}
+.box{border:2px solid #1e3a8a;border-radius:8px;padding:2mm 3mm;margin:2mm 0}
+.box h3{margin:0 0 1mm;color:#1e3a8a;font:800 13px Inter}
+.toc{columns:2;font-size:10.5px}
+</style>
+<h1>R-Befehle für Teil B – komplett</h1><div class="sub">Jeder Befehl mit <b>türkischer Erklärung</b>, Beispiel und <b>echtem R-Output</b> (Datensatz <code>Beispiel_Mensa.csv</code>: 80 Personen, Variablen Person, Mensa, Typ, Dauer, Gerichte, Wartezeit). Dunkle Zeilen: was du tippst · hellblau: was R antwortet · grau: Kommentar.</div>
+<div class="box"><h3>Sınav akışı (60 dk, 45 P) – her alt soruda</h3>1) Kodu yaz, Strg+Enter ile çalıştır · 2) <b>Kod + çıktıyı</b> ILIAS'taki kutuya kopyala · 3) Sonucu <code>round(…, 3)</code> ile yuvarla · 4) İkinci kutuya <b>tam Almanca cümle</b> („Der Mittelwert der Variable … beträgt …“) · 5) Scripti sık sık kaydet · Grafikleri <code>pdf()</code>/<code>png()</code> + <code>dev.off()</code> ile kaydet ve yükle.</div>
+<div class="box"><h3>Inhalt</h3><div class="toc"><div>0 · Start, Arbeitsordner, Hilfe</div><div>1 · Daten einlesen</div><div>2 · Datentypen und Umwandlung</div><div>3 · Auf Daten zugreifen, filtern, sortieren</div><div>4 · Vektoren, Rechnen, Mengen</div><div>5 · Häufigkeiten und Kontingenztafeln</div><div>6 · Lage- und Streuungsmaße</div><div>7 · Zusammenhang zweier Merkmale</div><div>8 · Grafiken (speichern und hochladen)</div><div>9 · Verteilungen: d / p / q / r</div><div>10 · Simulation</div><div>11 · Likelihood und Maximum-Likelihood (Teil-B-Klassiker)</div><div>12 · Konfidenzintervalle</div><div>13 · Hypothesentests</div><div>14 · Lineare Regression</div><div>15 · Runden und Ausgeben</div><div>16 · Fehlermeldungen und was zu tun ist</div><div>17 · Antwortsätze für ILIAS (abschreiben, Zahlen ersetzen)</div><div>18 · Altklausur Teil B (04.03.2022) → welcher Abschnitt?</div></div></div>
+<div class="sec">0 · Start, Arbeitsordner, Hilfe</div><div class="si">Sınavda ilk 2 dakika: klasörü ayarla, dosyanın orada olduğunu kontrol et, scripti kaydet.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">setwd(path.expand(&quot;~&quot;))</pre></td><td class="t"><b>Çalışma klasörünü</b> ayarlar (ev klasörü). Sınavda soru tam olarak bunu ister – <b>ilk satır</b>.</td></tr>
+<tr><td class="c"><pre class="rb">getwd()
+<span class="c"># [1] &quot;/home/IhrName&quot;</span></pre></td><td class="t">Şu an hangi klasörde olduğunu gösterir. Kontrol için.</td></tr>
+<tr><td class="c"><pre class="rb">list.files()
+<span class="c"># [1] &quot;Daten.csv&quot; &quot;Klausur.R&quot;</span></pre></td><td class="t">Klasördeki dosyaları listeler. CSV dosyası listede yoksa okuyamazsın → yanlış klasör.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; <span class="c"># Das ist ein Kommentar</span></pre></td><td class="t"><code>#</code> ile başlayan satır <b>yorum</b>dur, çalışmaz. Kodunu açıklamak için kullan.</td></tr>
+<tr><td class="c"><pre class="rb">?mean      <span class="c"># oder help(mean)</span></pre></td><td class="t">Bir komutun <b>yardım sayfasını</b> açar (argümanları unutursan).</td></tr>
+<tr><td class="c"><pre class="rb">rm(list = ls())</pre></td><td class="t">Bellekteki <b>bütün nesneleri siler</b> (temiz başlangıç).</td></tr>
+</table>
+<div class="sec">1 · Daten einlesen</div><div class="si">Önce dosyanın ilk satırına bak: ayraç virgül mü noktalı virgül mü? Ondalık nokta mı virgül mü?</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; d &lt;- read.csv(&quot;Beispiel_Mensa.csv&quot;)</pre></td><td class="t">CSV dosyasını okur ve <code>d</code> adlı <b>data frame</b> olarak kaydeder. Varsayılan: <code>sep=","</code>, <code>dec="."</code>, <code>header=TRUE</code>.</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Alman formatı (3,5 ; 2,1):</span>
+<span class="c"># d &lt;- read.csv(&quot;Datei.csv&quot;, sep = &quot;;&quot;, dec = &quot;,&quot;)</span></pre></td><td class="t">Dosyada <b>; ayraç</b> ve <b>virgüllü ondalık</b> varsa (Almanya formatı) bu iki argümanı mutlaka yaz. Yoksa hata: „mehr Spalten als Spaltennamen“.</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># d &lt;- read.csv2(&quot;Datei.csv&quot;)</span></pre></td><td class="t"><code>read.csv2</code> = <code>sep=";", dec=","</code> varsayılan olan kısayol.</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># d &lt;- read.table(&quot;Datei.txt&quot;, header = TRUE, sep = &quot;\t&quot;)</span></pre></td><td class="t"><code>.txt</code> veya sekmeyle ayrılmış dosyalar için. <code>header=TRUE</code>: ilk satır sütun adları.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; head(d, 3)
+<span class="o">  Person Mensa         Typ Dauer Gerichte Wartezeit</span>
+<span class="o">1    P01  Turm Mitarbeiter    30        2      0.76</span>
+<span class="o">2    P02  Nord     Student    29        2      1.87</span>
+<span class="o">3    P03  Turm     Student    37        5      3.11</span></pre></td><td class="t">İlk satırları gösterir (varsayılan 6). Okumanın doğru olduğunu <b>kontrol et</b>.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; str(d)
+<span class="o">&#x27;data.frame&#x27;:	80 obs. of  6 variables:</span>
+<span class="o"> $ Person   : chr  &quot;P01&quot; &quot;P02&quot; &quot;P03&quot; &quot;P04&quot; ...</span>
+<span class="o"> $ Mensa    : chr  &quot;Turm&quot; &quot;Nord&quot; &quot;Turm&quot; &quot;Zentral&quot; ...</span>
+<span class="o"> $ Typ      : chr  &quot;Mitarbeiter&quot; &quot;Student&quot; &quot;Student&quot; &quot;Student&quot; ...</span>
+<span class="o"> $ Dauer    : int  30 29 37 42 36 14 35 34 37 22 ...</span>
+<span class="o"> $ Gerichte : int  2 2 5 2 0 0 0 0 5 1 ...</span>
+<span class="o"> $ Wartezeit: num  0.76 1.87 3.11 1.67 11.75 ...</span></pre></td><td class="t"><b>Yapı</b>: kaç satır/sütun, her sütunun tipi (num, int, chr). Sayılar <code>chr</code> görünüyorsa <code>dec</code> yanlış!</td></tr>
+<tr><td class="c"><pre class="rb">&gt; dim(d); nrow(d); ncol(d)
+<span class="o">[1] 80  6</span>
+<span class="o">[1] 80</span>
+<span class="o">[1] 6</span></pre></td><td class="t">Boyut: (satır, sütun) · satır sayısı · sütun sayısı.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; names(d)
+<span class="o">[1] &quot;Person&quot;    &quot;Mensa&quot;     &quot;Typ&quot;       &quot;Dauer&quot;     &quot;Gerichte&quot; </span>
+<span class="o">[6] &quot;Wartezeit&quot;</span></pre></td><td class="t">Sütun (değişken) adları.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; summary(d$Dauer)
+<span class="o">   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
+<span class="o">  14.00   25.00   30.00   30.64   36.00   48.00 </span></pre></td><td class="t">Min, 1. çeyrek, medyan, ortalama, 3. çeyrek, max – tek seferde.</td></tr>
+</table>
+<div class="sec">2 · Datentypen und Umwandlung</div><div class="si">„Welchen Datentyp hat die Variable?“ sorusu için. Cevap cümlesi: „Die Variable … ist vom Typ …“.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; class(d$Mensa); class(d$Dauer); class(d$Wartezeit)
+<span class="o">[1] &quot;character&quot;</span>
+<span class="o">[1] &quot;integer&quot;</span>
+<span class="o">[1] &quot;numeric&quot;</span></pre></td><td class="t">R'deki <b>sınıf</b>: character (metin), integer (tam sayı), numeric (ondalıklı), factor (kategori).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; typeof(d$Dauer)
+<span class="o">[1] &quot;integer&quot;</span></pre></td><td class="t"><b>Depolama tipi</b> (integer/double/character). Altklausur'da <code>typeof</code> soruldu.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; is.numeric(d$Dauer); is.character(d$Mensa)
+<span class="o">[1] TRUE</span>
+<span class="o">[1] TRUE</span></pre></td><td class="t">Tip kontrolü: TRUE/FALSE döner.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; as.numeric(&quot;3.5&quot;); as.character(12)
+<span class="o">[1] 3.5</span>
+<span class="o">[1] &quot;12&quot;</span></pre></td><td class="t">Tip <b>dönüştürme</b>. Sayı metin olarak okunduysa <code>as.numeric</code>.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; d$Mensa &lt;- factor(d$Mensa)
+&gt; levels(d$Mensa)
+<span class="o">[1] &quot;Nord&quot;    &quot;Turm&quot;    &quot;Zentral&quot;</span></pre></td><td class="t">Metni <b>kategorik değişkene (factor)</b> çevirir; <code>levels</code> kategorileri gösterir.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; z &lt;- factor(c(&quot;gut&quot;,&quot;schlecht&quot;,&quot;gut&quot;), levels = c(&quot;schlecht&quot;,&quot;gut&quot;), ordered = TRUE)
+&gt; z
+<span class="o">[1] gut      schlecht gut     </span>
+<span class="o">Levels: schlecht &lt; gut</span></pre></td><td class="t"><b>Ordinal</b> değişken: sıralı faktör (<code>ordered=TRUE</code>, sıra <code>levels</code> ile).</td></tr>
+</table>
+<div class="sec">3 · Auf Daten zugreifen, filtern, sortieren</div><div class="si">Bir sütunu veya belirli satırları seçmek – neredeyse her soruda lazım.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; d$Dauer[1:5]
+<span class="o">[1] 30 29 37 42 36</span></pre></td><td class="t"><code>$</code> ile <b>bir sütunu</b> seç; <code>[1:5]</code> ile ilk 5 değer.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; d[2, ]; d[1:2, c(&quot;Mensa&quot;, &quot;Dauer&quot;)]
+<span class="o">  Person Mensa     Typ Dauer Gerichte Wartezeit</span>
+<span class="o">2    P02  Nord Student    29        2      1.87</span>
+<span class="o">  Mensa Dauer</span>
+<span class="o">1  Turm    30</span>
+<span class="o">2  Nord    29</span></pre></td><td class="t"><code>d[satır, sütun]</code>: virgülden önce satır, sonra sütun. Boş = hepsi.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; nord &lt;- d$Dauer[d$Mensa == &quot;Nord&quot;]
+&gt; length(nord); mean(nord)
+<span class="o">[1] 24</span>
+<span class="o">[1] 31.20833</span></pre></td><td class="t">Koşulla seçme: sadece Mensa = „Nord“ olanların Dauer değerleri. <code>==</code> (iki eşittir!).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; t1 &lt;- subset(d, Mensa == &quot;Nord&quot; &amp; Dauer &gt; 40)
+&gt; nrow(t1)
+<span class="o">[1] 3</span></pre></td><td class="t"><code>subset</code>: koşula uyan <b>satırlar</b>. <code>&</code> = ve, <code>|</code> = veya.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; which(d$Wartezeit &gt; 15)
+<span class="o">[1] 44</span></pre></td><td class="t">Koşulu sağlayan <b>satır numaraları</b>.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; which.max(d$Dauer); d$Person[which.max(d$Dauer)]
+<span class="o">[1] 49</span>
+<span class="o">[1] &quot;P49&quot;</span></pre></td><td class="t">En büyük değerin <b>konumu</b> (ve o kişinin adı). <code>which.min</code> en küçük.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; sort(d$Gerichte)[1:10]; sort(d$Dauer, decreasing = TRUE)[1:3]
+<span class="o"> [1] 0 0 0 0 0 0 0 0 0 0</span>
+<span class="o">[1] 48 47 46</span></pre></td><td class="t">Sıralar (küçükten büyüğe; <code>decreasing=TRUE</code> tersten).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; head(d[order(d$Dauer), ], 3)
+<span class="o">   Person Mensa     Typ Dauer Gerichte Wartezeit</span>
+<span class="o">6     P06  Nord Student    14        0      1.18</span>
+<span class="o">64    P64  Turm Student    14        1      7.35</span>
+<span class="o">25    P25  Nord Student    15        1      0.11</span></pre></td><td class="t">Bütün tabloyu bir sütuna göre sıralar.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; d$lang &lt;- ifelse(d$Dauer &gt; 30, &quot;lang&quot;, &quot;kurz&quot;)
+&gt; table(d$lang)
+<span class="o"></span>
+<span class="o">kurz lang </span>
+<span class="o">  41   39 </span></pre></td><td class="t"><b>Yeni sütun</b> oluştur; <code>ifelse(koşul, evet, hayır)</code>.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; d$Klasse &lt;- cut(d$Dauer, breaks = c(10, 20, 30, 40, 50), right = FALSE)
+&gt; table(d$Klasse)
+<span class="o"></span>
+<span class="o">[10,20) [20,30) [30,40) [40,50) </span>
+<span class="o">      5      32      34       9 </span></pre></td><td class="t">Sayıları <b>sınıflara</b> ayırır. <code>right=FALSE</code> → [10,20) sol kapalı.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; x &lt;- c(2, NA, 5)
+&gt; is.na(x); sum(is.na(x)); mean(x, na.rm = TRUE)
+<span class="o">[1] FALSE  TRUE FALSE</span>
+<span class="o">[1] 1</span>
+<span class="o">[1] 3.5</span></pre></td><td class="t">Eksik değer (NA): bul, say, hesaplarda <code>na.rm=TRUE</code> ile atla.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; unique(d$Mensa); &quot;Nord&quot; %in% d$Mensa
+<span class="o">[1] Turm    Nord    Zentral</span>
+<span class="o">Levels: Nord Turm Zentral</span>
+<span class="o">[1] TRUE</span></pre></td><td class="t">Farklı değerler · bir değer içinde var mı?</td></tr>
+</table>
+<div class="sec">4 · Vektoren, Rechnen, Mengen</div><div class="si">Temel hesaplar. log = doğal logaritma (ln)!</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; x &lt;- c(4, 1, 3); y &lt;- 1:5; seq(0, 1, by = 0.25); rep(2, 3)
+<span class="o">[1] 0.00 0.25 0.50 0.75 1.00</span>
+<span class="o">[1] 2 2 2</span></pre></td><td class="t"><code>c()</code> vektör kurar · <code>1:5</code> ardışık sayılar · <code>seq</code> adımlı dizi · <code>rep</code> tekrar.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; sum(x); prod(x); length(x); cumsum(x)
+<span class="o">[1] 8</span>
+<span class="o">[1] 12</span>
+<span class="o">[1] 3</span>
+<span class="o">[1] 4 5 8</span></pre></td><td class="t">Toplam · <b>çarpım</b> (Likelihood!) · eleman sayısı · kümülatif toplam.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; max(x); min(x); range(x)
+<span class="o">[1] 4</span>
+<span class="o">[1] 1</span>
+<span class="o">[1] 1 4</span></pre></td><td class="t">En büyük · en küçük · ikisi birden.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; sqrt(16); exp(1); log(exp(2)); log(100, base = 10); abs(-3)
+<span class="o">[1] 4</span>
+<span class="o">[1] 2.718282</span>
+<span class="o">[1] 2</span>
+<span class="o">[1] 2</span>
+<span class="o">[1] 3</span></pre></td><td class="t">Karekök · e üzeri · <b>log = ln</b> · 10 tabanlı log · mutlak değer.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; choose(10, 2); factorial(4)
+<span class="o">[1] 45</span>
+<span class="o">[1] 24</span></pre></td><td class="t">Binom katsayısı \(\binom{10}{2}\) · faktöriyel 4!.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; A &lt;- 3:6; B &lt;- c(2, 4, 6)
+&gt; union(A, B); intersect(A, B); setdiff(A, B); is.element(6, B)
+<span class="o">[1] 3 4 5 6 2</span>
+<span class="o">[1] 4 6</span>
+<span class="o">[1] 3 5</span>
+<span class="o">[1] TRUE</span></pre></td><td class="t">Kümeler: birleşim ∪ · kesişim ∩ · fark A\B · eleman mı? (Testat 0).</td></tr>
+</table>
+<div class="sec">5 · Häufigkeiten und Kontingenztafeln</div><div class="si">Kategorik değişkenler için.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; table(d$Mensa)
+<span class="o"></span>
+<span class="o">   Nord    Turm Zentral </span>
+<span class="o">     24      25      31 </span></pre></td><td class="t"><b>Mutlak frekanslar</b> (kaç kez).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; round(prop.table(table(d$Mensa)), 3)
+<span class="o"></span>
+<span class="o">   Nord    Turm Zentral </span>
+<span class="o">  0.300   0.312   0.388 </span></pre></td><td class="t"><b>Göreli frekanslar</b> (oranlar, toplamı 1).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; tab &lt;- table(d$Mensa, d$Typ)
+&gt; tab
+<span class="o">         </span>
+<span class="o">          Mitarbeiter Student</span>
+<span class="o">  Nord             10      14</span>
+<span class="o">  Turm             11      14</span>
+<span class="o">  Zentral           6      25</span></pre></td><td class="t">İki değişkenli <b>Kontingenztafel</b> (satır × sütun).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; addmargins(tab)
+<span class="o">         </span>
+<span class="o">          Mitarbeiter Student Sum</span>
+<span class="o">  Nord             10      14  24</span>
+<span class="o">  Turm             11      14  25</span>
+<span class="o">  Zentral           6      25  31</span>
+<span class="o">  Sum              27      53  80</span></pre></td><td class="t">Satır ve sütun <b>toplamlarını</b> ekler.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; round(prop.table(tab, margin = 1), 3)
+<span class="o">         </span>
+<span class="o">          Mitarbeiter Student</span>
+<span class="o">  Nord          0.417   0.583</span>
+<span class="o">  Turm          0.440   0.560</span>
+<span class="o">  Zentral       0.194   0.806</span></pre></td><td class="t"><b>Satır içi oranlar</b> (koşullu): her Mensa'da Student/Mitarbeiter oranı. <code>margin=2</code> sütun içi.</td></tr>
+</table>
+<div class="sec">6 · Lage- und Streuungsmaße</div><div class="si">Dikkat: <code>var()</code> ve <code>sd()</code> \(n-1\) ile böler (düzeltilmiş). Empirik varyans istenirse çevir!</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; mean(d$Dauer); median(d$Dauer)
+<span class="o">[1] 30.6375</span>
+<span class="o">[1] 30</span></pre></td><td class="t">Aritmetik ortalama · medyan.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; names(which.max(table(d$Gerichte)))
+<span class="o">[1] &quot;1&quot;</span></pre></td><td class="t"><b>Modus</b> (en sık değer) – R'de hazır komut yok, böyle bulunur.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; var(d$Dauer); sd(d$Dauer)
+<span class="o">[1] 58.53782</span>
+<span class="o">[1] 7.651001</span></pre></td><td class="t"><b>Düzeltilmiş</b> (unverzerrte) varyans \(s_*^2\) ve std. sapma (\(n-1\) ile).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; n &lt;- length(d$Dauer)
+&gt; var(d$Dauer) * (n - 1) / n
+<span class="o">[1] 57.80609</span>
+&gt; mean((d$Dauer - mean(d$Dauer))^2)
+<span class="o">[1] 57.80609</span></pre></td><td class="t"><b>Empirik</b> varyans \(s^2\) (\(n\) ile böler) – iki yol, aynı sonuç.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; quantile(d$Dauer, probs = c(0.25, 0.5, 0.75))
+<span class="o">25% 50% 75% </span>
+<span class="o"> 25  30  36 </span></pre></td><td class="t">Kantiller (çeyrekler). Derslerdeki tanım için <code>type = 2</code> eklenebilir.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; quantile(d$Dauer, 0.9, type = 2)
+<span class="o">90% </span>
+<span class="o"> 40 </span></pre></td><td class="t"><code>type=2</code>: ders tanımı (nα tam sayıysa iki değerin ortalaması).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; IQR(d$Dauer); diff(range(d$Dauer))
+<span class="o">[1] 11</span>
+<span class="o">[1] 34</span></pre></td><td class="t">Çeyrekler açıklığı · değişim aralığı (Spannweite).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; tapply(d$Dauer, d$Mensa, mean)
+<span class="o">    Nord     Turm  Zentral </span>
+<span class="o">31.20833 28.52000 31.90323 </span></pre></td><td class="t"><b>Gruplara göre</b> ortalama (her Mensa için). Başka fonksiyon da olur (median, sd…).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; aggregate(Dauer ~ Mensa, data = d, FUN = mean)
+<span class="o">    Mensa    Dauer</span>
+<span class="o">1    Nord 31.20833</span>
+<span class="o">2    Turm 28.52000</span>
+<span class="o">3 Zentral 31.90323</span></pre></td><td class="t">Aynısı, tablo hâlinde.</td></tr>
+</table>
+<div class="sec">7 · Zusammenhang zweier Merkmale</div><div class="si">Kovaryans ve korelasyon; R'nin <code>cov</code>'u da \(n-1\) ile böler.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; cov(d$Dauer, d$Wartezeit); cor(d$Dauer, d$Wartezeit)
+<span class="o">[1] 2.818299</span>
+<span class="o">[1] 0.08664249</span></pre></td><td class="t">Kovaryans (\(n-1\)) · <b>Bravais-Pearson korelasyonu</b> r (−1…1).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; cor(d$Dauer, d$Wartezeit, method = &quot;spearman&quot;)
+<span class="o">[1] 0.0794891</span></pre></td><td class="t"><b>Spearman sıra korelasyonu</b>.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; n &lt;- nrow(d); cov(d$Dauer, d$Wartezeit) * (n - 1) / n
+<span class="o">[1] 2.78307</span></pre></td><td class="t">Empirik kovaryans (\(n\) ile).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; chisq.test(tab, correct = FALSE)$statistic
+<span class="o">X-squared </span>
+<span class="o"> 4.720423 </span>
+&gt; chisq.test(tab)$expected
+<span class="o">         </span>
+<span class="o">          Mitarbeiter Student</span>
+<span class="o">  Nord         8.1000 15.9000</span>
+<span class="o">  Turm         8.4375 16.5625</span>
+<span class="o">  Zentral     10.4625 20.5375</span></pre></td><td class="t">Kontingenztafel için \(\chi^2\) değeri ve bağımsızlıkta <b>beklenen frekanslar</b>.</td></tr>
+</table>
+<div class="sec">8 · Grafiken (speichern und hochladen)</div><div class="si">Başlıkta (<code>main</code>) görev harfi, Matrikelnummer ve Platznummer olmalı; eksenleri adlandır.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; pdf(&quot;Histogramm.pdf&quot;)
+&gt; hist(d$Dauer, breaks = c(10, 20, 30, 40, 50), right = FALSE, freq = FALSE,
++      main = &quot;Aufgabe e) 12345678 Platz 7&quot;, xlab = &quot;Dauer (min)&quot;, ylab = &quot;Dichte&quot;)
+&gt; lines(density(d$Dauer))
+&gt; dev.off()
+<span class="o">null device </span>
+<span class="o">          1 </span></pre></td><td class="t"><b>Histogram</b>: <code>breaks</code> sınıf sınırları, <code>right=FALSE</code> sol kapalı, <code>freq=FALSE</code> yoğunluk (alan = 1). <code>lines(density())</code> çekirdek yoğunluğu ekler. <code>pdf()</code>…<code>dev.off()</code> dosyaya kaydeder.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; png(&quot;Boxplot.png&quot;)
+&gt; boxplot(Dauer ~ Mensa, data = d, main = &quot;Aufgabe f)&quot;, ylab = &quot;Dauer&quot;)
+&gt; dev.off()
+<span class="o">null device </span>
+<span class="o">          1 </span></pre></td><td class="t"><b>Boxplot</b>, gruplara göre (<code>y ~ grup</code>). <code>png()</code> PNG olarak kaydeder.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; pdf(&quot;Scatter.pdf&quot;)
+&gt; plot(d$Dauer, d$Wartezeit, xlab = &quot;Dauer&quot;, ylab = &quot;Wartezeit&quot;, main = &quot;Streudiagramm&quot;, pch = 16)
+&gt; abline(lm(Wartezeit ~ Dauer, data = d), col = &quot;red&quot;)
+&gt; dev.off()
+<span class="o">null device </span>
+<span class="o">          1 </span></pre></td><td class="t"><b>Saçılım grafiği</b> + regresyon doğrusu (<code>abline(lm(...))</code>).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; pdf(&quot;Balken.pdf&quot;)
+&gt; barplot(table(d$Mensa), main = &quot;Mensa&quot;, ylab = &quot;Anzahl&quot;)
+&gt; dev.off()
+<span class="o">null device </span>
+<span class="o">          1 </span></pre></td><td class="t"><b>Çubuk grafik</b> (kategorik veri).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; pdf(&quot;ECDF.pdf&quot;)
+&gt; plot(ecdf(d$Gerichte), main = &quot;Empirische Verteilungsfunktion&quot;)
+&gt; dev.off()
+<span class="o">null device </span>
+<span class="o">          1 </span></pre></td><td class="t"><b>Empirik dağılım fonksiyonu</b> \(\hat F(x)\) çizimi.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; pdf(&quot;Dichte.pdf&quot;)
+&gt; hist(d$Wartezeit, freq = FALSE, main = &quot;Wartezeit&quot;)
+&gt; curve(dexp(x, rate = 1 / mean(d$Wartezeit)), add = TRUE, col = &quot;blue&quot;)
+&gt; dev.off()
+<span class="o">null device </span>
+<span class="o">          1 </span></pre></td><td class="t">Histogram üstüne <b>teorik yoğunluk eğrisi</b> (<code>curve(..., add=TRUE)</code>).</td></tr>
+</table>
+<div class="sec">9 · Verteilungen: d / p / q / r</div><div class="si"><b>d</b> = yoğunluk/olasılık \(P(X=k)\) · <b>p</b> = \(P(X\le x)\) · <b>q</b> = kantil · <b>r</b> = rastgele sayı.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; dbinom(2, size = 10, prob = 0.2)
+<span class="o">[1] 0.3019899</span></pre></td><td class="t">Binom: \(P(X=2)\), \(X\sim B(10;0.2)\).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; pbinom(1, 10, 0.2); 1 - pbinom(1, 10, 0.2)
+<span class="o">[1] 0.3758096</span>
+<span class="o">[1] 0.6241904</span></pre></td><td class="t">\(P(X\le1)\) · \(P(X\ge2)=1-P(X\le1)\) (<b>k−1</b>!).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; dpois(0, lambda = 3); ppois(2, 3); 1 - ppois(2, 3)
+<span class="o">[1] 0.04978707</span>
+<span class="o">[1] 0.4231901</span>
+<span class="o">[1] 0.5768099</span></pre></td><td class="t">Poisson: \(P(X=0)\) · \(P(X\le2)\) · \(P(X>2)\).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; pnorm(76, mean = 70, sd = 4); 1 - pnorm(66, 70, 4); qnorm(0.975)
+<span class="o">[1] 0.9331928</span>
+<span class="o">[1] 0.8413447</span>
+<span class="o">[1] 1.959964</span></pre></td><td class="t">Normal: \(P(X\le76)\) · \(P(X>66)\) · \(z_{0.975}=1.96\). <b>sd</b> = σ (varyans değil!).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; pexp(2, rate = 0.25); 1 - pexp(6, 0.25); qexp(0.5, 0.25)
+<span class="o">[1] 0.3934693</span>
+<span class="o">[1] 0.2231302</span>
+<span class="o">[1] 2.772589</span></pre></td><td class="t">Üstel: \(P(T\le2)\) · \(P(T>6)\) · medyan. <code>rate</code> = λ = 1/ortalama.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; punif(9, min = 2, max = 12); qt(0.95, df = 15); qchisq(0.95, df = 1)
+<span class="o">[1] 0.7</span>
+<span class="o">[1] 1.75305</span>
+<span class="o">[1] 3.841459</span></pre></td><td class="t">Düzgün · t kantili \(t_{15;0.95}\) · χ² kantili.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; 1 - pt(2, df = 15); 2 * (1 - pnorm(2))
+<span class="o">[1] 0.0319725</span>
+<span class="o">[1] 0.04550026</span></pre></td><td class="t">t için sağ kuyruk · iki taraflı p-değeri (z = 2).</td></tr>
+</table>
+<div class="sec">10 · Simulation</div><div class="si">Rastgele deney; <code>set.seed</code> ile sonuç tekrarlanabilir olur.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; set.seed(123)
+&gt; sample(1:6, 5, replace = TRUE)
+<span class="o">[1] 3 6 3 2 2</span></pre></td><td class="t">Zar 5 kez (<b>geri koyarak</b>). <code>set.seed</code> her seferinde aynı sonucu verir.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; set.seed(123)
+&gt; w &lt;- matrix(sample(c(0, 1), 3 * 1000, replace = TRUE), nrow = 3)
+&gt; mean(colSums(w) == 3)
+<span class="o">[1] 0.115</span></pre></td><td class="t">1000 deneyde 3 yazı tura; „3 tura“ oranı ≈ 1/8 (Testat 3).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; set.seed(1)
+&gt; x &lt;- rbinom(10000, size = 5, prob = 0.25)
+&gt; mean(x == 2)
+<span class="o">[1] 0.2597</span></pre></td><td class="t">Binom'dan 10000 sayı, \(P(X=2)\) tahmini (Testat 4).</td></tr>
+</table>
+<div class="sec">11 · Likelihood und Maximum-Likelihood (Teil-B-Klassiker)</div><div class="si">Altklausur B: Poisson-Likelihood (λ = 20) ve λ = 17…23 arasında en iyisini bulmak.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; x &lt;- d$Gerichte
+&gt; L &lt;- prod(dpois(x, lambda = 1.5)); L
+<span class="o">[1] 5.475369e-54</span></pre></td><td class="t"><b>Likelihood</b> = tüm gözlemlerin olasılıklarının <b>çarpımı</b>.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; logL &lt;- sum(dpois(x, lambda = 1.5, log = TRUE)); logL
+<span class="o">[1] -122.6393</span></pre></td><td class="t"><b>Log-Likelihood</b> = log-olasılıkların <b>toplamı</b> (çok küçük sayılarda daha iyi).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; Lfun &lt;- function(lambda) prod(dpois(x, lambda))
+&gt; Lfun(1.5)
+<span class="o">[1] 5.475369e-54</span></pre></td><td class="t">Likelihood'u <b>fonksiyon</b> olarak tanımla.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; grid &lt;- seq(1, 2, by = 0.1)
+&gt; werte &lt;- sapply(grid, Lfun)
+&gt; grid[which.max(werte)]
+<span class="o">[1] 1.5</span></pre></td><td class="t"><b>Grid arama</b>: her λ için L hesapla, en büyüğün λ'sı = ML tahmini.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; optimize(function(l) sum(dpois(x, l, log = TRUE)), interval = c(0.1, 5), maximum = TRUE)$maximum
+<span class="o">[1] 1.525003</span>
+&gt; mean(x)
+<span class="o">[1] 1.525</span></pre></td><td class="t"><code>optimize(..., maximum=TRUE)</code>: sayısal maksimum. Poisson'da kontrol: \(\hat\lambda=\bar x\).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; 1 / mean(d$Wartezeit)
+<span class="o">[1] 0.2115003</span></pre></td><td class="t">Üstel dağılım ML: \(\hat\lambda=1/\bar x\) (kontrol için).</td></tr>
+</table>
+<div class="sec">12 · Konfidenzintervalle</div><div class="si">Elle formül ya da <code>t.test()$conf.int</code>.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; x &lt;- d$Dauer; n &lt;- length(x)
+&gt; mean(x) + c(-1, 1) * qnorm(0.975) * 6 / sqrt(n)
+<span class="o">[1] 29.32272 31.95228</span></pre></td><td class="t">σ <b>biliniyor</b> (örn. σ = 6): \(\bar x\pm z_{0.975}\,\sigma/\sqrt n\).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; mean(x) + c(-1, 1) * qt(0.975, df = n - 1) * sd(x) / sqrt(n)
+<span class="o">[1] 28.93485 32.34015</span></pre></td><td class="t">σ <b>bilinmiyor</b>: t kantili ve <code>sd</code>.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; t.test(x, conf.level = 0.95)$conf.int
+<span class="o">[1] 28.93485 32.34015</span>
+<span class="o">attr(,&quot;conf.level&quot;)</span>
+<span class="o">[1] 0.95</span></pre></td><td class="t">Aynısı hazır: <code>t.test</code>'in güven aralığı.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; p &lt;- mean(d$Typ == &quot;Student&quot;); n &lt;- nrow(d)
+&gt; p + c(-1, 1) * qnorm(0.975) * sqrt(p * (1 - p) / n)
+<span class="o">[1] 0.5588825 0.7661175</span></pre></td><td class="t"><b>Oran</b> için güven aralığı (Testat 6).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; s2 &lt;- var(x)
+&gt; c((n - 1) * s2 / qchisq(0.975, n - 1), (n - 1) * s2 / qchisq(0.025, n - 1))
+<span class="o">[1] 43.84533 82.12711</span></pre></td><td class="t"><b>Varyans</b> için güven aralığı (χ²).</td></tr>
+</table>
+<div class="sec">13 · Hypothesentests</div><div class="si">Karar her zaman: <b>p-value ≤ α → H₀ ret</b>. Cümle: „Da der p-Wert … kleiner als α = … ist, wird H₀ abgelehnt …“.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; t.test(d$Dauer, mu = 28, alternative = &quot;greater&quot;)
+<span class="o"></span>
+<span class="o">	One Sample t-test</span>
+<span class="o"></span>
+<span class="o">data:  d$Dauer</span>
+<span class="o">t = 3.0833, df = 79, p-value = 0.00141</span>
+<span class="o">alternative hypothesis: true mean is greater than 28</span>
+<span class="o">95 percent confidence interval:</span>
+<span class="o"> 29.21378      Inf</span>
+<span class="o">sample estimates:</span>
+<span class="o">mean of x </span>
+<span class="o">  30.6375 </span></pre></td><td class="t"><b>t-Test</b>: \(H_1:\mu>28\). <code>"less"</code> → <, <code>"two.sided"</code> (varsayılan) → ≠. Çıktıda t, df, <b>p-value</b>.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; tt &lt;- t.test(d$Dauer, mu = 28, alternative = &quot;greater&quot;)
+&gt; round(tt$p.value, 3); round(tt$statistic, 3)
+<span class="o">[1] 0.001</span>
+<span class="o">    t </span>
+<span class="o">3.083 </span></pre></td><td class="t">Sadece p-değerini / test istatistiğini çekmek.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; qt(0.95, df = 79)
+<span class="o">[1] 1.664371</span></pre></td><td class="t">Ret bölgesi için kritik değer: \(t\ge t_{79;0.95}\).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; z &lt;- (mean(d$Dauer) - 28) / (6 / sqrt(80)); z; 1 - pnorm(z)
+<span class="o">[1] 3.931753</span>
+<span class="o">[1] 4.216437e-05</span></pre></td><td class="t"><b>Gauß testi</b> elle (σ = 6 biliniyor): z ve sağ taraflı p-değeri.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; chisq.test(table(d$Mensa, d$Typ))
+<span class="o"></span>
+<span class="o">	Pearson&#x27;s Chi-squared test</span>
+<span class="o"></span>
+<span class="o">data:  table(d$Mensa, d$Typ)</span>
+<span class="o">X-squared = 4.7204, df = 2, p-value = 0.0944</span></pre></td><td class="t"><b>χ² bağımsızlık testi</b> (Kontingenztafel). p > 0.05 → bağımsızlık reddedilmez.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; chisq.test(table(d$Mensa), p = c(1/3, 1/3, 1/3))
+<span class="o"></span>
+<span class="o">	Chi-squared test for given probabilities</span>
+<span class="o"></span>
+<span class="o">data:  table(d$Mensa)</span>
+<span class="o">X-squared = 1.075, df = 2, p-value = 0.5842</span></pre></td><td class="t"><b>χ² uyum testi</b>: gözlenen frekanslar verilen oranlara uyuyor mu?</td></tr>
+<tr><td class="c"><pre class="rb">&gt; binom.test(9, 10, p = 0.5, alternative = &quot;greater&quot;)
+<span class="o"></span>
+<span class="o">	Exact binomial test</span>
+<span class="o"></span>
+<span class="o">data:  9 and 10</span>
+<span class="o">number of successes = 9, number of trials = 10, p-value =</span>
+<span class="o">0.01074</span>
+<span class="o">alternative hypothesis: true probability of success is greater than 0.5</span>
+<span class="o">95 percent confidence interval:</span>
+<span class="o"> 0.6058367 1.0000000</span>
+<span class="o">sample estimates:</span>
+<span class="o">probability of success </span>
+<span class="o">                   0.9 </span></pre></td><td class="t"><b>Kesin binom testi</b>: 10 denemede 9 başarı.</td></tr>
+</table>
+<div class="sec">14 · Lineare Regression</div><div class="si">y ~ x: önce bağımlı değişken (y), sonra açıklayıcı (x).</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; m &lt;- lm(Wartezeit ~ Dauer, data = d)
+&gt; coef(m)
+<span class="o">(Intercept)       Dauer </span>
+<span class="o"> 3.25308472  0.04814493 </span></pre></td><td class="t">KQ doğrusu: <b>a</b> (Intercept) ve <b>b</b> (eğim).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; summary(m)$r.squared
+<span class="o">[1] 0.007506921</span></pre></td><td class="t"><b>R²</b> (açıklanan varyans payı).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; summary(m)$coefficients
+<span class="o">              Estimate Std. Error   t value  Pr(&gt;|t|)</span>
+<span class="o">(Intercept) 3.25308472 1.97863889 1.6441023 0.1041800</span>
+<span class="o">Dauer       0.04814493 0.06268102 0.7680942 0.4447504</span></pre></td><td class="t">Katsayılar, std. hata, t değeri, <b>p-değeri</b> (eğim anlamlı mı?).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; predict(m, newdata = data.frame(Dauer = 40))
+<span class="o">       1 </span>
+<span class="o">5.178882 </span></pre></td><td class="t">x = 40 için <b>tahmin</b> \(\hat y\).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; head(resid(m), 3)
+<span class="o">        1         2         3 </span>
+<span class="o">-3.937433 -2.779288 -1.924447 </span></pre></td><td class="t"><b>Artıklar</b> \(e_i=y_i-\hat y_i\).</td></tr>
+</table>
+<div class="sec">15 · Runden und Ausgeben</div><div class="si">Sınav: sonuçları <code>round(…, 3)</code> ile yuvarla ve tam cümle yaz.</div><table class="cmd">
+<tr><td class="c"><pre class="rb">&gt; round(pi, 3); signif(123456, 2)
+<span class="o">[1] 3.142</span>
+<span class="o">[1] 120000</span></pre></td><td class="t">3 ondalığa yuvarla · anlamlı basamak.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; format(1/3, nsmall = 5); sprintf(&quot;%.10f&quot;, pi)
+<span class="o">[1] &quot;0.3333333&quot;</span>
+<span class="o">[1] &quot;3.1415926536&quot;</span></pre></td><td class="t">Sabit sayıda ondalık gösterme.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; sprintf(&quot;%.99f&quot;, pi)
+<span class="o">[1] &quot;3.141592653589793115997963468544185161590576171875000000000000000000000000000000000000000000000000000&quot;</span></pre></td><td class="t"><b>99 ondalık</b> (Altklausur B, „Yennefer-Zahl“) – <code>sprintf("%.99f", x)</code>.</td></tr>
+<tr><td class="c"><pre class="rb">&gt; options(scipen = 999); 6.938e-131 &gt; 0
+<span class="o">[1] TRUE</span></pre></td><td class="t">Bilimsel gösterimi kapatır (<code>e-131</code> = \(\times10^{-131}\)).</td></tr>
+<tr><td class="c"><pre class="rb">&gt; paste(&quot;Mittelwert:&quot;, round(mean(d$Dauer), 3)); cat(&quot;n =&quot;, nrow(d), &quot;\n&quot;)
+<span class="o">[1] &quot;Mittelwert: 30.637&quot;</span>
+<span class="o">n = 80 </span></pre></td><td class="t">Metin + sayı birleştirme / yazdırma.</td></tr>
+</table>
+<div class="sec">16 · Fehlermeldungen und was zu tun ist</div><div class="si">Hata alırsan panik yok – çoğu bu listede.</div><table class="cmd">
+<tr><td class="c"><pre class="rb"><span class="c"># Fehler: mehr Spalten als Spaltennamen</span></pre></td><td class="t">→ Ayraç yanlış: <code>read.csv(..., sep=";", dec=",")</code>.</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Fehler: Datei kann nicht geöffnet werden / cannot open file</span></pre></td><td class="t">→ Yanlış klasör: <code>setwd(path.expand("~"))</code>, <code>list.files()</code> ile kontrol.</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Fehler: Objekt nicht gefunden / object not found</span></pre></td><td class="t">→ Yazım hatası (büyük/küçük harf!) veya nesneyi henüz oluşturmadın.</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Fehler: konnte Funktion nicht finden</span></pre></td><td class="t">→ Komut adı yanlış yazıldı.</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Warnung: Argument ist weder numerisch noch logisch: gebe NA zurück</span></pre></td><td class="t">→ Sütun metin olarak okundu: <code>dec=","</code> unuttun ya da <code>as.numeric</code>.</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Ergebnis NA</span></pre></td><td class="t">→ Veride eksik değer: <code>mean(x, na.rm = TRUE)</code>.</td></tr>
+</table>
+<div class="sec">17 · Antwortsätze für ILIAS (abschreiben, Zahlen ersetzen)</div><div class="si">Sayısal olmayan her cevap <b>tam cümle</b> olmalı. Sayılar 3 ondalık.</div><table class="cmd">
+<tr><td class="c"><pre class="rb"><span class="c"># Datentyp</span></pre></td><td class="t">„Die Variable <i>Mensa</i> ist vom Typ <i>character</i>, die Variable <i>Dauer</i> vom Typ <i>integer</i> (ganzzahlig numerisch).“</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Mittelwert / Standardabweichung</span></pre></td><td class="t">„Das arithmetische Mittel der Variable <i>Dauer</i> beträgt 30.637. Die (unverzerrte) Standardabweichung beträgt 7.651.“</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Gruppenvergleich (tapply)</span></pre></td><td class="t">„Die mittlere Dauer ist in der Mensa <i>Zentral</i> mit 31.903 Minuten am höchsten.“</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Likelihood</span></pre></td><td class="t">„Die Likelihood aller Beobachtungen unter der Annahme λ = 20 beträgt L(λ = 20) = 6.938 · 10⁻¹³¹.“</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># ML-Schätzer (Grid / optimize)</span></pre></td><td class="t">„Das Maximum der Likelihood liegt bei λ = 22; dies ist der ML-Schätzer im betrachteten Bereich.“</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Test abgelehnt</span></pre></td><td class="t">„Da der p-Wert (0.001) kleiner als α = 0.05 ist, wird H₀ abgelehnt. Es ist statistisch abgesichert, dass die mittlere Dauer größer als 28 Minuten ist.“</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Test nicht abgelehnt</span></pre></td><td class="t">„Da der p-Wert (0.094) größer als α = 0.05 ist, kann H₀ nicht abgelehnt werden. Ein Zusammenhang zwischen Mensa und Typ kann nicht nachgewiesen werden.“</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Konfidenzintervall</span></pre></td><td class="t">„Das 95 %-Konfidenzintervall für den Erwartungswert lautet [28.935; 32.340]. Bei wiederholter Ziehung überdecken ca. 95 % solcher Intervalle den wahren Mittelwert.“</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># Regression</span></pre></td><td class="t">„Steigt die Dauer um eine Minute, steigt die Wartezeit im Mittel um 0.048 Minuten. R² = 0.008: Das Modell erklärt kaum Varianz.“</td></tr>
+</table>
+<div class="sec">18 · Altklausur Teil B (04.03.2022) → welcher Abschnitt?</div><div class="si">Gerçek sınavın her alt sorusu bu listenin hangi bölümüne denk geliyor.</div><table class="cmd">
+<tr><td class="c"><pre class="rb"><span class="c"># a) Arbeitsverzeichnis setzen</span></pre></td><td class="t">→ Abschnitt 0: <code>setwd(path.expand("~"))</code>, <code>getwd()</code></td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># b) Datensatz einlesen</span></pre></td><td class="t">→ Abschnitt 1: <code>d &lt;- read.csv("WitcherData1.csv", sep=",", dec=".", header=TRUE)</code>, <code>head(d)</code></td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># c) Datentyp von Variablen</span></pre></td><td class="t">→ Abschnitt 2: <code>typeof()</code> / <code>class()</code> + Satz</td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># d) Mittelwert, Standardabweichung</span></pre></td><td class="t">→ Abschnitt 6: <code>round(mean(d$x), 3)</code>, <code>round(sd(d$x), 3)</code></td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># e) Histogramm mit Klassen, links geschlossen</span></pre></td><td class="t">→ Abschnitt 8: <code>hist(..., breaks=c(...), right=FALSE, freq=FALSE, main=..., xlab=...)</code> in <code>pdf()</code>…<code>dev.off()</code></td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># f) Likelihood für λ = 20 (Poisson)</span></pre></td><td class="t">→ Abschnitt 11: <code>prod(dpois(d$x, 20))</code></td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># g) ML-Schätzer auf einem Gitter (17 … 23)</span></pre></td><td class="t">→ Abschnitt 11: <code>grid &lt;- 17:23; werte &lt;- sapply(grid, Lfun); grid[which.max(werte)]</code></td></tr>
+<tr><td class="c"><pre class="rb"><span class="c"># h) Zahl mit 99 Nachkommastellen</span></pre></td><td class="t">→ Abschnitt 15: <code>sprintf("%.99f", x)</code></td></tr>
+</table>

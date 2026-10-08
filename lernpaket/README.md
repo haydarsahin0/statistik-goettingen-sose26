@@ -24,4 +24,5 @@
 - `Crashkurs_Schaetzer.pdf`, `Crashkurs_Bayes.pdf`, `Crashkurs_Tests.pdf` – persönliche Crashkurse von null: Lerneinheit → Übung im Klausurlayout → komplette Klausuraufgaben → Lösungen (`src/gen_crash.py`)
 - `Test_Notiz.pdf` – Test-Notiz: jede Testaufgabe in 5 Schritten (1 Seite zum Abschreiben) + 12 Aufgabentypen nur mit der Notiz gelöst (`src/content/extra/test_notiz.html`)
 - `Schaetzer_Notiz.pdf` – Schätzer-Notiz: „erwartungstreu?“ in 5 Schritten (1 Seite zum Abschreiben) + 12 Aufgabentypen nur mit der Notiz gelöst (`src/content/extra/schaetzer_notiz.html`)
+- `R_Befehle_TeilB.pdf` – alle R-Befehle für Teil B (19 Abschnitte) mit türkischer Erklärung, echtem R-Output, Antwortsätzen und Zuordnung zur Altklausur B (`src/gen_r_befehle.py`)
 - `Probeklausur4_TeilA.pdf` / `Probeklausur4_TeilB.pdf` / `Probeklausur4_Loesung.pdf` – vierte Probeklausur im Klausurformat (ohne Lernhilfen), Daten `uebungsdaten/Kaffee.csv` (Semikolon + Dezimalkomma), Kontrollrechnungen `src/rwork/pk4_data.R`
