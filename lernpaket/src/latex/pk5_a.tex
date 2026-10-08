@@ -1,0 +1,378 @@
+% Probeklausur 5 Teil A – Layout nach dem Vorbild der Altklausur (Deckblatt, Hinweise, Lösungskästchen)
+% Lösungsversion: pdflatex "\def\LOESUNG{1}\input{pk5_a.tex}"
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,left=30mm,right=29mm,top=32mm,bottom=25mm,headheight=28pt,headsep=14mm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{array,booktabs}
+\usepackage[table]{xcolor}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{calc}
+\providecommand{\SEITEN}{20}
+
+\ifdefined\LOESUNG \newcommand{\loes}[1]{\par\medskip\noindent{\color{blue!60!black}\textbf{Lösung:}\par #1}\par\medskip}
+\else \newcommand{\loes}[1]{} \fi
+
+\newcommand{\kopf}{Probeklausur Statistik (Teil A), Übungsklausur 5}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\footnotesize\bfseries \kopf, Seite \thepage}
+\fancyhead[R]{\begin{tabular}[b]{@{}c@{}}\rule{55mm}{0.6pt}\\[-2pt]\footnotesize\bfseries Matrikel-Nr.\end{tabular}}
+
+\lstset{basicstyle=\ttfamily\small,frame=single,numbers=left,numberstyle=\tiny\color{gray},numbersep=6pt,xleftmargin=24mm,xrightmargin=8mm,columns=fullflexible,keepspaces=true,
+  literate={ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1}
+
+% Lösungskasten: \kasten{Breite}{Höhe}, mit Korrekturstrich am rechten Rand
+\newcommand{\kasten}[2]{\begin{tikzpicture}[baseline=(b.center)]\node[draw,minimum width=#1,minimum height=#2,inner sep=0pt](b){};
+  \draw[overlay,gray!60,line width=0.4pt] ([xshift=4mm]b.south east) -- ++(9mm,0);\end{tikzpicture}}
+% beschrifteter Kasten rechtsbündig: \lkasten{Label}{Breite}{Höhe}
+\newcommand{\lkasten}[3]{\par\noindent\hfill #1\ \kasten{#2}{#3}\par\medskip}
+% voller Kasten
+\newcommand{\kastenT}[2]{\begin{tikzpicture}[baseline=(b.north)]\node[draw,minimum width=#1,minimum height=#2,inner sep=0pt](b){};
+  \draw[overlay,gray!60,line width=0.4pt] ([xshift=4mm]b.south east) -- ++(9mm,0);\end{tikzpicture}}
+\newcommand{\vkasten}[1]{\par\smallskip\noindent\hspace*{8mm}\kastenT{\linewidth-8mm-0.8pt}{#1}\par\medskip}
+\newcommand{\punkte}{\vfill\noindent\hfill\begin{tabular}{@{}l@{}}{\color{gray}\small erreichte Punkte}\\[1mm]
+  \begin{tikzpicture}\draw[gray!70](0,0) rectangle (52mm,8mm);\draw[gray!70](0,-8mm) rectangle (52mm,0);\end{tikzpicture}\end{tabular}\par}
+\newcommand{\aufgabe}[2]{\newpage\noindent\textbf{Aufgabe #1} (\textit{#2 Punkte})\par\smallskip}
+\setlist[enumerate,1]{label=(\alph*),leftmargin=*,itemsep=4pt}
+\newcommand{\sq}{\raisebox{1.5pt}{\tiny$\blacksquare$}}
+
+\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}
+\begin{document}
+% ====================================================================== Deckblatt
+\thispagestyle{empty}
+\noindent\begin{minipage}[b]{0.25\textwidth}\ \end{minipage}\hfill
+\begin{minipage}[b]{0.75\textwidth}\raggedleft{\Large\bfseries Übungsklausur zur Prüfungsvorbereitung}\\[1pt]
+{\normalsize Statistik und Data Science I · Lernpaket}\end{minipage}\\[-2pt]
+\rule{\textwidth}{0.5pt}
+
+\vspace{9mm}
+\begin{center}{\LARGE\bfseries Probeklausur}\end{center}
+\vspace{8mm}
+
+{\small
+\noindent\begin{tabular}{@{}p{50mm}l@{}}
+\textbf{Datum:} & \textbf{Übungsklausur 5 (nicht offiziell)}\\[2mm]
+\textbf{Prüfungsfach:} & {\Large\bfseries STATISTIK (TEIL A)} \quad (SoSe 2026)\\[2mm]
+\textbf{Themensteller*innen:} & \textbf{Übungsaufgaben im Stil der Altklausur}\\[2mm]
+\textbf{Kandidat*in} & \begin{tikzpicture}[baseline=4mm]\foreach \i in {0,...,7} \draw (\i*9mm,0) rectangle ++(9mm,8.5mm);\end{tikzpicture}\\
+\hspace*{6mm}{\Large\bfseries Matrikel-Nr.:} & \\[2mm]
+\hspace*{6mm}\textbf{Fachrichtung:} & \makebox[78mm]{\dotfill}\\[3mm]
+\hspace*{6mm}\textbf{Raum:} & \makebox[78mm]{\dotfill}\\[3mm]
+\hspace*{6mm}\textbf{Platz:} & \makebox[78mm]{\dotfill}\\[3mm]
+\textbf{Bitte beachten Sie:} & \begin{minipage}[t]{90mm}\begin{itemize}[label=\sq,leftmargin=4mm,itemsep=0pt,topsep=0pt]
+\item Versehen Sie alle Seiten mit Ihrer Matrikelnummer.
+\item Schreiben Sie leserlich.
+\item Lösen Sie nicht die Heftung der Klausur.
+\item \textbf{Beachten Sie auch die Hinweise auf der nächsten Seite!}\end{itemize}\vspace{1mm}\end{minipage}\\
+\textbf{Zugelassene Hilfsmittel:} & \begin{minipage}[t]{90mm}\begin{itemize}[label=\sq,leftmargin=4mm,itemsep=0pt,topsep=0pt]
+\item Zugelassener Taschenrechner
+\item Schreibutensilien
+\item Ein (auch beidseitig) handschriftlich beschriebenes DIN A4-Blatt, das mit Ihrer Matrikelnummer, Raum und Platznummer gekennzeichnet ist und mit der Klausur abgegeben werden muss.\end{itemize}\vspace{1mm}\end{minipage}\\
+\textbf{Seitenumfang:} & \textbf{\SEITEN{} + Deckblatt + Hinweise}\\[2mm]
+\textbf{Anzahl der Aufgaben:} & \textbf{8}\\[2mm]
+\textbf{Gesamtpunktzahl:} & \textbf{75}\\
+\end{tabular}}
+
+\vfill
+{\small\noindent\fbox{\begin{minipage}{\textwidth-2\fboxsep-2\fboxrule}
+{\tiny Auszufüllen nur durch eine Aufsichtsperson}\\
+\textbf{Identitätskontrolle:}\hspace{20mm}\makebox[70mm]{\dotfill}\\[2mm]
+\textbf{Formelblatt}:\hspace{31mm}$\square$ handschriftlich \ $\square$ Kopie \ $\square$ nicht vorhanden
+\end{minipage}}\\[2mm]
+\noindent\begin{tabular}{|p{0.225\textwidth}|p{0.225\textwidth}|p{0.225\textwidth}|p{0.225\textwidth}|}\hline
+\multicolumn{4}{|c|}{\cellcolor{gray!35}\textbf{Klausurergebnis}}\\\hline
+\centering\textbf{Punktzahl}\\(1. Durchlauf) & \centering\textbf{Änderungen} & \centering\textbf{Punktzahl}\\(Endergebnis) & \centering\arraybackslash\textbf{Note}\\
+\rule{0pt}{20mm} & & & \\\hline
+\end{tabular}}
+
+% ====================================================================== Hinweise
+\newpage\thispagestyle{empty}
+\begin{center}\large\bfseries Hinweise\end{center}
+{\small\setlength{\parskip}{0pt}
+\noindent\underline{\textbf{Allgemeines:}}
+\begin{itemize}[label=\sq,itemsep=2pt,topsep=2pt]
+\item Es darf nur mit Kugelschreiber oder Tinte geschrieben und gezeichnet werden. Mit Bleistift geschriebene sowie jegliche in grün oder rot verfasste Angaben werden grundsätzlich ignoriert und \textbf{nicht gewertet}.
+\item Lesen Sie genau, wonach gefragt wird und wie die Lösung anzugeben ist.
+\item Für jede Aufgabe ist die maximal erreichbare Punktzahl angegeben.
+\item Beachten Sie, dass im Rahmen dieser Klausur die Dezimalpunkt-Notation -- d.\,h. ein Dezimalpunkt als Dezimaltrennzeichen -- verwendet wird.
+\end{itemize}
+\noindent\underline{\textbf{Form der anzugebenden Lösung:}}
+\begin{itemize}[label=\sq,itemsep=2pt,topsep=2pt]
+\item \textbf{Vereinfachen Sie alle Ergebnisse}, es sei denn, dies wird explizit nicht gefordert.
+\item Wenn Ihre Lösungen reelle, nicht ganze Zahlen (d.h. Antwort $\in\{\mathbb{R}\setminus\mathbb{Z}\}$) beinhalten, verwenden Sie \textbf{vollständig gekürzte Brüche} oder \textbf{auf drei Nachkommastellen kaufmännisch gerundete Dezimalzahlen}. Runden Sie dabei Zwischenergebnisse auf mindestens vier Nachkommastellen. Ausnahmen hierfür sind, wenn in der Aufgabe ausdrücklich etwas anderes verlangt wird oder wenn sich Ihre Antwort als gängige Funktion von natürlichen Zahlen darstellen lässt, z.B. $\log 4$ oder $\sqrt2$. Im Falle von Letzterem werden keine gerundeten Ergebnisse benötigt.
+\item Tragen Sie nur Ihr Endergebnis bzw. Ihre Endergebnisse in die Lösungskästchen ein, es sei denn, Sie werden explizit aufgefordert, Ihren Lösungsweg anzugeben.
+\item Sofern Ihrer Meinung nach keine Lösung existiert oder die Aufgabenstellung widersprüchlich oder unzureichend ist, schreiben Sie \textbf{nicht lösbar} ins Lösungskästchen sowie \textbf{eine Begründung} in das entsprechende Feld am Ende der Klausur.
+\end{itemize}
+\noindent\underline{\textbf{Anzahl der anzugebenden Lösungen:}}
+\begin{itemize}[label=\sq,itemsep=2pt,topsep=2pt]
+\item Lösungskästchen dürfen \textbf{nur eine eindeutige Antwort} enthalten. Bei Aufgaben, bei denen mehrere Lösungen ermittelt werden, aber nur ein Lösungskästchen steht, müssen alle Lösungen in diesem Kästchen angegeben werden.
+\item Geben Sie niemals mehrere Lösungsalternativen an. Streichen Sie vorherige falsche Angaben, wenn Sie Änderungen oder Ergänzungen in Ihrer Lösung vornehmen.
+\end{itemize}
+\noindent\underline{\textbf{Platzierung der Lösung:}}
+\begin{itemize}[label=\sq,itemsep=2pt,topsep=2pt]
+\item Alle Lösungen und Lösungswege sollten nur in entsprechend gekennzeichneten Lösungskästchen angegeben werden. Wenn ein Kästchen für einen Lösungsweg nicht ausreicht, benutzen Sie die Ränder oder Rückseiten und kennzeichnen Sie eindeutig, was bewertet werden soll.
+\item Alles, was außerhalb der Lösungskästchen geschrieben wird, wird bei der Korrektur \textbf{nicht} berücksichtigt, es sei denn, es wurde durch Sie im Sinne des vorigen Punktes eindeutig gekennzeichnet.
+\end{itemize}
+\noindent\underline{\textbf{Nebenrechnungen:}}
+\begin{itemize}[label=\sq,itemsep=2pt,topsep=2pt]
+\item Für Nebenrechnungen nutzen Sie bitte freie Flächen außerhalb der Kästchen oder die Rückseiten. Die Nebenrechnungen werden nicht mitkorrigiert.
+\end{itemize}}
+
+\newpage
+\setcounter{page}{1}
+\onehalfspacing
+
+% ====================================================================== Aufgabe 1
+\noindent\textbf{Aufgabe 1} (\textit{10 Punkte})\par\smallskip
+Ron möchte für seine Hausarbeit untersuchen, mit welchem Verkehrsmittel die Studierenden seines Jahrgangs zur Universität kommen. Er befragt zufällig 12 Studierende. Dabei steht eine \textbf{1} für Bus, eine \textbf{2} für Fahrrad, eine \textbf{3} für Auto und eine \textbf{4} für \glqq zu Fuß\grqq.
+\begin{lstlisting}
+> sort(Verkehrsmittel)
+ [1] 1 1 1 2 2 2 2 2 3 4 4 4
+\end{lstlisting}
+\begin{enumerate}
+\item Geben Sie das Skalenniveau des Merkmals \glqq Verkehrsmittel\grqq{} an und ob es sich um ein diskretes oder stetiges Merkmal handelt.
+\lkasten{}{70mm}{14mm}
+\loes{Nominalskaliert (die Zahlen sind nur Codes, keine Reihenfolge), diskret.}
+\item Berechnen Sie die folgenden Lage- und Streuungsparameter der Variable \texttt{Verkehrsmittel}. Falls Sie der Meinung sind, dass ein Parameter nicht sinnvoll angegeben werden kann, \textbf{begründen Sie kurz in einem Satz.} Sie können den obigen R-Output benutzen.
+\lkasten{$x_{mod}=$}{95mm}{24mm}
+\lkasten{$x_{med}=$}{95mm}{24mm}
+\lkasten{$\bar x=$}{95mm}{24mm}
+\loes{$x_{mod}=2$ (Fahrrad, 5-mal am häufigsten).\\
+$x_{med}$: nicht sinnvoll, da das Merkmal nominalskaliert ist (keine natürliche Ordnung; die Codierung ist willkürlich).\\
+$\bar x$: nicht sinnvoll, da nominalskaliert -- Rechnen mit Codes ist bedeutungslos.\\
+$s_x^2$: nicht sinnvoll, da nominalskaliert (Abstände nicht interpretierbar).}
+\end{enumerate}
+\newpage
+\lkasten{$s^2_x=$}{95mm}{24mm}
+\punkte
+
+% ====================================================================== Aufgabe 2
+\aufgabe{2}{14}
+Die Fachschaft möchte das Angebot an Semestertickets verbessern. Dazu erfasst sie bei 10 zufällig ausgewählten Studierenden die Fahrtzeit zur Uni $X$ in Minuten sowie den Wohnort $Y$ (Göttingen (GÖ) oder Umland (UL)).
+\begin{center}\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{rr|*{10}{c}}\toprule
+Fahrtzeit in min & $x_i$ & 12 & 25 & 12 & 40 & 18 & 25 & 12 & 55 & 18 & 25\\
+Wohnort & $y_i$ & GÖ & UL & GÖ & UL & GÖ & GÖ & GÖ & UL & UL & UL\\\bottomrule
+\end{tabular}\end{center}
+Hinweis: \quad $\displaystyle\sum_{i=1}^{10}x_i=242\,;\ \sum_{i=1}^{10}x_i^2=7580$
+\begin{enumerate}
+\item Geben Sie für $X$ und $Y$ an, ob ein diskretes oder stetiges Merkmal vorliegt! Welches Skalenniveau liegt jeweils zugrunde? (4P)
+\lkasten{$X$:}{\linewidth-14mm}{42mm}
+\end{enumerate}
+\newpage
+\lkasten{$Y$:}{\linewidth-14mm}{42mm}
+\loes{$X$: stetig (Zeit), metrisch/kardinal (Verhältnisskala). \quad $Y$: diskret, nominalskaliert.}
+\newpage
+\begin{enumerate}[resume]
+\item Zeichnen Sie die empirische Verteilungsfunktion für $X$! (6P)
+\vkasten{82mm}
+\loes{$\hat F(x)=\begin{cases}0 & x<12\\0.3 & 12\le x<18\\0.5 & 18\le x<25\\0.8 & 25\le x<40\\0.9 & 40\le x<55\\1 & x\ge55\end{cases}$\quad Treppenfunktion: links geschlossen (\textbullet), rechts offen ($\circ$), Achsen beschriftet.}
+\item Klassieren Sie die Fahrtzeit in die Klassen $K_1=[0,20)$, $K_2=[20,40)$ und $K_3=[40,60]$ und bestimmen Sie den Mittelwert für die klassierten Daten! (4P)
+\vkasten{58mm}
+\loes{$n_1=5$ (12,12,12,18,18), $n_2=3$ (25,25,25), $n_3=2$ (40,55); Klassenmitten $m_1=10$, $m_2=30$, $m_3=50$.\\
+$\bar x_K=\frac{1}{10}(5\cdot10+3\cdot30+2\cdot50)=\frac{240}{10}=24$ \quad (zum Vergleich: $\bar x=24.2$).}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 3
+\aufgabe{3}{11}
+Luna überlegt, ob sich für sie ein Premium-Abo bei einem Streamingdienst lohnt. Aus einer Nutzerumfrage weiß sie, dass 40\,\% aller Nutzer*innen ein Premium-Abo haben.
+
+Die Nutzer*innen lassen sich nach ihrer hauptsächlichen Nutzung in drei (sich gegenseitig ausschließende) Gruppen einteilen:
+\begin{enumerate}[label=\arabic*.]
+\item Hauptsächlich Serien
+\item Hauptsächlich Filme
+\item Hauptsächlich Dokumentationen
+\end{enumerate}
+Zunächst betrachtet sie die Premium-Nutzer*innen: Mit einer Wahrscheinlichkeit von 50\,\% schaut eine Premium-Nutzerin bzw. ein Premium-Nutzer hauptsächlich Serien, mit einer Wahrscheinlichkeit von 30\,\% hauptsächlich Filme.
+
+Danach betrachtet sie auch die Nutzer*innen ohne Premium-Abo: Mit einer Wahrscheinlichkeit von 25\,\% schaut eine Person ohne Premium-Abo hauptsächlich Serien und mit einer Wahrscheinlichkeit von 60\,\% hauptsächlich Filme.
+\newpage
+\begin{enumerate}
+\item Berechnen Sie die folgenden Wahrscheinlichkeiten. (7P)
+\lkasten{$P(\text{\glqq kein Premium\grqq})=$}{65mm}{14mm}
+\lkasten{$P(\text{\glqq Dokus\grqq}\mid\text{\glqq Premium\grqq})=$}{65mm}{14mm}
+\lkasten{$P(\text{\glqq Dokus\grqq}\mid\text{\glqq kein Premium\grqq})=$}{65mm}{14mm}
+Berechnen Sie nun die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person hauptsächlich Dokumentationen schaut!
+\lkasten{}{65mm}{20mm}
+\loes{$P(\bar P)=0.6$; \ $P(D\mid P)=1-0.5-0.3=0.2$; \ $P(D\mid\bar P)=1-0.25-0.6=0.15$;\\
+$P(D)=P(D\mid P)P(P)+P(D\mid\bar P)P(\bar P)=0.2\cdot0.4+0.15\cdot0.6=0.08+0.09=0.17$.}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Eine zufällig ausgewählte Person schaut hauptsächlich Filme. Wie groß ist die Wahrscheinlichkeit, dass sie ein Premium-Abo hat? Geben Sie Ihren Lösungsweg an. (2P)
+\vkasten{68mm}
+\loes{$P(F)=0.3\cdot0.4+0.6\cdot0.6=0.12+0.36=0.48$; \ $P(P\mid F)=\dfrac{P(F\mid P)P(P)}{P(F)}=\dfrac{0.12}{0.48}=0.25$.}
+\item Wie groß ist die Wahrscheinlichkeit, dass sich unter acht zufällig und unabhängig ausgewählten Nutzer*innen mindestens eine Person mit Premium-Abo befindet? \textbf{Vereinfachen Sie hierbei so weit wie möglich!} (2P)
+\vkasten{68mm}
+\loes{$X$: Anzahl Premium unter 8, $X\sim B(8;0.4)$: \ $P(X\ge1)=1-P(X=0)=1-0.6^8=1-0.0168=0.983$.}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 4
+\aufgabe{4}{6}
+Ihnen sei folgender Ergebnisraum $\Omega=\{1,2,3,4,5,6,7,8,9,10\}$ eines Laplace-Experiments gegeben. Außerdem seien die Mengen $A=\{2,4,5,8\}$, $B=\{1,2,5,9\}$ bekannt.
+\begin{enumerate}
+\item Berechnen Sie die folgenden Mächtigkeiten (Anzahl an Elementen in einer Menge).
+\lkasten{$|\bar A\cap B|=$}{48mm}{16mm}
+\lkasten{$|A\cup\bar B|=$}{48mm}{16mm}
+\loes{$\bar A\cap B=\{1,9\}\Rightarrow2$; \quad $\bar B=\{3,4,6,7,8,10\}$, $A\cup\bar B=\{2,3,4,5,6,7,8,10\}\Rightarrow8$.}
+\item Berechnen Sie die Wahrscheinlichkeit, dass $B$ eintritt, wenn Sie wissen, dass $A$ \textbf{nicht} eingetreten ist \textbf{und} tragen Sie links die korrekte Notation für die gesuchte Wahrscheinlichkeit in die beiden Lücken ein.
+\par\noindent\hfill$P(\quad\qquad\mid\quad\qquad)=$\ \kasten{48mm}{16mm}\par
+\loes{$P(B\mid\bar A)=\dfrac{|B\cap\bar A|}{|\bar A|}=\dfrac{2}{6}=\dfrac13$.}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 5
+\aufgabe{5}{11}
+Eine Tutorin vermutet einen Zusammenhang zwischen der Anzahl der Lernstunden pro Woche ($X$) und der Anzahl der Fehler im wöchentlichen Testat ($Y$). Die Grundlage ihrer Beobachtungen bilden 6 Studierende:
+\begin{center}\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|*{6}{c|}}\hline
+Studierende & $\nu$ & 1 & 2 & 3 & 4 & 5 & 6\\\hline
+Lernstunden & $x_\nu$ & 1 & 4 & 6 & 3 & 5 & 5\\\hline
+Fehler im Testat & $y_\nu$ & 10 & 6 & 3 & 8 & 5 & 4\\\hline
+\end{tabular}\end{center}
+\begin{enumerate}
+\item Berechnen Sie die empirische Varianz der Lernstunden. Geben Sie Ihren Lösungsweg an: (2\,P)
+\vkasten{40mm}
+\lkasten{$s_x^2=$}{50mm}{14mm}
+\loes{$\bar x=\frac{24}{6}=4$; \ $\overline{x^2}=\frac{1+16+36+9+25+25}{6}=\frac{112}{6}=18.6667$; \ $s_x^2=18.6667-16=2.667$.}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Ermitteln Sie den Korrelationskoeffizienten $r_{xy}$ aus den Werten der obigen Tabelle. Verwenden Sie im Folgenden für die Berechnung die hier angegebenen Werte:
+\[ s_y^2=5.6667,\quad s_x^2=2.6667,\quad \bar y=6\quad\text{und}\quad \textstyle\sum_{\nu=1}^{6}(x_\nu\cdot y_\nu)=121 \]
+Geben Sie Ihren Lösungsweg an: (3\,P)
+\vkasten{55mm}
+Interpretieren Sie den berechneten Wert. Wenn Sie den Wert nicht berechnen konnten, interpretieren Sie $r_{xy}=-0.5$. (2\,P)
+\vkasten{55mm}
+\loes{$s_{xy}=\frac{121}{6}-4\cdot6=20.1667-24=-3.833$; \ $r_{xy}=\dfrac{-3.833}{\sqrt{2.6667\cdot5.6667}}=\dfrac{-3.833}{3.8873}=-0.986$.\\
+Interpretation: sehr starker \textbf{negativer} linearer Zusammenhang: Studierende mit mehr Lernstunden machen tendenziell weniger Fehler.}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Die Tutorin behauptet, dass der Korrelationskoeffizient beweist, dass mehr Lernstunden zu weniger Fehlern \emph{führen}. Stimmen Sie dieser Aussage zu? Begründen Sie in 1--2 Sätzen. (2\,P)
+\vkasten{45mm}
+\loes{Nein. Korrelation ist keine Kausalität; der Zusammenhang könnte durch eine Drittvariable (z.\,B. Vorwissen, Motivation) entstehen. Ein Kausalnachweis erfordert ein kontrolliertes Experiment.}
+\item Skizzieren Sie ein mögliches Streudiagramm, bei dem ein \emph{perfekter, aber nicht linearer} Zusammenhang zwischen $X$ und $Y$ besteht und trotzdem $r_{xy}=0$ gilt. (2\,P)
+\vkasten{78mm}
+\loes{Z.\,B. Punkte auf einer nach oben geöffneten Parabel, symmetrisch um $\bar x$ (etwa $y=(x-4)^2$ für $x=1,\dots,7$), Achsen beschriftet.}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 6
+\aufgabe{6}{10}
+Sie überlegen, ein gebrauchtes E-Bike zu kaufen, und betrachten die Zufallsvariable $X$, wobei
+\begin{center}$X$: Monate bis zum Defekt des Akkus.\end{center}
+Gehen Sie davon aus, dass $X$ Weibull-verteilt ist mit zunächst unbekannten Parametern $\lambda$ und $r$. Für $x\ge0$ ist die Dichte somit gegeben durch
+\[ f(x;\lambda,r)=r\lambda(\lambda x)^{r-1}\exp\left(-(\lambda x)^r\right) \]
+und die Verteilungsfunktion durch
+\[ F(x;\lambda,r)=1-\exp\left(-(\lambda x)^r\right) \]
+Nehmen Sie im Folgenden an, dass $r=2$. Bestimmen Sie den Maximum-Likelihood-Schätzer für $\lambda$ basierend auf einer Stichprobe von $n$ Beobachtungen $X_1,\dots,X_n$, wobei die $X_i$ identisch und unabhängig verteilt sind.
+\begin{enumerate}
+\item Stellen Sie hierfür zunächst die Log-Likelihood auf. Geben Sie Ihren vollständigen Lösungsweg an (vereinfachen Sie Ihr Endresultat so weit wie möglich!): (4P)
+\end{enumerate}
+\newpage
+\vkasten{105mm}
+\loes{Mit $r=2$: $f(x;\lambda)=2\lambda(\lambda x)e^{-(\lambda x)^2}=2\lambda^2x\,e^{-\lambda^2x^2}$.\\
+$L(\lambda)=\prod_{i=1}^n2\lambda^2x_ie^{-\lambda^2x_i^2}=2^n\lambda^{2n}\Big(\prod_{i=1}^nx_i\Big)e^{-\lambda^2\sum x_i^2}$\\
+$l(\lambda)=n\log2+2n\log\lambda+\sum_{i=1}^n\log x_i-\lambda^2\sum_{i=1}^nx_i^2$}
+\begin{enumerate}[resume]
+\item Bestimmen Sie auf Grundlage Ihres Ergebnisses aus (a) den Maximum-Likelihood-Schätzer. Geben Sie Ihren vollständigen Lösungsweg an. (3P)
+\vkasten{82mm}
+\loes{$l'(\lambda)=\dfrac{2n}{\lambda}-2\lambda\sum x_i^2\overset{!}{=}0\ \Leftrightarrow\ \lambda^2=\dfrac{n}{\sum x_i^2}\ \Rightarrow\ \hat\lambda=\sqrt{\dfrac{n}{\sum_{i=1}^nx_i^2}}$ \ (positive Lösung, da $\lambda>0$).}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Prüfen Sie auch die hinreichende Bedingung bzw. die Bedingung zweiter Ordnung! (2P)
+\vkasten{55mm}
+\loes{$l''(\lambda)=-\dfrac{2n}{\lambda^2}-2\sum x_i^2<0$ für alle $\lambda>0$ $\Rightarrow$ Maximum.}
+\item Berechnen Sie den Schätzwert für die Stichprobe $x=(1,\ 2,\ 1)$. (1P)
+\lkasten{$\hat\lambda=$}{55mm}{16mm}
+\loes{$\sum x_i^2=1+4+1=6$, $n=3$: \ $\hat\lambda=\sqrt{3/6}=\sqrt{0.5}=0.707$.}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 7
+\aufgabe{7}{5}
+Sei $X$ eine Zufallsvariable mit $E(X)=\frac{\theta}{3}$ mit $\theta\in\mathbb{R}$. Nun ziehen Sie eine $n$-fache, unabhängige Zufallsstichprobe $\{X_1,\dots,X_n\}$ dieser Zufallsvariablen.
+
+Testen Sie, ob der Schätzer
+\[ \hat\theta=\frac{\prod_{i=1}^{n}X_i}{\prod_{i=2}^{n}X_i}+\frac{2}{n}\sum_{i=1}^{n}X_i \]
+ein unverzerrter Schätzer für $\theta$ ist.
+\vkasten{120mm}
+\loes{Vereinfachen: $\dfrac{\prod_{i=1}^{n}X_i}{\prod_{i=2}^{n}X_i}=X_1$, also $\hat\theta=X_1+2\bar X$.\\
+$E(\hat\theta)=E(X_1)+\dfrac2n\sum_{i=1}^nE(X_i)=\dfrac\theta3+\dfrac2n\cdot n\cdot\dfrac\theta3=\dfrac\theta3+\dfrac{2\theta}3=\theta$.\\
+Da $E(\hat\theta)=\theta$, ist $\hat\theta$ ein \textbf{unverzerrter} (erwartungstreuer) Schätzer für $\theta$.}
+\punkte
+
+% ====================================================================== Aufgabe 8
+\aufgabe{8}{8}
+In der Mensa stehen zwei Kaffeeautomaten A und B, die laut Hersteller jeweils 200\,ml pro Becher abfüllen sollen. Studierende vermuten, dass Automat A im Mittel \emph{mehr} abfüllt. Sie messen jeweils 4 Becher:
+\begin{center}\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{l||c|c|c|c||c}\toprule
+Becher & 1 & 2 & 3 & 4 & $\bar x$\\\midrule
+Automat A & 203 & 206 & 201 & 206 & 204\\
+Automat B & 199 & 202 & 198 & 201 & 200\\\bottomrule
+\end{tabular}\end{center}
+Näherungsweise nehmen Sie an, dass die Varianz der Füllmenge bekannt sei und $\sigma^2=16$ beträgt. Gehen Sie davon aus, dass die Beobachtungen jeweils einer Normalverteilung folgen ($N(\mu_A,\sigma^2)$ für Automat A und $N(\mu_B,\sigma^2)$ für Automat B).
+
+Sie wollen statistisch absichern, dass Automat A im Mittel mehr als 200\,ml abfüllt.
+\begin{enumerate}
+\item Stellen Sie das passende Hypothesenpaar auf. (2\,P)
+\vkasten{18mm}
+\loes{$H_0:\ \mu_A\le200$ \ vs. \ $H_1:\ \mu_A>200$.}
+\item Berechnen Sie die Prüfgröße und geben Sie ihre Verteilung an. (3\,P)
+\end{enumerate}
+\newpage
+\vkasten{45mm}
+\loes{$Z=\dfrac{\bar X-\mu_0}{\sigma}\sqrt n=\dfrac{204-200}{4}\cdot\sqrt4=2$; \ unter $H_0$ gilt $Z\sim N(0,1)$.}
+\begin{enumerate}[resume]
+\item Ein Kommilitone will R benutzen, um zu einem Signifikanzniveau von 5\,\% statistisch abzusichern, dass Automat A im Mittel mehr als 200\,ml abfüllt. Leider ist er sich nicht sicher und probiert mehrere Möglichkeiten:
+\par(1)
+\begin{lstlisting}
+x <- c(199, 202, 198, 201)
+t.test(x, mu=200, alternative="g", conf.level=0.95)
+  One Sample t-test
+t = ?, df = 3, p-value = 0.5
+\end{lstlisting}
+(2)
+\begin{lstlisting}
+x <- c(203, 206, 201, 206)
+t.test(x, mu=200, alternative="l", conf.level=0.95)
+  One Sample t-test
+t = ?, df = 3, p-value = 0.9765
+\end{lstlisting}
+(3)
+\begin{lstlisting}
+x <- c(203, 206, 201, 206)
+t.test(x, mu=200, alternative="g", conf.level=0.95)
+  One Sample t-test
+t = ?, df = 3, p-value = 0.02346
+\end{lstlisting}
+Geben Sie die Nummer des R-Codes an, den Sie wählen würden, um den Test durchzuführen. (1\,P)
+\lkasten{}{45mm}{16mm}
+\end{enumerate}
+\newpage
+\noindent Treffen Sie anhand des R-Codes eine Testentscheidung und begründen Sie diese. (2\,P)
+\vkasten{45mm}
+\loes{Code (3): Daten von Automat A, \texttt{mu=200}, \texttt{alternative="g"} passt zu $H_1:\mu_A>200$.\\
+Da $p=0.023<\alpha=0.05$, wird $H_0$ abgelehnt: Zum Niveau 5\,\% ist statistisch abgesichert, dass Automat A im Mittel mehr als 200\,ml abfüllt.}
+\punkte
+
+% ====================================================================== nicht lösbar
+\newpage
+\noindent\textbf{Begründung nicht lösbare Aufgabe(n)}\par
+Nutzen Sie die folgende Box für jegliche Erläuterungen, wenn Aufgabenstellungen Ihrer Meinung nach nicht lösbar, widersprüchlich oder unzureichend definiert sind. Notieren Sie hierfür eindeutig, auf welche Aufgabe Sie sich beziehen.
+\par\medskip\noindent\kastenT{\textwidth-0.8pt}{175mm}
+\end{document}
