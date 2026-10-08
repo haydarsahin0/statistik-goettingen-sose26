@@ -1,0 +1,366 @@
+% Probeklausur 6 Teil A – Layout nach dem Vorbild der Altklausur (Deckblatt, Hinweise, Lösungskästchen)
+% Lösungsversion: pdflatex "\def\LOESUNG{1}\input{pk6_a.tex}"
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,left=30mm,right=29mm,top=32mm,bottom=25mm,headheight=28pt,headsep=14mm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{array,booktabs}
+\usepackage[table]{xcolor}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{calc}
+\providecommand{\SEITEN}{17}
+
+\ifdefined\LOESUNG \newcommand{\loes}[1]{\par\medskip\noindent{\color{blue!60!black}\textbf{Lösung:}\par #1}\par\medskip}
+\else \newcommand{\loes}[1]{} \fi
+
+\newcommand{\kopf}{Probeklausur Statistik (Teil A), Übungsklausur 6}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\footnotesize\bfseries \kopf, Seite \thepage}
+\fancyhead[R]{\begin{tabular}[b]{@{}c@{}}\rule{55mm}{0.6pt}\\[-2pt]\footnotesize\bfseries Matrikel-Nr.\end{tabular}}
+
+\lstset{basicstyle=\ttfamily\small,frame=single,numbers=left,numberstyle=\tiny\color{gray},numbersep=6pt,xleftmargin=24mm,xrightmargin=8mm,columns=fullflexible,keepspaces=true,
+  literate={ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1}
+
+% Lösungskasten: \kasten{Breite}{Höhe}, mit Korrekturstrich am rechten Rand
+\newcommand{\kasten}[2]{\begin{tikzpicture}[baseline=(b.center)]\node[draw,minimum width=#1,minimum height=#2,inner sep=0pt](b){};
+  \draw[overlay,gray!60,line width=0.4pt] ([xshift=4mm]b.south east) -- ++(9mm,0);\end{tikzpicture}}
+% beschrifteter Kasten rechtsbündig: \lkasten{Label}{Breite}{Höhe}
+\newcommand{\lkasten}[3]{\par\noindent\hfill #1\ \kasten{#2}{#3}\par\medskip}
+% voller Kasten
+\newcommand{\kastenT}[2]{\begin{tikzpicture}[baseline=(b.north)]\node[draw,minimum width=#1,minimum height=#2,inner sep=0pt](b){};
+  \draw[overlay,gray!60,line width=0.4pt] ([xshift=4mm]b.south east) -- ++(9mm,0);\end{tikzpicture}}
+\newcommand{\vkasten}[1]{\par\smallskip\noindent\hspace*{8mm}\kastenT{\linewidth-8mm-0.8pt}{#1}\par\medskip}
+\newcommand{\punkte}{\vfill\noindent\hfill\begin{tabular}{@{}l@{}}{\color{gray}\small erreichte Punkte}\\[1mm]
+  \begin{tikzpicture}\draw[gray!70](0,0) rectangle (52mm,8mm);\draw[gray!70](0,-8mm) rectangle (52mm,0);\end{tikzpicture}\end{tabular}\par}
+\newcommand{\aufgabe}[2]{\newpage\noindent\textbf{Aufgabe #1} (\textit{#2 Punkte})\par\smallskip}
+\setlist[enumerate,1]{label=(\alph*),leftmargin=*,itemsep=4pt}
+\newcommand{\sq}{\raisebox{1.5pt}{\tiny$\blacksquare$}}
+
+\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}
+\begin{document}
+% ====================================================================== Deckblatt
+\thispagestyle{empty}
+\noindent\begin{minipage}[b]{0.25\textwidth}\ \end{minipage}\hfill
+\begin{minipage}[b]{0.75\textwidth}\raggedleft{\Large\bfseries Übungsklausur zur Prüfungsvorbereitung}\\[1pt]
+{\normalsize Statistik und Data Science I · Lernpaket}\end{minipage}\\[-2pt]
+\rule{\textwidth}{0.5pt}
+
+\vspace{9mm}
+\begin{center}{\LARGE\bfseries Probeklausur}\end{center}
+\vspace{8mm}
+
+{\small
+\noindent\begin{tabular}{@{}p{50mm}l@{}}
+\textbf{Datum:} & \textbf{Übungsklausur 6 (nicht offiziell)}\\[2mm]
+\textbf{Prüfungsfach:} & {\Large\bfseries STATISTIK (TEIL A)} \quad (SoSe 2026)\\[2mm]
+\textbf{Themensteller*innen:} & \textbf{Übungsaufgaben im Stil der Altklausur}\\[2mm]
+\textbf{Kandidat*in} & \begin{tikzpicture}[baseline=4mm]\foreach \i in {0,...,7} \draw (\i*9mm,0) rectangle ++(9mm,8.5mm);\end{tikzpicture}\\
+\hspace*{6mm}{\Large\bfseries Matrikel-Nr.:} & \\[2mm]
+\hspace*{6mm}\textbf{Fachrichtung:} & \makebox[78mm]{\dotfill}\\[3mm]
+\hspace*{6mm}\textbf{Raum:} & \makebox[78mm]{\dotfill}\\[3mm]
+\hspace*{6mm}\textbf{Platz:} & \makebox[78mm]{\dotfill}\\[3mm]
+\textbf{Bitte beachten Sie:} & \begin{minipage}[t]{90mm}\begin{itemize}[label=\sq,leftmargin=4mm,itemsep=0pt,topsep=0pt]
+\item Versehen Sie alle Seiten mit Ihrer Matrikelnummer.
+\item Schreiben Sie leserlich.
+\item Lösen Sie nicht die Heftung der Klausur.
+\item \textbf{Beachten Sie auch die Hinweise auf der nächsten Seite!}\end{itemize}\vspace{1mm}\end{minipage}\\
+\textbf{Zugelassene Hilfsmittel:} & \begin{minipage}[t]{90mm}\begin{itemize}[label=\sq,leftmargin=4mm,itemsep=0pt,topsep=0pt]
+\item Zugelassener Taschenrechner
+\item Schreibutensilien
+\item Ein (auch beidseitig) handschriftlich beschriebenes DIN A4-Blatt, das mit Ihrer Matrikelnummer, Raum und Platznummer gekennzeichnet ist und mit der Klausur abgegeben werden muss.\end{itemize}\vspace{1mm}\end{minipage}\\
+\textbf{Seitenumfang:} & \textbf{\SEITEN{} + Deckblatt + Hinweise}\\[2mm]
+\textbf{Anzahl der Aufgaben:} & \textbf{8}\\[2mm]
+\textbf{Gesamtpunktzahl:} & \textbf{75}\\
+\end{tabular}}
+
+\vfill
+{\small\noindent\fbox{\begin{minipage}{\textwidth-2\fboxsep-2\fboxrule}
+{\tiny Auszufüllen nur durch eine Aufsichtsperson}\\
+\textbf{Identitätskontrolle:}\hspace{20mm}\makebox[70mm]{\dotfill}\\[2mm]
+\textbf{Formelblatt}:\hspace{31mm}$\square$ handschriftlich \ $\square$ Kopie \ $\square$ nicht vorhanden
+\end{minipage}}\\[2mm]
+\noindent\begin{tabular}{|p{0.225\textwidth}|p{0.225\textwidth}|p{0.225\textwidth}|p{0.225\textwidth}|}\hline
+\multicolumn{4}{|c|}{\cellcolor{gray!35}\textbf{Klausurergebnis}}\\\hline
+\centering\textbf{Punktzahl}\\(1. Durchlauf) & \centering\textbf{Änderungen} & \centering\textbf{Punktzahl}\\(Endergebnis) & \centering\arraybackslash\textbf{Note}\\
+\rule{0pt}{20mm} & & & \\\hline
+\end{tabular}}
+
+% ====================================================================== Hinweise
+\newpage\thispagestyle{empty}
+\begin{center}\large\bfseries Hinweise\end{center}
+{\small\setlength{\parskip}{0pt}
+\noindent\underline{\textbf{Allgemeines:}}
+\begin{itemize}[label=\sq,itemsep=2pt,topsep=2pt]
+\item Es darf nur mit Kugelschreiber oder Tinte geschrieben und gezeichnet werden. Mit Bleistift geschriebene sowie jegliche in grün oder rot verfasste Angaben werden grundsätzlich ignoriert und \textbf{nicht gewertet}.
+\item Lesen Sie genau, wonach gefragt wird und wie die Lösung anzugeben ist.
+\item Für jede Aufgabe ist die maximal erreichbare Punktzahl angegeben.
+\item Beachten Sie, dass im Rahmen dieser Klausur die Dezimalpunkt-Notation -- d.\,h. ein Dezimalpunkt als Dezimaltrennzeichen -- verwendet wird.
+\end{itemize}
+\noindent\underline{\textbf{Form der anzugebenden Lösung:}}
+\begin{itemize}[label=\sq,itemsep=2pt,topsep=2pt]
+\item \textbf{Vereinfachen Sie alle Ergebnisse}, es sei denn, dies wird explizit nicht gefordert.
+\item Wenn Ihre Lösungen reelle, nicht ganze Zahlen (d.h. Antwort $\in\{\mathbb{R}\setminus\mathbb{Z}\}$) beinhalten, verwenden Sie \textbf{vollständig gekürzte Brüche} oder \textbf{auf drei Nachkommastellen kaufmännisch gerundete Dezimalzahlen}. Runden Sie dabei Zwischenergebnisse auf mindestens vier Nachkommastellen. Ausnahmen hierfür sind, wenn in der Aufgabe ausdrücklich etwas anderes verlangt wird oder wenn sich Ihre Antwort als gängige Funktion von natürlichen Zahlen darstellen lässt, z.B. $\log 4$ oder $\sqrt2$. Im Falle von Letzterem werden keine gerundeten Ergebnisse benötigt.
+\item Tragen Sie nur Ihr Endergebnis bzw. Ihre Endergebnisse in die Lösungskästchen ein, es sei denn, Sie werden explizit aufgefordert, Ihren Lösungsweg anzugeben.
+\item Sofern Ihrer Meinung nach keine Lösung existiert oder die Aufgabenstellung widersprüchlich oder unzureichend ist, schreiben Sie \textbf{nicht lösbar} ins Lösungskästchen sowie \textbf{eine Begründung} in das entsprechende Feld am Ende der Klausur.
+\end{itemize}
+\noindent\underline{\textbf{Anzahl der anzugebenden Lösungen:}}
+\begin{itemize}[label=\sq,itemsep=2pt,topsep=2pt]
+\item Lösungskästchen dürfen \textbf{nur eine eindeutige Antwort} enthalten. Bei Aufgaben, bei denen mehrere Lösungen ermittelt werden, aber nur ein Lösungskästchen steht, müssen alle Lösungen in diesem Kästchen angegeben werden.
+\item Geben Sie niemals mehrere Lösungsalternativen an. Streichen Sie vorherige falsche Angaben, wenn Sie Änderungen oder Ergänzungen in Ihrer Lösung vornehmen.
+\end{itemize}
+\noindent\underline{\textbf{Platzierung der Lösung:}}
+\begin{itemize}[label=\sq,itemsep=2pt,topsep=2pt]
+\item Alle Lösungen und Lösungswege sollten nur in entsprechend gekennzeichneten Lösungskästchen angegeben werden. Wenn ein Kästchen für einen Lösungsweg nicht ausreicht, benutzen Sie die Ränder oder Rückseiten und kennzeichnen Sie eindeutig, was bewertet werden soll.
+\item Alles, was außerhalb der Lösungskästchen geschrieben wird, wird bei der Korrektur \textbf{nicht} berücksichtigt, es sei denn, es wurde durch Sie im Sinne des vorigen Punktes eindeutig gekennzeichnet.
+\end{itemize}
+\noindent\underline{\textbf{Nebenrechnungen:}}
+\begin{itemize}[label=\sq,itemsep=2pt,topsep=2pt]
+\item Für Nebenrechnungen nutzen Sie bitte freie Flächen außerhalb der Kästchen oder die Rückseiten. Die Nebenrechnungen werden nicht mitkorrigiert.
+\end{itemize}}
+
+\newpage
+\setcounter{page}{1}
+\onehalfspacing
+
+% ====================================================================== Aufgabe 1
+\noindent\textbf{Aufgabe 1} (\textit{9 Punkte})\par\smallskip
+Die Universitätsbibliothek möchte ihre Öffnungszeiten an das Lernverhalten der Studierenden anpassen. Dazu plant sie eine Umfrage.
+\begin{enumerate}
+\item Geben Sie für die folgenden Merkmale jeweils das Skalenniveau (nominal, ordinal, kardinal) an und ob es sich um ein diskretes oder stetiges Merkmal handelt. (3P)
+\par\smallskip
+\begin{tabular}{@{}p{0.52\linewidth}l@{}}
+1. Anzahl der Bibliotheksbesuche pro Woche & \kasten{50mm}{11mm}\\[7mm]
+2. Bevorzugter Lernort (Bibliothek, Zuhause, Café) & \kasten{50mm}{11mm}\\[7mm]
+3. Tägliche Lernzeit (in Stunden) & \kasten{50mm}{11mm}
+\end{tabular}
+\loes{1. kardinal (metrisch), diskret \quad 2. nominal, diskret \quad 3. kardinal (metrisch), stetig}
+\item Für die Umfrage werden zufällig 5 der 40 Seminargruppen des Semesters ausgewählt und \emph{alle} Teilnehmenden dieser Gruppen befragt. Um welches Stichprobenverfahren handelt es sich? (1P)
+\lkasten{}{70mm}{12mm}
+\loes{Klumpenstichprobe (die Seminargruppen sind die Klumpen).}
+\end{enumerate}
+\newpage
+In einer Pilotstudie wurden $n$ Studierende nach der Anzahl ihrer Bibliotheksbesuche in der vergangenen Woche ($X$) gefragt. Die Tabelle zeigt die Ausprägungen $a_j$ mit den absoluten Häufigkeiten $h_j$:
+\begin{center}\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|c|}\hline
+$a_j$ & 0 & 1 & 2 & 3 & 6\\\hline
+$h_j$ & 3 & 5 & 6 & 4 & 2\\\hline
+\end{tabular}\end{center}
+\begin{enumerate}[resume]
+\item Bestimmen Sie den Stichprobenumfang $n$, das arithmetische Mittel $\bar x$, den Median $x_{med}$ und das obere Quartil $x_{0.75}$. (3P)
+\lkasten{$n=$}{45mm}{11mm}
+\lkasten{$\bar x=$}{45mm}{11mm}
+\lkasten{$x_{med}=$}{45mm}{11mm}
+\lkasten{$x_{0.75}=$}{45mm}{11mm}
+\loes{$n=20$; \ $\bar x=\frac{0\cdot3+1\cdot5+2\cdot6+3\cdot4+6\cdot2}{20}=\frac{41}{20}=2.05$; \ $x_{med}=\frac{x_{(10)}+x_{(11)}}2=\frac{2+2}2=2$; \ $n\cdot0.75=15$ ganzzahlig $\Rightarrow x_{0.75}=\frac{x_{(15)}+x_{(16)}}{2}=\frac{3+3}2=3$.}
+\item Im Boxplot werden Werte als Ausreißer markiert, die mehr als das 1.5-Fache des Interquartilsabstands über dem oberen Quartil liegen. Wird die Beobachtung $x=6$ als Ausreißer markiert? Begründen Sie rechnerisch. (2P)
+\vkasten{38mm}
+\loes{$x_{0.25}=\frac{x_{(5)}+x_{(6)}}2=\frac{1+1}2=1$, $IQR=3-1=2$; obere Grenze $x_{0.75}+1.5\cdot IQR=3+3=6$. Da $6$ \emph{nicht größer} als $6$ ist, wird $x=6$ \textbf{nicht} als Ausreißer markiert.}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 2
+\aufgabe{2}{10}
+Eine Studienberatung möchte wissen, ob die Nutzung der Lernvideos mit dem Bestehen der Statistikklausur zusammenhängt. Von 200 befragten Studierenden haben 120 die Lernvideos genutzt; von diesen haben 90 die Klausur bestanden. Insgesamt haben 130 der 200 Befragten bestanden.
+\begin{enumerate}
+\item Vervollständigen Sie die folgende Kontingenztafel der absoluten Häufigkeiten. (3P)
+\begin{center}\renewcommand{\arraystretch}{2.1}
+\begin{tabular}{|l|c|c|c|}\hline
+ & bestanden & nicht bestanden & $\sum$\\\hline
+Videos genutzt & \hspace{22mm} & \hspace{22mm} & \hspace{18mm}\\\hline
+Videos nicht genutzt & & & \\\hline
+$\sum$ & & & 200\\\hline
+\end{tabular}\end{center}
+\loes{Videos genutzt: 90 / 30 / 120; \ nicht genutzt: 40 / 40 / 80; \ Summe: 130 / 70 / 200.}
+\item Berechnen Sie den Anteil der Bestehenden unter den Studierenden, die die Videos genutzt haben, sowie unter denen, die sie nicht genutzt haben. Deuten diese Anteile auf einen Zusammenhang hin? Begründen Sie kurz. (2P)
+\vkasten{36mm}
+\loes{$\frac{90}{120}=0.75$ vs. $\frac{40}{80}=0.5$. Die bedingten Anteile unterscheiden sich deutlich $\Rightarrow$ Hinweis auf einen Zusammenhang (bei Unabhängigkeit wären sie gleich).}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Berechnen Sie die bei Unabhängigkeit zu erwartende Häufigkeit $\tilde h_{11}$ für die Zelle \glqq Videos genutzt und bestanden\grqq{} sowie den $\chi^2$-Koeffizienten. Geben Sie Ihren Lösungsweg an. (3P)
+\vkasten{70mm}
+\loes{$\tilde h_{11}=\frac{120\cdot130}{200}=78$; ebenso $\tilde h_{12}=42$, $\tilde h_{21}=52$, $\tilde h_{22}=28$.\\
+$\chi^2=\frac{(90-78)^2}{78}+\frac{(30-42)^2}{42}+\frac{(40-52)^2}{52}+\frac{(40-28)^2}{28}=1.8462+3.4286+2.7692+5.1429=13.187$.}
+\item Testen Sie zum Signifikanzniveau $\alpha=0.05$, ob die Merkmale unabhängig sind. Geben Sie die Hypothesen, den kritischen Wert und die Testentscheidung im Sachzusammenhang an. (Hinweis: $\chi^2_{1;0.95}=3.841$, $\chi^2_{2;0.95}=5.991$, $\chi^2_{4;0.95}=9.488$) (2P)
+\vkasten{48mm}
+\loes{$H_0$: Videonutzung und Bestehen sind unabhängig vs. $H_1$: abhängig. $df=(2-1)(2-1)=1$, kritischer Wert $3.841$. Da $13.187>3.841$, wird $H_0$ abgelehnt: Zum Niveau 5\,\% besteht ein Zusammenhang zwischen Videonutzung und Bestehen.}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 3
+\aufgabe{3}{9}
+Für eine zufällig ausgewählte Person aus dem Statistikkurs seien folgende Ereignisse definiert:
+\begin{center}$A$: \glqq Die Person lernt in einer Lerngruppe\grqq, \qquad $B$: \glqq Die Person besteht die Klausur\grqq.\end{center}
+Es gelte $P(A)=0.3$, $P(B)=0.5$ und $P(B\mid A)=0.8$.
+\begin{enumerate}
+\item Berechnen Sie die folgenden Wahrscheinlichkeiten. (3P)
+\lkasten{$P(A\cap B)=$}{50mm}{11mm}
+\lkasten{$P(A\cup B)=$}{50mm}{11mm}
+\lkasten{$P(A\mid B)=$}{50mm}{11mm}
+\loes{$P(A\cap B)=P(B\mid A)P(A)=0.8\cdot0.3=0.24$; \ $P(A\cup B)=0.3+0.5-0.24=0.56$; \ $P(A\mid B)=\frac{0.24}{0.5}=0.48$.}
+\item Sind $A$ und $B$ stochastisch unabhängig? Begründen Sie rechnerisch. (2P)
+\vkasten{30mm}
+\loes{$P(A)\cdot P(B)=0.15\neq0.24=P(A\cap B)$ $\Rightarrow$ $A$ und $B$ sind \textbf{nicht} unabhängig.}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Zur Entspannung würfelt die Lerngruppe zweimal mit einem fairen Würfel. Berechnen Sie die Wahrscheinlichkeit, dass die Augensumme mindestens 10 beträgt, sowie die Wahrscheinlichkeit für einen Pasch (zwei gleiche Augenzahlen), wenn bekannt ist, dass die Augensumme mindestens 10 beträgt. (2P)
+\lkasten{$P(\text{\glqq Summe}\ge10\text{\grqq})=$}{45mm}{12mm}
+\lkasten{$P(\text{\glqq Pasch\grqq}\mid\text{\glqq Summe}\ge10\text{\grqq})=$}{45mm}{12mm}
+\loes{Summe $\ge10$: $(4,6),(6,4),(5,5),(5,6),(6,5),(6,6)$ $\Rightarrow\frac{6}{36}=\frac16$. Davon Pasch: $(5,5),(6,6)$ $\Rightarrow\frac{2}{6}=\frac13$.}
+\item Die Lerngruppe besteht aus 5 Personen, davon 3 aus der Informatik. Es werden zufällig 2 Personen \emph{ohne Zurücklegen} für eine Präsentation ausgewählt. Wie groß ist die Wahrscheinlichkeit, dass beide aus der Informatik kommen? (2P)
+\lkasten{}{45mm}{12mm}
+\loes{$\frac35\cdot\frac24=\frac{6}{20}=0.3$ \quad (oder $\binom32/\binom52=\frac3{10}$).}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 4
+\aufgabe{4}{11}
+\begin{enumerate}
+\item Die diskrete Zufallsvariable $X$ beschreibe die Anzahl verspäteter Abgaben einer Person im Semester. Sie hat die Verteilungsfunktion
+\[ F(x)=\begin{cases}0, & x<0\\ 0.2, & 0\le x<1\\ \ ?\,, & 1\le x<3\\ 1, & x\ge3\end{cases} \]
+Es sei bekannt, dass $P(X=1)=0.5$. Ergänzen Sie den fehlenden Wert und berechnen Sie $E(X)$ und $Var(X)$. (4P)
+\lkasten{$?=$}{45mm}{11mm}
+\lkasten{$E(X)=$}{45mm}{11mm}
+\lkasten{$Var(X)=$}{45mm}{11mm}
+\loes{$?=0.2+0.5=0.7$; damit $P(X=0)=0.2$, $P(X=1)=0.5$, $P(X=3)=0.3$.\\
+$E(X)=0\cdot0.2+1\cdot0.5+3\cdot0.3=1.4$; \ $E(X^2)=0.5+9\cdot0.3=3.2$; \ $Var(X)=3.2-1.4^2=1.24$.}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Die Wartezeit $Y$ (in Minuten) an der Bücherausleihe sei eine stetige Zufallsvariable mit der Dichte
+\[ f(y)=\begin{cases}c\cdot y, & 0\le y\le1\\ c, & 1<y\le3\\ 0, & \text{sonst.}\end{cases} \]
+Bestimmen Sie $c$ derart, dass $f(y)$ eine gültige Dichtefunktion ist. Geben Sie Ihren Lösungsweg an. (2P)
+\vkasten{36mm}
+\loes{$\int_0^1cy\,dy+\int_1^3c\,dy=\frac c2+2c=\frac52c\overset!=1\Rightarrow c=\frac25=0.4$; außerdem $f\ge0$.}
+\item Berechnen Sie den Erwartungswert $E(Y)$. (2P)
+\vkasten{36mm}
+\loes{$E(Y)=\int_0^10.4y^2\,dy+\int_1^30.4y\,dy=\frac{0.4}{3}+0.4\cdot\frac{9-1}{2}=0.1333+1.6=\frac{26}{15}=1.733$.}
+\item Berechnen Sie $P(Y>2)$ sowie den Median von $Y$. (3P)
+\lkasten{$P(Y>2)=$}{45mm}{11mm}
+\lkasten{$y_{med}=$}{45mm}{11mm}
+\loes{$P(Y>2)=\int_2^30.4\,dy=0.4$. \ $F(1)=\int_0^10.4y\,dy=0.2<0.5$, also liegt der Median in $(1,3]$: $F(y)=0.2+0.4(y-1)\overset!=0.5\Rightarrow y_{med}=1.75$.}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 5
+\aufgabe{5}{10}
+Eine diskrete Zufallsvariable $X$ mit Träger $\{1,2,3\}$ besitze die folgende Wahrscheinlichkeitsfunktion, wobei $0<\theta<\frac13$ gilt:
+\begin{center}\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|c|c|}\hline
+$x$ & 1 & 2 & 3 & sonst\\\hline
+$P(X=x)$ & $\theta$ & $2\theta$ & $1-3\theta$ & 0\\\hline
+\end{tabular}\end{center}
+Gegeben sei außerdem die i.i.d.-Zufallsstichprobe $x_1=1,\ x_2=3,\ x_3=2,\ x_4=1,\ x_5=3$.
+\begin{enumerate}
+\item Stellen Sie die Likelihood $L(\theta)$ für diese Stichprobe auf und vereinfachen Sie so weit wie möglich. (2P)
+\vkasten{30mm}
+\loes{$L(\theta)=\theta\cdot(1-3\theta)\cdot2\theta\cdot\theta\cdot(1-3\theta)=2\theta^3(1-3\theta)^2$.}
+\item Bestimmen Sie die Log-Likelihood $l(\theta)$. (2P)
+\vkasten{26mm}
+\loes{$l(\theta)=\log2+3\log\theta+2\log(1-3\theta)$.}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Bestimmen Sie den Maximum-Likelihood-Schätzwert $\hat\theta$. Geben Sie Ihren vollständigen Lösungsweg an. (3P)
+\vkasten{62mm}
+\loes{$l'(\theta)=\frac3\theta-\frac{6}{1-3\theta}\overset!=0\Leftrightarrow3(1-3\theta)=6\theta\Leftrightarrow3=15\theta\Rightarrow\hat\theta=\frac15=0.2$.}
+\item Prüfen Sie die Bedingung zweiter Ordnung. (2P)
+\vkasten{36mm}
+\loes{$l''(\theta)=-\frac{3}{\theta^2}-\frac{18}{(1-3\theta)^2}<0$ für alle $\theta\in(0,\frac13)$ $\Rightarrow$ Maximum.}
+\item Schätzen Sie mithilfe von $\hat\theta$ die Wahrscheinlichkeit $P(X=3)$. (1P)
+\lkasten{$\widehat{P}(X=3)=$}{45mm}{11mm}
+\loes{$1-3\hat\theta=1-0.6=0.4$ (Invarianz des ML-Schätzers).}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 6
+\aufgabe{6}{7}
+Sei $X$ eine Zufallsvariable mit $E(X)=\mu$ und $Var(X)=\sigma^2$. Sie ziehen eine $n$-fache, unabhängige Zufallsstichprobe $\{X_1,\dots,X_n\}$ mit $n\ge2$ und betrachten den Schätzer
+\[ T=\frac{1}{n-1}\sum_{i=1}^{n}X_i. \]
+\begin{enumerate}
+\item Berechnen Sie $E(T)$ und den Bias von $T$ als Schätzer für $\mu$. (2P)
+\vkasten{36mm}
+\loes{$E(T)=\frac1{n-1}\sum E(X_i)=\frac{n}{n-1}\mu$; \ $\text{Bias}(T)=\frac{n}{n-1}\mu-\mu=\frac{\mu}{n-1}$ \ ($\neq0$ für $\mu\neq0$ $\Rightarrow$ verzerrt).}
+\item Berechnen Sie $Var(T)$. (2P)
+\vkasten{30mm}
+\loes{$Var(T)=\frac1{(n-1)^2}\sum Var(X_i)=\frac{n\sigma^2}{(n-1)^2}$.}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Ist $T$ ein konsistenter Schätzer für $\mu$? Begründen Sie kurz. (1P)
+\vkasten{30mm}
+\loes{Ja: $\text{Bias}=\frac{\mu}{n-1}\to0$ und $Var(T)\to0$ für $n\to\infty$, also $MSE=Var+\text{Bias}^2\to0$ (asymptotisch erwartungstreu und konsistent).}
+\item Entscheiden Sie, ob die folgenden Aussagen richtig oder falsch sind. (2P)
+\par\smallskip
+\begin{tabular}{@{}p{0.7\linewidth}l@{}}
+(i) \ Ein erwartungstreuer Schätzer hat stets einen kleineren MSE als ein verzerrter Schätzer. & \kasten{30mm}{10mm}\\[6mm]
+(ii) Maximum-Likelihood-Schätzer sind (unter gewissen Annahmen) asymptotisch erwartungstreu und konsistent. & \kasten{30mm}{10mm}
+\end{tabular}
+\loes{(i) falsch (ein verzerrter Schätzer kann durch kleinere Varianz einen kleineren MSE haben). \ (ii) richtig.}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 7
+\aufgabe{7}{9}
+In einer Befragung von 400 zufällig ausgewählten Studierenden gaben 88 an, täglich KI-Tools zum Lernen zu nutzen.
+\begin{enumerate}
+\item Konstruieren Sie ein Konfidenzintervall zum Niveau $1-\alpha=0.95$ für den wahren Anteil der Studierenden, die täglich KI-Tools nutzen. Geben Sie die Intervallgrenzen mit \textbf{vier} Stellen nach dem Dezimalpunkt an. Geben Sie Ihren Lösungsweg an. (3P)
+\vkasten{55mm}
+\loes{$\hat\pi=\frac{88}{400}=0.22$; \ $\sqrt{\frac{0.22\cdot0.78}{400}}=0.0207$; \ $0.22\pm1.96\cdot0.0207=0.22\pm0.0406$ $\Rightarrow[0.1794;\ 0.2606]$.}
+\item Vervollständigen Sie den folgenden R-Befehl zur Berechnung der \emph{oberen} Grenze des Konfidenzintervalls. (2P)
+\par\smallskip\noindent\hspace*{8mm}\texttt{\kasten{18mm}{9mm}\ + qnorm(\kasten{18mm}{9mm}) * sqrt(\kasten{40mm}{9mm})}
+\loes{\texttt{0.22 + qnorm(0.975) * sqrt(0.22*0.78/400)}}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Wie viele Studierende müssten mindestens befragt werden, damit die halbe Breite des 95\,\%-Konfidenzintervalls höchstens $0.02$ beträgt? Verwenden Sie $\hat\pi=0.22$. (2P)
+\vkasten{45mm}
+\loes{$1.96\sqrt{\frac{0.22\cdot0.78}{n}}\le0.02\Leftrightarrow n\ge\frac{1.96^2\cdot0.1716}{0.02^2}=1648.05\Rightarrow n=1649$.}
+\item Interpretieren Sie das in (a) berechnete Konfidenzintervall in einem Satz. (2P)
+\vkasten{36mm}
+\loes{Bei wiederholter Stichprobenziehung überdecken etwa 95\,\% der so konstruierten Intervalle den wahren Anteil $\pi$. (Nicht: \glqq $\pi$ liegt mit 95\,\% Wahrscheinlichkeit in $[0.1794;0.2606]$\grqq.)}
+\end{enumerate}
+\punkte
+
+% ====================================================================== Aufgabe 8
+\aufgabe{8}{10}
+Die Hochschulleitung behauptet, dass Studierende im Mittel 15 Stunden pro Woche für ihr Studium lernen. Die Fachschaft vermutet, dass es \emph{weniger} sind. Eine Zufallsstichprobe von $n=16$ Studierenden ergab eine mittlere Lernzeit von $\bar x=13.5$ Stunden und eine korrigierte Stichprobenstandardabweichung von $s_*=2.4$ Stunden. Gehen Sie davon aus, dass die Lernzeit normalverteilt ist; die Varianz ist \emph{unbekannt}.
+\begin{enumerate}
+\item Stellen Sie das passende Hypothesenpaar auf. (2P)
+\vkasten{18mm}
+\loes{$H_0:\ \mu\ge15$ \ vs. \ $H_1:\ \mu<15$.}
+\item Berechnen Sie die Prüfgröße und geben Sie ihre Verteilung unter $H_0$ an. (2P)
+\vkasten{36mm}
+\loes{$T=\frac{\bar X-\mu_0}{S_*/\sqrt n}=\frac{13.5-15}{2.4/4}=-2.5$; \ unter $H_0$: $T\sim t_{15}$.}
+\end{enumerate}
+\newpage
+\begin{enumerate}[resume]
+\item Geben Sie den Ablehnungsbereich $A$ für die Prüfgröße zum Signifikanzniveau $\alpha=0.05$ an. (Hinweis: $t_{15;0.95}=1.753$, $t_{15;0.975}=2.131$, $t_{16;0.95}=1.746$) (2P)
+\lkasten{$A=$}{60mm}{12mm}
+\loes{$A=(-\infty;\ -t_{15;0.95}]=(-\infty;\ -1.753]$.}
+\item Treffen Sie die Testentscheidung und formulieren Sie das Ergebnis im Sachzusammenhang. (2P)
+\vkasten{36mm}
+\loes{$t=-2.5\in A$ $\Rightarrow$ $H_0$ wird abgelehnt. Zum Niveau 5\,\% ist statistisch abgesichert, dass Studierende im Mittel weniger als 15 Stunden pro Woche lernen.}
+\item Beschreiben Sie den Fehler 1. Art im Sachzusammenhang. (2P)
+\vkasten{36mm}
+\loes{Fehler 1. Art: Man schließt, dass Studierende im Mittel weniger als 15 Stunden lernen ($H_0$ wird abgelehnt), obwohl sie in Wahrheit im Mittel mindestens 15 Stunden lernen ($H_0$ wahr).}
+\end{enumerate}
+\punkte
+
+% ====================================================================== nicht lösbar
+\newpage
+\noindent\textbf{Begründung nicht lösbare Aufgabe(n)}\par
+Nutzen Sie die folgende Box für jegliche Erläuterungen, wenn Aufgabenstellungen Ihrer Meinung nach nicht lösbar, widersprüchlich oder unzureichend definiert sind. Notieren Sie hierfür eindeutig, auf welche Aufgabe Sie sich beziehen.
+\par\medskip\noindent\kastenT{\textwidth-0.8pt}{175mm}
+\end{document}
