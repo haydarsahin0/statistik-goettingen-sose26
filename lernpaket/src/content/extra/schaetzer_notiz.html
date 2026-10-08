@@ -1,0 +1,145 @@
+<style>
+@page{size:A4;margin:8mm 9mm 10mm}
+.w{width:auto!important;padding:0!important}
+body{background:#fff!important;font-size:10.9px!important;line-height:1.38!important}
+h1{font-size:21px!important;margin:0 0 1mm!important;color:#c55a11}
+.st{border:2px solid #c55a11;border-radius:8px;margin:0 0 2.2mm;break-inside:avoid}
+.st .h{background:#c55a11;color:#fff;font:800 12.5px Inter;padding:1mm 3mm}
+.st .b{padding:1.4mm 3mm}
+table.t{border-collapse:collapse;width:100%;margin:1mm 0}
+table.t td,table.t th{border:1px solid #e3cdbd;padding:.8mm 1.6mm;vertical-align:middle;text-align:left}
+table.t th{background:#fdf0e6;color:#7a3a0a}
+.de{background:#f4f6fa;border-left:3px solid #1f4e79;padding:1mm 2.5mm;margin:1mm 0;border-radius:0 5px 5px 0}
+.tr{color:#0f4f47;background:#e3f4f2;border-left:3px solid #00796b;padding:.8mm 2.5mm;margin:1mm 0;border-radius:0 5px 5px 0}
+.fe{background:#fdeeec;border-left:3px solid #c62828;padding:.8mm 2.5mm;margin:1mm 0;border-radius:0 5px 5px 0}
+.ok{background:#eaf6ec;border-left:3px solid #2e7d32;padding:.8mm 2.5mm;margin:1mm 0;border-radius:0 5px 5px 0}
+.pb{break-before:page}
+.ex{border:1.5px solid #1f4e79;border-radius:7px;margin:0 0 2.4mm;break-inside:avoid}
+.ex .h{background:#1f4e79;color:#fff;font:700 11.5px Inter;padding:.8mm 3mm;display:flex;justify-content:space-between}
+.ex .b{padding:1.2mm 3mm}
+.ex .q{color:#333;font-style:italic;margin-bottom:.8mm}
+.ex ol{margin:0;padding-left:5mm}
+.ex li{margin:.2mm 0}
+.two{display:flex;gap:2.4mm}.two>div{flex:1}
+</style>
+
+<h1>SCHÄTZER-NOTIZ · „Ist der Schätzer erwartungstreu?“ in 5 Schritten</h1>
+<div class="tr">Yazım şekli: <b>Almanca satırları sınav kâğıdına aynen yaz</b>, sadece sayıları/harfleri kendi sorunla değiştir. Bu soruda integral ya da türev YOK – sadece aşağıdaki kurallar.</div>
+
+<div class="st"><div class="h">SCHRITT 0 · Was ist gegeben? (Aufgabe lesen)</div><div class="b">
+\(E(X)=\dots\) steht in der Aufgabe (z. B. \(\mu\), \(\frac\theta2\), \(\frac\alpha4\)) ⇒ <b>für jedes</b> \(X_i\) gilt dasselbe: \(E(X_1)=E(X_n)=E(X)\). Evtl. auch \(Var(X)=\sigma^2\).<br>
+Griechische Buchstaben (\(\mu,\theta,\alpha,\kappa,\lambda\)) = <b>feste unbekannte Zahlen</b> (Konstanten). Zufällig sind nur die \(X_i\).
+<span class="tr">θ'yı "a" sayısı gibi düşün. "erwartungstreu / unverzerrt / Bias" kelimelerini görürsen bu nota bak.</span>
+</div></div>
+
+<div class="st"><div class="h">SCHRITT 1 · Schätzer vereinfachen (falls Produkte / Brüche)</div><div class="b">
+<table class="t"><tr><th>steht da</th><th>wird zu</th><th>steht da</th><th>wird zu</th></tr>
+<tr><td>\(\dfrac{\prod_{i=1}^{n}X_i}{\prod_{i=1}^{n-1}X_i}\)</td><td>\(X_n\)</td><td>\(\dfrac{\prod_{i=2}^{n-1}X_i}{\prod_{i=1}^{n-1}X_i}\)</td><td>\(\frac{1}{X_1}\)</td></tr>
+<tr><td>\(\dfrac{\prod_{i=1}^{n}X_i}{\prod_{i=2}^{n}X_i}\)</td><td>\(X_1\)</td><td>\(\frac1n\sum_{i=1}^n X_i\)</td><td>\(\bar X\)</td></tr></table>
+Trick: Produkte ausschreiben (\(X_1\cdot X_2\cdots\)), gleiche \(X\) oben und unten kürzen – übrig bleibt das <b>eine</b> \(X\), das mehr ist.
+</div></div>
+
+<div class="st"><div class="h">SCHRITT 2 · E(…) über den ganzen Schätzer + Rechenregeln</div><div class="b">
+<table class="t"><tr><th>Regel</th><th>Beispiel mit \(E(X)=\mu\)</th></tr>
+<tr><td>Summe auseinander: \(E(A+B-C)=E(A)+E(B)-E(C)\)</td><td>\(E(X_1+X_2-X_3)=\mu+\mu-\mu\)</td></tr>
+<tr><td>Zahl/Konstante raus: \(E(aX)=aE(X)\), \(E\big(\frac{X}{\alpha}\big)=\frac{E(X)}{\alpha}\)</td><td>\(E(3X_1)=3\mu\)</td></tr>
+<tr><td>Konstante allein: \(E(c)=c\)</td><td>\(E\big(\frac14\big)=\frac14\)</td></tr>
+<tr><td>Summenzeichen: \(E\big(\sum X_i\big)=(\text{Anzahl Terme})\cdot E(X)\)</td><td>\(\sum_{i=1}^n\): \(n\mu\) · \(\sum_{i=2}^n\): \((n-1)\mu\) · \(\sum_{i=2}^{n-1}\): \((n-2)\mu\)</td></tr>
+<tr><td>Mittelwert: \(E(\bar X)=E(X)\)</td><td>\(E(\bar X)=\mu\)</td></tr>
+<tr><td>Produkt (unabhängig): \(E(X_1X_2)=E(X_1)E(X_2)\)</td><td>\(E(X_1X_2)=\mu^2\)</td></tr>
+<tr><td>Kehrwert (so rechnet die Lösung): \(E\big(\frac1X\big)=\frac{1}{E(X)}\)</td><td>\(E\big(\frac1{X_1}\big)=\frac1\mu\)</td></tr></table>
+</div></div>
+
+<div class="two"><div>
+<div class="st"><div class="h">SCHRITT 3 · Einsetzen und vereinfachen</div><div class="b">
+\(E(X_i)\) aus der Aufgabe einsetzen, Brüche kürzen:<br>
+\(\frac{\alpha/4}{\alpha}=\frac14\) · \(\frac{1}{\alpha/4}=\frac4\alpha\) · \(2\cdot\frac\theta2=\theta\) · \(\frac1n\cdot n=1\)
+<div class="de">Beispiel: \(E(\hat\alpha)=4\cdot\frac\alpha4+\frac{\alpha/4}{\alpha}-\frac14=\alpha+\frac14-\frac14=\alpha\)</div>
+</div></div>
+</div><div>
+<div class="st"><div class="h">SCHRITT 4 · Vergleichen + Satz</div><div class="b">
+<div class="ok">\(E(\hat\theta)=\theta\) ⇒ <b>erwartungstreu</b> · \(E(\hat\theta)\neq\theta\) ⇒ <b>verzerrt</b></div>
+<div class="de">„Da \(E(\hat\theta)=\theta\) gilt, ist \(\hat\theta\) ein erwartungstreuer (unverzerrter) Schätzer für \(\theta\).“<br>
+„Da \(E(\hat\theta)=\dots\neq\theta\), ist \(\hat\theta\) verzerrt. \(\text{Bias}=E(\hat\theta)-\theta=\dots\)“</div>
+</div></div>
+</div></div>
+
+<div class="st"><div class="h">SCHRITT 5 · Falls weiter gefragt: Varianz, besser, MSE, konsistent, c bestimmen</div><div class="b">
+<table class="t"><tr><th>Frage</th><th>Regel</th></tr>
+<tr><td>\(Var(T)\)? (unabhängig)</td><td>Koeffizienten <b>quadrieren</b>: \(Var(aX_1+bX_2)=a^2\sigma^2+b^2\sigma^2\) (Minus wird Plus) · \(Var(c)=0\) · \(Var(\bar X)=\frac{\sigma^2}{n}\)</td></tr>
+<tr><td>„Welcher ist vorzuziehen?“</td><td>beide erwartungstreu → <b>kleinere Varianz</b> ist besser; sonst kleinerer \(MSE=Var+\text{Bias}^2\)</td></tr>
+<tr><td>„asymptotisch erwartungstreu?“</td><td>Bias \(\to0\) für \(n\to\infty\)</td></tr>
+<tr><td>„konsistent?“</td><td>\(MSE\to0\) für \(n\to\infty\) (Bias → 0 <b>und</b> Var → 0) · \(X_1\) allein: nicht konsistent</td></tr>
+<tr><td>„Bestimmen Sie c, sodass \(cT\) erwartungstreu ist“</td><td>\(E(cT)=c\,E(T)\overset{!}{=}\theta\) ⇒ \(c=\frac{\theta}{E(T)}\)</td></tr>
+<tr><td>Richtig/Falsch-Aussagen</td><td>„erwartungstreu hat immer kleineren MSE“ ✗ · „ML-Schätzer asympt. erwartungstreu, konsistent“ ✓ · \(s^2=\frac1n\sum(x_i-\bar x)^2\) verzerrt, \(s_*^2\) erwartungstreu ✓</td></tr></table>
+</div></div>
+<div class="fe"><b>Notfall:</b> Immer hinschreiben: „\(E(\hat\theta)=\)“ + Schätzer, dann jede Summe einzeln mit \(E(X_i)=\dots\) ersetzen, am Ende Satz mit „erwartungstreu“ oder „verzerrt“. Schon das bringt die Hälfte der Punkte. <b>Nie leer lassen.</b></div>
+
+<div class="pb"></div>
+<h1 style="color:#1f4e79!important">Probe: 12 Aufgabentypen – jede nur mit der Notiz gelöst</h1>
+<div class="tr">Önce soruyu kendin çöz (çözümü bir kâğıtla kapat), sonra karşılaştır. Her çözüm S0–S5 adımlarını sırayla kullanıyor.</div>
+
+<div class="ex"><div class="h"><span>1 · Linearer Schätzer, Gewichte summieren zu 1</span><span>PK4-Typ</span></div><div class="b">
+<div class="q">\(E(X)=\mu\). Ist \(T_1=0.5X_1+0.3X_2+0.2X_3\) erwartungstreu für \(\mu\)?</div>
+<ol><li><b>S2</b> \(E(T_1)=0.5E(X_1)+0.3E(X_2)+0.2E(X_3)\)</li>
+<li><b>S3</b> \(=0.5\mu+0.3\mu+0.2\mu=(0.5+0.3+0.2)\mu=\mu\)</li>
+<li><b>S4</b> Da \(E(T_1)=\mu\), ist \(T_1\) erwartungstreu für \(\mu\).</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>2 · Mit Minuszeichen</span><span>Gewichte \(1-1+1\)</span></div><div class="b">
+<div class="q">\(E(X)=\mu\). \(T_2=X_1-X_2+X_3\)?</div>
+<ol><li><b>S2–S3</b> \(E(T_2)=E(X_1)-E(X_2)+E(X_3)=\mu-\mu+\mu=\mu\) · <b>S4</b> erwartungstreu.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>3 · Verzerrt + Bias</span><span>Gewichte \(\neq1\)</span></div><div class="b">
+<div class="q">\(E(X)=\mu\). \(T=\frac14(X_1+X_2+X_3)\)?</div>
+<ol><li><b>S2–S3</b> \(E(T)=\frac14(\mu+\mu+\mu)=\frac34\mu\)</li>
+<li><b>S4</b> Da \(E(T)=\frac34\mu\neq\mu\), ist \(T\) verzerrt; \(\text{Bias}=\frac34\mu-\mu=-\frac14\mu\).</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>4 · Parameter steckt im Erwartungswert</span><span>\(E(X)=\frac\theta2\)</span></div><div class="b">
+<div class="q">\(E(X)=\frac\theta2\). Sind \(\bar X\) und \(2\bar X\) erwartungstreu für \(\theta\)?</div>
+<ol><li><b>S2–S3</b> \(E(\bar X)=E(X)=\frac\theta2\neq\theta\) → verzerrt (Bias \(-\frac\theta2\))</li>
+<li>\(E(2\bar X)=2\cdot\frac\theta2=\theta\) → <b>erwartungstreu</b>.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>5 · Summe ab \(i=2\) (Anzahl Terme!)</span><span>Testat-5-Typ</span></div><div class="b">
+<div class="q">\(E(X)=\frac\kappa2\). \(\tilde\kappa=X_1+\frac{1}{2n}\sum_{i=2}^{n}X_i\). Erwartungstreu? Hängt der Bias von \(n\) ab?</div>
+<ol><li><b>S2</b> \(E(\tilde\kappa)=E(X_1)+\frac1{2n}\cdot(n-1)\cdot E(X)\) &nbsp;(Summe ab 2 → \(n-1\) Terme)</li>
+<li><b>S3</b> \(=\frac\kappa2+\frac{(n-1)}{2n}\cdot\frac\kappa2=\frac\kappa2+\frac{(n-1)\kappa}{4n}\)</li>
+<li><b>S4</b> \(\text{Bias}=\frac\kappa2+\frac{(n-1)\kappa}{4n}-\kappa=-\frac{(n+1)\kappa}{4n}\neq0\) → verzerrt; Bias hängt von \(n\) ab.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>6 · Produkte kürzen → \(X_n\)</span><span>Altklausur-Typ</span></div><div class="b">
+<div class="q">\(E(X)=\frac\theta2\). \(\hat\theta=\dfrac{\prod_{i=1}^{n}X_i}{\prod_{i=1}^{n-1}X_i}+\frac1n\sum_{i=1}^nX_i\)?</div>
+<ol><li><b>S1</b> \(\hat\theta=X_n+\bar X\)</li>
+<li><b>S2–S3</b> \(E(\hat\theta)=E(X_n)+E(\bar X)=\frac\theta2+\frac\theta2=\theta\)</li>
+<li><b>S4</b> Da \(E(\hat\theta)=\theta\), ist \(\hat\theta\) unverzerrt.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>7 · Altklausur A7 (Kehrwert)</span><span>→ verzerrt</span></div><div class="b">
+<div class="q">\(E(X)=\frac\alpha4\). \(\hat\alpha=\dfrac{\prod_{i=2}^{n-1}X_i}{\prod_{i=1}^{n-1}X_i}+\frac{X_n}{\alpha}-\frac14\)?</div>
+<ol><li><b>S1</b> \(\hat\alpha=\frac1{X_1}+\frac{X_n}{\alpha}-\frac14\)</li>
+<li><b>S2</b> \(E(\hat\alpha)=E\big(\frac1{X_1}\big)+\frac{E(X_n)}{\alpha}-\frac14\)</li>
+<li><b>S3</b> \(=\frac{1}{\alpha/4}+\frac{\alpha/4}{\alpha}-\frac14=\frac4\alpha+\frac14-\frac14=\frac4\alpha\)</li>
+<li><b>S4</b> Da \(E(\hat\alpha)=\frac4\alpha\neq\alpha\), ist \(\hat\alpha\) verzerrt.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>8 · Konstante kürzt sich weg</span><span>→ erwartungstreu</span></div><div class="b">
+<div class="q">\(E(X)=\frac\alpha4\). \(\hat\alpha=4\bar X+\frac{X_1}{\alpha}-\frac14\)?</div>
+<ol><li><b>S2–S3</b> \(E(\hat\alpha)=4\cdot\frac\alpha4+\frac{\alpha/4}{\alpha}-\frac14=\alpha+\frac14-\frac14=\alpha\) · <b>S4</b> unverzerrt.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>9 · Konstante c bestimmen</span><span>„so, dass erwartungstreu“</span></div><div class="b">
+<div class="q">\(E(X)=\frac\theta3\). Bestimmen Sie \(c\), sodass \(T=c\sum_{i=1}^nX_i\) erwartungstreu für \(\theta\) ist.</div>
+<ol><li><b>S2–S3</b> \(E(T)=c\cdot n\cdot\frac\theta3\overset{!}{=}\theta\)</li>
+<li>\(\Rightarrow c\cdot\frac{n}{3}=1\Rightarrow c=\frac3n\) &nbsp;(also \(T=3\bar X\))</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>10 · Asymptotisch erwartungstreu</span><span>Bias → 0</span></div><div class="b">
+<div class="q">\(E(X)=\mu\). \(T=\frac{1}{n+1}\sum_{i=1}^nX_i\). Erwartungstreu? Asymptotisch erwartungstreu?</div>
+<ol><li><b>S2–S3</b> \(E(T)=\frac{n}{n+1}\mu\neq\mu\) → verzerrt; \(\text{Bias}=\frac{n}{n+1}\mu-\mu=-\frac{\mu}{n+1}\)</li>
+<li><b>S5</b> \(-\frac{\mu}{n+1}\to0\) für \(n\to\infty\) → asymptotisch erwartungstreu.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>11 · Varianz + „Welcher ist vorzuziehen?“</span><span>PK4 A8 / Kochbuch</span></div><div class="b">
+<div class="q">\(E(X)=\mu\), \(Var(X)=\sigma^2\). \(T_1=\frac{X_1+2X_2+X_3}{4}\), \(T_2=X_1+X_2-X_3\). Welcher ist besser? Ist \(\bar X\) noch besser?</div>
+<ol><li><b>S2–S4</b> \(E(T_1)=\frac{\mu+2\mu+\mu}{4}=\mu\), \(E(T_2)=\mu\) → beide erwartungstreu</li>
+<li><b>S5</b> \(Var(T_1)=\frac{1^2+2^2+1^2}{16}\sigma^2=\frac{6}{16}\sigma^2=0.375\sigma^2\); \(Var(T_2)=(1+1+1)\sigma^2=3\sigma^2\)</li>
+<li>\(T_1\) vorzuziehen (kleinere Varianz). \(Var(\bar X)=\frac{\sigma^2}{3}=0.333\sigma^2<0.375\sigma^2\) → \(\bar X\) noch besser.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>12 · Konsistenz + MSE</span><span>Bias und Var → 0</span></div><div class="b">
+<div class="q">\(E(X)=\mu\), \(Var(X)=\sigma^2\). \(T=\frac{1}{n-1}\sum_{i=1}^nX_i\). Bias, Varianz, konsistent?</div>
+<ol><li><b>S2–S4</b> \(E(T)=\frac{n}{n-1}\mu\); \(\text{Bias}=\frac{\mu}{n-1}\) → verzerrt</li>
+<li><b>S5</b> \(Var(T)=\frac{1}{(n-1)^2}\cdot n\sigma^2=\frac{n\sigma^2}{(n-1)^2}\)</li>
+<li>Bias → 0 und Var → 0 ⇒ \(MSE=Var+\text{Bias}^2\to0\) ⇒ <b>konsistent</b>.</li></ol></div></div>
