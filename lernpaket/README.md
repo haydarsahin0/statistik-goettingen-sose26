@@ -25,5 +25,5 @@
 - `Test_Notiz.pdf` – Test-Notiz: jede Testaufgabe in 5 Schritten (1 Seite zum Abschreiben) + 12 Aufgabentypen nur mit der Notiz gelöst (`src/content/extra/test_notiz.html`)
 - `Schaetzer_Notiz.pdf` – Schätzer-Notiz: „erwartungstreu?“ in 5 Schritten (1 Seite zum Abschreiben) + 12 Aufgabentypen nur mit der Notiz gelöst (`src/content/extra/schaetzer_notiz.html`)
 - `R_Befehle_TeilB.pdf` – alle R-Befehle für Teil B (19 Abschnitte) mit türkischer Erklärung, echtem R-Output, Antwortsätzen und Zuordnung zur Altklausur B (`src/gen_r_befehle.py`)
-- `Formelsammlung_R_kompakt.pdf` – R-Formelsammlung kompakt (2 Seiten, Karten-Layout): alle Befehle für Teil B mit türkischer Erklärung, Fehlermeldungen, Antwortsätze (`src/gen_r_fs_kompakt.py`)
+- `Formelsammlung_R_kompakt.pdf` – R-Formelsammlung kompakt (2 Seiten, Karten-Layout): alle Befehle für Teil B mit kurzer deutscher Erklärung in Klausurbegriffen, Fehlermeldungen, Antwortsätze (`src/gen_r_fs_kompakt.py`)
 - `Probeklausur4_TeilA.pdf` / `Probeklausur4_TeilB.pdf` / `Probeklausur4_Loesung.pdf` – vierte Probeklausur im Klausurformat (ohne Lernhilfen), Daten `uebungsdaten/Kaffee.csv` (Semikolon + Dezimalkomma), Kontrollrechnungen `src/rwork/pk4_data.R`
