@@ -1,4 +1,5 @@
 # generierte Dateien
 __pycache__/
 src/rwork/fsr/
+src/rwork/befehle/
 src/day.html
