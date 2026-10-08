@@ -1,0 +1,138 @@
+<style>
+@page{size:A4;margin:5mm 5mm 6mm}
+.w{width:auto!important;padding:0!important}
+body{background:#fff!important;font-family:Inter,Arial,sans-serif;font-size:9.4px!important;line-height:1.32!important;color:#1d1d1f}
+.sheet{background-image:linear-gradient(#e3eedf 1px,transparent 1px),linear-gradient(90deg,#e3eedf 1px,transparent 1px);background-size:4.2mm 4.2mm;padding:1.5mm;min-height:280mm;box-sizing:border-box}
+.cols{column-count:3;column-gap:2.2mm;column-fill:balance}
+.b{border:1.3px solid #2bb24c;border-radius:2px;padding:1.2mm 1.6mm;margin:0 0 1.6mm;break-inside:avoid;background:rgba(255,255,255,.88)}
+h4{font:700 10.4px Inter;color:#4b3fd6;margin:0 0 .6mm;border-bottom:1px solid #4b3fd6;padding-bottom:.3mm}
+h5{font:600 7.4px Inter;color:#4b3fd6;margin:.8mm 0 .2mm}
+.r{color:#e5482f}
+.tr{color:#5a5a5a;font-style:italic}
+table.t{border-collapse:collapse;width:100%;margin:.4mm 0}
+table.t td,table.t th{border:.6px solid #9a8de8;padding:.25mm .6mm;vertical-align:top}
+table.t th{color:#4b3fd6;font-weight:700;text-align:left}
+.katex{font-size:1.04em}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1mm}
+.top .n{font:700 11px Inter;border:1.6px solid #1d1d1f;padding:.6mm 3mm}
+.top .k{border:1.3px solid #e5482f;color:#e5482f;padding:.6mm 2mm;font-size:7px}
+</style>
+<div class="sheet">
+<div class="top"><div class="n">Rückseite · Statistik Teil A</div><div class="k"><b>Korrektur Vorderseite:</b> 8.4 Bsp: \(9c=1\Rightarrow c=\frac19\) (nicht \(\frac13\)) · 4.1 Quantil: \(n\alpha\) ganzzahlig → \(\frac{x_{(n\alpha)}+x_{(n\alpha+1)}}{2}\), sonst aufrunden</div></div>
+<div class="cols">
+
+<div class="b"><h4>7.8 Laplace &amp; Rechenregeln</h4>
+\(P(A)=\frac{|A|}{|\Omega|}\) · \(P(\bar A)=1-P(A)\)<br>
+<span class="r">\(P(A\cup B)=P(A)+P(B)-P(A\cap B)\)</span><br>
+De Morgan: \(\overline{A\cap B}=\bar A\cup\bar B\), \(\overline{A\cup B}=\bar A\cap\bar B\)<br>
+disjunkt: \(A\cap B=\emptyset\) <span class="tr">(önce tümleyen, sonra ∪/∩!)</span></div>
+
+<div class="b"><h4>7.9 Totale W'keit · 7.10 Bayes</h4>
+Baum: Pfad = <b>multiplizieren</b>, Ergebnis = Pfade <b>addieren</b><br>
+<span class="r">\(P(B)=\sum_i P(B\mid A_i)P(A_i)\)</span><br>
+<span class="r">\(P(A_i\mid B)=\dfrac{P(B\mid A_i)P(A_i)}{P(B)}\)</span> <span class="tr">(payda = toplam!)</span><br>
+Gegenast: \(P(\bar B\mid A)=1-P(B\mid A)\)<br>
+„mind. einer": <span class="r">\(1-(1-p)^n\)</span> · „keiner": \((1-p)^n\)</div>
+
+<div class="b"><h4>8.5 Verteilungsfunktion F(x)</h4>
+diskret: Treppe, Sprung \(P(X=x)\), ● links, ○ rechts<br>
+stetig: \(F(x)=\int_{-\infty}^{x}f(t)\,dt\) → <b>3 Fälle</b>: 0 / Formel / 1<br>
+\(P(X\le a)=F(a)\) · <span class="r">\(P(X>a)=1-F(a)\)</span> · \(P(a<X\le b)=F(b)-F(a)\)<br>
+Median: \(F(x)=0.5\) · \(x_p\): \(F(x)=p\) · \(f=F'\) · stetig: \(P(X=a)=0\)<br>
+stückweise: Integral an Knick teilen, 2. Stück: \(F(k)+\int_k^x\)</div>
+
+<div class="b"><h4>8.6–8.8 Erwartungswert &amp; Varianz</h4>
+diskret: \(E(X)=\sum x\,P(X=x)\) · stetig: \(E(X)=\int x f(x)\,dx\)<br>
+\(E(X^2)=\sum x^2P\) bzw. \(\int x^2f\) · <span class="r">\(Var(X)=E(X^2)-E(X)^2\)</span><br>
+\(\int x^k=\frac{x^{k+1}}{k+1}\) · \(\int_0^\infty x^ke^{-\lambda x}dx=\frac{k!}{\lambda^{k+1}}\)</div>
+
+<div class="b"><h4>8.9 Regeln · 8.10 zwei ZV</h4>
+\(E(aX+b)=aE(X)+b\) · <span class="r">\(Var(aX+b)=a^2Var(X)\)</span><br>
+\(E(X\pm Y)=E(X)\pm E(Y)\)<br>
+unabh.: <span class="r">\(Var(X\pm Y)=Var X+Var Y\)</span> (immer +!)<br>
+\(Var(aX+bY)=a^2VarX+b^2VarY+2ab\,Cov\)<br>
+Rand = Zeilen-/Spaltensumme · \(Cov=E(XY)-E(X)E(Y)\)<br>
+unabh. ⇔ jede Zelle = Produkt der Ränder</div>
+
+<div class="b"><h4>9. Verteilungen</h4>
+<table class="t"><tr><th></th><th>\(P(X=x)\) / \(f(x)\)</th><th>E</th><th>Var</th></tr>
+<tr><td>Bern.</td><td>\(\pi^x(1-\pi)^{1-x}\)</td><td>\(\pi\)</td><td>\(\pi(1-\pi)\)</td></tr>
+<tr><td>\(B(n,\pi)\)</td><td>\(\binom nx\pi^x(1-\pi)^{n-x}\)</td><td>\(n\pi\)</td><td>\(n\pi(1-\pi)\)</td></tr>
+<tr><td>\(Po(\lambda)\)</td><td>\(\frac{\lambda^x}{x!}e^{-\lambda}\)</td><td>\(\lambda\)</td><td>\(\lambda\)</td></tr>
+<tr><td>Geom</td><td>\(p(1-p)^x\), \(x\ge0\)</td><td>\(\frac{1-p}p\)</td><td>\(\frac{1-p}{p^2}\)</td></tr>
+<tr><td>\(U(a,b)\)</td><td>\(\frac1{b-a}\)</td><td>\(\frac{a+b}2\)</td><td>\(\frac{(b-a)^2}{12}\)</td></tr>
+<tr><td>\(Exp(\lambda)\)</td><td>\(\lambda e^{-\lambda x}\)</td><td>\(\frac1\lambda\)</td><td>\(\frac1{\lambda^2}\)</td></tr>
+<tr><td>\(N(\mu,\sigma^2)\)</td><td>Tabelle Φ</td><td>\(\mu\)</td><td>\(\sigma^2\)</td></tr></table>
+Bin: n Versuche, Anzahl Erfolge · Po: „im Mittel λ pro …“ (Zeit skalieren!) · Exp: \(\lambda=\frac1{\text{Mittel}}\), <span class="r">\(P(X>x)=e^{-\lambda x}\)</span>, gedächtnislos</div>
+
+<div class="b"><h4>9.9 Normal · 9.11 Summen · 9.12 ZGWS</h4>
+σ = √Varianz! <span class="r">\(z=\frac{x-\mu}{\sigma}\)</span>, \(P(X\le x)=\Phi(z)\), \(\Phi(-z)=1-\Phi(z)\)<br>
+Quantil: \(x_p=\mu+\sigma z_p\) · \(P(|X-\mu|\le k\sigma)=2\Phi(k)-1\)<br>
+\(z_{0.90}=1.282\) · \(z_{0.95}=1.645\) · \(z_{0.975}=1.960\) · \(z_{0.99}=2.326\) · \(z_{0.995}=2.576\)<br>
+\(\sum X_i\sim N(n\mu,n\sigma^2)\) · <span class="r">\(\bar X\sim N(\mu,\frac{\sigma^2}{n})\)</span> · \(X-Y\sim N(\mu_X-\mu_Y,\sigma_X^2+\sigma_Y^2)\)<br>
+ZGWS (n ≥ 30, beliebige Vert.): \(\bar X\overset{a}{\sim}N(\mu,\frac{\sigma^2}n)\)</div>
+
+<div class="b"><h4>10. Schätzer</h4>
+\(\text{Bias}=E(\hat\theta)-\theta\) · erwartungstreu ⇔ Bias = 0<br>
+<span class="r">\(E(\sum a_iX_i)=(\sum a_i)\mu\)</span> → \(\sum a_i=1\) ⇒ e.t.<br>
+<span class="r">\(Var(\sum a_iX_i)=(\sum a_i^2)\sigma^2\)</span> · \(Var(\bar X)=\frac{\sigma^2}n\)<br>
+besser = kleinere Var (beide e.t.) · \(MSE=Var+\text{Bias}^2\)<br>
+konsistent: \(MSE\to0\) (n→∞) · \(X_1\): nicht konsistent<br>
+\(s^2=\frac1n\sum(x_i-\bar x)^2\) verzerrt, \(s_*^2=\frac{n}{n-1}s^2\) e.t.<br>
+Brüche kürzen: \(\frac{\prod_{i=2}^{n-1}X_i}{\prod_{i=1}^{n-1}X_i}=\frac1{X_1}\) · \(E(X_1X_2)=E(X_1)E(X_2)\) · Lösung: \(E(\frac1X)=\frac1{E(X)}\)<br>
+ML: asympt. e.t., konsistent, asympt. normal<br>
+KDE: \(\hat f(x)=\frac1{nb}\sum K\big(\frac{x-x_i}b\big)\), \(-1\le u<1\): Rechteck \(\frac12\), Epan. \(\frac34(1-u^2)\)</div>
+
+<div class="b"><h4>11. Maximum-Likelihood</h4>
+1) \(L(\theta)=\prod f(x_i;\theta)\) (r einsetzen!) 2) \(l=\log L\)<br>
+<span class="tr">x'siz çarpan → üs n · x'li çarpan → ∏ · üsteki x → Σ</span><br>
+\(\log(ab)=\log a+\log b\) · \(\log a^k=k\log a\) · \(\log e^z=z\)<br>
+3) \(l'(\theta)\overset!=0\) 4) nach θ auflösen 5) <span class="r">\(l''<0\Rightarrow\) Max</span> 6) Zahlen einsetzen (ln!)<br>
+<table class="t"><tr><th>l sieht aus wie</th><th>\(\hat\theta\)</th></tr>
+<tr><td>\(A\log\theta-B\theta\)</td><td class="r">\(A/B\)</td></tr>
+<tr><td>\(-A\log\theta-B/\theta\)</td><td class="r">\(B/A\)</td></tr>
+<tr><td>\(A\log p+B\log(1-p)\)</td><td class="r">\(A/(A+B)\)</td></tr>
+<tr><td>\(A\log(\theta+1)+C\theta\)</td><td class="r">\(-A/C-1\)</td></tr>
+<tr><td>Weibull r: \(rn\log\lambda-\lambda^r\sum x^r\)</td><td class="r">\((n/\sum x_i^r)^{1/r}\)</td></tr>
+<tr><td>\(U(0,\theta)\) / Normal μ</td><td class="r">\(\max x_i\) / \(\bar x\)</td></tr></table>
+Tabelle: \(L\) = Produkt der Werte der beobachteten \(x_i\) (z.B. \(\theta\cdot2\theta\cdot(1-3\theta)\)) · Invarianz: \(\widehat{g(\theta)}=g(\hat\theta)\)</div>
+
+<div class="b"><h4>12. Konfidenzintervalle (1−α)</h4>
+σ bek.: <span class="r">\(\bar x\pm z_{1-\alpha/2}\frac{\sigma}{\sqrt n}\)</span> · σ unbek.: \(\bar x\pm t_{n-1;1-\alpha/2}\frac{s_*}{\sqrt n}\)<br>
+Anteil: \(\hat\pi\pm z_{1-\alpha/2}\sqrt{\frac{\hat\pi(1-\hat\pi)}n}\)<br>
+σ²: \(\big[\frac{(n-1)s_*^2}{\chi^2_{n-1;1-\alpha/2}};\frac{(n-1)s_*^2}{\chi^2_{n-1;\alpha/2}}\big]\)<br>
+n: \(n\ge(\frac{z\sigma}{e})^2\), Anteil \(n\ge\frac{z^2\pi(1-\pi)}{e^2}\), e = L/2, <b>aufrunden</b><br>
+rückwärts: \(\bar x=\frac{a+b}2\) · <code>qnorm(0.995)</code> → 99 %<br>
+Satz: „Bei wiederholter Ziehung überdecken ca. 95 % der so konstruierten Intervalle den wahren Parameter.“</div>
+
+<div class="b"><h4>13. Tests</h4>
+1) <b>H₁ = was nachgewiesen werden soll</b>, „=, ≤, ≥“ nur in H₀<br>
+<span class="tr">größer/mehr → > · kleiner/nicht weiter als → < · weicht ab/genau → ≠</span><br>
+2) Prüfgröße + <b>Verteilung unter H₀</b> angeben!<br>
+<table class="t"><tr><th>Test</th><th>Prüfgröße</th><th>unter H₀</th></tr>
+<tr><td>Gauß (σ bek.)</td><td class="r">\(\frac{\bar x-\mu_0}{\sigma/\sqrt n}\)</td><td>\(N(0,1)\)</td></tr>
+<tr><td>t (σ unbek.)</td><td>\(\frac{\bar x-\mu_0}{s_*/\sqrt n}\)</td><td>\(t_{n-1}\)</td></tr>
+<tr><td>Anteil</td><td>\(\frac{\hat\pi-\pi_0}{\sqrt{\pi_0(1-\pi_0)/n}}\)</td><td>\(\approx N(0,1)\)</td></tr>
+<tr><td>Varianz</td><td>\(\frac{(n-1)s_*^2}{\sigma_0^2}\)</td><td>\(\chi^2_{n-1}\)</td></tr>
+<tr><td>Unabh.</td><td>\(\sum\frac{(h-e)^2}{e}\), \(e=\frac{\text{Z}\cdot\text{S}}{n}\)</td><td>\(\chi^2_{(k-1)(m-1)}\)</td></tr>
+<tr><td>Anpassung</td><td>\(\sum\frac{(h_j-np_j)^2}{np_j}\)</td><td>\(\chi^2_{k-1}\)</td></tr>
+<tr><td>Binom exakt</td><td>X = Erfolge</td><td>\(B(n,\pi_0)\)</td></tr>
+<tr><td>Vorzeichen</td><td>\(\#\{x_i\le\theta_0\}\)</td><td>\(B(n,0.5)\)</td></tr></table>
+3) ablehnen: ≠ \(|z|>z_{1-\alpha/2}\) · > \(z>z_{1-\alpha}\) · < \(z<-z_{1-\alpha}\) (χ²-Tests: immer rechts)<br>
+p-Wert: ≠ \(2(1-\Phi(|z|))\) · > \(1-\Phi(z)\) · < \(\Phi(z)\) · <span class="r">\(p\le\alpha\Rightarrow H_0\) ablehnen</span><br>
+Binom: \(P(X\ge k)=1-P(X\le k-1)\)<br>
+R-Code: richtige <b>Daten</b> → <code>mu</code>=μ₀ → <code>alternative</code> passt zu H₁ ("l" <, "g" >) → p vs α<br>
+Satz: „Zum Niveau α wird H₀ (nicht) abgelehnt; es ist (nicht) nachgewiesen, dass …“ (nie „H₀ angenommen“)<br>
+Fehler 1. Art: H₀ abgelehnt, obwohl wahr (α) · 2. Art: H₀ nicht abgelehnt, obwohl falsch (β)<br>
+β: \(\bar x_{krit}=\mu_0+z\frac\sigma{\sqrt n}\), \(\beta=\Phi\big(\frac{\bar x_{krit}-\mu_1}{\sigma/\sqrt n}\big)\)</div>
+
+<div class="b"><h4>14. Lineare Regression</h4>
+<span class="r">\(b=\frac{s_{xy}}{s_x^2}\)</span> · <span class="r">\(a=\bar y-b\bar x\)</span> · \(\hat y=a+bx\)<br>
+Residuum \(e_i=y_i-\hat y_i\) · \(R^2=r^2\) = Anteil erklärter Varianz<br>
+b: „steigt x um 1, steigt y im Mittel um b“ · Prognose außerhalb \([x_{min};x_{max}]\) → Extrapolation, unsicher<br>
+r-Satz: Stärke + <b>Richtung</b> + linear + Variablen</div>
+
+<div class="b"><h4>Klausur-Regeln</h4>
+Ergebnis 3, Zwischenschritte 4 Nachkommastellen · jede „Begründen/Interpretieren“ → Satz · Lösungsweg zeigen · nie leer lassen</div>
+
+</div></div>
