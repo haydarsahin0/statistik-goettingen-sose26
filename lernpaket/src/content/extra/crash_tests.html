@@ -1,0 +1,114 @@
+<style>
+.lern{border:2px solid var(--c,#1f4e79);border-radius:10px;margin:0 0 5mm;overflow:hidden}
+.lern .lh1{background:var(--c,#1f4e79);color:#fff;padding:2.5mm 4mm;font-weight:800;font-size:1.05rem;display:flex;justify-content:space-between}
+.lern .lh1 small{font-weight:600;opacity:.85}
+.lern .lb2{padding:2mm 4mm 3mm;font-size:.92rem;line-height:1.55}
+.lern h4{margin:2.5mm 0 1mm;color:var(--c,#1f4e79);font-size:.97rem}
+.tr{display:block;background:#e3f4f2;border-left:3px solid #00796b;padding:1.5mm 3mm;margin:2mm 0;color:#0f4f47;border-radius:0 6px 6px 0}
+.vg{background:#f4f6fa;border-left:3px solid var(--c,#1f4e79);padding:1.5mm 3mm;margin:2mm 0;border-radius:0 6px 6px 0}
+.vg b.t{display:block;color:var(--c,#1f4e79);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+.fe{background:#fdeeec;border-left:3px solid #c62828;padding:1.5mm 3mm;margin:2mm 0;border-radius:0 6px 6px 0}
+.du{background:#fff7e0;border-left:3px solid #e0a100;padding:1.5mm 3mm;margin:2mm 0;border-radius:0 6px 6px 0}
+.lern table{border-collapse:collapse;width:100%;font-size:.88rem;margin:1.5mm 0}
+.lern td,.lern th{border:1px solid #cfd6e0;padding:1mm 2mm;text-align:left;vertical-align:top}
+.lern th{background:#eef1f6}
+.ueb h2{border-bottom-color:#a8823a!important;color:#7a5d22!important}
+.unit-tag{display:inline-block;background:#a8823a;color:#fff;border-radius:4px;padding:0 6px;font-size:.7rem;margin-right:6px;vertical-align:middle}
+.loesk h3{color:#2f6b3a;margin-top:4mm}
+.loesk p{line-height:1.6}
+.tree{display:block;margin:2mm auto}
+</style>
+<section class="t0 kl"><div class="kl-deck"><h1>Hypothesentests</h1>
+<div class="sub">Crashkurs für die Klausur · Hypothesen → Prüfgröße → Entscheidung → Satz · R-Output · ca. 75 Minuten<br><span class="small">Persönliches Übungsheft – keine offizielle Klausur</span></div>
+<div class="kl-hin"><h3>So arbeitest du</h3><ul><li><b>Lerneinheit lesen</b> → sofort die <b>Übung</b> dazu lösen.</li><li>Danach 3 komplette <b>Klausuraufgaben</b> (Gauß, t-Test mit R, Anteil). Lösungen hinten.</li><li>Ziel: Die 8-Punkte-Testaufgabe vollständig – inkl. „Verteilung angeben“ und Antwortsatz.</li></ul>
+<div class="tr">Test sorusu her zaman aynı 4 parçadan oluşur. Altklausur'da kaybettiğin puanlar: dağılımı yazmamak (1 P), yanlış R kodu (1 P), karar kutusunu boş bırakmak (2 P). Bunların hepsi bu defterde.</div></div></div>
+<div class="lern kl-pb" style="--c:#b42318"><div class="lh1"><span>Lerneinheit 1 · Die Idee: wie ein Gerichtsverfahren</span><small>ca. 6 min</small></div><div class="lb2">
+<h4>Unschuldsvermutung</h4>
+\(H_0\) = der „Normalzustand“ / die Behauptung, die wir angreifen. \(H_1\) = das, was wir <b>beweisen</b> wollen.<br>
+Wir lehnen \(H_0\) nur ab, wenn die Daten <b>sehr</b> unwahrscheinlich wären, falls \(H_0\) stimmt (Wahrscheinlichkeit \(\le\alpha\)).
+<span class="tr">Mahkeme gibi: sanık suçsuz kabul edilir (H₀). Ancak güçlü kanıt varsa "suçlu" denir (H₀ reddedilir). Kanıt yetersizse "suçsuz" denmez, sadece "suçluluğu kanıtlanamadı" denir → "H₀ kann nicht abgelehnt werden", ASLA "H₀ angenommen".</span>
+<h4>Der Ablauf – immer gleich (8 Punkte)</h4>
+<table><tr><th>Teil</th><th>Was</th><th>Punkte typisch</th></tr>
+<tr><td>(a)</td><td>Hypothesenpaar</td><td>2</td></tr><tr><td>(b)</td><td>Prüfgröße berechnen + <b>Verteilung unter \(H_0\)</b></td><td>2–3</td></tr>
+<tr><td>(c)</td><td>Ablehnungsbereich / kritischer Wert oder R-Code</td><td>1–2</td></tr><tr><td>(d)</td><td>Entscheidung + Satz im Sachzusammenhang</td><td>2</td></tr></table></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E1</span>Übung 1: Die Idee: wie ein Gerichtsverfahren</span><span>(2 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>Was bedeutet „\(H_0\) wird abgelehnt“ in einem Satz? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>Darf man schreiben „\(H_0\) wird angenommen“? <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#b42318"><div class="lh1"><span>Lerneinheit 2 · Hypothesen aus dem Text</span><small>ca. 12 min</small></div><div class="lb2">
+<h4>Drei Fragen</h4>
+<b>1. Welcher Parameter?</b> Mittelwert → \(\mu\) · Anteil/Prozent → \(\pi\) · Varianz → \(\sigma^2\)<br>
+<b>2. Was soll nachgewiesen / abgesichert werden?</b> → das ist \(H_1\)<br>
+<b>3. Welche Richtung?</b>
+<table><tr><th>Wort im Text</th><th>\(H_1\)</th></tr>
+<tr><td>mehr als, größer, übersteigt, länger, besser, erhöht</td><td>\(\mu>\mu_0\)</td></tr>
+<tr><td>weniger als, kleiner, unterschreitet, kürzer, <b>nicht weiter als</b>, zu wenig</td><td>\(\mu<\mu_0\)</td></tr>
+<tr><td>weicht ab, ungleich, <b>genau</b> … bezweifelt, verändert, in beide Richtungen</td><td>\(\mu\neq\mu_0\)</td></tr></table>
+\(H_0\) ist das Gegenteil und enthält immer das Gleichheitszeichen (\(=,\le,\ge\)).
+<div class="vg"><b class="t">Vorgemacht</b>„Hersteller: Brötchen wiegen <i>mindestens</i> 60 g. Verbraucherschutz vermutet <i>weniger</i>.“ → nachweisen will man „weniger“: \(H_0:\mu\ge60\) vs. \(H_1:\mu<60\)</div>
+<div class="fe">⚠ Immer den Parameter schreiben: „\(H_0:\ \mu\ge133.5\)“ – nicht nur „\(H_0\ge133.5\)“.</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E2</span>Übung 2: Hypothesen aus dem Text</span><span>(4 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>„Eine Firma will absichern, dass ihre Akkus <i>länger</i> als 10 h halten.“ <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>„Ein Magazin bezweifelt die Angabe <i>genau</i> 500 ml – in beide Richtungen.“ <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>„Absichern, dass ein Springer <i>nicht weiter als</i> 133.5 m springt.“ <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(d)</span>„Eine Partei will zeigen, dass <i>mehr als 40 %</i> sie unterstützen.“ <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#b42318"><div class="lh1"><span>Lerneinheit 3 · Welcher Test? Prüfgröße und Verteilung</span><small>ca. 12 min</small></div><div class="lb2">
+<table><tr><th>Situation</th><th>Prüfgröße</th><th>Verteilung unter \(H_0\)</th></tr>
+<tr><td>Mittelwert, <b>σ bekannt</b> (σ oder σ² steht in der Aufgabe als „bekannt“)</td><td>\(Z=\dfrac{\bar x-\mu_0}{\sigma/\sqrt n}\)</td><td>\(N(0,1)\)</td></tr>
+<tr><td>Mittelwert, <b>σ unbekannt</b> (nur \(s_*\) aus den Daten)</td><td>\(T=\dfrac{\bar x-\mu_0}{s_*/\sqrt n}\)</td><td>\(t_{n-1}\)</td></tr>
+<tr><td>Anteil \(\pi\) (n groß)</td><td>\(Z=\dfrac{\hat\pi-\pi_0}{\sqrt{\pi_0(1-\pi_0)/n}}\)</td><td>\(\approx N(0,1)\)</td></tr></table>
+<span class="tr">Hep aynı mantık: (gözlenen − hipotezdeki) / standart hata. Sonra MUTLAKA dağılımı yaz: "Unter H₀ gilt Z ~ N(0,1)" – bu tek başına 1 puan.</span>
+<div class="vg"><b class="t">Vorgemacht</b>\(\bar x=48.2\), \(\mu_0=50\), \(\sigma^2=9\), \(n=25\): erst \(\sigma=\sqrt9=3\)!<br>\(Z=\frac{48.2-50}{3/\sqrt{25}}=\frac{-1.8}{0.6}=-3\); unter \(H_0\): \(Z\sim N(0,1)\).</div>
+<div class="fe">⚠ σ² gegeben → Wurzel ziehen! Nenner ist \(\sigma/\sqrt n\), nicht \(\sigma/n\).</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E3</span>Übung 3: Welcher Test? Prüfgröße und Verteilung</span><span>(4 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(\bar x=103\), \(\mu_0=100\), \(\sigma=9\), \(n=36\). \(Z=\)? Verteilung? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>\(\bar x=12.6\), \(\mu_0=12\), \(s_*=1.2\), \(n=16\), σ unbekannt. \(T=\)? Verteilung? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>230 von 400 stimmen zu, \(\pi_0=0.5\). \(Z=\)? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(d)</span>\(\bar x=131.5\), \(\mu_0=133.5\), \(\sigma^2=16\), \(n=4\). \(Z=\)? <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#b42318"><div class="lh1"><span>Lerneinheit 4 · Ablehnungsbereich und kritischer Wert</span><small>ca. 10 min</small></div><div class="lb2">
+<table><tr><th>\(H_1\)</th><th>ablehnen, wenn</th><th>α = 10 %</th><th>α = 5 %</th><th>α = 1 %</th></tr>
+<tr><td>\(\neq\) (zweiseitig)</td><td>\(|z|>z_{1-\alpha/2}\)</td><td>1.645</td><td>1.960</td><td>2.576</td></tr>
+<tr><td>\(>\) (rechts)</td><td>\(z>z_{1-\alpha}\)</td><td>1.282</td><td>1.645</td><td>2.326</td></tr>
+<tr><td>\(<\) (links)</td><td>\(z<-z_{1-\alpha}\)</td><td>−1.282</td><td>−1.645</td><td>−2.326</td></tr></table>
+Beim t-Test genauso, nur mit \(t_{n-1;1-\alpha}\) bzw. \(t_{n-1;1-\alpha/2}\) (steht in der Aufgabe).
+<span class="tr">Ret bölgesi H₁'in gösterdiği taraftadır: H₁ "<" ise sol kuyruk (negatif sayılar), ">" ise sağ kuyruk, "≠" ise iki taraf.</span>
+<div class="vg"><b class="t">Ablehnungsbereich hinschreiben</b>links, α = 5 %: \(A=(-\infty;\ -1.645]\) · rechts, t-Test \(df=7\): \(A=[1.895;\ \infty)\) · zweiseitig: \(A=(-\infty;-1.96]\cup[1.96;\infty)\)</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E4</span>Übung 4: Ablehnungsbereich und kritischer Wert</span><span>(4 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>Gauß-Test, \(H_1:\mu\neq\mu_0\), α = 5 %. Ablehnen, wenn … <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>Gauß-Test, \(H_1:\mu>\mu_0\), α = 1 %. Ablehnen, wenn … <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>Gauß-Test, \(H_1:\mu<\mu_0\), α = 10 %. \(A=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(d)</span>t-Test, \(H_1:\mu>\mu_0\), \(n=16\), α = 5 % (\(t_{15;0.95}=1.753\)). \(A=\) <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#b42318"><div class="lh1"><span>Lerneinheit 5 · Entscheidung und Antwortsatz</span><small>ca. 8 min</small></div><div class="lb2">
+<h4>Prüfgröße im Ablehnungsbereich? → \(H_0\) ablehnen</h4>
+<div class="vg"><b class="t">Satz-Bausteine (abschreiben!)</b>
+<b>abgelehnt:</b> „Da \(z=\dots\in A\), wird \(H_0\) zum Niveau \(\alpha=\dots\) abgelehnt. Es ist statistisch abgesichert, dass [Kontext + Richtung aus \(H_1\)].“<br>
+<b>nicht abgelehnt:</b> „Da \(z=\dots\notin A\), kann \(H_0\) zum Niveau \(\alpha=\dots\) nicht abgelehnt werden. Es kann nicht nachgewiesen werden, dass [Kontext].“</div>
+<span class="tr">Cümlede bağlamı yaz (Brötchen, Akku, Springer…) ve H₁'in yönünü tekrar et. "H₀ reddedildi" tek başına yarım puan.</span></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E5</span>Übung 5: Entscheidung und Antwortsatz</span><span>(2 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(H_1:\mu<60\) (Brötchen in g), \(z=-1.5\), α = 5 %. Entscheidung + Satz. <span class="pt">(1 P)</span><div class="lk m"></div></li><li><span class="lb">(b)</span>\(H_1:\mu>10\) (Akku in h), \(z=2.4\), α = 5 %. Entscheidung + Satz. <span class="pt">(1 P)</span><div class="lk m"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#b42318"><div class="lh1"><span>Lerneinheit 6 · p-Wert</span><small>ca. 8 min</small></div><div class="lb2">
+<table><tr><th>\(H_1\)</th><th>p-Wert</th><th>Beispiel</th></tr>
+<tr><td>\(\neq\)</td><td>\(2\,(1-\Phi(|z|))\)</td><td>\(z=2\): \(2(1-0.9772)=0.0456\)</td></tr>
+<tr><td>\(>\)</td><td>\(1-\Phi(z)\)</td><td>\(z=2.5\): \(1-0.9938=0.0062\)</td></tr>
+<tr><td>\(<\)</td><td>\(\Phi(z)\)</td><td>\(z=-1.5\): \(\Phi(-1.5)=1-0.9332=0.0668\)</td></tr></table>
+<div class="vg"><b class="t">Die eine Regel</b>\(p\le\alpha\Rightarrow H_0\) ablehnen · \(p>\alpha\Rightarrow\) nicht ablehnen</div>
+<span class="tr">p-değeri küçükse H₀ reddedilir. "Birden fazla α için karar ver" sorusunda: p'den büyük veya eşit bütün α'lar için ret.</span></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E6</span>Übung 6: p-Wert</span><span>(3 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(p=0.0456\). Entscheidung für α = 1 %, 5 %, 10 %? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>\(p=0.0668\). Entscheidung für α = 5 % und 10 %? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>\(H_1:\mu<\mu_0\), \(z=-2\), \(\Phi(2)=0.9772\). \(p=\) <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#b42318"><div class="lh1"><span>Lerneinheit 7 · R-Output: welcher Code? welche Entscheidung?</span><small>ca. 10 min</small></div><div class="lb2">
+<h4>Drei Kontrollen in dieser Reihenfolge</h4>
+<table><tr><th>#</th><th>prüfen</th><th>Beispiel Altklausur A8</th></tr>
+<tr><td>1</td><td><b>Richtige Daten?</b> Über wen/was ist der Test?</td><td>Test über Stahlbichler → seine Weiten <code>c(130, 134, 129.5, 132.5)</code> → Code (1) fällt weg</td></tr>
+<tr><td>2</td><td><code>mu=</code> = \(\mu_0\) aus \(H_0\)?</td><td><code>mu=133.5</code> ✓</td></tr>
+<tr><td>3</td><td><code>alternative</code> passt zu \(H_1\)? <code>"l"</code>=less=\(<\) · <code>"g"</code>=greater=\(>\) · nichts/"two.sided"=\(\neq\)</td><td>\(H_1:\mu<133.5\) → <code>"l"</code> → <b>Code (2)</b></td></tr></table>
+Dann nur noch: <b>p-value mit α vergleichen</b>. Den Wert <code>t = ?</code> brauchst du nicht.
+<span class="tr">Kendini kandırma: üç kodun da sayıları birbirine benzer. Önce verinin KİME ait olduğuna bak – Altklausur'da Fiedler'in verisini seçmiştin.</span>
+<div class="fe">⚠ <code>conf.level=0.9</code> bedeutet α = 0.1.</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E7</span>Übung 7: R-Output: welcher Code? welche Entscheidung?</span><span>(2 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(H_1:\mu>5\). Code A: <code>t.test(x, mu=5, alternative="l")</code>, Code B: <code>t.test(x, mu=5, alternative="g")</code>. Welcher? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>Gewählter Code liefert <code>p-value = 0.0023</code>, α = 5 %. Entscheidung? <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#b42318"><div class="lh1"><span>Lerneinheit 8 · Fehler 1. und 2. Art im Sachzusammenhang</span><small>ca. 6 min</small></div><div class="lb2">
+<table><tr><th></th><th>\(H_0\) ist wahr</th><th>\(H_1\) ist wahr</th></tr>
+<tr><td>\(H_0\) abgelehnt</td><td><b>Fehler 1. Art</b> (W'keit α)</td><td>richtig</td></tr>
+<tr><td>\(H_0\) nicht abgelehnt</td><td>richtig</td><td><b>Fehler 2. Art</b> (β)</td></tr></table>
+<div class="vg"><b class="t">Satzmuster</b>„Ein Fehler 1. Art liegt vor, wenn wir schließen, dass [\(H_1\) im Kontext], obwohl in Wahrheit [\(H_0\) im Kontext] gilt.“</div>
+<span class="tr">1. tür = haksız mahkumiyet (masumu suçlu ilan etmek). 2. tür = suçluyu serbest bırakmak.</span></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E8</span>Übung 8: Fehler 1. und 2. Art im Sachzusammenhang</span><span>(2 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>Brötchen: \(H_0:\mu\ge60\), \(H_1:\mu<60\). Fehler 1. Art im Kontext? <span class="pt">(1 P)</span><div class="lk m"></div></li><li><span class="lb">(b)</span>Gleicher Test, \(H_0\) wurde <b>nicht</b> abgelehnt. Welcher Fehler ist möglich? <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="kl-auf kl-pb"><h2><span>Klausuraufgabe 1 · Gauß-Test linksseitig</span><span>(10 Punkte)</span></h2><p>Eine Bäckerei gibt an, dass ihre Brötchen im Mittel <b>mindestens</b> 60 g wiegen. Der Verbraucherschutz vermutet, dass sie im Mittel <b>weniger</b> wiegen, und wiegt \(n=16\) zufällig ausgewählte Brötchen: \(\bar x=58.5\) g. Das Gewicht sei normalverteilt mit bekannter Varianz \(\sigma^2=16\). Signifikanzniveau \(\alpha=0.05\). (Hinweis: \(\Phi(1.5)=0.9332\), \(z_{0.95}=1.645\))</p><ol class="tl"><li><span class="lb">(a)</span>Stellen Sie das passende Hypothesenpaar auf. <span class="pt">(2 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>Berechnen Sie die Prüfgröße und geben Sie ihre Verteilung unter \(H_0\) an. <span class="pt">(3 P)</span><div class="lk m"></div></li><li><span class="lb">(c)</span>Geben Sie den Ablehnungsbereich an und treffen Sie die Testentscheidung im Sachzusammenhang. <span class="pt">(3 P)</span><div class="lk m"></div></li><li><span class="lb">(d)</span>Berechnen Sie den p-Wert. Welcher Fehler könnte hier vorliegen? Beschreiben Sie ihn im Sachzusammenhang. <span class="pt">(2 P)</span><div class="lk m"></div></li></ol></div>
+<div class="kl-auf kl-pb"><h2><span>Klausuraufgabe 2 · t-Test mit R-Output (Testat-/Altklausur-Typ)</span><span>(9 Punkte)</span></h2><p>Eine Hotline gibt an, dass die mittlere Wartezeit 5 Minuten beträgt. Kund*innen vermuten, dass sie im Mittel <b>länger</b> warten müssen. Es werden 8 Wartezeiten gemessen (normalverteilt, Varianz unbekannt), α = 5 %. Eine Kommilitonin probiert drei R-Befehle:<br>(1) <code>t.test(wz, mu=5, alternative="l")</code> → <code>t = ?, df = 7, p-value = 0.9977</code><br>(2) <code>t.test(wz, mu=5, alternative="g")</code> → <code>t = 4.106, df = 7, p-value = 0.002269</code><br>(3) <code>t.test(wz, mu=6, alternative="g")</code> → <code>t = ?, df = 7, p-value = 0.864</code><br>Hinweis: \(t_{7;0.95}=1.895\), \(t_{7;0.975}=2.365\).</p><ol class="tl"><li><span class="lb">(a)</span>Stellen Sie das Hypothesenpaar auf. <span class="pt">(2 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>Welcher R-Code ist der richtige? Begründen Sie kurz. <span class="pt">(2 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>Geben Sie die Verteilung der Prüfgröße unter \(H_0\) und den Ablehnungsbereich an. <span class="pt">(2 P)</span><div class="lk s"></div></li><li><span class="lb">(d)</span>Treffen Sie die Testentscheidung (über Prüfgröße <b>oder</b> p-Wert) und formulieren Sie das Ergebnis. <span class="pt">(3 P)</span><div class="lk m"></div></li></ol></div>
+<div class="kl-auf kl-pb"><h2><span>Klausuraufgabe 3 · Anteilstest zweiseitig</span><span>(8 Punkte)</span></h2><p>Eine Partei behauptet, dass genau 40 % der Wahlberechtigten sie unterstützen. Eine Zeitung bezweifelt diese Angabe (in beide Richtungen) und befragt 600 zufällig ausgewählte Personen; 216 davon unterstützen die Partei. α = 5 %. (Hinweis: \(\Phi(2)=0.9772\))</p><ol class="tl"><li><span class="lb">(a)</span>Stellen Sie das Hypothesenpaar auf. <span class="pt">(2 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>Berechnen Sie die Prüfgröße und geben Sie ihre (approximative) Verteilung unter \(H_0\) an. <span class="pt">(3 P)</span><div class="lk m"></div></li><li><span class="lb">(c)</span>Treffen Sie die Testentscheidung mithilfe des p-Werts und formulieren Sie das Ergebnis. <span class="pt">(3 P)</span><div class="lk m"></div></li></ol></div>
+</section>
+<section class="t1 loes loesk" style="page-break-before:always"><h2>Lösungen</h2><p class="small">Erst selbst lösen, dann vergleichen. Bei den Klausuraufgaben steht in eckigen Klammern, wofür es Punkte gibt.</p>
+<h3>Übung 1: Die Idee: wie ein Gerichtsverfahren</h3><p>(a) Die Daten sprechen so stark gegen \(H_0\), dass wir \(H_1\) als statistisch nachgewiesen ansehen.<br>(b) Nein → „\(H_0\) kann nicht abgelehnt werden“</p>
+<h3>Übung 2: Hypothesen aus dem Text</h3><p>(a) \(H_0:\mu\le10\) vs. \(H_1:\mu>10\)<br>(b) \(H_0:\mu=500\) vs. \(H_1:\mu\neq500\)<br>(c) \(H_0:\mu\ge133.5\) vs. \(H_1:\mu<133.5\)<br>(d) \(H_0:\pi\le0.4\) vs. \(H_1:\pi>0.4\)</p>
+<h3>Übung 3: Welcher Test? Prüfgröße und Verteilung</h3><p>(a) \(\frac{3}{1.5}=2\), \(N(0,1)\)<br>(b) \(\frac{0.6}{0.3}=2\), \(t_{15}\)<br>(c) \(\hat\pi=0.575\), \(\sqrt{0.25/400}=0.025\), \(Z=3\)<br>(d) \(\frac{-2}{4/2}=-1\)</p>
+<h3>Übung 4: Ablehnungsbereich und kritischer Wert</h3><p>(a) \(|z|>1.96\)<br>(b) \(z>2.326\)<br>(c) \((-\infty;-1.282]\)<br>(d) \([1.753;\infty)\)</p>
+<h3>Übung 5: Entscheidung und Antwortsatz</h3><p>(a) \(-1.5>-1.645\) → nicht ablehnen; es kann nicht nachgewiesen werden, dass die Brötchen im Mittel weniger als 60 g wiegen.<br>(b) \(2.4>1.645\) → ablehnen; abgesichert, dass die Akkus im Mittel länger als 10 h halten.</p>
+<h3>Übung 6: p-Wert</h3><p>(a) nicht ablehnen / ablehnen / ablehnen<br>(b) nicht ablehnen / ablehnen<br>(c) \(\Phi(-2)=0.0228\)</p>
+<h3>Übung 7: R-Output: welcher Code? welche Entscheidung?</h3><p>(a) B<br>(b) \(0.0023<0.05\) → \(H_0\) ablehnen</p>
+<h3>Übung 8: Fehler 1. und 2. Art im Sachzusammenhang</h3><p>(a) Man schließt, dass die Brötchen im Mittel weniger als 60 g wiegen, obwohl sie in Wahrheit mindestens 60 g wiegen.<br>(b) nur Fehler 2. Art</p>
+<h3>Klausuraufgabe 1 · Gauß-Test linksseitig</h3><p>(a) \(H_0:\mu\ge60\) vs. \(H_1:\mu<60\) [2]<br>(b) \(\sigma=4\); \(Z=\frac{58.5-60}{4/\sqrt{16}}=-1.5\) [2]; \(Z\sim N(0,1)\) [1]<br>(c) \(A=(-\infty;-1.645]\) [1]; \(-1.5\notin A\) → \(H_0\) nicht ablehnen [1]; Es kann nicht nachgewiesen werden, dass die Brötchen im Mittel weniger als 60 g wiegen [1]<br>(d) \(p=\Phi(-1.5)=0.0668\) [1]; Fehler 2. Art: Die Brötchen wiegen in Wahrheit weniger als 60 g, aber wir lehnen \(H_0\) nicht ab [1]</p>
+<h3>Klausuraufgabe 2 · t-Test mit R-Output (Testat-/Altklausur-Typ)</h3><p>(a) \(H_0:\mu\le5\) vs. \(H_1:\mu>5\) [2]<br>(b) Code (2): <code>mu=5</code> = \(\mu_0\) und <code>"g"</code> passt zu \(H_1:\mu>5\) [2]<br>(c) \(T\sim t_7\) [1]; \(A=[1.895;\infty)\) [1]<br>(d) \(t=4.106\in A\) bzw. \(p=0.0023<0.05\) → \(H_0\) ablehnen [2]; Zum Niveau 5 % ist abgesichert, dass die mittlere Wartezeit länger als 5 Minuten ist [1]</p>
+<h3>Klausuraufgabe 3 · Anteilstest zweiseitig</h3><p>(a) \(H_0:\pi=0.4\) vs. \(H_1:\pi\neq0.4\) [2]<br>(b) \(\hat\pi=\frac{216}{600}=0.36\); \(\sqrt{\frac{0.4\cdot0.6}{600}}=0.02\); \(Z=\frac{0.36-0.4}{0.02}=-2\) [2]; \(Z\overset{a}{\sim}N(0,1)\) [1]<br>(c) \(p=2(1-\Phi(2))=0.0456\) [1]; \(0.0456<0.05\) → \(H_0\) ablehnen [1]; Der Anteil der Unterstützer weicht signifikant von 40 % ab [1]</p>
+</section>

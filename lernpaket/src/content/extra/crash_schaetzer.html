@@ -1,0 +1,119 @@
+<style>
+.lern{border:2px solid var(--c,#1f4e79);border-radius:10px;margin:0 0 5mm;overflow:hidden}
+.lern .lh1{background:var(--c,#1f4e79);color:#fff;padding:2.5mm 4mm;font-weight:800;font-size:1.05rem;display:flex;justify-content:space-between}
+.lern .lh1 small{font-weight:600;opacity:.85}
+.lern .lb2{padding:2mm 4mm 3mm;font-size:.92rem;line-height:1.55}
+.lern h4{margin:2.5mm 0 1mm;color:var(--c,#1f4e79);font-size:.97rem}
+.tr{display:block;background:#e3f4f2;border-left:3px solid #00796b;padding:1.5mm 3mm;margin:2mm 0;color:#0f4f47;border-radius:0 6px 6px 0}
+.vg{background:#f4f6fa;border-left:3px solid var(--c,#1f4e79);padding:1.5mm 3mm;margin:2mm 0;border-radius:0 6px 6px 0}
+.vg b.t{display:block;color:var(--c,#1f4e79);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+.fe{background:#fdeeec;border-left:3px solid #c62828;padding:1.5mm 3mm;margin:2mm 0;border-radius:0 6px 6px 0}
+.du{background:#fff7e0;border-left:3px solid #e0a100;padding:1.5mm 3mm;margin:2mm 0;border-radius:0 6px 6px 0}
+.lern table{border-collapse:collapse;width:100%;font-size:.88rem;margin:1.5mm 0}
+.lern td,.lern th{border:1px solid #cfd6e0;padding:1mm 2mm;text-align:left;vertical-align:top}
+.lern th{background:#eef1f6}
+.ueb h2{border-bottom-color:#a8823a!important;color:#7a5d22!important}
+.unit-tag{display:inline-block;background:#a8823a;color:#fff;border-radius:4px;padding:0 6px;font-size:.7rem;margin-right:6px;vertical-align:middle}
+.loesk h3{color:#2f6b3a;margin-top:4mm}
+.loesk p{line-height:1.6}
+.tree{display:block;margin:2mm auto}
+</style>
+<section class="t0 kl"><div class="kl-deck"><h1>Schätzer: erwartungstreu oder nicht?</h1>
+<div class="sub">Crashkurs für die Klausur · von null bis zur Klausuraufgabe (ca. 5 Punkte) · ca. 60 Minuten<br><span class="small">Persönliches Übungsheft – keine offizielle Klausur</span></div>
+<div class="kl-hin"><h3>So arbeitest du</h3><ul><li><b>Lerneinheit lesen</b> → sofort die <b>Übung</b> dazu lösen (Klausurlayout).</li><li>Danach 4 komplette <b>Klausuraufgaben</b>. Lösungen hinten – erst selbst rechnen!</li><li>Ziel: Jede Aufgabe der Form „Testen Sie, ob … unverzerrt ist“ in 5 Minuten lösen.</li></ul>
+<div class="tr">Bu konuda integral ya da türev yok. Sadece 3 kural: sabitler dışarı, toplamlar ayrılır, E(Xᵢ) yerine verileni koy. Sonra parametreyle karşılaştır ve cümle yaz.</div></div></div>
+<div class="lern kl-pb" style="--c:#c55a11"><div class="lh1"><span>Lerneinheit 1 · Was bedeutet \(E(X)\) und \(X_i\)?</span><small>ca. 8 min</small></div><div class="lb2">
+<h4>Die Situation in der Klausur</h4>
+In der Aufgabe steht z. B.: <i>„Sei \(X\) eine Zufallsvariable mit \(E(X)=\frac{\alpha}{4}\). Sie ziehen eine Stichprobe \(X_1,\dots,X_n\). Testen Sie, ob der Schätzer \(\hat\alpha=\dots\) unverzerrt ist.“</i>
+<span class="tr">Korkma: bu soruda integral yok, türev yok. Sadece 3 basit kural var (Lerneinheit 2–3). Bu sorunun tamamı ~5 puan ve sen bunu 5 dakikada çözebileceksin.</span>
+<h4>\(X_1,\dots,X_n\) ne demek?</h4>
+\(X_i\) = \(i\)-inci kişinin / ölçümün değeri. Daha ölçmediğimiz için <b>rastgele</b>. Hepsi aynı dağılımdan geliyor, yani <b>hepsinin beklenen değeri aynı</b>:
+\[E(X_1)=E(X_2)=\dots=E(X_n)=E(X)\]
+<span class="tr">Sınıftan rastgele 5 öğrenci seçip boyunu ölçüyoruz: X₁ = 1. öğrencinin boyu, X₂ = 2. öğrencinin boyu… Hangisi olursa olsun, "ortalama beklenen boy" aynıdır.</span>
+<h4>\(E(X)\) ne demek?</h4>
+\(E(X)\) = <b>uzun vadede ortalama</b> (Erwartungswert). Adil zar: \(E(X)=3.5\).
+<div class="vg"><b class="t">Wichtig</b>Wenn in der Aufgabe \(E(X)=\frac\alpha4\) steht, dann gilt <b>für jedes</b> \(X_i\): \(E(X_1)=\frac\alpha4\), \(E(X_n)=\frac\alpha4\), \(E(X_7)=\frac\alpha4\).</div>
+<h4>Die griechischen Buchstaben</h4>
+\(\mu\) (mü), \(\theta\) (theta), \(\alpha\) (alpha), \(\kappa\) (kappa), \(\lambda\) (lambda) sind <b>einfach unbekannte Zahlen</b> (Parameter). Du rechnest mit ihnen wie mit \(a\) oder \(b\).
+<span class="tr">θ'yı "a" gibi düşün. "E(X) = θ/2" → "ortalama, a'nın yarısı". Bu harfler sabit sayılar; rastgele olan sadece X'ler.</span>
+<h4>Was ist ein Schätzer?</h4>
+Eine Formel aus den Daten, die einen unbekannten Parameter schätzen soll, z. B. \(\bar X=\frac1n\sum X_i\) für \(\mu\).<br>
+<b>Erwartungstreu (= unverzerrt)</b> heißt: <b>im Mittel trifft der Schätzer genau</b>, d. h.
+\[E(\text{Schätzer})=\text{Parameter}\]
+<span class="tr">Ok atıcı benzetmesi: erwartungstreu = oklar hedefin etrafına dağılıyor ama ORTALAMASI tam merkezde. Verzerrt = hep sola kayıyor.</span></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E1</span>Übung 1: Was bedeutet \(E(X)\) und \(X_i\)?</span><span>(3 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(E(X)=\mu\). Was ist \(E(X_4)\)? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>\(E(X)=\frac\theta2\). Was ist \(E(X_1)\) und \(E(X_n)\)? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>Was muss gelten, damit \(T\) ein erwartungstreuer Schätzer für \(\kappa\) ist? <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#c55a11"><div class="lh1"><span>Lerneinheit 2 · Regel 1: Konstanten herausziehen</span><small>ca. 8 min</small></div><div class="lb2">
+<h4>Die drei Mini-Regeln</h4>
+<table><tr><th>Regel</th><th>Beispiel mit \(E(X)=\mu\)</th><th>Türkçe</th></tr>
+<tr><td>\(E(a\cdot X)=a\cdot E(X)\)</td><td>\(E(3X_1)=3\mu\)</td><td>önündeki sayı dışarı çıkar</td></tr>
+<tr><td>\(E\big(\frac{X}{a}\big)=\frac{E(X)}{a}\)</td><td>\(E\big(\frac{X_n}{\alpha}\big)=\frac{\mu}{\alpha}\)</td><td>bölen sabitse o da dışarı (α sabit!)</td></tr>
+<tr><td>\(E(b)=b\) für eine Konstante</td><td>\(E\big(\frac14\big)=\frac14\), \(E(-2)=-2\)</td><td>sabit sayının beklentisi kendisi</td></tr></table>
+<div class="vg"><b class="t">Vorgemacht</b>\(E(X)=\frac\alpha4\):&nbsp;&nbsp; \(E\Big(\frac{X_n}{\alpha}\Big)=\frac{E(X_n)}{\alpha}=\frac{\alpha/4}{\alpha}=\frac14\)</div>
+<span class="tr">"α/4 bölü α": α'lar sadeleşir, 1/4 kalır. Kesir içinde kesir görünce korkma: (α/4)/α = α/(4α) = 1/4.</span>
+<div class="fe">⚠ Nur Konstanten (Zahlen, \(\alpha\), \(\theta\), \(n\)) darf man herausziehen – niemals ein \(X\)!</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E2</span>Übung 2: Regel 1: Konstanten herausziehen</span><span>(4 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(E(X)=\theta\). \(E(5X_2)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>\(E(X)=\frac\theta3\). \(E(6X_1)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>\(E(X)=\frac\alpha2\). \(E\big(\frac{X_n}{\alpha}\big)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(d)</span>\(E\big(\frac14\big)=\) und \(E(7)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#c55a11"><div class="lh1"><span>Lerneinheit 3 · Regel 2: Summen auseinanderziehen</span><small>ca. 10 min</small></div><div class="lb2">
+<h4>Erwartungswert einer Summe = Summe der Erwartungswerte</h4>
+\[E(X_1+X_2)=E(X_1)+E(X_2)\qquad E(aX_1+bX_2+c)=aE(X_1)+bE(X_2)+c\]
+<span class="tr">Toplamın beklentisi = beklentilerin toplamı. Her terimi ayrı ayrı hesapla, sonra topla. Bu kural HER ZAMAN geçerli.</span>
+<h4>Summenzeichen</h4>
+\[E\Big(\sum_{i=1}^n X_i\Big)=\sum_{i=1}^n E(X_i)=n\cdot E(X)\]
+<span class="tr">n tane aynı beklenti toplanıyor → n çarpı beklenti. Dikkat: toplam i=2'den başlıyorsa terim sayısı n−1'dir!</span>
+<table><tr><th>Summe</th><th>Anzahl Terme</th><th>Erwartungswert (\(E(X)=\mu\))</th></tr>
+<tr><td>\(\sum_{i=1}^n X_i\)</td><td>\(n\)</td><td>\(n\mu\)</td></tr>
+<tr><td>\(\sum_{i=2}^n X_i\)</td><td>\(n-1\)</td><td>\((n-1)\mu\)</td></tr>
+<tr><td>\(\sum_{i=2}^{n-1} X_i\)</td><td>\(n-2\)</td><td>\((n-2)\mu\)</td></tr></table>
+<h4>Der Mittelwert</h4>
+\[E(\bar X)=E\Big(\frac1n\sum X_i\Big)=\frac1n\cdot n\mu=\mu\]
+<div class="vg"><b class="t">Vorgemacht</b>\(E(X)=\frac\theta2\), \(T=2\bar X\): \(E(T)=2E(\bar X)=2\cdot\frac\theta2=\theta\Rightarrow\) erwartungstreu für \(\theta\).</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E3</span>Übung 3: Regel 2: Summen auseinanderziehen</span><span>(4 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(E(X)=\mu\). \(E(X_1+X_2+X_3)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>\(E(X)=\mu\). \(E(2X_1-X_2)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>\(E(X)=\theta\). \(E\big(\sum_{i=2}^n X_i\big)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(d)</span>\(E(X)=\frac\kappa2\). \(E\big(\frac{1}{2n}\sum_{i=1}^{n}X_i\big)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#c55a11"><div class="lh1"><span>Lerneinheit 4 · Das Rezept: erwartungstreu prüfen</span><small>ca. 10 min</small></div><div class="lb2">
+<h4>4 Schritte – immer gleich</h4>
+<table><tr><th>#</th><th>Was tun?</th><th>Was hinschreiben?</th></tr>
+<tr><td>①</td><td>Erwartungswert über den <b>ganzen</b> Schätzer setzen</td><td>\(E(\hat\theta)=E(\dots)\)</td></tr>
+<tr><td>②</td><td>Summen auseinanderziehen, Konstanten raus (Regel 1+2)</td><td>\(=aE(X_1)+bE(X_2)+\dots\)</td></tr>
+<tr><td>③</td><td>\(E(X_i)\) aus der Aufgabe einsetzen, vereinfachen</td><td>\(=\dots=\) Ergebnis</td></tr>
+<tr><td>④</td><td>Mit dem Parameter vergleichen + <b>Satz</b></td><td>„Da \(E(\hat\theta)=\theta\), ist \(\hat\theta\) erwartungstreu.“ / „Da \(E(\hat\theta)\neq\theta\), ist \(\hat\theta\) verzerrt; Bias \(=E(\hat\theta)-\theta\).“</td></tr></table>
+<div class="vg"><b class="t">Vorgemacht</b>\(E(X)=\mu\), \(T=\frac14(X_1+2X_2+X_3)\):<br>
+① \(E(T)=E\big(\frac14(X_1+2X_2+X_3)\big)\)<br>
+② \(=\frac14\big(E(X_1)+2E(X_2)+E(X_3)\big)\)<br>
+③ \(=\frac14(\mu+2\mu+\mu)=\frac{4\mu}{4}=\mu\)<br>
+④ Da \(E(T)=\mu\), ist \(T\) ein erwartungstreuer Schätzer für \(\mu\).</div>
+<span class="tr">Kısa yol (lineer tahmincilerde): katsayıları topla. 1/4 + 2/4 + 1/4 = 1 → yansız. Ama sınavda yine 4 adımı yaz, puan oradan geliyor.</span>
+<h4>Bias und „asymptotisch erwartungstreu“</h4>
+\(\text{Bias}=E(\hat\theta)-\theta\). Wenn der Bias von \(n\) abhängt und für \(n\to\infty\) gegen 0 geht → <b>asymptotisch erwartungstreu</b>.
+<div class="fe">⚠ Immer den Satz am Ende schreiben – ohne Satz fehlt ein Punkt.</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E4</span>Übung 4: Das Rezept: erwartungstreu prüfen</span><span>(4 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(E(X)=\mu\), \(T=\frac13(X_1+X_2+X_3)\). Erwartungstreu? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>\(E(X)=\mu\), \(T=X_1+X_2-X_3\). Erwartungstreu? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>\(E(X)=\mu\), \(T=\frac12(X_1+X_2+X_3)\). Erwartungstreu? Bias? <span class="pt">(1 P)</span><div class="lk m"></div></li><li><span class="lb">(d)</span>\(E(X)=\frac\theta2\), \(T=\bar X\). Ist \(T\) erwartungstreu für \(\theta\)? <span class="pt">(1 P)</span><div class="lk m"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#c55a11"><div class="lh1"><span>Lerneinheit 5 · Die Altklausur-Falle: Produkte und Brüche</span><small>ca. 10 min</small></div><div class="lb2">
+<h4>Schritt 0: erst kürzen!</h4>
+In der Altklausur stand: \(\dfrac{\prod_{i=2}^{n-1}X_i}{\prod_{i=1}^{n-1}X_i}\). Schreib die Produkte aus:
+\[\frac{\prod_{i=2}^{n-1}X_i}{\prod_{i=1}^{n-1}X_i}=\frac{X_2\cdot X_3\cdots X_{n-1}}{X_1\cdot X_2\cdot X_3\cdots X_{n-1}}=\frac{1}{X_1}\]
+<span class="tr">Pay ve paydada aynı X'ler var → sadeleşir. Hangi X'in fazladan olduğuna bak: payda X₁'den başlıyor, pay X₂'den → paydada X₁ fazla → sonuç 1/X₁.</span>
+<table><tr><th>Bruch</th><th>gekürzt</th><th>Warum</th></tr>
+<tr><td>\(\frac{\prod_{i=1}^{n}X_i}{\prod_{i=1}^{n-1}X_i}\)</td><td>\(X_n\)</td><td>oben ein \(X_n\) mehr</td></tr>
+<tr><td>\(\frac{\prod_{i=1}^{n}X_i}{\prod_{i=2}^{n}X_i}\)</td><td>\(X_1\)</td><td>oben ein \(X_1\) mehr</td></tr>
+<tr><td>\(\frac{\prod_{i=2}^{n-1}X_i}{\prod_{i=1}^{n-1}X_i}\)</td><td>\(\frac1{X_1}\)</td><td>unten ein \(X_1\) mehr</td></tr></table>
+<h4>Produkt unabhängiger ZV</h4>
+\(E(X_1\cdot X_2)=E(X_1)\cdot E(X_2)\) (unabhängig). Für \(E\big(\frac1{X_1}\big)\) rechnet die offizielle Lösung \(\frac{1}{E(X_1)}\).
+<div class="vg"><b class="t">Vorgemacht (Altklausur A7)</b>\(E(X)=\frac\alpha4\), \(\hat\alpha=\frac{\prod_{i=2}^{n-1}X_i}{\prod_{i=1}^{n-1}X_i}+\frac{X_n}{\alpha}-\frac14\)<br>
+⓪ kürzen: \(\hat\alpha=\frac1{X_1}+\frac{X_n}\alpha-\frac14\)<br>
+①② \(E(\hat\alpha)=E\big(\frac1{X_1}\big)+\frac{E(X_n)}{\alpha}-\frac14\)<br>
+③ \(=\frac{4}{\alpha}+\frac{\alpha/4}{\alpha}-\frac14=\frac4\alpha+\frac14-\frac14=\frac4\alpha\)<br>
+④ Da \(E(\hat\alpha)=\frac4\alpha\neq\alpha\), ist \(\hat\alpha\) verzerrt.</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E5</span>Übung 5: Die Altklausur-Falle: Produkte und Brüche</span><span>(3 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>Kürzen: \(\frac{\prod_{i=1}^{n}X_i}{\prod_{i=1}^{n-1}X_i}=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>Kürzen: \(\frac{\prod_{i=1}^{n}X_i}{\prod_{i=2}^{n}X_i}=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>\(E(X)=\frac\theta3\), unabhängig. \(E(X_1X_2)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="kl-auf kl-pb"><h2><span>Klausuraufgabe 1 · Zwei lineare Schätzer vergleichen</span><span>(6 Punkte)</span></h2><p>Sei \(X\) eine Zufallsvariable mit \(E(X)=\mu\) und \(Var(X)=\sigma^2\). Sie ziehen eine 3-fache, unabhängige Stichprobe und betrachten \[T_1=\frac{X_1+2X_2+X_3}{4}\qquad\text{und}\qquad T_2=X_1+X_2-X_3.\]</p><ol class="tl"><li><span class="lb">(a)</span>Zeigen Sie, dass beide Schätzer erwartungstreu für \(\mu\) sind. <span class="pt">(2 P)</span><div class="lk m"></div></li><li><span class="lb">(b)</span>Berechnen Sie \(Var(T_1)\) und \(Var(T_2)\). (Hinweis: \(Var(aX_1+bX_2)=a^2\sigma^2+b^2\sigma^2\) bei Unabhängigkeit) <span class="pt">(2 P)</span><div class="lk m"></div></li><li><span class="lb">(c)</span>Welcher Schätzer ist vorzuziehen? Ist \(\bar X\) noch besser? Begründen Sie. <span class="pt">(2 P)</span><div class="lk m"></div></li></ol></div>
+<div class="kl-auf kl-pb"><h2><span>Klausuraufgabe 2 · Produkte kürzen (Altklausur-Typ)</span><span>(5 Punkte)</span></h2><p>Sei \(X\) eine Zufallsvariable mit \(E(X)=\frac{\theta}{2}\) mit \(\theta\in\mathbb R\). Sie ziehen eine \(n\)-fache, unabhängige Zufallsstichprobe \(\{X_1,\dots,X_n\}\). Testen Sie, ob der Schätzer \[\hat\theta=\frac{\prod_{i=1}^{n}X_i}{\prod_{i=1}^{n-1}X_i}+\frac1n\sum_{i=1}^nX_i\] ein unverzerrter Schätzer für \(\theta\) ist.</p><ol class="tl"><li><span class="lb">(a)</span>Vereinfachen Sie den Schätzer so weit wie möglich. <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>Berechnen Sie \(E(\hat\theta)\) und entscheiden Sie (mit Satz). <span class="pt">(4 P)</span><div class="lk l"></div></li></ol></div>
+<div class="kl-auf kl-pb"><h2><span>Klausuraufgabe 3 · Bias, der von n abhängt (Testat-Typ)</span><span>(5 Punkte)</span></h2><p>Betrachten Sie eine Zufallsvariable \(X\) mit \(E(X)=\frac{\kappa}{2}\). Ein Schätzer für \(\kappa\) sei \[\tilde\kappa=X_1+\frac{1}{2n}\sum_{i=2}^{n}X_i.\]</p><ol class="tl"><li><span class="lb">(a)</span>Berechnen Sie \(E(\tilde\kappa)\). Achten Sie auf die Anzahl der Summanden! <span class="pt">(2 P)</span><div class="lk m"></div></li><li><span class="lb">(b)</span>Berechnen Sie den Bias. Ist \(\tilde\kappa\) erwartungstreu? <span class="pt">(2 P)</span><div class="lk m"></div></li><li><span class="lb">(c)</span>Hängt der Bias von \(n\) ab? <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="kl-auf kl-pb"><h2><span>Klausuraufgabe 4 · Die Konstante kürzt sich weg</span><span>(5 Punkte)</span></h2><p>Sei \(X\) eine Zufallsvariable mit \(E(X)=\frac{\alpha}{4}\). Sie ziehen eine \(n\)-fache, unabhängige Zufallsstichprobe. Testen Sie, ob \[\hat\alpha=4\bar X+\frac{X_1}{\alpha}-\frac14\] ein unverzerrter Schätzer für \(\alpha\) ist.</p><ol class="tl"><li><span class="lb">(a)</span>Berechnen Sie \(E(\hat\alpha)\) Schritt für Schritt. <span class="pt">(4 P)</span><div class="lk l"></div></li><li><span class="lb">(b)</span>Entscheiden Sie mit einem Satz. <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+</section>
+<section class="t1 loes loesk" style="page-break-before:always"><h2>Lösungen</h2><p class="small">Erst selbst lösen, dann vergleichen. Bei den Klausuraufgaben steht in eckigen Klammern, wofür es Punkte gibt.</p>
+<h3>Übung 1: Was bedeutet \(E(X)\) und \(X_i\)?</h3><p>(a) \(\mu\) (jedes \(X_i\) hat denselben Erwartungswert)<br>(b) beide \(\frac\theta2\)<br>(c) \(E(T)=\kappa\)</p>
+<h3>Übung 2: Regel 1: Konstanten herausziehen</h3><p>(a) \(5\theta\)<br>(b) \(6\cdot\frac\theta3=2\theta\)<br>(c) \(\frac{\alpha/2}{\alpha}=\frac12\)<br>(d) \(\frac14\) und \(7\)</p>
+<h3>Übung 3: Regel 2: Summen auseinanderziehen</h3><p>(a) \(3\mu\)<br>(b) \(2\mu-\mu=\mu\)<br>(c) \((n-1)\theta\)<br>(d) \(\frac1{2n}\cdot n\cdot\frac\kappa2=\frac\kappa4\)</p>
+<h3>Übung 4: Das Rezept: erwartungstreu prüfen</h3><p>(a) \(E(T)=\frac13\cdot3\mu=\mu\) → ja<br>(b) \(\mu+\mu-\mu=\mu\) → ja<br>(c) \(E(T)=\frac32\mu\neq\mu\) → verzerrt, Bias \(=\frac12\mu\)<br>(d) \(E(\bar X)=\frac\theta2\neq\theta\) → verzerrt (Bias \(-\frac\theta2\)); \(2\bar X\) wäre erwartungstreu</p>
+<h3>Übung 5: Die Altklausur-Falle: Produkte und Brüche</h3><p>(a) \(X_n\)<br>(b) \(X_1\)<br>(c) \(\frac\theta3\cdot\frac\theta3=\frac{\theta^2}9\)</p>
+<h3>Klausuraufgabe 1 · Zwei lineare Schätzer vergleichen</h3><p>(a) \(E(T_1)=\frac14(\mu+2\mu+\mu)=\mu\) [1]; \(E(T_2)=\mu+\mu-\mu=\mu\) [1]<br>(b) \(Var(T_1)=\frac{1+4+1}{16}\sigma^2=0.375\sigma^2\) [1]; \(Var(T_2)=(1+1+1)\sigma^2=3\sigma^2\) [1]<br>(c) Beide e.t., \(0.375\sigma^2<3\sigma^2\) → \(T_1\) [1]; \(Var(\bar X)=\frac{\sigma^2}{3}=0.333\sigma^2<0.375\sigma^2\) → \(\bar X\) noch besser [1]</p>
+<h3>Klausuraufgabe 2 · Produkte kürzen (Altklausur-Typ)</h3><p>(a) \(\hat\theta=X_n+\bar X\) [1]<br>(b) \(E(\hat\theta)=E(X_n)+E(\bar X)\) [1] \(=\frac\theta2+\frac\theta2\) [1] \(=\theta\) [1]; Da \(E(\hat\theta)=\theta\), ist \(\hat\theta\) unverzerrt [1]</p>
+<h3>Klausuraufgabe 3 · Bias, der von n abhängt (Testat-Typ)</h3><p>(a) \(E(\tilde\kappa)=\frac\kappa2+\frac1{2n}(n-1)\frac\kappa2=\frac\kappa2+\frac{(n-1)\kappa}{4n}\) [2]<br>(b) Bias \(=\frac\kappa2+\frac{(n-1)\kappa}{4n}-\kappa=\frac{(n-1)\kappa-2n\kappa}{4n}=-\frac{(n+1)\kappa}{4n}\neq0\) → verzerrt [2]<br>(c) Ja, Bias \(=-\frac{(n+1)\kappa}{4n}\) hängt von \(n\) ab (geht gegen \(-\frac\kappa4\), nicht gegen 0) [1]</p>
+<h3>Klausuraufgabe 4 · Die Konstante kürzt sich weg</h3><p>(a) \(E(\hat\alpha)=4E(\bar X)+\frac{E(X_1)}{\alpha}-\frac14\) [1] \(=4\cdot\frac\alpha4+\frac{\alpha/4}{\alpha}-\frac14\) [1] \(=\alpha+\frac14-\frac14=\alpha\) [2]<br>(b) Da \(E(\hat\alpha)=\alpha\), ist \(\hat\alpha\) unverzerrt [1]</p>
+</section>

@@ -1,0 +1,110 @@
+<style>
+.lern{border:2px solid var(--c,#1f4e79);border-radius:10px;margin:0 0 5mm;overflow:hidden}
+.lern .lh1{background:var(--c,#1f4e79);color:#fff;padding:2.5mm 4mm;font-weight:800;font-size:1.05rem;display:flex;justify-content:space-between}
+.lern .lh1 small{font-weight:600;opacity:.85}
+.lern .lb2{padding:2mm 4mm 3mm;font-size:.92rem;line-height:1.55}
+.lern h4{margin:2.5mm 0 1mm;color:var(--c,#1f4e79);font-size:.97rem}
+.tr{display:block;background:#e3f4f2;border-left:3px solid #00796b;padding:1.5mm 3mm;margin:2mm 0;color:#0f4f47;border-radius:0 6px 6px 0}
+.vg{background:#f4f6fa;border-left:3px solid var(--c,#1f4e79);padding:1.5mm 3mm;margin:2mm 0;border-radius:0 6px 6px 0}
+.vg b.t{display:block;color:var(--c,#1f4e79);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+.fe{background:#fdeeec;border-left:3px solid #c62828;padding:1.5mm 3mm;margin:2mm 0;border-radius:0 6px 6px 0}
+.du{background:#fff7e0;border-left:3px solid #e0a100;padding:1.5mm 3mm;margin:2mm 0;border-radius:0 6px 6px 0}
+.lern table{border-collapse:collapse;width:100%;font-size:.88rem;margin:1.5mm 0}
+.lern td,.lern th{border:1px solid #cfd6e0;padding:1mm 2mm;text-align:left;vertical-align:top}
+.lern th{background:#eef1f6}
+.ueb h2{border-bottom-color:#a8823a!important;color:#7a5d22!important}
+.unit-tag{display:inline-block;background:#a8823a;color:#fff;border-radius:4px;padding:0 6px;font-size:.7rem;margin-right:6px;vertical-align:middle}
+.loesk h3{color:#2f6b3a;margin-top:4mm}
+.loesk p{line-height:1.6}
+.tree{display:block;margin:2mm auto}
+</style>
+<section class="t0 kl"><div class="kl-deck"><h1>Bayes &amp; totale Wahrscheinlichkeit</h1>
+<div class="sub">Crashkurs für die Klausur · Baum zeichnen → Pfade → Summe → Bayes · ca. 60 Minuten<br><span class="small">Persönliches Übungsheft – keine offizielle Klausur</span></div>
+<div class="kl-hin"><h3>So arbeitest du</h3><ul><li><b>Lerneinheit lesen</b> → sofort die <b>Übung</b> dazu lösen.</li><li>Danach 3 komplette <b>Klausuraufgaben</b> (wie Altklausur A3). Lösungen hinten.</li><li>Ziel: Die 11-Punkte-Aufgabe der Altklausur komplett lösen.</li></ul>
+<div class="tr">Senin iki hatan vardı: (1) ikinci yolda 0.3 yerine 0.7 kullanmak, (2) Bayes'te paydayı (toplam olasılığı) yazmamak. Bu defter tam bu iki şeyi oturtuyor.</div></div></div>
+<div class="lern kl-pb" style="--c:#2e7d32"><div class="lh1"><span>Lerneinheit 1 · Sätze in Wahrscheinlichkeiten übersetzen</span><small>ca. 10 min</small></div><div class="lb2">
+<h4>Das Wichtigste zuerst: „von wem“ ist die Rede?</h4>
+Jede Prozentangabe in diesen Aufgaben bezieht sich auf eine <b>Gruppe</b>. Diese Gruppe steht <b>rechts</b> vom Strich \(\mid\).
+<table><tr><th>Satz in der Aufgabe</th><th>Notation</th><th>Türkçe</th></tr>
+<tr><td>„70 % bestehen die Klausur.“</td><td>\(P(B)=0.7\)</td><td>herkes içinde → koşulsuz</td></tr>
+<tr><td>„Mit 80 % gehört ein <u>Besteher</u> zu Strategie 1.“</td><td>\(P(S_1\mid B)=0.8\)</td><td>bilinen grup (Besteher) sağa</td></tr>
+<tr><td>„Unter den <u>Nicht-Bestehern</u> lernen 10 % regelmäßig.“</td><td>\(P(S_1\mid\bar B)=0.1\)</td><td>„unter den …“ → sağa</td></tr>
+<tr><td>„Der Test erkennt 95 % der <u>Kranken</u>.“</td><td>\(P(+\mid K)=0.95\)</td><td>hastalar arasında → K sağda</td></tr>
+<tr><td>„Eine Person ist positiv. Wie wahrscheinlich ist sie krank?“</td><td>\(P(K\mid +)\) = <b>gesucht</b></td><td>bildiğimiz şey (+) sağda</td></tr></table>
+<span class="tr">Kural: "… arasında / … olan biri / bilindiğine göre" denen grup HER ZAMAN çizginin SAĞINA yazılır. Soruyu okurken önce o grubun altını çiz.</span>
+<div class="fe">⚠ \(P(A\mid B)\) und \(P(B\mid A)\) sind verschiedene Dinge! „Kranke, die positiv sind“ ≠ „Positive, die krank sind“.</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E1</span>Übung 1: Sätze in Wahrscheinlichkeiten übersetzen</span><span>(4 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>„40 % aller Nutzer haben ein Premium-Abo (\(P\)).“ <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>„Unter den Premium-Nutzern schauen 50 % hauptsächlich Serien (\(S\)).“ <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>„Von den Nicht-Premium-Nutzern schauen 25 % Serien.“ <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(d)</span>„Jemand schaut Serien. Wie wahrscheinlich hat er Premium?“ (gesucht) <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#2e7d32"><div class="lh1"><span>Lerneinheit 2 · Den Baum zeichnen und vervollständigen</span><small>ca. 10 min</small></div><div class="lb2">
+<h4>Regel: Die Gruppe hinter „unter den …“ kommt in die ERSTE Stufe</h4>
+In der Altklausur A3: „Mit 80 % gehört ein <u>Besteher</u> zu Kategorie 1“ → erste Stufe = Bestehen / Nicht-Bestehen, zweite Stufe = Strategie.
+<svg class="tree" width="520" height="190" viewBox="0 0 520 190" font-family="Inter,Arial" font-size="13">
+<circle cx="30" cy="95" r="5" fill="#2e7d32"/>
+<line x1="30" y1="95" x2="190" y2="45" stroke="#2e7d32" stroke-width="2"/><line x1="30" y1="95" x2="190" y2="145" stroke="#2e7d32" stroke-width="2"/>
+<text x="85" y="55" fill="#2e7d32">P(B) = 0.7</text><text x="85" y="150" fill="#c62828">P(B̄) = 0.3</text>
+<text x="195" y="50" font-weight="700">B (besteht)</text><text x="195" y="150" font-weight="700">B̄ (nicht)</text>
+<line x1="280" y1="45" x2="400" y2="15" stroke="#555"/><line x1="280" y1="45" x2="400" y2="45" stroke="#555"/><line x1="280" y1="45" x2="400" y2="75" stroke="#555"/>
+<line x1="280" y1="145" x2="400" y2="115" stroke="#555"/><line x1="280" y1="145" x2="400" y2="145" stroke="#555"/><line x1="280" y1="145" x2="400" y2="175" stroke="#555"/>
+<text x="300" y="22">0.8</text><text x="320" y="42">0.15</text><text x="300" y="72">0.05</text>
+<text x="300" y="122">0.1</text><text x="320" y="142">0.2</text><text x="300" y="172">0.7</text>
+<text x="405" y="19">S₁ → 0.7·0.8</text><text x="405" y="49">S₂ → 0.7·0.15</text><text x="405" y="79">S₃ → 0.7·0.05</text>
+<text x="405" y="119">S₁ → 0.3·0.1</text><text x="405" y="149">S₂ → 0.3·0.2</text><text x="405" y="179">S₃ → 0.3·0.7</text></svg>
+<h4>Fehlende Äste ergänzen: jede Gabel ergibt zusammen 1</h4>
+\(P(\bar B)=1-0.7=0.3\) · \(P(S_3\mid B)=1-0.8-0.15=0.05\) · \(P(S_3\mid\bar B)=1-0.1-0.2=0.7\)
+<span class="tr">Her çatalda dallar toplamı 1. Eksik dalı "1 eksi diğerleri" ile bul. İlk iş olarak ağacı çiz ve tüm sayıları yerleştir – puanların yarısı zaten bu kutularda.</span>
+<div class="fe">⚠ Unten am Baum stehen die Wahrscheinlichkeiten <b>bedingt</b>: Die 0.1 gilt nur <b>innerhalb</b> von \(\bar B\).</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E2</span>Übung 2: Den Baum zeichnen und vervollständigen</span><span>(3 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(P(K)=0.02\). \(P(\bar K)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>\(P(+\mid K)=0.95\). \(P(-\mid K)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>Drei Gruppen: \(P(S_1\mid A)=0.5\), \(P(S_2\mid A)=0.3\). \(P(S_3\mid A)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#2e7d32"><div class="lh1"><span>Lerneinheit 3 · Pfadregel: entlang des Pfades multiplizieren</span><small>ca. 6 min</small></div><div class="lb2">
+<h4>„A und B“ = Pfad entlang gehen = multiplizieren</h4>
+\[P(B\cap S_2)=P(B)\cdot P(S_2\mid B)=0.7\cdot0.15=0.105\]
+<span class="tr">"Hem geçti hem S₂" = ağaçta B dalından S₂'ye giden YOL. Yol boyunca sayıları çarp.</span>
+<div class="vg"><b class="t">Vorgemacht</b>\(P(\bar B\cap S_3)=P(\bar B)\cdot P(S_3\mid\bar B)=0.3\cdot0.7=0.21\)</div>
+<div class="fe">⚠ Auf dem \(\bar B\)-Ast mit \(0.3\) multiplizieren, nicht mit \(0.7\)! (Genau das war dein Fehler in der Altklausur.)</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E3</span>Übung 3: Pfadregel: entlang des Pfades multiplizieren</span><span>(3 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(P(B)=0.7\), \(P(S_1\mid B)=0.8\). \(P(B\cap S_1)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>\(P(\bar B)=0.3\), \(P(S_2\mid\bar B)=0.2\). \(P(\bar B\cap S_2)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>\(P(K)=0.02\), \(P(+\mid K)=0.95\). \(P(K\cap +)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#2e7d32"><div class="lh1"><span>Lerneinheit 4 · Totale Wahrscheinlichkeit: alle Pfade zum Ergebnis addieren</span><small>ca. 8 min</small></div><div class="lb2">
+<h4>„Wie wahrscheinlich ist \(S_3\) insgesamt?“</h4>
+Zu \(S_3\) führen <b>zwei</b> Pfade: über \(B\) und über \(\bar B\). Beide multiplizieren, dann addieren:
+\[P(S_3)=P(B)\,P(S_3\mid B)+P(\bar B)\,P(S_3\mid\bar B)=0.7\cdot0.05+0.3\cdot0.7=0.035+0.21=0.245\]
+<span class="tr">"Toplam olasılık" = o sonuca giden BÜTÜN yolları bul, her yolu çarp, sonra yolları TOPLA. Her yolda o yolun kendi ilk sayısını kullan (0.7 ve 0.3).</span>
+<div class="vg"><b class="t">Muster zum Abschreiben</b>\(P(\text{Ergebnis})=P(A)\cdot P(\text{Erg.}\mid A)+P(\bar A)\cdot P(\text{Erg.}\mid\bar A)\)</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E4</span>Übung 4: Totale Wahrscheinlichkeit: alle Pfade zum Ergebnis addieren</span><span>(3 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(P(B)=0.7\), \(P(S_2\mid B)=0.15\), \(P(S_2\mid\bar B)=0.2\). \(P(S_2)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>\(P(K)=0.02\), \(P(+\mid K)=0.95\), \(P(+\mid\bar K)=0.1\). \(P(+)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>\(P(P)=0.4\), \(P(F\mid P)=0.3\), \(P(F\mid\bar P)=0.6\). \(P(F)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#2e7d32"><div class="lh1"><span>Lerneinheit 5 · Bayes: rückwärts fragen</span><small>ca. 10 min</small></div><div class="lb2">
+<h4>„Jemand ist in \(S_2\). Wie wahrscheinlich hat er bestanden?“ → \(P(B\mid S_2)\)</h4>
+\[P(B\mid S_2)=\frac{\text{der eine Pfad über }B}{\text{alle Pfade zu }S_2}=\frac{P(B)\,P(S_2\mid B)}{P(S_2)}=\frac{0.105}{0.165}=0.636\]
+<span class="tr">Bayes = İSTENEN YOL / TOPLAM. Pay: sadece istenen yol (B → S₂). Payda: S₂'ye giden bütün yollar (Lerneinheit 4'teki toplam). Paydayı yazmazsan cevap yanlış olur (Altklausur'da 0.105 yazmıştın – o sadece paydı).</span>
+<div class="vg"><b class="t">Rezept</b>① Was ist bekannt? (rechts vom Strich) → das ist das Ergebnis am Ende des Baums<br>
+② Nenner: totale Wahrscheinlichkeit dieses Ergebnisses<br>③ Zähler: der eine Pfad, nach dem gefragt ist<br>④ teilen</div>
+<div class="fe">⚠ Kontrolle: Das Ergebnis muss zwischen 0 und 1 liegen und der Zähler muss kleiner als der Nenner sein.</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E5</span>Übung 5: Bayes: rückwärts fragen</span><span>(3 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(P(K\cap +)=0.019\), \(P(+)=0.117\). \(P(K\mid +)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>\(P(P\cap F)=0.12\), \(P(F)=0.48\). \(P(P\mid F)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>\(P(B)=0.7\), \(P(S_1\mid B)=0.8\), \(P(S_1\mid\bar B)=0.1\). \(P(B\mid S_1)=\) <span class="pt">(1 P)</span><div class="lk m"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#2e7d32"><div class="lh1"><span>Lerneinheit 6 · Trick: mit 1000 Personen rechnen</span><small>ca. 8 min</small></div><div class="lb2">
+<h4>Wenn der Baum verwirrt: stell dir 1000 Personen vor</h4>
+Medizinischer Test: \(P(K)=0.02\), \(P(+\mid K)=0.95\), \(P(+\mid\bar K)=0.1\).
+<table><tr><th></th><th>positiv</th><th>negativ</th><th>Σ</th></tr>
+<tr><td>krank</td><td>\(20\cdot0.95=19\)</td><td>1</td><td>\(1000\cdot0.02=20\)</td></tr>
+<tr><td>gesund</td><td>\(980\cdot0.1=98\)</td><td>882</td><td>980</td></tr>
+<tr><td>Σ</td><td><b>117</b></td><td>883</td><td>1000</td></tr></table>
+\(P(+)=\frac{117}{1000}=0.117\) · \(P(K\mid +)=\frac{19}{117}=0.162\) · \(P(\bar K\mid -)=\frac{882}{883}=0.999\)
+<span class="tr">1000 kişi düşün, sayıları tabloya yaz. "Pozitiflerin içinde kaç hasta var?" → 19/117. Bu yöntem Bayes formülüyle AYNI sonucu verir ama kafada daha kolay. Sınavda formülü de yaz.</span></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E6</span>Übung 6: Trick: mit 1000 Personen rechnen</span><span>(2 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>1000 Studierende, \(P(M)=0.6\), \(P(V\mid M)=0.5\), \(P(V\mid\bar M)=0.2\). Wie viele sind vegetarisch (\(V\))? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>… und wie viele davon gehen in die Mensa? \(P(M\mid V)=\) <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="lern kl-pb" style="--c:#2e7d32"><div class="lh1"><span>Lerneinheit 7 · „Mindestens einer“ bei unabhängigen Wiederholungen</span><small>ca. 6 min</small></div><div class="lb2">
+<h4>Immer über das Gegenereignis</h4>
+\[P(\text{mindestens einer})=1-P(\text{keiner})=1-(1-p)^n\]
+<span class="tr">"En az bir" = 1 − "hiç yok". "Hiç yok" = her seferinde olmaması → (1−p) üssü n.</span>
+<div class="vg"><b class="t">Vorgemacht (Altklausur A3c)</b>Bestehensquote 0.7, 10 Personen, mindestens ein Nicht-Besteher:<br>\(p=P(\bar B)=0.3\) → \(1-(1-0.3)^{10}=1-0.7^{10}=1-0.0282=0.972\)</div>
+<div class="fe">⚠ \(0.3^{10}\) wäre „<b>alle</b> zehn bestehen nicht“ – das ist eine andere Frage!</div></div></div>
+<div class="kl-auf ueb"><h2><span><span class="unit-tag">E7</span>Übung 7: „Mindestens einer“ bei unabhängigen Wiederholungen</span><span>(3 Punkte)</span></h2><ol class="tl"><li><span class="lb">(a)</span>\(P(\text{Premium})=0.4\), 8 Personen: mindestens eine mit Premium? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(b)</span>Fehlerquote 5 %, 20 Teile: mindestens ein fehlerhaftes? <span class="pt">(1 P)</span><div class="lk s"></div></li><li><span class="lb">(c)</span>Fehlerquote 5 %, 20 Teile: kein fehlerhaftes? <span class="pt">(1 P)</span><div class="lk s"></div></li></ol></div>
+<div class="kl-auf kl-pb"><h2><span>Klausuraufgabe 1 · Medizinischer Test</span><span>(9 Punkte)</span></h2><p>Eine Krankheit tritt bei 2 % der Bevölkerung auf. Ein Schnelltest erkennt 95 % der Kranken (positives Ergebnis). Bei Gesunden zeigt der Test in 10 % der Fälle fälschlicherweise ein positives Ergebnis.</p><ol class="tl"><li><span class="lb">(a)</span>Berechnen Sie die Wahrscheinlichkeit, dass eine zufällig getestete Person positiv getestet wird. <span class="pt">(2 P)</span><div class="lk m"></div></li><li><span class="lb">(b)</span>Eine Person wurde positiv getestet. Mit welcher Wahrscheinlichkeit ist sie tatsächlich krank? Geben Sie Ihren Lösungsweg an. <span class="pt">(3 P)</span><div class="lk m"></div></li><li><span class="lb">(c)</span>Eine Person wurde negativ getestet. Mit welcher Wahrscheinlichkeit ist sie gesund? <span class="pt">(2 P)</span><div class="lk m"></div></li><li><span class="lb">(d)</span>Es werden 5 Personen unabhängig getestet. Mit welcher Wahrscheinlichkeit ist mindestens ein Test positiv? <span class="pt">(2 P)</span><div class="lk s"></div></li></ol></div>
+<div class="kl-auf kl-pb"><h2><span>Klausuraufgabe 2 · Drei Maschinen</span><span>(7 Punkte)</span></h2><p>Ein Betrieb fertigt Schrauben auf drei Maschinen: A stellt 50 %, B 30 % und C 20 % der Produktion her. Die Ausschussquoten betragen bei A 2 %, bei B 3 % und bei C 5 %.</p><ol class="tl"><li><span class="lb">(a)</span>Wie groß ist die Wahrscheinlichkeit, dass eine zufällig gewählte Schraube Ausschuss ist? <span class="pt">(3 P)</span><div class="lk m"></div></li><li><span class="lb">(b)</span>Eine Schraube ist Ausschuss. Mit welcher Wahrscheinlichkeit stammt sie von Maschine C? <span class="pt">(2 P)</span><div class="lk m"></div></li><li><span class="lb">(c)</span>Eine Schraube ist <b>kein</b> Ausschuss. Mit welcher Wahrscheinlichkeit stammt sie von Maschine A? <span class="pt">(2 P)</span><div class="lk m"></div></li></ol></div>
+<div class="kl-auf kl-pb"><h2><span>Klausuraufgabe 3 · Altklausur-Typ: Mensa</span><span>(11 Punkte)</span></h2><p>60 % der Studierenden essen regelmäßig in der Mensa (\(M\)). Unter den Mensa-Gästen essen 50 % vegetarisch, 30 % Fleisch und der Rest Fisch. Unter den Studierenden, die nicht in der Mensa essen, ernähren sich 20 % vegetarisch und 70 % essen Fleisch; der Rest isst Fisch.</p><ol class="tl"><li><span class="lb">(a)</span>Berechnen Sie \(P(\bar M)\), \(P(\text{Fisch}\mid M)\) und \(P(\text{Fisch}\mid\bar M)\). <span class="pt">(3 P)</span><div class="lk m"></div></li><li><span class="lb">(b)</span>Berechnen Sie die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person Fisch isst. <span class="pt">(3 P)</span><div class="lk m"></div></li><li><span class="lb">(c)</span>Eine Person isst vegetarisch. Wie wahrscheinlich isst sie in der Mensa? Lösungsweg! <span class="pt">(3 P)</span><div class="lk m"></div></li><li><span class="lb">(d)</span>Sie befragen 6 Personen unabhängig. Wie groß ist die Wahrscheinlichkeit, dass mindestens eine nicht in der Mensa isst? Vereinfachen Sie so weit wie möglich. <span class="pt">(2 P)</span><div class="lk s"></div></li></ol></div>
+</section>
+<section class="t1 loes loesk" style="page-break-before:always"><h2>Lösungen</h2><p class="small">Erst selbst lösen, dann vergleichen. Bei den Klausuraufgaben steht in eckigen Klammern, wofür es Punkte gibt.</p>
+<h3>Übung 1: Sätze in Wahrscheinlichkeiten übersetzen</h3><p>(a) \(P(P)=0.4\)<br>(b) \(P(S\mid P)=0.5\)<br>(c) \(P(S\mid\bar P)=0.25\)<br>(d) \(P(P\mid S)\)</p>
+<h3>Übung 2: Den Baum zeichnen und vervollständigen</h3><p>(a) \(0.98\)<br>(b) \(0.05\)<br>(c) \(1-0.5-0.3=0.2\)</p>
+<h3>Übung 3: Pfadregel: entlang des Pfades multiplizieren</h3><p>(a) \(0.56\)<br>(b) \(0.06\)<br>(c) \(0.019\)</p>
+<h3>Übung 4: Totale Wahrscheinlichkeit: alle Pfade zum Ergebnis addieren</h3><p>(a) \(0.105+0.06=0.165\)<br>(b) \(0.019+0.098=0.117\)<br>(c) \(0.12+0.36=0.48\)</p>
+<h3>Übung 5: Bayes: rückwärts fragen</h3><p>(a) \(\frac{0.019}{0.117}=0.162\)<br>(b) \(0.25\)<br>(c) \(\frac{0.56}{0.56+0.03}=\frac{0.56}{0.59}=0.949\)</p>
+<h3>Übung 6: Trick: mit 1000 Personen rechnen</h3><p>(a) \(600\cdot0.5+400\cdot0.2=300+80=380\)<br>(b) \(\frac{300}{380}=0.789\)</p>
+<h3>Übung 7: „Mindestens einer“ bei unabhängigen Wiederholungen</h3><p>(a) \(1-0.6^8=0.983\)<br>(b) \(1-0.95^{20}=0.642\)<br>(c) \(0.95^{20}=0.358\)</p>
+<h3>Klausuraufgabe 1 · Medizinischer Test</h3><p>(a) \(P(+)=0.95\cdot0.02+0.1\cdot0.98=0.019+0.098=0.117\) [2]<br>(b) \(P(K\mid +)=\frac{0.019}{0.117}=0.162\) [Zähler 1, Nenner 1, Ergebnis 1]<br>(c) \(P(\bar K\mid -)=\frac{0.9\cdot0.98}{1-0.117}=\frac{0.882}{0.883}=0.999\) [2]<br>(d) \(1-(1-0.117)^5=1-0.883^5=0.463\) [2]</p>
+<h3>Klausuraufgabe 2 · Drei Maschinen</h3><p>(a) \(P(D)=0.5\cdot0.02+0.3\cdot0.03+0.2\cdot0.05=0.01+0.009+0.01=0.029\) [3]<br>(b) \(P(C\mid D)=\frac{0.01}{0.029}=0.345\) [2]<br>(c) \(P(A\mid\bar D)=\frac{0.5\cdot0.98}{1-0.029}=\frac{0.49}{0.971}=0.505\) [2]</p>
+<h3>Klausuraufgabe 3 · Altklausur-Typ: Mensa</h3><p>(a) \(0.4\) [1]; \(1-0.5-0.3=0.2\) [1]; \(1-0.2-0.7=0.1\) [1]<br>(b) \(P(\text{Fisch})=0.2\cdot0.6+0.1\cdot0.4=0.12+0.04=0.16\) [3]<br>(c) \(P(V)=0.5\cdot0.6+0.2\cdot0.4=0.38\); \(P(M\mid V)=\frac{0.3}{0.38}=0.789\) [3]<br>(d) \(1-0.6^6=0.953\) [2]</p>
+</section>
