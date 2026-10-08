@@ -1,0 +1,161 @@
+<style>
+@page{size:A4;margin:8mm 9mm 10mm}
+.w{width:auto!important;padding:0!important}
+body{background:#fff!important;font-size:10.9px!important;line-height:1.38!important}
+h1{font-size:21px!important;margin:0 0 1mm!important;color:#b42318}
+.st{border:2px solid #b42318;border-radius:8px;margin:0 0 2.2mm;break-inside:avoid}
+.st .h{background:#b42318;color:#fff;font:800 12.5px Inter;padding:1mm 3mm}
+.st .b{padding:1.4mm 3mm}
+table.t{border-collapse:collapse;width:100%;margin:1mm 0}
+table.t td,table.t th{border:1px solid #d6c3c0;padding:.8mm 1.6mm;vertical-align:middle;text-align:left}
+table.t th{background:#fbeceb;color:#7a1a12}
+.de{background:#f4f6fa;border-left:3px solid #1f4e79;padding:1mm 2.5mm;margin:1mm 0;border-radius:0 5px 5px 0}
+.tr{color:#0f4f47;background:#e3f4f2;border-left:3px solid #00796b;padding:.8mm 2.5mm;margin:1mm 0;border-radius:0 5px 5px 0}
+.fe{background:#fdeeec;border-left:3px solid #c62828;padding:.8mm 2.5mm;margin:1mm 0;border-radius:0 5px 5px 0}
+.ok{background:#eaf6ec;border-left:3px solid #2e7d32;padding:.8mm 2.5mm;margin:1mm 0;border-radius:0 5px 5px 0}
+.pb{break-before:page}
+.ex{border:1.5px solid #1f4e79;border-radius:7px;margin:0 0 2.4mm;break-inside:avoid}
+.ex .h{background:#1f4e79;color:#fff;font:700 11.5px Inter;padding:.8mm 3mm;display:flex;justify-content:space-between}
+.ex .b{padding:1.2mm 3mm}
+.ex .q{color:#333;font-style:italic;margin-bottom:.8mm}
+.ex ol{margin:0;padding-left:5mm}
+.ex li{margin:.2mm 0}
+.two{display:flex;gap:2.4mm}.two>div{flex:1}
+</style>
+
+<h1>TEST-NOTIZ · jede Testaufgabe in 5 Schritten</h1>
+<div class="tr">Yazım şekli: <b>Almanca satırları sınav kâğıdına aynen yaz</b>, sadece sayıları kendi sorunla değiştir. Türkçe satırlar sana açıklama.</div>
+
+<div class="st"><div class="h">SCHRITT 1 · Welcher Test? (Stichwort in der Aufgabe)</div><div class="b">
+<table class="t"><tr><th>Stichwort in der Aufgabe</th><th>Test</th><th>Prüfgröße</th><th>Verteilung unter \(H_0\)</th></tr>
+<tr><td>Mittelwert, <b>„σ (oder σ²) bekannt“</b></td><td>Gauß-Test</td><td>\(Z=\dfrac{\bar x-\mu_0}{\sigma/\sqrt n}\)</td><td>\(N(0,1)\)</td></tr>
+<tr><td>Mittelwert, <b>σ unbekannt</b> (nur \(s_*\) oder Rohdaten)</td><td>t-Test</td><td>\(T=\dfrac{\bar x-\mu_0}{s_*/\sqrt n}\)</td><td>\(t_{n-1}\)</td></tr>
+<tr><td><b>Anteil / Prozent</b>, n groß</td><td>Anteilstest</td><td>\(Z=\dfrac{\hat\pi-\pi_0}{\sqrt{\pi_0(1-\pi_0)/n}}\)</td><td>\(\approx N(0,1)\)</td></tr>
+<tr><td><b>Varianz / Streuung</b> testen</td><td>χ²-Varianztest</td><td>\(\chi^2=\dfrac{(n-1)\,s_*^2}{\sigma_0^2}\)</td><td>\(\chi^2_{n-1}\)</td></tr>
+<tr><td><b>Kreuztabelle</b>, „unabhängig?“</td><td>χ²-Unabhängigkeit</td><td>\(\chi^2=\sum\dfrac{(h-e)^2}{e}\), \(e=\dfrac{\text{Zeilensumme}\cdot\text{Spaltensumme}}{n}\)</td><td>\(\chi^2_{(k-1)(m-1)}\)</td></tr>
+<tr><td>„Würfel fair?“, „folgt Verteilung?“</td><td>χ²-Anpassung</td><td>\(\chi^2=\sum\dfrac{(h_j-n p_j)^2}{n p_j}\)</td><td>\(\chi^2_{k-1}\)</td></tr>
+<tr><td>Anteil, n klein, „exakt“</td><td>Binomialtest</td><td>\(X\) = Anzahl Erfolge</td><td>\(B(n,\pi_0)\)</td></tr>
+<tr><td>Median, „ohne Verteilungsannahme“</td><td>Vorzeichentest</td><td>\(Z\) = Anzahl \(x_i\le\theta_0\)</td><td>\(B(n;\,0.5)\)</td></tr></table>
+<div class="fe">⚠ σ² gegeben → erst \(\sigma=\sqrt{\sigma^2}\). Nur empirisches \(s\) gegeben → \(s_*^2=\frac{n}{n-1}s^2\). Nenner immer \(\sigma/\sqrt n\).</div>
+</div></div>
+
+<div class="two"><div>
+<div class="st"><div class="h">SCHRITT 2 · Hypothesen</div><div class="b">
+Was <b>nachgewiesen / abgesichert / vermutet</b> wird → \(H_1\). Gleichheitszeichen nur in \(H_0\).<br>
+mehr, größer, länger, übersteigt → \(H_1:\mu>\mu_0\)<br>
+weniger, kleiner, kürzer, <b>nicht weiter als</b> → \(H_1:\mu<\mu_0\)<br>
+<b>genau</b>, weicht ab, ungleich, beide Richtungen → \(H_1:\mu\neq\mu_0\)
+<div class="de">Beispiel: \(H_0:\ \mu\ge60\quad\text{vs.}\quad H_1:\ \mu<60\)<br>Anteil: \(\pi\) statt \(\mu\) · Varianz: \(\sigma^2\) statt \(\mu\)</div>
+</div></div>
+<div class="st"><div class="h">SCHRITT 3 · Prüfgröße + Verteilung</div><div class="b">
+<div class="de">Beispiel: \(Z=\dfrac{\bar x-\mu_0}{\sigma/\sqrt n}=\dfrac{58.5-60}{4/\sqrt{16}}=\dfrac{-1.5}{1}=-1.5\)<br><b>Unter \(H_0\) gilt: \(Z\sim N(0,1)\).</b></div>
+<span class="tr">Dağılım cümlesi = 1 puan. Hep yaz.</span>
+</div></div>
+</div><div>
+<div class="st"><div class="h">SCHRITT 4 · Entscheidung</div><div class="b">
+<table class="t"><tr><th>\(H_1\)</th><th>ablehnen, wenn</th><th>10 %</th><th>5 %</th><th>1 %</th></tr>
+<tr><td>\(\neq\)</td><td>\(|z|>z_{1-\alpha/2}\)</td><td>1.645</td><td>1.960</td><td>2.576</td></tr>
+<tr><td>\(>\)</td><td>\(z>z_{1-\alpha}\)</td><td>1.282</td><td>1.645</td><td>2.326</td></tr>
+<tr><td>\(<\)</td><td>\(z<-z_{1-\alpha}\)</td><td>−1.282</td><td>−1.645</td><td>−2.326</td></tr></table>
+t-Test: \(t_{n-1;\dots}\) aus der Aufgabe · χ²-Tests: <b>immer rechts</b>, \(\chi^2>\chi^2_{df;1-\alpha}\)<br>
+p-Wert: \(\neq\): \(2(1-\Phi(|z|))\) · \(>\): \(1-\Phi(z)\) · \(<\): \(\Phi(z)\) · \(\Phi(-z)=1-\Phi(z)\)<br>
+Binomial: \(P(X\ge k)=1-P(X\le k-1)\)
+<div class="ok"><b>Regel:</b> \(z\) im Ablehnungsbereich <b>oder</b> \(p\le\alpha\) ⇒ \(H_0\) ablehnen</div>
+</div></div>
+</div></div>
+
+<div class="st"><div class="h">SCHRITT 5 · Antwortsatz</div><div class="b">
+<div class="de"><b>abgelehnt:</b> „Da \(z=-2.5\) im Ablehnungsbereich liegt (bzw. \(p=0.012<\alpha=0.05\)), wird \(H_0\) zum Niveau 5 % abgelehnt. Es ist statistisch abgesichert, dass <i>[Kontext + Richtung von \(H_1\)]</i>.“<br>
+<b>nicht abgelehnt:</b> „\(H_0\) kann zum Niveau 5 % nicht abgelehnt werden. Es kann nicht nachgewiesen werden, dass <i>[Kontext]</i>.“ — nie „\(H_0\) angenommen“!</div>
+</div></div>
+
+<div class="two"><div>
+<div class="st"><div class="h">R-OUTPUT · welcher Code?</div><div class="b">
+① <b>richtige Daten?</b> (über wen ist der Test?)<br>② <code>mu=</code> gleich \(\mu_0\)?<br>③ <code>alternative</code> passt zu \(H_1\)? <code>"l"</code> = \(<\) · <code>"g"</code> = \(>\) · nichts / <code>"two.sided"</code> = \(\neq\)<br>
+Dann nur <b>p-value mit α vergleichen</b>. <code>conf.level=0.9</code> ⇒ α = 0.1.
+</div></div>
+</div><div>
+<div class="st"><div class="h">FEHLER 1. / 2. ART</div><div class="b">
+<b>1. Art:</b> \(H_0\) abgelehnt, obwohl wahr (W'keit α): „Man schließt, dass <i>[\(H_1\)]</i>, obwohl in Wahrheit <i>[\(H_0\)]</i> gilt.“<br>
+<b>2. Art:</b> \(H_0\) nicht abgelehnt, obwohl falsch (β).<br>
+abgelehnt → nur 1. Art möglich · nicht abgelehnt → nur 2. Art.
+</div></div>
+</div></div>
+<div class="fe"><b>Notfall (gar nichts verstanden?)</b> Hypothesen mit μ hinschreiben · Formel aus Schritt 1 mit Zahlen · „Unter \(H_0\) gilt …“ · Tabellenwert + Satz. Das sind schon ca. 4 von 8 Punkten. <b>Nie ein Kästchen leer lassen.</b></div>
+
+<!-- ===================== Seite 2+: alle Aufgabentypen mit der Notiz gelöst ===================== -->
+<div class="pb"></div>
+<h1 style="color:#1f4e79!important">Probe: 12 Aufgabentypen – jede nur mit der Notiz gelöst</h1>
+<div class="tr">Her örnekte Notiz'in adımlarını (S1…S5) sırayla uyguladım. Önce soruyu kendin çöz, sonra çözümü kapatıp karşılaştır. 12'sinin hepsini yapabiliyorsan her test sorusunu yaparsın.</div>
+
+<div class="ex"><div class="h"><span>1 · Gauß-Test, linksseitig, nicht abgelehnt</span><span>„σ² bekannt“</span></div><div class="b">
+<div class="q">Bäckerei: Brötchen wiegen im Mittel <b>mindestens</b> 60 g. Verbraucherschutz vermutet <b>weniger</b>. \(n=16\), \(\bar x=58.5\), \(\sigma^2=16\), α = 5 %. (\(\Phi(1.5)=0.9332\))</div>
+<ol><li><b>S1</b> σ bekannt → Gauß; \(\sigma=\sqrt{16}=4\)</li>
+<li><b>S2</b> \(H_0:\mu\ge60\) vs. \(H_1:\mu<60\)</li>
+<li><b>S3</b> \(Z=\frac{58.5-60}{4/\sqrt{16}}=-1.5\); unter \(H_0\): \(Z\sim N(0,1)\)</li>
+<li><b>S4</b> \(A=(-\infty;-1.645]\); \(-1.5\notin A\) · \(p=\Phi(-1.5)=1-0.9332=0.0668>0.05\)</li>
+<li><b>S5</b> \(H_0\) kann nicht abgelehnt werden; es kann nicht nachgewiesen werden, dass die Brötchen im Mittel weniger als 60 g wiegen.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>2 · Gauß-Test, zweiseitig, abgelehnt</span><span>„genau … weicht ab“</span></div><div class="b">
+<div class="q">Hersteller: Füllmenge <b>genau</b> 50 ml. Prüfer bezweifelt das in beide Richtungen. \(n=16\), \(\bar x=52\), \(\sigma=4\), α = 5 %. (\(\Phi(2)=0.9772\))</div>
+<ol><li><b>S2</b> \(H_0:\mu=50\) vs. \(H_1:\mu\neq50\)</li>
+<li><b>S3</b> \(Z=\frac{52-50}{4/4}=2\); \(Z\sim N(0,1)\)</li>
+<li><b>S4</b> \(|2|>1.96\) → ablehnen · \(p=2(1-0.9772)=0.0456<0.05\)</li>
+<li><b>S5</b> Zum Niveau 5 % ist abgesichert, dass die mittlere Füllmenge von 50 ml abweicht.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>3 · t-Test, rechtsseitig</span><span>„Varianz unbekannt“</span></div><div class="b">
+<div class="q">Behauptung: mittlere Lernzeit 12 h. Vermutung: <b>mehr</b>. \(n=16\), \(\bar x=12.6\), \(s_*=1.2\), α = 5 %. (\(t_{15;0.95}=1.753\))</div>
+<ol><li><b>S1</b> σ unbekannt → t-Test · <b>S2</b> \(H_0:\mu\le12\) vs. \(H_1:\mu>12\)</li>
+<li><b>S3</b> \(T=\frac{12.6-12}{1.2/4}=2\); unter \(H_0\): \(T\sim t_{15}\)</li>
+<li><b>S4</b> \(A=[1.753;\infty)\); \(2\in A\) → ablehnen</li>
+<li><b>S5</b> Abgesichert, dass die mittlere Lernzeit mehr als 12 h beträgt.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>4 · t-Test aus Rohdaten</span><span>Daten statt \(\bar x\), \(s_*\)</span></div><div class="b">
+<div class="q">Daten \(12,15,11,14,13\); \(H_1:\mu\neq12\); α = 5 %. (\(t_{4;0.975}=2.776\))</div>
+<ol><li>\(\bar x=\frac{65}{5}=13\); \(s_*^2=\frac{(12-13)^2+(15-13)^2+(11-13)^2+(14-13)^2+0}{5-1}=\frac{10}{4}=2.5\); \(s_*=1.581\)</li>
+<li><b>S3</b> \(T=\frac{13-12}{1.581/\sqrt5}=1.414\); \(T\sim t_4\) · <b>S4</b> \(|1.414|<2.776\) → nicht ablehnen</li>
+<li><b>S5</b> Es kann nicht nachgewiesen werden, dass der Mittelwert von 12 abweicht.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>5 · Anteilstest, zweiseitig</span><span>„Prozent“</span></div><div class="b">
+<div class="q">Partei: <b>genau</b> 40 % Unterstützung, Zeitung bezweifelt. 216 von 600 unterstützen. α = 5 %.</div>
+<ol><li><b>S2</b> \(H_0:\pi=0.4\) vs. \(H_1:\pi\neq0.4\)</li>
+<li><b>S3</b> \(\hat\pi=\frac{216}{600}=0.36\); \(\sqrt{\frac{0.4\cdot0.6}{600}}=0.02\); \(Z=\frac{0.36-0.4}{0.02}=-2\); \(Z\overset{a}{\sim}N(0,1)\)</li>
+<li><b>S4</b> \(|{-2}|>1.96\) → ablehnen; \(p=0.0456\) · <b>S5</b> Der Anteil weicht signifikant von 40 % ab.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>6 · χ²-Varianztest</span><span>„Streuung zu groß“</span></div><div class="b">
+<div class="q">Die Varianz soll höchstens 4 sein; vermutet wird <b>größer</b>. \(n=10\), \(s_*^2=8\), α = 5 %. (\(\chi^2_{9;0.95}=16.919\))</div>
+<ol><li><b>S2</b> \(H_0:\sigma^2\le4\) vs. \(H_1:\sigma^2>4\) · <b>S3</b> \(\chi^2=\frac{9\cdot8}{4}=18\); \(\chi^2\sim\chi^2_9\)</li>
+<li><b>S4</b> \(18>16.919\) → ablehnen · <b>S5</b> Abgesichert, dass die Varianz größer als 4 ist.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>7 · χ²-Unabhängigkeitstest</span><span>Kreuztabelle</span></div><div class="b">
+<div class="q">Männer: ja 30 / nein 20 · Frauen: ja 20 / nein 30 (n = 100). Unabhängig? α = 5 %.</div>
+<ol><li><b>S2</b> \(H_0\): Geschlecht und Antwort unabhängig vs. \(H_1\): abhängig</li>
+<li><b>S3</b> \(e=\frac{50\cdot50}{100}=25\) (jede Zelle); \(\chi^2=4\cdot\frac{(30-25)^2}{25}=4\); \(df=(2-1)(2-1)=1\)</li>
+<li><b>S4</b> \(4>3.841\) → ablehnen · <b>S5</b> Es besteht ein Zusammenhang zwischen Geschlecht und Antwort.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>8 · χ²-Anpassungstest</span><span>„Würfel fair?“</span></div><div class="b">
+<div class="q">60 Würfe: 5, 8, 9, 8, 10, 20. Fair? α = 5 %. (\(\chi^2_{5;0.95}=11.070\))</div>
+<ol><li><b>S2</b> \(H_0\): \(p_j=\frac16\) für alle \(j\) · <b>S3</b> \(e_j=60\cdot\frac16=10\); \(\chi^2=\frac{25+4+1+4+0+100}{10}=13.4\); \(df=5\)</li>
+<li><b>S4</b> \(13.4>11.07\) → ablehnen · <b>S5</b> Der Würfel ist zum Niveau 5 % nicht fair.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>9 · Exakter Binomialtest</span><span>n klein</span></div><div class="b">
+<div class="q">10 Versuche, 9 Erfolge. Abzusichern: Erfolgswahrscheinlichkeit <b>größer</b> als 0.5. α = 5 %.</div>
+<ol><li><b>S2</b> \(H_0:\pi\le0.5\) vs. \(H_1:\pi>0.5\) · <b>S3</b> \(X\sim B(10;0.5)\), \(x=9\)</li>
+<li><b>S4</b> \(p=P(X\ge9)=P(9)+P(10)=\frac{10+1}{1024}=0.0107\le0.05\) → ablehnen · <b>S5</b> abgesichert, dass \(\pi>0.5\).</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>10 · Vorzeichentest</span><span>Median, ohne Verteilungsannahme</span></div><div class="b">
+<div class="q">\(n=10\) Werte, Median soll 10 sein (zweiseitig). Genau 2 Werte sind \(\le10\). α = 5 %.</div>
+<ol><li><b>S3</b> \(Z=2\), \(Z\sim B(10;0.5)\) · \(P(Z\le2)=\frac{1+10+45}{1024}=0.0547\)</li>
+<li><b>S4</b> zweiseitig: \(p=2\cdot0.0547=0.109>0.05\) → nicht ablehnen · <b>S5</b> Abweichung des Medians von 10 nicht nachweisbar.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>11 · R-Output (Altklausur A8)</span><span>„welcher Code?“</span></div><div class="b">
+<div class="q">Absichern: Stahlbichler springt <b>nicht weiter als</b> 133.5 m, α = 10 %. Code (1): Fiedlers Daten, "l", p = 0.5 · Code (2): Stahlbichlers Daten, "l", p = 0.078 · Code (3): Stahlbichlers Daten, "g", p = 0.922</div>
+<ol><li><b>S2</b> \(H_0:\mu\ge133.5\) vs. \(H_1:\mu<133.5\)</li>
+<li><b>R-Kontrolle</b> ① Daten Stahlbichler → (2) oder (3) ② <code>mu=133.5</code> ✓ ③ \(<\) → <code>"l"</code> ⇒ <b>Code (2)</b></li>
+<li><b>S4/S5</b> \(p=0.078<0.1\) → \(H_0\) ablehnen: Zum Niveau 10 % springt Stahlbichler im Mittel nicht weiter als 133.5 m.</li></ol></div></div>
+
+<div class="ex"><div class="h"><span>12 · Ablehnungsbereich + Fehler 1. Art (Testat-Typ)</span><span>t-Test mit R</span></div><div class="b">
+<div class="q">Hotline: mittlere Wartezeit 5 min, Kund*innen vermuten <b>länger</b>. R: <code>t.test(wz, mu=5, alternative="g")</code> → <code>t = 4.106, df = 7, p-value = 0.0023</code>. α = 5 %, \(t_{7;0.95}=1.895\).</div>
+<ol><li><b>S2</b> \(H_0:\mu\le5\) vs. \(H_1:\mu>5\) · <b>S3</b> \(T\sim t_7\) · <b>S4</b> \(A=[1.895;\infty)\); \(4.106\in A\), \(p=0.0023<0.05\) → ablehnen</li>
+<li><b>S5</b> Abgesichert, dass die mittlere Wartezeit länger als 5 min ist.</li>
+<li><b>Fehler 1. Art:</b> Man schließt, dass die Wartezeit im Mittel länger als 5 min ist, obwohl sie in Wahrheit höchstens 5 min beträgt.</li></ol></div></div>
