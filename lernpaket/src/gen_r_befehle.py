@@ -53,6 +53,7 @@ r('d$lang <- ifelse(d$Dauer > 30, "lang", "kurz")\ntable(d$lang)', '<b>Yeni süt
 r('d$Klasse <- cut(d$Dauer, breaks = c(10, 20, 30, 40, 50), right = FALSE)\ntable(d$Klasse)', 'Sayıları <b>sınıflara</b> ayırır. <code>right=FALSE</code> → [10,20) sol kapalı.')
 r('x <- c(2, NA, 5)\nis.na(x); sum(is.na(x)); mean(x, na.rm = TRUE)', 'Eksik değer (NA): bul, say, hesaplarda <code>na.rm=TRUE</code> ile atla.')
 r('unique(d$Mensa); "Nord" %in% d$Mensa', 'Farklı değerler · bir değer içinde var mı?')
+r('df <- data.frame(x = c(1, 2, 3), Gruppe = c("a", "b", "a"))\ndf', 'Kendi <b>data frame</b>\'ini oluştur (sütun = vektör).')
 
 # ------------------------------------------------------------------ 4
 sec('4 · Vektoren, Rechnen, Mengen', 'Temel hesaplar. log = doğal logaritma (ln)!')
@@ -62,6 +63,8 @@ r('max(x); min(x); range(x)', 'En büyük · en küçük · ikisi birden.')
 r('sqrt(16); exp(1); log(exp(2)); log(100, base = 10); abs(-3)', 'Karekök · e üzeri · <b>log = ln</b> · 10 tabanlı log · mutlak değer.')
 r('choose(10, 2); factorial(4)', 'Binom katsayısı \\(\\binom{10}{2}\\) · faktöriyel 4!.')
 r('A <- 3:6; B <- c(2, 4, 6)\nunion(A, B); intersect(A, B); setdiff(A, B); is.element(6, B)', 'Kümeler: birleşim ∪ · kesişim ∩ · fark A\\B · eleman mı? (Testat 0).')
+r('M <- matrix(1:6, nrow = 2); M\ncolSums(M); colMeans(M); apply(M, 1, sum)', '<b>Matris</b>: sütun toplamı/ortalaması · <code>apply(M, 1, f)</code> her <b>satıra</b> (2 = her sütuna) f uygular.')
+r('for (i in 1:3) {\n  print(i^2)\n}', '<b>for döngüsü</b>: i = 1, 2, 3 için tekrar eder (Altklausur çözümü grid aramada bunu kullanıyor).')
 
 # ------------------------------------------------------------------ 5
 sec('5 · Häufigkeiten und Kontingenztafeln', 'Kategorik değişkenler için.')
@@ -70,6 +73,8 @@ r('round(prop.table(table(d$Mensa)), 3)', '<b>Göreli frekanslar</b> (oranlar, t
 r('tab <- table(d$Mensa, d$Typ)\ntab', 'İki değişkenli <b>Kontingenztafel</b> (satır × sütun).')
 r('addmargins(tab)', 'Satır ve sütun <b>toplamlarını</b> ekler.')
 r('round(prop.table(tab, margin = 1), 3)', '<b>Satır içi oranlar</b> (koşullu): her Mensa\'da Student/Mitarbeiter oranı. <code>margin=2</code> sütun içi.')
+r('round(cumsum(prop.table(table(d$Gerichte))), 3)', '<b>Kümülatif göreli frekans</b> = empirik dağılım fonksiyonu \\(\\hat F\\) tablo hâlinde.')
+r('Fhat <- ecdf(d$Gerichte)\nFhat(2); 1 - Fhat(2)', '\\(\\hat F(2)\\) = „en fazla 2“ oranı · \\(1-\\hat F(2)\\) = „2’den fazla“ oranı.')
 
 # ------------------------------------------------------------------ 6
 sec('6 · Lage- und Streuungsmaße', 'Dikkat: <code>var()</code> ve <code>sd()</code> \\(n-1\\) ile böler (düzeltilmiş). Empirik varyans istenirse çevir!')
@@ -98,6 +103,8 @@ r('pdf("Scatter.pdf")\nplot(d$Dauer, d$Wartezeit, xlab = "Dauer", ylab = "Wartez
 r('pdf("Balken.pdf")\nbarplot(table(d$Mensa), main = "Mensa", ylab = "Anzahl")\ndev.off()', '<b>Çubuk grafik</b> (kategorik veri).')
 r('pdf("ECDF.pdf")\nplot(ecdf(d$Gerichte), main = "Empirische Verteilungsfunktion")\ndev.off()', '<b>Empirik dağılım fonksiyonu</b> \\(\\hat F(x)\\) çizimi.')
 r('pdf("Dichte.pdf")\nhist(d$Wartezeit, freq = FALSE, main = "Wartezeit")\ncurve(dexp(x, rate = 1 / mean(d$Wartezeit)), add = TRUE, col = "blue")\ndev.off()', 'Histogram üstüne <b>teorik yoğunluk eğrisi</b> (<code>curve(..., add=TRUE)</code>).')
+r('pdf("KDE.pdf")\nplot(density(d$Wartezeit, bw = 2, kernel = "epanechnikov"), main = "KDE, bw = 2")\nlines(density(d$Wartezeit, bw = 0.5, kernel = "epanechnikov"), col = "red")\ndev.off()', '<b>Kerndichteschätzer</b>: <code>bw</code> = bant genişliği, <code>kernel</code> = "epanechnikov", "rectangular", "gaussian". Büyük bw → daha düz.')
+r('pdf("Zwei.pdf")\npar(mfrow = c(1, 2))\nhist(d$Dauer, main = "Dauer"); hist(d$Wartezeit, main = "Wartezeit")\ndev.off()', '<code>par(mfrow = c(1, 2))</code>: bir sayfada <b>yan yana 2 grafik</b> (satır, sütun).')
 
 # ------------------------------------------------------------------ 9
 sec('9 · Verteilungen: d / p / q / r', '<b>d</b> = yoğunluk/olasılık \\(P(X=k)\\) · <b>p</b> = \\(P(X\\le x)\\) · <b>q</b> = kantil · <b>r</b> = rastgele sayı.')
@@ -108,6 +115,8 @@ r('pnorm(76, mean = 70, sd = 4); 1 - pnorm(66, 70, 4); qnorm(0.975)', 'Normal: \
 r('pexp(2, rate = 0.25); 1 - pexp(6, 0.25); qexp(0.5, 0.25)', 'Üstel: \\(P(T\\le2)\\) · \\(P(T>6)\\) · medyan. <code>rate</code> = λ = 1/ortalama.')
 r('punif(9, min = 2, max = 12); qt(0.95, df = 15); qchisq(0.95, df = 1)', 'Düzgün · t kantili \\(t_{15;0.95}\\) · χ² kantili.')
 r('1 - pt(2, df = 15); 2 * (1 - pnorm(2))', 't için sağ kuyruk · iki taraflı p-değeri (z = 2).')
+r('qbinom(0.5, 10, 0.2); qpois(0.9, 3)', 'Kesikli kantiller: binom medyanı · Poisson 0.9-kantili.')
+r('dgamma(2, shape = 2, rate = 1); pgamma(2, 2, 1); dgeom(3, prob = 0.2)', '<b>Gamma</b> yoğunluğu/dağılımı (shape = α, rate = β) · geometrik \\(P(X=3)=p(1-p)^3\\).')
 
 # ------------------------------------------------------------------ 10
 sec('10 · Simulation', 'Rastgele deney; <code>set.seed</code> ile sonuç tekrarlanabilir olur.')
@@ -123,6 +132,16 @@ r('Lfun <- function(lambda) prod(dpois(x, lambda))\nLfun(1.5)', 'Likelihood\'u <
 r('grid <- seq(1, 2, by = 0.1)\nwerte <- sapply(grid, Lfun)\ngrid[which.max(werte)]', '<b>Grid arama</b>: her λ için L hesapla, en büyüğün λ\'sı = ML tahmini.')
 r('optimize(function(l) sum(dpois(x, l, log = TRUE)), interval = c(0.1, 5), maximum = TRUE)$maximum\nmean(x)', '<code>optimize(..., maximum=TRUE)</code>: sayısal maksimum. Poisson\'da kontrol: \\(\\hat\\lambda=\\bar x\\).')
 r('1 / mean(d$Wartezeit)', 'Üstel dağılım ML: \\(\\hat\\lambda=1/\\bar x\\) (kontrol için).')
+r('for (lambda in 1:3) {\n  print(prod(dpois(x, lambda)))\n}', '<b>for döngüsüyle grid</b>: her λ için Likelihood yazdırır, en büyüğü seç (Altklausur B g) resmî çözümü).')
+r('w <- d$Wartezeit\nsum(dexp(w, rate = 0.2, log = TRUE))\nsum(dnorm(d$Dauer, mean = 30, sd = 7, log = TRUE))', '<b>Diğer dağılımlarla Log-Likelihood</b>: Üstel (<code>dexp</code>) · Normal (<code>dnorm</code>, sd = σ).')
+r('prod(dgamma(w, shape = 0.5, rate = 5))\nsum(log(dgamma(w, shape = 0.5, rate = 5)))', '<b>Underflow</b>: çok küçük çarpım R\'de <b>0</b> görünür → çarpım yerine <b>log\'ların toplamını</b> kullan.')
+
+# ------------------------------------------------------------------ 11b
+sec('11b · Numerische ML mit nlm (ML-Probeklausur Teil B)', '<code>nlm</code> <b>minimum</b> arar → <b>negatif</b> Log-Likelihood ver. Pozitif parametreleri <code>exp()</code> ile dönüştür.')
+r('neglogL <- function(tp, x) {\n  par <- exp(tp)              # Parameter > 0 erzwingen\n  -sum(log(dgamma(x, par[1], par[2])))\n}', '① <b>Negatif log-likelihood fonksiyonu</b>. <code>tp</code> = dönüştürülmüş parametre (−∞…∞), <code>exp(tp)</code> = gerçek pozitif parametre.')
+r('model <- nlm(neglogL, p = c(0, 0), x = d$Wartezeit)\nmodel$estimate', '② <code>nlm(fonksiyon, p = başlangıç, x = veri)</code> → <code>$estimate</code> dönüştürülmüş tahminler. <b>„NA/Inf replaced“ uyarıları normaldir</b> (resmî çözümde de var), yok sayılabilir.')
+r('exp(model$estimate)', '③ <b>Geri dönüştür</b>: \\(\\hat\\alpha,\\hat\\beta\\) = <code>exp(model$estimate)</code>.')
+r('model$minimum; -model$minimum', '<code>$minimum</code> = en küçük negatif log-L → eksi işaretle maksimum log-Likelihood.')
 
 # ------------------------------------------------------------------ 12
 sec('12 · Konfidenzintervalle', 'Elle formül ya da <code>t.test()$conf.int</code>.')
@@ -154,7 +173,8 @@ r('head(resid(m), 3)', '<b>Artıklar</b> \\(e_i=y_i-\\hat y_i\\).')
 sec('15 · Runden und Ausgeben', 'Sınav: sonuçları <code>round(…, 3)</code> ile yuvarla ve tam cümle yaz.')
 r('round(pi, 3); signif(123456, 2)', '3 ondalığa yuvarla · anlamlı basamak.')
 r('format(1/3, nsmall = 5); sprintf("%.10f", pi)', 'Sabit sayıda ondalık gösterme.')
-r('sprintf("%.99f", pi)', '<b>99 ondalık</b> (Altklausur B, „Yennefer-Zahl“) – <code>sprintf("%.99f", x)</code>.')
+r('sprintf("%.20f", pi)', 'Bir sayıyı <b>istenen sayıda ondalıkla</b> yazdırma (<code>%.20f</code> = 20 ondalık).')
+r('zahl <- "0."\nfor (i in 1:54) zahl <- paste0(zahl, i)\nzahl; nchar(zahl) - 2', '<b>Altklausur B h) „Yennefer-Zahl“</b>: 0,123456789101112… sayıları <code>paste0</code> ile döngüde art arda ekle. 1–9 (9 hane) + 10–54 (90 hane) = <b>99 ondalık</b>.')
 r('options(scipen = 999); 6.938e-131 > 0', 'Bilimsel gösterimi kapatır (<code>e-131</code> = \\(\\times10^{-131}\\)).')
 r('paste("Mittelwert:", round(mean(d$Dauer), 3)); cat("n =", nrow(d), "\\n")', 'Metin + sayı birleştirme / yazdırma.')
 
@@ -181,7 +201,7 @@ r('# Konfidenzintervall', '„Das 95 %-Konfidenzintervall für den Erwartungswer
 r('# Regression', '„Steigt die Dauer um eine Minute, steigt die Wartezeit im Mittel um 0.048 Minuten. R² = 0.008: Das Modell erklärt kaum Varianz.“', False)
 
 # ------------------------------------------------------------------ 18
-sec('18 · Altklausur Teil B (04.03.2022) → welcher Abschnitt?', 'Gerçek sınavın her alt sorusu bu listenin hangi bölümüne denk geliyor.')
+sec('18 · Altklausur Teil B (04.03.2022) + ML-Probeklausur B → welcher Abschnitt?', 'Gerçek sınavların her alt sorusu bu listenin hangi bölümüne denk geliyor.')
 r('# a) Arbeitsverzeichnis setzen', '→ Abschnitt 0: <code>setwd(path.expand("~"))</code>, <code>getwd()</code>', False)
 r('# b) Datensatz einlesen', '→ Abschnitt 1: <code>d &lt;- read.csv("WitcherData1.csv", sep=",", dec=".", header=TRUE)</code>, <code>head(d)</code>', False)
 r('# c) Datentyp von Variablen', '→ Abschnitt 2: <code>typeof()</code> / <code>class()</code> + Satz', False)
@@ -189,7 +209,9 @@ r('# d) Mittelwert, Standardabweichung', '→ Abschnitt 6: <code>round(mean(d$x)
 r('# e) Histogramm mit Klassen, links geschlossen', '→ Abschnitt 8: <code>hist(..., breaks=c(...), right=FALSE, freq=FALSE, main=..., xlab=...)</code> in <code>pdf()</code>…<code>dev.off()</code>', False)
 r('# f) Likelihood für λ = 20 (Poisson)', '→ Abschnitt 11: <code>prod(dpois(d$x, 20))</code>', False)
 r('# g) ML-Schätzer auf einem Gitter (17 … 23)', '→ Abschnitt 11: <code>grid &lt;- 17:23; werte &lt;- sapply(grid, Lfun); grid[which.max(werte)]</code>', False)
-r('# h) Zahl mit 99 Nachkommastellen', '→ Abschnitt 15: <code>sprintf("%.99f", x)</code>', False)
+r('# h) „Yennefer-Zahl“ mit 99 Nachkommastellen', '→ Abschnitt 15: Funktion mit <code>for</code>-Schleife und <code>paste0(zahl, i)</code> für i = 1…54 (9 + 90 = 99 Nachkommastellen)', False)
+r('# ML-Probeklausur B: Gamma-Verteilung, Underflow, nlm', '→ Abschnitt 11 (Underflow: Summe der Logs) und 11b (<code>neglogL</code>, <code>nlm</code>, <code>exp(model$estimate)</code>)', False)
+r('# Kerndichteschätzer mit Bandweite / Kern', '→ Abschnitt 8: <code>density(x, bw = …, kernel = "epanechnikov")</code>', False)
 
 # ======================================================================= R ausführen
 def run_all():
