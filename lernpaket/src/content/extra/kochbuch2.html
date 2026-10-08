@@ -1,0 +1,163 @@
+<style>
+.w{width:auto!important;padding:0!important}
+@page{size:A4 landscape;margin:9mm 10mm}
+body{font-size:12.5px!important;background:#fff!important;line-height:1.35!important}
+h1{font-size:28px!important;margin:0 0 2px!important}
+.pb{break-before:page}
+table.k{width:100%;border-collapse:collapse;margin:4px 0 8px}
+table.k th{background:#1f4e79;color:#fff;font-family:Inter;font-size:11px;padding:4px 6px;text-align:left}
+table.k td{border:1px solid #cfd6e0;padding:4px 5px;vertical-align:middle;font-size:11.5px}
+table.k td.nw{white-space:nowrap}
+table.k tr:nth-child(even) td{background:#f6f8fb}
+table.k td.nr{font:800 12px Inter;color:#1f4e79;text-align:center;width:22px}
+table.k td.res{background:#eaf6ec!important;font-weight:700}
+.fam{font:800 15px Inter;color:#fff;border-radius:7px;padding:5px 12px;margin:6px 0 3px;break-after:avoid}
+.form{border:2px solid #1f1d1a;border-radius:10px;padding:6px 12px;margin:6px 0;break-inside:avoid}
+.form h3{margin:0 0 3px;font-family:Inter;font-size:14px}
+.how{display:flex;gap:10px}.how>div{flex:1;border:1.5px solid #1f4e79;border-radius:10px;padding:6px 10px}
+.how b.n{display:inline-block;width:22px;height:22px;border-radius:50%;background:#1f4e79;color:#fff;text-align:center;line-height:22px;font-family:Inter;margin-right:6px}
+.tr{border-left:3px solid #00796b;background:#e3f4f2;padding:3px 9px;font-style:italic;color:#0f4f47;margin:4px 0;border-radius:0 6px 6px 0}
+.tpl{border:2px dashed #a8823a;border-radius:10px;padding:6px 14px;background:#fffaf0;font-size:13.5px;line-height:1.65;break-inside:avoid}
+.two{display:flex;gap:10px}.two>div{flex:1}
+.small{font-size:11px;color:#555}
+</style>
+<div class="kick">Kochbuch 2 · Test · Konfidenzintervall · Schätzer · Dichte · zum Abschreiben aufs A4-Blatt</div>
+<h1>Aufgabe erkennen → <em>Zeile finden</em> → Lösungsweg abschreiben.</h1>
+<div class="tr">Kullanım: Sorudaki kelimeye bak (sol sütun) → hangi sayfa/satır olduğunu bul → şablondaki cümleleri aynen yaz, sadece sayıları değiştir. ML için ayrı ML-Kochbuch var.</div>
+<table class="k"><tr><th>In der Aufgabe steht …</th><th>Ne istiyor</th><th>Rezept</th><th>Seite</th></tr><tr><td>„Hypothesenpaar“, „Prüfgröße“, „Testentscheidung“, „kritischer Wert“, „p-Wert“</td><td>hipotez testi</td><td>Test-Schablone + Katalog</td><td class="nw">2–4</td></tr><tr><td>„σ bekannt“ / „Standardabweichung … bekannt“</td><td>Gauß-Test</td><td>Test-Katalog Nr. 1</td><td class="nw">3</td></tr><tr><td>„Varianz unbekannt“, \(s\) oder \(s_*\) gegeben, t.test-Output</td><td>t-Test</td><td>Test-Katalog Nr. 2</td><td class="nw">3</td></tr><tr><td>„Anteil“, „Prozent der …“, „Erfolgswahrscheinlichkeit“</td><td>oran testi</td><td>Test-Katalog Nr. 3/4</td><td class="nw">3</td></tr><tr><td>„Varianz“ / „Streuung“ testen</td><td>χ²-Varianztest</td><td>Test-Katalog Nr. 5</td><td class="nw">3</td></tr><tr><td>„ohne Verteilungsannahme“, „Median“</td><td>işaret testi</td><td>Test-Katalog Nr. 6</td><td class="nw">3</td></tr><tr><td>Kreuztabelle, „unabhängig?“ / „Gleichverteilung?“, „Würfel fair?“</td><td>χ²-Test</td><td>Test-Katalog Nr. 7/8</td><td class="nw">3</td></tr><tr><td>„Fehler 1./2. Art“</td><td>hata türleri</td><td>Fehler-Kasten</td><td class="nw">4</td></tr><tr><td>„Konfidenzintervall“, „Vertrauensintervall“, „Wie groß muss n sein?“</td><td>güven aralığı</td><td>KI-Katalog</td><td class="nw">5</td></tr><tr><td>„erwartungstreu“, „unverzerrt“, „Bias“, „Var(T)“, „vorzuziehen“, „MSE“, „konsistent“</td><td>tahminci kalitesi</td><td>Schätzer-Schablone + Katalog</td><td class="nw">6</td></tr><tr><td>„Bestimmen Sie c“, „Dichte“, „Verteilungsfunktion F(x)“, „E(X)“, „Var(X)“, „Median“</td><td>yoğunluk</td><td>Dichte-Schablone + Katalog</td><td class="nw">7–8</td></tr><tr><td>„exponentialverteilt“, „gleichverteilt“, „normalverteilt“</td><td>hazır dağılım</td><td>Verteilungs-Kasten</td><td class="nw">8</td></tr></table>
+<div class="two"><div>
+<div class="form"><h3>Quantile der Standardnormalverteilung \(z_p\)</h3>
+\(z_{0.90}=1.282\) · \(z_{0.95}=1.645\) · \(z_{0.975}=1.960\) · \(z_{0.99}=2.326\) · \(z_{0.995}=2.576\)<br>
+<span class="small">\(\alpha=0.05\): zweiseitig \(1.96\), einseitig \(1.645\) · \(\alpha=0.01\): zweiseitig \(2.576\), einseitig \(2.326\) · Symmetrie: \(\Phi(-z)=1-\Phi(z)\), \(z_{0.05}=-1.645\)</span></div>
+</div><div>
+<div class="form"><h3>Quantile \(\chi^2_{df;\,0.95}\) (rechts, für χ²-Tests)</h3>
+\(df=1{:}\ 3.841\) · \(2{:}\ 5.991\) · \(3{:}\ 7.815\) · \(4{:}\ 9.488\) · \(5{:}\ 11.070\) · \(6{:}\ 12.592\)<br>
+<span class="small">t-Quantile stehen in der Aufgabe (Hinweis) oder in der Tabelle der Formelsammlung (15.2), z. B. \(t_{15;0.975}=2.131\), \(t_{15;0.95}=1.753\).</span></div>
+</div></div>
+<div class="pb"></div><div class="fam" style="background:#b42318">Test-Schablone – genau so aufschreiben (4 Schritte = 8 Punkte)</div>
+<div class="tpl"><b>Aufgabe:</b> Hersteller: Füllmenge im Mittel <b>genau</b> 50 ml. Gemessen: \(n=16\), \(\bar x=52\). Normalverteilt, \(\sigma=4\) bekannt, \(\alpha=0.05\).<br>
+<b>(a) Hypothesen:</b> \(H_0:\ \mu=50\quad\text{vs.}\quad H_1:\ \mu\neq50\)<br>
+<b>(b) Prüfgröße:</b> \(Z=\dfrac{\bar X-\mu_0}{\sigma/\sqrt n}=\dfrac{52-50}{4/\sqrt{16}}=\dfrac{2}{1}=2\) &nbsp;&nbsp; Unter \(H_0\) gilt: \(Z\sim N(0,1)\).<br>
+<b>(c) Entscheidung:</b> Ablehnungsbereich \(|z|\gt z_{1-\alpha/2}=z_{0.975}=1.96\). Da \(|z|=2\gt1.96\), wird \(H_0\) <b>abgelehnt</b>.<br>
+<b>Antwortsatz:</b> Zum Signifikanzniveau \(\alpha=0.05\) kann nachgewiesen werden, dass die mittlere Füllmenge von 50 ml abweicht.<br>
+<b>(d) p-Wert:</b> \(p=2\,(1-\Phi(|z|))=2\,(1-\Phi(2))=2\,(1-0.9772)=0.0456\lt\alpha=0.05\ \Rightarrow H_0\) ablehnen.</div>
+<div class="tr">Kendi sorunda sadece sayıları ve bağlamı (Füllmenge → Laufzeit, Wartezeit …) değiştir. 4 adımın hepsini YAZ: hipotez, test istatistiği + dağılımı, karar + cümle, p-değeri.</div>
+<div class="two"><div>
+<div class="form"><h3>Schritt 1: Hypothesen aus dem Text</h3>
+Was <b>nachgewiesen</b> / vermutet / behauptet werden soll → kommt in \(H_1\). Das Gleichheitszeichen steht immer in \(H_0\).<br>
+„mehr als“, „größer“, „übersteigt“, „länger“ → \(H_1:\mu\gt\mu_0\) (rechtsseitig)<br>
+„weniger als“, „kleiner“, „unterschreitet“, „kürzer“ → \(H_1:\mu\lt\mu_0\) (linksseitig)<br>
+„genau“, „weicht ab“, „ungleich“, „in beide Richtungen“ → \(H_1:\mu\neq\mu_0\) (zweiseitig)<br>
+<span class="small">Hersteller sagt „mindestens 500 g“, Verbraucher vermutet weniger → \(H_0:\mu\ge500\) vs. \(H_1:\mu\lt500\).</span></div>
+</div><div>
+<div class="form"><h3>Schritt 3: Ablehnungsbereich (Niveau \(\alpha\))</h3>
+\(H_1:\mu\neq\mu_0\): ablehnen, wenn \(|z|\gt z_{1-\alpha/2}\) &nbsp;(5 %: \(1.96\))<br>
+\(H_1:\mu\gt\mu_0\): ablehnen, wenn \(z\gt z_{1-\alpha}\) &nbsp;(5 %: \(1.645\))<br>
+\(H_1:\mu\lt\mu_0\): ablehnen, wenn \(z\lt -z_{1-\alpha}\) &nbsp;(5 %: \(-1.645\))<br>
+Beim t-Test genauso, nur \(t_{n-1;\,1-\alpha/2}\) bzw. \(t_{n-1;\,1-\alpha}\) statt \(z\).</div>
+<div class="form"><h3>Schritt 4: p-Wert</h3>
+zweiseitig \(p=2\,(1-\Phi(|z|))\) · rechts \(p=1-\Phi(z)\) · links \(p=\Phi(z)\)<br>
+<b>Regel: \(p\le\alpha\Rightarrow H_0\) ablehnen; \(p\gt\alpha\Rightarrow H_0\) nicht ablehnen.</b></div>
+</div></div>
+<div class="form"><h3>Antwortsätze (passend einsetzen)</h3>
+<b>abgelehnt:</b> „Zum Niveau \(\alpha=\dots\) wird \(H_0\) abgelehnt. Es kann nachgewiesen werden, dass [Größe] [größer als / kleiner als / ungleich] [\(\mu_0\)] ist.“<br>
+<b>nicht abgelehnt:</b> „\(H_0\) kann zum Niveau \(\alpha=\dots\) nicht abgelehnt werden. Es kann <u>nicht</u> nachgewiesen werden, dass … (\(H_0\) ist damit <u>nicht</u> bewiesen).“</div>
+<div class="pb"></div><div class="fam" style="background:#1f4e79">Test-Katalog – Prüfgröße, Verteilung unter \(H_0\), wann ablehnen?</div><table class="k"><tr><th>#</th><th>Test · wann?</th><th>Hypothesen</th><th>Prüfgröße</th><th>unter \(H_0\)</th><th>ablehnen, wenn … (zweiseitig / rechts / links)</th></tr><tr><td class="nr">1</td><td><b>Gauß-Test</b> · μ, σ <b>bekannt</b> (oder n groß)</td><td>\(H_0:\mu=\mu_0\)</td><td>\(Z=\dfrac{\bar x-\mu_0}{\sigma/\sqrt n}\)</td><td>\(N(0,1)\)</td><td>\(|z|\gt z_{1-\alpha/2}\) / \(z\gt z_{1-\alpha}\) / \(z\lt-z_{1-\alpha}\)</td></tr><tr><td class="nr">2</td><td><b>t-Test</b> · μ, σ <b>unbekannt</b>, normalverteilt</td><td>\(H_0:\mu=\mu_0\)</td><td>\(T=\dfrac{\bar x-\mu_0}{s_*/\sqrt n}\)</td><td>\(t_{n-1}\)</td><td>\(|t|\gt t_{n-1;1-\alpha/2}\) / \(t\gt t_{n-1;1-\alpha}\) / \(t\lt-t_{n-1;1-\alpha}\)</td></tr><tr><td class="nr">3</td><td><b>Approx. Binomialtest</b> · Anteil π, n groß</td><td>\(H_0:\pi=\pi_0\)</td><td>\(Z=\dfrac{\hat\pi-\pi_0}{\sqrt{\pi_0(1-\pi_0)/n}}\)</td><td>\(\approx N(0,1)\)</td><td>wie Gauß-Test</td></tr><tr><td class="nr">4</td><td><b>Exakter Binomialtest</b> · Anteil, n klein</td><td>\(H_0:\pi=\pi_0\)</td><td>\(X\)= Anzahl Erfolge</td><td>\(B(n,\pi_0)\)</td><td>p-Wert: rechts \(P(X\ge x)\) / links \(P(X\le x)\) / zweis. \(2\cdot\)kleinere Seite; \(p\le\alpha\)</td></tr><tr><td class="nr">5</td><td><b>χ²-Varianztest</b> · σ² testen, normalverteilt</td><td>\(H_0:\sigma^2=\sigma_0^2\)</td><td>\(\chi^2=\dfrac{(n-1)s_*^2}{\sigma_0^2}\)</td><td>\(\chi^2_{n-1}\)</td><td>außerhalb \([\chi^2_{n-1;\alpha/2};\chi^2_{n-1;1-\alpha/2}]\) / \(\gt\chi^2_{n-1;1-\alpha}\) / \(\lt\chi^2_{n-1;\alpha}\)</td></tr><tr><td class="nr">6</td><td><b>Vorzeichentest</b> · Median, ohne Verteilungsannahme</td><td>\(H_0:x_{0.5}=\theta_0\)</td><td>\(Z\)= Anzahl \(x_i\le\theta_0\)</td><td>\(B(n;0.5)\)</td><td>p-Wert über Binomialverteilung wie Nr. 4; \(p\le\alpha\)</td></tr><tr><td class="nr">7</td><td><b>χ²-Unabhängigkeitstest</b> · Kreuztabelle</td><td>\(H_0\): X, Y unabhängig</td><td>\(\chi^2=\sum\dfrac{(h_{ij}-e_{ij})^2}{e_{ij}}\), \(e_{ij}=\dfrac{h_{i\cdot}h_{\cdot j}}{n}\)</td><td>\(\chi^2_{(k-1)(m-1)}\)</td><td>\(\chi^2\gt\chi^2_{df;1-\alpha}\) (immer rechts)</td></tr><tr><td class="nr">8</td><td><b>χ²-Anpassungstest</b> · „folgt Verteilung …?“, „Würfel fair?“</td><td>\(H_0\): \(P(X=j)=p_j\)</td><td>\(\chi^2=\sum\dfrac{(h_j-np_j)^2}{np_j}\)</td><td>\(\chi^2_{k-1}\)</td><td>\(\chi^2\gt\chi^2_{k-1;1-\alpha}\) (immer rechts)</td></tr></table>
+<div class="tr">Hangi test? σ veriliyor ve "bekannt" deniyorsa → 1 (Gauß). Sadece s veya s* varsa → 2 (t). Yüzde/oran → 3. Varyans → 5. "Verteilungsannahme yok" + medyan → 6. Tablo + "unabhängig" → 7. "Verteilung/fair" → 8.</div>
+<div class="two"><div>
+<div class="form"><h3>\(s_*\) aus \(s\) (Aufgabe gibt empirische \(s\))</h3>
+\(s_*^2=\dfrac{n}{n-1}\,s^2\) · \(s_*^2=\dfrac{1}{n-1}\Big(\sum x_i^2-n\bar x^2\Big)\)</div>
+<div class="form"><h3>Test ↔ Konfidenzintervall</h3>
+Zweiseitiger Test zum Niveau \(\alpha\) lehnt \(H_0:\mu=\mu_0\) genau dann ab, wenn \(\mu_0\) <b>nicht</b> im \((1-\alpha)\)-KI liegt.</div>
+</div><div>
+<div class="form"><h3>Fehler 1. und 2. Art</h3>
+<b>Fehler 1. Art:</b> \(H_0\) wird abgelehnt, obwohl \(H_0\) wahr ist. \(P=\alpha\).<br>
+<b>Fehler 2. Art:</b> \(H_0\) wird nicht abgelehnt, obwohl \(H_1\) wahr ist. \(P=\beta\).<br>
+<span class="small">Satz im Kontext: „Ein Fehler 1. Art läge vor, wenn wir schließen, dass die Füllmenge von 50 ml abweicht, obwohl sie in Wahrheit 50 ml beträgt.“ Abgelehnt → nur Fehler 1. Art möglich; nicht abgelehnt → nur Fehler 2. Art möglich.</span></div>
+</div></div>
+<div class="pb"></div><div class="fam" style="background:#2e7d32">Test-Rechenbeispiele – jede Variante einmal komplett durchgerechnet</div><table class="k"><tr><th>#</th><th>Aufgabe (kurz)</th><th>\(H_0\) vs. \(H_1\)</th><th>Prüfgröße</th><th>kritischer Wert</th><th>Entscheidung · p-Wert</th></tr><tr><td class="nr">1</td><td>μ0=50, σ=4, n=16, x̄=52, „weicht ab“</td><td>\(\displaystyle \mu=50\) vs. \(\displaystyle \mu\neq50\)</td><td>\(\displaystyle z=\frac{52-50}{4/4}=2\)</td><td>\(\displaystyle 1.96\)</td><td class="res">\(\displaystyle 2\gt1.96\): ablehnen · \(\displaystyle p=2(1-0.9772)=0.0456\)</td></tr><tr><td class="nr">1</td><td>gleiche Daten, „mehr als 50“</td><td>\(\displaystyle \mu\le50\) vs. \(\displaystyle \mu\gt50\)</td><td>\(\displaystyle z=2\)</td><td>\(\displaystyle 1.645\)</td><td class="res">\(\displaystyle 2\gt1.645\): ablehnen · \(\displaystyle p=1-0.9772=0.0228\)</td></tr><tr><td class="nr">1</td><td>μ0=500, σ=10, n=25, x̄=497, „weniger als 500“</td><td>\(\displaystyle \mu\ge500\) vs. \(\displaystyle \mu\lt500\)</td><td>\(\displaystyle z=\frac{497-500}{10/5}=-1.5\)</td><td>\(\displaystyle -1.645\)</td><td class="res">\(\displaystyle -1.5\gt-1.645\): nicht ablehnen · \(\displaystyle p=\Phi(-1.5)=1-0.9332=0.0668\)</td></tr><tr><td class="nr">2</td><td>μ0=30, n=16, x̄=32, s*=4, „weicht ab“</td><td>\(\displaystyle \mu=30\) vs. \(\displaystyle \mu\neq30\)</td><td>\(\displaystyle t=\frac{32-30}{4/4}=2\), \(\displaystyle df=15\)</td><td>\(\displaystyle t_{15;0.975}=2.131\)</td><td class="res">\(\displaystyle 2\lt2.131\): nicht ablehnen</td></tr><tr><td class="nr">2</td><td>gleiche Daten, „größer als 30“</td><td>\(\displaystyle \mu\le30\) vs. \(\displaystyle \mu\gt30\)</td><td>\(\displaystyle t=2\), \(\displaystyle df=15\)</td><td>\(\displaystyle t_{15;0.95}=1.753\)</td><td class="res">\(\displaystyle 2\gt1.753\): ablehnen</td></tr><tr><td class="nr">3</td><td>π0=0.5, n=100, 60 Erfolge, „weicht ab“</td><td>\(\displaystyle \pi=0.5\) vs. \(\displaystyle \pi\neq0.5\)</td><td>\(\displaystyle z=\frac{0.6-0.5}{\sqrt{0.25/100}}=\frac{0.1}{0.05}=2\)</td><td>\(\displaystyle 1.96\)</td><td class="res">\(\displaystyle 2\gt1.96\): ablehnen · \(\displaystyle p=0.0456\)</td></tr><tr><td class="nr">4</td><td>n=10, π0=0.5, 9 Erfolge, „größer“</td><td>\(\displaystyle \pi\le0.5\) vs. \(\displaystyle \pi\gt0.5\)</td><td>\(\displaystyle x=9\), \(\displaystyle X\sim B(10;0.5)\)</td><td>—</td><td class="res">\(\displaystyle p=P(X\ge9)=\frac{10+1}{1024}=0.0107\le0.05\): ablehnen</td></tr><tr><td class="nr">5</td><td>σ0²=4, n=10, s*²=8, „größer“</td><td>\(\displaystyle \sigma^2\le4\) vs. \(\displaystyle \sigma^2\gt4\)</td><td>\(\displaystyle \chi^2=\frac{9\cdot8}{4}=18\)</td><td>\(\displaystyle \chi^2_{9;0.95}=16.919\)</td><td class="res">\(\displaystyle 18\gt16.919\): ablehnen</td></tr><tr><td class="nr">5</td><td>gleiche Daten, „weicht ab“</td><td>\(\displaystyle \sigma^2=4\) vs. \(\displaystyle \sigma^2\neq4\)</td><td>\(\displaystyle \chi^2=18\)</td><td>\(\displaystyle [2.700;\,19.023]\)</td><td class="res">\(\displaystyle 18\) liegt innerhalb: nicht ablehnen</td></tr><tr><td class="nr">6</td><td>n=10, θ0=10, 2 Werte ≤ 10, zweiseitig</td><td>\(\displaystyle x_{0.5}=10\) vs. \(\displaystyle x_{0.5}\neq10\)</td><td>\(\displaystyle z=2\), \(\displaystyle Z\sim B(10;0.5)\)</td><td>—</td><td class="res">\(\displaystyle P(Z\le2)=\frac{1+10+45}{1024}=0.0547\); \(\displaystyle p=0.109\gt0.05\): nicht abl.</td></tr><tr><td class="nr">7</td><td>2×2: Männer ja 30/nein 20, Frauen ja 20/nein 30</td><td>unabhängig vs. abhängig</td><td>\(\displaystyle e_{ij}=\frac{50\cdot50}{100}=25\); \(\displaystyle \chi^2=4\cdot\frac{5^2}{25}=4\)</td><td>\(\displaystyle \chi^2_{1;0.95}=3.841\)</td><td class="res">\(\displaystyle 4\gt3.841\): ablehnen → Zusammenhang</td></tr><tr><td class="nr">8</td><td>Würfel 60×: 5, 8, 9, 8, 10, 20</td><td>fair (\(\displaystyle p_j=\frac16\)) vs. nicht fair</td><td>\(\displaystyle e_j=10\); \(\displaystyle \chi^2=\frac{25+4+1+4+0+100}{10}=13.4\)</td><td>\(\displaystyle \chi^2_{5;0.95}=11.070\)</td><td class="res">\(\displaystyle 13.4\gt11.07\): ablehnen → nicht fair</td></tr></table>
+<div class="two"><div>
+<div class="form"><h3>R-Output lesen (auch Teil B!)</h3>
+<code>t = 2.874, df = 24, p-value = 0.0042</code> → \(p\lt0.05\Rightarrow H_0\) ablehnen.<br>
+<code>X-squared = 5.120, df = 3, p-value = 0.163</code> → \(p\gt0.05\Rightarrow H_0\) nicht ablehnen.<br>
+<code>alternative = "greater"</code> ↔ \(H_1:\mu\gt\mu_0\) · <code>"less"</code> ↔ \(H_1:\mu\lt\mu_0\) · <code>"two.sided"</code> ↔ \(\neq\)</div>
+</div><div>
+<div class="form"><h3>Typische Fallen</h3>
+• \(\sigma/\sqrt n\) – nicht \(\sigma/n\) und nicht \(\sigma^2\)!<br>
+• Zweiseitig: \(\alpha/2\) → \(1.96\); einseitig: \(\alpha\) → \(1.645\).<br>
+• „\(H_0\) wird angenommen / bewiesen“ ist <b>falsch</b> → „nicht abgelehnt“.<br>
+• Linksseitig ist \(z\) meist negativ – Vorzeichen behalten!</div>
+</div></div>
+<div class="pb"></div><div class="fam" style="background:#7030a0">Konfidenzintervall-Katalog – Formel, Beispiel, Interpretation</div><table class="k"><tr><th>#</th><th>wann?</th><th>Formel \((1-\alpha)\)-KI</th><th>Beispiel (95 %)</th><th>Ergebnis</th></tr><tr><td class="nr">1</td><td>μ, σ <b>bekannt</b></td><td>\(\Big[\bar x\pm z_{1-\alpha/2}\dfrac{\sigma}{\sqrt n}\Big]\)</td><td>\(\bar x=52,\ \sigma=4,\ n=16\): \(52\pm1.96\cdot\frac44\)</td><td class="res">\([50.04;\ 53.96]\)</td></tr><tr><td class="nr">2</td><td>μ, σ <b>unbekannt</b></td><td>\(\Big[\bar x\pm t_{n-1;1-\alpha/2}\dfrac{s_*}{\sqrt n}\Big]\)</td><td>\(\bar x=32,\ s_*=4,\ n=16\): \(32\pm2.131\cdot\frac44\)</td><td class="res">\([29.869;\ 34.131]\)</td></tr><tr><td class="nr">3</td><td>Anteil π, n groß</td><td>\(\Big[\hat\pi\pm z_{1-\alpha/2}\sqrt{\dfrac{\hat\pi(1-\hat\pi)}{n}}\Big]\)</td><td>\(\hat\pi=0.6,\ n=100\): \(0.6\pm1.96\cdot0.049\)</td><td class="res">\([0.504;\ 0.696]\)</td></tr><tr><td class="nr">4</td><td>Varianz σ²</td><td>\(\Big[\dfrac{(n-1)s_*^2}{\chi^2_{n-1;1-\alpha/2}};\ \dfrac{(n-1)s_*^2}{\chi^2_{n-1;\alpha/2}}\Big]\)</td><td>\(n=10,\ s_*^2=8\): \(\frac{72}{19.023};\ \frac{72}{2.700}\)</td><td class="res">\([3.785;\ 26.663]\)</td></tr></table>
+<div class="tpl"><b>Schablone:</b> Gesucht: 95 %-KI für μ, \(\sigma=4\) bekannt, \(n=16\), \(\bar x=52\).<br>
+\(1-\alpha=0.95\Rightarrow z_{1-\alpha/2}=z_{0.975}=1.96\). &nbsp; \(\Big[\bar x-z_{0.975}\frac{\sigma}{\sqrt n};\ \bar x+z_{0.975}\frac{\sigma}{\sqrt n}\Big]=\Big[52-1.96\cdot\frac{4}{4};\ 52+1.96\cdot\frac44\Big]=[50.04;\ 53.96]\)<br>
+<b>Interpretation:</b> Bei wiederholter Stichprobenziehung überdecken etwa 95 % der so konstruierten Intervalle den wahren Mittelwert μ.</div>
+<div class="two"><div>
+<div class="form"><h3>Richtig / falsch (Multiple Choice)</h3>
+✗ „μ liegt mit 95 % Wahrscheinlichkeit in [50.04; 53.96].“ (μ ist fest, kein Zufall)<br>
+✗ „95 % der Daten liegen im KI.“<br>
+✓ „95 % der so konstruierten Intervalle enthalten μ.“<br>
+✓ Höheres Niveau (99 %) → <b>breiteres</b> KI · größeres n → <b>schmaleres</b> KI · größeres σ → breiter.</div>
+</div><div>
+<div class="form"><h3>Länge und nötiges n</h3>
+Länge \(L=2\,z_{1-\alpha/2}\dfrac{\sigma}{\sqrt n}\) · halbe Breite \(e=z_{1-\alpha/2}\dfrac{\sigma}{\sqrt n}\)<br>
+\(n\ge\Big(\dfrac{z_{1-\alpha/2}\,\sigma}{e}\Big)^2=\Big(\dfrac{2z_{1-\alpha/2}\,\sigma}{L}\Big)^2\) → <b>immer aufrunden</b><br>
+<span class="small">Beispiel: σ=4, e=1, 95 %: \(n\ge(1.96\cdot4)^2=61.47\Rightarrow n=62\). Halbe Breite halbieren → n vervierfachen.</span><br>
+<span class="small">Rückwärts: KI \([a;b]\) gegeben → \(\bar x=\frac{a+b}2\), \(e=\frac{b-a}2\).</span></div>
+</div></div>
+<div class="pb"></div><div class="fam" style="background:#c55a11">Schätzer-Schablone – erwartungstreu, Varianz, welcher ist besser?</div>
+<div class="how">
+<div><b class="n">1</b><b>Erwartungswert</b><br>\(E\big(\sum a_iX_i\big)=\big(\sum a_i\big)\,\mu\)<br><b>Summe der Koeffizienten \(=1\)</b> ⇔ erwartungstreu für μ.<br>\(\text{Bias}(T)=E(T)-\theta\)</div>
+<div><b class="n">2</b><b>Varianz</b> (unabhängig)<br>\(Var\big(\sum a_iX_i\big)=\big(\sum a_i^2\big)\,\sigma^2\)<br><b>Koeffizienten quadrieren!</b> Minus wird plus.<br>\(Var(\bar X)=\dfrac{\sigma^2}{n}\)</div>
+<div><b class="n">3</b><b>Vergleichen</b><br>Beide erwartungstreu → <b>kleinere Varianz</b> ist besser (effizienter).<br>Sonst: \(MSE=Var(T)+\text{Bias}^2\) → kleiner ist besser.<br>Konsistent: \(MSE\to0\) für \(n\to\infty\).</div></div>
+<div class="tpl"><b>Aufgabe:</b> \(T_1=0.5X_1+0.3X_2+0.2X_3\), \(T_2=X_1-X_2+X_3\), \(E(X_i)=\mu\), \(Var(X_i)=\sigma^2\), unabhängig.<br>
+<b>(a)</b> \(E(T_1)=0.5E(X_1)+0.3E(X_2)+0.2E(X_3)=(0.5+0.3+0.2)\mu=\mu\ \Rightarrow T_1\) ist erwartungstreu.<br>
+\(\phantom{(a)}\ E(T_2)=E(X_1)-E(X_2)+E(X_3)=\mu-\mu+\mu=\mu\ \Rightarrow T_2\) ist erwartungstreu.<br>
+<b>(b)</b> \(Var(T_1)=0.5^2\sigma^2+0.3^2\sigma^2+0.2^2\sigma^2=(0.25+0.09+0.04)\sigma^2=0.38\sigma^2\)<br>
+\(\phantom{(b)}\ Var(T_2)=1^2\sigma^2+(-1)^2\sigma^2+1^2\sigma^2=3\sigma^2\)<br>
+\(\phantom{(b)}\ \) Da beide erwartungstreu sind und \(0.38\sigma^2\lt3\sigma^2\), ist \(T_1\) vorzuziehen. \(Var(\bar X)=\frac{\sigma^2}{3}\approx0.333\sigma^2\lt0.38\sigma^2\Rightarrow \bar X\) ist noch besser.</div>
+<table class="k"><tr><th>#</th><th>Schätzer \(T\)</th><th>\(E(T)\)</th><th>Bias</th><th>\(Var(T)\)</th><th>Bemerkung</th></tr><tr><td class="nr">1</td><td class="nw">\(\displaystyle \bar X=\frac1n\sum X_i\)</td><td class="nw">\(\displaystyle \mu\)</td><td class="nw">0</td><td class="nw">\(\displaystyle \frac{\sigma^2}{n}\)</td><td>erwartungstreu, konsistent, bester linearer</td></tr><tr><td class="nr">2</td><td class="nw">\(\displaystyle X_1\)</td><td class="nw">\(\displaystyle \mu\)</td><td class="nw">0</td><td class="nw">\(\displaystyle \sigma^2\)</td><td>erwartungstreu, aber <b>nicht konsistent</b> (Var hängt nicht von n ab)</td></tr><tr><td class="nr">3</td><td class="nw">\(\displaystyle aX_1+(1-a)X_2\)</td><td class="nw">\(\displaystyle \mu\)</td><td class="nw">0</td><td class="nw">\(\displaystyle (a^2+(1-a)^2)\sigma^2\)</td><td>minimal bei \(\displaystyle a=0.5\) → \(\displaystyle \frac{\sigma^2}2\)</td></tr><tr><td class="nr">4</td><td class="nw">\(\displaystyle 2X_1-X_2\)</td><td class="nw">\(\displaystyle \mu\)</td><td class="nw">0</td><td class="nw">\(\displaystyle 5\sigma^2\)</td><td>erwartungstreu, aber große Varianz</td></tr><tr><td class="nr">5</td><td class="nw">\(\displaystyle \frac14(X_1+X_2+X_3)\)</td><td class="nw">\(\displaystyle \frac34\mu\)</td><td class="nw">\(\displaystyle -\frac14\mu\)</td><td class="nw">\(\displaystyle \frac{3}{16}\sigma^2\)</td><td>verzerrt; \(\displaystyle MSE=\frac3{16}\sigma^2+\frac1{16}\mu^2\)</td></tr><tr><td class="nr">6</td><td class="nw">\(\displaystyle \frac1{n+1}\sum X_i\)</td><td class="nw">\(\displaystyle \frac{n}{n+1}\mu\)</td><td class="nw">\(\displaystyle -\frac{\mu}{n+1}\)</td><td class="nw">\(\displaystyle \frac{n\sigma^2}{(n+1)^2}\)</td><td>verzerrt, aber asympt. erwartungstreu und konsistent</td></tr><tr><td class="nr">7</td><td class="nw">\(\displaystyle c\sum X_i\) – c gesucht</td><td class="nw">\(\displaystyle cn\mu\)</td><td class="nw">—</td><td class="nw">\(\displaystyle c^2n\sigma^2\)</td><td>erwartungstreu ⇔ \(\displaystyle cn=1\Rightarrow c=\frac1n\)</td></tr><tr><td class="nr">8</td><td class="nw">\(\displaystyle s^2=\frac1n\sum(X_i-\bar X)^2\)</td><td class="nw">\(\displaystyle \frac{n-1}{n}\sigma^2\)</td><td class="nw">\(\displaystyle -\frac{\sigma^2}n\)</td><td class="nw">—</td><td>verzerrt → deshalb \(\displaystyle s_*^2=\frac1{n-1}\sum(X_i-\bar X)^2\) (erwartungstreu)</td></tr><tr><td class="nr">9</td><td class="nw">\(\displaystyle 2\bar X\) bei \(\displaystyle U(0,\theta)\)</td><td class="nw">\(\displaystyle 2\cdot\frac\theta2=\theta\)</td><td class="nw">0</td><td class="nw">\(\displaystyle 4\cdot\frac{\theta^2}{12n}=\frac{\theta^2}{3n}\)</td><td>erwartungstreu für θ</td></tr><tr><td class="nr">10</td><td class="nw">\(\displaystyle \bar X\) bei Poisson / Bernoulli</td><td class="nw">\(\displaystyle \lambda\) / \(\displaystyle \pi\)</td><td class="nw">0</td><td class="nw">\(\displaystyle \frac\lambda n\) / \(\displaystyle \frac{\pi(1-\pi)}n\)</td><td>erwartungstreu, konsistent</td></tr></table>
+<div class="tr">Kural: E için katsayıları TOPLA (1 ise yansız). Var için katsayıların KARESİNİ topla (eksi işareti kaybolur). İkisi de yansızsa küçük varyans kazanır.</div>
+<div class="pb"></div><div class="fam" style="background:#00796b">Dichte-Schablone – c, E(X), Var(X), F(x), Wahrscheinlichkeiten, Median</div>
+<div class="tpl"><b>Aufgabe:</b> \(f(x)=c\,(2-x)\) für \(0\le x\le2\), sonst \(0\).<br>
+<b>c:</b> \(\displaystyle\int_0^2 c(2-x)\,dx=c\Big[2x-\frac{x^2}{2}\Big]_0^2=c\,(4-2)=2c\overset{!}{=}1\ \Rightarrow\ c=\frac12\). Außerdem \(f(x)\ge0\) für alle x ✓.<br>
+<b>E(X):</b> \(\displaystyle E(X)=\int_0^2 x\cdot\tfrac12(2-x)\,dx=\frac12\Big[x^2-\frac{x^3}{3}\Big]_0^2=\frac12\Big(4-\frac83\Big)=\frac23\)<br>
+<b>Var(X):</b> \(\displaystyle E(X^2)=\int_0^2 x^2\cdot\tfrac12(2-x)\,dx=\frac12\Big[\frac{2x^3}{3}-\frac{x^4}{4}\Big]_0^2=\frac12\Big(\frac{16}3-4\Big)=\frac23\); &nbsp; \(Var(X)=E(X^2)-E(X)^2=\frac23-\frac49=\frac29\)<br>
+<b>F(x):</b> \(\displaystyle\int_0^x\tfrac12(2-t)\,dt=x-\frac{x^2}{4}\) &nbsp;⇒&nbsp; \(F(x)=\begin{cases}0,&x\lt0\\[2pt] x-\frac{x^2}{4},&0\le x\le2\\[2pt]1,&x\gt2\end{cases}\)<br>
+<b>P:</b> \(P(X\gt1)=1-F(1)=1-\frac34=\frac14\) · \(P(0.5\le X\le1)=F(1)-F(0.5)=\frac34-\frac{7}{16}=\frac5{16}\)<br>
+<b>Median:</b> \(F(x)=0.5\Leftrightarrow x-\frac{x^2}4=\frac12\Leftrightarrow x^2-4x+2=0\Rightarrow x=2-\sqrt2=0.586\) (die Lösung im Träger nehmen)</div>
+<div class="two"><div>
+<div class="form"><h3>Integrieren – das reicht für jede Klausur</h3>
+\(\int x^k\,dx=\dfrac{x^{k+1}}{k+1}\) · \(\int c\,dx=cx\) · \(\int e^{-\lambda x}dx=-\frac1\lambda e^{-\lambda x}\)<br>
+Klammern <b>vorher ausmultiplizieren</b>: \(x(2-x)=2x-x^2\)<br>
+Grenzen: \([G(x)]_a^b=G(b)-G(a)\) — bei \(a=0\) fällt meist alles weg.</div>
+</div><div>
+<div class="form"><h3>Eigenschaften einer Dichte (Satz)</h3>
+„\(f\) ist eine Dichte, da \(f(x)\ge0\) für alle \(x\) und \(\int_{-\infty}^{\infty}f(x)\,dx=1\).“<br>
+\(P(X=a)=0\) bei stetigen ZV ⇒ \(P(X\lt a)=P(X\le a)\). \(f(x)\) darf größer als 1 sein.<br>
+\(F'(x)=f(x)\) · \(P(a\lt X\le b)=F(b)-F(a)\)</div>
+</div></div>
+<div class="tr">Sıra hep aynı: (1) ∫f=1 → c, (2) E = ∫x·f, (3) E(X²)=∫x²·f → Var = E(X²) − E(X)², (4) F: 0 / formül / 1 olmak üzere 3 durum, (5) P(X&gt;a)=1−F(a), (6) medyan: F(x)=0.5 çöz.</div>
+<div class="pb"></div><div class="fam" style="background:#1f4e79">Dichte-Katalog – Ergebnisse zum Vergleichen</div><table class="k"><tr><th>#</th><th>Dichte (sonst 0)</th><th>c</th><th>\(E(X)\)</th><th>\(E(X^2)\)</th><th>\(Var(X)\)</th><th>\(F(x)\) im Träger</th><th>Median</th></tr><tr><td class="nr">1</td><td class="nw">\(\displaystyle c\,x,\ 0\le x\le2\)</td><td class="nw">\(\displaystyle \frac12\)</td><td class="nw">\(\displaystyle \frac43\)</td><td class="nw">\(\displaystyle 2\)</td><td class="nw">\(\displaystyle \frac29\)</td><td class="nw">\(\displaystyle \frac{x^2}4\)</td><td class="nw">\(\displaystyle \sqrt2=1.414\)</td></tr><tr><td class="nr">2</td><td class="nw">\(\displaystyle c\,x^2,\ 0\le x\le3\)</td><td class="nw">\(\displaystyle \frac19\)</td><td class="nw">\(\displaystyle \frac94\)</td><td class="nw">\(\displaystyle \frac{27}5\)</td><td class="nw">\(\displaystyle \frac{27}{80}\)</td><td class="nw">\(\displaystyle \frac{x^3}{27}\)</td><td class="nw">\(\displaystyle \sqrt[3]{13.5}=2.381\)</td></tr><tr><td class="nr">3</td><td class="nw">\(\displaystyle c\,(2-x),\ 0\le x\le2\)</td><td class="nw">\(\displaystyle \frac12\)</td><td class="nw">\(\displaystyle \frac23\)</td><td class="nw">\(\displaystyle \frac23\)</td><td class="nw">\(\displaystyle \frac29\)</td><td class="nw">\(\displaystyle x-\frac{x^2}4\)</td><td class="nw">\(\displaystyle 2-\sqrt2=0.586\)</td></tr><tr><td class="nr">4</td><td class="nw">\(\displaystyle c\,(x+1),\ 0\le x\le2\)</td><td class="nw">\(\displaystyle \frac14\)</td><td class="nw">\(\displaystyle \frac76\)</td><td class="nw">\(\displaystyle \frac53\)</td><td class="nw">\(\displaystyle \frac{11}{36}\)</td><td class="nw">\(\displaystyle \frac{x^2}8+\frac x4\)</td><td class="nw">\(\displaystyle \sqrt5-1=1.236\)</td></tr><tr><td class="nr">5</td><td class="nw">\(\displaystyle c\,x(1-x),\ 0\le x\le1\)</td><td class="nw">\(\displaystyle 6\)</td><td class="nw">\(\displaystyle \frac12\)</td><td class="nw">\(\displaystyle \frac3{10}\)</td><td class="nw">\(\displaystyle \frac1{20}\)</td><td class="nw">\(\displaystyle 3x^2-2x^3\)</td><td class="nw">\(\displaystyle 0.5\)</td></tr><tr><td class="nr">6</td><td class="nw">\(\displaystyle c\sqrt x,\ 0\le x\le1\)</td><td class="nw">\(\displaystyle \frac32\)</td><td class="nw">\(\displaystyle \frac35\)</td><td class="nw">\(\displaystyle \frac37\)</td><td class="nw">\(\displaystyle \frac{12}{175}\)</td><td class="nw">\(\displaystyle x^{3/2}\)</td><td class="nw">\(\displaystyle 0.5^{2/3}=0.630\)</td></tr><tr><td class="nr">7</td><td class="nw">\(\displaystyle c\,x^{-4},\ x\ge1\)</td><td class="nw">\(\displaystyle 3\)</td><td class="nw">\(\displaystyle \frac32\)</td><td class="nw">\(\displaystyle 3\)</td><td class="nw">\(\displaystyle \frac34\)</td><td class="nw">\(\displaystyle 1-x^{-3}\)</td><td class="nw">\(\displaystyle \sqrt[3]2=1.260\)</td></tr><tr><td class="nr">8</td><td class="nw">\(\displaystyle c\,e^{-2x},\ x\ge0\)</td><td class="nw">\(\displaystyle 2\)</td><td class="nw">\(\displaystyle \frac12\)</td><td class="nw">\(\displaystyle \frac12\)</td><td class="nw">\(\displaystyle \frac14\)</td><td class="nw">\(\displaystyle 1-e^{-2x}\)</td><td class="nw">\(\displaystyle \frac{\log2}{2}=0.347\)</td></tr><tr><td class="nr">9</td><td class="nw">\(\displaystyle c,\ 2\le x\le6\)</td><td class="nw">\(\displaystyle \frac14\)</td><td class="nw">\(\displaystyle 4\)</td><td class="nw">\(\displaystyle \frac{52}3\)</td><td class="nw">\(\displaystyle \frac43\)</td><td class="nw">\(\displaystyle \frac{x-2}4\)</td><td class="nw">\(\displaystyle 4\)</td></tr></table>
+<div class="two"><div>
+<div class="form"><h3>Diskret: \(P(X=x)=c\,x\) für \(x=1,2,3,4\)</h3>
+\(c(1+2+3+4)=10c=1\Rightarrow c=\frac1{10}\) · \(E(X)=\sum x\,P(X=x)=\frac{1+4+9+16}{10}=3\)<br>
+\(E(X^2)=\frac{1+8+27+64}{10}=10\) · \(Var(X)=10-9=1\) · \(F\): Treppe, springt bei jedem \(x\).</div>
+<div class="form"><h3>Fertige Verteilungen (nicht integrieren!)</h3>
+<b>Exp(λ):</b> \(F(t)=1-e^{-\lambda t}\), \(P(T\gt t)=e^{-\lambda t}\), \(E=\frac1\lambda\), \(Var=\frac1{\lambda^2}\)<br>
+<b>U(a,b):</b> \(f=\frac1{b-a}\), \(E=\frac{a+b}2\), \(Var=\frac{(b-a)^2}{12}\), \(P=\frac{\text{Breite}}{b-a}\)<br>
+<b>N(μ,σ²):</b> \(P(X\le x)=\Phi\big(\frac{x-\mu}{\sigma}\big)\) · <b>Bin(n,π):</b> \(E=n\pi\), \(Var=n\pi(1-\pi)\) · <b>Poi(λ):</b> \(E=Var=\lambda\)<br>
+\(E(aX+b)=aE(X)+b\) · \(Var(aX+b)=a^2Var(X)\)</div>
+</div><div>
+<div class="form" style="border-color:#b42318"><h3>Bedava-Punkte-Liste (PK3/PK4-Fehler)</h3>
+• \(y=a+bx\): \(\bar y=a+b\bar x\), \(s_y=|b|\,s_x\) — <b>Multiplizieren ändert s!</b><br>
+• Modus nicht eindeutig, wenn zwei Werte gleich oft am häufigsten.<br>
+• \(r\)-Interpretation: Stärke + <b>Richtung</b> + linear + Variablen.<br>
+• \(R^2=r^2\): „… % der Varianz von Y werden durch X erklärt.“<br>
+• Prognose außerhalb \([x_{\min};x_{\max}]\) → „Extrapolation, unsicher“.<br>
+• \(\overline{A\cap B}=\bar A\cup\bar B\), \(\overline{A\cup B}=\bar A\cap\bar B\); erst einzeln bilden, dann vereinigen.<br>
+• \(P(A\mid B)=\frac{P(A\cap B)}{P(B)}\) · unabhängig ⇔ \(P(A\cap B)=P(A)P(B)\) · disjunkt ⇔ \(A\cap B=\emptyset\).<br>
+• „keiner von n“: \(p^n\) · „mindestens einer“: \(1-(1-p)^n\).<br>
+• ML (c): \(l''\lt0\Rightarrow\) Maximum — immer hinschreiben.<br>
+• 3 Nachkommastellen im Ergebnis, 4 in Zwischenschritten; jede „Interpretieren/Begründen“-Frage mit Satz.</div>
+</div></div>
