@@ -1,0 +1,7 @@
+d <- read.csv("../../uebungsdaten/Fussball.csv", sep = ",", dec = ".", header = TRUE)
+head(d); str(d); table(d$Ort); table(d$Tore)
+round(mean(d$Zuschauer[d$Ort == "Heim"]),3); round(sd(d$Zuschauer[d$Ort == "Heim"]),3)
+range(d$Laufleistung)
+prod(dpois(d$Tore, 1.5)); mean(d$Tore)
+for (l in seq(1, 2.4, by = 0.2)) print(c(l, sum(dpois(d$Tore, l, log = TRUE))))
+t.test(d$Laufleistung, mu = 110)

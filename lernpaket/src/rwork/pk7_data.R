@@ -1,0 +1,11 @@
+# Erzeugt uebungsdaten/Fussball.csv (Probeklausur 7 Teil B)
+set.seed(20261009)
+n <- 64
+Spiel <- sprintf("S%02d", 1:n)
+Ort <- sample(c("Heim","Auswaerts"), n, replace = TRUE)
+Wetter <- sample(c("Sonne","Wolken","Regen"), n, replace = TRUE, prob = c(.35,.4,.25))
+Tore <- rpois(n, 1.6)
+Zuschauer <- round(ifelse(Ort == "Heim", rnorm(n, 430, 60), rnorm(n, 360, 55)))
+Laufleistung <- round(pmin(pmax(rnorm(n, 111.2, 4.2), 100.3), 124.6), 1)
+d <- data.frame(Spiel, Ort, Wetter, Tore, Zuschauer, Laufleistung)
+write.csv(d, "../../uebungsdaten/Fussball.csv", row.names = FALSE)
